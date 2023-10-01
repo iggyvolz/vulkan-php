@@ -1,0 +1,23 @@
+{
+  "name": "iggyvolz/vulkan",
+  "autoload": {
+    "psr-4": {
+      "iggyvolz\\vulkan\\util\\": "src/util/",
+      "iggyvolz\\vulkan\\": "src/vk/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "iggyvolz\\vulkan\\generator\\": "src/generator/"
+    }
+  },
+  "require": {
+    "ext-dom": "*",
+    "nette/php-generator": "^4.0",
+    "iggyvolz/simple-attribute-reflection": "^1.0",
+    "php-64bit": "^8.2",
+    "ext-ffi": "*",
+    "spatie/once": "^3.1",
+    "ramsey/uuid": "^4.7"
+  }
+}

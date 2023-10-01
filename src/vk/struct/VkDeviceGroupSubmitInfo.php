@@ -1,0 +1,187 @@
+<?php
+
+declare(strict_types=1);
+
+namespace iggyvolz\vulkan\struct;
+
+final class VkDeviceGroupSubmitInfo
+{
+    /**
+     * @internal
+     */
+    public function __construct(
+        /** @internal */
+        public \FFI\CData $cdata,
+        /** @internal */
+        public \FFI $ffi,
+    ) {
+    }
+
+    public static function create(
+        \iggyvolz\vulkan\Vulkan $vulkan,
+        null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|int $waitSemaphoreCount = null,
+        null|\iggyvolz\vulkan\util\IntPointer $pWaitSemaphoreDeviceIndices = null,
+        null|int $commandBufferCount = null,
+        null|\iggyvolz\vulkan\util\IntPointer $pCommandBufferDeviceMasks = null,
+        null|int $signalSemaphoreCount = null,
+        null|\iggyvolz\vulkan\util\IntPointer $pSignalSemaphoreDeviceIndices = null,
+    ): self
+    {
+        $self = new self( $vulkan->ffi->new('VkDeviceGroupSubmitInfo', false), $vulkan->ffi);
+        if(!is_null($sType)) $self->setSType($sType);
+        if(!is_null($pNext)) $self->setPNext($pNext);
+        if(!is_null($waitSemaphoreCount)) $self->setWaitSemaphoreCount($waitSemaphoreCount);
+        if(!is_null($pWaitSemaphoreDeviceIndices)) $self->setPWaitSemaphoreDeviceIndices($pWaitSemaphoreDeviceIndices);
+        if(!is_null($commandBufferCount)) $self->setCommandBufferCount($commandBufferCount);
+        if(!is_null($pCommandBufferDeviceMasks)) $self->setPCommandBufferDeviceMasks($pCommandBufferDeviceMasks);
+        if(!is_null($signalSemaphoreCount)) $self->setSignalSemaphoreCount($signalSemaphoreCount);
+        if(!is_null($pSignalSemaphoreDeviceIndices)) $self->setPSignalSemaphoreDeviceIndices($pSignalSemaphoreDeviceIndices);
+        return $self;
+    }
+
+    /**
+     * VkStructureType/
+     */
+    public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
+    {
+        $ffi = $this->ffi;
+        $cValue = $this->cdata->sType;
+        $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
+        return $phpValue;
+    }
+
+    public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
+    {
+        $ffi = $this->ffi;
+        $cValue = $phpValue->value;
+        $this->cdata->sType = $cValue;
+    }
+
+    /**
+     * void* /
+     */
+    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    {
+        $ffi = $this->ffi;
+        $cValue = $this->cdata->pNext;
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        return $phpValue;
+    }
+
+    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    {
+        $ffi = $this->ffi;
+        $cValue = $phpValue->cdata;
+        $this->cdata->pNext = $cValue;
+    }
+
+    /**
+     * uint32_t/
+     */
+    public function getWaitSemaphoreCount(): int
+    {
+        $ffi = $this->ffi;
+        $cValue = $this->cdata->waitSemaphoreCount;
+        $phpValue = $cValue;
+        return $phpValue;
+    }
+
+    public function setWaitSemaphoreCount(int $phpValue): void
+    {
+        $ffi = $this->ffi;
+        $cValue = $phpValue;
+        $this->cdata->waitSemaphoreCount = $cValue;
+    }
+
+    /**
+     * uint32_t* /
+     */
+    public function getPWaitSemaphoreDeviceIndices(): \iggyvolz\vulkan\util\IntPointer
+    {
+        $ffi = $this->ffi;
+        $cValue = $this->cdata->pWaitSemaphoreDeviceIndices;
+        $phpValue = $cValue->get();
+        return $phpValue;
+    }
+
+    public function setPWaitSemaphoreDeviceIndices(\iggyvolz\vulkan\util\IntPointer $phpValue): void
+    {
+        $ffi = $this->ffi;
+        $cValue = $phpValue->cdata;
+        $this->cdata->pWaitSemaphoreDeviceIndices = $cValue;
+    }
+
+    /**
+     * uint32_t/
+     */
+    public function getCommandBufferCount(): int
+    {
+        $ffi = $this->ffi;
+        $cValue = $this->cdata->commandBufferCount;
+        $phpValue = $cValue;
+        return $phpValue;
+    }
+
+    public function setCommandBufferCount(int $phpValue): void
+    {
+        $ffi = $this->ffi;
+        $cValue = $phpValue;
+        $this->cdata->commandBufferCount = $cValue;
+    }
+
+    /**
+     * uint32_t* /
+     */
+    public function getPCommandBufferDeviceMasks(): \iggyvolz\vulkan\util\IntPointer
+    {
+        $ffi = $this->ffi;
+        $cValue = $this->cdata->pCommandBufferDeviceMasks;
+        $phpValue = $cValue->get();
+        return $phpValue;
+    }
+
+    public function setPCommandBufferDeviceMasks(\iggyvolz\vulkan\util\IntPointer $phpValue): void
+    {
+        $ffi = $this->ffi;
+        $cValue = $phpValue->cdata;
+        $this->cdata->pCommandBufferDeviceMasks = $cValue;
+    }
+
+    /**
+     * uint32_t/
+     */
+    public function getSignalSemaphoreCount(): int
+    {
+        $ffi = $this->ffi;
+        $cValue = $this->cdata->signalSemaphoreCount;
+        $phpValue = $cValue;
+        return $phpValue;
+    }
+
+    public function setSignalSemaphoreCount(int $phpValue): void
+    {
+        $ffi = $this->ffi;
+        $cValue = $phpValue;
+        $this->cdata->signalSemaphoreCount = $cValue;
+    }
+
+    /**
+     * uint32_t* /
+     */
+    public function getPSignalSemaphoreDeviceIndices(): \iggyvolz\vulkan\util\IntPointer
+    {
+        $ffi = $this->ffi;
+        $cValue = $this->cdata->pSignalSemaphoreDeviceIndices;
+        $phpValue = $cValue->get();
+        return $phpValue;
+    }
+
+    public function setPSignalSemaphoreDeviceIndices(\iggyvolz\vulkan\util\IntPointer $phpValue): void
+    {
+        $ffi = $this->ffi;
+        $cValue = $phpValue->cdata;
+        $this->cdata->pSignalSemaphoreDeviceIndices = $cValue;
+    }
+}
