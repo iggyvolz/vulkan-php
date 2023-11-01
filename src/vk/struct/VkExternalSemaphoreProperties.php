@@ -21,9 +21,9 @@ final class VkExternalSemaphoreProperties
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $exportFromImportedHandleTypes = null,
-        mixed $compatibleHandleTypes = null,
-        mixed $externalSemaphoreFeatures = null,
+        null|array $exportFromImportedHandleTypes = null,
+        null|array $compatibleHandleTypes = null,
+        null|array $externalSemaphoreFeatures = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkExternalSemaphoreProperties', false), $vulkan->ffi);
@@ -72,56 +72,56 @@ final class VkExternalSemaphoreProperties
     }
 
     /**
-     * void* /
+     * VkExternalSemaphoreHandleTypeFlags/
      */
-    public function getExportFromImportedHandleTypes(): mixed
+    public function getExportFromImportedHandleTypes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->exportFromImportedHandleTypes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkExternalSemaphoreHandleTypeFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setExportFromImportedHandleTypes(mixed $phpValue): void
+    public function setExportFromImportedHandleTypes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkExternalSemaphoreHandleTypeFlagBits::toInt(...$phpValue);
         $this->cdata->exportFromImportedHandleTypes = $cValue;
     }
 
     /**
-     * void* /
+     * VkExternalSemaphoreHandleTypeFlags/
      */
-    public function getCompatibleHandleTypes(): mixed
+    public function getCompatibleHandleTypes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->compatibleHandleTypes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkExternalSemaphoreHandleTypeFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setCompatibleHandleTypes(mixed $phpValue): void
+    public function setCompatibleHandleTypes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkExternalSemaphoreHandleTypeFlagBits::toInt(...$phpValue);
         $this->cdata->compatibleHandleTypes = $cValue;
     }
 
     /**
-     * void* /
+     * VkExternalSemaphoreFeatureFlags/
      */
-    public function getExternalSemaphoreFeatures(): mixed
+    public function getExternalSemaphoreFeatures(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->externalSemaphoreFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkExternalSemaphoreFeatureFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setExternalSemaphoreFeatures(mixed $phpValue): void
+    public function setExternalSemaphoreFeatures(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkExternalSemaphoreFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->externalSemaphoreFeatures = $cValue;
     }
 }

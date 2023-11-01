@@ -21,7 +21,7 @@ final class VkPhysicalDeviceVideoFormatInfoKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $imageUsage = null,
+        null|array $imageUsage = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVideoFormatInfoKHR', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkPhysicalDeviceVideoFormatInfoKHR
     }
 
     /**
-     * void* /
+     * VkImageUsageFlags/
      */
-    public function getImageUsage(): mixed
+    public function getImageUsage(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->imageUsage;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setImageUsage(mixed $phpValue): void
+    public function setImageUsage(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->imageUsage = $cValue;
     }
 }

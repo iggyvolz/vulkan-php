@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkImageUsageFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case TransferSrc = 0;
     case TransferDst = 1;
     case Sampled = 2;

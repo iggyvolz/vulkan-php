@@ -21,11 +21,11 @@ final class VkPipelineRasterizationStateCreateInfo
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
+        null|array $flags = null,
         null|bool $depthClampEnable = null,
         null|bool $rasterizerDiscardEnable = null,
         null|\iggyvolz\vulkan\enum\VkPolygonMode $polygonMode = null,
-        mixed $cullMode = null,
+        null|array $cullMode = null,
         null|\iggyvolz\vulkan\enum\VkFrontFace $frontFace = null,
         null|bool $depthBiasEnable = null,
         null|float $depthBiasConstantFactor = null,
@@ -88,20 +88,20 @@ final class VkPipelineRasterizationStateCreateInfo
     }
 
     /**
-     * void* /
+     * VkPipelineRasterizationStateCreateFlags/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = [];
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = 0;
         $this->cdata->flags = $cValue;
     }
 
@@ -160,20 +160,20 @@ final class VkPipelineRasterizationStateCreateInfo
     }
 
     /**
-     * void* /
+     * VkCullModeFlags/
      */
-    public function getCullMode(): mixed
+    public function getCullMode(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->cullMode;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkCullModeFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setCullMode(mixed $phpValue): void
+    public function setCullMode(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkCullModeFlagBits::toInt(...$phpValue);
         $this->cdata->cullMode = $cValue;
     }
 

@@ -21,9 +21,9 @@ final class VkShaderCreateInfoEXT
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
+        null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkShaderStageFlagBits $stage = null,
-        mixed $nextStage = null,
+        null|array $nextStage = null,
         null|\iggyvolz\vulkan\enum\VkShaderCodeTypeEXT $codeType = null,
         null|int $codeSize = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pCode = null,
@@ -90,20 +90,20 @@ final class VkShaderCreateInfoEXT
     }
 
     /**
-     * void* /
+     * VkShaderCreateFlagsEXT/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkShaderCreateFlagBitsEXT::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkShaderCreateFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 
@@ -126,20 +126,20 @@ final class VkShaderCreateInfoEXT
     }
 
     /**
-     * void* /
+     * VkShaderStageFlags/
      */
-    public function getNextStage(): mixed
+    public function getNextStage(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->nextStage;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setNextStage(mixed $phpValue): void
+    public function setNextStage(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->nextStage = $cValue;
     }
 

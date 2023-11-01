@@ -19,7 +19,7 @@ final class VkImageSubresourceLayers
 
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
-        mixed $aspectMask = null,
+        null|array $aspectMask = null,
         null|int $mipLevel = null,
         null|int $baseArrayLayer = null,
         null|int $layerCount = null,
@@ -34,20 +34,20 @@ final class VkImageSubresourceLayers
     }
 
     /**
-     * void* /
+     * VkImageAspectFlags/
      */
-    public function getAspectMask(): mixed
+    public function getAspectMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->aspectMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setAspectMask(mixed $phpValue): void
+    public function setAspectMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::toInt(...$phpValue);
         $this->cdata->aspectMask = $cValue;
     }
 

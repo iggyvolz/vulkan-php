@@ -21,9 +21,9 @@ final class VkExternalFenceProperties
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $exportFromImportedHandleTypes = null,
-        mixed $compatibleHandleTypes = null,
-        mixed $externalFenceFeatures = null,
+        null|array $exportFromImportedHandleTypes = null,
+        null|array $compatibleHandleTypes = null,
+        null|array $externalFenceFeatures = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkExternalFenceProperties', false), $vulkan->ffi);
@@ -72,56 +72,56 @@ final class VkExternalFenceProperties
     }
 
     /**
-     * void* /
+     * VkExternalFenceHandleTypeFlags/
      */
-    public function getExportFromImportedHandleTypes(): mixed
+    public function getExportFromImportedHandleTypes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->exportFromImportedHandleTypes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkExternalFenceHandleTypeFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setExportFromImportedHandleTypes(mixed $phpValue): void
+    public function setExportFromImportedHandleTypes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkExternalFenceHandleTypeFlagBits::toInt(...$phpValue);
         $this->cdata->exportFromImportedHandleTypes = $cValue;
     }
 
     /**
-     * void* /
+     * VkExternalFenceHandleTypeFlags/
      */
-    public function getCompatibleHandleTypes(): mixed
+    public function getCompatibleHandleTypes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->compatibleHandleTypes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkExternalFenceHandleTypeFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setCompatibleHandleTypes(mixed $phpValue): void
+    public function setCompatibleHandleTypes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkExternalFenceHandleTypeFlagBits::toInt(...$phpValue);
         $this->cdata->compatibleHandleTypes = $cValue;
     }
 
     /**
-     * void* /
+     * VkExternalFenceFeatureFlags/
      */
-    public function getExternalFenceFeatures(): mixed
+    public function getExternalFenceFeatures(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->externalFenceFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkExternalFenceFeatureFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setExternalFenceFeatures(mixed $phpValue): void
+    public function setExternalFenceFeatures(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkExternalFenceFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->externalFenceFeatures = $cValue;
     }
 }

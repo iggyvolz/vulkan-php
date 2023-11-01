@@ -17,7 +17,11 @@ final class VkMemoryHeap
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan, null|int $size = null, mixed $flags = null): self
+    public static function create(
+        \iggyvolz\vulkan\Vulkan $vulkan,
+        null|int $size = null,
+        null|array $flags = null,
+    ): self
     {
         $self = new self( $vulkan->ffi->new('VkMemoryHeap', false), $vulkan->ffi);
         if(!is_null($size)) $self->setSize($size);
@@ -44,20 +48,20 @@ final class VkMemoryHeap
     }
 
     /**
-     * void* /
+     * VkMemoryHeapFlags/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkMemoryHeapFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkMemoryHeapFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 }

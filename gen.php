@@ -2,6 +2,7 @@
 
 use FFI\CData;
 use iggyvolz\vulkan\enum\VkResult;
+use iggyvolz\vulkan\generator\Registry\EnumType;
 use iggyvolz\vulkan\generator\Registry\Registry;
 use iggyvolz\vulkan\generator\Registry\Type\Enum;
 use iggyvolz\vulkan\generator\Registry\Type\Handle;
@@ -9,6 +10,7 @@ use iggyvolz\vulkan\generator\Registry\Type\Struct;
 use iggyvolz\vulkan\generator\Transformer\DummyTransformer;
 use iggyvolz\vulkan\generator\Transformer\Transformer;
 use iggyvolz\vulkan\generator\Transformer\VoidTransformer;
+use iggyvolz\vulkan\util\BitmapEnum;
 use iggyvolz\vulkan\util\ResultEvent;
 use iggyvolz\vulkan\util\VkResultAssert;
 use iggyvolz\vulkan\util\VulkanBase;
@@ -47,6 +49,7 @@ mkdir("$targetDirectory/enum");
 mkdir("$targetDirectory/struct");
 mkdir("$targetDirectory/event");
 $registry = Registry::get(cacheDirectory: __DIR__ . "/cache");
+//file_put_contents(__DIR__ . "/registry.json", json_encode($registry, flags: JSON_PRETTY_PRINT));
 $printer = new PsrPrinter();
 
 $cdefsClass = ($cdefsFile = new PhpFile())->setStrictTypes()->addNamespace("iggyvolz\\vulkan")->addClass("CDefs")->setFinal();
@@ -66,6 +69,7 @@ function addCDef(string $cdef, ?string $extension = null): void
     }
 }
 foreach($registry->getTypes(Enum::class) as $enum) {
+    if(!is_null($enum->alias)) continue;
     $file = new PhpFile();
     $file->setStrictTypes();
     $namespace = $file->addNamespace("iggyvolz\\vulkan\\enum");
@@ -73,6 +77,7 @@ foreach($registry->getTypes(Enum::class) as $enum) {
     foreach($enum->enums as $k => $v) {
         $enumClass->addCase($k, $v);
     }
+    if($enum->enumType === EnumType::Bitmask) $enumClass->addTrait(BitmapEnum::class);
     if($enum->name === "VkResult") $enumClass->addTrait(VkResultAssert::class);
     file_put_contents($targetDirectory . "/enum/$enum->name.php", $printer->printFile($file));
     addCDef("typedef int $enum->name;");
@@ -159,7 +164,10 @@ foreach($registry->getTypes(Struct::class) as $struct) {
     if($structIsOkay) $okayStructs++;
     $totalStructs++;
 }
-echo "$okayStructs/$totalStructs structs ($okayStructMembers/$totalStructMembers members) are complete\n";
+$pctStructs = round(100 * ($okayStructs / $totalStructs), 2);
+$pctMembers = round(100 * ($okayStructMembers / $totalStructMembers), 2);
+//echo "$okayStructs/$totalStructs ($pctStructs%) structs are complete\n";
+//echo "$okayStructMembers/$totalStructMembers ($pctMembers%) struct members are complete\n";
 
 $vulkanClass = ($vulkanFile = new PhpFile())->setStrictTypes()->addNamespace("iggyvolz\\vulkan")->addClass("Vulkan");
 $vulkanClass->addTrait(VulkanBase::class);
@@ -208,6 +216,7 @@ foreach ($registry->commands as $command) {
     $totalMethods++;
     if($isOkay) $okayMethods++;
 }
-echo "$okayMethods/$totalMethods methods are callable\n";
+$pctMethods = round(100 * ($okayMethods / $totalMethods), 2);
+//echo "$okayMethods/$totalMethods ($pctMethods%) methods are callable\n";
 file_put_contents($targetDirectory . "/Vulkan.php", $printer->printFile($vulkanFile));
 file_put_contents($targetDirectory . "/CDefs.php", $printer->printFile($cdefsFile));

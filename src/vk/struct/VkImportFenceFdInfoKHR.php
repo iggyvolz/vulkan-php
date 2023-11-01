@@ -22,7 +22,7 @@ final class VkImportFenceFdInfoKHR
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|VkFence $fence = null,
-        mixed $flags = null,
+        null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkExternalFenceHandleTypeFlagBits $handleType = null,
         null|int $fd = null,
     ): self
@@ -92,20 +92,20 @@ final class VkImportFenceFdInfoKHR
     }
 
     /**
-     * void* /
+     * VkFenceImportFlags/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkFenceImportFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkFenceImportFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 

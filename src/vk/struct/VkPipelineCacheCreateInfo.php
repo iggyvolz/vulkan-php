@@ -21,7 +21,7 @@ final class VkPipelineCacheCreateInfo
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
+        null|array $flags = null,
         null|int $initialDataSize = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pInitialData = null,
     ): self
@@ -72,20 +72,20 @@ final class VkPipelineCacheCreateInfo
     }
 
     /**
-     * void* /
+     * VkPipelineCacheCreateFlags/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkPipelineCacheCreateFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineCacheCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 

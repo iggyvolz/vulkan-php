@@ -21,8 +21,8 @@ final class VkAccelerationStructureInfoNV
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        null|\iggyvolz\vulkan\enum\VkAccelerationStructureTypeNV $type = null,
-        mixed $flags = null,
+        mixed $type = null,
+        null|array $flags = null,
         null|int $instanceCount = null,
         null|int $geometryCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pGeometries = null,
@@ -76,38 +76,38 @@ final class VkAccelerationStructureInfoNV
     }
 
     /**
-     * VkAccelerationStructureTypeNV/
+     * void* /
      */
-    public function getType(): \iggyvolz\vulkan\enum\VkAccelerationStructureTypeNV
+    public function getType(): mixed
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->type;
-        $phpValue = \iggyvolz\vulkan\enum\VkAccelerationStructureTypeNV::from($cValue);
+        throw new \LogicException("Dummy transformer!");
         return $phpValue;
     }
 
-    public function setType(\iggyvolz\vulkan\enum\VkAccelerationStructureTypeNV $phpValue): void
+    public function setType(mixed $phpValue): void
     {
         $ffi = $this->ffi;
-        $cValue = $phpValue->value;
+        throw new \LogicException("Dummy transformer!");
         $this->cdata->type = $cValue;
     }
 
     /**
-     * void* /
+     * VkBuildAccelerationStructureFlagsNV/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = [];
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = 0;
         $this->cdata->flags = $cValue;
     }
 

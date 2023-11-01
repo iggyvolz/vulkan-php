@@ -24,7 +24,7 @@ final class VkImageConstraintsInfoFUCHSIA
         null|int $formatConstraintsCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pFormatConstraints = null,
         mixed $bufferCollectionConstraints = null,
-        mixed $flags = null,
+        null|array $flags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkImageConstraintsInfoFUCHSIA', false), $vulkan->ffi);
@@ -128,20 +128,20 @@ final class VkImageConstraintsInfoFUCHSIA
     }
 
     /**
-     * void* /
+     * VkImageConstraintsInfoFlagsFUCHSIA/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageConstraintsInfoFlagBitsFUCHSIA::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageConstraintsInfoFlagBitsFUCHSIA::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 }

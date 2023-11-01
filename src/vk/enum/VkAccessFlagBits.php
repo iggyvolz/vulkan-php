@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkAccessFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case IndirectCommandRead = 0;
     case IndexRead = 1;
     case VertexAttributeRead = 2;

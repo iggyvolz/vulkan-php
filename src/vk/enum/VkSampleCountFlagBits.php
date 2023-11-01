@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkSampleCountFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case _1Bit = 0;
     case _2Bit = 1;
     case _4Bit = 2;

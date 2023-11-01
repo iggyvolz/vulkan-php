@@ -22,7 +22,7 @@ final class VkImageFormatProperties
         null|VkExtent3D $maxExtent = null,
         null|int $maxMipLevels = null,
         null|int $maxArrayLayers = null,
-        mixed $sampleCounts = null,
+        null|array $sampleCounts = null,
         null|int $maxResourceSize = null,
     ): self
     {
@@ -90,20 +90,20 @@ final class VkImageFormatProperties
     }
 
     /**
-     * void* /
+     * VkSampleCountFlags/
      */
-    public function getSampleCounts(): mixed
+    public function getSampleCounts(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->sampleCounts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSampleCounts(mixed $phpValue): void
+    public function setSampleCounts(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampleCounts = $cValue;
     }
 

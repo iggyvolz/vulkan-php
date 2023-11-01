@@ -21,8 +21,8 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $supportedOutputGridSizes = null,
-        mixed $supportedHintGridSizes = null,
+        null|array $supportedOutputGridSizes = null,
+        null|array $supportedHintGridSizes = null,
         null|bool $hintSupported = null,
         null|bool $costSupported = null,
         null|bool $bidirectionalFlowSupported = null,
@@ -88,38 +88,38 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
     }
 
     /**
-     * void* /
+     * VkOpticalFlowGridSizeFlagsNV/
      */
-    public function getSupportedOutputGridSizes(): mixed
+    public function getSupportedOutputGridSizes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedOutputGridSizes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedOutputGridSizes(mixed $phpValue): void
+    public function setSupportedOutputGridSizes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->supportedOutputGridSizes = $cValue;
     }
 
     /**
-     * void* /
+     * VkOpticalFlowGridSizeFlagsNV/
      */
-    public function getSupportedHintGridSizes(): mixed
+    public function getSupportedHintGridSizes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedHintGridSizes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedHintGridSizes(mixed $phpValue): void
+    public function setSupportedHintGridSizes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->supportedHintGridSizes = $cValue;
     }
 

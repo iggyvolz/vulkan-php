@@ -21,7 +21,7 @@ final class VkVideoCapabilitiesKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
+        null|array $flags = null,
         null|int $minBitstreamBufferOffsetAlignment = null,
         null|int $minBitstreamBufferSizeAlignment = null,
         null|VkExtent2D $pictureAccessGranularity = null,
@@ -84,20 +84,20 @@ final class VkVideoCapabilitiesKHR
     }
 
     /**
-     * void* /
+     * VkVideoCapabilityFlagsKHR/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoCapabilityFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoCapabilityFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 

@@ -21,7 +21,7 @@ final class VkImageStencilUsageCreateInfo
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $stencilUsage = null,
+        null|array $stencilUsage = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkImageStencilUsageCreateInfo', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkImageStencilUsageCreateInfo
     }
 
     /**
-     * void* /
+     * VkImageUsageFlags/
      */
-    public function getStencilUsage(): mixed
+    public function getStencilUsage(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->stencilUsage;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setStencilUsage(mixed $phpValue): void
+    public function setStencilUsage(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->stencilUsage = $cValue;
     }
 }

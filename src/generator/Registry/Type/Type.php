@@ -21,8 +21,9 @@ readonly class Type
      * @param DOMElement $element
      * @param array<string,string> $enums
      * @param list<string> $enums64bit
+     * @param list<string> $bitmasks
      */
-    public final function __construct(DOMElement $element, array $enums, array $enums64bit)
+    public final function __construct(DOMElement $element, array $enums, array $enums64bit, array $bitmasks)
     {
         $this->requires = $element->hasAttribute("requires") ? $element->getAttribute("requires") : null;
         $this->name = $element->hasAttribute("name") ? $element->getAttribute("name") : self::findName($element);
@@ -32,7 +33,7 @@ readonly class Type
         $this->body = $element->textContent;
         $this->setUp($element);
         if($this instanceof Enum) {
-            $this->setUpEnums($enums, $enums64bit);
+            $this->setUpEnums($enums, $enums64bit, $bitmasks);
         }
     }
 
@@ -45,15 +46,16 @@ readonly class Type
      * @param DOMElement $root
      * @param array<string,string> $enums
      * @param list<string> $enums64bit
+     * @param list<string> $bitmasks
      * @return Generator<self>
      */
-    public static function getAll(DOMElement $root, array $enums, array $enums64bit): Generator
+    public static function getAll(DOMElement $root, array $enums, array $enums64bit, array $bitmasks): Generator
     {
         foreach($root->childNodes as $childNode) {
             if(!$childNode instanceof DOMElement || $childNode->tagName !== "types") continue;
             foreach($childNode->childNodes as $node) {
                 if(!$node instanceof DOMElement || $node->tagName !== "type") continue;
-                yield self::from($node, $enums, $enums64bit);
+                yield self::from($node, $enums, $enums64bit, $bitmasks);
             }
         }
     }
@@ -74,9 +76,10 @@ readonly class Type
      * @param DOMElement $node
      * @param array<string,string> $enums
      * @param list<string> $enums64bit
+     * @param list<string> $bitmasks
      * @return self
      */
-    private static function from(DOMElement $node, array $enums, array $enums64bit): self
+    private static function from(DOMElement $node, array $enums, array $enums64bit, array $bitmasks): self
     {
         return new (match($node->getAttribute("category")){
             "basetype" => BaseType::class,
@@ -90,6 +93,6 @@ readonly class Type
             "struct" => Struct::class,
             "union" => Union::class,
             "" => self::class,
-        })($node, $enums, $enums64bit);
+        })($node, $enums, $enums64bit, $bitmasks);
     }
 }

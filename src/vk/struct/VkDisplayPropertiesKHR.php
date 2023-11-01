@@ -23,7 +23,7 @@ final class VkDisplayPropertiesKHR
         ?string $displayName = null,
         null|VkExtent2D $physicalDimensions = null,
         null|VkExtent2D $physicalResolution = null,
-        mixed $supportedTransforms = null,
+        null|array $supportedTransforms = null,
         null|bool $planeReorderPossible = null,
         null|bool $persistentContent = null,
     ): self
@@ -112,20 +112,20 @@ final class VkDisplayPropertiesKHR
     }
 
     /**
-     * void* /
+     * VkSurfaceTransformFlagsKHR/
      */
-    public function getSupportedTransforms(): mixed
+    public function getSupportedTransforms(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedTransforms;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedTransforms(mixed $phpValue): void
+    public function setSupportedTransforms(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->supportedTransforms = $cValue;
     }
 

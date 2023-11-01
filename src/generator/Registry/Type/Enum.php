@@ -3,6 +3,7 @@
 namespace iggyvolz\vulkan\generator\Registry\Type;
 
 use DOMElement;
+use iggyvolz\vulkan\generator\Registry\EnumType;
 
 final readonly class Enum extends Type
 {
@@ -12,14 +13,16 @@ final readonly class Enum extends Type
     public array $enums;
 
     public bool $is64bits;
+    public EnumType $enumType;
 
     /**
      * @param array<string,string> $enums
      * @param list<string> $enums64bit
      * @return void
      */
-    protected function setUpEnums(array $enums, array $enums64bit): void
+    protected function setUpEnums(array $enums, array $enums64bit, array $bitmasks): void
     {
+        $this->enumType = in_array($this->name, $bitmasks) ? EnumType::Bitmask : EnumType::Enum;
         $this->enums = array_combine(
             array_map($this->mapKeys(...), array_keys($enums[$this->name] ?? [])),
             array_map(self::mapValue(...), $enums[$this->name] ?? [])

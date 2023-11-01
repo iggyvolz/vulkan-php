@@ -21,10 +21,10 @@ final class VkMemoryBarrier2
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $srcStageMask = null,
-        mixed $srcAccessMask = null,
-        mixed $dstStageMask = null,
-        mixed $dstAccessMask = null,
+        null|array $srcStageMask = null,
+        null|array $srcAccessMask = null,
+        null|array $dstStageMask = null,
+        null|array $dstAccessMask = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkMemoryBarrier2', false), $vulkan->ffi);
@@ -74,74 +74,74 @@ final class VkMemoryBarrier2
     }
 
     /**
-     * void* /
+     * VkPipelineStageFlags2/
      */
-    public function getSrcStageMask(): mixed
+    public function getSrcStageMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->srcStageMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits2::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSrcStageMask(mixed $phpValue): void
+    public function setSrcStageMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits2::toInt(...$phpValue);
         $this->cdata->srcStageMask = $cValue;
     }
 
     /**
-     * void* /
+     * VkAccessFlags2/
      */
-    public function getSrcAccessMask(): mixed
+    public function getSrcAccessMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->srcAccessMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkAccessFlagBits2::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSrcAccessMask(mixed $phpValue): void
+    public function setSrcAccessMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkAccessFlagBits2::toInt(...$phpValue);
         $this->cdata->srcAccessMask = $cValue;
     }
 
     /**
-     * void* /
+     * VkPipelineStageFlags2/
      */
-    public function getDstStageMask(): mixed
+    public function getDstStageMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->dstStageMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits2::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setDstStageMask(mixed $phpValue): void
+    public function setDstStageMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits2::toInt(...$phpValue);
         $this->cdata->dstStageMask = $cValue;
     }
 
     /**
-     * void* /
+     * VkAccessFlags2/
      */
-    public function getDstAccessMask(): mixed
+    public function getDstAccessMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->dstAccessMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkAccessFlagBits2::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setDstAccessMask(mixed $phpValue): void
+    public function setDstAccessMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkAccessFlagBits2::toInt(...$phpValue);
         $this->cdata->dstAccessMask = $cValue;
     }
 }

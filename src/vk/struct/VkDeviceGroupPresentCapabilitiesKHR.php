@@ -22,7 +22,7 @@ final class VkDeviceGroupPresentCapabilitiesKHR
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         mixed $presentMask = null,
-        mixed $modes = null,
+        null|array $modes = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkDeviceGroupPresentCapabilitiesKHR', false), $vulkan->ffi);
@@ -88,20 +88,20 @@ final class VkDeviceGroupPresentCapabilitiesKHR
     }
 
     /**
-     * void* /
+     * VkDeviceGroupPresentModeFlagsKHR/
      */
-    public function getModes(): mixed
+    public function getModes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->modes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkDeviceGroupPresentModeFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setModes(mixed $phpValue): void
+    public function setModes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkDeviceGroupPresentModeFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->modes = $cValue;
     }
 }

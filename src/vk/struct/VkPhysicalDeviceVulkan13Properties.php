@@ -24,7 +24,7 @@ final class VkPhysicalDeviceVulkan13Properties
         null|int $minSubgroupSize = null,
         null|int $maxSubgroupSize = null,
         null|int $maxComputeWorkgroupSubgroups = null,
-        mixed $requiredSubgroupSizeStages = null,
+        null|array $requiredSubgroupSizeStages = null,
         null|int $maxInlineUniformBlockSize = null,
         null|int $maxPerStageDescriptorInlineUniformBlocks = null,
         null|int $maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = null,
@@ -210,20 +210,20 @@ final class VkPhysicalDeviceVulkan13Properties
     }
 
     /**
-     * void* /
+     * VkShaderStageFlags/
      */
-    public function getRequiredSubgroupSizeStages(): mixed
+    public function getRequiredSubgroupSizeStages(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->requiredSubgroupSizeStages;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setRequiredSubgroupSizeStages(mixed $phpValue): void
+    public function setRequiredSubgroupSizeStages(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->requiredSubgroupSizeStages = $cValue;
     }
 

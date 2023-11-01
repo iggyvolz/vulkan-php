@@ -21,7 +21,7 @@ final class VkPerformanceCounterDescriptionKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
+        null|array $flags = null,
         null|string $name = null,
         null|string $category = null,
         null|string $description = null,
@@ -74,20 +74,20 @@ final class VkPerformanceCounterDescriptionKHR
     }
 
     /**
-     * void* /
+     * VkPerformanceCounterDescriptionFlagsKHR/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkPerformanceCounterDescriptionFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPerformanceCounterDescriptionFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 

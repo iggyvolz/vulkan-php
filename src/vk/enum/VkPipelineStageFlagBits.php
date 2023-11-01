@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkPipelineStageFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case TopOfPipe = 0;
     case DrawIndirect = 1;
     case VertexInput = 2;

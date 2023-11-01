@@ -21,8 +21,8 @@ final class VkImageCompressionPropertiesEXT
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $imageCompressionFlags = null,
-        mixed $imageCompressionFixedRateFlags = null,
+        null|array $imageCompressionFlags = null,
+        null|array $imageCompressionFixedRateFlags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkImageCompressionPropertiesEXT', false), $vulkan->ffi);
@@ -70,38 +70,38 @@ final class VkImageCompressionPropertiesEXT
     }
 
     /**
-     * void* /
+     * VkImageCompressionFlagsEXT/
      */
-    public function getImageCompressionFlags(): mixed
+    public function getImageCompressionFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->imageCompressionFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageCompressionFlagBitsEXT::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setImageCompressionFlags(mixed $phpValue): void
+    public function setImageCompressionFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageCompressionFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->imageCompressionFlags = $cValue;
     }
 
     /**
-     * void* /
+     * VkImageCompressionFixedRateFlagsEXT/
      */
-    public function getImageCompressionFixedRateFlags(): mixed
+    public function getImageCompressionFixedRateFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->imageCompressionFixedRateFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageCompressionFixedRateFlagBitsEXT::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setImageCompressionFixedRateFlags(mixed $phpValue): void
+    public function setImageCompressionFixedRateFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageCompressionFixedRateFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->imageCompressionFixedRateFlags = $cValue;
     }
 }

@@ -6,4 +6,5 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkDeviceQueueCreateFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
 }

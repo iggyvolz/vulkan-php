@@ -6,5 +6,7 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkAccelerationStructureCreateFlagBitsKHR: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case DeviceAddressCaptureReplay = 0;
 }

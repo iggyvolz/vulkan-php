@@ -21,8 +21,8 @@ final class VkFramebufferAttachmentImageInfo
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
-        mixed $usage = null,
+        null|array $flags = null,
+        null|array $usage = null,
         null|int $width = null,
         null|int $height = null,
         null|int $layerCount = null,
@@ -80,38 +80,38 @@ final class VkFramebufferAttachmentImageInfo
     }
 
     /**
-     * void* /
+     * VkImageCreateFlags/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageCreateFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 
     /**
-     * void* /
+     * VkImageUsageFlags/
      */
-    public function getUsage(): mixed
+    public function getUsage(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->usage;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setUsage(mixed $phpValue): void
+    public function setUsage(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->usage = $cValue;
     }
 

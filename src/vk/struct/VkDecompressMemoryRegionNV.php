@@ -23,7 +23,7 @@ final class VkDecompressMemoryRegionNV
         null|int $dstAddress = null,
         null|int $compressedSize = null,
         null|int $decompressedSize = null,
-        mixed $decompressionMethod = null,
+        null|array $decompressionMethod = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkDecompressMemoryRegionNV', false), $vulkan->ffi);
@@ -108,20 +108,20 @@ final class VkDecompressMemoryRegionNV
     }
 
     /**
-     * void* /
+     * VkMemoryDecompressionMethodFlagsNV/
      */
-    public function getDecompressionMethod(): mixed
+    public function getDecompressionMethod(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->decompressionMethod;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkMemoryDecompressionMethodFlagBitsNV::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setDecompressionMethod(mixed $phpValue): void
+    public function setDecompressionMethod(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkMemoryDecompressionMethodFlagBitsNV::toInt(...$phpValue);
         $this->cdata->decompressionMethod = $cValue;
     }
 }

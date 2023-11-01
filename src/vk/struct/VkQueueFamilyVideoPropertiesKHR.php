@@ -21,7 +21,7 @@ final class VkQueueFamilyVideoPropertiesKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $videoCodecOperations = null,
+        null|array $videoCodecOperations = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkQueueFamilyVideoPropertiesKHR', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkQueueFamilyVideoPropertiesKHR
     }
 
     /**
-     * void* /
+     * VkVideoCodecOperationFlagsKHR/
      */
-    public function getVideoCodecOperations(): mixed
+    public function getVideoCodecOperations(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->videoCodecOperations;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoCodecOperationFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setVideoCodecOperations(mixed $phpValue): void
+    public function setVideoCodecOperations(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoCodecOperationFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->videoCodecOperations = $cValue;
     }
 }

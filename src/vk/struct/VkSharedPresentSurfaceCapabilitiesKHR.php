@@ -21,7 +21,7 @@ final class VkSharedPresentSurfaceCapabilitiesKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $sharedPresentSupportedUsageFlags = null,
+        null|array $sharedPresentSupportedUsageFlags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkSharedPresentSurfaceCapabilitiesKHR', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkSharedPresentSurfaceCapabilitiesKHR
     }
 
     /**
-     * void* /
+     * VkImageUsageFlags/
      */
-    public function getSharedPresentSupportedUsageFlags(): mixed
+    public function getSharedPresentSupportedUsageFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->sharedPresentSupportedUsageFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSharedPresentSupportedUsageFlags(mixed $phpValue): void
+    public function setSharedPresentSupportedUsageFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->sharedPresentSupportedUsageFlags = $cValue;
     }
 }

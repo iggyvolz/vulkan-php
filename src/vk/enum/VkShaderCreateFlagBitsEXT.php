@@ -6,5 +6,7 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkShaderCreateFlagBitsEXT: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case LinkStage = 0;
 }

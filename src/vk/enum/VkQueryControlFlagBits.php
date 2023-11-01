@@ -6,5 +6,7 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkQueryControlFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case Precise = 0;
 }

@@ -22,7 +22,7 @@ final class VkBufferConstraintsInfoFUCHSIA
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|VkBufferCreateInfo $createInfo = null,
-        mixed $requiredFormatFeatures = null,
+        null|array $requiredFormatFeatures = null,
         mixed $bufferCollectionConstraints = null,
     ): self
     {
@@ -90,20 +90,20 @@ final class VkBufferConstraintsInfoFUCHSIA
     }
 
     /**
-     * void* /
+     * VkFormatFeatureFlags/
      */
-    public function getRequiredFormatFeatures(): mixed
+    public function getRequiredFormatFeatures(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->requiredFormatFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setRequiredFormatFeatures(mixed $phpValue): void
+    public function setRequiredFormatFeatures(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->requiredFormatFeatures = $cValue;
     }
 

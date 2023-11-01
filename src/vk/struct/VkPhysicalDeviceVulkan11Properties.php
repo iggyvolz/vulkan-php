@@ -27,8 +27,8 @@ final class VkPhysicalDeviceVulkan11Properties
         null|int $deviceNodeMask = null,
         null|bool $deviceLUIDValid = null,
         null|int $subgroupSize = null,
-        mixed $subgroupSupportedStages = null,
-        mixed $subgroupSupportedOperations = null,
+        null|array $subgroupSupportedStages = null,
+        null|array $subgroupSupportedOperations = null,
         null|bool $subgroupQuadOperationsInAllStages = null,
         null|\iggyvolz\vulkan\enum\VkPointClippingBehavior $pointClippingBehavior = null,
         null|int $maxMultiviewViewCount = null,
@@ -204,38 +204,38 @@ final class VkPhysicalDeviceVulkan11Properties
     }
 
     /**
-     * void* /
+     * VkShaderStageFlags/
      */
-    public function getSubgroupSupportedStages(): mixed
+    public function getSubgroupSupportedStages(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->subgroupSupportedStages;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSubgroupSupportedStages(mixed $phpValue): void
+    public function setSubgroupSupportedStages(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->subgroupSupportedStages = $cValue;
     }
 
     /**
-     * void* /
+     * VkSubgroupFeatureFlags/
      */
-    public function getSubgroupSupportedOperations(): mixed
+    public function getSubgroupSupportedOperations(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->subgroupSupportedOperations;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSubgroupFeatureFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSubgroupSupportedOperations(mixed $phpValue): void
+    public function setSubgroupSupportedOperations(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSubgroupFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->subgroupSupportedOperations = $cValue;
     }
 

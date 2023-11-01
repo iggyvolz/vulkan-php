@@ -247,8 +247,8 @@ class Vulkan
      * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
      * @param \\iggyvolz\vulkan\enum\VkImageType $type VkImageType
      * @param \\iggyvolz\vulkan\enum\VkImageTiling $tiling VkImageTiling
-     * @param mixed $usage VkImageUsageFlags
-     * @param mixed $flags VkImageCreateFlags
+     * @param list<\iggyvolz\vulkan\enum\VkImageUsageFlagBits> $usage VkImageUsageFlags
+     * @param list<\iggyvolz\vulkan\enum\VkImageCreateFlagBits> $flags VkImageCreateFlags
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageFormatProperties> $pImageFormatProperties VkImageFormatProperties*
      * returns VkResult
      */
@@ -257,8 +257,8 @@ class Vulkan
         enum\VkFormat $format,
         enum\VkImageType $type,
         enum\VkImageTiling $tiling,
-        mixed $usage,
-        mixed $flags,
+        array $usage,
+        array $flags,
         util\ObjectPointer $pImageFormatProperties,
     ): enum\VkResult
     {
@@ -275,10 +275,10 @@ class Vulkan
         $cValue = $phpValue->value;
         $tilingC = $cValue;
         $phpValue = $usage;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $usageC = $cValue;
         $phpValue = $flags;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageCreateFlagBits::toInt(...$phpValue);
         $flagsC = $cValue;
         $phpValue = $pImageFormatProperties;
         $cValue = $phpValue->cdata;
@@ -655,8 +655,8 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
      * @param int $offset VkDeviceSize
      * @param int $size VkDeviceSize
-     * @param mixed $flags VkMemoryMapFlags
-     * @param mixed $ppData void**
+     * @param list<never> $flags VkMemoryMapFlags
+     * @param \iggyvolz\vulkan\util\OpaquePointer $ppData void**
      * returns VkResult
      */
     public function vkMapMemory(
@@ -664,8 +664,8 @@ class Vulkan
         struct\VkDeviceMemory $memory,
         int $offset,
         int $size,
-        mixed $flags,
-        mixed $ppData,
+        array $flags,
+        util\OpaquePointer $ppData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -681,10 +681,10 @@ class Vulkan
         $cValue = $phpValue;
         $sizeC = $cValue;
         $phpValue = $flags;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = 0;
         $flagsC = $cValue;
         $phpValue = $ppData;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $ppDataC = $cValue;
         $cValue = $this->ffi->vkMapMemory(
             $deviceC,
@@ -967,7 +967,7 @@ class Vulkan
      * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
      * @param \\iggyvolz\vulkan\enum\VkImageType $type VkImageType
      * @param \\iggyvolz\vulkan\enum\VkSampleCountFlagBits $samples VkSampleCountFlagBits
-     * @param mixed $usage VkImageUsageFlags
+     * @param list<\iggyvolz\vulkan\enum\VkImageUsageFlagBits> $usage VkImageUsageFlags
      * @param \\iggyvolz\vulkan\enum\VkImageTiling $tiling VkImageTiling
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSparseImageFormatProperties> $pProperties VkSparseImageFormatProperties*
@@ -977,7 +977,7 @@ class Vulkan
         enum\VkFormat $format,
         enum\VkImageType $type,
         enum\VkSampleCountFlagBits $samples,
-        mixed $usage,
+        array $usage,
         enum\VkImageTiling $tiling,
         util\IntPointer $pPropertyCount,
         util\ObjectPointer $pProperties,
@@ -996,7 +996,7 @@ class Vulkan
         $cValue = $phpValue->value;
         $samplesC = $cValue;
         $phpValue = $usage;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $usageC = $cValue;
         $phpValue = $tiling;
         $cValue = $phpValue->value;
@@ -1471,7 +1471,7 @@ class Vulkan
      * @param int $dataSize size_t
      * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
      * @param int $stride VkDeviceSize
-     * @param mixed $flags VkQueryResultFlags
+     * @param list<\iggyvolz\vulkan\enum\VkQueryResultFlagBits> $flags VkQueryResultFlags
      * returns VkResult
      */
     public function vkGetQueryPoolResults(
@@ -1482,7 +1482,7 @@ class Vulkan
         int $dataSize,
         util\OpaquePointer $pData,
         int $stride,
-        mixed $flags,
+        array $flags,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -1507,7 +1507,7 @@ class Vulkan
         $cValue = $phpValue;
         $strideC = $cValue;
         $phpValue = $flags;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkQueryResultFlagBits::toInt(...$phpValue);
         $flagsC = $cValue;
         $cValue = $this->ffi->vkGetQueryPoolResults(
             $deviceC,
@@ -2447,13 +2447,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkDescriptorPool $descriptorPool VkDescriptorPool
-     * @param mixed $flags VkDescriptorPoolResetFlags
+     * @param list<never> $flags VkDescriptorPoolResetFlags
      * returns VkResult
      */
     public function vkResetDescriptorPool(
         struct\VkDevice $device,
         struct\VkDescriptorPool $descriptorPool,
-        mixed $flags,
+        array $flags,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -2463,7 +2463,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $descriptorPoolC = $cValue;
         $phpValue = $flags;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = 0;
         $flagsC = $cValue;
         $cValue = $this->ffi->vkResetDescriptorPool(
             $deviceC,
@@ -2825,13 +2825,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkCommandPool $commandPool VkCommandPool
-     * @param mixed $flags VkCommandPoolResetFlags
+     * @param list<\iggyvolz\vulkan\enum\VkCommandPoolResetFlagBits> $flags VkCommandPoolResetFlags
      * returns VkResult
      */
     public function vkResetCommandPool(
         struct\VkDevice $device,
         struct\VkCommandPool $commandPool,
-        mixed $flags,
+        array $flags,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -2841,7 +2841,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $commandPoolC = $cValue;
         $phpValue = $flags;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkCommandPoolResetFlagBits::toInt(...$phpValue);
         $flagsC = $cValue;
         $cValue = $this->ffi->vkResetCommandPool(
             $deviceC,
@@ -2957,16 +2957,16 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param mixed $flags VkCommandBufferResetFlags
+     * @param list<\iggyvolz\vulkan\enum\VkCommandBufferResetFlagBits> $flags VkCommandBufferResetFlags
      * returns VkResult
      */
-    public function vkResetCommandBuffer(struct\VkCommandBuffer $commandBuffer, mixed $flags): enum\VkResult
+    public function vkResetCommandBuffer(struct\VkCommandBuffer $commandBuffer, array $flags): enum\VkResult
     {
         $phpValue = $commandBuffer;
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
         $phpValue = $flags;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkCommandBufferResetFlagBits::toInt(...$phpValue);
         $flagsC = $cValue;
         $cValue = $this->ffi->vkResetCommandBuffer(
             $commandBufferC,
@@ -3005,18 +3005,18 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param mixed $aspectMask VkImageAspectFlags
+     * @param list<\iggyvolz\vulkan\enum\VkImageAspectFlagBits> $aspectMask VkImageAspectFlags
      */
     public function vkCmdSetAttachmentFeedbackLoopEnableEXT(
         struct\VkCommandBuffer $commandBuffer,
-        mixed $aspectMask,
+        array $aspectMask,
     ): void
     {
         $phpValue = $commandBuffer;
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
         $phpValue = $aspectMask;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::toInt(...$phpValue);
         $aspectMaskC = $cValue;
         $cValue = $this->ffi->vkCmdSetAttachmentFeedbackLoopEnableEXT(
             $commandBufferC,
@@ -3188,12 +3188,12 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param mixed $faceMask VkStencilFaceFlags
+     * @param list<\iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
      * @param int $compareMask uint32_t
      */
     public function vkCmdSetStencilCompareMask(
         struct\VkCommandBuffer $commandBuffer,
-        mixed $faceMask,
+        array $faceMask,
         int $compareMask,
     ): void
     {
@@ -3201,7 +3201,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
         $phpValue = $faceMask;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkStencilFaceFlagBits::toInt(...$phpValue);
         $faceMaskC = $cValue;
         $phpValue = $compareMask;
         $cValue = $phpValue;
@@ -3215,12 +3215,12 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param mixed $faceMask VkStencilFaceFlags
+     * @param list<\iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
      * @param int $writeMask uint32_t
      */
     public function vkCmdSetStencilWriteMask(
         struct\VkCommandBuffer $commandBuffer,
-        mixed $faceMask,
+        array $faceMask,
         int $writeMask,
     ): void
     {
@@ -3228,7 +3228,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
         $phpValue = $faceMask;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkStencilFaceFlagBits::toInt(...$phpValue);
         $faceMaskC = $cValue;
         $phpValue = $writeMask;
         $cValue = $phpValue;
@@ -3242,12 +3242,12 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param mixed $faceMask VkStencilFaceFlags
+     * @param list<\iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
      * @param int $reference uint32_t
      */
     public function vkCmdSetStencilReference(
         struct\VkCommandBuffer $commandBuffer,
-        mixed $faceMask,
+        array $faceMask,
         int $reference,
     ): void
     {
@@ -3255,7 +3255,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
         $phpValue = $faceMask;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkStencilFaceFlagBits::toInt(...$phpValue);
         $faceMaskC = $cValue;
         $phpValue = $reference;
         $cValue = $phpValue;
@@ -4396,12 +4396,12 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \\iggyvolz\vulkan\struct\VkEvent $event VkEvent
-     * @param mixed $stageMask VkPipelineStageFlags
+     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $stageMask VkPipelineStageFlags
      */
     public function vkCmdSetEvent(
         struct\VkCommandBuffer $commandBuffer,
         struct\VkEvent $event,
-        mixed $stageMask,
+        array $stageMask,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -4411,7 +4411,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $eventC = $cValue;
         $phpValue = $stageMask;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::toInt(...$phpValue);
         $stageMaskC = $cValue;
         $cValue = $this->ffi->vkCmdSetEvent(
             $commandBufferC,
@@ -4423,12 +4423,12 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \\iggyvolz\vulkan\struct\VkEvent $event VkEvent
-     * @param mixed $stageMask VkPipelineStageFlags
+     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $stageMask VkPipelineStageFlags
      */
     public function vkCmdResetEvent(
         struct\VkCommandBuffer $commandBuffer,
         struct\VkEvent $event,
-        mixed $stageMask,
+        array $stageMask,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -4438,7 +4438,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $eventC = $cValue;
         $phpValue = $stageMask;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::toInt(...$phpValue);
         $stageMaskC = $cValue;
         $cValue = $this->ffi->vkCmdResetEvent(
             $commandBufferC,
@@ -4451,8 +4451,8 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $eventCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkEvent> $pEvents const VkEvent*
-     * @param mixed $srcStageMask VkPipelineStageFlags
-     * @param mixed $dstStageMask VkPipelineStageFlags
+     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $srcStageMask VkPipelineStageFlags
+     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $dstStageMask VkPipelineStageFlags
      * @param int $memoryBarrierCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryBarrier> $pMemoryBarriers const VkMemoryBarrier*
      * @param int $bufferMemoryBarrierCount uint32_t
@@ -4464,8 +4464,8 @@ class Vulkan
         struct\VkCommandBuffer $commandBuffer,
         int $eventCount,
         util\ObjectPointer $pEvents,
-        mixed $srcStageMask,
-        mixed $dstStageMask,
+        array $srcStageMask,
+        array $dstStageMask,
         int $memoryBarrierCount,
         util\ObjectPointer $pMemoryBarriers,
         int $bufferMemoryBarrierCount,
@@ -4484,10 +4484,10 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $pEventsC = $cValue;
         $phpValue = $srcStageMask;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::toInt(...$phpValue);
         $srcStageMaskC = $cValue;
         $phpValue = $dstStageMask;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::toInt(...$phpValue);
         $dstStageMaskC = $cValue;
         $phpValue = $memoryBarrierCount;
         $cValue = $phpValue;
@@ -4524,9 +4524,9 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param mixed $srcStageMask VkPipelineStageFlags
-     * @param mixed $dstStageMask VkPipelineStageFlags
-     * @param mixed $dependencyFlags VkDependencyFlags
+     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $srcStageMask VkPipelineStageFlags
+     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $dstStageMask VkPipelineStageFlags
+     * @param list<\iggyvolz\vulkan\enum\VkDependencyFlagBits> $dependencyFlags VkDependencyFlags
      * @param int $memoryBarrierCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryBarrier> $pMemoryBarriers const VkMemoryBarrier*
      * @param int $bufferMemoryBarrierCount uint32_t
@@ -4536,9 +4536,9 @@ class Vulkan
      */
     public function vkCmdPipelineBarrier(
         struct\VkCommandBuffer $commandBuffer,
-        mixed $srcStageMask,
-        mixed $dstStageMask,
-        mixed $dependencyFlags,
+        array $srcStageMask,
+        array $dstStageMask,
+        array $dependencyFlags,
         int $memoryBarrierCount,
         util\ObjectPointer $pMemoryBarriers,
         int $bufferMemoryBarrierCount,
@@ -4551,13 +4551,13 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
         $phpValue = $srcStageMask;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::toInt(...$phpValue);
         $srcStageMaskC = $cValue;
         $phpValue = $dstStageMask;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::toInt(...$phpValue);
         $dstStageMaskC = $cValue;
         $phpValue = $dependencyFlags;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkDependencyFlagBits::toInt(...$phpValue);
         $dependencyFlagsC = $cValue;
         $phpValue = $memoryBarrierCount;
         $cValue = $phpValue;
@@ -4595,13 +4595,13 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $query uint32_t
-     * @param mixed $flags VkQueryControlFlags
+     * @param list<\iggyvolz\vulkan\enum\VkQueryControlFlagBits> $flags VkQueryControlFlags
      */
     public function vkCmdBeginQuery(
         struct\VkCommandBuffer $commandBuffer,
         struct\VkQueryPool $queryPool,
         int $query,
-        mixed $flags,
+        array $flags,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -4614,7 +4614,7 @@ class Vulkan
         $cValue = $phpValue;
         $queryC = $cValue;
         $phpValue = $flags;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkQueryControlFlagBits::toInt(...$phpValue);
         $flagsC = $cValue;
         $cValue = $this->ffi->vkCmdBeginQuery(
             $commandBufferC,
@@ -4759,7 +4759,7 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
      * @param int $dstOffset VkDeviceSize
      * @param int $stride VkDeviceSize
-     * @param mixed $flags VkQueryResultFlags
+     * @param list<\iggyvolz\vulkan\enum\VkQueryResultFlagBits> $flags VkQueryResultFlags
      */
     public function vkCmdCopyQueryPoolResults(
         struct\VkCommandBuffer $commandBuffer,
@@ -4769,7 +4769,7 @@ class Vulkan
         struct\VkBuffer $dstBuffer,
         int $dstOffset,
         int $stride,
-        mixed $flags,
+        array $flags,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -4794,7 +4794,7 @@ class Vulkan
         $cValue = $phpValue;
         $strideC = $cValue;
         $phpValue = $flags;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkQueryResultFlagBits::toInt(...$phpValue);
         $flagsC = $cValue;
         $cValue = $this->ffi->vkCmdCopyQueryPoolResults(
             $commandBufferC,
@@ -4811,7 +4811,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \\iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
-     * @param mixed $stageFlags VkShaderStageFlags
+     * @param list<\iggyvolz\vulkan\enum\VkShaderStageFlagBits> $stageFlags VkShaderStageFlags
      * @param int $offset uint32_t
      * @param int $size uint32_t
      * @param \iggyvolz\vulkan\util\OpaquePointer $pValues const void*
@@ -4819,7 +4819,7 @@ class Vulkan
     public function vkCmdPushConstants(
         struct\VkCommandBuffer $commandBuffer,
         struct\VkPipelineLayout $layout,
-        mixed $stageFlags,
+        array $stageFlags,
         int $offset,
         int $size,
         util\OpaquePointer $pValues,
@@ -4832,7 +4832,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $layoutC = $cValue;
         $phpValue = $stageFlags;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $stageFlagsC = $cValue;
         $phpValue = $offset;
         $cValue = $phpValue;
@@ -6170,7 +6170,7 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
-     * @param mixed $flags VkDebugReportFlagsEXT
+     * @param list<\iggyvolz\vulkan\enum\VkDebugReportFlagBitsEXT> $flags VkDebugReportFlagsEXT
      * @param \\iggyvolz\vulkan\enum\VkDebugReportObjectTypeEXT $objectType VkDebugReportObjectTypeEXT
      * @param int $object uint64_t
      * @param int $location size_t
@@ -6180,7 +6180,7 @@ class Vulkan
      */
     public function vkDebugReportMessageEXT(
         struct\VkInstance $instance,
-        mixed $flags,
+        array $flags,
         enum\VkDebugReportObjectTypeEXT $objectType,
         int $object,
         int $location,
@@ -6193,7 +6193,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $instanceC = $cValue;
         $phpValue = $flags;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkDebugReportFlagBitsEXT::toInt(...$phpValue);
         $flagsC = $cValue;
         $phpValue = $objectType;
         $cValue = $phpValue->value;
@@ -6330,9 +6330,9 @@ class Vulkan
      * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
      * @param \\iggyvolz\vulkan\enum\VkImageType $type VkImageType
      * @param \\iggyvolz\vulkan\enum\VkImageTiling $tiling VkImageTiling
-     * @param mixed $usage VkImageUsageFlags
-     * @param mixed $flags VkImageCreateFlags
-     * @param mixed $externalHandleType VkExternalMemoryHandleTypeFlagsNV
+     * @param list<\iggyvolz\vulkan\enum\VkImageUsageFlagBits> $usage VkImageUsageFlags
+     * @param list<\iggyvolz\vulkan\enum\VkImageCreateFlagBits> $flags VkImageCreateFlags
+     * @param list<\iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV> $externalHandleType VkExternalMemoryHandleTypeFlagsNV
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkExternalImageFormatPropertiesNV> $pExternalImageFormatProperties VkExternalImageFormatPropertiesNV*
      * returns VkResult
      */
@@ -6341,9 +6341,9 @@ class Vulkan
         enum\VkFormat $format,
         enum\VkImageType $type,
         enum\VkImageTiling $tiling,
-        mixed $usage,
-        mixed $flags,
-        mixed $externalHandleType,
+        array $usage,
+        array $flags,
+        array $externalHandleType,
         util\ObjectPointer $pExternalImageFormatProperties,
     ): enum\VkResult
     {
@@ -6360,13 +6360,13 @@ class Vulkan
         $cValue = $phpValue->value;
         $tilingC = $cValue;
         $phpValue = $usage;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $usageC = $cValue;
         $phpValue = $flags;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageCreateFlagBits::toInt(...$phpValue);
         $flagsC = $cValue;
         $phpValue = $externalHandleType;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV::toInt(...$phpValue);
         $externalHandleTypeC = $cValue;
         $phpValue = $pExternalImageFormatProperties;
         $cValue = $phpValue->cdata;
@@ -6388,15 +6388,15 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
-     * @param mixed $handleType VkExternalMemoryHandleTypeFlagsNV
-     * @param mixed $pHandle HANDLE*
+     * @param list<\iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV> $handleType VkExternalMemoryHandleTypeFlagsNV
+     * @param \iggyvolz\vulkan\util\OpaquePointer $pHandle HANDLE*
      * returns VkResult
      */
     public function vkGetMemoryWin32HandleNV(
         struct\VkDevice $device,
         struct\VkDeviceMemory $memory,
-        mixed $handleType,
-        mixed $pHandle,
+        array $handleType,
+        util\OpaquePointer $pHandle,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -6406,10 +6406,10 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $memoryC = $cValue;
         $phpValue = $handleType;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV::toInt(...$phpValue);
         $handleTypeC = $cValue;
         $phpValue = $pHandle;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $pHandleC = $cValue;
         $cValue = $this->ffi->vkGetMemoryWin32HandleNV(
             $deviceC,
@@ -6820,9 +6820,9 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkCommandPool $commandPool VkCommandPool
-     * @param mixed $flags VkCommandPoolTrimFlags
+     * @param list<never> $flags VkCommandPoolTrimFlags
      */
-    public function vkTrimCommandPool(struct\VkDevice $device, struct\VkCommandPool $commandPool, mixed $flags): void
+    public function vkTrimCommandPool(struct\VkDevice $device, struct\VkCommandPool $commandPool, array $flags): void
     {
         $phpValue = $device;
         $cValue = $phpValue->cdata;
@@ -6831,7 +6831,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $commandPoolC = $cValue;
         $phpValue = $flags;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = 0;
         $flagsC = $cValue;
         $cValue = $this->ffi->vkTrimCommandPool(
             $deviceC,
@@ -6870,13 +6870,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryGetWin32HandleInfoKHR> $pGetWin32HandleInfo const VkMemoryGetWin32HandleInfoKHR*
-     * @param mixed $pHandle HANDLE*
+     * @param \iggyvolz\vulkan\util\OpaquePointer $pHandle HANDLE*
      * returns VkResult
      */
     public function vkGetMemoryWin32HandleKHR(
         struct\VkDevice $device,
         util\ObjectPointer $pGetWin32HandleInfo,
-        mixed $pHandle,
+        util\OpaquePointer $pHandle,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -6886,7 +6886,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $pGetWin32HandleInfoC = $cValue;
         $phpValue = $pHandle;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $pHandleC = $cValue;
         $cValue = $this->ffi->vkGetMemoryWin32HandleKHR(
             $deviceC,
@@ -7215,13 +7215,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphoreGetWin32HandleInfoKHR> $pGetWin32HandleInfo const VkSemaphoreGetWin32HandleInfoKHR*
-     * @param mixed $pHandle HANDLE*
+     * @param \iggyvolz\vulkan\util\OpaquePointer $pHandle HANDLE*
      * returns VkResult
      */
     public function vkGetSemaphoreWin32HandleKHR(
         struct\VkDevice $device,
         util\ObjectPointer $pGetWin32HandleInfo,
-        mixed $pHandle,
+        util\OpaquePointer $pHandle,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -7231,7 +7231,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $pGetWin32HandleInfoC = $cValue;
         $phpValue = $pHandle;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $pHandleC = $cValue;
         $cValue = $this->ffi->vkGetSemaphoreWin32HandleKHR(
             $deviceC,
@@ -7404,13 +7404,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFenceGetWin32HandleInfoKHR> $pGetWin32HandleInfo const VkFenceGetWin32HandleInfoKHR*
-     * @param mixed $pHandle HANDLE*
+     * @param \iggyvolz\vulkan\util\OpaquePointer $pHandle HANDLE*
      * returns VkResult
      */
     public function vkGetFenceWin32HandleKHR(
         struct\VkDevice $device,
         util\ObjectPointer $pGetWin32HandleInfo,
-        mixed $pHandle,
+        util\OpaquePointer $pHandle,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -7420,7 +7420,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $pGetWin32HandleInfoC = $cValue;
         $phpValue = $pHandle;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $pHandleC = $cValue;
         $cValue = $this->ffi->vkGetFenceWin32HandleKHR(
             $deviceC,
@@ -9537,14 +9537,14 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
-     * @param mixed $imageUsage VkImageUsageFlags
+     * @param list<\iggyvolz\vulkan\enum\VkImageUsageFlagBits> $imageUsage VkImageUsageFlags
      * @param \iggyvolz\vulkan\util\IntPointer $grallocUsage int*
      * returns VkResult
      */
     public function vkGetSwapchainGrallocUsageANDROID(
         struct\VkDevice $device,
         enum\VkFormat $format,
-        mixed $imageUsage,
+        array $imageUsage,
         util\IntPointer $grallocUsage,
     ): enum\VkResult
     {
@@ -9555,7 +9555,7 @@ class Vulkan
         $cValue = $phpValue->value;
         $formatC = $cValue;
         $phpValue = $imageUsage;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $imageUsageC = $cValue;
         $phpValue = $grallocUsage;
         $cValue = $phpValue->cdata;
@@ -9573,8 +9573,8 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
-     * @param mixed $imageUsage VkImageUsageFlags
-     * @param mixed $swapchainImageUsage VkSwapchainImageUsageFlagsANDROID
+     * @param list<\iggyvolz\vulkan\enum\VkImageUsageFlagBits> $imageUsage VkImageUsageFlags
+     * @param list<\iggyvolz\vulkan\enum\VkSwapchainImageUsageFlagBitsANDROID> $swapchainImageUsage VkSwapchainImageUsageFlagsANDROID
      * @param \iggyvolz\vulkan\util\IntPointer $grallocConsumerUsage uint64_t*
      * @param \iggyvolz\vulkan\util\IntPointer $grallocProducerUsage uint64_t*
      * returns VkResult
@@ -9582,8 +9582,8 @@ class Vulkan
     public function vkGetSwapchainGrallocUsage2ANDROID(
         struct\VkDevice $device,
         enum\VkFormat $format,
-        mixed $imageUsage,
-        mixed $swapchainImageUsage,
+        array $imageUsage,
+        array $swapchainImageUsage,
         util\IntPointer $grallocConsumerUsage,
         util\IntPointer $grallocProducerUsage,
     ): enum\VkResult
@@ -9595,10 +9595,10 @@ class Vulkan
         $cValue = $phpValue->value;
         $formatC = $cValue;
         $phpValue = $imageUsage;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $imageUsageC = $cValue;
         $phpValue = $swapchainImageUsage;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSwapchainImageUsageFlagBitsANDROID::toInt(...$phpValue);
         $swapchainImageUsageC = $cValue;
         $phpValue = $grallocConsumerUsage;
         $cValue = $phpValue->cdata;
@@ -10064,13 +10064,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \\iggyvolz\vulkan\enum\VkDebugUtilsMessageSeverityFlagBitsEXT $messageSeverity VkDebugUtilsMessageSeverityFlagBitsEXT
-     * @param mixed $messageTypes VkDebugUtilsMessageTypeFlagsEXT
+     * @param list<\iggyvolz\vulkan\enum\VkDebugUtilsMessageTypeFlagBitsEXT> $messageTypes VkDebugUtilsMessageTypeFlagsEXT
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugUtilsMessengerCallbackDataEXT> $pCallbackData const VkDebugUtilsMessengerCallbackDataEXT*
      */
     public function vkSubmitDebugUtilsMessageEXT(
         struct\VkInstance $instance,
         enum\VkDebugUtilsMessageSeverityFlagBitsEXT $messageSeverity,
-        mixed $messageTypes,
+        array $messageTypes,
         util\ObjectPointer $pCallbackData,
     ): void
     {
@@ -10081,7 +10081,7 @@ class Vulkan
         $cValue = $phpValue->value;
         $messageSeverityC = $cValue;
         $phpValue = $messageTypes;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkDebugUtilsMessageTypeFlagBitsEXT::toInt(...$phpValue);
         $messageTypesC = $cValue;
         $phpValue = $pCallbackData;
         $cValue = $phpValue->cdata;
@@ -10698,14 +10698,14 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $query uint32_t
-     * @param mixed $flags VkQueryControlFlags
+     * @param list<\iggyvolz\vulkan\enum\VkQueryControlFlagBits> $flags VkQueryControlFlags
      * @param int $index uint32_t
      */
     public function vkCmdBeginQueryIndexedEXT(
         struct\VkCommandBuffer $commandBuffer,
         struct\VkQueryPool $queryPool,
         int $query,
-        mixed $flags,
+        array $flags,
         int $index,
     ): void
     {
@@ -10719,7 +10719,7 @@ class Vulkan
         $cValue = $phpValue;
         $queryC = $cValue;
         $phpValue = $flags;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkQueryControlFlagBits::toInt(...$phpValue);
         $flagsC = $cValue;
         $phpValue = $index;
         $cValue = $phpValue;
@@ -13589,15 +13589,15 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param mixed $cullMode VkCullModeFlags
+     * @param list<\iggyvolz\vulkan\enum\VkCullModeFlagBits> $cullMode VkCullModeFlags
      */
-    public function vkCmdSetCullMode(struct\VkCommandBuffer $commandBuffer, mixed $cullMode): void
+    public function vkCmdSetCullMode(struct\VkCommandBuffer $commandBuffer, array $cullMode): void
     {
         $phpValue = $commandBuffer;
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
         $phpValue = $cullMode;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkCullModeFlagBits::toInt(...$phpValue);
         $cullModeC = $cValue;
         $cValue = $this->ffi->vkCmdSetCullMode(
             $commandBufferC,
@@ -13886,7 +13886,7 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param mixed $faceMask VkStencilFaceFlags
+     * @param list<\iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
      * @param \\iggyvolz\vulkan\enum\VkStencilOp $failOp VkStencilOp
      * @param \\iggyvolz\vulkan\enum\VkStencilOp $passOp VkStencilOp
      * @param \\iggyvolz\vulkan\enum\VkStencilOp $depthFailOp VkStencilOp
@@ -13894,7 +13894,7 @@ class Vulkan
      */
     public function vkCmdSetStencilOp(
         struct\VkCommandBuffer $commandBuffer,
-        mixed $faceMask,
+        array $faceMask,
         enum\VkStencilOp $failOp,
         enum\VkStencilOp $passOp,
         enum\VkStencilOp $depthFailOp,
@@ -13905,7 +13905,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
         $phpValue = $faceMask;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkStencilFaceFlagBits::toInt(...$phpValue);
         $faceMaskC = $cValue;
         $phpValue = $failOp;
         $cValue = $phpValue->value;
@@ -15270,12 +15270,12 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \\iggyvolz\vulkan\struct\VkEvent $event VkEvent
-     * @param mixed $stageMask VkPipelineStageFlags2
+     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits2> $stageMask VkPipelineStageFlags2
      */
     public function vkCmdResetEvent2(
         struct\VkCommandBuffer $commandBuffer,
         struct\VkEvent $event,
-        mixed $stageMask,
+        array $stageMask,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -15285,7 +15285,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $eventC = $cValue;
         $phpValue = $stageMask;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits2::toInt(...$phpValue);
         $stageMaskC = $cValue;
         $cValue = $this->ffi->vkCmdResetEvent2(
             $commandBufferC,
@@ -15386,13 +15386,13 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param mixed $stage VkPipelineStageFlags2
+     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits2> $stage VkPipelineStageFlags2
      * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $query uint32_t
      */
     public function vkCmdWriteTimestamp2(
         struct\VkCommandBuffer $commandBuffer,
-        mixed $stage,
+        array $stage,
         struct\VkQueryPool $queryPool,
         int $query,
     ): void
@@ -15401,7 +15401,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
         $phpValue = $stage;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits2::toInt(...$phpValue);
         $stageC = $cValue;
         $phpValue = $queryPool;
         $cValue = $phpValue->cdata;
@@ -15419,14 +15419,14 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param mixed $stage VkPipelineStageFlags2
+     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits2> $stage VkPipelineStageFlags2
      * @param \\iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
      * @param int $dstOffset VkDeviceSize
      * @param int $marker uint32_t
      */
     public function vkCmdWriteBufferMarker2AMD(
         struct\VkCommandBuffer $commandBuffer,
-        mixed $stage,
+        array $stage,
         struct\VkBuffer $dstBuffer,
         int $dstOffset,
         int $marker,
@@ -15436,7 +15436,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
         $phpValue = $stage;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits2::toInt(...$phpValue);
         $stageC = $cValue;
         $phpValue = $dstBuffer;
         $cValue = $phpValue->cdata;
@@ -16990,12 +16990,12 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkDescriptorSet $descriptorSet VkDescriptorSet
-     * @param mixed $ppData void**
+     * @param \iggyvolz\vulkan\util\OpaquePointer $ppData void**
      */
     public function vkGetDescriptorSetHostMappingVALVE(
         struct\VkDevice $device,
         struct\VkDescriptorSet $descriptorSet,
-        mixed $ppData,
+        util\OpaquePointer $ppData,
     ): void
     {
         $phpValue = $device;
@@ -17005,7 +17005,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $descriptorSetC = $cValue;
         $phpValue = $ppData;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $ppDataC = $cValue;
         $cValue = $this->ffi->vkGetDescriptorSetHostMappingVALVE(
             $deviceC,
@@ -17923,13 +17923,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryMapInfoKHR> $pMemoryMapInfo const VkMemoryMapInfoKHR*
-     * @param mixed $ppData void**
+     * @param \iggyvolz\vulkan\util\OpaquePointer $ppData void**
      * returns VkResult
      */
     public function vkMapMemory2KHR(
         struct\VkDevice $device,
         util\ObjectPointer $pMemoryMapInfo,
-        mixed $ppData,
+        util\OpaquePointer $ppData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -17939,7 +17939,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $pMemoryMapInfoC = $cValue;
         $phpValue = $ppData;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $ppDataC = $cValue;
         $cValue = $this->ffi->vkMapMemory2KHR(
             $deviceC,

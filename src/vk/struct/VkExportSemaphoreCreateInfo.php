@@ -21,7 +21,7 @@ final class VkExportSemaphoreCreateInfo
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $handleTypes = null,
+        null|array $handleTypes = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkExportSemaphoreCreateInfo', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkExportSemaphoreCreateInfo
     }
 
     /**
-     * void* /
+     * VkExternalSemaphoreHandleTypeFlags/
      */
-    public function getHandleTypes(): mixed
+    public function getHandleTypes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->handleTypes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkExternalSemaphoreHandleTypeFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setHandleTypes(mixed $phpValue): void
+    public function setHandleTypes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkExternalSemaphoreHandleTypeFlagBits::toInt(...$phpValue);
         $this->cdata->handleTypes = $cValue;
     }
 }

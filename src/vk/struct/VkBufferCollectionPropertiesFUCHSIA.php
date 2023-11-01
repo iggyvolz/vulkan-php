@@ -25,7 +25,7 @@ final class VkBufferCollectionPropertiesFUCHSIA
         null|int $bufferCount = null,
         null|int $createInfoIndex = null,
         null|int $sysmemPixelFormat = null,
-        mixed $formatFeatures = null,
+        null|array $formatFeatures = null,
         mixed $sysmemColorSpaceIndex = null,
         null|VkComponentMapping $samplerYcbcrConversionComponents = null,
         null|\iggyvolz\vulkan\enum\VkSamplerYcbcrModelConversion $suggestedYcbcrModel = null,
@@ -160,20 +160,20 @@ final class VkBufferCollectionPropertiesFUCHSIA
     }
 
     /**
-     * void* /
+     * VkFormatFeatureFlags/
      */
-    public function getFormatFeatures(): mixed
+    public function getFormatFeatures(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->formatFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFormatFeatures(mixed $phpValue): void
+    public function setFormatFeatures(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->formatFeatures = $cValue;
     }
 

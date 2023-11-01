@@ -21,7 +21,7 @@ final class VkDrmFormatModifierPropertiesEXT
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|int $drmFormatModifier = null,
         null|int $drmFormatModifierPlaneCount = null,
-        mixed $drmFormatModifierTilingFeatures = null,
+        null|array $drmFormatModifierTilingFeatures = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkDrmFormatModifierPropertiesEXT', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkDrmFormatModifierPropertiesEXT
     }
 
     /**
-     * void* /
+     * VkFormatFeatureFlags/
      */
-    public function getDrmFormatModifierTilingFeatures(): mixed
+    public function getDrmFormatModifierTilingFeatures(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->drmFormatModifierTilingFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setDrmFormatModifierTilingFeatures(mixed $phpValue): void
+    public function setDrmFormatModifierTilingFeatures(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->drmFormatModifierTilingFeatures = $cValue;
     }
 }

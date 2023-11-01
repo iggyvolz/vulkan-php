@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkImageConstraintsInfoFlagBitsFUCHSIA: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case CpuReadRarely = 0;
     case CpuReadOften = 1;
     case CpuWriteRarely = 2;

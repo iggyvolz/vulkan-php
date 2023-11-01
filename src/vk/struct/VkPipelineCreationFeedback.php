@@ -19,7 +19,7 @@ final class VkPipelineCreationFeedback
 
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
-        mixed $flags = null,
+        null|array $flags = null,
         null|int $duration = null,
     ): self
     {
@@ -30,20 +30,20 @@ final class VkPipelineCreationFeedback
     }
 
     /**
-     * void* /
+     * VkPipelineCreationFeedbackFlags/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkPipelineCreationFeedbackFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineCreationFeedbackFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 

@@ -25,8 +25,8 @@ final class VkCommandBufferInheritanceInfo
         null|int $subpass = null,
         null|VkFramebuffer $framebuffer = null,
         null|bool $occlusionQueryEnable = null,
-        mixed $queryFlags = null,
-        mixed $pipelineStatistics = null,
+        null|array $queryFlags = null,
+        null|array $pipelineStatistics = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkCommandBufferInheritanceInfo', false), $vulkan->ffi);
@@ -150,38 +150,38 @@ final class VkCommandBufferInheritanceInfo
     }
 
     /**
-     * void* /
+     * VkQueryControlFlags/
      */
-    public function getQueryFlags(): mixed
+    public function getQueryFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->queryFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkQueryControlFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setQueryFlags(mixed $phpValue): void
+    public function setQueryFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkQueryControlFlagBits::toInt(...$phpValue);
         $this->cdata->queryFlags = $cValue;
     }
 
     /**
-     * void* /
+     * VkQueryPipelineStatisticFlags/
      */
-    public function getPipelineStatistics(): mixed
+    public function getPipelineStatistics(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pipelineStatistics;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkQueryPipelineStatisticFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setPipelineStatistics(mixed $phpValue): void
+    public function setPipelineStatistics(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkQueryPipelineStatisticFlagBits::toInt(...$phpValue);
         $this->cdata->pipelineStatistics = $cValue;
     }
 }

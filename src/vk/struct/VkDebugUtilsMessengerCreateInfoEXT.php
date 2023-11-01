@@ -21,9 +21,9 @@ final class VkDebugUtilsMessengerCreateInfoEXT
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
-        mixed $messageSeverity = null,
-        mixed $messageType = null,
+        null|array $flags = null,
+        null|array $messageSeverity = null,
+        null|array $messageType = null,
         mixed $pfnUserCallback = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pUserData = null,
     ): self
@@ -76,56 +76,56 @@ final class VkDebugUtilsMessengerCreateInfoEXT
     }
 
     /**
-     * void* /
+     * VkDebugUtilsMessengerCreateFlagsEXT/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = [];
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = 0;
         $this->cdata->flags = $cValue;
     }
 
     /**
-     * void* /
+     * VkDebugUtilsMessageSeverityFlagsEXT/
      */
-    public function getMessageSeverity(): mixed
+    public function getMessageSeverity(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->messageSeverity;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkDebugUtilsMessageSeverityFlagBitsEXT::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setMessageSeverity(mixed $phpValue): void
+    public function setMessageSeverity(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkDebugUtilsMessageSeverityFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->messageSeverity = $cValue;
     }
 
     /**
-     * void* /
+     * VkDebugUtilsMessageTypeFlagsEXT/
      */
-    public function getMessageType(): mixed
+    public function getMessageType(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->messageType;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkDebugUtilsMessageTypeFlagBitsEXT::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setMessageType(mixed $phpValue): void
+    public function setMessageType(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkDebugUtilsMessageTypeFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->messageType = $cValue;
     }
 

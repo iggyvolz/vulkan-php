@@ -26,7 +26,7 @@ final class VkPipelineColorBlendAttachmentState
         null|\iggyvolz\vulkan\enum\VkBlendFactor $srcAlphaBlendFactor = null,
         null|\iggyvolz\vulkan\enum\VkBlendFactor $dstAlphaBlendFactor = null,
         null|\iggyvolz\vulkan\enum\VkBlendOp $alphaBlendOp = null,
-        mixed $colorWriteMask = null,
+        null|array $colorWriteMask = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPipelineColorBlendAttachmentState', false), $vulkan->ffi);
@@ -168,20 +168,20 @@ final class VkPipelineColorBlendAttachmentState
     }
 
     /**
-     * void* /
+     * VkColorComponentFlags/
      */
-    public function getColorWriteMask(): mixed
+    public function getColorWriteMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->colorWriteMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkColorComponentFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setColorWriteMask(mixed $phpValue): void
+    public function setColorWriteMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkColorComponentFlagBits::toInt(...$phpValue);
         $this->cdata->colorWriteMask = $cValue;
     }
 }

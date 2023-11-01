@@ -21,7 +21,7 @@ final class VkPhysicalDeviceCooperativeMatrixPropertiesNV
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $cooperativeMatrixSupportedStages = null,
+        null|array $cooperativeMatrixSupportedStages = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPhysicalDeviceCooperativeMatrixPropertiesNV', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkPhysicalDeviceCooperativeMatrixPropertiesNV
     }
 
     /**
-     * void* /
+     * VkShaderStageFlags/
      */
-    public function getCooperativeMatrixSupportedStages(): mixed
+    public function getCooperativeMatrixSupportedStages(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->cooperativeMatrixSupportedStages;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setCooperativeMatrixSupportedStages(mixed $phpValue): void
+    public function setCooperativeMatrixSupportedStages(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->cooperativeMatrixSupportedStages = $cValue;
     }
 }

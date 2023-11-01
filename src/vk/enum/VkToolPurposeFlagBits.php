@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkToolPurposeFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case Validation = 0;
     case Profiling = 1;
     case Tracing = 2;

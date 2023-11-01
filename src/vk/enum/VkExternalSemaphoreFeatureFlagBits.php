@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkExternalSemaphoreFeatureFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case Exportable = 0;
     case Importable = 1;
 }

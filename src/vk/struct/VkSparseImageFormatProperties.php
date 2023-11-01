@@ -19,9 +19,9 @@ final class VkSparseImageFormatProperties
 
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
-        mixed $aspectMask = null,
+        null|array $aspectMask = null,
         null|VkExtent3D $imageGranularity = null,
-        mixed $flags = null,
+        null|array $flags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkSparseImageFormatProperties', false), $vulkan->ffi);
@@ -32,20 +32,20 @@ final class VkSparseImageFormatProperties
     }
 
     /**
-     * void* /
+     * VkImageAspectFlags/
      */
-    public function getAspectMask(): mixed
+    public function getAspectMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->aspectMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setAspectMask(mixed $phpValue): void
+    public function setAspectMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::toInt(...$phpValue);
         $this->cdata->aspectMask = $cValue;
     }
 
@@ -68,20 +68,20 @@ final class VkSparseImageFormatProperties
     }
 
     /**
-     * void* /
+     * VkSparseImageFormatFlags/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSparseImageFormatFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSparseImageFormatFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 }

@@ -19,7 +19,7 @@ final class VkSubpassDescription
 
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
-        mixed $flags = null,
+        null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint = null,
         null|int $inputAttachmentCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pInputAttachments = null,
@@ -46,20 +46,20 @@ final class VkSubpassDescription
     }
 
     /**
-     * void* /
+     * VkSubpassDescriptionFlags/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSubpassDescriptionFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSubpassDescriptionFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 

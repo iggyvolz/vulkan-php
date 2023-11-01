@@ -6,5 +6,7 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkDescriptorPoolCreateFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case FreeDescriptorSet = 0;
 }

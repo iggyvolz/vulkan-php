@@ -22,8 +22,8 @@ final class VkPhysicalDeviceSubgroupProperties
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $subgroupSize = null,
-        mixed $supportedStages = null,
-        mixed $supportedOperations = null,
+        null|array $supportedStages = null,
+        null|array $supportedOperations = null,
         null|bool $quadOperationsInAllStages = null,
     ): self
     {
@@ -92,38 +92,38 @@ final class VkPhysicalDeviceSubgroupProperties
     }
 
     /**
-     * void* /
+     * VkShaderStageFlags/
      */
-    public function getSupportedStages(): mixed
+    public function getSupportedStages(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedStages;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedStages(mixed $phpValue): void
+    public function setSupportedStages(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->supportedStages = $cValue;
     }
 
     /**
-     * void* /
+     * VkSubgroupFeatureFlags/
      */
-    public function getSupportedOperations(): mixed
+    public function getSupportedOperations(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedOperations;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSubgroupFeatureFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedOperations(mixed $phpValue): void
+    public function setSupportedOperations(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSubgroupFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->supportedOperations = $cValue;
     }
 

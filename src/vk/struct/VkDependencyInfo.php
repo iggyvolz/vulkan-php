@@ -21,7 +21,7 @@ final class VkDependencyInfo
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $dependencyFlags = null,
+        null|array $dependencyFlags = null,
         null|int $memoryBarrierCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pMemoryBarriers = null,
         null|int $bufferMemoryBarrierCount = null,
@@ -80,20 +80,20 @@ final class VkDependencyInfo
     }
 
     /**
-     * void* /
+     * VkDependencyFlags/
      */
-    public function getDependencyFlags(): mixed
+    public function getDependencyFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->dependencyFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkDependencyFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setDependencyFlags(mixed $phpValue): void
+    public function setDependencyFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkDependencyFlagBits::toInt(...$phpValue);
         $this->cdata->dependencyFlags = $cValue;
     }
 

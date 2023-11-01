@@ -21,7 +21,7 @@ final class VkVideoEncodeH265QualityLevelPropertiesEXT
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $preferredRateControlFlags = null,
+        null|array $preferredRateControlFlags = null,
         null|int $preferredGopFrameCount = null,
         null|int $preferredIdrPeriod = null,
         null|int $preferredConsecutiveBFrameCount = null,
@@ -82,20 +82,20 @@ final class VkVideoEncodeH265QualityLevelPropertiesEXT
     }
 
     /**
-     * void* /
+     * VkVideoEncodeH265RateControlFlagsEXT/
      */
-    public function getPreferredRateControlFlags(): mixed
+    public function getPreferredRateControlFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->preferredRateControlFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeH265RateControlFlagBitsEXT::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setPreferredRateControlFlags(mixed $phpValue): void
+    public function setPreferredRateControlFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeH265RateControlFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->preferredRateControlFlags = $cValue;
     }
 

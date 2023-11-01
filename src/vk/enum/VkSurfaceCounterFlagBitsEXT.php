@@ -6,5 +6,7 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkSurfaceCounterFlagBitsEXT: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case Vblank = 0;
 }

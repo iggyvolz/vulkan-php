@@ -21,13 +21,13 @@ final class VkVideoEncodeCapabilitiesKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
-        mixed $rateControlModes = null,
+        null|array $flags = null,
+        null|array $rateControlModes = null,
         null|int $maxRateControlLayers = null,
         null|int $maxBitrate = null,
         null|int $maxQualityLevels = null,
         null|VkExtent2D $encodeInputPictureGranularity = null,
-        mixed $supportedEncodeFeedbackFlags = null,
+        null|array $supportedEncodeFeedbackFlags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkVideoEncodeCapabilitiesKHR', false), $vulkan->ffi);
@@ -80,38 +80,38 @@ final class VkVideoEncodeCapabilitiesKHR
     }
 
     /**
-     * void* /
+     * VkVideoEncodeCapabilityFlagsKHR/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeCapabilityFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeCapabilityFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 
     /**
-     * void* /
+     * VkVideoEncodeRateControlModeFlagsKHR/
      */
-    public function getRateControlModes(): mixed
+    public function getRateControlModes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->rateControlModes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeRateControlModeFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setRateControlModes(mixed $phpValue): void
+    public function setRateControlModes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeRateControlModeFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->rateControlModes = $cValue;
     }
 
@@ -188,20 +188,20 @@ final class VkVideoEncodeCapabilitiesKHR
     }
 
     /**
-     * void* /
+     * VkVideoEncodeFeedbackFlagsKHR/
      */
-    public function getSupportedEncodeFeedbackFlags(): mixed
+    public function getSupportedEncodeFeedbackFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedEncodeFeedbackFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeFeedbackFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedEncodeFeedbackFlags(mixed $phpValue): void
+    public function setSupportedEncodeFeedbackFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeFeedbackFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->supportedEncodeFeedbackFlags = $cValue;
     }
 }

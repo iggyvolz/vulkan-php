@@ -19,7 +19,7 @@ final class VkQueueFamilyProperties
 
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
-        mixed $queueFlags = null,
+        null|array $queueFlags = null,
         null|int $queueCount = null,
         null|int $timestampValidBits = null,
         null|VkExtent3D $minImageTransferGranularity = null,
@@ -34,20 +34,20 @@ final class VkQueueFamilyProperties
     }
 
     /**
-     * void* /
+     * VkQueueFlags/
      */
-    public function getQueueFlags(): mixed
+    public function getQueueFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->queueFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkQueueFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setQueueFlags(mixed $phpValue): void
+    public function setQueueFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkQueueFlagBits::toInt(...$phpValue);
         $this->cdata->queueFlags = $cValue;
     }
 

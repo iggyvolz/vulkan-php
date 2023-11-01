@@ -22,8 +22,8 @@ final class VkImageFormatConstraintsInfoFUCHSIA
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|VkImageCreateInfo $imageCreateInfo = null,
-        mixed $requiredFormatFeatures = null,
-        mixed $flags = null,
+        null|array $requiredFormatFeatures = null,
+        null|array $flags = null,
         null|int $sysmemPixelFormat = null,
         null|int $colorSpaceCount = null,
         mixed $pColorSpaces = null,
@@ -96,38 +96,38 @@ final class VkImageFormatConstraintsInfoFUCHSIA
     }
 
     /**
-     * void* /
+     * VkFormatFeatureFlags/
      */
-    public function getRequiredFormatFeatures(): mixed
+    public function getRequiredFormatFeatures(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->requiredFormatFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setRequiredFormatFeatures(mixed $phpValue): void
+    public function setRequiredFormatFeatures(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->requiredFormatFeatures = $cValue;
     }
 
     /**
-     * void* /
+     * VkImageFormatConstraintsFlagsFUCHSIA/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageFormatConstraintsFlagBitsFUCHSIA::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageFormatConstraintsFlagBitsFUCHSIA::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 

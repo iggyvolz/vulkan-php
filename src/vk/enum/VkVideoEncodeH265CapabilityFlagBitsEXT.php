@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkVideoEncodeH265CapabilityFlagBitsEXT: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case HrdCompliance = 0;
     case PredictionWeightTableGenerated = 1;
     case RowUnalignedSliceSegment = 2;

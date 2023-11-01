@@ -19,7 +19,7 @@ final class VkMemoryType
 
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
-        mixed $propertyFlags = null,
+        null|array $propertyFlags = null,
         null|int $heapIndex = null,
     ): self
     {
@@ -30,20 +30,20 @@ final class VkMemoryType
     }
 
     /**
-     * void* /
+     * VkMemoryPropertyFlags/
      */
-    public function getPropertyFlags(): mixed
+    public function getPropertyFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->propertyFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkMemoryPropertyFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setPropertyFlags(mixed $phpValue): void
+    public function setPropertyFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkMemoryPropertyFlagBits::toInt(...$phpValue);
         $this->cdata->propertyFlags = $cValue;
     }
 

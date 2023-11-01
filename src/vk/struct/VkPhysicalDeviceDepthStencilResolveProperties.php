@@ -21,8 +21,8 @@ final class VkPhysicalDeviceDepthStencilResolveProperties
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $supportedDepthResolveModes = null,
-        mixed $supportedStencilResolveModes = null,
+        null|array $supportedDepthResolveModes = null,
+        null|array $supportedStencilResolveModes = null,
         null|bool $independentResolveNone = null,
         null|bool $independentResolve = null,
     ): self
@@ -74,38 +74,38 @@ final class VkPhysicalDeviceDepthStencilResolveProperties
     }
 
     /**
-     * void* /
+     * VkResolveModeFlags/
      */
-    public function getSupportedDepthResolveModes(): mixed
+    public function getSupportedDepthResolveModes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedDepthResolveModes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedDepthResolveModes(mixed $phpValue): void
+    public function setSupportedDepthResolveModes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::toInt(...$phpValue);
         $this->cdata->supportedDepthResolveModes = $cValue;
     }
 
     /**
-     * void* /
+     * VkResolveModeFlags/
      */
-    public function getSupportedStencilResolveModes(): mixed
+    public function getSupportedStencilResolveModes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedStencilResolveModes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedStencilResolveModes(mixed $phpValue): void
+    public function setSupportedStencilResolveModes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::toInt(...$phpValue);
         $this->cdata->supportedStencilResolveModes = $cValue;
     }
 

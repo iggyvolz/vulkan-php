@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkOpticalFlowSessionCreateFlagBitsNV: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case EnableHint = 0;
     case EnableCost = 1;
     case EnableGlobalFlow = 2;

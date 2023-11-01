@@ -21,7 +21,7 @@ final class VkImageViewUsageCreateInfo
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $usage = null,
+        null|array $usage = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkImageViewUsageCreateInfo', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkImageViewUsageCreateInfo
     }
 
     /**
-     * void* /
+     * VkImageUsageFlags/
      */
-    public function getUsage(): mixed
+    public function getUsage(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->usage;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setUsage(mixed $phpValue): void
+    public function setUsage(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->usage = $cValue;
     }
 }

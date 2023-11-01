@@ -99,16 +99,16 @@ final class VkPhysicalDeviceLimits
         null|int $maxFramebufferWidth = null,
         null|int $maxFramebufferHeight = null,
         null|int $maxFramebufferLayers = null,
-        mixed $framebufferColorSampleCounts = null,
-        mixed $framebufferDepthSampleCounts = null,
-        mixed $framebufferStencilSampleCounts = null,
-        mixed $framebufferNoAttachmentsSampleCounts = null,
+        null|array $framebufferColorSampleCounts = null,
+        null|array $framebufferDepthSampleCounts = null,
+        null|array $framebufferStencilSampleCounts = null,
+        null|array $framebufferNoAttachmentsSampleCounts = null,
         null|int $maxColorAttachments = null,
-        mixed $sampledImageColorSampleCounts = null,
-        mixed $sampledImageIntegerSampleCounts = null,
-        mixed $sampledImageDepthSampleCounts = null,
-        mixed $sampledImageStencilSampleCounts = null,
-        mixed $storageImageSampleCounts = null,
+        null|array $sampledImageColorSampleCounts = null,
+        null|array $sampledImageIntegerSampleCounts = null,
+        null|array $sampledImageDepthSampleCounts = null,
+        null|array $sampledImageStencilSampleCounts = null,
+        null|array $storageImageSampleCounts = null,
         null|int $maxSampleMaskWords = null,
         null|bool $timestampComputeAndGraphics = null,
         null|float $timestampPeriod = null,
@@ -1678,74 +1678,74 @@ final class VkPhysicalDeviceLimits
     }
 
     /**
-     * void* /
+     * VkSampleCountFlags/
      */
-    public function getFramebufferColorSampleCounts(): mixed
+    public function getFramebufferColorSampleCounts(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->framebufferColorSampleCounts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFramebufferColorSampleCounts(mixed $phpValue): void
+    public function setFramebufferColorSampleCounts(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->framebufferColorSampleCounts = $cValue;
     }
 
     /**
-     * void* /
+     * VkSampleCountFlags/
      */
-    public function getFramebufferDepthSampleCounts(): mixed
+    public function getFramebufferDepthSampleCounts(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->framebufferDepthSampleCounts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFramebufferDepthSampleCounts(mixed $phpValue): void
+    public function setFramebufferDepthSampleCounts(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->framebufferDepthSampleCounts = $cValue;
     }
 
     /**
-     * void* /
+     * VkSampleCountFlags/
      */
-    public function getFramebufferStencilSampleCounts(): mixed
+    public function getFramebufferStencilSampleCounts(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->framebufferStencilSampleCounts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFramebufferStencilSampleCounts(mixed $phpValue): void
+    public function setFramebufferStencilSampleCounts(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->framebufferStencilSampleCounts = $cValue;
     }
 
     /**
-     * void* /
+     * VkSampleCountFlags/
      */
-    public function getFramebufferNoAttachmentsSampleCounts(): mixed
+    public function getFramebufferNoAttachmentsSampleCounts(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->framebufferNoAttachmentsSampleCounts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFramebufferNoAttachmentsSampleCounts(mixed $phpValue): void
+    public function setFramebufferNoAttachmentsSampleCounts(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->framebufferNoAttachmentsSampleCounts = $cValue;
     }
 
@@ -1768,92 +1768,92 @@ final class VkPhysicalDeviceLimits
     }
 
     /**
-     * void* /
+     * VkSampleCountFlags/
      */
-    public function getSampledImageColorSampleCounts(): mixed
+    public function getSampledImageColorSampleCounts(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->sampledImageColorSampleCounts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSampledImageColorSampleCounts(mixed $phpValue): void
+    public function setSampledImageColorSampleCounts(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampledImageColorSampleCounts = $cValue;
     }
 
     /**
-     * void* /
+     * VkSampleCountFlags/
      */
-    public function getSampledImageIntegerSampleCounts(): mixed
+    public function getSampledImageIntegerSampleCounts(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->sampledImageIntegerSampleCounts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSampledImageIntegerSampleCounts(mixed $phpValue): void
+    public function setSampledImageIntegerSampleCounts(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampledImageIntegerSampleCounts = $cValue;
     }
 
     /**
-     * void* /
+     * VkSampleCountFlags/
      */
-    public function getSampledImageDepthSampleCounts(): mixed
+    public function getSampledImageDepthSampleCounts(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->sampledImageDepthSampleCounts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSampledImageDepthSampleCounts(mixed $phpValue): void
+    public function setSampledImageDepthSampleCounts(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampledImageDepthSampleCounts = $cValue;
     }
 
     /**
-     * void* /
+     * VkSampleCountFlags/
      */
-    public function getSampledImageStencilSampleCounts(): mixed
+    public function getSampledImageStencilSampleCounts(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->sampledImageStencilSampleCounts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSampledImageStencilSampleCounts(mixed $phpValue): void
+    public function setSampledImageStencilSampleCounts(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampledImageStencilSampleCounts = $cValue;
     }
 
     /**
-     * void* /
+     * VkSampleCountFlags/
      */
-    public function getStorageImageSampleCounts(): mixed
+    public function getStorageImageSampleCounts(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->storageImageSampleCounts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setStorageImageSampleCounts(mixed $phpValue): void
+    public function setStorageImageSampleCounts(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->storageImageSampleCounts = $cValue;
     }
 

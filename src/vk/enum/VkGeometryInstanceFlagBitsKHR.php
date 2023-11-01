@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkGeometryInstanceFlagBitsKHR: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case TriangleFacingCullDisable = 0;
     case TriangleFlipFacing = 1;
     case ForceOpaque = 2;

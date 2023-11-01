@@ -21,9 +21,9 @@ final class VkBufferCreateInfo
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
+        null|array $flags = null,
         null|int $size = null,
-        mixed $usage = null,
+        null|array $usage = null,
         null|\iggyvolz\vulkan\enum\VkSharingMode $sharingMode = null,
         null|int $queueFamilyIndexCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pQueueFamilyIndices = null,
@@ -78,20 +78,20 @@ final class VkBufferCreateInfo
     }
 
     /**
-     * void* /
+     * VkBufferCreateFlags/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkBufferCreateFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkBufferCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 
@@ -114,20 +114,20 @@ final class VkBufferCreateInfo
     }
 
     /**
-     * void* /
+     * VkBufferUsageFlags/
      */
-    public function getUsage(): mixed
+    public function getUsage(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->usage;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkBufferUsageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setUsage(mixed $phpValue): void
+    public function setUsage(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkBufferUsageFlagBits::toInt(...$phpValue);
         $this->cdata->usage = $cValue;
     }
 

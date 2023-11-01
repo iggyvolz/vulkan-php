@@ -23,11 +23,11 @@ final class VkSubpassDependency2
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $srcSubpass = null,
         null|int $dstSubpass = null,
-        mixed $srcStageMask = null,
-        mixed $dstStageMask = null,
-        mixed $srcAccessMask = null,
-        mixed $dstAccessMask = null,
-        mixed $dependencyFlags = null,
+        null|array $srcStageMask = null,
+        null|array $dstStageMask = null,
+        null|array $srcAccessMask = null,
+        null|array $dstAccessMask = null,
+        null|array $dependencyFlags = null,
         null|int $viewOffset = null,
     ): self
     {
@@ -118,92 +118,92 @@ final class VkSubpassDependency2
     }
 
     /**
-     * void* /
+     * VkPipelineStageFlags/
      */
-    public function getSrcStageMask(): mixed
+    public function getSrcStageMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->srcStageMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSrcStageMask(mixed $phpValue): void
+    public function setSrcStageMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::toInt(...$phpValue);
         $this->cdata->srcStageMask = $cValue;
     }
 
     /**
-     * void* /
+     * VkPipelineStageFlags/
      */
-    public function getDstStageMask(): mixed
+    public function getDstStageMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->dstStageMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setDstStageMask(mixed $phpValue): void
+    public function setDstStageMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::toInt(...$phpValue);
         $this->cdata->dstStageMask = $cValue;
     }
 
     /**
-     * void* /
+     * VkAccessFlags/
      */
-    public function getSrcAccessMask(): mixed
+    public function getSrcAccessMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->srcAccessMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSrcAccessMask(mixed $phpValue): void
+    public function setSrcAccessMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::toInt(...$phpValue);
         $this->cdata->srcAccessMask = $cValue;
     }
 
     /**
-     * void* /
+     * VkAccessFlags/
      */
-    public function getDstAccessMask(): mixed
+    public function getDstAccessMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->dstAccessMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setDstAccessMask(mixed $phpValue): void
+    public function setDstAccessMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::toInt(...$phpValue);
         $this->cdata->dstAccessMask = $cValue;
     }
 
     /**
-     * void* /
+     * VkDependencyFlags/
      */
-    public function getDependencyFlags(): mixed
+    public function getDependencyFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->dependencyFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkDependencyFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setDependencyFlags(mixed $phpValue): void
+    public function setDependencyFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkDependencyFlagBits::toInt(...$phpValue);
         $this->cdata->dependencyFlags = $cValue;
     }
 

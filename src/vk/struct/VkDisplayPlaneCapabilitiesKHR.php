@@ -19,7 +19,7 @@ final class VkDisplayPlaneCapabilitiesKHR
 
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
-        mixed $supportedAlpha = null,
+        null|array $supportedAlpha = null,
         null|VkOffset2D $minSrcPosition = null,
         null|VkOffset2D $maxSrcPosition = null,
         null|VkExtent2D $minSrcExtent = null,
@@ -44,20 +44,20 @@ final class VkDisplayPlaneCapabilitiesKHR
     }
 
     /**
-     * void* /
+     * VkDisplayPlaneAlphaFlagsKHR/
      */
-    public function getSupportedAlpha(): mixed
+    public function getSupportedAlpha(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedAlpha;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkDisplayPlaneAlphaFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedAlpha(mixed $phpValue): void
+    public function setSupportedAlpha(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkDisplayPlaneAlphaFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->supportedAlpha = $cValue;
     }
 

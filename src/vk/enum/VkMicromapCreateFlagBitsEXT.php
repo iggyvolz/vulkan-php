@@ -6,5 +6,7 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkMicromapCreateFlagBitsEXT: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case DeviceAddressCaptureReplay = 0;
 }

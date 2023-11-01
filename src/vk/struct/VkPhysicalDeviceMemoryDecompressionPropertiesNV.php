@@ -21,7 +21,7 @@ final class VkPhysicalDeviceMemoryDecompressionPropertiesNV
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $decompressionMethods = null,
+        null|array $decompressionMethods = null,
         null|int $maxDecompressionIndirectCount = null,
     ): self
     {
@@ -70,20 +70,20 @@ final class VkPhysicalDeviceMemoryDecompressionPropertiesNV
     }
 
     /**
-     * void* /
+     * VkMemoryDecompressionMethodFlagsNV/
      */
-    public function getDecompressionMethods(): mixed
+    public function getDecompressionMethods(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->decompressionMethods;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkMemoryDecompressionMethodFlagBitsNV::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setDecompressionMethods(mixed $phpValue): void
+    public function setDecompressionMethods(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkMemoryDecompressionMethodFlagBitsNV::toInt(...$phpValue);
         $this->cdata->decompressionMethods = $cValue;
     }
 

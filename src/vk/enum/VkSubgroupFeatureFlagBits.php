@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkSubgroupFeatureFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case Basic = 0;
     case Vote = 1;
     case Arithmetic = 2;

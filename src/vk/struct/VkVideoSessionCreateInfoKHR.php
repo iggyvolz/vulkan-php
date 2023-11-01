@@ -22,7 +22,7 @@ final class VkVideoSessionCreateInfoKHR
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $queueFamilyIndex = null,
-        mixed $flags = null,
+        null|array $flags = null,
         mixed $pVideoProfile = null,
         null|\iggyvolz\vulkan\enum\VkFormat $pictureFormat = null,
         null|VkExtent2D $maxCodedExtent = null,
@@ -102,20 +102,20 @@ final class VkVideoSessionCreateInfoKHR
     }
 
     /**
-     * void* /
+     * VkVideoSessionCreateFlagsKHR/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoSessionCreateFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoSessionCreateFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 

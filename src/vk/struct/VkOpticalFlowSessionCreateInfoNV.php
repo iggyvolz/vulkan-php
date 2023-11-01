@@ -26,10 +26,10 @@ final class VkOpticalFlowSessionCreateInfoNV
         null|\iggyvolz\vulkan\enum\VkFormat $imageFormat = null,
         null|\iggyvolz\vulkan\enum\VkFormat $flowVectorFormat = null,
         null|\iggyvolz\vulkan\enum\VkFormat $costFormat = null,
-        mixed $outputGridSize = null,
-        mixed $hintGridSize = null,
+        null|array $outputGridSize = null,
+        null|array $hintGridSize = null,
         null|\iggyvolz\vulkan\enum\VkOpticalFlowPerformanceLevelNV $performanceLevel = null,
-        mixed $flags = null,
+        null|array $flags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkOpticalFlowSessionCreateInfoNV', false), $vulkan->ffi);
@@ -174,38 +174,38 @@ final class VkOpticalFlowSessionCreateInfoNV
     }
 
     /**
-     * void* /
+     * VkOpticalFlowGridSizeFlagsNV/
      */
-    public function getOutputGridSize(): mixed
+    public function getOutputGridSize(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->outputGridSize;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setOutputGridSize(mixed $phpValue): void
+    public function setOutputGridSize(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->outputGridSize = $cValue;
     }
 
     /**
-     * void* /
+     * VkOpticalFlowGridSizeFlagsNV/
      */
-    public function getHintGridSize(): mixed
+    public function getHintGridSize(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->hintGridSize;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setHintGridSize(mixed $phpValue): void
+    public function setHintGridSize(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->hintGridSize = $cValue;
     }
 
@@ -228,20 +228,20 @@ final class VkOpticalFlowSessionCreateInfoNV
     }
 
     /**
-     * void* /
+     * VkOpticalFlowSessionCreateFlagsNV/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkOpticalFlowSessionCreateFlagBitsNV::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkOpticalFlowSessionCreateFlagBitsNV::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 }

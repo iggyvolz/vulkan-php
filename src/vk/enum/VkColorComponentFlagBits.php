@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkColorComponentFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case R = 0;
     case G = 1;
     case B = 2;

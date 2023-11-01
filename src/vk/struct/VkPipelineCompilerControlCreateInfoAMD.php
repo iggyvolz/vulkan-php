@@ -21,7 +21,7 @@ final class VkPipelineCompilerControlCreateInfoAMD
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $compilerControlFlags = null,
+        null|array $compilerControlFlags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPipelineCompilerControlCreateInfoAMD', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkPipelineCompilerControlCreateInfoAMD
     }
 
     /**
-     * void* /
+     * VkPipelineCompilerControlFlagsAMD/
      */
-    public function getCompilerControlFlags(): mixed
+    public function getCompilerControlFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->compilerControlFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkPipelineCompilerControlFlagBitsAMD::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setCompilerControlFlags(mixed $phpValue): void
+    public function setCompilerControlFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineCompilerControlFlagBitsAMD::toInt(...$phpValue);
         $this->cdata->compilerControlFlags = $cValue;
     }
 }

@@ -19,7 +19,7 @@ final class VkPushConstantRange
 
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
-        mixed $stageFlags = null,
+        null|array $stageFlags = null,
         null|int $offset = null,
         null|int $size = null,
     ): self
@@ -32,20 +32,20 @@ final class VkPushConstantRange
     }
 
     /**
-     * void* /
+     * VkShaderStageFlags/
      */
-    public function getStageFlags(): mixed
+    public function getStageFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->stageFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setStageFlags(mixed $phpValue): void
+    public function setStageFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->stageFlags = $cValue;
     }
 

@@ -21,7 +21,7 @@ final class VkSwapchainCounterCreateInfoEXT
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $surfaceCounters = null,
+        null|array $surfaceCounters = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkSwapchainCounterCreateInfoEXT', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkSwapchainCounterCreateInfoEXT
     }
 
     /**
-     * void* /
+     * VkSurfaceCounterFlagsEXT/
      */
-    public function getSurfaceCounters(): mixed
+    public function getSurfaceCounters(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->surfaceCounters;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSurfaceCounterFlagBitsEXT::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSurfaceCounters(mixed $phpValue): void
+    public function setSurfaceCounters(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSurfaceCounterFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->surfaceCounters = $cValue;
     }
 }

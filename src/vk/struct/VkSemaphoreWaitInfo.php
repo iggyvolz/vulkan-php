@@ -21,7 +21,7 @@ final class VkSemaphoreWaitInfo
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
+        null|array $flags = null,
         null|int $semaphoreCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pSemaphores = null,
         null|\iggyvolz\vulkan\util\IntPointer $pValues = null,
@@ -74,20 +74,20 @@ final class VkSemaphoreWaitInfo
     }
 
     /**
-     * void* /
+     * VkSemaphoreWaitFlags/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSemaphoreWaitFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSemaphoreWaitFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 

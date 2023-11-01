@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkGraphicsPipelineLibraryFlagBitsEXT: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case VertexInputInterface = 0;
     case PreRasterizationShaders = 1;
     case FragmentShader = 2;

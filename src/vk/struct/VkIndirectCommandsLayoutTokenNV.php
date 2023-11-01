@@ -27,10 +27,10 @@ final class VkIndirectCommandsLayoutTokenNV
         null|int $vertexBindingUnit = null,
         null|bool $vertexDynamicStride = null,
         null|VkPipelineLayout $pushconstantPipelineLayout = null,
-        mixed $pushconstantShaderStageFlags = null,
+        null|array $pushconstantShaderStageFlags = null,
         null|int $pushconstantOffset = null,
         null|int $pushconstantSize = null,
-        mixed $indirectStateFlags = null,
+        null|array $indirectStateFlags = null,
         null|int $indexTypeCount = null,
         mixed $pIndexTypes = null,
         null|\iggyvolz\vulkan\util\IntPointer $pIndexTypeValues = null,
@@ -200,20 +200,20 @@ final class VkIndirectCommandsLayoutTokenNV
     }
 
     /**
-     * void* /
+     * VkShaderStageFlags/
      */
-    public function getPushconstantShaderStageFlags(): mixed
+    public function getPushconstantShaderStageFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pushconstantShaderStageFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setPushconstantShaderStageFlags(mixed $phpValue): void
+    public function setPushconstantShaderStageFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->pushconstantShaderStageFlags = $cValue;
     }
 
@@ -254,20 +254,20 @@ final class VkIndirectCommandsLayoutTokenNV
     }
 
     /**
-     * void* /
+     * VkIndirectStateFlagsNV/
      */
-    public function getIndirectStateFlags(): mixed
+    public function getIndirectStateFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->indirectStateFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkIndirectStateFlagBitsNV::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setIndirectStateFlags(mixed $phpValue): void
+    public function setIndirectStateFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkIndirectStateFlagBitsNV::toInt(...$phpValue);
         $this->cdata->indirectStateFlags = $cValue;
     }
 

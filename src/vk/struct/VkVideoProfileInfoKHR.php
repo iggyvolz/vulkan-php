@@ -22,9 +22,9 @@ final class VkVideoProfileInfoKHR
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkVideoCodecOperationFlagBitsKHR $videoCodecOperation = null,
-        mixed $chromaSubsampling = null,
-        mixed $lumaBitDepth = null,
-        mixed $chromaBitDepth = null,
+        null|array $chromaSubsampling = null,
+        null|array $lumaBitDepth = null,
+        null|array $chromaBitDepth = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkVideoProfileInfoKHR', false), $vulkan->ffi);
@@ -92,56 +92,56 @@ final class VkVideoProfileInfoKHR
     }
 
     /**
-     * void* /
+     * VkVideoChromaSubsamplingFlagsKHR/
      */
-    public function getChromaSubsampling(): mixed
+    public function getChromaSubsampling(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->chromaSubsampling;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoChromaSubsamplingFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setChromaSubsampling(mixed $phpValue): void
+    public function setChromaSubsampling(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoChromaSubsamplingFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->chromaSubsampling = $cValue;
     }
 
     /**
-     * void* /
+     * VkVideoComponentBitDepthFlagsKHR/
      */
-    public function getLumaBitDepth(): mixed
+    public function getLumaBitDepth(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->lumaBitDepth;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoComponentBitDepthFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setLumaBitDepth(mixed $phpValue): void
+    public function setLumaBitDepth(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoComponentBitDepthFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->lumaBitDepth = $cValue;
     }
 
     /**
-     * void* /
+     * VkVideoComponentBitDepthFlagsKHR/
      */
-    public function getChromaBitDepth(): mixed
+    public function getChromaBitDepth(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->chromaBitDepth;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoComponentBitDepthFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setChromaBitDepth(mixed $phpValue): void
+    public function setChromaBitDepth(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoComponentBitDepthFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->chromaBitDepth = $cValue;
     }
 }

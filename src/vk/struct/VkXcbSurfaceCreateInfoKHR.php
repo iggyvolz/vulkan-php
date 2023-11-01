@@ -21,7 +21,7 @@ final class VkXcbSurfaceCreateInfoKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
+        null|array $flags = null,
         mixed $connection = null,
         null|int $window = null,
     ): self
@@ -72,20 +72,20 @@ final class VkXcbSurfaceCreateInfoKHR
     }
 
     /**
-     * void* /
+     * VkXcbSurfaceCreateFlagsKHR/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = [];
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = 0;
         $this->cdata->flags = $cValue;
     }
 

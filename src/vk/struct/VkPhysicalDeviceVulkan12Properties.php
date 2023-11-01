@@ -65,14 +65,14 @@ final class VkPhysicalDeviceVulkan12Properties
         null|int $maxDescriptorSetUpdateAfterBindSampledImages = null,
         null|int $maxDescriptorSetUpdateAfterBindStorageImages = null,
         null|int $maxDescriptorSetUpdateAfterBindInputAttachments = null,
-        mixed $supportedDepthResolveModes = null,
-        mixed $supportedStencilResolveModes = null,
+        null|array $supportedDepthResolveModes = null,
+        null|array $supportedStencilResolveModes = null,
         null|bool $independentResolveNone = null,
         null|bool $independentResolve = null,
         null|bool $filterMinmaxSingleComponentFormats = null,
         null|bool $filterMinmaxImageComponentMapping = null,
         null|int $maxTimelineSemaphoreValueDifference = null,
-        mixed $framebufferIntegerColorSampleCounts = null,
+        null|array $framebufferIntegerColorSampleCounts = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkan12Properties', false), $vulkan->ffi);
@@ -966,38 +966,38 @@ final class VkPhysicalDeviceVulkan12Properties
     }
 
     /**
-     * void* /
+     * VkResolveModeFlags/
      */
-    public function getSupportedDepthResolveModes(): mixed
+    public function getSupportedDepthResolveModes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedDepthResolveModes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedDepthResolveModes(mixed $phpValue): void
+    public function setSupportedDepthResolveModes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::toInt(...$phpValue);
         $this->cdata->supportedDepthResolveModes = $cValue;
     }
 
     /**
-     * void* /
+     * VkResolveModeFlags/
      */
-    public function getSupportedStencilResolveModes(): mixed
+    public function getSupportedStencilResolveModes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedStencilResolveModes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedStencilResolveModes(mixed $phpValue): void
+    public function setSupportedStencilResolveModes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::toInt(...$phpValue);
         $this->cdata->supportedStencilResolveModes = $cValue;
     }
 
@@ -1092,20 +1092,20 @@ final class VkPhysicalDeviceVulkan12Properties
     }
 
     /**
-     * void* /
+     * VkSampleCountFlags/
      */
-    public function getFramebufferIntegerColorSampleCounts(): mixed
+    public function getFramebufferIntegerColorSampleCounts(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->framebufferIntegerColorSampleCounts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFramebufferIntegerColorSampleCounts(mixed $phpValue): void
+    public function setFramebufferIntegerColorSampleCounts(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->framebufferIntegerColorSampleCounts = $cValue;
     }
 }

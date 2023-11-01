@@ -6,5 +6,7 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkDeviceAddressBindingFlagBitsEXT: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case InternalObject = 0;
 }

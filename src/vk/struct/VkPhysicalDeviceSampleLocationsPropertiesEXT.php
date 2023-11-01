@@ -21,7 +21,7 @@ final class VkPhysicalDeviceSampleLocationsPropertiesEXT
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $sampleLocationSampleCounts = null,
+        null|array $sampleLocationSampleCounts = null,
         null|VkExtent2D $maxSampleLocationGridSize = null,
         mixed $sampleLocationCoordinateRange = null,
         null|int $sampleLocationSubPixelBits = null,
@@ -76,20 +76,20 @@ final class VkPhysicalDeviceSampleLocationsPropertiesEXT
     }
 
     /**
-     * void* /
+     * VkSampleCountFlags/
      */
-    public function getSampleLocationSampleCounts(): mixed
+    public function getSampleLocationSampleCounts(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->sampleLocationSampleCounts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSampleLocationSampleCounts(mixed $phpValue): void
+    public function setSampleLocationSampleCounts(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampleLocationSampleCounts = $cValue;
     }
 

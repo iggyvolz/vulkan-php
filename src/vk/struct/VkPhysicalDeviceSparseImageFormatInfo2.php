@@ -24,7 +24,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
         null|\iggyvolz\vulkan\enum\VkFormat $format = null,
         null|\iggyvolz\vulkan\enum\VkImageType $type = null,
         null|\iggyvolz\vulkan\enum\VkSampleCountFlagBits $samples = null,
-        mixed $usage = null,
+        null|array $usage = null,
         null|\iggyvolz\vulkan\enum\VkImageTiling $tiling = null,
     ): self
     {
@@ -130,20 +130,20 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
     }
 
     /**
-     * void* /
+     * VkImageUsageFlags/
      */
-    public function getUsage(): mixed
+    public function getUsage(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->usage;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setUsage(mixed $phpValue): void
+    public function setUsage(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->usage = $cValue;
     }
 

@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkOpticalFlowUsageFlagBitsNV: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case Input = 0;
     case Output = 1;
     case Hint = 2;

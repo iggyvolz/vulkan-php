@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkImageCompressionFixedRateFlagBitsEXT: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case _1bpc = 0;
     case _2bpc = 1;
     case _3bpc = 2;

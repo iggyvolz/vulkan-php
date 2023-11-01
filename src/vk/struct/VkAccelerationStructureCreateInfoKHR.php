@@ -21,7 +21,7 @@ final class VkAccelerationStructureCreateInfoKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $createFlags = null,
+        null|array $createFlags = null,
         null|VkBuffer $buffer = null,
         null|int $offset = null,
         null|int $size = null,
@@ -78,20 +78,20 @@ final class VkAccelerationStructureCreateInfoKHR
     }
 
     /**
-     * void* /
+     * VkAccelerationStructureCreateFlagsKHR/
      */
-    public function getCreateFlags(): mixed
+    public function getCreateFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->createFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkAccelerationStructureCreateFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setCreateFlags(mixed $phpValue): void
+    public function setCreateFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkAccelerationStructureCreateFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->createFlags = $cValue;
     }
 

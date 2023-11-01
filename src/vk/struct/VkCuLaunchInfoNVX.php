@@ -30,9 +30,9 @@ final class VkCuLaunchInfoNVX
         null|int $blockDimZ = null,
         null|int $sharedMemBytes = null,
         null|int $paramCount = null,
-        mixed $pParams = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pParams = null,
         null|int $extraCount = null,
-        mixed $pExtras = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pExtras = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkCuLaunchInfoNVX', false), $vulkan->ffi);
@@ -254,18 +254,18 @@ final class VkCuLaunchInfoNVX
     /**
      * void* /
      */
-    public function getPParams(): mixed
+    public function getPParams(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pParams;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPParams(mixed $phpValue): void
+    public function setPParams(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pParams = $cValue;
     }
 
@@ -290,18 +290,18 @@ final class VkCuLaunchInfoNVX
     /**
      * void* /
      */
-    public function getPExtras(): mixed
+    public function getPExtras(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pExtras;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPExtras(mixed $phpValue): void
+    public function setPExtras(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pExtras = $cValue;
     }
 }

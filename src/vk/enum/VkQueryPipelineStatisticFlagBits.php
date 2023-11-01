@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkQueryPipelineStatisticFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case InputAssemblyVertices = 0;
     case InputAssemblyPrimitives = 1;
     case VertexShaderInvocations = 2;

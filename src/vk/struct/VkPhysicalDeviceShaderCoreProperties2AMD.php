@@ -21,7 +21,7 @@ final class VkPhysicalDeviceShaderCoreProperties2AMD
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $shaderCoreFeatures = null,
+        null|array $shaderCoreFeatures = null,
         null|int $activeComputeUnitCount = null,
     ): self
     {
@@ -70,20 +70,20 @@ final class VkPhysicalDeviceShaderCoreProperties2AMD
     }
 
     /**
-     * void* /
+     * VkShaderCorePropertiesFlagsAMD/
      */
-    public function getShaderCoreFeatures(): mixed
+    public function getShaderCoreFeatures(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->shaderCoreFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkShaderCorePropertiesFlagBitsAMD::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setShaderCoreFeatures(mixed $phpValue): void
+    public function setShaderCoreFeatures(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkShaderCorePropertiesFlagBitsAMD::toInt(...$phpValue);
         $this->cdata->shaderCoreFeatures = $cValue;
     }
 

@@ -21,7 +21,7 @@ final class VkExportFenceCreateInfo
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $handleTypes = null,
+        null|array $handleTypes = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkExportFenceCreateInfo', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkExportFenceCreateInfo
     }
 
     /**
-     * void* /
+     * VkExternalFenceHandleTypeFlags/
      */
-    public function getHandleTypes(): mixed
+    public function getHandleTypes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->handleTypes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkExternalFenceHandleTypeFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setHandleTypes(mixed $phpValue): void
+    public function setHandleTypes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkExternalFenceHandleTypeFlagBits::toInt(...$phpValue);
         $this->cdata->handleTypes = $cValue;
     }
 }

@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkDebugReportFlagBitsEXT: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case Information = 0;
     case Warning = 1;
     case PerformanceWarning = 2;

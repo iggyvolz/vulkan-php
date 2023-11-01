@@ -23,7 +23,7 @@ final class VkPhysicalDeviceToolProperties
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|string $name = null,
         null|string $version = null,
-        mixed $purposes = null,
+        null|array $purposes = null,
         null|string $description = null,
         null|string $layer = null,
     ): self
@@ -112,20 +112,20 @@ final class VkPhysicalDeviceToolProperties
     }
 
     /**
-     * void* /
+     * VkToolPurposeFlags/
      */
-    public function getPurposes(): mixed
+    public function getPurposes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->purposes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkToolPurposeFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setPurposes(mixed $phpValue): void
+    public function setPurposes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkToolPurposeFlagBits::toInt(...$phpValue);
         $this->cdata->purposes = $cValue;
     }
 

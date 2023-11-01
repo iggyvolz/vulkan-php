@@ -21,7 +21,7 @@ final class VkFrameBoundaryEXT
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
+        null|array $flags = null,
         null|int $frameID = null,
         null|int $imageCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pImages = null,
@@ -84,20 +84,20 @@ final class VkFrameBoundaryEXT
     }
 
     /**
-     * void* /
+     * VkFrameBoundaryFlagsEXT/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkFrameBoundaryFlagBitsEXT::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkFrameBoundaryFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 

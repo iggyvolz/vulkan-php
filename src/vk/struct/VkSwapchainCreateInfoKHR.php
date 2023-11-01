@@ -21,14 +21,14 @@ final class VkSwapchainCreateInfoKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
+        null|array $flags = null,
         null|VkSurfaceKHR $surface = null,
         null|int $minImageCount = null,
         null|\iggyvolz\vulkan\enum\VkFormat $imageFormat = null,
         null|\iggyvolz\vulkan\enum\VkColorSpaceKHR $imageColorSpace = null,
         null|VkExtent2D $imageExtent = null,
         null|int $imageArrayLayers = null,
-        mixed $imageUsage = null,
+        null|array $imageUsage = null,
         null|\iggyvolz\vulkan\enum\VkSharingMode $imageSharingMode = null,
         null|int $queueFamilyIndexCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pQueueFamilyIndices = null,
@@ -98,20 +98,20 @@ final class VkSwapchainCreateInfoKHR
     }
 
     /**
-     * void* /
+     * VkSwapchainCreateFlagsKHR/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSwapchainCreateFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSwapchainCreateFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 
@@ -224,20 +224,20 @@ final class VkSwapchainCreateInfoKHR
     }
 
     /**
-     * void* /
+     * VkImageUsageFlags/
      */
-    public function getImageUsage(): mixed
+    public function getImageUsage(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->imageUsage;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setImageUsage(mixed $phpValue): void
+    public function setImageUsage(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->imageUsage = $cValue;
     }
 

@@ -6,4 +6,5 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkVideoCodecOperationFlagBitsKHR: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
 }

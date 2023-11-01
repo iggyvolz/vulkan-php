@@ -21,8 +21,8 @@ final class VkImageMemoryBarrier
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $srcAccessMask = null,
-        mixed $dstAccessMask = null,
+        null|array $srcAccessMask = null,
+        null|array $dstAccessMask = null,
         null|\iggyvolz\vulkan\enum\VkImageLayout $oldLayout = null,
         null|\iggyvolz\vulkan\enum\VkImageLayout $newLayout = null,
         null|int $srcQueueFamilyIndex = null,
@@ -82,38 +82,38 @@ final class VkImageMemoryBarrier
     }
 
     /**
-     * void* /
+     * VkAccessFlags/
      */
-    public function getSrcAccessMask(): mixed
+    public function getSrcAccessMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->srcAccessMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSrcAccessMask(mixed $phpValue): void
+    public function setSrcAccessMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::toInt(...$phpValue);
         $this->cdata->srcAccessMask = $cValue;
     }
 
     /**
-     * void* /
+     * VkAccessFlags/
      */
-    public function getDstAccessMask(): mixed
+    public function getDstAccessMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->dstAccessMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setDstAccessMask(mixed $phpValue): void
+    public function setDstAccessMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::toInt(...$phpValue);
         $this->cdata->dstAccessMask = $cValue;
     }
 

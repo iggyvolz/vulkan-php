@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkRenderingFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case ContentsSecondaryCommandBuffers = 0;
     case Suspending = 1;
     case Resuming = 2;

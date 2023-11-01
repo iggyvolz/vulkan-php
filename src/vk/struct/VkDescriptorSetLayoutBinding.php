@@ -22,7 +22,7 @@ final class VkDescriptorSetLayoutBinding
         null|int $binding = null,
         null|\iggyvolz\vulkan\enum\VkDescriptorType $descriptorType = null,
         null|int $descriptorCount = null,
-        mixed $stageFlags = null,
+        null|array $stageFlags = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pImmutableSamplers = null,
     ): self
     {
@@ -90,20 +90,20 @@ final class VkDescriptorSetLayoutBinding
     }
 
     /**
-     * void* /
+     * VkShaderStageFlags/
      */
-    public function getStageFlags(): mixed
+    public function getStageFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->stageFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setStageFlags(mixed $phpValue): void
+    public function setStageFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->stageFlags = $cValue;
     }
 

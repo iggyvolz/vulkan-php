@@ -25,10 +25,10 @@ final class VkSurfaceCapabilitiesKHR
         null|VkExtent2D $minImageExtent = null,
         null|VkExtent2D $maxImageExtent = null,
         null|int $maxImageArrayLayers = null,
-        mixed $supportedTransforms = null,
+        null|array $supportedTransforms = null,
         null|\iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR $currentTransform = null,
-        mixed $supportedCompositeAlpha = null,
-        mixed $supportedUsageFlags = null,
+        null|array $supportedCompositeAlpha = null,
+        null|array $supportedUsageFlags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkSurfaceCapabilitiesKHR', false), $vulkan->ffi);
@@ -154,20 +154,20 @@ final class VkSurfaceCapabilitiesKHR
     }
 
     /**
-     * void* /
+     * VkSurfaceTransformFlagsKHR/
      */
-    public function getSupportedTransforms(): mixed
+    public function getSupportedTransforms(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedTransforms;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedTransforms(mixed $phpValue): void
+    public function setSupportedTransforms(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->supportedTransforms = $cValue;
     }
 
@@ -190,38 +190,38 @@ final class VkSurfaceCapabilitiesKHR
     }
 
     /**
-     * void* /
+     * VkCompositeAlphaFlagsKHR/
      */
-    public function getSupportedCompositeAlpha(): mixed
+    public function getSupportedCompositeAlpha(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedCompositeAlpha;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkCompositeAlphaFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedCompositeAlpha(mixed $phpValue): void
+    public function setSupportedCompositeAlpha(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkCompositeAlphaFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->supportedCompositeAlpha = $cValue;
     }
 
     /**
-     * void* /
+     * VkImageUsageFlags/
      */
-    public function getSupportedUsageFlags(): mixed
+    public function getSupportedUsageFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedUsageFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedUsageFlags(mixed $phpValue): void
+    public function setSupportedUsageFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->supportedUsageFlags = $cValue;
     }
 }

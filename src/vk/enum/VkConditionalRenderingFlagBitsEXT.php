@@ -6,5 +6,7 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkConditionalRenderingFlagBitsEXT: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case Inverted = 0;
 }

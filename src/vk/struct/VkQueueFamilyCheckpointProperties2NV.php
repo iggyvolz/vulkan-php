@@ -21,7 +21,7 @@ final class VkQueueFamilyCheckpointProperties2NV
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $checkpointExecutionStageMask = null,
+        null|array $checkpointExecutionStageMask = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkQueueFamilyCheckpointProperties2NV', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkQueueFamilyCheckpointProperties2NV
     }
 
     /**
-     * void* /
+     * VkPipelineStageFlags2/
      */
-    public function getCheckpointExecutionStageMask(): mixed
+    public function getCheckpointExecutionStageMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->checkpointExecutionStageMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits2::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setCheckpointExecutionStageMask(mixed $phpValue): void
+    public function setCheckpointExecutionStageMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits2::toInt(...$phpValue);
         $this->cdata->checkpointExecutionStageMask = $cValue;
     }
 }

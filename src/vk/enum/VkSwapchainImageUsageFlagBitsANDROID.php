@@ -6,5 +6,7 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkSwapchainImageUsageFlagBitsANDROID: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case Shared = 0;
 }

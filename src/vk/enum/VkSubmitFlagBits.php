@@ -6,5 +6,7 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkSubmitFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case Protected = 0;
 }

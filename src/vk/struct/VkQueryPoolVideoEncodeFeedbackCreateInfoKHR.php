@@ -21,7 +21,7 @@ final class VkQueryPoolVideoEncodeFeedbackCreateInfoKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $encodeFeedbackFlags = null,
+        null|array $encodeFeedbackFlags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkQueryPoolVideoEncodeFeedbackCreateInfoKHR', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkQueryPoolVideoEncodeFeedbackCreateInfoKHR
     }
 
     /**
-     * void* /
+     * VkVideoEncodeFeedbackFlagsKHR/
      */
-    public function getEncodeFeedbackFlags(): mixed
+    public function getEncodeFeedbackFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->encodeFeedbackFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeFeedbackFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setEncodeFeedbackFlags(mixed $phpValue): void
+    public function setEncodeFeedbackFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeFeedbackFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->encodeFeedbackFlags = $cValue;
     }
 }

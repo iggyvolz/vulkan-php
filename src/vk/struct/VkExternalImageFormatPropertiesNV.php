@@ -20,9 +20,9 @@ final class VkExternalImageFormatPropertiesNV
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|VkImageFormatProperties $imageFormatProperties = null,
-        mixed $externalMemoryFeatures = null,
-        mixed $exportFromImportedHandleTypes = null,
-        mixed $compatibleHandleTypes = null,
+        null|array $externalMemoryFeatures = null,
+        null|array $exportFromImportedHandleTypes = null,
+        null|array $compatibleHandleTypes = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkExternalImageFormatPropertiesNV', false), $vulkan->ffi);
@@ -52,56 +52,56 @@ final class VkExternalImageFormatPropertiesNV
     }
 
     /**
-     * void* /
+     * VkExternalMemoryFeatureFlagsNV/
      */
-    public function getExternalMemoryFeatures(): mixed
+    public function getExternalMemoryFeatures(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->externalMemoryFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkExternalMemoryFeatureFlagBitsNV::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setExternalMemoryFeatures(mixed $phpValue): void
+    public function setExternalMemoryFeatures(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkExternalMemoryFeatureFlagBitsNV::toInt(...$phpValue);
         $this->cdata->externalMemoryFeatures = $cValue;
     }
 
     /**
-     * void* /
+     * VkExternalMemoryHandleTypeFlagsNV/
      */
-    public function getExportFromImportedHandleTypes(): mixed
+    public function getExportFromImportedHandleTypes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->exportFromImportedHandleTypes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setExportFromImportedHandleTypes(mixed $phpValue): void
+    public function setExportFromImportedHandleTypes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->exportFromImportedHandleTypes = $cValue;
     }
 
     /**
-     * void* /
+     * VkExternalMemoryHandleTypeFlagsNV/
      */
-    public function getCompatibleHandleTypes(): mixed
+    public function getCompatibleHandleTypes(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->compatibleHandleTypes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setCompatibleHandleTypes(mixed $phpValue): void
+    public function setCompatibleHandleTypes(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->compatibleHandleTypes = $cValue;
     }
 }

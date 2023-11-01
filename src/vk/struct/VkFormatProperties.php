@@ -19,9 +19,9 @@ final class VkFormatProperties
 
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
-        mixed $linearTilingFeatures = null,
-        mixed $optimalTilingFeatures = null,
-        mixed $bufferFeatures = null,
+        null|array $linearTilingFeatures = null,
+        null|array $optimalTilingFeatures = null,
+        null|array $bufferFeatures = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkFormatProperties', false), $vulkan->ffi);
@@ -32,56 +32,56 @@ final class VkFormatProperties
     }
 
     /**
-     * void* /
+     * VkFormatFeatureFlags/
      */
-    public function getLinearTilingFeatures(): mixed
+    public function getLinearTilingFeatures(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->linearTilingFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setLinearTilingFeatures(mixed $phpValue): void
+    public function setLinearTilingFeatures(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->linearTilingFeatures = $cValue;
     }
 
     /**
-     * void* /
+     * VkFormatFeatureFlags/
      */
-    public function getOptimalTilingFeatures(): mixed
+    public function getOptimalTilingFeatures(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->optimalTilingFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setOptimalTilingFeatures(mixed $phpValue): void
+    public function setOptimalTilingFeatures(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->optimalTilingFeatures = $cValue;
     }
 
     /**
-     * void* /
+     * VkFormatFeatureFlags/
      */
-    public function getBufferFeatures(): mixed
+    public function getBufferFeatures(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->bufferFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setBufferFeatures(mixed $phpValue): void
+    public function setBufferFeatures(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->bufferFeatures = $cValue;
     }
 }

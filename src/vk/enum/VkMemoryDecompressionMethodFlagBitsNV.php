@@ -6,5 +6,7 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkMemoryDecompressionMethodFlagBitsNV: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case Gdeflate10Bit = 0;
 }

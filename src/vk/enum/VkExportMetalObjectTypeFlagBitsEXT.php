@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkExportMetalObjectTypeFlagBitsEXT: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case MetalDevice = 0;
     case MetalCommandQueue = 1;
     case MetalBuffer = 2;

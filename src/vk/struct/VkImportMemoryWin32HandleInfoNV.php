@@ -21,7 +21,7 @@ final class VkImportMemoryWin32HandleInfoNV
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $handleType = null,
+        null|array $handleType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $handle = null,
     ): self
     {
@@ -70,20 +70,20 @@ final class VkImportMemoryWin32HandleInfoNV
     }
 
     /**
-     * void* /
+     * VkExternalMemoryHandleTypeFlagsNV/
      */
-    public function getHandleType(): mixed
+    public function getHandleType(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->handleType;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setHandleType(mixed $phpValue): void
+    public function setHandleType(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->handleType = $cValue;
     }
 

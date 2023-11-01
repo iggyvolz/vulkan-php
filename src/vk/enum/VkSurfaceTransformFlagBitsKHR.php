@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkSurfaceTransformFlagBitsKHR: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case Identity = 0;
     case Rotate90Bit = 1;
     case Rotate180Bit = 2;

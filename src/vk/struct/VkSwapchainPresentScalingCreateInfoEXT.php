@@ -21,9 +21,9 @@ final class VkSwapchainPresentScalingCreateInfoEXT
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $scalingBehavior = null,
-        mixed $presentGravityX = null,
-        mixed $presentGravityY = null,
+        null|array $scalingBehavior = null,
+        null|array $presentGravityX = null,
+        null|array $presentGravityY = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkSwapchainPresentScalingCreateInfoEXT', false), $vulkan->ffi);
@@ -72,56 +72,56 @@ final class VkSwapchainPresentScalingCreateInfoEXT
     }
 
     /**
-     * void* /
+     * VkPresentScalingFlagsEXT/
      */
-    public function getScalingBehavior(): mixed
+    public function getScalingBehavior(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->scalingBehavior;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkPresentScalingFlagBitsEXT::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setScalingBehavior(mixed $phpValue): void
+    public function setScalingBehavior(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPresentScalingFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->scalingBehavior = $cValue;
     }
 
     /**
-     * void* /
+     * VkPresentGravityFlagsEXT/
      */
-    public function getPresentGravityX(): mixed
+    public function getPresentGravityX(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->presentGravityX;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkPresentGravityFlagBitsEXT::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setPresentGravityX(mixed $phpValue): void
+    public function setPresentGravityX(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPresentGravityFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->presentGravityX = $cValue;
     }
 
     /**
-     * void* /
+     * VkPresentGravityFlagsEXT/
      */
-    public function getPresentGravityY(): mixed
+    public function getPresentGravityY(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->presentGravityY;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkPresentGravityFlagBitsEXT::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setPresentGravityY(mixed $phpValue): void
+    public function setPresentGravityY(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPresentGravityFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->presentGravityY = $cValue;
     }
 }

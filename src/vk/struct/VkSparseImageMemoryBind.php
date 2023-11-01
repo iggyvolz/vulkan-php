@@ -24,7 +24,7 @@ final class VkSparseImageMemoryBind
         null|VkExtent3D $extent = null,
         null|VkDeviceMemory $memory = null,
         null|int $memoryOffset = null,
-        mixed $flags = null,
+        null|array $flags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkSparseImageMemoryBind', false), $vulkan->ffi);
@@ -128,20 +128,20 @@ final class VkSparseImageMemoryBind
     }
 
     /**
-     * void* /
+     * VkSparseMemoryBindFlags/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSparseMemoryBindFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSparseMemoryBindFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 }

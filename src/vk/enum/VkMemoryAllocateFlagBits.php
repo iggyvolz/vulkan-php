@@ -6,5 +6,7 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkMemoryAllocateFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case DeviceMask = 0;
 }

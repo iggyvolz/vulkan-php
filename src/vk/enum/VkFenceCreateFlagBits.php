@@ -6,5 +6,7 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkFenceCreateFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case Signaled = 0;
 }

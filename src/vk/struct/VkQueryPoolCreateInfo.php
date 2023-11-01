@@ -21,10 +21,10 @@ final class VkQueryPoolCreateInfo
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
+        null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkQueryType $queryType = null,
         null|int $queryCount = null,
-        mixed $pipelineStatistics = null,
+        null|array $pipelineStatistics = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkQueryPoolCreateInfo', false), $vulkan->ffi);
@@ -74,20 +74,20 @@ final class VkQueryPoolCreateInfo
     }
 
     /**
-     * void* /
+     * VkQueryPoolCreateFlags/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkQueryPoolCreateFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkQueryPoolCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 
@@ -128,20 +128,20 @@ final class VkQueryPoolCreateInfo
     }
 
     /**
-     * void* /
+     * VkQueryPipelineStatisticFlags/
      */
-    public function getPipelineStatistics(): mixed
+    public function getPipelineStatistics(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pipelineStatistics;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkQueryPipelineStatisticFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setPipelineStatistics(mixed $phpValue): void
+    public function setPipelineStatistics(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkQueryPipelineStatisticFlagBits::toInt(...$phpValue);
         $this->cdata->pipelineStatistics = $cValue;
     }
 }

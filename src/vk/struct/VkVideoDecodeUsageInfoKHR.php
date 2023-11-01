@@ -21,7 +21,7 @@ final class VkVideoDecodeUsageInfoKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $videoUsageHints = null,
+        null|array $videoUsageHints = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkVideoDecodeUsageInfoKHR', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkVideoDecodeUsageInfoKHR
     }
 
     /**
-     * void* /
+     * VkVideoDecodeUsageFlagsKHR/
      */
-    public function getVideoUsageHints(): mixed
+    public function getVideoUsageHints(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->videoUsageHints;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoDecodeUsageFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setVideoUsageHints(mixed $phpValue): void
+    public function setVideoUsageHints(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoDecodeUsageFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->videoUsageHints = $cValue;
     }
 }

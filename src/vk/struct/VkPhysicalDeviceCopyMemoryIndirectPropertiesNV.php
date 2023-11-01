@@ -21,7 +21,7 @@ final class VkPhysicalDeviceCopyMemoryIndirectPropertiesNV
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $supportedQueues = null,
+        null|array $supportedQueues = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPhysicalDeviceCopyMemoryIndirectPropertiesNV', false), $vulkan->ffi);
@@ -68,20 +68,20 @@ final class VkPhysicalDeviceCopyMemoryIndirectPropertiesNV
     }
 
     /**
-     * void* /
+     * VkQueueFlags/
      */
-    public function getSupportedQueues(): mixed
+    public function getSupportedQueues(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->supportedQueues;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkQueueFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setSupportedQueues(mixed $phpValue): void
+    public function setSupportedQueues(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkQueueFlagBits::toInt(...$phpValue);
         $this->cdata->supportedQueues = $cValue;
     }
 }

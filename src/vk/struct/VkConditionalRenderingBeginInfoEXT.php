@@ -23,7 +23,7 @@ final class VkConditionalRenderingBeginInfoEXT
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|VkBuffer $buffer = null,
         null|int $offset = null,
-        mixed $flags = null,
+        null|array $flags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkConditionalRenderingBeginInfoEXT', false), $vulkan->ffi);
@@ -108,20 +108,20 @@ final class VkConditionalRenderingBeginInfoEXT
     }
 
     /**
-     * void* /
+     * VkConditionalRenderingFlagsEXT/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkConditionalRenderingFlagBitsEXT::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkConditionalRenderingFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 }

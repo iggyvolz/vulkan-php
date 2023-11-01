@@ -21,7 +21,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
+        null|array $flags = null,
         null|int $descriptorUpdateEntryCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pDescriptorUpdateEntries = null,
         null|\iggyvolz\vulkan\enum\VkDescriptorUpdateTemplateType $templateType = null,
@@ -82,20 +82,20 @@ final class VkDescriptorUpdateTemplateCreateInfo
     }
 
     /**
-     * void* /
+     * VkDescriptorUpdateTemplateCreateFlags/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = [];
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = 0;
         $this->cdata->flags = $cValue;
     }
 

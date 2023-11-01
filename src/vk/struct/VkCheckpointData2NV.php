@@ -21,7 +21,7 @@ final class VkCheckpointData2NV
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $stage = null,
+        null|array $stage = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pCheckpointMarker = null,
     ): self
     {
@@ -70,20 +70,20 @@ final class VkCheckpointData2NV
     }
 
     /**
-     * void* /
+     * VkPipelineStageFlags2/
      */
-    public function getStage(): mixed
+    public function getStage(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->stage;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits2::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setStage(mixed $phpValue): void
+    public function setStage(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits2::toInt(...$phpValue);
         $this->cdata->stage = $cValue;
     }
 

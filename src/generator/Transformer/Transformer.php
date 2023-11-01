@@ -18,7 +18,7 @@ abstract readonly class Transformer
         // Transform types into native C types
         $type = match ($type) {
             "LPCWSTR" => "const wchar_t*",
-            "HANDLE", "HINSTANCE", "HMONITOR", "HWND", "MTLCommandQueue_id", "MTLDevice_id" => "void*",
+            "HANDLE", "HANDLE*", "HINSTANCE", "HMONITOR", "HWND", "MTLCommandQueue_id", "MTLDevice_id" => "void*",
             "DWORD" => "unsigned long",
             // de-Fuchsia and X
             "zx_handle_t", "xcb_window_t" => "uint32_t",
@@ -55,9 +55,8 @@ abstract readonly class Transformer
             "const uint64_t*", "uint64_t*" => new IntPointerTransformer("uint64_t"),
             "const size_t*", "size_t*" => new IntPointerTransformer("size_t"),
             "const char*" => new PassThroughTransformer("?string", "const char*"),
-            "void*", "const void*" => new OpaquePointerTransformer(),
+            "void**", "void*", "const void* const *", "const void*" => new OpaquePointerTransformer(),
             default => null,
-//            default => new DummyTransformer(),
         };
         if(!is_null($result)) return $result;
 
@@ -79,11 +78,14 @@ abstract readonly class Transformer
             // TODO return a const version
             return new PointerTransformer(substr($type, strlen("const "), -1));
         }
-//        if (!is_null($autoTransformer)) {
-//            return $autoTransformer;
-//        }
-////        if(!str_starts_with($type, "Vk") && !str_starts_with($type, "const Vk") && !str_starts_with($type, "PFN_") && !str_starts_with($type, "StdVideo") && !str_contains($type, "*"))
-////        echo json_encode($type) . PHP_EOL;
+
+        if(str_starts_with($type, "Vk") && str_contains($type, "Flags") && class_exists($bitsClass = ("iggyvolz\\vulkan\\enum\\" . str_replace("Flags", "FlagBits", $type)))) {
+            return new FlagsTransformer($type, $bitsClass);
+        }
+
+        if(str_starts_with($type, "Vk") && str_contains($type, "Flags") && preg_match("/^Vk[A-Za-z0-9]+$/", $type)) {
+            return new LonelyFlagsTransformer($type);
+        }
 //        echo $type . PHP_EOL;
         return new DummyTransformer();
     }

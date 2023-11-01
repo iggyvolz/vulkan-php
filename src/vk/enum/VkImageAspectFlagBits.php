@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkImageAspectFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case Color = 0;
     case Depth = 1;
     case Stencil = 2;

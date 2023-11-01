@@ -21,8 +21,8 @@ final class VkVideoEncodeUsageInfoKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $videoUsageHints = null,
-        mixed $videoContentHints = null,
+        null|array $videoUsageHints = null,
+        null|array $videoContentHints = null,
         null|\iggyvolz\vulkan\enum\VkVideoEncodeTuningModeKHR $tuningMode = null,
     ): self
     {
@@ -72,38 +72,38 @@ final class VkVideoEncodeUsageInfoKHR
     }
 
     /**
-     * void* /
+     * VkVideoEncodeUsageFlagsKHR/
      */
-    public function getVideoUsageHints(): mixed
+    public function getVideoUsageHints(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->videoUsageHints;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeUsageFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setVideoUsageHints(mixed $phpValue): void
+    public function setVideoUsageHints(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeUsageFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->videoUsageHints = $cValue;
     }
 
     /**
-     * void* /
+     * VkVideoEncodeContentFlagsKHR/
      */
-    public function getVideoContentHints(): mixed
+    public function getVideoContentHints(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->videoContentHints;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeContentFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setVideoContentHints(mixed $phpValue): void
+    public function setVideoContentHints(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeContentFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->videoContentHints = $cValue;
     }
 

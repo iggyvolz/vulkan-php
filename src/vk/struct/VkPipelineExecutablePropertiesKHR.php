@@ -21,7 +21,7 @@ final class VkPipelineExecutablePropertiesKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $stages = null,
+        null|array $stages = null,
         null|string $name = null,
         null|string $description = null,
         null|int $subgroupSize = null,
@@ -74,20 +74,20 @@ final class VkPipelineExecutablePropertiesKHR
     }
 
     /**
-     * void* /
+     * VkShaderStageFlags/
      */
-    public function getStages(): mixed
+    public function getStages(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->stages;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setStages(mixed $phpValue): void
+    public function setStages(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->stages = $cValue;
     }
 

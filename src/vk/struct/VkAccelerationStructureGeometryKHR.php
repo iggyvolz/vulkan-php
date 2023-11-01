@@ -23,7 +23,7 @@ final class VkAccelerationStructureGeometryKHR
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkGeometryTypeKHR $geometryType = null,
         mixed $geometry = null,
-        mixed $flags = null,
+        null|array $flags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkAccelerationStructureGeometryKHR', false), $vulkan->ffi);
@@ -108,20 +108,20 @@ final class VkAccelerationStructureGeometryKHR
     }
 
     /**
-     * void* /
+     * VkGeometryFlagsKHR/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkGeometryFlagBitsKHR::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkGeometryFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 }

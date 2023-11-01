@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkFormatFeatureFlagBits2: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case SampledImage = 0;
     case StorageImage = 1;
     case StorageImageAtomic = 2;

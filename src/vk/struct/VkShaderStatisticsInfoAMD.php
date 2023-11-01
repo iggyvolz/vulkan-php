@@ -19,7 +19,7 @@ final class VkShaderStatisticsInfoAMD
 
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
-        mixed $shaderStageMask = null,
+        null|array $shaderStageMask = null,
         null|VkShaderResourceUsageAMD $resourceUsage = null,
         null|int $numPhysicalVgprs = null,
         null|int $numPhysicalSgprs = null,
@@ -40,20 +40,20 @@ final class VkShaderStatisticsInfoAMD
     }
 
     /**
-     * void* /
+     * VkShaderStageFlags/
      */
-    public function getShaderStageMask(): mixed
+    public function getShaderStageMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->shaderStageMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setShaderStageMask(mixed $phpValue): void
+    public function setShaderStageMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->shaderStageMask = $cValue;
     }
 

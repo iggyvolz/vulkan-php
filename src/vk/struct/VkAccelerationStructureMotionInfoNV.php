@@ -22,7 +22,7 @@ final class VkAccelerationStructureMotionInfoNV
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $maxInstances = null,
-        mixed $flags = null,
+        null|array $flags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkAccelerationStructureMotionInfoNV', false), $vulkan->ffi);
@@ -88,20 +88,20 @@ final class VkAccelerationStructureMotionInfoNV
     }
 
     /**
-     * void* /
+     * VkAccelerationStructureMotionInfoFlagsNV/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = [];
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = 0;
         $this->cdata->flags = $cValue;
     }
 }

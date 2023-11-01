@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkPeerMemoryFeatureFlagBits: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case CopySrc = 0;
     case CopyDst = 1;
     case GenericSrc = 2;

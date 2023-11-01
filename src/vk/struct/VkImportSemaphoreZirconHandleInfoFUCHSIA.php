@@ -22,7 +22,7 @@ final class VkImportSemaphoreZirconHandleInfoFUCHSIA
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|VkSemaphore $semaphore = null,
-        mixed $flags = null,
+        null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkExternalSemaphoreHandleTypeFlagBits $handleType = null,
         null|int $zirconHandle = null,
     ): self
@@ -92,20 +92,20 @@ final class VkImportSemaphoreZirconHandleInfoFUCHSIA
     }
 
     /**
-     * void* /
+     * VkSemaphoreImportFlags/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSemaphoreImportFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSemaphoreImportFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 

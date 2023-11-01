@@ -21,7 +21,7 @@ final class VkVideoEncodeH264CapabilitiesEXT
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $flags = null,
+        null|array $flags = null,
         mixed $maxLevelIdc = null,
         null|int $maxSliceCount = null,
         null|int $maxPPictureL0ReferenceCount = null,
@@ -33,7 +33,7 @@ final class VkVideoEncodeH264CapabilitiesEXT
         null|int $maxQp = null,
         null|bool $prefersGopRemainingFrames = null,
         null|bool $requiresGopRemainingFrames = null,
-        mixed $stdSyntaxFlags = null,
+        null|array $stdSyntaxFlags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkVideoEncodeH264CapabilitiesEXT', false), $vulkan->ffi);
@@ -92,20 +92,20 @@ final class VkVideoEncodeH264CapabilitiesEXT
     }
 
     /**
-     * void* /
+     * VkVideoEncodeH264CapabilityFlagsEXT/
      */
-    public function getFlags(): mixed
+    public function getFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeH264CapabilityFlagBitsEXT::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFlags(mixed $phpValue): void
+    public function setFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeH264CapabilityFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
 
@@ -308,20 +308,20 @@ final class VkVideoEncodeH264CapabilitiesEXT
     }
 
     /**
-     * void* /
+     * VkVideoEncodeH264StdFlagsEXT/
      */
-    public function getStdSyntaxFlags(): mixed
+    public function getStdSyntaxFlags(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->stdSyntaxFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeH264StdFlagBitsEXT::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setStdSyntaxFlags(mixed $phpValue): void
+    public function setStdSyntaxFlags(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeH264StdFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->stdSyntaxFlags = $cValue;
     }
 }

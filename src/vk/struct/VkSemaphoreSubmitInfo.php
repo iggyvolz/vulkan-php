@@ -23,7 +23,7 @@ final class VkSemaphoreSubmitInfo
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|VkSemaphore $semaphore = null,
         null|int $value = null,
-        mixed $stageMask = null,
+        null|array $stageMask = null,
         null|int $deviceIndex = null,
     ): self
     {
@@ -110,20 +110,20 @@ final class VkSemaphoreSubmitInfo
     }
 
     /**
-     * void* /
+     * VkPipelineStageFlags2/
      */
-    public function getStageMask(): mixed
+    public function getStageMask(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->stageMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits2::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setStageMask(mixed $phpValue): void
+    public function setStageMask(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits2::toInt(...$phpValue);
         $this->cdata->stageMask = $cValue;
     }
 

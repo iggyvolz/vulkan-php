@@ -6,6 +6,8 @@ namespace iggyvolz\vulkan\enum;
 
 enum VkVideoEncodeH264StdFlagBitsEXT: int
 {
+    use \iggyvolz\vulkan\util\BitmapEnum;
+
     case SeparateColorPlaneFlagSet = 0;
     case QpprimeYZeroTransformBypassFlagSet = 1;
     case ScalingMatrixPresentFlagSet = 2;

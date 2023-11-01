@@ -24,11 +24,11 @@ final class VkCooperativeMatrixPropertiesNV
         null|int $MSize = null,
         null|int $NSize = null,
         null|int $KSize = null,
-        null|\iggyvolz\vulkan\enum\VkComponentTypeNV $AType = null,
-        null|\iggyvolz\vulkan\enum\VkComponentTypeNV $BType = null,
-        null|\iggyvolz\vulkan\enum\VkComponentTypeNV $CType = null,
-        null|\iggyvolz\vulkan\enum\VkComponentTypeNV $DType = null,
-        null|\iggyvolz\vulkan\enum\VkScopeNV $scope = null,
+        mixed $AType = null,
+        mixed $BType = null,
+        mixed $CType = null,
+        mixed $DType = null,
+        mixed $scope = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkCooperativeMatrixPropertiesNV', false), $vulkan->ffi);
@@ -136,92 +136,92 @@ final class VkCooperativeMatrixPropertiesNV
     }
 
     /**
-     * VkComponentTypeNV/
+     * void* /
      */
-    public function getAType(): \iggyvolz\vulkan\enum\VkComponentTypeNV
+    public function getAType(): mixed
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->AType;
-        $phpValue = \iggyvolz\vulkan\enum\VkComponentTypeNV::from($cValue);
+        throw new \LogicException("Dummy transformer!");
         return $phpValue;
     }
 
-    public function setAType(\iggyvolz\vulkan\enum\VkComponentTypeNV $phpValue): void
+    public function setAType(mixed $phpValue): void
     {
         $ffi = $this->ffi;
-        $cValue = $phpValue->value;
+        throw new \LogicException("Dummy transformer!");
         $this->cdata->AType = $cValue;
     }
 
     /**
-     * VkComponentTypeNV/
+     * void* /
      */
-    public function getBType(): \iggyvolz\vulkan\enum\VkComponentTypeNV
+    public function getBType(): mixed
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->BType;
-        $phpValue = \iggyvolz\vulkan\enum\VkComponentTypeNV::from($cValue);
+        throw new \LogicException("Dummy transformer!");
         return $phpValue;
     }
 
-    public function setBType(\iggyvolz\vulkan\enum\VkComponentTypeNV $phpValue): void
+    public function setBType(mixed $phpValue): void
     {
         $ffi = $this->ffi;
-        $cValue = $phpValue->value;
+        throw new \LogicException("Dummy transformer!");
         $this->cdata->BType = $cValue;
     }
 
     /**
-     * VkComponentTypeNV/
+     * void* /
      */
-    public function getCType(): \iggyvolz\vulkan\enum\VkComponentTypeNV
+    public function getCType(): mixed
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->CType;
-        $phpValue = \iggyvolz\vulkan\enum\VkComponentTypeNV::from($cValue);
+        throw new \LogicException("Dummy transformer!");
         return $phpValue;
     }
 
-    public function setCType(\iggyvolz\vulkan\enum\VkComponentTypeNV $phpValue): void
+    public function setCType(mixed $phpValue): void
     {
         $ffi = $this->ffi;
-        $cValue = $phpValue->value;
+        throw new \LogicException("Dummy transformer!");
         $this->cdata->CType = $cValue;
     }
 
     /**
-     * VkComponentTypeNV/
+     * void* /
      */
-    public function getDType(): \iggyvolz\vulkan\enum\VkComponentTypeNV
+    public function getDType(): mixed
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->DType;
-        $phpValue = \iggyvolz\vulkan\enum\VkComponentTypeNV::from($cValue);
+        throw new \LogicException("Dummy transformer!");
         return $phpValue;
     }
 
-    public function setDType(\iggyvolz\vulkan\enum\VkComponentTypeNV $phpValue): void
+    public function setDType(mixed $phpValue): void
     {
         $ffi = $this->ffi;
-        $cValue = $phpValue->value;
+        throw new \LogicException("Dummy transformer!");
         $this->cdata->DType = $cValue;
     }
 
     /**
-     * VkScopeNV/
+     * void* /
      */
-    public function getScope(): \iggyvolz\vulkan\enum\VkScopeNV
+    public function getScope(): mixed
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->scope;
-        $phpValue = \iggyvolz\vulkan\enum\VkScopeNV::from($cValue);
+        throw new \LogicException("Dummy transformer!");
         return $phpValue;
     }
 
-    public function setScope(\iggyvolz\vulkan\enum\VkScopeNV $phpValue): void
+    public function setScope(mixed $phpValue): void
     {
         $ffi = $this->ffi;
-        $cValue = $phpValue->value;
+        throw new \LogicException("Dummy transformer!");
         $this->cdata->scope = $cValue;
     }
 }

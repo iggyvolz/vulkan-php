@@ -23,8 +23,8 @@ final class VkFramebufferMixedSamplesCombinationNV
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkCoverageReductionModeNV $coverageReductionMode = null,
         null|\iggyvolz\vulkan\enum\VkSampleCountFlagBits $rasterizationSamples = null,
-        mixed $depthStencilSamples = null,
-        mixed $colorSamples = null,
+        null|array $depthStencilSamples = null,
+        null|array $colorSamples = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkFramebufferMixedSamplesCombinationNV', false), $vulkan->ffi);
@@ -110,38 +110,38 @@ final class VkFramebufferMixedSamplesCombinationNV
     }
 
     /**
-     * void* /
+     * VkSampleCountFlags/
      */
-    public function getDepthStencilSamples(): mixed
+    public function getDepthStencilSamples(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->depthStencilSamples;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setDepthStencilSamples(mixed $phpValue): void
+    public function setDepthStencilSamples(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->depthStencilSamples = $cValue;
     }
 
     /**
-     * void* /
+     * VkSampleCountFlags/
      */
-    public function getColorSamples(): mixed
+    public function getColorSamples(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->colorSamples;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setColorSamples(mixed $phpValue): void
+    public function setColorSamples(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->colorSamples = $cValue;
     }
 }

@@ -23,7 +23,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkFormat $format = null,
         null|int $externalFormat = null,
-        mixed $formatFeatures = null,
+        null|array $formatFeatures = null,
         null|VkComponentMapping $samplerYcbcrConversionComponents = null,
         null|\iggyvolz\vulkan\enum\VkSamplerYcbcrModelConversion $suggestedYcbcrModel = null,
         null|\iggyvolz\vulkan\enum\VkSamplerYcbcrRange $suggestedYcbcrRange = null,
@@ -118,20 +118,20 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
     }
 
     /**
-     * void* /
+     * VkFormatFeatureFlags/
      */
-    public function getFormatFeatures(): mixed
+    public function getFormatFeatures(): array
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->formatFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::fromInt($cValue);
         return $phpValue;
     }
 
-    public function setFormatFeatures(mixed $phpValue): void
+    public function setFormatFeatures(array $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->formatFeatures = $cValue;
     }
 
