@@ -255,6 +255,7 @@ final class CDefs implements \Stringable
         $this->cdefs[] = 'typedef int VkPresentGravityFlagBitsEXT;';
         $this->cdefs[] = 'typedef int VkLatencyMarkerNV;';
         $this->cdefs[] = 'typedef int VkOutOfBandQueueTypeNV;';
+        $this->cdefs[] = 'typedef int VkPhysicalDeviceSchedulingControlsFlagBitsARM;';
         $this->cdefs[] = 'typedef int VkVendorId;';
         $this->cdefs[] = 'typedef int VkDriverId;';
         $this->cdefs[] = 'typedef int VkShadingRatePaletteEntryNV;';
@@ -337,6 +338,8 @@ final class CDefs implements \Stringable
         $this->cdefs[] = 'typedef void* VkVideoSessionKHR;';
         $this->cdefs[] = 'typedef void* VkVideoSessionParametersKHR;';
         $this->cdefs[] = 'typedef void* VkSemaphoreSciSyncPoolNV;';
+        $this->cdefs[] = 'typedef void* VkCudaModuleNV;';
+        $this->cdefs[] = 'typedef void* VkCudaFunctionNV;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;} VkBaseOutStructure;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;} VkBaseInStructure;';
         $this->cdefs[] = 'typedef struct {int32_t x ;int32_t y ;} VkOffset2D;';
@@ -1349,6 +1352,9 @@ final class CDefs implements \Stringable
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkImageCreateInfo imageCreateInfo ;VkFormatFeatureFlags requiredFormatFeatures ;VkImageFormatConstraintsFlagsFUCHSIA flags ;uint64_t sysmemPixelFormat ;uint32_t colorSpaceCount ;void* pColorSpaces ;} VkImageFormatConstraintsInfoFUCHSIA;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t formatConstraintsCount ;VkImageFormatConstraintsInfoFUCHSIA* pFormatConstraints ;void* bufferCollectionConstraints ;VkImageConstraintsInfoFlagsFUCHSIA flags ;} VkImageConstraintsInfoFUCHSIA;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t minBufferCount ;uint32_t maxBufferCount ;uint32_t minBufferCountForCamping ;uint32_t minBufferCountForDedicatedSlack ;uint32_t minBufferCountForSharedSlack ;} VkBufferCollectionConstraintsInfoFUCHSIA;';
+        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;size_t dataSize ;void* pData ;} VkCudaModuleCreateInfoNV;';
+        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkCudaModuleNV module ;const char* pName ;} VkCudaFunctionCreateInfoNV;';
+        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkCudaFunctionNV function ;uint32_t gridDimX ;uint32_t gridDimY ;uint32_t gridDimZ ;uint32_t blockDimX ;uint32_t blockDimY ;uint32_t blockDimZ ;uint32_t sharedMemBytes ;size_t paramCount ;void* pParams ;size_t extraCount ;void* pExtras ;} VkCudaLaunchInfoNV;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t formatRgba10x6WithoutYCbCrSampler ;} VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkFormatFeatureFlags2 linearTilingFeatures ;VkFormatFeatureFlags2 optimalTilingFeatures ;VkFormatFeatureFlags2 bufferFeatures ;} VkFormatProperties3;';
         $this->cdefs[] = 'typedef struct {} VkFormatProperties3KHR;';
@@ -1381,6 +1387,8 @@ final class CDefs implements \Stringable
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t descriptorSetHostMapping ;} VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkDescriptorSetLayout descriptorSetLayout ;uint32_t binding ;} VkDescriptorSetBindingReferenceVALVE;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;size_t descriptorOffset ;uint32_t descriptorSize ;} VkDescriptorSetLayoutHostMappingInfoVALVE;';
+        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t nestedCommandBuffer ;uint32_t nestedCommandBufferRendering ;uint32_t nestedCommandBufferSimultaneousUse ;} VkPhysicalDeviceNestedCommandBufferFeaturesEXT;';
+        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t maxCommandBufferNestingLevel ;} VkPhysicalDeviceNestedCommandBufferPropertiesEXT;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t shaderModuleIdentifier ;} VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint8_t shaderModuleIdentifierAlgorithmUUID [16];} VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t identifierSize ;void* pIdentifier ;} VkPipelineShaderStageModuleIdentifierCreateInfoEXT;';
@@ -1479,6 +1487,8 @@ final class CDefs implements \Stringable
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t depthBiasControl ;uint32_t leastRepresentableValueForceUnormRepresentation ;uint32_t floatRepresentation ;uint32_t depthBiasExact ;} VkPhysicalDeviceDepthBiasControlFeaturesEXT;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t rayTracingInvocationReorder ;} VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkRayTracingInvocationReorderModeNV rayTracingInvocationReorderReorderingHint ;} VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV;';
+        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t extendedSparseAddressSpace ;} VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV;';
+        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint64_t extendedSparseAddressSpaceSize ;VkImageUsageFlags extendedSparseImageUsageFlags ;VkBufferUsageFlags extendedSparseBufferUsageFlags ;} VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkDirectDriverLoadingFlagsLUNARG flags ;void* pfnGetInstanceProcAddr ;} VkDirectDriverLoadingInfoLUNARG;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkDirectDriverLoadingModeLUNARG mode ;uint32_t driverCount ;VkDirectDriverLoadingInfoLUNARG* pDrivers ;} VkDirectDriverLoadingListLUNARG;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t multiviewPerViewViewports ;} VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM;';
@@ -1533,6 +1543,11 @@ final class CDefs implements \Stringable
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint64_t presentID ;} VkLatencySubmissionPresentIdNV;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t latencyModeEnable ;} VkSwapchainLatencyCreateInfoNV;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t presentModeCount ;void* pPresentModes ;} VkLatencySurfaceCapabilitiesNV;';
+        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t cudaKernelLaunchFeatures ;} VkPhysicalDeviceCudaKernelLaunchFeaturesNV;';
+        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t computeCapabilityMinor ;uint32_t computeCapabilityMajor ;} VkPhysicalDeviceCudaKernelLaunchPropertiesNV;';
+        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t shaderCoreCount ;} VkDeviceQueueShaderCoreControlCreateInfoARM;';
+        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t schedulingControls ;} VkPhysicalDeviceSchedulingControlsFeaturesARM;';
+        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkPhysicalDeviceSchedulingControlsFlagsARM schedulingControlsFlags ;} VkPhysicalDeviceSchedulingControlsPropertiesARM;';
     }
 
     public function addExtension(string $extension): void
@@ -2129,6 +2144,12 @@ final class CDefs implements \Stringable
         if($extension === 'VK_FUCHSIA_buffer_collection') $this->cdefs[] = 'VkResult vkSetBufferCollectionImageConstraintsFUCHSIA(VkDevice device,VkBufferCollectionFUCHSIA collection,VkImageConstraintsInfoFUCHSIA* pImageConstraintsInfo);';
         if($extension === 'VK_FUCHSIA_buffer_collection') $this->cdefs[] = 'void vkDestroyBufferCollectionFUCHSIA(VkDevice device,VkBufferCollectionFUCHSIA collection,VkAllocationCallbacks* pAllocator);';
         if($extension === 'VK_FUCHSIA_buffer_collection') $this->cdefs[] = 'VkResult vkGetBufferCollectionPropertiesFUCHSIA(VkDevice device,VkBufferCollectionFUCHSIA collection,VkBufferCollectionPropertiesFUCHSIA* pProperties);';
+        if($extension === 'VK_NV_cuda_kernel_launch') $this->cdefs[] = 'VkResult vkCreateCudaModuleNV(VkDevice device,VkCudaModuleCreateInfoNV* pCreateInfo,VkAllocationCallbacks* pAllocator,VkCudaModuleNV* pModule);';
+        if($extension === 'VK_NV_cuda_kernel_launch') $this->cdefs[] = 'VkResult vkGetCudaModuleCacheNV(VkDevice device,VkCudaModuleNV module,size_t* pCacheSize,void* pCacheData);';
+        if($extension === 'VK_NV_cuda_kernel_launch') $this->cdefs[] = 'VkResult vkCreateCudaFunctionNV(VkDevice device,VkCudaFunctionCreateInfoNV* pCreateInfo,VkAllocationCallbacks* pAllocator,VkCudaFunctionNV* pFunction);';
+        if($extension === 'VK_NV_cuda_kernel_launch') $this->cdefs[] = 'void vkDestroyCudaModuleNV(VkDevice device,VkCudaModuleNV module,VkAllocationCallbacks* pAllocator);';
+        if($extension === 'VK_NV_cuda_kernel_launch') $this->cdefs[] = 'void vkDestroyCudaFunctionNV(VkDevice device,VkCudaFunctionNV function,VkAllocationCallbacks* pAllocator);';
+        if($extension === 'VK_NV_cuda_kernel_launch') $this->cdefs[] = 'void vkCmdCudaLaunchKernelNV(VkCommandBuffer commandBuffer,VkCudaLaunchInfoNV* pLaunchInfo);';
         if($extension === 'VK_VERSION_1_3') $this->cdefs[] = 'void vkCmdBeginRendering(VkCommandBuffer commandBuffer,VkRenderingInfo* pRenderingInfo);';
         if($extension === 'VK_VERSION_1_3') $this->cdefs[] = 'void vkCmdEndRendering(VkCommandBuffer commandBuffer);';
         if($extension === 'VK_VALVE_descriptor_set_host_mapping') $this->cdefs[] = 'void vkGetDescriptorSetLayoutHostMappingInfoVALVE(VkDevice device,VkDescriptorSetBindingReferenceVALVE* pBindingReference,VkDescriptorSetLayoutHostMappingInfoVALVE* pHostMapping);';
@@ -2182,6 +2203,6 @@ final class CDefs implements \Stringable
         if($extension === 'VK_NV_low_latency2') $this->cdefs[] = 'VkResult vkLatencySleepNV(VkDevice device,VkSwapchainKHR swapchain,VkLatencySleepInfoNV* pSleepInfo);';
         if($extension === 'VK_NV_low_latency2') $this->cdefs[] = 'void vkSetLatencyMarkerNV(VkDevice device,VkSwapchainKHR swapchain,VkSetLatencyMarkerInfoNV* pLatencyMarkerInfo);';
         if($extension === 'VK_NV_low_latency2') $this->cdefs[] = 'void vkGetLatencyTimingsNV(VkDevice device,VkSwapchainKHR swapchain,uint32_t* pTimingCount,VkGetLatencyMarkerInfoNV* pLatencyMarkerInfo);';
-        if($extension === 'VK_NV_low_latency2') $this->cdefs[] = 'void vkQueueNotifyOutOfBandNV(VkQueue queue,VkOutOfBandQueueTypeInfoNV pQueueTypeInfo);';
+        if($extension === 'VK_NV_low_latency2') $this->cdefs[] = 'void vkQueueNotifyOutOfBandNV(VkQueue queue,VkOutOfBandQueueTypeInfoNV* pQueueTypeInfo);';
     }
 }

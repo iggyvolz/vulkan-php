@@ -69,7 +69,7 @@ final readonly class Registry
     }
 
     public static function get(
-        string $version = "1.3.266",
+        string $version = "1.3.269",
         VulkanVariant $variant = VulkanVariant::Vulkan,
         ?string $cacheDirectory = null
     ): self

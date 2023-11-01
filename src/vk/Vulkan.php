@@ -16927,6 +16927,189 @@ class Vulkan
     }
 
     /**
+     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCudaModuleCreateInfoNV> $pCreateInfo const VkCudaModuleCreateInfoNV*
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCudaModuleNV> $pModule VkCudaModuleNV*
+     * returns VkResult
+     */
+    public function vkCreateCudaModuleNV(
+        struct\VkDevice $device,
+        util\ObjectPointer $pCreateInfo,
+        util\ObjectPointer $pAllocator,
+        util\ObjectPointer $pModule,
+    ): enum\VkResult
+    {
+        $phpValue = $device;
+        $cValue = $phpValue->cdata;
+        $deviceC = $cValue;
+        $phpValue = $pCreateInfo;
+        $cValue = $phpValue->cdata;
+        $pCreateInfoC = $cValue;
+        $phpValue = $pAllocator;
+        $cValue = $phpValue->cdata;
+        $pAllocatorC = $cValue;
+        $phpValue = $pModule;
+        $cValue = $phpValue->cdata;
+        $pModuleC = $cValue;
+        $cValue = $this->ffi->vkCreateCudaModuleNV(
+            $deviceC,
+            $pCreateInfoC,
+            $pAllocatorC,
+            $pModuleC,
+        );
+        $phpValue = \iggyvolz\vulkan\enum\VkResult::from($cValue);
+        return $phpValue;
+    }
+
+    /**
+     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \\iggyvolz\vulkan\struct\VkCudaModuleNV $module VkCudaModuleNV
+     * @param \iggyvolz\vulkan\util\IntPointer $pCacheSize size_t*
+     * @param \iggyvolz\vulkan\util\OpaquePointer $pCacheData void*
+     * returns VkResult
+     */
+    public function vkGetCudaModuleCacheNV(
+        struct\VkDevice $device,
+        struct\VkCudaModuleNV $module,
+        util\IntPointer $pCacheSize,
+        util\OpaquePointer $pCacheData,
+    ): enum\VkResult
+    {
+        $phpValue = $device;
+        $cValue = $phpValue->cdata;
+        $deviceC = $cValue;
+        $phpValue = $module;
+        $cValue = $phpValue->cdata;
+        $moduleC = $cValue;
+        $phpValue = $pCacheSize;
+        $cValue = $phpValue->cdata;
+        $pCacheSizeC = $cValue;
+        $phpValue = $pCacheData;
+        $cValue = $phpValue->cdata;
+        $pCacheDataC = $cValue;
+        $cValue = $this->ffi->vkGetCudaModuleCacheNV(
+            $deviceC,
+            $moduleC,
+            $pCacheSizeC,
+            $pCacheDataC,
+        );
+        $phpValue = \iggyvolz\vulkan\enum\VkResult::from($cValue);
+        return $phpValue;
+    }
+
+    /**
+     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCudaFunctionCreateInfoNV> $pCreateInfo const VkCudaFunctionCreateInfoNV*
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCudaFunctionNV> $pFunction VkCudaFunctionNV*
+     * returns VkResult
+     */
+    public function vkCreateCudaFunctionNV(
+        struct\VkDevice $device,
+        util\ObjectPointer $pCreateInfo,
+        util\ObjectPointer $pAllocator,
+        util\ObjectPointer $pFunction,
+    ): enum\VkResult
+    {
+        $phpValue = $device;
+        $cValue = $phpValue->cdata;
+        $deviceC = $cValue;
+        $phpValue = $pCreateInfo;
+        $cValue = $phpValue->cdata;
+        $pCreateInfoC = $cValue;
+        $phpValue = $pAllocator;
+        $cValue = $phpValue->cdata;
+        $pAllocatorC = $cValue;
+        $phpValue = $pFunction;
+        $cValue = $phpValue->cdata;
+        $pFunctionC = $cValue;
+        $cValue = $this->ffi->vkCreateCudaFunctionNV(
+            $deviceC,
+            $pCreateInfoC,
+            $pAllocatorC,
+            $pFunctionC,
+        );
+        $phpValue = \iggyvolz\vulkan\enum\VkResult::from($cValue);
+        return $phpValue;
+    }
+
+    /**
+     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \\iggyvolz\vulkan\struct\VkCudaModuleNV $module VkCudaModuleNV
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
+     */
+    public function vkDestroyCudaModuleNV(
+        struct\VkDevice $device,
+        struct\VkCudaModuleNV $module,
+        util\ObjectPointer $pAllocator,
+    ): void
+    {
+        $phpValue = $device;
+        $cValue = $phpValue->cdata;
+        $deviceC = $cValue;
+        $phpValue = $module;
+        $cValue = $phpValue->cdata;
+        $moduleC = $cValue;
+        $phpValue = $pAllocator;
+        $cValue = $phpValue->cdata;
+        $pAllocatorC = $cValue;
+        $cValue = $this->ffi->vkDestroyCudaModuleNV(
+            $deviceC,
+            $moduleC,
+            $pAllocatorC,
+        );
+    }
+
+    /**
+     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \\iggyvolz\vulkan\struct\VkCudaFunctionNV $function VkCudaFunctionNV
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
+     */
+    public function vkDestroyCudaFunctionNV(
+        struct\VkDevice $device,
+        struct\VkCudaFunctionNV $function,
+        util\ObjectPointer $pAllocator,
+    ): void
+    {
+        $phpValue = $device;
+        $cValue = $phpValue->cdata;
+        $deviceC = $cValue;
+        $phpValue = $function;
+        $cValue = $phpValue->cdata;
+        $functionC = $cValue;
+        $phpValue = $pAllocator;
+        $cValue = $phpValue->cdata;
+        $pAllocatorC = $cValue;
+        $cValue = $this->ffi->vkDestroyCudaFunctionNV(
+            $deviceC,
+            $functionC,
+            $pAllocatorC,
+        );
+    }
+
+    /**
+     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCudaLaunchInfoNV> $pLaunchInfo const VkCudaLaunchInfoNV*
+     */
+    public function vkCmdCudaLaunchKernelNV(
+        struct\VkCommandBuffer $commandBuffer,
+        util\ObjectPointer $pLaunchInfo,
+    ): void
+    {
+        $phpValue = $commandBuffer;
+        $cValue = $phpValue->cdata;
+        $commandBufferC = $cValue;
+        $phpValue = $pLaunchInfo;
+        $cValue = $phpValue->cdata;
+        $pLaunchInfoC = $cValue;
+        $cValue = $this->ffi->vkCmdCudaLaunchKernelNV(
+            $commandBufferC,
+            $pLaunchInfoC,
+        );
+    }
+
+    /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRenderingInfo> $pRenderingInfo const VkRenderingInfo*
      */
@@ -18385,7 +18568,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
-     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkLatencySleepModeInfoNV> $pSleepModeInfo VkLatencySleepModeInfoNV*
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkLatencySleepModeInfoNV> $pSleepModeInfo const VkLatencySleepModeInfoNV*
      * returns VkResult
      */
     public function vkSetLatencySleepModeNV(
@@ -18415,7 +18598,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
-     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkLatencySleepInfoNV> $pSleepInfo VkLatencySleepInfoNV*
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkLatencySleepInfoNV> $pSleepInfo const VkLatencySleepInfoNV*
      * returns VkResult
      */
     public function vkLatencySleepNV(
@@ -18445,7 +18628,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
-     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSetLatencyMarkerInfoNV> $pLatencyMarkerInfo VkSetLatencyMarkerInfoNV*
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSetLatencyMarkerInfoNV> $pLatencyMarkerInfo const VkSetLatencyMarkerInfoNV*
      */
     public function vkSetLatencyMarkerNV(
         struct\VkDevice $device,
@@ -18504,12 +18687,9 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkQueue $queue VkQueue
-     * @param \\iggyvolz\vulkan\struct\VkOutOfBandQueueTypeInfoNV $pQueueTypeInfo VkOutOfBandQueueTypeInfoNV
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkOutOfBandQueueTypeInfoNV> $pQueueTypeInfo const VkOutOfBandQueueTypeInfoNV*
      */
-    public function vkQueueNotifyOutOfBandNV(
-        struct\VkQueue $queue,
-        struct\VkOutOfBandQueueTypeInfoNV $pQueueTypeInfo,
-    ): void
+    public function vkQueueNotifyOutOfBandNV(struct\VkQueue $queue, util\ObjectPointer $pQueueTypeInfo): void
     {
         $phpValue = $queue;
         $cValue = $phpValue->cdata;
