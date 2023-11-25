@@ -69,7 +69,7 @@ final readonly class Registry
     }
 
     public static function get(
-        string $version = "1.3.269",
+        string $version = "1.3.270",
         VulkanVariant $variant = VulkanVariant::Vulkan,
         ?string $cacheDirectory = null
     ): self
@@ -89,19 +89,12 @@ final readonly class Registry
             }
             $dom->load($file);
         }
-//        $nodesToRemove = iterator_to_array(self::filter($dom, $variant));
-//        foreach($nodesToRemove as $node) {
-//            $node->parentNode->removeChild($node);
-//        }
         /** @var DOMElement[] $nodesToRemove */
         $nodesToRemove = iterator_to_array(self::filter($dom, $variant), false);
         // iterate from last to first
         foreach($nodesToRemove as $nodeToRemove) {
-//            echo $nodeToRemove->ownerDocument->saveXML($nodeToRemove) . PHP_EOL;
             $nodeToRemove->parentNode?->removeChild($nodeToRemove);
         }
-        // debug
-//        $dom->save(__DIR__ . "/../../../temp.xml");
         return new self($dom->firstElementChild);
     }
     /**

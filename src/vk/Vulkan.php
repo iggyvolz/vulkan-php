@@ -247,8 +247,8 @@ class Vulkan
      * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
      * @param \\iggyvolz\vulkan\enum\VkImageType $type VkImageType
      * @param \\iggyvolz\vulkan\enum\VkImageTiling $tiling VkImageTiling
-     * @param list<\iggyvolz\vulkan\enum\VkImageUsageFlagBits> $usage VkImageUsageFlags
-     * @param list<\iggyvolz\vulkan\enum\VkImageCreateFlagBits> $flags VkImageCreateFlags
+     * @param list<iggyvolz\vulkan\enum\VkImageUsageFlagBits> $usage VkImageUsageFlags
+     * @param list<iggyvolz\vulkan\enum\VkImageCreateFlagBits> $flags VkImageCreateFlags
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageFormatProperties> $pImageFormatProperties VkImageFormatProperties*
      * returns VkResult
      */
@@ -655,7 +655,7 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
      * @param int $offset VkDeviceSize
      * @param int $size VkDeviceSize
-     * @param list<never> $flags VkMemoryMapFlags
+     * @param list<void> $flags VkMemoryMapFlags
      * @param \iggyvolz\vulkan\util\OpaquePointer $ppData void**
      * returns VkResult
      */
@@ -967,7 +967,7 @@ class Vulkan
      * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
      * @param \\iggyvolz\vulkan\enum\VkImageType $type VkImageType
      * @param \\iggyvolz\vulkan\enum\VkSampleCountFlagBits $samples VkSampleCountFlagBits
-     * @param list<\iggyvolz\vulkan\enum\VkImageUsageFlagBits> $usage VkImageUsageFlags
+     * @param list<iggyvolz\vulkan\enum\VkImageUsageFlagBits> $usage VkImageUsageFlags
      * @param \\iggyvolz\vulkan\enum\VkImageTiling $tiling VkImageTiling
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSparseImageFormatProperties> $pProperties VkSparseImageFormatProperties*
@@ -1471,7 +1471,7 @@ class Vulkan
      * @param int $dataSize size_t
      * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
      * @param int $stride VkDeviceSize
-     * @param list<\iggyvolz\vulkan\enum\VkQueryResultFlagBits> $flags VkQueryResultFlags
+     * @param list<iggyvolz\vulkan\enum\VkQueryResultFlagBits> $flags VkQueryResultFlags
      * returns VkResult
      */
     public function vkGetQueryPoolResults(
@@ -2447,7 +2447,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkDescriptorPool $descriptorPool VkDescriptorPool
-     * @param list<never> $flags VkDescriptorPoolResetFlags
+     * @param list<void> $flags VkDescriptorPoolResetFlags
      * returns VkResult
      */
     public function vkResetDescriptorPool(
@@ -2825,7 +2825,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkCommandPool $commandPool VkCommandPool
-     * @param list<\iggyvolz\vulkan\enum\VkCommandPoolResetFlagBits> $flags VkCommandPoolResetFlags
+     * @param list<iggyvolz\vulkan\enum\VkCommandPoolResetFlagBits> $flags VkCommandPoolResetFlags
      * returns VkResult
      */
     public function vkResetCommandPool(
@@ -2957,7 +2957,7 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param list<\iggyvolz\vulkan\enum\VkCommandBufferResetFlagBits> $flags VkCommandBufferResetFlags
+     * @param list<iggyvolz\vulkan\enum\VkCommandBufferResetFlagBits> $flags VkCommandBufferResetFlags
      * returns VkResult
      */
     public function vkResetCommandBuffer(struct\VkCommandBuffer $commandBuffer, array $flags): enum\VkResult
@@ -3005,7 +3005,7 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param list<\iggyvolz\vulkan\enum\VkImageAspectFlagBits> $aspectMask VkImageAspectFlags
+     * @param list<iggyvolz\vulkan\enum\VkImageAspectFlagBits> $aspectMask VkImageAspectFlags
      */
     public function vkCmdSetAttachmentFeedbackLoopEnableEXT(
         struct\VkCommandBuffer $commandBuffer,
@@ -3188,7 +3188,7 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param list<\iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
+     * @param list<iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
      * @param int $compareMask uint32_t
      */
     public function vkCmdSetStencilCompareMask(
@@ -3215,7 +3215,7 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param list<\iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
+     * @param list<iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
      * @param int $writeMask uint32_t
      */
     public function vkCmdSetStencilWriteMask(
@@ -3242,7 +3242,7 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param list<\iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
+     * @param list<iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
      * @param int $reference uint32_t
      */
     public function vkCmdSetStencilReference(
@@ -4396,7 +4396,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \\iggyvolz\vulkan\struct\VkEvent $event VkEvent
-     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $stageMask VkPipelineStageFlags
+     * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $stageMask VkPipelineStageFlags
      */
     public function vkCmdSetEvent(
         struct\VkCommandBuffer $commandBuffer,
@@ -4423,7 +4423,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \\iggyvolz\vulkan\struct\VkEvent $event VkEvent
-     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $stageMask VkPipelineStageFlags
+     * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $stageMask VkPipelineStageFlags
      */
     public function vkCmdResetEvent(
         struct\VkCommandBuffer $commandBuffer,
@@ -4451,8 +4451,8 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $eventCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkEvent> $pEvents const VkEvent*
-     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $srcStageMask VkPipelineStageFlags
-     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $dstStageMask VkPipelineStageFlags
+     * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $srcStageMask VkPipelineStageFlags
+     * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $dstStageMask VkPipelineStageFlags
      * @param int $memoryBarrierCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryBarrier> $pMemoryBarriers const VkMemoryBarrier*
      * @param int $bufferMemoryBarrierCount uint32_t
@@ -4524,9 +4524,9 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $srcStageMask VkPipelineStageFlags
-     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $dstStageMask VkPipelineStageFlags
-     * @param list<\iggyvolz\vulkan\enum\VkDependencyFlagBits> $dependencyFlags VkDependencyFlags
+     * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $srcStageMask VkPipelineStageFlags
+     * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $dstStageMask VkPipelineStageFlags
+     * @param list<iggyvolz\vulkan\enum\VkDependencyFlagBits> $dependencyFlags VkDependencyFlags
      * @param int $memoryBarrierCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryBarrier> $pMemoryBarriers const VkMemoryBarrier*
      * @param int $bufferMemoryBarrierCount uint32_t
@@ -4595,7 +4595,7 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $query uint32_t
-     * @param list<\iggyvolz\vulkan\enum\VkQueryControlFlagBits> $flags VkQueryControlFlags
+     * @param list<iggyvolz\vulkan\enum\VkQueryControlFlagBits> $flags VkQueryControlFlags
      */
     public function vkCmdBeginQuery(
         struct\VkCommandBuffer $commandBuffer,
@@ -4759,7 +4759,7 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
      * @param int $dstOffset VkDeviceSize
      * @param int $stride VkDeviceSize
-     * @param list<\iggyvolz\vulkan\enum\VkQueryResultFlagBits> $flags VkQueryResultFlags
+     * @param list<iggyvolz\vulkan\enum\VkQueryResultFlagBits> $flags VkQueryResultFlags
      */
     public function vkCmdCopyQueryPoolResults(
         struct\VkCommandBuffer $commandBuffer,
@@ -4811,7 +4811,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \\iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
-     * @param list<\iggyvolz\vulkan\enum\VkShaderStageFlagBits> $stageFlags VkShaderStageFlags
+     * @param list<iggyvolz\vulkan\enum\VkShaderStageFlagBits> $stageFlags VkShaderStageFlags
      * @param int $offset uint32_t
      * @param int $size uint32_t
      * @param \iggyvolz\vulkan\util\OpaquePointer $pValues const void*
@@ -6170,7 +6170,7 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
-     * @param list<\iggyvolz\vulkan\enum\VkDebugReportFlagBitsEXT> $flags VkDebugReportFlagsEXT
+     * @param list<iggyvolz\vulkan\enum\VkDebugReportFlagBitsEXT> $flags VkDebugReportFlagsEXT
      * @param \\iggyvolz\vulkan\enum\VkDebugReportObjectTypeEXT $objectType VkDebugReportObjectTypeEXT
      * @param int $object uint64_t
      * @param int $location size_t
@@ -6330,9 +6330,9 @@ class Vulkan
      * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
      * @param \\iggyvolz\vulkan\enum\VkImageType $type VkImageType
      * @param \\iggyvolz\vulkan\enum\VkImageTiling $tiling VkImageTiling
-     * @param list<\iggyvolz\vulkan\enum\VkImageUsageFlagBits> $usage VkImageUsageFlags
-     * @param list<\iggyvolz\vulkan\enum\VkImageCreateFlagBits> $flags VkImageCreateFlags
-     * @param list<\iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV> $externalHandleType VkExternalMemoryHandleTypeFlagsNV
+     * @param list<iggyvolz\vulkan\enum\VkImageUsageFlagBits> $usage VkImageUsageFlags
+     * @param list<iggyvolz\vulkan\enum\VkImageCreateFlagBits> $flags VkImageCreateFlags
+     * @param list<iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV> $externalHandleType VkExternalMemoryHandleTypeFlagsNV
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkExternalImageFormatPropertiesNV> $pExternalImageFormatProperties VkExternalImageFormatPropertiesNV*
      * returns VkResult
      */
@@ -6388,7 +6388,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
-     * @param list<\iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV> $handleType VkExternalMemoryHandleTypeFlagsNV
+     * @param list<iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV> $handleType VkExternalMemoryHandleTypeFlagsNV
      * @param \iggyvolz\vulkan\util\OpaquePointer $pHandle HANDLE*
      * returns VkResult
      */
@@ -6820,7 +6820,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkCommandPool $commandPool VkCommandPool
-     * @param list<never> $flags VkCommandPoolTrimFlags
+     * @param list<void> $flags VkCommandPoolTrimFlags
      */
     public function vkTrimCommandPool(struct\VkDevice $device, struct\VkCommandPool $commandPool, array $flags): void
     {
@@ -9537,7 +9537,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
-     * @param list<\iggyvolz\vulkan\enum\VkImageUsageFlagBits> $imageUsage VkImageUsageFlags
+     * @param list<iggyvolz\vulkan\enum\VkImageUsageFlagBits> $imageUsage VkImageUsageFlags
      * @param \iggyvolz\vulkan\util\IntPointer $grallocUsage int*
      * returns VkResult
      */
@@ -9573,8 +9573,8 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
-     * @param list<\iggyvolz\vulkan\enum\VkImageUsageFlagBits> $imageUsage VkImageUsageFlags
-     * @param list<\iggyvolz\vulkan\enum\VkSwapchainImageUsageFlagBitsANDROID> $swapchainImageUsage VkSwapchainImageUsageFlagsANDROID
+     * @param list<iggyvolz\vulkan\enum\VkImageUsageFlagBits> $imageUsage VkImageUsageFlags
+     * @param list<iggyvolz\vulkan\enum\VkSwapchainImageUsageFlagBitsANDROID> $swapchainImageUsage VkSwapchainImageUsageFlagsANDROID
      * @param \iggyvolz\vulkan\util\IntPointer $grallocConsumerUsage uint64_t*
      * @param \iggyvolz\vulkan\util\IntPointer $grallocProducerUsage uint64_t*
      * returns VkResult
@@ -10064,7 +10064,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \\iggyvolz\vulkan\enum\VkDebugUtilsMessageSeverityFlagBitsEXT $messageSeverity VkDebugUtilsMessageSeverityFlagBitsEXT
-     * @param list<\iggyvolz\vulkan\enum\VkDebugUtilsMessageTypeFlagBitsEXT> $messageTypes VkDebugUtilsMessageTypeFlagsEXT
+     * @param list<iggyvolz\vulkan\enum\VkDebugUtilsMessageTypeFlagBitsEXT> $messageTypes VkDebugUtilsMessageTypeFlagsEXT
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugUtilsMessengerCallbackDataEXT> $pCallbackData const VkDebugUtilsMessengerCallbackDataEXT*
      */
     public function vkSubmitDebugUtilsMessageEXT(
@@ -10698,7 +10698,7 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $query uint32_t
-     * @param list<\iggyvolz\vulkan\enum\VkQueryControlFlagBits> $flags VkQueryControlFlags
+     * @param list<iggyvolz\vulkan\enum\VkQueryControlFlagBits> $flags VkQueryControlFlags
      * @param int $index uint32_t
      */
     public function vkCmdBeginQueryIndexedEXT(
@@ -13589,7 +13589,7 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param list<\iggyvolz\vulkan\enum\VkCullModeFlagBits> $cullMode VkCullModeFlags
+     * @param list<iggyvolz\vulkan\enum\VkCullModeFlagBits> $cullMode VkCullModeFlags
      */
     public function vkCmdSetCullMode(struct\VkCommandBuffer $commandBuffer, array $cullMode): void
     {
@@ -13886,7 +13886,7 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param list<\iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
+     * @param list<iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
      * @param \\iggyvolz\vulkan\enum\VkStencilOp $failOp VkStencilOp
      * @param \\iggyvolz\vulkan\enum\VkStencilOp $passOp VkStencilOp
      * @param \\iggyvolz\vulkan\enum\VkStencilOp $depthFailOp VkStencilOp
@@ -15270,7 +15270,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \\iggyvolz\vulkan\struct\VkEvent $event VkEvent
-     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits2> $stageMask VkPipelineStageFlags2
+     * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits2> $stageMask VkPipelineStageFlags2
      */
     public function vkCmdResetEvent2(
         struct\VkCommandBuffer $commandBuffer,
@@ -15386,7 +15386,7 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits2> $stage VkPipelineStageFlags2
+     * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits2> $stage VkPipelineStageFlags2
      * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $query uint32_t
      */
@@ -15419,7 +15419,7 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param list<\iggyvolz\vulkan\enum\VkPipelineStageFlagBits2> $stage VkPipelineStageFlags2
+     * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits2> $stage VkPipelineStageFlags2
      * @param \\iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
      * @param int $dstOffset VkDeviceSize
      * @param int $marker uint32_t

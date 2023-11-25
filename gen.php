@@ -43,6 +43,13 @@ function removeDirectory(string $directory): void {
     // Delete the directory
     rmdir($directory);
 }
+$notOkayTypes = [];
+function registerNotOkayType(string $type): void
+{
+    global $notOkayTypes;
+    $notOkayTypes[$type] ??= 0;
+    $notOkayTypes[$type]++;
+}
 removeDirectory($targetDirectory);
 mkdir($targetDirectory);
 mkdir("$targetDirectory/enum");
@@ -139,7 +146,12 @@ foreach($registry->getTypes(Struct::class) as $struct) {
     $cdef = "typedef struct {";
     foreach($struct->members as $member) {
         $memberType = Transformer::get($member->type);
-        if($memberType instanceof DummyTransformer) $structIsOkay = false; else $okayStructMembers++;
+        if($memberType instanceof DummyTransformer){
+            $structIsOkay = false;
+            registerNotOkayType($member->type);
+        } else {
+            $okayStructMembers++;
+        }
         $totalStructMembers++;
         $getter = $class->addMethod("get" . ucfirst($member->name));
         $getter->addBody('$ffi = $this->ffi;');
@@ -166,8 +178,6 @@ foreach($registry->getTypes(Struct::class) as $struct) {
 }
 $pctStructs = round(100 * ($okayStructs / $totalStructs), 2);
 $pctMembers = round(100 * ($okayStructMembers / $totalStructMembers), 2);
-//echo "$okayStructs/$totalStructs ($pctStructs%) structs are complete\n";
-//echo "$okayStructMembers/$totalStructMembers ($pctMembers%) struct members are complete\n";
 
 $vulkanClass = ($vulkanFile = new PhpFile())->setStrictTypes()->addNamespace("iggyvolz\\vulkan")->addClass("Vulkan");
 $vulkanClass->addTrait(VulkanBase::class);
@@ -177,7 +187,10 @@ foreach ($registry->commands as $command) {
     $isOkay = true;
     $method = $vulkanClass->addMethod($command->name);
     $returnTypeTransformer = Transformer::get($command->type);
-    if($returnTypeTransformer instanceof DummyTransformer) $isOkay = false;
+    if($returnTypeTransformer instanceof DummyTransformer) {
+        $isOkay = false;
+        registerNotOkayType($command->type);
+    }
     $cdef = $returnTypeTransformer->cTypePrefix() . " " . $command->name . "(";
     $first = true;
     foreach($command->parameters as $parameter) {
@@ -188,7 +201,11 @@ foreach ($registry->commands as $command) {
         }
         $param = $method->addParameter($parameter->name);
         $paramType = Transformer::get($parameter->type);
-        if($paramType instanceof DummyTransformer) $isOkay = false;
+        if($paramType instanceof DummyTransformer)
+        {
+            $isOkay = false;
+            registerNotOkayType($parameter->type);
+        }
         $param->setType($paramType->phpType());
         $method->addComment("@param " . $paramType->phpDocType() . " \$$parameter->name $parameter->type");
         $method->addBody("\$phpValue = \$$parameter->name;");
@@ -217,6 +234,13 @@ foreach ($registry->commands as $command) {
     if($isOkay) $okayMethods++;
 }
 $pctMethods = round(100 * ($okayMethods / $totalMethods), 2);
-//echo "$okayMethods/$totalMethods ($pctMethods%) methods are callable\n";
+echo "$okayStructs/$totalStructs ($pctStructs%) structs are complete\n";
+echo "$okayStructMembers/$totalStructMembers ($pctMembers%) struct members are complete\n";
+echo "$okayMethods/$totalMethods ($pctMethods%) methods are callable\n";
+arsort($notOkayTypes);
+foreach(($notOkayTypes) as $key => $count) {
+    if($count < 5) continue;
+    echo "- $key ($count)\n";
+}
 file_put_contents($targetDirectory . "/Vulkan.php", $printer->printFile($vulkanFile));
 file_put_contents($targetDirectory . "/CDefs.php", $printer->printFile($cdefsFile));

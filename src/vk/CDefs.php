@@ -1548,6 +1548,7 @@ final class CDefs implements \Stringable
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t shaderCoreCount ;} VkDeviceQueueShaderCoreControlCreateInfoARM;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t schedulingControls ;} VkPhysicalDeviceSchedulingControlsFeaturesARM;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkPhysicalDeviceSchedulingControlsFlagsARM schedulingControlsFlags ;} VkPhysicalDeviceSchedulingControlsPropertiesARM;';
+        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;uint32_t relaxedLineRasterization ;} VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG;';
     }
 
     public function addExtension(string $extension): void

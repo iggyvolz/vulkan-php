@@ -79,8 +79,8 @@ abstract readonly class Transformer
             return new PointerTransformer(substr($type, strlen("const "), -1));
         }
 
-        if(str_starts_with($type, "Vk") && str_contains($type, "Flags") && class_exists($bitsClass = ("iggyvolz\\vulkan\\enum\\" . str_replace("Flags", "FlagBits", $type)))) {
-            return new FlagsTransformer($type, $bitsClass);
+        if(str_starts_with($type, "Vk") && str_contains($type, "Flags") && class_exists("iggyvolz\\vulkan\\enum\\" . str_replace("Flags", "FlagBits", $type))) {
+            return new FlagsTransformer($type);
         }
 
         if(str_starts_with($type, "Vk") && str_contains($type, "Flags") && preg_match("/^Vk[A-Za-z0-9]+$/", $type)) {
