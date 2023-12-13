@@ -22,7 +22,7 @@ final class VkVideoProfileListInfoKHR
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $profileCount = null,
-        mixed $pProfiles = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pProfiles = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkVideoProfileListInfoKHR', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkVideoProfileListInfoKHR
     /**
      * void* /
      */
-    public function getPProfiles(): mixed
+    public function getPProfiles(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pProfiles;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPProfiles(mixed $phpValue): void
+    public function setPProfiles(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pProfiles = $cValue;
     }
 }

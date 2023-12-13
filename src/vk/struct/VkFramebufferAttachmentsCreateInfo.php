@@ -22,7 +22,7 @@ final class VkFramebufferAttachmentsCreateInfo
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $attachmentImageInfoCount = null,
-        mixed $pAttachmentImageInfos = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pAttachmentImageInfos = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkFramebufferAttachmentsCreateInfo', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkFramebufferAttachmentsCreateInfo
     /**
      * void* /
      */
-    public function getPAttachmentImageInfos(): mixed
+    public function getPAttachmentImageInfos(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pAttachmentImageInfos;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPAttachmentImageInfos(mixed $phpValue): void
+    public function setPAttachmentImageInfos(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pAttachmentImageInfos = $cValue;
     }
 }

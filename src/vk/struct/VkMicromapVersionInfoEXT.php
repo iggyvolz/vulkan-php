@@ -21,7 +21,7 @@ final class VkMicromapVersionInfoEXT
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $pVersionData = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pVersionData = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkMicromapVersionInfoEXT', false), $vulkan->ffi);
@@ -70,18 +70,18 @@ final class VkMicromapVersionInfoEXT
     /**
      * void* /
      */
-    public function getPVersionData(): mixed
+    public function getPVersionData(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pVersionData;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPVersionData(mixed $phpValue): void
+    public function setPVersionData(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pVersionData = $cValue;
     }
 }

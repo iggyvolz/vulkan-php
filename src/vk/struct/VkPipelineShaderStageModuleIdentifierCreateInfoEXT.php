@@ -22,7 +22,7 @@ final class VkPipelineShaderStageModuleIdentifierCreateInfoEXT
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $identifierSize = null,
-        mixed $pIdentifier = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pIdentifier = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPipelineShaderStageModuleIdentifierCreateInfoEXT', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkPipelineShaderStageModuleIdentifierCreateInfoEXT
     /**
      * void* /
      */
-    public function getPIdentifier(): mixed
+    public function getPIdentifier(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pIdentifier;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPIdentifier(mixed $phpValue): void
+    public function setPIdentifier(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pIdentifier = $cValue;
     }
 }

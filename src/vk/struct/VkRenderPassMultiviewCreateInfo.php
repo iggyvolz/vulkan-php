@@ -24,7 +24,7 @@ final class VkRenderPassMultiviewCreateInfo
         null|int $subpassCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pViewMasks = null,
         null|int $dependencyCount = null,
-        mixed $pViewOffsets = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pViewOffsets = null,
         null|int $correlationMaskCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pCorrelationMasks = null,
     ): self
@@ -134,18 +134,18 @@ final class VkRenderPassMultiviewCreateInfo
     /**
      * void* /
      */
-    public function getPViewOffsets(): mixed
+    public function getPViewOffsets(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pViewOffsets;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPViewOffsets(mixed $phpValue): void
+    public function setPViewOffsets(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pViewOffsets = $cValue;
     }
 

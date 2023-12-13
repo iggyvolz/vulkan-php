@@ -3,6 +3,7 @@
 namespace iggyvolz\vulkan\generator\Transformer;
 
 use iggyvolz\vulkan\util\IntPointer;
+use iggyvolz\vulkan\util\OpaquePointer;
 
 abstract readonly class Transformer
 {
@@ -85,6 +86,11 @@ abstract readonly class Transformer
 
         if(str_starts_with($type, "Vk") && str_contains($type, "Flags") && preg_match("/^Vk[A-Za-z0-9]+$/", $type)) {
             return new LonelyFlagsTransformer($type);
+        }
+
+        // TODO break this up
+        if(str_ends_with($type, "*")) {
+            return new OpaquePointerTransformer();
         }
 //        echo $type . PHP_EOL;
         return new DummyTransformer();

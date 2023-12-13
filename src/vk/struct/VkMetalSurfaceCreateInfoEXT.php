@@ -22,7 +22,7 @@ final class VkMetalSurfaceCreateInfoEXT
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|array $flags = null,
-        mixed $pLayer = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pLayer = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkMetalSurfaceCreateInfoEXT', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkMetalSurfaceCreateInfoEXT
     /**
      * void* /
      */
-    public function getPLayer(): mixed
+    public function getPLayer(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pLayer;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPLayer(mixed $phpValue): void
+    public function setPLayer(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pLayer = $cValue;
     }
 }

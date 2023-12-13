@@ -22,8 +22,8 @@ final class VkVideoEncodeH265PictureInfoEXT
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $naluSliceSegmentEntryCount = null,
-        mixed $pNaluSliceSegmentEntries = null,
-        mixed $pStdPictureInfo = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pNaluSliceSegmentEntries = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pStdPictureInfo = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkVideoEncodeH265PictureInfoEXT', false), $vulkan->ffi);
@@ -92,36 +92,36 @@ final class VkVideoEncodeH265PictureInfoEXT
     /**
      * void* /
      */
-    public function getPNaluSliceSegmentEntries(): mixed
+    public function getPNaluSliceSegmentEntries(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNaluSliceSegmentEntries;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPNaluSliceSegmentEntries(mixed $phpValue): void
+    public function setPNaluSliceSegmentEntries(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pNaluSliceSegmentEntries = $cValue;
     }
 
     /**
      * void* /
      */
-    public function getPStdPictureInfo(): mixed
+    public function getPStdPictureInfo(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStdPictureInfo;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPStdPictureInfo(mixed $phpValue): void
+    public function setPStdPictureInfo(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pStdPictureInfo = $cValue;
     }
 }

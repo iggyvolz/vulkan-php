@@ -22,7 +22,7 @@ final class VkAttachmentSampleCountInfoAMD
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $colorAttachmentCount = null,
-        mixed $pColorAttachmentSamples = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pColorAttachmentSamples = null,
         null|\iggyvolz\vulkan\enum\VkSampleCountFlagBits $depthStencilAttachmentSamples = null,
     ): self
     {
@@ -92,18 +92,18 @@ final class VkAttachmentSampleCountInfoAMD
     /**
      * void* /
      */
-    public function getPColorAttachmentSamples(): mixed
+    public function getPColorAttachmentSamples(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pColorAttachmentSamples;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPColorAttachmentSamples(mixed $phpValue): void
+    public function setPColorAttachmentSamples(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pColorAttachmentSamples = $cValue;
     }
 

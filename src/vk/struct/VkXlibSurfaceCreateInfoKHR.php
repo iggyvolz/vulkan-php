@@ -22,7 +22,7 @@ final class VkXlibSurfaceCreateInfoKHR
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|array $flags = null,
-        mixed $dpy = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $dpy = null,
         mixed $window = null,
     ): self
     {
@@ -92,18 +92,18 @@ final class VkXlibSurfaceCreateInfoKHR
     /**
      * void* /
      */
-    public function getDpy(): mixed
+    public function getDpy(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->dpy;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setDpy(mixed $phpValue): void
+    public function setDpy(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->dpy = $cValue;
     }
 

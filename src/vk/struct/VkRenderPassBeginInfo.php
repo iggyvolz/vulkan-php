@@ -25,7 +25,7 @@ final class VkRenderPassBeginInfo
         null|VkFramebuffer $framebuffer = null,
         null|VkRect2D $renderArea = null,
         null|int $clearValueCount = null,
-        mixed $pClearValues = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pClearValues = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkRenderPassBeginInfo', false), $vulkan->ffi);
@@ -150,18 +150,18 @@ final class VkRenderPassBeginInfo
     /**
      * void* /
      */
-    public function getPClearValues(): mixed
+    public function getPClearValues(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pClearValues;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPClearValues(mixed $phpValue): void
+    public function setPClearValues(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pClearValues = $cValue;
     }
 }

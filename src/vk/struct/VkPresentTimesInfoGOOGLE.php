@@ -22,7 +22,7 @@ final class VkPresentTimesInfoGOOGLE
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $swapchainCount = null,
-        mixed $pTimes = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pTimes = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPresentTimesInfoGOOGLE', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkPresentTimesInfoGOOGLE
     /**
      * void* /
      */
-    public function getPTimes(): mixed
+    public function getPTimes(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pTimes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPTimes(mixed $phpValue): void
+    public function setPTimes(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pTimes = $cValue;
     }
 }

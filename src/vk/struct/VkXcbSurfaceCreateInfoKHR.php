@@ -22,7 +22,7 @@ final class VkXcbSurfaceCreateInfoKHR
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|array $flags = null,
-        mixed $connection = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $connection = null,
         null|int $window = null,
     ): self
     {
@@ -92,18 +92,18 @@ final class VkXcbSurfaceCreateInfoKHR
     /**
      * void* /
      */
-    public function getConnection(): mixed
+    public function getConnection(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->connection;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setConnection(mixed $phpValue): void
+    public function setConnection(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->connection = $cValue;
     }
 

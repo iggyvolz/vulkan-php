@@ -22,7 +22,7 @@ final class VkDrmFormatModifierPropertiesList2EXT
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $drmFormatModifierCount = null,
-        mixed $pDrmFormatModifierProperties = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pDrmFormatModifierProperties = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkDrmFormatModifierPropertiesList2EXT', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkDrmFormatModifierPropertiesList2EXT
     /**
      * void* /
      */
-    public function getPDrmFormatModifierProperties(): mixed
+    public function getPDrmFormatModifierProperties(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pDrmFormatModifierProperties;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPDrmFormatModifierProperties(mixed $phpValue): void
+    public function setPDrmFormatModifierProperties(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pDrmFormatModifierProperties = $cValue;
     }
 }

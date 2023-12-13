@@ -32,7 +32,7 @@ final class VkIndirectCommandsLayoutTokenNV
         null|int $pushconstantSize = null,
         null|array $indirectStateFlags = null,
         null|int $indexTypeCount = null,
-        mixed $pIndexTypes = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pIndexTypes = null,
         null|\iggyvolz\vulkan\util\IntPointer $pIndexTypeValues = null,
     ): self
     {
@@ -292,18 +292,18 @@ final class VkIndirectCommandsLayoutTokenNV
     /**
      * void* /
      */
-    public function getPIndexTypes(): mixed
+    public function getPIndexTypes(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pIndexTypes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPIndexTypes(mixed $phpValue): void
+    public function setPIndexTypes(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pIndexTypes = $cValue;
     }
 

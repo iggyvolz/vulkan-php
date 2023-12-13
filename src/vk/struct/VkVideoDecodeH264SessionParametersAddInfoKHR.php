@@ -22,9 +22,9 @@ final class VkVideoDecodeH264SessionParametersAddInfoKHR
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $stdSPSCount = null,
-        mixed $pStdSPSs = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pStdSPSs = null,
         null|int $stdPPSCount = null,
-        mixed $pStdPPSs = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pStdPPSs = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkVideoDecodeH264SessionParametersAddInfoKHR', false), $vulkan->ffi);
@@ -94,18 +94,18 @@ final class VkVideoDecodeH264SessionParametersAddInfoKHR
     /**
      * void* /
      */
-    public function getPStdSPSs(): mixed
+    public function getPStdSPSs(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStdSPSs;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPStdSPSs(mixed $phpValue): void
+    public function setPStdSPSs(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pStdSPSs = $cValue;
     }
 
@@ -130,18 +130,18 @@ final class VkVideoDecodeH264SessionParametersAddInfoKHR
     /**
      * void* /
      */
-    public function getPStdPPSs(): mixed
+    public function getPStdPPSs(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStdPPSs;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPStdPPSs(mixed $phpValue): void
+    public function setPStdPPSs(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pStdPPSs = $cValue;
     }
 }

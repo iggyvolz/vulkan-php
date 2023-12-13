@@ -15,7 +15,7 @@
     "ext-dom": "*",
     "nette/php-generator": "^4.0",
     "iggyvolz/simple-attribute-reflection": "^1.0",
-    "php-64bit": "^8.2",
+    "php-64bit": "^8.3",
     "ext-ffi": "*",
     "spatie/once": "^3.1",
     "ramsey/uuid": "^4.7"

@@ -25,7 +25,7 @@ final class VkImportFenceWin32HandleInfoKHR
         null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkExternalFenceHandleTypeFlagBits $handleType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $handle = null,
-        mixed $name = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $name = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkImportFenceWin32HandleInfoKHR', false), $vulkan->ffi);
@@ -150,18 +150,18 @@ final class VkImportFenceWin32HandleInfoKHR
     /**
      * void* /
      */
-    public function getName(): mixed
+    public function getName(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->name;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setName(mixed $phpValue): void
+    public function setName(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->name = $cValue;
     }
 }

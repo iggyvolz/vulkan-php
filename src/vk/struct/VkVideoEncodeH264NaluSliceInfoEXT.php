@@ -22,7 +22,7 @@ final class VkVideoEncodeH264NaluSliceInfoEXT
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $constantQp = null,
-        mixed $pStdSliceHeader = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pStdSliceHeader = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkVideoEncodeH264NaluSliceInfoEXT', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkVideoEncodeH264NaluSliceInfoEXT
     /**
      * void* /
      */
-    public function getPStdSliceHeader(): mixed
+    public function getPStdSliceHeader(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStdSliceHeader;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPStdSliceHeader(mixed $phpValue): void
+    public function setPStdSliceHeader(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pStdSliceHeader = $cValue;
     }
 }

@@ -22,7 +22,7 @@ final class VkAndroidSurfaceCreateInfoKHR
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|array $flags = null,
-        mixed $window = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $window = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkAndroidSurfaceCreateInfoKHR', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkAndroidSurfaceCreateInfoKHR
     /**
      * void* /
      */
-    public function getWindow(): mixed
+    public function getWindow(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->window;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setWindow(mixed $phpValue): void
+    public function setWindow(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->window = $cValue;
     }
 }

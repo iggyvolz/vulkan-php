@@ -22,8 +22,8 @@ final class VkDirectFBSurfaceCreateInfoEXT
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|array $flags = null,
-        mixed $dfb = null,
-        mixed $surface = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $dfb = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $surface = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkDirectFBSurfaceCreateInfoEXT', false), $vulkan->ffi);
@@ -92,36 +92,36 @@ final class VkDirectFBSurfaceCreateInfoEXT
     /**
      * void* /
      */
-    public function getDfb(): mixed
+    public function getDfb(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->dfb;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setDfb(mixed $phpValue): void
+    public function setDfb(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->dfb = $cValue;
     }
 
     /**
      * void* /
      */
-    public function getSurface(): mixed
+    public function getSurface(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->surface;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setSurface(mixed $phpValue): void
+    public function setSurface(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->surface = $cValue;
     }
 }

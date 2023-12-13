@@ -21,9 +21,9 @@ final class VkExportMemoryWin32HandleInfoKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $pAttributes = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pAttributes = null,
         null|int $dwAccess = null,
-        mixed $name = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $name = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkExportMemoryWin32HandleInfoKHR', false), $vulkan->ffi);
@@ -74,18 +74,18 @@ final class VkExportMemoryWin32HandleInfoKHR
     /**
      * void* /
      */
-    public function getPAttributes(): mixed
+    public function getPAttributes(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pAttributes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPAttributes(mixed $phpValue): void
+    public function setPAttributes(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pAttributes = $cValue;
     }
 
@@ -110,18 +110,18 @@ final class VkExportMemoryWin32HandleInfoKHR
     /**
      * void* /
      */
-    public function getName(): mixed
+    public function getName(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->name;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setName(mixed $phpValue): void
+    public function setName(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->name = $cValue;
     }
 }

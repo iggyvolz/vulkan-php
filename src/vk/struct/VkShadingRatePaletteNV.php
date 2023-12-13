@@ -20,7 +20,7 @@ final class VkShadingRatePaletteNV
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|int $shadingRatePaletteEntryCount = null,
-        mixed $pShadingRatePaletteEntries = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pShadingRatePaletteEntries = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkShadingRatePaletteNV', false), $vulkan->ffi);
@@ -50,18 +50,18 @@ final class VkShadingRatePaletteNV
     /**
      * void* /
      */
-    public function getPShadingRatePaletteEntries(): mixed
+    public function getPShadingRatePaletteEntries(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pShadingRatePaletteEntries;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPShadingRatePaletteEntries(mixed $phpValue): void
+    public function setPShadingRatePaletteEntries(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pShadingRatePaletteEntries = $cValue;
     }
 }

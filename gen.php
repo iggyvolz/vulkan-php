@@ -4,6 +4,7 @@ use FFI\CData;
 use iggyvolz\vulkan\enum\VkResult;
 use iggyvolz\vulkan\generator\Registry\EnumType;
 use iggyvolz\vulkan\generator\Registry\Registry;
+use iggyvolz\vulkan\generator\Registry\Type\Bitmask;
 use iggyvolz\vulkan\generator\Registry\Type\Enum;
 use iggyvolz\vulkan\generator\Registry\Type\Handle;
 use iggyvolz\vulkan\generator\Registry\Type\Struct;
@@ -56,7 +57,10 @@ mkdir("$targetDirectory/enum");
 mkdir("$targetDirectory/struct");
 mkdir("$targetDirectory/event");
 $registry = Registry::get(cacheDirectory: __DIR__ . "/cache");
-//file_put_contents(__DIR__ . "/registry.json", json_encode($registry, flags: JSON_PRETTY_PRINT));
+file_put_contents(__DIR__ . "/registry.json", json_encode($registry, flags: JSON_PRETTY_PRINT));
+ob_start();
+var_dump($registry);
+file_put_contents(__DIR__ . "/registry.txt", ob_get_clean());
 $printer = new PsrPrinter();
 
 $cdefsClass = ($cdefsFile = new PhpFile())->setStrictTypes()->addNamespace("iggyvolz\\vulkan")->addClass("CDefs")->setFinal();
@@ -88,6 +92,10 @@ foreach($registry->getTypes(Enum::class) as $enum) {
     if($enum->name === "VkResult") $enumClass->addTrait(VkResultAssert::class);
     file_put_contents($targetDirectory . "/enum/$enum->name.php", $printer->printFile($file));
     addCDef("typedef int $enum->name;");
+}
+// handle flagbits types
+foreach($registry->getTypes(Bitmask::class) as $bitmask) {
+    addCDef("typedef int $bitmask->name;");
 }
 // Generate events for each VkResult
 foreach(VkResult::cases() as $result) {
@@ -183,6 +191,7 @@ $vulkanClass = ($vulkanFile = new PhpFile())->setStrictTypes()->addNamespace("ig
 $vulkanClass->addTrait(VulkanBase::class);
 $totalMethods = 0;
 $okayMethods = 0;
+$notOkayMethods=[];
 foreach ($registry->commands as $command) {
     $isOkay = true;
     $method = $vulkanClass->addMethod($command->name);
@@ -231,16 +240,93 @@ foreach ($registry->commands as $command) {
         addCDef($cdef, $featureOrExtension);
     }
     $totalMethods++;
-    if($isOkay) $okayMethods++;
+    if($isOkay) $okayMethods++; else $notOkayMethods[] = $method->getName();
 }
+// Some reporting - usually hack around this or dump it into the README
 $pctMethods = round(100 * ($okayMethods / $totalMethods), 2);
-echo "$okayStructs/$totalStructs ($pctStructs%) structs are complete\n";
-echo "$okayStructMembers/$totalStructMembers ($pctMembers%) struct members are complete\n";
-echo "$okayMethods/$totalMethods ($pctMethods%) methods are callable\n";
+echo "- $okayStructs/$totalStructs ($pctStructs%) structs are complete\n";
+echo "- $okayStructMembers/$totalStructMembers ($pctMembers%) struct members are complete\n";
+echo "- $okayMethods/$totalMethods ($pctMethods%) methods are callable\n";
 arsort($notOkayTypes);
+echo "- total number of unique incomplete types: " . count($notOkayTypes) . "\n\n";
+echo "number of types by usages:\n";
+echo "- more than 5 usages: " . count(array_filter($notOkayTypes, fn(int $x) => $x > 5)) . "\n";
+$uniqueByTag = [];
+$usagesByTag = [];
+for($i = 5; $i > 0; $i--) {
+    echo "- $i usages: " . count(array_filter($notOkayTypes, fn(int $x) => $x === $i)) . "\n";
+}
+// quick and dirty organization of these to try and sum up some categories
+function tag(string $key): string {
+    if(preg_match("/^u?int[0-9]+_t *\\[[0-9A-Z_]+]$/", $key)) {
+        return "Primitive Array";
+    }
+    if(preg_match("/^float *\\[[0-9A-Z_]+]$/", $key)) {
+        return "Primitive Array";
+    }
+    if(preg_match("/^float *\\[[0-9A-Z_]+][[0-9A-Z_]+]$/", $key)) {
+        return "Primitive 2D Array";
+    }
+    if(preg_match("/^const u?int[0-9]+_t *\\[[0-9A-Z_]+]$/", $key)) {
+        return "Const Primitive Array";
+    }
+    if(preg_match("/^const float *\\[[0-9A-Z_]+]$/", $key)) {
+        return "Const Primitive Array";
+    }
+    if(preg_match("/^Vk[a-zA-Z0-9]+$/", $key)) {
+        return "Plain Vulkan Type";
+    }
+    if(preg_match("/^Vk[a-zA-Z0-9]+ *:[0-9]+$/", $key)) {
+        return "Plain Vulkan Type with Bitfield";
+    }
+    if(preg_match("/^[a-zA-Z0-9_]+$/", $key)) {
+        return "Plain Unknown Type";
+    }
+    if(preg_match("/^Vk[a-zA-Z0-9]+ *\\[[0-9A-Z_]+]$/", $key)) {
+        return "Vulkan Type Array";
+    }
+    if(preg_match("/^(const )?[a-zA-Z0-9]+ *\\[[0-9A-Z_]+]$/", $key)) {
+        return "Non-Vulkan Type Array";
+    }
+    if(preg_match("/^PFN_.+$/", $key)) {
+        return "Vulkan Function Pointer";
+    }
+    if(preg_match("/^const Vk[a-zA-Z0-9_]+\\*$/", $key)) {
+        return "Const Vulkan Pointer";
+    }
+    if(preg_match("/^Vk[a-zA-Z0-9_]+\\*$/", $key)) {
+        return "Vulkan Pointer";
+    }
+    if(preg_match("/^const (struct )?[a-zA-Z0-9_]+\\*$/", $key)) {
+        return "Const Non-Vulkan Pointer";
+    }
+    if(preg_match("/^(struct )?[a-zA-Z0-9_]+\\*$/", $key)) {
+        return "Non-Vulkan Pointer";
+    }
+    if(str_contains($key, "**") || str_contains($key, "* const*")) {
+        return "Miscellaneous Double Pointer";
+    }
+    return "UNKNOWN";
+}
+//echo "\nPlain Vulkan Type by count:\n";
 foreach(($notOkayTypes) as $key => $count) {
-    if($count < 5) continue;
-    echo "- $key ($count)\n";
+    $tag = tag($key);
+    $uniqueByTag[$tag] ??= 0;
+    $usagesByTag[$tag] ??= 0;
+    $uniqueByTag[$tag]++;
+    $usagesByTag[$tag]+=$count;
+//    if($tag === "Plain Vulkan Type") echo "- $key ($count) [$tag]\n";
+}
+
+arsort($uniqueByTag);
+arsort($usagesByTag);
+echo "\nunique types by tag:\n";
+foreach($uniqueByTag as $tag => $count) {
+    echo "- $tag ($count)\n";
+}
+echo "\nusages by tag:\n";
+foreach($usagesByTag as $tag => $count) {
+    echo "- $tag ($count)\n";
 }
 file_put_contents($targetDirectory . "/Vulkan.php", $printer->printFile($vulkanFile));
 file_put_contents($targetDirectory . "/CDefs.php", $printer->printFile($cdefsFile));

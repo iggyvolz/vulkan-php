@@ -22,7 +22,7 @@ final class VkPipelineColorWriteCreateInfoEXT
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $attachmentCount = null,
-        mixed $pColorWriteEnables = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pColorWriteEnables = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPipelineColorWriteCreateInfoEXT', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkPipelineColorWriteCreateInfoEXT
     /**
      * void* /
      */
-    public function getPColorWriteEnables(): mixed
+    public function getPColorWriteEnables(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pColorWriteEnables;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPColorWriteEnables(mixed $phpValue): void
+    public function setPColorWriteEnables(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pColorWriteEnables = $cValue;
     }
 }

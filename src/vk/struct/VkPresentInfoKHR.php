@@ -26,7 +26,7 @@ final class VkPresentInfoKHR
         null|int $swapchainCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pSwapchains = null,
         null|\iggyvolz\vulkan\util\IntPointer $pImageIndices = null,
-        mixed $pResults = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pResults = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPresentInfoKHR', false), $vulkan->ffi);
@@ -170,18 +170,18 @@ final class VkPresentInfoKHR
     /**
      * void* /
      */
-    public function getPResults(): mixed
+    public function getPResults(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pResults;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPResults(mixed $phpValue): void
+    public function setPResults(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pResults = $cValue;
     }
 }

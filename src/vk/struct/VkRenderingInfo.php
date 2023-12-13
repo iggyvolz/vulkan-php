@@ -26,9 +26,9 @@ final class VkRenderingInfo
         null|int $layerCount = null,
         null|int $viewMask = null,
         null|int $colorAttachmentCount = null,
-        mixed $pColorAttachments = null,
-        mixed $pDepthAttachment = null,
-        mixed $pStencilAttachment = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pColorAttachments = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pDepthAttachment = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pStencilAttachment = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkRenderingInfo', false), $vulkan->ffi);
@@ -174,54 +174,54 @@ final class VkRenderingInfo
     /**
      * void* /
      */
-    public function getPColorAttachments(): mixed
+    public function getPColorAttachments(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pColorAttachments;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPColorAttachments(mixed $phpValue): void
+    public function setPColorAttachments(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pColorAttachments = $cValue;
     }
 
     /**
      * void* /
      */
-    public function getPDepthAttachment(): mixed
+    public function getPDepthAttachment(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pDepthAttachment;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPDepthAttachment(mixed $phpValue): void
+    public function setPDepthAttachment(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pDepthAttachment = $cValue;
     }
 
     /**
      * void* /
      */
-    public function getPStencilAttachment(): mixed
+    public function getPStencilAttachment(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStencilAttachment;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPStencilAttachment(mixed $phpValue): void
+    public function setPStencilAttachment(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pStencilAttachment = $cValue;
     }
 }

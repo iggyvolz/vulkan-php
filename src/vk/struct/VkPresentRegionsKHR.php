@@ -22,7 +22,7 @@ final class VkPresentRegionsKHR
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $swapchainCount = null,
-        mixed $pRegions = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pRegions = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPresentRegionsKHR', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkPresentRegionsKHR
     /**
      * void* /
      */
-    public function getPRegions(): mixed
+    public function getPRegions(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pRegions;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPRegions(mixed $phpValue): void
+    public function setPRegions(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pRegions = $cValue;
     }
 }

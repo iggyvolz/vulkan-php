@@ -26,7 +26,7 @@ final class VkImageFormatConstraintsInfoFUCHSIA
         null|array $flags = null,
         null|int $sysmemPixelFormat = null,
         null|int $colorSpaceCount = null,
-        mixed $pColorSpaces = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pColorSpaces = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkImageFormatConstraintsInfoFUCHSIA', false), $vulkan->ffi);
@@ -170,18 +170,18 @@ final class VkImageFormatConstraintsInfoFUCHSIA
     /**
      * void* /
      */
-    public function getPColorSpaces(): mixed
+    public function getPColorSpaces(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pColorSpaces;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPColorSpaces(mixed $phpValue): void
+    public function setPColorSpaces(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pColorSpaces = $cValue;
     }
 }

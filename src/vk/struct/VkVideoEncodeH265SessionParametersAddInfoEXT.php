@@ -22,11 +22,11 @@ final class VkVideoEncodeH265SessionParametersAddInfoEXT
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $stdVPSCount = null,
-        mixed $pStdVPSs = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pStdVPSs = null,
         null|int $stdSPSCount = null,
-        mixed $pStdSPSs = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pStdSPSs = null,
         null|int $stdPPSCount = null,
-        mixed $pStdPPSs = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pStdPPSs = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkVideoEncodeH265SessionParametersAddInfoEXT', false), $vulkan->ffi);
@@ -98,18 +98,18 @@ final class VkVideoEncodeH265SessionParametersAddInfoEXT
     /**
      * void* /
      */
-    public function getPStdVPSs(): mixed
+    public function getPStdVPSs(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStdVPSs;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPStdVPSs(mixed $phpValue): void
+    public function setPStdVPSs(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pStdVPSs = $cValue;
     }
 
@@ -134,18 +134,18 @@ final class VkVideoEncodeH265SessionParametersAddInfoEXT
     /**
      * void* /
      */
-    public function getPStdSPSs(): mixed
+    public function getPStdSPSs(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStdSPSs;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPStdSPSs(mixed $phpValue): void
+    public function setPStdSPSs(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pStdSPSs = $cValue;
     }
 
@@ -170,18 +170,18 @@ final class VkVideoEncodeH265SessionParametersAddInfoEXT
     /**
      * void* /
      */
-    public function getPStdPPSs(): mixed
+    public function getPStdPPSs(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStdPPSs;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPStdPPSs(mixed $phpValue): void
+    public function setPStdPPSs(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pStdPPSs = $cValue;
     }
 }

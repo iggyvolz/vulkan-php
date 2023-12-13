@@ -26,8 +26,8 @@ final class VkMicromapBuildInfoEXT
         null|\iggyvolz\vulkan\enum\VkBuildMicromapModeEXT $mode = null,
         null|VkMicromapEXT $dstMicromap = null,
         null|int $usageCountsCount = null,
-        mixed $pUsageCounts = null,
-        mixed $ppUsageCounts = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pUsageCounts = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $ppUsageCounts = null,
         mixed $data = null,
         mixed $scratchData = null,
         mixed $triangleArray = null,
@@ -180,36 +180,36 @@ final class VkMicromapBuildInfoEXT
     /**
      * void* /
      */
-    public function getPUsageCounts(): mixed
+    public function getPUsageCounts(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pUsageCounts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPUsageCounts(mixed $phpValue): void
+    public function setPUsageCounts(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pUsageCounts = $cValue;
     }
 
     /**
      * void* /
      */
-    public function getPpUsageCounts(): mixed
+    public function getPpUsageCounts(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->ppUsageCounts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPpUsageCounts(mixed $phpValue): void
+    public function setPpUsageCounts(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->ppUsageCounts = $cValue;
     }
 

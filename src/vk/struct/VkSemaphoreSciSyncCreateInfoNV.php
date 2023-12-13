@@ -22,7 +22,7 @@ final class VkSemaphoreSciSyncCreateInfoNV
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|VkSemaphoreSciSyncPoolNV $semaphorePool = null,
-        mixed $pFence = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pFence = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkSemaphoreSciSyncCreateInfoNV', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkSemaphoreSciSyncCreateInfoNV
     /**
      * void* /
      */
-    public function getPFence(): mixed
+    public function getPFence(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pFence;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPFence(mixed $phpValue): void
+    public function setPFence(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pFence = $cValue;
     }
 }

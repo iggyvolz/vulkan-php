@@ -22,7 +22,7 @@ final class VkDescriptorSetLayoutBindingFlagsCreateInfo
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $bindingCount = null,
-        mixed $pBindingFlags = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pBindingFlags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkDescriptorSetLayoutBindingFlagsCreateInfo', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkDescriptorSetLayoutBindingFlagsCreateInfo
     /**
      * void* /
      */
-    public function getPBindingFlags(): mixed
+    public function getPBindingFlags(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pBindingFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPBindingFlags(mixed $phpValue): void
+    public function setPBindingFlags(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pBindingFlags = $cValue;
     }
 }

@@ -22,9 +22,9 @@ final class VkPhysicalDeviceHostImageCopyPropertiesEXT
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $copySrcLayoutCount = null,
-        mixed $pCopySrcLayouts = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pCopySrcLayouts = null,
         null|int $copyDstLayoutCount = null,
-        mixed $pCopyDstLayouts = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pCopyDstLayouts = null,
         null|\Ramsey\Uuid\UuidInterface $optimalTilingLayoutUUID = null,
         null|bool $identicalMemoryTypeRequirements = null,
     ): self
@@ -98,18 +98,18 @@ final class VkPhysicalDeviceHostImageCopyPropertiesEXT
     /**
      * void* /
      */
-    public function getPCopySrcLayouts(): mixed
+    public function getPCopySrcLayouts(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pCopySrcLayouts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPCopySrcLayouts(mixed $phpValue): void
+    public function setPCopySrcLayouts(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pCopySrcLayouts = $cValue;
     }
 
@@ -134,18 +134,18 @@ final class VkPhysicalDeviceHostImageCopyPropertiesEXT
     /**
      * void* /
      */
-    public function getPCopyDstLayouts(): mixed
+    public function getPCopyDstLayouts(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pCopyDstLayouts;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPCopyDstLayouts(mixed $phpValue): void
+    public function setPCopyDstLayouts(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pCopyDstLayouts = $cValue;
     }
 

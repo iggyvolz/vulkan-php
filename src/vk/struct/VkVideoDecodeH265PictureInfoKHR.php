@@ -21,7 +21,7 @@ final class VkVideoDecodeH265PictureInfoKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $pStdPictureInfo = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pStdPictureInfo = null,
         null|int $sliceSegmentCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pSliceSegmentOffsets = null,
     ): self
@@ -74,18 +74,18 @@ final class VkVideoDecodeH265PictureInfoKHR
     /**
      * void* /
      */
-    public function getPStdPictureInfo(): mixed
+    public function getPStdPictureInfo(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStdPictureInfo;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPStdPictureInfo(mixed $phpValue): void
+    public function setPStdPictureInfo(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pStdPictureInfo = $cValue;
     }
 

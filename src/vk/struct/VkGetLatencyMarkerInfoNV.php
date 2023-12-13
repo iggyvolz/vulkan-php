@@ -21,7 +21,7 @@ final class VkGetLatencyMarkerInfoNV
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $pTimings = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pTimings = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkGetLatencyMarkerInfoNV', false), $vulkan->ffi);
@@ -70,18 +70,18 @@ final class VkGetLatencyMarkerInfoNV
     /**
      * void* /
      */
-    public function getPTimings(): mixed
+    public function getPTimings(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pTimings;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPTimings(mixed $phpValue): void
+    public function setPTimings(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pTimings = $cValue;
     }
 }

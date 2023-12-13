@@ -24,7 +24,7 @@ final class VkExecutionGraphPipelineCreateInfoAMDX
         null|array $flags = null,
         null|int $stageCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pStages = null,
-        mixed $pLibraryInfo = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pLibraryInfo = null,
         null|VkPipelineLayout $layout = null,
         null|VkPipeline $basePipelineHandle = null,
         null|int $basePipelineIndex = null,
@@ -136,18 +136,18 @@ final class VkExecutionGraphPipelineCreateInfoAMDX
     /**
      * void* /
      */
-    public function getPLibraryInfo(): mixed
+    public function getPLibraryInfo(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pLibraryInfo;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPLibraryInfo(mixed $phpValue): void
+    public function setPLibraryInfo(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pLibraryInfo = $cValue;
     }
 

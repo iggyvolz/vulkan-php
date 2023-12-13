@@ -20,7 +20,7 @@ final class VkPresentRegionKHR
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|int $rectangleCount = null,
-        mixed $pRectangles = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pRectangles = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPresentRegionKHR', false), $vulkan->ffi);
@@ -50,18 +50,18 @@ final class VkPresentRegionKHR
     /**
      * void* /
      */
-    public function getPRectangles(): mixed
+    public function getPRectangles(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pRectangles;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPRectangles(mixed $phpValue): void
+    public function setPRectangles(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pRectangles = $cValue;
     }
 }

@@ -23,7 +23,7 @@ final class VkImageCompressionControlEXT
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|array $flags = null,
         null|int $compressionControlPlaneCount = null,
-        mixed $pFixedRateFlags = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pFixedRateFlags = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkImageCompressionControlEXT', false), $vulkan->ffi);
@@ -110,18 +110,18 @@ final class VkImageCompressionControlEXT
     /**
      * void* /
      */
-    public function getPFixedRateFlags(): mixed
+    public function getPFixedRateFlags(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pFixedRateFlags;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPFixedRateFlags(mixed $phpValue): void
+    public function setPFixedRateFlags(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pFixedRateFlags = $cValue;
     }
 }

@@ -24,7 +24,7 @@ final class VkVideoEncodeRateControlInfoKHR
         null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkVideoEncodeRateControlModeFlagBitsKHR $rateControlMode = null,
         null|int $layerCount = null,
-        mixed $pLayers = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pLayers = null,
         null|int $virtualBufferSizeInMs = null,
         null|int $initialVirtualBufferSizeInMs = null,
     ): self
@@ -134,18 +134,18 @@ final class VkVideoEncodeRateControlInfoKHR
     /**
      * void* /
      */
-    public function getPLayers(): mixed
+    public function getPLayers(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pLayers;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPLayers(mixed $phpValue): void
+    public function setPLayers(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pLayers = $cValue;
     }
 

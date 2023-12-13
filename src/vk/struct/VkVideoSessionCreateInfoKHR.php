@@ -23,7 +23,7 @@ final class VkVideoSessionCreateInfoKHR
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $queueFamilyIndex = null,
         null|array $flags = null,
-        mixed $pVideoProfile = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pVideoProfile = null,
         null|\iggyvolz\vulkan\enum\VkFormat $pictureFormat = null,
         null|VkExtent2D $maxCodedExtent = null,
         null|\iggyvolz\vulkan\enum\VkFormat $referencePictureFormat = null,
@@ -122,18 +122,18 @@ final class VkVideoSessionCreateInfoKHR
     /**
      * void* /
      */
-    public function getPVideoProfile(): mixed
+    public function getPVideoProfile(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pVideoProfile;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPVideoProfile(mixed $phpValue): void
+    public function setPVideoProfile(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pVideoProfile = $cValue;
     }
 

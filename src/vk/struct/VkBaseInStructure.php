@@ -20,7 +20,7 @@ final class VkBaseInStructure
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        mixed $pNext = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkBaseInStructure', false), $vulkan->ffi);
@@ -50,18 +50,18 @@ final class VkBaseInStructure
     /**
      * void* /
      */
-    public function getPNext(): mixed
+    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPNext(mixed $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
 }

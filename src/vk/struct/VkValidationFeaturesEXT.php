@@ -22,9 +22,9 @@ final class VkValidationFeaturesEXT
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $enabledValidationFeatureCount = null,
-        mixed $pEnabledValidationFeatures = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pEnabledValidationFeatures = null,
         null|int $disabledValidationFeatureCount = null,
-        mixed $pDisabledValidationFeatures = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pDisabledValidationFeatures = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkValidationFeaturesEXT', false), $vulkan->ffi);
@@ -94,18 +94,18 @@ final class VkValidationFeaturesEXT
     /**
      * void* /
      */
-    public function getPEnabledValidationFeatures(): mixed
+    public function getPEnabledValidationFeatures(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pEnabledValidationFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPEnabledValidationFeatures(mixed $phpValue): void
+    public function setPEnabledValidationFeatures(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pEnabledValidationFeatures = $cValue;
     }
 
@@ -130,18 +130,18 @@ final class VkValidationFeaturesEXT
     /**
      * void* /
      */
-    public function getPDisabledValidationFeatures(): mixed
+    public function getPDisabledValidationFeatures(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pDisabledValidationFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPDisabledValidationFeatures(mixed $phpValue): void
+    public function setPDisabledValidationFeatures(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pDisabledValidationFeatures = $cValue;
     }
 }

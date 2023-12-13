@@ -21,7 +21,7 @@ final class VkImportScreenBufferInfoQNX
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $buffer = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $buffer = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkImportScreenBufferInfoQNX', false), $vulkan->ffi);
@@ -70,18 +70,18 @@ final class VkImportScreenBufferInfoQNX
     /**
      * void* /
      */
-    public function getBuffer(): mixed
+    public function getBuffer(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->buffer;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setBuffer(mixed $phpValue): void
+    public function setBuffer(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->buffer = $cValue;
     }
 }

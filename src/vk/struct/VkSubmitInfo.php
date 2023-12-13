@@ -23,7 +23,7 @@ final class VkSubmitInfo
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $waitSemaphoreCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pWaitSemaphores = null,
-        mixed $pWaitDstStageMask = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pWaitDstStageMask = null,
         null|int $commandBufferCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pCommandBuffers = null,
         null|int $signalSemaphoreCount = null,
@@ -118,18 +118,18 @@ final class VkSubmitInfo
     /**
      * void* /
      */
-    public function getPWaitDstStageMask(): mixed
+    public function getPWaitDstStageMask(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pWaitDstStageMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPWaitDstStageMask(mixed $phpValue): void
+    public function setPWaitDstStageMask(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pWaitDstStageMask = $cValue;
     }
 

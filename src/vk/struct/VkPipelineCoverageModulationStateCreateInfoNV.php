@@ -25,7 +25,7 @@ final class VkPipelineCoverageModulationStateCreateInfoNV
         null|\iggyvolz\vulkan\enum\VkCoverageModulationModeNV $coverageModulationMode = null,
         null|bool $coverageModulationTableEnable = null,
         null|int $coverageModulationTableCount = null,
-        mixed $pCoverageModulationTable = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pCoverageModulationTable = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPipelineCoverageModulationStateCreateInfoNV', false), $vulkan->ffi);
@@ -150,18 +150,18 @@ final class VkPipelineCoverageModulationStateCreateInfoNV
     /**
      * void* /
      */
-    public function getPCoverageModulationTable(): mixed
+    public function getPCoverageModulationTable(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pCoverageModulationTable;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPCoverageModulationTable(mixed $phpValue): void
+    public function setPCoverageModulationTable(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pCoverageModulationTable = $cValue;
     }
 }

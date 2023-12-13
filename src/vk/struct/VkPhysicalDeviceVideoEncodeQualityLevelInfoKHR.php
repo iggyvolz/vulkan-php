@@ -21,7 +21,7 @@ final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $pVideoProfile = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pVideoProfile = null,
         null|int $qualityLevel = null,
     ): self
     {
@@ -72,18 +72,18 @@ final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR
     /**
      * void* /
      */
-    public function getPVideoProfile(): mixed
+    public function getPVideoProfile(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pVideoProfile;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPVideoProfile(mixed $phpValue): void
+    public function setPVideoProfile(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pVideoProfile = $cValue;
     }
 

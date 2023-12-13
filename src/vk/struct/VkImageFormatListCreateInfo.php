@@ -22,7 +22,7 @@ final class VkImageFormatListCreateInfo
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $viewFormatCount = null,
-        mixed $pViewFormats = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pViewFormats = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkImageFormatListCreateInfo', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkImageFormatListCreateInfo
     /**
      * void* /
      */
-    public function getPViewFormats(): mixed
+    public function getPViewFormats(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pViewFormats;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPViewFormats(mixed $phpValue): void
+    public function setPViewFormats(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pViewFormats = $cValue;
     }
 }

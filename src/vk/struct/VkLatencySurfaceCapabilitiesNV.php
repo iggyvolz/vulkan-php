@@ -22,7 +22,7 @@ final class VkLatencySurfaceCapabilitiesNV
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $presentModeCount = null,
-        mixed $pPresentModes = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pPresentModes = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkLatencySurfaceCapabilitiesNV', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkLatencySurfaceCapabilitiesNV
     /**
      * void* /
      */
-    public function getPPresentModes(): mixed
+    public function getPPresentModes(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pPresentModes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPPresentModes(mixed $phpValue): void
+    public function setPPresentModes(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pPresentModes = $cValue;
     }
 }

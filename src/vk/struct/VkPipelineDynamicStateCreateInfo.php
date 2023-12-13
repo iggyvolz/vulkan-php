@@ -23,7 +23,7 @@ final class VkPipelineDynamicStateCreateInfo
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|array $flags = null,
         null|int $dynamicStateCount = null,
-        mixed $pDynamicStates = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pDynamicStates = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPipelineDynamicStateCreateInfo', false), $vulkan->ffi);
@@ -110,18 +110,18 @@ final class VkPipelineDynamicStateCreateInfo
     /**
      * void* /
      */
-    public function getPDynamicStates(): mixed
+    public function getPDynamicStates(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pDynamicStates;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPDynamicStates(mixed $phpValue): void
+    public function setPDynamicStates(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pDynamicStates = $cValue;
     }
 }

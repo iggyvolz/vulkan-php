@@ -24,7 +24,7 @@ final class VkDeviceQueueCreateInfo
         null|array $flags = null,
         null|int $queueFamilyIndex = null,
         null|int $queueCount = null,
-        mixed $pQueuePriorities = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pQueuePriorities = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkDeviceQueueCreateInfo', false), $vulkan->ffi);
@@ -130,18 +130,18 @@ final class VkDeviceQueueCreateInfo
     /**
      * void* /
      */
-    public function getPQueuePriorities(): mixed
+    public function getPQueuePriorities(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pQueuePriorities;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPQueuePriorities(mixed $phpValue): void
+    public function setPQueuePriorities(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pQueuePriorities = $cValue;
     }
 }

@@ -27,8 +27,8 @@ final class VkRayTracingPipelineCreateInfoKHR
         null|int $groupCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pGroups = null,
         null|int $maxPipelineRayRecursionDepth = null,
-        mixed $pLibraryInfo = null,
-        mixed $pLibraryInterface = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pLibraryInfo = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pLibraryInterface = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pDynamicState = null,
         null|VkPipelineLayout $layout = null,
         null|VkPipeline $basePipelineHandle = null,
@@ -200,36 +200,36 @@ final class VkRayTracingPipelineCreateInfoKHR
     /**
      * void* /
      */
-    public function getPLibraryInfo(): mixed
+    public function getPLibraryInfo(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pLibraryInfo;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPLibraryInfo(mixed $phpValue): void
+    public function setPLibraryInfo(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pLibraryInfo = $cValue;
     }
 
     /**
      * void* /
      */
-    public function getPLibraryInterface(): mixed
+    public function getPLibraryInterface(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pLibraryInterface;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPLibraryInterface(mixed $phpValue): void
+    public function setPLibraryInterface(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pLibraryInterface = $cValue;
     }
 

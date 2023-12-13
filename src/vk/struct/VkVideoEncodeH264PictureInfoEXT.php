@@ -22,8 +22,8 @@ final class VkVideoEncodeH264PictureInfoEXT
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $naluSliceEntryCount = null,
-        mixed $pNaluSliceEntries = null,
-        mixed $pStdPictureInfo = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pNaluSliceEntries = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pStdPictureInfo = null,
         null|bool $generatePrefixNalu = null,
     ): self
     {
@@ -94,36 +94,36 @@ final class VkVideoEncodeH264PictureInfoEXT
     /**
      * void* /
      */
-    public function getPNaluSliceEntries(): mixed
+    public function getPNaluSliceEntries(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNaluSliceEntries;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPNaluSliceEntries(mixed $phpValue): void
+    public function setPNaluSliceEntries(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pNaluSliceEntries = $cValue;
     }
 
     /**
      * void* /
      */
-    public function getPStdPictureInfo(): mixed
+    public function getPStdPictureInfo(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStdPictureInfo;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPStdPictureInfo(mixed $phpValue): void
+    public function setPStdPictureInfo(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pStdPictureInfo = $cValue;
     }
 

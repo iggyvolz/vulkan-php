@@ -28,7 +28,7 @@ final class VkAccelerationStructureBuildGeometryInfoKHR
         null|VkAccelerationStructureKHR $dstAccelerationStructure = null,
         null|int $geometryCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pGeometries = null,
-        mixed $ppGeometries = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $ppGeometries = null,
         mixed $scratchData = null,
     ): self
     {
@@ -212,18 +212,18 @@ final class VkAccelerationStructureBuildGeometryInfoKHR
     /**
      * void* /
      */
-    public function getPpGeometries(): mixed
+    public function getPpGeometries(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->ppGeometries;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPpGeometries(mixed $phpValue): void
+    public function setPpGeometries(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->ppGeometries = $cValue;
     }
 

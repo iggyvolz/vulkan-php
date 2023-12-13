@@ -25,10 +25,10 @@ final class VkDeviceCreateInfo
         null|int $queueCreateInfoCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pQueueCreateInfos = null,
         null|int $enabledLayerCount = null,
-        mixed $ppEnabledLayerNames = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $ppEnabledLayerNames = null,
         null|int $enabledExtensionCount = null,
-        mixed $ppEnabledExtensionNames = null,
-        mixed $pEnabledFeatures = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $ppEnabledExtensionNames = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pEnabledFeatures = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkDeviceCreateInfo', false), $vulkan->ffi);
@@ -156,18 +156,18 @@ final class VkDeviceCreateInfo
     /**
      * void* /
      */
-    public function getPpEnabledLayerNames(): mixed
+    public function getPpEnabledLayerNames(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->ppEnabledLayerNames;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPpEnabledLayerNames(mixed $phpValue): void
+    public function setPpEnabledLayerNames(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->ppEnabledLayerNames = $cValue;
     }
 
@@ -192,36 +192,36 @@ final class VkDeviceCreateInfo
     /**
      * void* /
      */
-    public function getPpEnabledExtensionNames(): mixed
+    public function getPpEnabledExtensionNames(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->ppEnabledExtensionNames;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPpEnabledExtensionNames(mixed $phpValue): void
+    public function setPpEnabledExtensionNames(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->ppEnabledExtensionNames = $cValue;
     }
 
     /**
      * void* /
      */
-    public function getPEnabledFeatures(): mixed
+    public function getPEnabledFeatures(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pEnabledFeatures;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPEnabledFeatures(mixed $phpValue): void
+    public function setPEnabledFeatures(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pEnabledFeatures = $cValue;
     }
 }

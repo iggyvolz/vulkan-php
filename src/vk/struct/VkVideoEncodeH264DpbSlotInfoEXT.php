@@ -21,7 +21,7 @@ final class VkVideoEncodeH264DpbSlotInfoEXT
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $pStdReferenceInfo = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pStdReferenceInfo = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkVideoEncodeH264DpbSlotInfoEXT', false), $vulkan->ffi);
@@ -70,18 +70,18 @@ final class VkVideoEncodeH264DpbSlotInfoEXT
     /**
      * void* /
      */
-    public function getPStdReferenceInfo(): mixed
+    public function getPStdReferenceInfo(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStdReferenceInfo;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPStdReferenceInfo(mixed $phpValue): void
+    public function setPStdReferenceInfo(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pStdReferenceInfo = $cValue;
     }
 }

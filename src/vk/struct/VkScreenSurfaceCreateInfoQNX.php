@@ -22,8 +22,8 @@ final class VkScreenSurfaceCreateInfoQNX
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|array $flags = null,
-        mixed $context = null,
-        mixed $window = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $context = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $window = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkScreenSurfaceCreateInfoQNX', false), $vulkan->ffi);
@@ -92,36 +92,36 @@ final class VkScreenSurfaceCreateInfoQNX
     /**
      * void* /
      */
-    public function getContext(): mixed
+    public function getContext(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->context;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setContext(mixed $phpValue): void
+    public function setContext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->context = $cValue;
     }
 
     /**
      * void* /
      */
-    public function getWindow(): mixed
+    public function getWindow(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->window;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setWindow(mixed $phpValue): void
+    public function setWindow(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->window = $cValue;
     }
 }

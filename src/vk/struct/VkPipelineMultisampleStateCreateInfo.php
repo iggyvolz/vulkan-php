@@ -25,7 +25,7 @@ final class VkPipelineMultisampleStateCreateInfo
         null|\iggyvolz\vulkan\enum\VkSampleCountFlagBits $rasterizationSamples = null,
         null|bool $sampleShadingEnable = null,
         null|float $minSampleShading = null,
-        mixed $pSampleMask = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pSampleMask = null,
         null|bool $alphaToCoverageEnable = null,
         null|bool $alphaToOneEnable = null,
     ): self
@@ -154,18 +154,18 @@ final class VkPipelineMultisampleStateCreateInfo
     /**
      * void* /
      */
-    public function getPSampleMask(): mixed
+    public function getPSampleMask(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pSampleMask;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPSampleMask(mixed $phpValue): void
+    public function setPSampleMask(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pSampleMask = $cValue;
     }
 

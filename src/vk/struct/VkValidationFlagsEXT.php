@@ -22,7 +22,7 @@ final class VkValidationFlagsEXT
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
         null|int $disabledValidationCheckCount = null,
-        mixed $pDisabledValidationChecks = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pDisabledValidationChecks = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkValidationFlagsEXT', false), $vulkan->ffi);
@@ -90,18 +90,18 @@ final class VkValidationFlagsEXT
     /**
      * void* /
      */
-    public function getPDisabledValidationChecks(): mixed
+    public function getPDisabledValidationChecks(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pDisabledValidationChecks;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPDisabledValidationChecks(mixed $phpValue): void
+    public function setPDisabledValidationChecks(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pDisabledValidationChecks = $cValue;
     }
 }

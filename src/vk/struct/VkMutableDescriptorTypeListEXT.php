@@ -20,7 +20,7 @@ final class VkMutableDescriptorTypeListEXT
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|int $descriptorTypeCount = null,
-        mixed $pDescriptorTypes = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pDescriptorTypes = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkMutableDescriptorTypeListEXT', false), $vulkan->ffi);
@@ -50,18 +50,18 @@ final class VkMutableDescriptorTypeListEXT
     /**
      * void* /
      */
-    public function getPDescriptorTypes(): mixed
+    public function getPDescriptorTypes(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pDescriptorTypes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPDescriptorTypes(mixed $phpValue): void
+    public function setPDescriptorTypes(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pDescriptorTypes = $cValue;
     }
 }

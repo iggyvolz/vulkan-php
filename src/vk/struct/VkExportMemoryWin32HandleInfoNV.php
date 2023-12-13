@@ -21,7 +21,7 @@ final class VkExportMemoryWin32HandleInfoNV
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        mixed $pAttributes = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pAttributes = null,
         null|int $dwAccess = null,
     ): self
     {
@@ -72,18 +72,18 @@ final class VkExportMemoryWin32HandleInfoNV
     /**
      * void* /
      */
-    public function getPAttributes(): mixed
+    public function getPAttributes(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pAttributes;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPAttributes(mixed $phpValue): void
+    public function setPAttributes(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pAttributes = $cValue;
     }
 

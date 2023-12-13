@@ -24,7 +24,7 @@ final class VkCommandBufferInheritanceRenderingInfo
         null|array $flags = null,
         null|int $viewMask = null,
         null|int $colorAttachmentCount = null,
-        mixed $pColorAttachmentFormats = null,
+        null|\iggyvolz\vulkan\util\OpaquePointer $pColorAttachmentFormats = null,
         null|\iggyvolz\vulkan\enum\VkFormat $depthAttachmentFormat = null,
         null|\iggyvolz\vulkan\enum\VkFormat $stencilAttachmentFormat = null,
         null|\iggyvolz\vulkan\enum\VkSampleCountFlagBits $rasterizationSamples = null,
@@ -136,18 +136,18 @@ final class VkCommandBufferInheritanceRenderingInfo
     /**
      * void* /
      */
-    public function getPColorAttachmentFormats(): mixed
+    public function getPColorAttachmentFormats(): \iggyvolz\vulkan\util\OpaquePointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pColorAttachmentFormats;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
         return $phpValue;
     }
 
-    public function setPColorAttachmentFormats(mixed $phpValue): void
+    public function setPColorAttachmentFormats(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue->cdata;
         $this->cdata->pColorAttachmentFormats = $cValue;
     }
 
