@@ -53,7 +53,7 @@ final class ObjectPointer extends Pointer
     {
         $ctype = substr($type, strrpos($type, "\\")+1);
         $cdata = $vulkan->ffi->new("$ctype" . "[$length]", false);
-        return new self($type, FFI::addr($cdata), $vulkan->ffi, $cdata);
+        return new self($type, FFI::addr($cdata[0]), $vulkan->ffi, $cdata);
     }
 
     /**
