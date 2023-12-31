@@ -15,5 +15,5 @@ enum VkDescriptorSetLayoutCreateFlagBits: int
     case Reserved3BitAmd = 3;
     case IndirectBindableBitNv = 7;
     case HostOnlyPoolBitExt = 2;
-    case Reserved6BitExt = 6;
+    case PerStageBitNv = 6;
 }

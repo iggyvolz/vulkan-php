@@ -10,4 +10,5 @@ enum VkVideoSessionCreateFlagBitsKHR: int
 
     case ProtectedContent = 0;
     case AllowEncodeParameterOptimizations = 1;
+    case InlineQueries = 2;
 }

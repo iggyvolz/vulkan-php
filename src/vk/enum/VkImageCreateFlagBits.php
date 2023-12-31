@@ -28,5 +28,5 @@ enum VkImageCreateFlagBits: int
     case MultisampledRenderToSingleSampledBitExt = 18;
     case _2dViewCompatibleBitExt = 17;
     case FragmentDensityMapOffsetBitQcom = 15;
-    case Reserved20BitKhr = 20;
+    case VideoProfileIndependentBitKhr = 20;
 }

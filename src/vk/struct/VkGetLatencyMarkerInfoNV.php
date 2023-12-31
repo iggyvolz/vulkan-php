@@ -21,12 +21,14 @@ final class VkGetLatencyMarkerInfoNV
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
+        null|int $timingCount = null,
         null|\iggyvolz\vulkan\util\Pointer $pTimings = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkGetLatencyMarkerInfoNV', false), $vulkan->ffi);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
+        if(!is_null($timingCount)) $self->setTimingCount($timingCount);
         if(!is_null($pTimings)) $self->setPTimings($pTimings);
         return $self;
     }
@@ -65,6 +67,24 @@ final class VkGetLatencyMarkerInfoNV
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
+    }
+
+    /**
+     * uint32_t/
+     */
+    public function getTimingCount(): int
+    {
+        $ffi = $this->ffi;
+        $cValue = $this->cdata->timingCount;
+        $phpValue = $cValue;
+        return $phpValue;
+    }
+
+    public function setTimingCount(int $phpValue): void
+    {
+        $ffi = $this->ffi;
+        $cValue = $phpValue;
+        $this->cdata->timingCount = $cValue;
     }
 
     /**

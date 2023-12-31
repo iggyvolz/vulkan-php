@@ -9783,10 +9783,10 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pTimeDomainCount uint32_t*
-     * @param \iggyvolz\vulkan\util\Pointer $pTimeDomains VkTimeDomainEXT*
+     * @param \iggyvolz\vulkan\util\Pointer $pTimeDomains VkTimeDomainKHR*
      * returns VkResult
      */
-    public function vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
+    public function vkGetPhysicalDeviceCalibrateableTimeDomainsKHR(
         struct\VkPhysicalDevice $physicalDevice,
         util\IntPointer $pTimeDomainCount,
         util\Pointer $pTimeDomains,
@@ -9801,7 +9801,7 @@ class Vulkan
         $phpValue = $pTimeDomains;
         $cValue = $phpValue->cdata;
         $pTimeDomainsC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
+        $cValue = $this->ffi->vkGetPhysicalDeviceCalibrateableTimeDomainsKHR(
             $physicalDeviceC,
             $pTimeDomainCountC,
             $pTimeDomainsC,
@@ -9813,12 +9813,12 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $timestampCount uint32_t
-     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCalibratedTimestampInfoEXT> $pTimestampInfos const VkCalibratedTimestampInfoEXT*
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCalibratedTimestampInfoKHR> $pTimestampInfos const VkCalibratedTimestampInfoKHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pTimestamps uint64_t*
      * @param \iggyvolz\vulkan\util\IntPointer $pMaxDeviation uint64_t*
      * returns VkResult
      */
-    public function vkGetCalibratedTimestampsEXT(
+    public function vkGetCalibratedTimestampsKHR(
         struct\VkDevice $device,
         int $timestampCount,
         util\ObjectPointer $pTimestampInfos,
@@ -9841,7 +9841,7 @@ class Vulkan
         $phpValue = $pMaxDeviation;
         $cValue = $phpValue->cdata;
         $pMaxDeviationC = $cValue;
-        $cValue = $this->ffi->vkGetCalibratedTimestampsEXT(
+        $cValue = $this->ffi->vkGetCalibratedTimestampsKHR(
             $deviceC,
             $timestampCountC,
             $pTimestampInfosC,
@@ -18566,6 +18566,132 @@ class Vulkan
     }
 
     /**
+     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBindDescriptorSetsInfoKHR> $pBindDescriptorSetsInfo const VkBindDescriptorSetsInfoKHR*
+     */
+    public function vkCmdBindDescriptorSets2KHR(
+        struct\VkCommandBuffer $commandBuffer,
+        util\ObjectPointer $pBindDescriptorSetsInfo,
+    ): void
+    {
+        $phpValue = $commandBuffer;
+        $cValue = $phpValue->cdata;
+        $commandBufferC = $cValue;
+        $phpValue = $pBindDescriptorSetsInfo;
+        $cValue = $phpValue->cdata;
+        $pBindDescriptorSetsInfoC = $cValue;
+        $cValue = $this->ffi->vkCmdBindDescriptorSets2KHR(
+            $commandBufferC,
+            $pBindDescriptorSetsInfoC,
+        );
+    }
+
+    /**
+     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPushConstantsInfoKHR> $pPushConstantsInfo const VkPushConstantsInfoKHR*
+     */
+    public function vkCmdPushConstants2KHR(
+        struct\VkCommandBuffer $commandBuffer,
+        util\ObjectPointer $pPushConstantsInfo,
+    ): void
+    {
+        $phpValue = $commandBuffer;
+        $cValue = $phpValue->cdata;
+        $commandBufferC = $cValue;
+        $phpValue = $pPushConstantsInfo;
+        $cValue = $phpValue->cdata;
+        $pPushConstantsInfoC = $cValue;
+        $cValue = $this->ffi->vkCmdPushConstants2KHR(
+            $commandBufferC,
+            $pPushConstantsInfoC,
+        );
+    }
+
+    /**
+     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPushDescriptorSetInfoKHR> $pPushDescriptorSetInfo const VkPushDescriptorSetInfoKHR*
+     */
+    public function vkCmdPushDescriptorSet2KHR(
+        struct\VkCommandBuffer $commandBuffer,
+        util\ObjectPointer $pPushDescriptorSetInfo,
+    ): void
+    {
+        $phpValue = $commandBuffer;
+        $cValue = $phpValue->cdata;
+        $commandBufferC = $cValue;
+        $phpValue = $pPushDescriptorSetInfo;
+        $cValue = $phpValue->cdata;
+        $pPushDescriptorSetInfoC = $cValue;
+        $cValue = $this->ffi->vkCmdPushDescriptorSet2KHR(
+            $commandBufferC,
+            $pPushDescriptorSetInfoC,
+        );
+    }
+
+    /**
+     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPushDescriptorSetWithTemplateInfoKHR> $pPushDescriptorSetWithTemplateInfo const VkPushDescriptorSetWithTemplateInfoKHR*
+     */
+    public function vkCmdPushDescriptorSetWithTemplate2KHR(
+        struct\VkCommandBuffer $commandBuffer,
+        util\ObjectPointer $pPushDescriptorSetWithTemplateInfo,
+    ): void
+    {
+        $phpValue = $commandBuffer;
+        $cValue = $phpValue->cdata;
+        $commandBufferC = $cValue;
+        $phpValue = $pPushDescriptorSetWithTemplateInfo;
+        $cValue = $phpValue->cdata;
+        $pPushDescriptorSetWithTemplateInfoC = $cValue;
+        $cValue = $this->ffi->vkCmdPushDescriptorSetWithTemplate2KHR(
+            $commandBufferC,
+            $pPushDescriptorSetWithTemplateInfoC,
+        );
+    }
+
+    /**
+     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSetDescriptorBufferOffsetsInfoEXT> $pSetDescriptorBufferOffsetsInfo const VkSetDescriptorBufferOffsetsInfoEXT*
+     */
+    public function vkCmdSetDescriptorBufferOffsets2EXT(
+        struct\VkCommandBuffer $commandBuffer,
+        util\ObjectPointer $pSetDescriptorBufferOffsetsInfo,
+    ): void
+    {
+        $phpValue = $commandBuffer;
+        $cValue = $phpValue->cdata;
+        $commandBufferC = $cValue;
+        $phpValue = $pSetDescriptorBufferOffsetsInfo;
+        $cValue = $phpValue->cdata;
+        $pSetDescriptorBufferOffsetsInfoC = $cValue;
+        $cValue = $this->ffi->vkCmdSetDescriptorBufferOffsets2EXT(
+            $commandBufferC,
+            $pSetDescriptorBufferOffsetsInfoC,
+        );
+    }
+
+    /**
+     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBindDescriptorBufferEmbeddedSamplersInfoEXT> $pBindDescriptorBufferEmbeddedSamplersInfo const VkBindDescriptorBufferEmbeddedSamplersInfoEXT*
+     */
+    public function vkCmdBindDescriptorBufferEmbeddedSamplers2EXT(
+        struct\VkCommandBuffer $commandBuffer,
+        util\ObjectPointer $pBindDescriptorBufferEmbeddedSamplersInfo,
+    ): void
+    {
+        $phpValue = $commandBuffer;
+        $cValue = $phpValue->cdata;
+        $commandBufferC = $cValue;
+        $phpValue = $pBindDescriptorBufferEmbeddedSamplersInfo;
+        $cValue = $phpValue->cdata;
+        $pBindDescriptorBufferEmbeddedSamplersInfoC = $cValue;
+        $cValue = $this->ffi->vkCmdBindDescriptorBufferEmbeddedSamplers2EXT(
+            $commandBufferC,
+            $pBindDescriptorBufferEmbeddedSamplersInfoC,
+        );
+    }
+
+    /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkLatencySleepModeInfoNV> $pSleepModeInfo const VkLatencySleepModeInfoNV*
@@ -18655,13 +18781,11 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
-     * @param \iggyvolz\vulkan\util\IntPointer $pTimingCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkGetLatencyMarkerInfoNV> $pLatencyMarkerInfo VkGetLatencyMarkerInfoNV*
      */
     public function vkGetLatencyTimingsNV(
         struct\VkDevice $device,
         struct\VkSwapchainKHR $swapchain,
-        util\IntPointer $pTimingCount,
         util\ObjectPointer $pLatencyMarkerInfo,
     ): void
     {
@@ -18671,16 +18795,12 @@ class Vulkan
         $phpValue = $swapchain;
         $cValue = $phpValue->cdata;
         $swapchainC = $cValue;
-        $phpValue = $pTimingCount;
-        $cValue = $phpValue->cdata;
-        $pTimingCountC = $cValue;
         $phpValue = $pLatencyMarkerInfo;
         $cValue = $phpValue->cdata;
         $pLatencyMarkerInfoC = $cValue;
         $cValue = $this->ffi->vkGetLatencyTimingsNV(
             $deviceC,
             $swapchainC,
-            $pTimingCountC,
             $pLatencyMarkerInfoC,
         );
     }

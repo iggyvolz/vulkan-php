@@ -14,5 +14,5 @@ enum VkBufferCreateFlagBits: int
     case Protected = 3;
     case DeviceAddressCaptureReplay = 4;
     case DescriptorBufferCaptureReplayBitExt = 5;
-    case Reserved6BitKhr = 6;
+    case VideoProfileIndependentBitKhr = 6;
 }

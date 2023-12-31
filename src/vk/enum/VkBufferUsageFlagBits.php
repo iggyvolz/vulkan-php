@@ -24,6 +24,9 @@ enum VkBufferUsageFlagBits: int
     case TransformFeedbackCounterBufferBitExt = 12;
     case ConditionalRenderingBitExt = 9;
     case ExecutionGraphScratchBitAmdx = 25;
+    case Reserved28BitKhr = 28;
+    case Reserved29BitKhr = 29;
+    case Reserved30BitKhr = 30;
     case AccelerationStructureBuildInputReadOnlyBitKhr = 19;
     case AccelerationStructureStorageBitKhr = 20;
     case ShaderBindingTableBitKhr = 10;

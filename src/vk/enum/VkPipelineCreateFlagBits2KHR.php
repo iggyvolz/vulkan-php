@@ -39,5 +39,6 @@ enum VkPipelineCreateFlagBits2KHR: int
     case ProtectedAccessOnlyBitExt = 30;
     case RayTracingDisplacementMicromapBitNv = 28;
     case DescriptorBufferBitExt = 29;
+    case Reserved32Bit = 32;
     case Reserved31Bit = 31;
 }
