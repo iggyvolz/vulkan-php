@@ -9,7 +9,7 @@ final class CDefs implements \Stringable
     /** @var list<string> */
     private array $cdefs = [];
 
-    public function __toString()
+    public function __toString(): string
     {
         return implode("\n", $this->cdefs);
     }
@@ -687,7 +687,7 @@ final class CDefs implements \Stringable
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkViSurfaceCreateFlagsNN flags ;void* window ;} VkViSurfaceCreateInfoNN;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkWaylandSurfaceCreateFlagsKHR flags ;void* display ;void* surface ;} VkWaylandSurfaceCreateInfoKHR;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkWin32SurfaceCreateFlagsKHR flags ;void* hinstance ;void* hwnd ;} VkWin32SurfaceCreateInfoKHR;';
-        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkXlibSurfaceCreateFlagsKHR flags ;void* dpy ;void* window ;} VkXlibSurfaceCreateInfoKHR;';
+        $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkXlibSurfaceCreateFlagsKHR flags ;void* dpy ;uint32_t window ;} VkXlibSurfaceCreateInfoKHR;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkXcbSurfaceCreateFlagsKHR flags ;void* connection ;uint32_t window ;} VkXcbSurfaceCreateInfoKHR;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkDirectFBSurfaceCreateFlagsEXT flags ;void* dfb ;void* surface ;} VkDirectFBSurfaceCreateInfoEXT;';
         $this->cdefs[] = 'typedef struct {VkStructureType sType ;void* pNext ;VkImagePipeSurfaceCreateFlagsFUCHSIA flags ;uint32_t imagePipeHandle ;} VkImagePipeSurfaceCreateInfoFUCHSIA;';
@@ -1971,7 +1971,7 @@ final class CDefs implements \Stringable
         if($extension === 'VK_KHR_win32_surface') $this->cdefs[] = 'VkResult vkCreateWin32SurfaceKHR(VkInstance instance,VkWin32SurfaceCreateInfoKHR* pCreateInfo,VkAllocationCallbacks* pAllocator,VkSurfaceKHR* pSurface);';
         if($extension === 'VK_KHR_win32_surface') $this->cdefs[] = 'uint32_t vkGetPhysicalDeviceWin32PresentationSupportKHR(VkPhysicalDevice physicalDevice,uint32_t queueFamilyIndex);';
         if($extension === 'VK_KHR_xlib_surface') $this->cdefs[] = 'VkResult vkCreateXlibSurfaceKHR(VkInstance instance,VkXlibSurfaceCreateInfoKHR* pCreateInfo,VkAllocationCallbacks* pAllocator,VkSurfaceKHR* pSurface);';
-        if($extension === 'VK_KHR_xlib_surface') $this->cdefs[] = 'uint32_t vkGetPhysicalDeviceXlibPresentationSupportKHR(VkPhysicalDevice physicalDevice,uint32_t queueFamilyIndex,void* dpy,void* visualID);';
+        if($extension === 'VK_KHR_xlib_surface') $this->cdefs[] = 'uint32_t vkGetPhysicalDeviceXlibPresentationSupportKHR(VkPhysicalDevice physicalDevice,uint32_t queueFamilyIndex,void* dpy,uint32_t visualID);';
         if($extension === 'VK_KHR_xcb_surface') $this->cdefs[] = 'VkResult vkCreateXcbSurfaceKHR(VkInstance instance,VkXcbSurfaceCreateInfoKHR* pCreateInfo,VkAllocationCallbacks* pAllocator,VkSurfaceKHR* pSurface);';
         if($extension === 'VK_KHR_xcb_surface') $this->cdefs[] = 'uint32_t vkGetPhysicalDeviceXcbPresentationSupportKHR(VkPhysicalDevice physicalDevice,uint32_t queueFamilyIndex,void* connection,void* visual_id);';
         if($extension === 'VK_EXT_directfb_surface') $this->cdefs[] = 'VkResult vkCreateDirectFBSurfaceEXT(VkInstance instance,VkDirectFBSurfaceCreateInfoEXT* pCreateInfo,VkAllocationCallbacks* pAllocator,VkSurfaceKHR* pSurface);';

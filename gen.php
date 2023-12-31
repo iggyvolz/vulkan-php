@@ -65,7 +65,7 @@ $printer = new PsrPrinter();
 
 $cdefsClass = ($cdefsFile = new PhpFile())->setStrictTypes()->addNamespace("iggyvolz\\vulkan")->addClass("CDefs")->setFinal();
 $cdefsClass->addImplement(Stringable::class);
-$cdefsClass->addMethod("__toString")->addBody('return implode("\n", $this->cdefs);');
+$cdefsClass->addMethod("__toString")->setReturnType("string")->addBody('return implode("\n", $this->cdefs);');
 $cdefsClass->addProperty("cdefs", [])->setType("array")->addComment("@var list<string>")->setPrivate();
 $cdefsConstructor = $cdefsClass->addMethod("__construct")->setPublic();
 $cdefsAdd = $cdefsClass->addMethod("addExtension")->setReturnType("void");

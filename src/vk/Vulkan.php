@@ -5800,14 +5800,14 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
      * @param \iggyvolz\vulkan\util\Pointer $dpy Display*
-     * @param mixed $visualID VisualID
+     * @param int $visualID VisualID
      * returns VkBool32
      */
     public function vkGetPhysicalDeviceXlibPresentationSupportKHR(
         struct\VkPhysicalDevice $physicalDevice,
         int $queueFamilyIndex,
         util\Pointer $dpy,
-        mixed $visualID,
+        int $visualID,
     ): bool
     {
         $phpValue = $physicalDevice;
@@ -5820,7 +5820,7 @@ class Vulkan
         $cValue = $phpValue->cdata;
         $dpyC = $cValue;
         $phpValue = $visualID;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue;
         $visualIDC = $cValue;
         $cValue = $this->ffi->vkGetPhysicalDeviceXlibPresentationSupportKHR(
             $physicalDeviceC,

@@ -21,6 +21,9 @@ abstract readonly class Transformer
             "LPCWSTR" => "const wchar_t*",
             "HANDLE", "HANDLE*", "HINSTANCE", "HMONITOR", "HWND", "MTLCommandQueue_id", "MTLDevice_id" => "void*",
             "DWORD" => "unsigned long",
+            // xlib
+            "Display*" => "void*",
+            "Window", "VisualID" => "unsigned long",
             // de-Fuchsia and X
             "zx_handle_t", "xcb_window_t" => "uint32_t",
             // Google Stadia stuff - ('-'*ゞ

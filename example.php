@@ -13,6 +13,7 @@ use iggyvolz\vulkan\struct\VkPhysicalDevice;
 use iggyvolz\vulkan\struct\VkPhysicalDeviceFeatures;
 use iggyvolz\vulkan\struct\VkPhysicalDeviceProperties;
 use iggyvolz\vulkan\struct\VkQueueFamilyProperties;
+use iggyvolz\vulkan\struct\VkSurfaceKHR;
 use iggyvolz\vulkan\util\ObjectPointer;
 use iggyvolz\vulkan\util\OpaquePointer;
 use iggyvolz\vulkan\util\VulkanVersion;
@@ -132,9 +133,14 @@ $x->XMapWindow($display, $window);
 
 // Create service
 
-//$surfaceCreateInfo = \iggyvolz\vulkan\struct\VkXlibSurfaceCreateInfoKHR::create($vulkan,
-//    sType: VkStructureType::
-//);
+$surfaceCreateInfo = \iggyvolz\vulkan\struct\VkXlibSurfaceCreateInfoKHR::create($vulkan,
+    sType: VkStructureType::XlibSurfaceCreateInfoKhr,
+    dpy: new OpaquePointer($display->cdata),
+    window: $window,
+);
+
+$surface = $vulkan->get("vkCreateXlibSurfaceKHR", VkSurfaceKHR::class, $instance, ObjectPointer::of($surfaceCreateInfo), ObjectPointer::null());
+
 
 // X event loop
 while(true) {

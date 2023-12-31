@@ -23,7 +23,7 @@ final class VkXlibSurfaceCreateInfoKHR
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|\iggyvolz\vulkan\util\Pointer $dpy = null,
-        mixed $window = null,
+        null|int $window = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkXlibSurfaceCreateInfoKHR', false), $vulkan->ffi);
@@ -108,20 +108,20 @@ final class VkXlibSurfaceCreateInfoKHR
     }
 
     /**
-     * void* /
+     * uint32_t/
      */
-    public function getWindow(): mixed
+    public function getWindow(): int
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->window;
-        throw new \LogicException("Dummy transformer!");
+        $phpValue = $cValue;
         return $phpValue;
     }
 
-    public function setWindow(mixed $phpValue): void
+    public function setWindow(int $phpValue): void
     {
         $ffi = $this->ffi;
-        throw new \LogicException("Dummy transformer!");
+        $cValue = $phpValue;
         $this->cdata->window = $cValue;
     }
 }
