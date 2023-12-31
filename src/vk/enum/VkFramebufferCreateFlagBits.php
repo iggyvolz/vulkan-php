@@ -7,4 +7,6 @@ namespace iggyvolz\vulkan\enum;
 enum VkFramebufferCreateFlagBits: int
 {
     use \iggyvolz\vulkan\util\BitmapEnum;
+
+    case Imageless = 0;
 }

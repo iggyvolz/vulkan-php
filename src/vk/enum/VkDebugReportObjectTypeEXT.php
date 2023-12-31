@@ -38,4 +38,13 @@ enum VkDebugReportObjectTypeEXT: int
     case DisplayKhr = 29;
     case DisplayModeKhr = 30;
     case ValidationCacheExt = 33;
+    case SamplerYcbcrConversion = 1000156000;
+    case DescriptorUpdateTemplate = 1000085000;
+    case CuModuleNvx = 1000029000;
+    case CuFunctionNvx = 1000029001;
+    case AccelerationStructureKhr = 1000150000;
+    case AccelerationStructureNv = 1000165000;
+    case CudaModuleNv = 1000307000;
+    case CudaFunctionNv = 1000307001;
+    case BufferCollectionFuchsia = 1000366000;
 }

@@ -20,11 +20,11 @@ final class VkPhysicalDeviceHostImageCopyPropertiesEXT
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $copySrcLayoutCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pCopySrcLayouts = null,
+        null|\iggyvolz\vulkan\util\Pointer $pCopySrcLayouts = null,
         null|int $copyDstLayoutCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pCopyDstLayouts = null,
+        null|\iggyvolz\vulkan\util\Pointer $pCopyDstLayouts = null,
         null|\Ramsey\Uuid\UuidInterface $optimalTilingLayoutUUID = null,
         null|bool $identicalMemoryTypeRequirements = null,
     ): self
@@ -62,7 +62,7 @@ final class VkPhysicalDeviceHostImageCopyPropertiesEXT
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -70,7 +70,7 @@ final class VkPhysicalDeviceHostImageCopyPropertiesEXT
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -98,7 +98,7 @@ final class VkPhysicalDeviceHostImageCopyPropertiesEXT
     /**
      * void* /
      */
-    public function getPCopySrcLayouts(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPCopySrcLayouts(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pCopySrcLayouts;
@@ -106,7 +106,7 @@ final class VkPhysicalDeviceHostImageCopyPropertiesEXT
         return $phpValue;
     }
 
-    public function setPCopySrcLayouts(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPCopySrcLayouts(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -134,7 +134,7 @@ final class VkPhysicalDeviceHostImageCopyPropertiesEXT
     /**
      * void* /
      */
-    public function getPCopyDstLayouts(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPCopyDstLayouts(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pCopyDstLayouts;
@@ -142,7 +142,7 @@ final class VkPhysicalDeviceHostImageCopyPropertiesEXT
         return $phpValue;
     }
 
-    public function setPCopyDstLayouts(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPCopyDstLayouts(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

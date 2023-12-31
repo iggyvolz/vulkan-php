@@ -13,4 +13,6 @@ enum VkExternalSemaphoreHandleTypeFlagBits: int
     case OpaqueWin32Kmt = 2;
     case D3d12Fence = 3;
     case SyncFd = 4;
+    case ZirconEventBitFuchsia = 7;
+    case SciSyncObjBitNv = 5;
 }

@@ -20,11 +20,11 @@ final class VkVideoEncodeH264SessionParametersAddInfoEXT
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $stdSPSCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pStdSPSs = null,
+        null|\iggyvolz\vulkan\util\Pointer $pStdSPSs = null,
         null|int $stdPPSCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pStdPPSs = null,
+        null|\iggyvolz\vulkan\util\Pointer $pStdPPSs = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkVideoEncodeH264SessionParametersAddInfoEXT', false), $vulkan->ffi);
@@ -58,7 +58,7 @@ final class VkVideoEncodeH264SessionParametersAddInfoEXT
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -66,7 +66,7 @@ final class VkVideoEncodeH264SessionParametersAddInfoEXT
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -94,7 +94,7 @@ final class VkVideoEncodeH264SessionParametersAddInfoEXT
     /**
      * void* /
      */
-    public function getPStdSPSs(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPStdSPSs(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStdSPSs;
@@ -102,7 +102,7 @@ final class VkVideoEncodeH264SessionParametersAddInfoEXT
         return $phpValue;
     }
 
-    public function setPStdSPSs(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPStdSPSs(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -130,7 +130,7 @@ final class VkVideoEncodeH264SessionParametersAddInfoEXT
     /**
      * void* /
      */
-    public function getPStdPPSs(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPStdPPSs(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStdPPSs;
@@ -138,7 +138,7 @@ final class VkVideoEncodeH264SessionParametersAddInfoEXT
         return $phpValue;
     }
 
-    public function setPStdPPSs(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPStdPPSs(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

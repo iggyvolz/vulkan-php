@@ -20,8 +20,8 @@ final class VkGetLatencyMarkerInfoNV
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pTimings = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pTimings = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkGetLatencyMarkerInfoNV', false), $vulkan->ffi);
@@ -52,7 +52,7 @@ final class VkGetLatencyMarkerInfoNV
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -60,7 +60,7 @@ final class VkGetLatencyMarkerInfoNV
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -70,7 +70,7 @@ final class VkGetLatencyMarkerInfoNV
     /**
      * void* /
      */
-    public function getPTimings(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPTimings(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pTimings;
@@ -78,7 +78,7 @@ final class VkGetLatencyMarkerInfoNV
         return $phpValue;
     }
 
-    public function setPTimings(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPTimings(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

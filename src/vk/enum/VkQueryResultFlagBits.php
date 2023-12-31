@@ -12,4 +12,5 @@ enum VkQueryResultFlagBits: int
     case Wait = 1;
     case WithAvailability = 2;
     case Partial = 3;
+    case WithStatusBitKhr = 4;
 }

@@ -12,4 +12,5 @@ enum VkDescriptorBindingFlagBits: int
     case UpdateUnusedWhilePending = 1;
     case PartiallyBound = 2;
     case VariableDescriptorCount = 3;
+    case Reserved4BitQcom = 4;
 }

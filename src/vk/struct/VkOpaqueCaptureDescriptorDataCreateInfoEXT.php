@@ -20,8 +20,8 @@ final class VkOpaqueCaptureDescriptorDataCreateInfoEXT
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $opaqueCaptureDescriptorData = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $opaqueCaptureDescriptorData = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkOpaqueCaptureDescriptorDataCreateInfoEXT', false), $vulkan->ffi);
@@ -52,7 +52,7 @@ final class VkOpaqueCaptureDescriptorDataCreateInfoEXT
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -60,7 +60,7 @@ final class VkOpaqueCaptureDescriptorDataCreateInfoEXT
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -70,7 +70,7 @@ final class VkOpaqueCaptureDescriptorDataCreateInfoEXT
     /**
      * void* /
      */
-    public function getOpaqueCaptureDescriptorData(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getOpaqueCaptureDescriptorData(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->opaqueCaptureDescriptorData;
@@ -78,7 +78,7 @@ final class VkOpaqueCaptureDescriptorDataCreateInfoEXT
         return $phpValue;
     }
 
-    public function setOpaqueCaptureDescriptorData(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setOpaqueCaptureDescriptorData(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

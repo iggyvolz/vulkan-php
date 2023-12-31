@@ -11,4 +11,6 @@ enum VkRenderingFlagBits: int
     case ContentsSecondaryCommandBuffers = 0;
     case Suspending = 1;
     case Resuming = 2;
+    case ContentsInlineBitExt = 4;
+    case EnableLegacyDitheringBitExt = 3;
 }

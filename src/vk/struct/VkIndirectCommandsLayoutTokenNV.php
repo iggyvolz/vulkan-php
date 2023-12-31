@@ -20,7 +20,7 @@ final class VkIndirectCommandsLayoutTokenNV
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkIndirectCommandsTokenTypeNV $tokenType = null,
         null|int $stream = null,
         null|int $offset = null,
@@ -32,7 +32,7 @@ final class VkIndirectCommandsLayoutTokenNV
         null|int $pushconstantSize = null,
         null|array $indirectStateFlags = null,
         null|int $indexTypeCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pIndexTypes = null,
+        null|\iggyvolz\vulkan\util\Pointer $pIndexTypes = null,
         null|\iggyvolz\vulkan\util\IntPointer $pIndexTypeValues = null,
     ): self
     {
@@ -76,7 +76,7 @@ final class VkIndirectCommandsLayoutTokenNV
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -84,7 +84,7 @@ final class VkIndirectCommandsLayoutTokenNV
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -292,7 +292,7 @@ final class VkIndirectCommandsLayoutTokenNV
     /**
      * void* /
      */
-    public function getPIndexTypes(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPIndexTypes(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pIndexTypes;
@@ -300,7 +300,7 @@ final class VkIndirectCommandsLayoutTokenNV
         return $phpValue;
     }
 
-    public function setPIndexTypes(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPIndexTypes(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

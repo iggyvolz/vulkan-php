@@ -14,4 +14,7 @@ enum VkIndirectCommandsTokenTypeNV: int
     case DrawIndexed = 5;
     case Draw = 6;
     case DrawTasks = 7;
+    case DrawMeshTasks = 1000328000;
+    case Pipeline = 1000428003;
+    case Dispatch = 1000428004;
 }

@@ -10,4 +10,5 @@ enum VkCommandPoolCreateFlagBits: int
 
     case Transient = 0;
     case ResetCommandBuffer = 1;
+    case Protected = 2;
 }

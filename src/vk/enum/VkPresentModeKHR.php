@@ -10,4 +10,6 @@ enum VkPresentModeKHR: int
     case Mailbox = 1;
     case Fifo = 2;
     case FifoRelaxed = 3;
+    case SharedDemandRefresh = 1000111000;
+    case SharedContinuousRefresh = 1000111001;
 }

@@ -13,4 +13,6 @@ enum VkToolPurposeFlagBits: int
     case Tracing = 2;
     case AdditionalFeatures = 3;
     case ModifyingFeatures = 4;
+    case DebugReportingBitExt = 5;
+    case DebugMarkersBitExt = 6;
 }

@@ -3,6 +3,7 @@
 namespace iggyvolz\vulkan\generator\Transformer;
 
 use iggyvolz\vulkan\util\OpaquePointer;
+use iggyvolz\vulkan\util\Pointer;
 
 readonly final class OpaquePointerTransformer extends Transformer
 {
@@ -13,7 +14,7 @@ readonly final class OpaquePointerTransformer extends Transformer
 
     public function phpType(): string
     {
-        return OpaquePointer::class;
+        return Pointer::class;
     }
 
     public function cTypePrefix(): string

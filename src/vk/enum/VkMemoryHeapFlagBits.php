@@ -9,4 +9,5 @@ enum VkMemoryHeapFlagBits: int
     use \iggyvolz\vulkan\util\BitmapEnum;
 
     case DeviceLocal = 0;
+    case MultiInstance = 1;
 }

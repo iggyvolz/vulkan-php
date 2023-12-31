@@ -20,13 +20,13 @@ final class VkRayTracingShaderGroupCreateInfoKHR
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkRayTracingShaderGroupTypeKHR $type = null,
         null|int $generalShader = null,
         null|int $closestHitShader = null,
         null|int $anyHitShader = null,
         null|int $intersectionShader = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pShaderGroupCaptureReplayHandle = null,
+        null|\iggyvolz\vulkan\util\Pointer $pShaderGroupCaptureReplayHandle = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkRayTracingShaderGroupCreateInfoKHR', false), $vulkan->ffi);
@@ -62,7 +62,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -70,7 +70,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -170,7 +170,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
     /**
      * void* /
      */
-    public function getPShaderGroupCaptureReplayHandle(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPShaderGroupCaptureReplayHandle(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pShaderGroupCaptureReplayHandle;
@@ -178,7 +178,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
         return $phpValue;
     }
 
-    public function setPShaderGroupCaptureReplayHandle(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPShaderGroupCaptureReplayHandle(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

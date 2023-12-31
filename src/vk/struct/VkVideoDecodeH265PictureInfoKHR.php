@@ -20,8 +20,8 @@ final class VkVideoDecodeH265PictureInfoKHR
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pStdPictureInfo = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pStdPictureInfo = null,
         null|int $sliceSegmentCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pSliceSegmentOffsets = null,
     ): self
@@ -56,7 +56,7 @@ final class VkVideoDecodeH265PictureInfoKHR
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -64,7 +64,7 @@ final class VkVideoDecodeH265PictureInfoKHR
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -74,7 +74,7 @@ final class VkVideoDecodeH265PictureInfoKHR
     /**
      * void* /
      */
-    public function getPStdPictureInfo(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPStdPictureInfo(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStdPictureInfo;
@@ -82,7 +82,7 @@ final class VkVideoDecodeH265PictureInfoKHR
         return $phpValue;
     }
 
-    public function setPStdPictureInfo(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPStdPictureInfo(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

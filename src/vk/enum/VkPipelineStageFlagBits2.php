@@ -32,4 +32,23 @@ enum VkPipelineStageFlagBits2: int
     case IndexInput = 36;
     case VertexAttributeInput = 37;
     case PreRasterizationShaders = 38;
+    case VideoDecodeBitKhr = 26;
+    case VideoEncodeBitKhr = 27;
+    case TransformFeedbackBitExt = 24;
+    case ConditionalRenderingBitExt = 18;
+    case CommandPreprocessBitNv = 17;
+    case FragmentShadingRateAttachmentBitKhr = 22;
+    case AccelerationStructureBuildBitKhr = 25;
+    case RayTracingShaderBitKhr = 21;
+    case FragmentDensityProcessBitExt = 23;
+    case TaskShaderBitExt = 19;
+    case MeshShaderBitExt = 20;
+    case SubpassShaderBitHuawei = 39;
+    case InvocationMaskBitHuawei = 40;
+    case AccelerationStructureCopyBitKhr = 28;
+    case MicromapBuildBitExt = 30;
+    case ClusterCullingShaderBitHuawei = 41;
+    case Reserved43BitArm = 43;
+    case OpticalFlowBitNv = 29;
+    case Reserved42BitExt = 42;
 }

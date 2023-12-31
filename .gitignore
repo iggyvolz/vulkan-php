@@ -3,3 +3,5 @@
 /vendor
 /composer.lock
 /.idea
+registry.json
+registry.txt

@@ -20,9 +20,9 @@ final class VkAttachmentSampleCountInfoAMD
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $colorAttachmentCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pColorAttachmentSamples = null,
+        null|\iggyvolz\vulkan\util\Pointer $pColorAttachmentSamples = null,
         null|\iggyvolz\vulkan\enum\VkSampleCountFlagBits $depthStencilAttachmentSamples = null,
     ): self
     {
@@ -56,7 +56,7 @@ final class VkAttachmentSampleCountInfoAMD
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -64,7 +64,7 @@ final class VkAttachmentSampleCountInfoAMD
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -92,7 +92,7 @@ final class VkAttachmentSampleCountInfoAMD
     /**
      * void* /
      */
-    public function getPColorAttachmentSamples(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPColorAttachmentSamples(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pColorAttachmentSamples;
@@ -100,7 +100,7 @@ final class VkAttachmentSampleCountInfoAMD
         return $phpValue;
     }
 
-    public function setPColorAttachmentSamples(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPColorAttachmentSamples(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

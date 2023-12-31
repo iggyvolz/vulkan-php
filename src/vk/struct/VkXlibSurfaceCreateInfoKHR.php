@@ -20,9 +20,9 @@ final class VkXlibSurfaceCreateInfoKHR
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $dpy = null,
+        null|\iggyvolz\vulkan\util\Pointer $dpy = null,
         mixed $window = null,
     ): self
     {
@@ -56,7 +56,7 @@ final class VkXlibSurfaceCreateInfoKHR
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -64,7 +64,7 @@ final class VkXlibSurfaceCreateInfoKHR
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -92,7 +92,7 @@ final class VkXlibSurfaceCreateInfoKHR
     /**
      * void* /
      */
-    public function getDpy(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getDpy(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->dpy;
@@ -100,7 +100,7 @@ final class VkXlibSurfaceCreateInfoKHR
         return $phpValue;
     }
 
-    public function setDpy(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setDpy(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

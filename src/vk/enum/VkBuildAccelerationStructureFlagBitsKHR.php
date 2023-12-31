@@ -13,4 +13,10 @@ enum VkBuildAccelerationStructureFlagBitsKHR: int
     case PreferFastTrace = 2;
     case PreferFastBuild = 3;
     case LowMemory = 4;
+    case MotionBitNv = 5;
+    case AllowOpacityMicromapUpdateExt = 6;
+    case AllowDisableOpacityMicromapsExt = 7;
+    case AllowOpacityMicromapDataUpdateExt = 8;
+    case AllowDisplacementMicromapUpdateNv = 9;
+    case AllowDataAccess = 11;
 }

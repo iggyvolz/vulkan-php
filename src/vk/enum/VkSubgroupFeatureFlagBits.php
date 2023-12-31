@@ -16,4 +16,5 @@ enum VkSubgroupFeatureFlagBits: int
     case ShuffleRelative = 5;
     case Clustered = 6;
     case Quad = 7;
+    case PartitionedBitNv = 8;
 }

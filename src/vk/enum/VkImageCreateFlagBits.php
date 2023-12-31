@@ -13,4 +13,20 @@ enum VkImageCreateFlagBits: int
     case SparseAliased = 2;
     case MutableFormat = 3;
     case CubeCompatible = 4;
+    case Alias = 10;
+    case SplitInstanceBindRegions = 6;
+    case _2dArrayCompatible = 5;
+    case BlockTexelViewCompatible = 7;
+    case ExtendedUsage = 8;
+    case Protected = 11;
+    case Disjoint = 9;
+    case CornerSampledBitNv = 13;
+    case SampleLocationsCompatibleDepthBitExt = 12;
+    case SubsampledBitExt = 14;
+    case Reserved19BitExt = 19;
+    case DescriptorBufferCaptureReplayBitExt = 16;
+    case MultisampledRenderToSingleSampledBitExt = 18;
+    case _2dViewCompatibleBitExt = 17;
+    case FragmentDensityMapOffsetBitQcom = 15;
+    case Reserved20BitKhr = 20;
 }

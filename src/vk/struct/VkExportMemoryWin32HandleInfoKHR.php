@@ -20,10 +20,10 @@ final class VkExportMemoryWin32HandleInfoKHR
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pAttributes = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pAttributes = null,
         null|int $dwAccess = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $name = null,
+        null|\iggyvolz\vulkan\util\Pointer $name = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkExportMemoryWin32HandleInfoKHR', false), $vulkan->ffi);
@@ -56,7 +56,7 @@ final class VkExportMemoryWin32HandleInfoKHR
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -64,7 +64,7 @@ final class VkExportMemoryWin32HandleInfoKHR
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -74,7 +74,7 @@ final class VkExportMemoryWin32HandleInfoKHR
     /**
      * void* /
      */
-    public function getPAttributes(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPAttributes(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pAttributes;
@@ -82,7 +82,7 @@ final class VkExportMemoryWin32HandleInfoKHR
         return $phpValue;
     }
 
-    public function setPAttributes(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPAttributes(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -110,7 +110,7 @@ final class VkExportMemoryWin32HandleInfoKHR
     /**
      * void* /
      */
-    public function getName(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getName(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->name;
@@ -118,7 +118,7 @@ final class VkExportMemoryWin32HandleInfoKHR
         return $phpValue;
     }
 
-    public function setName(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setName(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

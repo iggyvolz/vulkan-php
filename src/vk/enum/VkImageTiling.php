@@ -8,4 +8,5 @@ enum VkImageTiling: int
 {
     case Optimal = 0;
     case Linear = 1;
+    case DrmFormatModifierExt = 1000158000;
 }

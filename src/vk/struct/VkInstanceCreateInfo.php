@@ -20,13 +20,13 @@ final class VkInstanceCreateInfo
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pApplicationInfo = null,
         null|int $enabledLayerCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $ppEnabledLayerNames = null,
+        null|\iggyvolz\vulkan\util\Pointer $ppEnabledLayerNames = null,
         null|int $enabledExtensionCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $ppEnabledExtensionNames = null,
+        null|\iggyvolz\vulkan\util\Pointer $ppEnabledExtensionNames = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkInstanceCreateInfo', false), $vulkan->ffi);
@@ -62,7 +62,7 @@ final class VkInstanceCreateInfo
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -70,7 +70,7 @@ final class VkInstanceCreateInfo
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -134,7 +134,7 @@ final class VkInstanceCreateInfo
     /**
      * void* /
      */
-    public function getPpEnabledLayerNames(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPpEnabledLayerNames(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->ppEnabledLayerNames;
@@ -142,7 +142,7 @@ final class VkInstanceCreateInfo
         return $phpValue;
     }
 
-    public function setPpEnabledLayerNames(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPpEnabledLayerNames(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -170,7 +170,7 @@ final class VkInstanceCreateInfo
     /**
      * void* /
      */
-    public function getPpEnabledExtensionNames(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPpEnabledExtensionNames(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->ppEnabledExtensionNames;
@@ -178,7 +178,7 @@ final class VkInstanceCreateInfo
         return $phpValue;
     }
 
-    public function setPpEnabledExtensionNames(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPpEnabledExtensionNames(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

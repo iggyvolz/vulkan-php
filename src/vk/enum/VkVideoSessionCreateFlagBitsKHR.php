@@ -9,4 +9,5 @@ enum VkVideoSessionCreateFlagBitsKHR: int
     use \iggyvolz\vulkan\util\BitmapEnum;
 
     case ProtectedContent = 0;
+    case AllowEncodeParameterOptimizations = 1;
 }

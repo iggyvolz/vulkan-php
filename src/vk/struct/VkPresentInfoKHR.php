@@ -20,13 +20,13 @@ final class VkPresentInfoKHR
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $waitSemaphoreCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pWaitSemaphores = null,
         null|int $swapchainCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pSwapchains = null,
         null|\iggyvolz\vulkan\util\IntPointer $pImageIndices = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pResults = null,
+        null|\iggyvolz\vulkan\util\Pointer $pResults = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPresentInfoKHR', false), $vulkan->ffi);
@@ -62,7 +62,7 @@ final class VkPresentInfoKHR
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -70,7 +70,7 @@ final class VkPresentInfoKHR
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -170,7 +170,7 @@ final class VkPresentInfoKHR
     /**
      * void* /
      */
-    public function getPResults(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPResults(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pResults;
@@ -178,7 +178,7 @@ final class VkPresentInfoKHR
         return $phpValue;
     }
 
-    public function setPResults(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPResults(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

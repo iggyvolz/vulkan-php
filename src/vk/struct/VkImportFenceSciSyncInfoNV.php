@@ -20,10 +20,10 @@ final class VkImportFenceSciSyncInfoNV
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkFence $fence = null,
         null|\iggyvolz\vulkan\enum\VkExternalFenceHandleTypeFlagBits $handleType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $handle = null,
+        null|\iggyvolz\vulkan\util\Pointer $handle = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkImportFenceSciSyncInfoNV', false), $vulkan->ffi);
@@ -56,7 +56,7 @@ final class VkImportFenceSciSyncInfoNV
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -64,7 +64,7 @@ final class VkImportFenceSciSyncInfoNV
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -110,7 +110,7 @@ final class VkImportFenceSciSyncInfoNV
     /**
      * void* /
      */
-    public function getHandle(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getHandle(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->handle;
@@ -118,7 +118,7 @@ final class VkImportFenceSciSyncInfoNV
         return $phpValue;
     }
 
-    public function setHandle(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setHandle(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

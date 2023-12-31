@@ -20,12 +20,12 @@ final class VkPipelineMultisampleStateCreateInfo
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkSampleCountFlagBits $rasterizationSamples = null,
         null|bool $sampleShadingEnable = null,
         null|float $minSampleShading = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pSampleMask = null,
+        null|\iggyvolz\vulkan\util\Pointer $pSampleMask = null,
         null|bool $alphaToCoverageEnable = null,
         null|bool $alphaToOneEnable = null,
     ): self
@@ -64,7 +64,7 @@ final class VkPipelineMultisampleStateCreateInfo
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -72,7 +72,7 @@ final class VkPipelineMultisampleStateCreateInfo
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -154,7 +154,7 @@ final class VkPipelineMultisampleStateCreateInfo
     /**
      * void* /
      */
-    public function getPSampleMask(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPSampleMask(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pSampleMask;
@@ -162,7 +162,7 @@ final class VkPipelineMultisampleStateCreateInfo
         return $phpValue;
     }
 
-    public function setPSampleMask(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPSampleMask(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

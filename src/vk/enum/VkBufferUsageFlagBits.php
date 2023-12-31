@@ -17,4 +17,22 @@ enum VkBufferUsageFlagBits: int
     case IndexBuffer = 6;
     case VertexBuffer = 7;
     case IndirectBuffer = 8;
+    case ShaderDeviceAddress = 17;
+    case VideoDecodeSrcBitKhr = 13;
+    case VideoDecodeDstBitKhr = 14;
+    case TransformFeedbackBufferBitExt = 11;
+    case TransformFeedbackCounterBufferBitExt = 12;
+    case ConditionalRenderingBitExt = 9;
+    case ExecutionGraphScratchBitAmdx = 25;
+    case AccelerationStructureBuildInputReadOnlyBitKhr = 19;
+    case AccelerationStructureStorageBitKhr = 20;
+    case ShaderBindingTableBitKhr = 10;
+    case VideoEncodeDstBitKhr = 15;
+    case VideoEncodeSrcBitKhr = 16;
+    case Reserved27BitQcom = 27;
+    case SamplerDescriptorBufferBitExt = 21;
+    case ResourceDescriptorBufferBitExt = 22;
+    case PushDescriptorsDescriptorBufferBitExt = 26;
+    case MicromapBuildInputReadOnlyBitExt = 23;
+    case MicromapStorageBitExt = 24;
 }

@@ -20,9 +20,9 @@ final class VkMetalSurfaceCreateInfoEXT
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pLayer = null,
+        null|\iggyvolz\vulkan\util\Pointer $pLayer = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkMetalSurfaceCreateInfoEXT', false), $vulkan->ffi);
@@ -54,7 +54,7 @@ final class VkMetalSurfaceCreateInfoEXT
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -62,7 +62,7 @@ final class VkMetalSurfaceCreateInfoEXT
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -90,7 +90,7 @@ final class VkMetalSurfaceCreateInfoEXT
     /**
      * void* /
      */
-    public function getPLayer(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPLayer(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pLayer;
@@ -98,7 +98,7 @@ final class VkMetalSurfaceCreateInfoEXT
         return $phpValue;
     }
 
-    public function setPLayer(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPLayer(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

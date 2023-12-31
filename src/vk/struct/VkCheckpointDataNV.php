@@ -20,9 +20,9 @@ final class VkCheckpointDataNV
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkPipelineStageFlagBits $stage = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pCheckpointMarker = null,
+        null|\iggyvolz\vulkan\util\Pointer $pCheckpointMarker = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkCheckpointDataNV', false), $vulkan->ffi);
@@ -54,7 +54,7 @@ final class VkCheckpointDataNV
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -62,7 +62,7 @@ final class VkCheckpointDataNV
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -90,7 +90,7 @@ final class VkCheckpointDataNV
     /**
      * void* /
      */
-    public function getPCheckpointMarker(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPCheckpointMarker(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pCheckpointMarker;
@@ -98,7 +98,7 @@ final class VkCheckpointDataNV
         return $phpValue;
     }
 
-    public function setPCheckpointMarker(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPCheckpointMarker(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

@@ -20,11 +20,11 @@ final class VkVideoEncodeRateControlInfoKHR
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkVideoEncodeRateControlModeFlagBitsKHR $rateControlMode = null,
         null|int $layerCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pLayers = null,
+        null|\iggyvolz\vulkan\util\Pointer $pLayers = null,
         null|int $virtualBufferSizeInMs = null,
         null|int $initialVirtualBufferSizeInMs = null,
     ): self
@@ -62,7 +62,7 @@ final class VkVideoEncodeRateControlInfoKHR
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -70,7 +70,7 @@ final class VkVideoEncodeRateControlInfoKHR
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -134,7 +134,7 @@ final class VkVideoEncodeRateControlInfoKHR
     /**
      * void* /
      */
-    public function getPLayers(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPLayers(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pLayers;
@@ -142,7 +142,7 @@ final class VkVideoEncodeRateControlInfoKHR
         return $phpValue;
     }
 
-    public function setPLayers(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPLayers(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

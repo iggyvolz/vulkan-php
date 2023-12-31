@@ -20,9 +20,9 @@ final class VkVideoEncodeH265NaluSliceSegmentInfoEXT
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $constantQp = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pStdSliceSegmentHeader = null,
+        null|\iggyvolz\vulkan\util\Pointer $pStdSliceSegmentHeader = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkVideoEncodeH265NaluSliceSegmentInfoEXT', false), $vulkan->ffi);
@@ -54,7 +54,7 @@ final class VkVideoEncodeH265NaluSliceSegmentInfoEXT
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -62,7 +62,7 @@ final class VkVideoEncodeH265NaluSliceSegmentInfoEXT
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -90,7 +90,7 @@ final class VkVideoEncodeH265NaluSliceSegmentInfoEXT
     /**
      * void* /
      */
-    public function getPStdSliceSegmentHeader(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPStdSliceSegmentHeader(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pStdSliceSegmentHeader;
@@ -98,7 +98,7 @@ final class VkVideoEncodeH265NaluSliceSegmentInfoEXT
         return $phpValue;
     }
 
-    public function setPStdSliceSegmentHeader(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPStdSliceSegmentHeader(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

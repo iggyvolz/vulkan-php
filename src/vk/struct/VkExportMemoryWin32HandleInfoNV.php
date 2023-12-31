@@ -20,8 +20,8 @@ final class VkExportMemoryWin32HandleInfoNV
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pAttributes = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pAttributes = null,
         null|int $dwAccess = null,
     ): self
     {
@@ -54,7 +54,7 @@ final class VkExportMemoryWin32HandleInfoNV
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -62,7 +62,7 @@ final class VkExportMemoryWin32HandleInfoNV
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -72,7 +72,7 @@ final class VkExportMemoryWin32HandleInfoNV
     /**
      * void* /
      */
-    public function getPAttributes(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPAttributes(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pAttributes;
@@ -80,7 +80,7 @@ final class VkExportMemoryWin32HandleInfoNV
         return $phpValue;
     }
 
-    public function setPAttributes(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPAttributes(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

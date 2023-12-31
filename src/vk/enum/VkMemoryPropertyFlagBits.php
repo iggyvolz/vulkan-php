@@ -13,4 +13,8 @@ enum VkMemoryPropertyFlagBits: int
     case HostCoherent = 2;
     case HostCached = 3;
     case LazilyAllocated = 4;
+    case Protected = 5;
+    case DeviceCoherentBitAmd = 6;
+    case DeviceUncachedBitAmd = 7;
+    case RdmaCapableBitNv = 8;
 }

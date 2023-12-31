@@ -20,8 +20,8 @@ final class VkSurfaceFullScreenExclusiveWin32InfoEXT
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $hmonitor = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $hmonitor = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkSurfaceFullScreenExclusiveWin32InfoEXT', false), $vulkan->ffi);
@@ -52,7 +52,7 @@ final class VkSurfaceFullScreenExclusiveWin32InfoEXT
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -60,7 +60,7 @@ final class VkSurfaceFullScreenExclusiveWin32InfoEXT
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -70,7 +70,7 @@ final class VkSurfaceFullScreenExclusiveWin32InfoEXT
     /**
      * void* /
      */
-    public function getHmonitor(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getHmonitor(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->hmonitor;
@@ -78,7 +78,7 @@ final class VkSurfaceFullScreenExclusiveWin32InfoEXT
         return $phpValue;
     }
 
-    public function setHmonitor(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setHmonitor(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

@@ -20,7 +20,7 @@ final class VkAccelerationStructureBuildGeometryInfoKHR
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkAccelerationStructureTypeKHR $type = null,
         null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkBuildAccelerationStructureModeKHR $mode = null,
@@ -28,7 +28,7 @@ final class VkAccelerationStructureBuildGeometryInfoKHR
         null|VkAccelerationStructureKHR $dstAccelerationStructure = null,
         null|int $geometryCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pGeometries = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $ppGeometries = null,
+        null|\iggyvolz\vulkan\util\Pointer $ppGeometries = null,
         mixed $scratchData = null,
     ): self
     {
@@ -68,7 +68,7 @@ final class VkAccelerationStructureBuildGeometryInfoKHR
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -76,7 +76,7 @@ final class VkAccelerationStructureBuildGeometryInfoKHR
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -212,7 +212,7 @@ final class VkAccelerationStructureBuildGeometryInfoKHR
     /**
      * void* /
      */
-    public function getPpGeometries(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPpGeometries(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->ppGeometries;
@@ -220,7 +220,7 @@ final class VkAccelerationStructureBuildGeometryInfoKHR
         return $phpValue;
     }
 
-    public function setPpGeometries(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPpGeometries(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

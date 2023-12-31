@@ -20,9 +20,9 @@ final class VkMacOSSurfaceCreateInfoMVK
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pView = null,
+        null|\iggyvolz\vulkan\util\Pointer $pView = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkMacOSSurfaceCreateInfoMVK', false), $vulkan->ffi);
@@ -54,7 +54,7 @@ final class VkMacOSSurfaceCreateInfoMVK
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -62,7 +62,7 @@ final class VkMacOSSurfaceCreateInfoMVK
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -90,7 +90,7 @@ final class VkMacOSSurfaceCreateInfoMVK
     /**
      * void* /
      */
-    public function getPView(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPView(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pView;
@@ -98,7 +98,7 @@ final class VkMacOSSurfaceCreateInfoMVK
         return $phpValue;
     }
 
-    public function setPView(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPView(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

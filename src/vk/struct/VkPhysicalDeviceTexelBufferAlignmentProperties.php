@@ -20,7 +20,7 @@ final class VkPhysicalDeviceTexelBufferAlignmentProperties
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $storageTexelBufferOffsetAlignmentBytes = null,
         null|bool $storageTexelBufferOffsetSingleTexelAlignment = null,
         null|int $uniformTexelBufferOffsetAlignmentBytes = null,
@@ -58,7 +58,7 @@ final class VkPhysicalDeviceTexelBufferAlignmentProperties
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -66,7 +66,7 @@ final class VkPhysicalDeviceTexelBufferAlignmentProperties
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

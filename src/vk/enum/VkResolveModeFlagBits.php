@@ -12,4 +12,5 @@ enum VkResolveModeFlagBits: int
     case Average = 1;
     case Min = 2;
     case Max = 3;
+    case ExternalFormatDownsampleAndroid = 4;
 }

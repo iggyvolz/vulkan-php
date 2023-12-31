@@ -25,4 +25,13 @@ enum VkPipelineStageFlagBits: int
     case Host = 14;
     case AllGraphics = 15;
     case AllCommands = 16;
+    case TransformFeedbackBitExt = 24;
+    case ConditionalRenderingBitExt = 18;
+    case AccelerationStructureBuildBitKhr = 25;
+    case RayTracingShaderBitKhr = 21;
+    case FragmentDensityProcessBitExt = 23;
+    case FragmentShadingRateAttachmentBitKhr = 22;
+    case CommandPreprocessBitNv = 17;
+    case TaskShaderBitExt = 19;
+    case MeshShaderBitExt = 20;
 }

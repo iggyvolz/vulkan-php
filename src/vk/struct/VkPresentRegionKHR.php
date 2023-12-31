@@ -20,7 +20,7 @@ final class VkPresentRegionKHR
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|int $rectangleCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pRectangles = null,
+        null|\iggyvolz\vulkan\util\Pointer $pRectangles = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPresentRegionKHR', false), $vulkan->ffi);
@@ -50,7 +50,7 @@ final class VkPresentRegionKHR
     /**
      * void* /
      */
-    public function getPRectangles(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPRectangles(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pRectangles;
@@ -58,7 +58,7 @@ final class VkPresentRegionKHR
         return $phpValue;
     }
 
-    public function setPRectangles(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPRectangles(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

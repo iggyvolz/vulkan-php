@@ -17,4 +17,10 @@ enum VkDescriptorType: int
     case UniformBufferDynamic = 8;
     case StorageBufferDynamic = 9;
     case InputAttachment = 10;
+    case InlineUniformBlock = 1000138000;
+    case AccelerationStructureKhr = 1000150000;
+    case AccelerationStructureNv = 1000165000;
+    case SampleWeightImageQcom = 1000440000;
+    case BlockMatchImageQcom = 1000440001;
+    case MutableExt = 1000351000;
 }

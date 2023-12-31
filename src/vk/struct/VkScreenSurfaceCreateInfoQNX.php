@@ -20,10 +20,10 @@ final class VkScreenSurfaceCreateInfoQNX
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $context = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $window = null,
+        null|\iggyvolz\vulkan\util\Pointer $context = null,
+        null|\iggyvolz\vulkan\util\Pointer $window = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkScreenSurfaceCreateInfoQNX', false), $vulkan->ffi);
@@ -56,7 +56,7 @@ final class VkScreenSurfaceCreateInfoQNX
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -64,7 +64,7 @@ final class VkScreenSurfaceCreateInfoQNX
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -92,7 +92,7 @@ final class VkScreenSurfaceCreateInfoQNX
     /**
      * void* /
      */
-    public function getContext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getContext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->context;
@@ -100,7 +100,7 @@ final class VkScreenSurfaceCreateInfoQNX
         return $phpValue;
     }
 
-    public function setContext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setContext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -110,7 +110,7 @@ final class VkScreenSurfaceCreateInfoQNX
     /**
      * void* /
      */
-    public function getWindow(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getWindow(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->window;
@@ -118,7 +118,7 @@ final class VkScreenSurfaceCreateInfoQNX
         return $phpValue;
     }
 
-    public function setWindow(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setWindow(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

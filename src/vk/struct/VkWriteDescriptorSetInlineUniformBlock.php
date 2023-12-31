@@ -20,9 +20,9 @@ final class VkWriteDescriptorSetInlineUniformBlock
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $dataSize = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pData = null,
+        null|\iggyvolz\vulkan\util\Pointer $pData = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkWriteDescriptorSetInlineUniformBlock', false), $vulkan->ffi);
@@ -54,7 +54,7 @@ final class VkWriteDescriptorSetInlineUniformBlock
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -62,7 +62,7 @@ final class VkWriteDescriptorSetInlineUniformBlock
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -90,7 +90,7 @@ final class VkWriteDescriptorSetInlineUniformBlock
     /**
      * void* /
      */
-    public function getPData(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPData(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pData;
@@ -98,7 +98,7 @@ final class VkWriteDescriptorSetInlineUniformBlock
         return $phpValue;
     }
 
-    public function setPData(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPData(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

@@ -25,4 +25,15 @@ enum VkAccessFlagBits: int
     case HostWrite = 14;
     case MemoryRead = 15;
     case MemoryWrite = 16;
+    case TransformFeedbackWriteBitExt = 25;
+    case TransformFeedbackCounterReadBitExt = 26;
+    case TransformFeedbackCounterWriteBitExt = 27;
+    case ConditionalRenderingReadBitExt = 20;
+    case ColorAttachmentReadNoncoherentBitExt = 19;
+    case AccelerationStructureReadBitKhr = 21;
+    case AccelerationStructureWriteBitKhr = 22;
+    case FragmentDensityMapReadBitExt = 24;
+    case FragmentShadingRateAttachmentReadBitKhr = 23;
+    case CommandPreprocessReadBitNv = 17;
+    case CommandPreprocessWriteBitNv = 18;
 }

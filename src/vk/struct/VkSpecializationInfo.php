@@ -22,7 +22,7 @@ final class VkSpecializationInfo
         null|int $mapEntryCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pMapEntries = null,
         null|int $dataSize = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pData = null,
+        null|\iggyvolz\vulkan\util\Pointer $pData = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkSpecializationInfo', false), $vulkan->ffi);
@@ -90,7 +90,7 @@ final class VkSpecializationInfo
     /**
      * void* /
      */
-    public function getPData(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPData(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pData;
@@ -98,7 +98,7 @@ final class VkSpecializationInfo
         return $phpValue;
     }
 
-    public function setPData(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPData(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

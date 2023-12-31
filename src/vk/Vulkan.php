@@ -199,11 +199,11 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pFeatures VkPhysicalDeviceFeatures*
+     * @param \iggyvolz\vulkan\util\Pointer $pFeatures VkPhysicalDeviceFeatures*
      */
     public function vkGetPhysicalDeviceFeatures(
         struct\VkPhysicalDevice $physicalDevice,
-        util\OpaquePointer $pFeatures,
+        util\Pointer $pFeatures,
     ): void
     {
         $phpValue = $physicalDevice;
@@ -659,7 +659,7 @@ class Vulkan
      * @param int $offset VkDeviceSize
      * @param int $size VkDeviceSize
      * @param list<void> $flags VkMemoryMapFlags
-     * @param \iggyvolz\vulkan\util\OpaquePointer $ppData void**
+     * @param \iggyvolz\vulkan\util\Pointer $ppData void**
      * returns VkResult
      */
     public function vkMapMemory(
@@ -668,7 +668,7 @@ class Vulkan
         int $offset,
         int $size,
         array $flags,
-        util\OpaquePointer $ppData,
+        util\Pointer $ppData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -782,12 +782,12 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pCommittedMemoryInBytes VkDeviceSize*
+     * @param \iggyvolz\vulkan\util\Pointer $pCommittedMemoryInBytes VkDeviceSize*
      */
     public function vkGetDeviceMemoryCommitment(
         struct\VkDevice $device,
         struct\VkDeviceMemory $memory,
-        util\OpaquePointer $pCommittedMemoryInBytes,
+        util\Pointer $pCommittedMemoryInBytes,
     ): void
     {
         $phpValue = $device;
@@ -1472,7 +1472,7 @@ class Vulkan
      * @param int $firstQuery uint32_t
      * @param int $queryCount uint32_t
      * @param int $dataSize size_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * @param int $stride VkDeviceSize
      * @param list<iggyvolz\vulkan\enum\VkQueryResultFlagBits> $flags VkQueryResultFlags
      * returns VkResult
@@ -1483,7 +1483,7 @@ class Vulkan
         int $firstQuery,
         int $queryCount,
         int $dataSize,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
         int $stride,
         array $flags,
     ): enum\VkResult
@@ -1974,14 +1974,14 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
      * @param \iggyvolz\vulkan\util\IntPointer $pDataSize size_t*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
      */
     public function vkGetPipelineCacheData(
         struct\VkDevice $device,
         struct\VkPipelineCache $pipelineCache,
         util\IntPointer $pDataSize,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -3365,14 +3365,14 @@ class Vulkan
      * @param int $firstBinding uint32_t
      * @param int $bindingCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBuffer> $pBuffers const VkBuffer*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pOffsets const VkDeviceSize*
+     * @param \iggyvolz\vulkan\util\Pointer $pOffsets const VkDeviceSize*
      */
     public function vkCmdBindVertexBuffers(
         struct\VkCommandBuffer $commandBuffer,
         int $firstBinding,
         int $bindingCount,
         util\ObjectPointer $pBuffers,
-        util\OpaquePointer $pOffsets,
+        util\Pointer $pOffsets,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -3535,7 +3535,7 @@ class Vulkan
      * @param int $instanceCount uint32_t
      * @param int $firstInstance uint32_t
      * @param int $stride uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pVertexOffset const int32_t*
+     * @param \iggyvolz\vulkan\util\Pointer $pVertexOffset const int32_t*
      */
     public function vkCmdDrawMultiIndexedEXT(
         struct\VkCommandBuffer $commandBuffer,
@@ -3544,7 +3544,7 @@ class Vulkan
         int $instanceCount,
         int $firstInstance,
         int $stride,
-        util\OpaquePointer $pVertexOffset,
+        util\Pointer $pVertexOffset,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -4143,14 +4143,14 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
      * @param int $dstOffset VkDeviceSize
      * @param int $dataSize VkDeviceSize
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData const void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData const void*
      */
     public function vkCmdUpdateBuffer(
         struct\VkCommandBuffer $commandBuffer,
         struct\VkBuffer $dstBuffer,
         int $dstOffset,
         int $dataSize,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -4220,7 +4220,7 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \\iggyvolz\vulkan\struct\VkImage $image VkImage
      * @param \\iggyvolz\vulkan\enum\VkImageLayout $imageLayout VkImageLayout
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pColor const VkClearColorValue*
+     * @param \iggyvolz\vulkan\util\Pointer $pColor const VkClearColorValue*
      * @param int $rangeCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageSubresourceRange> $pRanges const VkImageSubresourceRange*
      */
@@ -4228,7 +4228,7 @@ class Vulkan
         struct\VkCommandBuffer $commandBuffer,
         struct\VkImage $image,
         enum\VkImageLayout $imageLayout,
-        util\OpaquePointer $pColor,
+        util\Pointer $pColor,
         int $rangeCount,
         util\ObjectPointer $pRanges,
     ): void
@@ -4817,7 +4817,7 @@ class Vulkan
      * @param list<iggyvolz\vulkan\enum\VkShaderStageFlagBits> $stageFlags VkShaderStageFlags
      * @param int $offset uint32_t
      * @param int $size uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pValues const void*
+     * @param \iggyvolz\vulkan\util\Pointer $pValues const void*
      */
     public function vkCmdPushConstants(
         struct\VkCommandBuffer $commandBuffer,
@@ -4825,7 +4825,7 @@ class Vulkan
         array $stageFlags,
         int $offset,
         int $size,
-        util\OpaquePointer $pValues,
+        util\Pointer $pValues,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -5296,14 +5296,14 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
      * @param \\iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pSupported VkBool32*
+     * @param \iggyvolz\vulkan\util\Pointer $pSupported VkBool32*
      * returns VkResult
      */
     public function vkGetPhysicalDeviceSurfaceSupportKHR(
         struct\VkPhysicalDevice $physicalDevice,
         int $queueFamilyIndex,
         struct\VkSurfaceKHR $surface,
-        util\OpaquePointer $pSupported,
+        util\Pointer $pSupported,
     ): enum\VkResult
     {
         $phpValue = $physicalDevice;
@@ -5398,14 +5398,14 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \\iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
      * @param \iggyvolz\vulkan\util\IntPointer $pPresentModeCount uint32_t*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pPresentModes VkPresentModeKHR*
+     * @param \iggyvolz\vulkan\util\Pointer $pPresentModes VkPresentModeKHR*
      * returns VkResult
      */
     public function vkGetPhysicalDeviceSurfacePresentModesKHR(
         struct\VkPhysicalDevice $physicalDevice,
         struct\VkSurfaceKHR $surface,
         util\IntPointer $pPresentModeCount,
-        util\OpaquePointer $pPresentModes,
+        util\Pointer $pPresentModes,
     ): enum\VkResult
     {
         $phpValue = $physicalDevice;
@@ -5673,13 +5673,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $display struct wl_display*
+     * @param \iggyvolz\vulkan\util\Pointer $display struct wl_display*
      * returns VkBool32
      */
     public function vkGetPhysicalDeviceWaylandPresentationSupportKHR(
         struct\VkPhysicalDevice $physicalDevice,
         int $queueFamilyIndex,
-        util\OpaquePointer $display,
+        util\Pointer $display,
     ): bool
     {
         $phpValue = $physicalDevice;
@@ -5799,14 +5799,14 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $dpy Display*
+     * @param \iggyvolz\vulkan\util\Pointer $dpy Display*
      * @param mixed $visualID VisualID
      * returns VkBool32
      */
     public function vkGetPhysicalDeviceXlibPresentationSupportKHR(
         struct\VkPhysicalDevice $physicalDevice,
         int $queueFamilyIndex,
-        util\OpaquePointer $dpy,
+        util\Pointer $dpy,
         mixed $visualID,
     ): bool
     {
@@ -5871,14 +5871,14 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $connection xcb_connection_t*
+     * @param \iggyvolz\vulkan\util\Pointer $connection xcb_connection_t*
      * @param mixed $visual_id xcb_visualid_t
      * returns VkBool32
      */
     public function vkGetPhysicalDeviceXcbPresentationSupportKHR(
         struct\VkPhysicalDevice $physicalDevice,
         int $queueFamilyIndex,
-        util\OpaquePointer $connection,
+        util\Pointer $connection,
         mixed $visual_id,
     ): bool
     {
@@ -5943,13 +5943,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $dfb IDirectFB*
+     * @param \iggyvolz\vulkan\util\Pointer $dfb IDirectFB*
      * returns VkBool32
      */
     public function vkGetPhysicalDeviceDirectFBPresentationSupportEXT(
         struct\VkPhysicalDevice $physicalDevice,
         int $queueFamilyIndex,
-        util\OpaquePointer $dfb,
+        util\Pointer $dfb,
     ): bool
     {
         $phpValue = $physicalDevice;
@@ -6081,13 +6081,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $window struct _screen_window*
+     * @param \iggyvolz\vulkan\util\Pointer $window struct _screen_window*
      * returns VkBool32
      */
     public function vkGetPhysicalDeviceScreenPresentationSupportQNX(
         struct\VkPhysicalDevice $physicalDevice,
         int $queueFamilyIndex,
-        util\OpaquePointer $window,
+        util\Pointer $window,
     ): bool
     {
         $phpValue = $physicalDevice;
@@ -6392,14 +6392,14 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
      * @param list<iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV> $handleType VkExternalMemoryHandleTypeFlagsNV
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pHandle HANDLE*
+     * @param \iggyvolz\vulkan\util\Pointer $pHandle HANDLE*
      * returns VkResult
      */
     public function vkGetMemoryWin32HandleNV(
         struct\VkDevice $device,
         struct\VkDeviceMemory $memory,
         array $handleType,
-        util\OpaquePointer $pHandle,
+        util\Pointer $pHandle,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -6873,13 +6873,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryGetWin32HandleInfoKHR> $pGetWin32HandleInfo const VkMemoryGetWin32HandleInfoKHR*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pHandle HANDLE*
+     * @param \iggyvolz\vulkan\util\Pointer $pHandle HANDLE*
      * returns VkResult
      */
     public function vkGetMemoryWin32HandleKHR(
         struct\VkDevice $device,
         util\ObjectPointer $pGetWin32HandleInfo,
-        util\OpaquePointer $pHandle,
+        util\Pointer $pHandle,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -6903,14 +6903,14 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits $handleType VkExternalMemoryHandleTypeFlagBits
-     * @param \iggyvolz\vulkan\util\OpaquePointer $handle HANDLE
+     * @param \iggyvolz\vulkan\util\Pointer $handle HANDLE
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryWin32HandlePropertiesKHR> $pMemoryWin32HandleProperties VkMemoryWin32HandlePropertiesKHR*
      * returns VkResult
      */
     public function vkGetMemoryWin32HandlePropertiesKHR(
         struct\VkDevice $device,
         enum\VkExternalMemoryHandleTypeFlagBits $handleType,
-        util\OpaquePointer $handle,
+        util\Pointer $handle,
         util\ObjectPointer $pMemoryWin32HandleProperties,
     ): enum\VkResult
     {
@@ -7005,13 +7005,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryGetZirconHandleInfoFUCHSIA> $pGetZirconHandleInfo const VkMemoryGetZirconHandleInfoFUCHSIA*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pZirconHandle zx_handle_t*
+     * @param \iggyvolz\vulkan\util\Pointer $pZirconHandle zx_handle_t*
      * returns VkResult
      */
     public function vkGetMemoryZirconHandleFUCHSIA(
         struct\VkDevice $device,
         util\ObjectPointer $pGetZirconHandleInfo,
-        util\OpaquePointer $pZirconHandle,
+        util\Pointer $pZirconHandle,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -7071,13 +7071,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryGetRemoteAddressInfoNV> $pMemoryGetRemoteAddressInfo const VkMemoryGetRemoteAddressInfoNV*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pAddress VkRemoteAddressNV*
+     * @param \iggyvolz\vulkan\util\Pointer $pAddress VkRemoteAddressNV*
      * returns VkResult
      */
     public function vkGetMemoryRemoteAddressNV(
         struct\VkDevice $device,
         util\ObjectPointer $pMemoryGetRemoteAddressInfo,
-        util\OpaquePointer $pAddress,
+        util\Pointer $pAddress,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -7101,13 +7101,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryGetSciBufInfoNV> $pGetSciBufInfo const VkMemoryGetSciBufInfoNV*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pHandle NvSciBufObj*
+     * @param \iggyvolz\vulkan\util\Pointer $pHandle NvSciBufObj*
      * returns VkResult
      */
     public function vkGetMemorySciBufNV(
         struct\VkDevice $device,
         util\ObjectPointer $pGetSciBufInfo,
-        util\OpaquePointer $pHandle,
+        util\Pointer $pHandle,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -7218,13 +7218,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphoreGetWin32HandleInfoKHR> $pGetWin32HandleInfo const VkSemaphoreGetWin32HandleInfoKHR*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pHandle HANDLE*
+     * @param \iggyvolz\vulkan\util\Pointer $pHandle HANDLE*
      * returns VkResult
      */
     public function vkGetSemaphoreWin32HandleKHR(
         struct\VkDevice $device,
         util\ObjectPointer $pGetWin32HandleInfo,
-        util\OpaquePointer $pHandle,
+        util\Pointer $pHandle,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -7326,13 +7326,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphoreGetZirconHandleInfoFUCHSIA> $pGetZirconHandleInfo const VkSemaphoreGetZirconHandleInfoFUCHSIA*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pZirconHandle zx_handle_t*
+     * @param \iggyvolz\vulkan\util\Pointer $pZirconHandle zx_handle_t*
      * returns VkResult
      */
     public function vkGetSemaphoreZirconHandleFUCHSIA(
         struct\VkDevice $device,
         util\ObjectPointer $pGetZirconHandleInfo,
-        util\OpaquePointer $pZirconHandle,
+        util\Pointer $pZirconHandle,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -7407,13 +7407,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFenceGetWin32HandleInfoKHR> $pGetWin32HandleInfo const VkFenceGetWin32HandleInfoKHR*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pHandle HANDLE*
+     * @param \iggyvolz\vulkan\util\Pointer $pHandle HANDLE*
      * returns VkResult
      */
     public function vkGetFenceWin32HandleKHR(
         struct\VkDevice $device,
         util\ObjectPointer $pGetWin32HandleInfo,
-        util\OpaquePointer $pHandle,
+        util\Pointer $pHandle,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -7512,13 +7512,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFenceGetSciSyncInfoNV> $pGetSciSyncHandleInfo const VkFenceGetSciSyncInfoNV*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pHandle void*
+     * @param \iggyvolz\vulkan\util\Pointer $pHandle void*
      * returns VkResult
      */
     public function vkGetFenceSciSyncFenceNV(
         struct\VkDevice $device,
         util\ObjectPointer $pGetSciSyncHandleInfo,
-        util\OpaquePointer $pHandle,
+        util\Pointer $pHandle,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -7542,13 +7542,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFenceGetSciSyncInfoNV> $pGetSciSyncHandleInfo const VkFenceGetSciSyncInfoNV*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pHandle void*
+     * @param \iggyvolz\vulkan\util\Pointer $pHandle void*
      * returns VkResult
      */
     public function vkGetFenceSciSyncObjNV(
         struct\VkDevice $device,
         util\ObjectPointer $pGetSciSyncHandleInfo,
-        util\OpaquePointer $pHandle,
+        util\Pointer $pHandle,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -7620,13 +7620,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphoreGetSciSyncInfoNV> $pGetSciSyncInfo const VkSemaphoreGetSciSyncInfoNV*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pHandle void*
+     * @param \iggyvolz\vulkan\util\Pointer $pHandle void*
      * returns VkResult
      */
     public function vkGetSemaphoreSciSyncObjNV(
         struct\VkDevice $device,
         util\ObjectPointer $pGetSciSyncInfo,
-        util\OpaquePointer $pHandle,
+        util\Pointer $pHandle,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -7790,13 +7790,13 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \iggyvolz\vulkan\util\OpaquePointer $dpy Display*
+     * @param \iggyvolz\vulkan\util\Pointer $dpy Display*
      * @param \\iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
      * returns VkResult
      */
     public function vkAcquireXlibDisplayEXT(
         struct\VkPhysicalDevice $physicalDevice,
-        util\OpaquePointer $dpy,
+        util\Pointer $dpy,
         struct\VkDisplayKHR $display,
     ): enum\VkResult
     {
@@ -7820,14 +7820,14 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \iggyvolz\vulkan\util\OpaquePointer $dpy Display*
+     * @param \iggyvolz\vulkan\util\Pointer $dpy Display*
      * @param mixed $rrOutput RROutput
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayKHR> $pDisplay VkDisplayKHR*
      * returns VkResult
      */
     public function vkGetRandROutputDisplayEXT(
         struct\VkPhysicalDevice $physicalDevice,
-        util\OpaquePointer $dpy,
+        util\Pointer $dpy,
         mixed $rrOutput,
         util\ObjectPointer $pDisplay,
     ): enum\VkResult
@@ -8117,14 +8117,14 @@ class Vulkan
      * @param int $heapIndex uint32_t
      * @param int $localDeviceIndex uint32_t
      * @param int $remoteDeviceIndex uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pPeerMemoryFeatures VkPeerMemoryFeatureFlags*
+     * @param \iggyvolz\vulkan\util\Pointer $pPeerMemoryFeatures VkPeerMemoryFeatureFlags*
      */
     public function vkGetDeviceGroupPeerMemoryFeatures(
         struct\VkDevice $device,
         int $heapIndex,
         int $localDeviceIndex,
         int $remoteDeviceIndex,
-        util\OpaquePointer $pPeerMemoryFeatures,
+        util\Pointer $pPeerMemoryFeatures,
     ): void
     {
         $phpValue = $device;
@@ -8256,13 +8256,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pModes VkDeviceGroupPresentModeFlagsKHR*
+     * @param \iggyvolz\vulkan\util\Pointer $pModes VkDeviceGroupPresentModeFlagsKHR*
      * returns VkResult
      */
     public function vkGetDeviceGroupSurfacePresentModesKHR(
         struct\VkDevice $device,
         struct\VkSurfaceKHR $surface,
-        util\OpaquePointer $pModes,
+        util\Pointer $pModes,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -8467,13 +8467,13 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkDescriptorSet $descriptorSet VkDescriptorSet
      * @param \\iggyvolz\vulkan\struct\VkDescriptorUpdateTemplate $descriptorUpdateTemplate VkDescriptorUpdateTemplate
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData const void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData const void*
      */
     public function vkUpdateDescriptorSetWithTemplate(
         struct\VkDevice $device,
         struct\VkDescriptorSet $descriptorSet,
         struct\VkDescriptorUpdateTemplate $descriptorUpdateTemplate,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): void
     {
         $phpValue = $device;
@@ -8501,14 +8501,14 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkDescriptorUpdateTemplate $descriptorUpdateTemplate VkDescriptorUpdateTemplate
      * @param \\iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
      * @param int $set uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData const void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData const void*
      */
     public function vkCmdPushDescriptorSetWithTemplateKHR(
         struct\VkCommandBuffer $commandBuffer,
         struct\VkDescriptorUpdateTemplate $descriptorUpdateTemplate,
         struct\VkPipelineLayout $layout,
         int $set,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -9442,14 +9442,14 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkValidationCacheEXT $validationCache VkValidationCacheEXT
      * @param \iggyvolz\vulkan\util\IntPointer $pDataSize size_t*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
      */
     public function vkGetValidationCacheDataEXT(
         struct\VkDevice $device,
         struct\VkValidationCacheEXT $validationCache,
         util\IntPointer $pDataSize,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -9711,7 +9711,7 @@ class Vulkan
      * @param \\iggyvolz\vulkan\enum\VkShaderStageFlagBits $shaderStage VkShaderStageFlagBits
      * @param \\iggyvolz\vulkan\enum\VkShaderInfoTypeAMD $infoType VkShaderInfoTypeAMD
      * @param \iggyvolz\vulkan\util\IntPointer $pInfoSize size_t*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pInfo void*
+     * @param \iggyvolz\vulkan\util\Pointer $pInfo void*
      * returns VkResult
      */
     public function vkGetShaderInfoAMD(
@@ -9720,7 +9720,7 @@ class Vulkan
         enum\VkShaderStageFlagBits $shaderStage,
         enum\VkShaderInfoTypeAMD $infoType,
         util\IntPointer $pInfoSize,
-        util\OpaquePointer $pInfo,
+        util\Pointer $pInfo,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -9783,13 +9783,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pTimeDomainCount uint32_t*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pTimeDomains VkTimeDomainEXT*
+     * @param \iggyvolz\vulkan\util\Pointer $pTimeDomains VkTimeDomainEXT*
      * returns VkResult
      */
     public function vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
         struct\VkPhysicalDevice $physicalDevice,
         util\IntPointer $pTimeDomainCount,
-        util\OpaquePointer $pTimeDomains,
+        util\Pointer $pTimeDomains,
     ): enum\VkResult
     {
         $phpValue = $physicalDevice;
@@ -10100,14 +10100,14 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits $handleType VkExternalMemoryHandleTypeFlagBits
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pHostPointer const void*
+     * @param \iggyvolz\vulkan\util\Pointer $pHostPointer const void*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryHostPointerPropertiesEXT> $pMemoryHostPointerProperties VkMemoryHostPointerPropertiesEXT*
      * returns VkResult
      */
     public function vkGetMemoryHostPointerPropertiesEXT(
         struct\VkDevice $device,
         enum\VkExternalMemoryHandleTypeFlagBits $handleType,
-        util\OpaquePointer $pHostPointer,
+        util\Pointer $pHostPointer,
         util\ObjectPointer $pMemoryHostPointerProperties,
     ): enum\VkResult
     {
@@ -10366,13 +10366,13 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \iggyvolz\vulkan\util\OpaquePointer $buffer const struct AHardwareBuffer*
+     * @param \iggyvolz\vulkan\util\Pointer $buffer const struct AHardwareBuffer*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAndroidHardwareBufferPropertiesANDROID> $pProperties VkAndroidHardwareBufferPropertiesANDROID*
      * returns VkResult
      */
     public function vkGetAndroidHardwareBufferPropertiesANDROID(
         struct\VkDevice $device,
-        util\OpaquePointer $buffer,
+        util\Pointer $buffer,
         util\ObjectPointer $pProperties,
     ): enum\VkResult
     {
@@ -10397,13 +10397,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryGetAndroidHardwareBufferInfoANDROID> $pInfo const VkMemoryGetAndroidHardwareBufferInfoANDROID*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pBuffer struct AHardwareBuffer**
+     * @param \iggyvolz\vulkan\util\Pointer $pBuffer struct AHardwareBuffer**
      * returns VkResult
      */
     public function vkGetMemoryAndroidHardwareBufferANDROID(
         struct\VkDevice $device,
         util\ObjectPointer $pInfo,
-        util\OpaquePointer $pBuffer,
+        util\Pointer $pBuffer,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -10528,12 +10528,9 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pCheckpointMarker const void*
+     * @param \iggyvolz\vulkan\util\Pointer $pCheckpointMarker const void*
      */
-    public function vkCmdSetCheckpointNV(
-        struct\VkCommandBuffer $commandBuffer,
-        util\OpaquePointer $pCheckpointMarker,
-    ): void
+    public function vkCmdSetCheckpointNV(struct\VkCommandBuffer $commandBuffer, util\Pointer $pCheckpointMarker): void
     {
         $phpValue = $commandBuffer;
         $cValue = $phpValue->cdata;
@@ -10579,16 +10576,16 @@ class Vulkan
      * @param int $firstBinding uint32_t
      * @param int $bindingCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBuffer> $pBuffers const VkBuffer*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pOffsets const VkDeviceSize*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pSizes const VkDeviceSize*
+     * @param \iggyvolz\vulkan\util\Pointer $pOffsets const VkDeviceSize*
+     * @param \iggyvolz\vulkan\util\Pointer $pSizes const VkDeviceSize*
      */
     public function vkCmdBindTransformFeedbackBuffersEXT(
         struct\VkCommandBuffer $commandBuffer,
         int $firstBinding,
         int $bindingCount,
         util\ObjectPointer $pBuffers,
-        util\OpaquePointer $pOffsets,
-        util\OpaquePointer $pSizes,
+        util\Pointer $pOffsets,
+        util\Pointer $pSizes,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -10624,14 +10621,14 @@ class Vulkan
      * @param int $firstCounterBuffer uint32_t
      * @param int $counterBufferCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBuffer> $pCounterBuffers const VkBuffer*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pCounterBufferOffsets const VkDeviceSize*
+     * @param \iggyvolz\vulkan\util\Pointer $pCounterBufferOffsets const VkDeviceSize*
      */
     public function vkCmdBeginTransformFeedbackEXT(
         struct\VkCommandBuffer $commandBuffer,
         int $firstCounterBuffer,
         int $counterBufferCount,
         util\ObjectPointer $pCounterBuffers,
-        util\OpaquePointer $pCounterBufferOffsets,
+        util\Pointer $pCounterBufferOffsets,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -10663,14 +10660,14 @@ class Vulkan
      * @param int $firstCounterBuffer uint32_t
      * @param int $counterBufferCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBuffer> $pCounterBuffers const VkBuffer*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pCounterBufferOffsets const VkDeviceSize*
+     * @param \iggyvolz\vulkan\util\Pointer $pCounterBufferOffsets const VkDeviceSize*
      */
     public function vkCmdEndTransformFeedbackEXT(
         struct\VkCommandBuffer $commandBuffer,
         int $firstCounterBuffer,
         int $counterBufferCount,
         util\ObjectPointer $pCounterBuffers,
-        util\OpaquePointer $pCounterBufferOffsets,
+        util\Pointer $pCounterBufferOffsets,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -10857,13 +10854,13 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstExclusiveScissor uint32_t
      * @param int $exclusiveScissorCount uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pExclusiveScissorEnables const VkBool32*
+     * @param \iggyvolz\vulkan\util\Pointer $pExclusiveScissorEnables const VkBool32*
      */
     public function vkCmdSetExclusiveScissorEnableNV(
         struct\VkCommandBuffer $commandBuffer,
         int $firstExclusiveScissor,
         int $exclusiveScissorCount,
-        util\OpaquePointer $pExclusiveScissorEnables,
+        util\Pointer $pExclusiveScissorEnables,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -11764,7 +11761,7 @@ class Vulkan
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureKHR> $pAccelerationStructures const VkAccelerationStructureKHR*
      * @param \\iggyvolz\vulkan\enum\VkQueryType $queryType VkQueryType
      * @param int $dataSize size_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * @param int $stride size_t
      * returns VkResult
      */
@@ -11774,7 +11771,7 @@ class Vulkan
         util\ObjectPointer $pAccelerationStructures,
         enum\VkQueryType $queryType,
         int $dataSize,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
         int $stride,
     ): enum\VkResult
     {
@@ -11974,7 +11971,7 @@ class Vulkan
      * @param int $firstGroup uint32_t
      * @param int $groupCount uint32_t
      * @param int $dataSize size_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
      */
     public function vkGetRayTracingShaderGroupHandlesKHR(
@@ -11983,7 +11980,7 @@ class Vulkan
         int $firstGroup,
         int $groupCount,
         int $dataSize,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -12022,7 +12019,7 @@ class Vulkan
      * @param int $firstGroup uint32_t
      * @param int $groupCount uint32_t
      * @param int $dataSize size_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
      */
     public function vkGetRayTracingCaptureReplayShaderGroupHandlesKHR(
@@ -12031,7 +12028,7 @@ class Vulkan
         int $firstGroup,
         int $groupCount,
         int $dataSize,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -12068,14 +12065,14 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkAccelerationStructureNV $accelerationStructure VkAccelerationStructureNV
      * @param int $dataSize size_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
      */
     public function vkGetAccelerationStructureHandleNV(
         struct\VkDevice $device,
         struct\VkAccelerationStructureNV $accelerationStructure,
         int $dataSize,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -12301,12 +12298,12 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureVersionInfoKHR> $pVersionInfo const VkAccelerationStructureVersionInfoKHR*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pCompatibility VkAccelerationStructureCompatibilityKHR*
+     * @param \iggyvolz\vulkan\util\Pointer $pCompatibility VkAccelerationStructureCompatibilityKHR*
      */
     public function vkGetDeviceAccelerationStructureCompatibilityKHR(
         struct\VkDevice $device,
         util\ObjectPointer $pVersionInfo,
-        util\OpaquePointer $pCompatibility,
+        util\Pointer $pCompatibility,
     ): void
     {
         $phpValue = $device;
@@ -12437,14 +12434,14 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceSurfaceInfo2KHR> $pSurfaceInfo const VkPhysicalDeviceSurfaceInfo2KHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pPresentModeCount uint32_t*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pPresentModes VkPresentModeKHR*
+     * @param \iggyvolz\vulkan\util\Pointer $pPresentModes VkPresentModeKHR*
      * returns VkResult
      */
     public function vkGetPhysicalDeviceSurfacePresentModes2EXT(
         struct\VkPhysicalDevice $physicalDevice,
         util\ObjectPointer $pSurfaceInfo,
         util\IntPointer $pPresentModeCount,
-        util\OpaquePointer $pPresentModes,
+        util\Pointer $pPresentModes,
     ): enum\VkResult
     {
         $phpValue = $physicalDevice;
@@ -12472,13 +12469,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceSurfaceInfo2KHR> $pSurfaceInfo const VkPhysicalDeviceSurfaceInfo2KHR*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pModes VkDeviceGroupPresentModeFlagsKHR*
+     * @param \iggyvolz\vulkan\util\Pointer $pModes VkDeviceGroupPresentModeFlagsKHR*
      * returns VkResult
      */
     public function vkGetDeviceGroupSurfacePresentModes2EXT(
         struct\VkDevice $device,
         util\ObjectPointer $pSurfaceInfo,
-        util\OpaquePointer $pModes,
+        util\Pointer $pModes,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -13164,7 +13161,7 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\enum\VkFaultQueryBehavior $faultQueryBehavior VkFaultQueryBehavior
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pUnrecordedFaults VkBool32*
+     * @param \iggyvolz\vulkan\util\Pointer $pUnrecordedFaults VkBool32*
      * @param \iggyvolz\vulkan\util\IntPointer $pFaultCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFaultData> $pFaults VkFaultData*
      * returns VkResult
@@ -13172,7 +13169,7 @@ class Vulkan
     public function vkGetFaultData(
         struct\VkDevice $device,
         enum\VkFaultQueryBehavior $faultQueryBehavior,
-        util\OpaquePointer $pUnrecordedFaults,
+        util\Pointer $pUnrecordedFaults,
         util\IntPointer $pFaultCount,
         util\ObjectPointer $pFaults,
     ): enum\VkResult
@@ -13273,13 +13270,13 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $infoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureBuildGeometryInfoKHR> $pInfos const VkAccelerationStructureBuildGeometryInfoKHR*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $ppBuildRangeInfos const VkAccelerationStructureBuildRangeInfoKHR* const*
+     * @param \iggyvolz\vulkan\util\Pointer $ppBuildRangeInfos const VkAccelerationStructureBuildRangeInfoKHR* const*
      */
     public function vkCmdBuildAccelerationStructuresKHR(
         struct\VkCommandBuffer $commandBuffer,
         int $infoCount,
         util\ObjectPointer $pInfos,
-        util\OpaquePointer $ppBuildRangeInfos,
+        util\Pointer $ppBuildRangeInfos,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -13306,17 +13303,17 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $infoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureBuildGeometryInfoKHR> $pInfos const VkAccelerationStructureBuildGeometryInfoKHR*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pIndirectDeviceAddresses const VkDeviceAddress*
+     * @param \iggyvolz\vulkan\util\Pointer $pIndirectDeviceAddresses const VkDeviceAddress*
      * @param \iggyvolz\vulkan\util\IntPointer $pIndirectStrides const uint32_t*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $ppMaxPrimitiveCounts const uint32_t* const*
+     * @param \iggyvolz\vulkan\util\Pointer $ppMaxPrimitiveCounts const uint32_t* const*
      */
     public function vkCmdBuildAccelerationStructuresIndirectKHR(
         struct\VkCommandBuffer $commandBuffer,
         int $infoCount,
         util\ObjectPointer $pInfos,
-        util\OpaquePointer $pIndirectDeviceAddresses,
+        util\Pointer $pIndirectDeviceAddresses,
         util\IntPointer $pIndirectStrides,
-        util\OpaquePointer $ppMaxPrimitiveCounts,
+        util\Pointer $ppMaxPrimitiveCounts,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -13352,7 +13349,7 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
      * @param int $infoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureBuildGeometryInfoKHR> $pInfos const VkAccelerationStructureBuildGeometryInfoKHR*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $ppBuildRangeInfos const VkAccelerationStructureBuildRangeInfoKHR* const*
+     * @param \iggyvolz\vulkan\util\Pointer $ppBuildRangeInfos const VkAccelerationStructureBuildRangeInfoKHR* const*
      * returns VkResult
      */
     public function vkBuildAccelerationStructuresKHR(
@@ -13360,7 +13357,7 @@ class Vulkan
         struct\VkDeferredOperationKHR $deferredOperation,
         int $infoCount,
         util\ObjectPointer $pInfos,
-        util\OpaquePointer $ppBuildRangeInfos,
+        util\Pointer $ppBuildRangeInfos,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -13745,18 +13742,18 @@ class Vulkan
      * @param int $firstBinding uint32_t
      * @param int $bindingCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBuffer> $pBuffers const VkBuffer*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pOffsets const VkDeviceSize*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pSizes const VkDeviceSize*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pStrides const VkDeviceSize*
+     * @param \iggyvolz\vulkan\util\Pointer $pOffsets const VkDeviceSize*
+     * @param \iggyvolz\vulkan\util\Pointer $pSizes const VkDeviceSize*
+     * @param \iggyvolz\vulkan\util\Pointer $pStrides const VkDeviceSize*
      */
     public function vkCmdBindVertexBuffers2(
         struct\VkCommandBuffer $commandBuffer,
         int $firstBinding,
         int $bindingCount,
         util\ObjectPointer $pBuffers,
-        util\OpaquePointer $pOffsets,
-        util\OpaquePointer $pSizes,
-        util\OpaquePointer $pStrides,
+        util\Pointer $pOffsets,
+        util\Pointer $pSizes,
+        util\Pointer $pStrides,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -14115,12 +14112,12 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \\iggyvolz\vulkan\enum\VkSampleCountFlagBits $samples VkSampleCountFlagBits
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pSampleMask const VkSampleMask*
+     * @param \iggyvolz\vulkan\util\Pointer $pSampleMask const VkSampleMask*
      */
     public function vkCmdSetSampleMaskEXT(
         struct\VkCommandBuffer $commandBuffer,
         enum\VkSampleCountFlagBits $samples,
-        util\OpaquePointer $pSampleMask,
+        util\Pointer $pSampleMask,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -14200,13 +14197,13 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstAttachment uint32_t
      * @param int $attachmentCount uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pColorBlendEnables const VkBool32*
+     * @param \iggyvolz\vulkan\util\Pointer $pColorBlendEnables const VkBool32*
      */
     public function vkCmdSetColorBlendEnableEXT(
         struct\VkCommandBuffer $commandBuffer,
         int $firstAttachment,
         int $attachmentCount,
-        util\OpaquePointer $pColorBlendEnables,
+        util\Pointer $pColorBlendEnables,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -14266,13 +14263,13 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstAttachment uint32_t
      * @param int $attachmentCount uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pColorWriteMasks const VkColorComponentFlags*
+     * @param \iggyvolz\vulkan\util\Pointer $pColorWriteMasks const VkColorComponentFlags*
      */
     public function vkCmdSetColorWriteMaskEXT(
         struct\VkCommandBuffer $commandBuffer,
         int $firstAttachment,
         int $attachmentCount,
-        util\OpaquePointer $pColorWriteMasks,
+        util\Pointer $pColorWriteMasks,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -14655,12 +14652,12 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $coverageModulationTableCount uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pCoverageModulationTable const float*
+     * @param \iggyvolz\vulkan\util\Pointer $pCoverageModulationTable const float*
      */
     public function vkCmdSetCoverageModulationTableNV(
         struct\VkCommandBuffer $commandBuffer,
         int $coverageModulationTableCount,
-        util\OpaquePointer $pCoverageModulationTable,
+        util\Pointer $pCoverageModulationTable,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -15027,13 +15024,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pRefreshableObjectTypeCount uint32_t*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pRefreshableObjectTypes VkObjectType*
+     * @param \iggyvolz\vulkan\util\Pointer $pRefreshableObjectTypes VkObjectType*
      * returns VkResult
      */
     public function vkGetPhysicalDeviceRefreshableObjectTypesKHR(
         struct\VkPhysicalDevice $physicalDevice,
         util\IntPointer $pRefreshableObjectTypeCount,
-        util\OpaquePointer $pRefreshableObjectTypes,
+        util\Pointer $pRefreshableObjectTypes,
     ): enum\VkResult
     {
         $phpValue = $physicalDevice;
@@ -15219,12 +15216,12 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $attachmentCount uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pColorWriteEnables const VkBool32*
+     * @param \iggyvolz\vulkan\util\Pointer $pColorWriteEnables const VkBool32*
      */
     public function vkCmdSetColorWriteEnableEXT(
         struct\VkCommandBuffer $commandBuffer,
         int $attachmentCount,
-        util\OpaquePointer $pColorWriteEnables,
+        util\Pointer $pColorWriteEnables,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -15623,13 +15620,13 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pVideoProfile const VkVideoProfileInfoKHR*
+     * @param \iggyvolz\vulkan\util\Pointer $pVideoProfile const VkVideoProfileInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoCapabilitiesKHR> $pCapabilities VkVideoCapabilitiesKHR*
      * returns VkResult
      */
     public function vkGetPhysicalDeviceVideoCapabilitiesKHR(
         struct\VkPhysicalDevice $physicalDevice,
-        util\OpaquePointer $pVideoProfile,
+        util\Pointer $pVideoProfile,
         util\ObjectPointer $pCapabilities,
     ): enum\VkResult
     {
@@ -15851,7 +15848,7 @@ class Vulkan
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoEncodeSessionParametersGetInfoKHR> $pVideoSessionParametersInfo const VkVideoEncodeSessionParametersGetInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoEncodeSessionParametersFeedbackInfoKHR> $pFeedbackInfo VkVideoEncodeSessionParametersFeedbackInfoKHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pDataSize size_t*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
      */
     public function vkGetEncodedVideoSessionParametersKHR(
@@ -15859,7 +15856,7 @@ class Vulkan
         util\ObjectPointer $pVideoSessionParametersInfo,
         util\ObjectPointer $pFeedbackInfo,
         util\IntPointer $pDataSize,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -16296,12 +16293,12 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkDescriptorSetLayout $layout VkDescriptorSetLayout
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pLayoutSizeInBytes VkDeviceSize*
+     * @param \iggyvolz\vulkan\util\Pointer $pLayoutSizeInBytes VkDeviceSize*
      */
     public function vkGetDescriptorSetLayoutSizeEXT(
         struct\VkDevice $device,
         struct\VkDescriptorSetLayout $layout,
-        util\OpaquePointer $pLayoutSizeInBytes,
+        util\Pointer $pLayoutSizeInBytes,
     ): void
     {
         $phpValue = $device;
@@ -16324,13 +16321,13 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkDescriptorSetLayout $layout VkDescriptorSetLayout
      * @param int $binding uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pOffset VkDeviceSize*
+     * @param \iggyvolz\vulkan\util\Pointer $pOffset VkDeviceSize*
      */
     public function vkGetDescriptorSetLayoutBindingOffsetEXT(
         struct\VkDevice $device,
         struct\VkDescriptorSetLayout $layout,
         int $binding,
-        util\OpaquePointer $pOffset,
+        util\Pointer $pOffset,
     ): void
     {
         $phpValue = $device;
@@ -16357,13 +16354,13 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorGetInfoEXT> $pDescriptorInfo const VkDescriptorGetInfoEXT*
      * @param int $dataSize size_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pDescriptor void*
+     * @param \iggyvolz\vulkan\util\Pointer $pDescriptor void*
      */
     public function vkGetDescriptorEXT(
         struct\VkDevice $device,
         util\ObjectPointer $pDescriptorInfo,
         int $dataSize,
-        util\OpaquePointer $pDescriptor,
+        util\Pointer $pDescriptor,
     ): void
     {
         $phpValue = $device;
@@ -16420,7 +16417,7 @@ class Vulkan
      * @param int $firstSet uint32_t
      * @param int $setCount uint32_t
      * @param \iggyvolz\vulkan\util\IntPointer $pBufferIndices const uint32_t*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pOffsets const VkDeviceSize*
+     * @param \iggyvolz\vulkan\util\Pointer $pOffsets const VkDeviceSize*
      */
     public function vkCmdSetDescriptorBufferOffsetsEXT(
         struct\VkCommandBuffer $commandBuffer,
@@ -16429,7 +16426,7 @@ class Vulkan
         int $firstSet,
         int $setCount,
         util\IntPointer $pBufferIndices,
-        util\OpaquePointer $pOffsets,
+        util\Pointer $pOffsets,
     ): void
     {
         $phpValue = $commandBuffer;
@@ -16500,13 +16497,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferCaptureDescriptorDataInfoEXT> $pInfo const VkBufferCaptureDescriptorDataInfoEXT*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
      */
     public function vkGetBufferOpaqueCaptureDescriptorDataEXT(
         struct\VkDevice $device,
         util\ObjectPointer $pInfo,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -16530,13 +16527,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageCaptureDescriptorDataInfoEXT> $pInfo const VkImageCaptureDescriptorDataInfoEXT*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
      */
     public function vkGetImageOpaqueCaptureDescriptorDataEXT(
         struct\VkDevice $device,
         util\ObjectPointer $pInfo,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -16560,13 +16557,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageViewCaptureDescriptorDataInfoEXT> $pInfo const VkImageViewCaptureDescriptorDataInfoEXT*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
      */
     public function vkGetImageViewOpaqueCaptureDescriptorDataEXT(
         struct\VkDevice $device,
         util\ObjectPointer $pInfo,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -16590,13 +16587,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSamplerCaptureDescriptorDataInfoEXT> $pInfo const VkSamplerCaptureDescriptorDataInfoEXT*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
      */
     public function vkGetSamplerOpaqueCaptureDescriptorDataEXT(
         struct\VkDevice $device,
         util\ObjectPointer $pInfo,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -16620,13 +16617,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureCaptureDescriptorDataInfoEXT> $pInfo const VkAccelerationStructureCaptureDescriptorDataInfoEXT*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
      */
     public function vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT(
         struct\VkDevice $device,
         util\ObjectPointer $pInfo,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -16969,14 +16966,14 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkCudaModuleNV $module VkCudaModuleNV
      * @param \iggyvolz\vulkan\util\IntPointer $pCacheSize size_t*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pCacheData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pCacheData void*
      * returns VkResult
      */
     public function vkGetCudaModuleCacheNV(
         struct\VkDevice $device,
         struct\VkCudaModuleNV $module,
         util\IntPointer $pCacheSize,
-        util\OpaquePointer $pCacheData,
+        util\Pointer $pCacheData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -17176,12 +17173,12 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkDescriptorSet $descriptorSet VkDescriptorSet
-     * @param \iggyvolz\vulkan\util\OpaquePointer $ppData void**
+     * @param \iggyvolz\vulkan\util\Pointer $ppData void**
      */
     public function vkGetDescriptorSetHostMappingVALVE(
         struct\VkDevice $device,
         struct\VkDescriptorSet $descriptorSet,
-        util\OpaquePointer $ppData,
+        util\Pointer $ppData,
     ): void
     {
         $phpValue = $device;
@@ -17527,7 +17524,7 @@ class Vulkan
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMicromapEXT> $pMicromaps const VkMicromapEXT*
      * @param \\iggyvolz\vulkan\enum\VkQueryType $queryType VkQueryType
      * @param int $dataSize size_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * @param int $stride size_t
      * returns VkResult
      */
@@ -17537,7 +17534,7 @@ class Vulkan
         util\ObjectPointer $pMicromaps,
         enum\VkQueryType $queryType,
         int $dataSize,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
         int $stride,
     ): enum\VkResult
     {
@@ -17578,12 +17575,12 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMicromapVersionInfoEXT> $pVersionInfo const VkMicromapVersionInfoEXT*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pCompatibility VkAccelerationStructureCompatibilityKHR*
+     * @param \iggyvolz\vulkan\util\Pointer $pCompatibility VkAccelerationStructureCompatibilityKHR*
      */
     public function vkGetDeviceMicromapCompatibilityEXT(
         struct\VkDevice $device,
         util\ObjectPointer $pVersionInfo,
-        util\OpaquePointer $pCompatibility,
+        util\Pointer $pCompatibility,
     ): void
     {
         $phpValue = $device;
@@ -18109,13 +18106,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryMapInfoKHR> $pMemoryMapInfo const VkMemoryMapInfoKHR*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $ppData void**
+     * @param \iggyvolz\vulkan\util\Pointer $ppData void**
      * returns VkResult
      */
     public function vkMapMemory2KHR(
         struct\VkDevice $device,
         util\ObjectPointer $pMemoryMapInfo,
-        util\OpaquePointer $ppData,
+        util\Pointer $ppData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -18230,14 +18227,14 @@ class Vulkan
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \\iggyvolz\vulkan\struct\VkShaderEXT $shader VkShaderEXT
      * @param \iggyvolz\vulkan\util\IntPointer $pDataSize size_t*
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pData void*
+     * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
      */
     public function vkGetShaderBinaryDataEXT(
         struct\VkDevice $device,
         struct\VkShaderEXT $shader,
         util\IntPointer $pDataSize,
-        util\OpaquePointer $pData,
+        util\Pointer $pData,
     ): enum\VkResult
     {
         $phpValue = $device;
@@ -18265,13 +18262,13 @@ class Vulkan
     /**
      * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $stageCount uint32_t
-     * @param \iggyvolz\vulkan\util\OpaquePointer $pStages const VkShaderStageFlagBits*
+     * @param \iggyvolz\vulkan\util\Pointer $pStages const VkShaderStageFlagBits*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkShaderEXT> $pShaders const VkShaderEXT*
      */
     public function vkCmdBindShadersEXT(
         struct\VkCommandBuffer $commandBuffer,
         int $stageCount,
-        util\OpaquePointer $pStages,
+        util\Pointer $pStages,
         util\ObjectPointer $pShaders,
     ): void
     {
@@ -18297,13 +18294,13 @@ class Vulkan
 
     /**
      * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \iggyvolz\vulkan\util\OpaquePointer $buffer const struct _screen_buffer*
+     * @param \iggyvolz\vulkan\util\Pointer $buffer const struct _screen_buffer*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkScreenBufferPropertiesQNX> $pProperties VkScreenBufferPropertiesQNX*
      * returns VkResult
      */
     public function vkGetScreenBufferPropertiesQNX(
         struct\VkDevice $device,
-        util\OpaquePointer $buffer,
+        util\Pointer $buffer,
         util\ObjectPointer $pProperties,
     ): enum\VkResult
     {

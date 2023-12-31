@@ -20,13 +20,13 @@ final class VkImageFormatConstraintsInfoFUCHSIA
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkImageCreateInfo $imageCreateInfo = null,
         null|array $requiredFormatFeatures = null,
         null|array $flags = null,
         null|int $sysmemPixelFormat = null,
         null|int $colorSpaceCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pColorSpaces = null,
+        null|\iggyvolz\vulkan\util\Pointer $pColorSpaces = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkImageFormatConstraintsInfoFUCHSIA', false), $vulkan->ffi);
@@ -62,7 +62,7 @@ final class VkImageFormatConstraintsInfoFUCHSIA
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -70,7 +70,7 @@ final class VkImageFormatConstraintsInfoFUCHSIA
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -170,7 +170,7 @@ final class VkImageFormatConstraintsInfoFUCHSIA
     /**
      * void* /
      */
-    public function getPColorSpaces(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPColorSpaces(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pColorSpaces;
@@ -178,7 +178,7 @@ final class VkImageFormatConstraintsInfoFUCHSIA
         return $phpValue;
     }
 
-    public function setPColorSpaces(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPColorSpaces(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

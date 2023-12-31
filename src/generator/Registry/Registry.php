@@ -50,16 +50,52 @@ final readonly class Registry
                 $enumsBitmask[] = $enumName;
             }
             if($childNode->getAttribute("bitwidth") === "64") $enums64Bit[] = $enumName;
-            foreach($childNode->childNodes as $enumNode) {
-                if(!$enumNode instanceof DOMElement || $enumNode->nodeName !== "enum") continue;
+            $processEnumNode = function(DOMElement $enumNode, int $defaultExtensionNumber = 0) use($isBitmask, $enumName, &$enums){
                 $value = $isBitmask ? $enumNode->getAttribute("bitpos") : $enumNode->getAttribute("value");
+                if($value === "" && $enumNode->hasAttribute("offset")) {
+                    $extensionNumber = intval($enumNode->hasAttribute("extnumber") ? $enumNode->getAttribute("extnumber") : $defaultExtensionNumber);
+                    $offset = intval($enumNode->getAttribute("offset"));
+                    $value = strval(1000000000 + (($extensionNumber - 1) * 1000) + $offset);
+                }
                 $name = $enumNode->getAttribute("name");
-                if($enumNode->hasAttribute("deprecated") || $enumNode->hasAttribute("alias")) continue;
+                if($enumNode->hasAttribute("deprecated") || $enumNode->hasAttribute("alias")) return;
+                if($enumNode->getAttribute("dir") === "-") {
+                    $value = "-$value";
+                }
                 if($value === "") {
                     // These are usually consts on enums - ignore for now
-                    continue;
+                    return;
                 }
                 $enums[$enumName ?? ""][$name] = $value;
+            };
+            foreach($childNode->childNodes as $enumNode) {
+                if(!$enumNode instanceof DOMElement || $enumNode->nodeName !== "enum") continue;
+                $processEnumNode($enumNode);
+            }
+            // Find enum extensions from features
+            foreach ($root->childNodes as $featureNode) {
+                if(!$featureNode instanceof DOMElement || $featureNode->nodeName !== "feature") continue;
+                foreach($featureNode->childNodes as $requireNode) {
+                    if(!$requireNode instanceof DOMElement || $requireNode->nodeName !== "require") continue;
+                    foreach($requireNode->childNodes as $enumNode) {
+                        if(!$enumNode instanceof DOMElement || $enumNode->nodeName !== "enum" || $enumNode->getAttribute("extends") !== $enumName) continue;
+                        $processEnumNode($enumNode);
+                    }
+                }
+            }
+            // Find enum extensions from... extensions
+            foreach ($root->childNodes as $extensionsNode) {
+                if(!$extensionsNode instanceof DOMElement || $extensionsNode->nodeName !== "extensions") continue;
+                foreach($extensionsNode->childNodes as $extensionNode) {
+                    if (!$extensionNode instanceof DOMElement || $extensionNode->nodeName !== "extension") continue;
+                    foreach($extensionNode->childNodes as $requireNode) {
+                        if (!$requireNode instanceof DOMElement || $requireNode->nodeName !== "require") continue;
+                        foreach ($requireNode->childNodes as $enumNode) {
+                            if (!$enumNode instanceof DOMElement || $enumNode->nodeName !== "enum" || $enumNode->getAttribute("extends") !== $enumName) continue;
+                            $processEnumNode($enumNode, intval($extensionNode->getAttribute("number")));
+                        }
+                    }
+                }
             }
         }
         $this->defines = $enums[""] ?? [];

@@ -20,10 +20,10 @@ final class VkDirectFBSurfaceCreateInfoEXT
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $dfb = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $surface = null,
+        null|\iggyvolz\vulkan\util\Pointer $dfb = null,
+        null|\iggyvolz\vulkan\util\Pointer $surface = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkDirectFBSurfaceCreateInfoEXT', false), $vulkan->ffi);
@@ -56,7 +56,7 @@ final class VkDirectFBSurfaceCreateInfoEXT
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -64,7 +64,7 @@ final class VkDirectFBSurfaceCreateInfoEXT
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -92,7 +92,7 @@ final class VkDirectFBSurfaceCreateInfoEXT
     /**
      * void* /
      */
-    public function getDfb(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getDfb(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->dfb;
@@ -100,7 +100,7 @@ final class VkDirectFBSurfaceCreateInfoEXT
         return $phpValue;
     }
 
-    public function setDfb(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setDfb(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -110,7 +110,7 @@ final class VkDirectFBSurfaceCreateInfoEXT
     /**
      * void* /
      */
-    public function getSurface(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getSurface(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->surface;
@@ -118,7 +118,7 @@ final class VkDirectFBSurfaceCreateInfoEXT
         return $phpValue;
     }
 
-    public function setSurface(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setSurface(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

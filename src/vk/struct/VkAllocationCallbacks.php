@@ -19,7 +19,7 @@ final class VkAllocationCallbacks
 
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pUserData = null,
+        null|\iggyvolz\vulkan\util\Pointer $pUserData = null,
         mixed $pfnAllocation = null,
         mixed $pfnReallocation = null,
         mixed $pfnFree = null,
@@ -40,7 +40,7 @@ final class VkAllocationCallbacks
     /**
      * void* /
      */
-    public function getPUserData(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPUserData(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pUserData;
@@ -48,7 +48,7 @@ final class VkAllocationCallbacks
         return $phpValue;
     }
 
-    public function setPUserData(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPUserData(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

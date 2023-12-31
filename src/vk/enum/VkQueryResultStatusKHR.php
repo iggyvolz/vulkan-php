@@ -9,4 +9,5 @@ enum VkQueryResultStatusKHR: int
     case Error = -1;
     case NotReady = 0;
     case Complete = 1;
+    case InsufficientBitstreamBufferRange = -1000299000;
 }

@@ -20,12 +20,12 @@ final class VkDebugUtilsMessengerCreateInfoEXT
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|array $messageSeverity = null,
         null|array $messageType = null,
         mixed $pfnUserCallback = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pUserData = null,
+        null|\iggyvolz\vulkan\util\Pointer $pUserData = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkDebugUtilsMessengerCreateInfoEXT', false), $vulkan->ffi);
@@ -60,7 +60,7 @@ final class VkDebugUtilsMessengerCreateInfoEXT
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -68,7 +68,7 @@ final class VkDebugUtilsMessengerCreateInfoEXT
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -150,7 +150,7 @@ final class VkDebugUtilsMessengerCreateInfoEXT
     /**
      * void* /
      */
-    public function getPUserData(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPUserData(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pUserData;
@@ -158,7 +158,7 @@ final class VkDebugUtilsMessengerCreateInfoEXT
         return $phpValue;
     }
 
-    public function setPUserData(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPUserData(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

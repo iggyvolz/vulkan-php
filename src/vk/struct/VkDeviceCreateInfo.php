@@ -20,15 +20,15 @@ final class VkDeviceCreateInfo
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $queueCreateInfoCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pQueueCreateInfos = null,
         null|int $enabledLayerCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $ppEnabledLayerNames = null,
+        null|\iggyvolz\vulkan\util\Pointer $ppEnabledLayerNames = null,
         null|int $enabledExtensionCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $ppEnabledExtensionNames = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pEnabledFeatures = null,
+        null|\iggyvolz\vulkan\util\Pointer $ppEnabledExtensionNames = null,
+        null|\iggyvolz\vulkan\util\Pointer $pEnabledFeatures = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkDeviceCreateInfo', false), $vulkan->ffi);
@@ -66,7 +66,7 @@ final class VkDeviceCreateInfo
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -74,7 +74,7 @@ final class VkDeviceCreateInfo
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -156,7 +156,7 @@ final class VkDeviceCreateInfo
     /**
      * void* /
      */
-    public function getPpEnabledLayerNames(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPpEnabledLayerNames(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->ppEnabledLayerNames;
@@ -164,7 +164,7 @@ final class VkDeviceCreateInfo
         return $phpValue;
     }
 
-    public function setPpEnabledLayerNames(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPpEnabledLayerNames(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -192,7 +192,7 @@ final class VkDeviceCreateInfo
     /**
      * void* /
      */
-    public function getPpEnabledExtensionNames(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPpEnabledExtensionNames(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->ppEnabledExtensionNames;
@@ -200,7 +200,7 @@ final class VkDeviceCreateInfo
         return $phpValue;
     }
 
-    public function setPpEnabledExtensionNames(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPpEnabledExtensionNames(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -210,7 +210,7 @@ final class VkDeviceCreateInfo
     /**
      * void* /
      */
-    public function getPEnabledFeatures(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPEnabledFeatures(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pEnabledFeatures;
@@ -218,7 +218,7 @@ final class VkDeviceCreateInfo
         return $phpValue;
     }
 
-    public function setPEnabledFeatures(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPEnabledFeatures(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

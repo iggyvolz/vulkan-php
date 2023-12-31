@@ -94,10 +94,10 @@ trait VulkanBase
     public function enum(string $method, string $type, mixed ...$args): array
     {
         $countPtr = IntPointer::new("uint32_t", $this);
-        $this->$method(...[...$args, $countPtr, ObjectPointer::null()])->assert(VkResult::Incomplete);
+        $this->$method(...[...$args, $countPtr, ObjectPointer::null()])?->assert(VkResult::Incomplete);
 
         $ptr = ObjectPointer::new($this, $type, $countPtr->get());
-        $this->$method(...[...$args, $countPtr, $ptr])->assert();
+        $this->$method(...[...$args, $countPtr, $ptr])?->assert();
         return $ptr->getLen($countPtr->get());
     }
 

@@ -20,9 +20,9 @@ final class VkDrmFormatModifierPropertiesList2EXT
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $drmFormatModifierCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pDrmFormatModifierProperties = null,
+        null|\iggyvolz\vulkan\util\Pointer $pDrmFormatModifierProperties = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkDrmFormatModifierPropertiesList2EXT', false), $vulkan->ffi);
@@ -54,7 +54,7 @@ final class VkDrmFormatModifierPropertiesList2EXT
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -62,7 +62,7 @@ final class VkDrmFormatModifierPropertiesList2EXT
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -90,7 +90,7 @@ final class VkDrmFormatModifierPropertiesList2EXT
     /**
      * void* /
      */
-    public function getPDrmFormatModifierProperties(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPDrmFormatModifierProperties(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pDrmFormatModifierProperties;
@@ -98,7 +98,7 @@ final class VkDrmFormatModifierPropertiesList2EXT
         return $phpValue;
     }
 
-    public function setPDrmFormatModifierProperties(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPDrmFormatModifierProperties(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

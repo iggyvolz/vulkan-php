@@ -20,10 +20,10 @@ final class VkOpticalFlowSessionCreatePrivateDataInfoNV
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $id = null,
         null|int $size = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pPrivateData = null,
+        null|\iggyvolz\vulkan\util\Pointer $pPrivateData = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkOpticalFlowSessionCreatePrivateDataInfoNV', false), $vulkan->ffi);
@@ -56,7 +56,7 @@ final class VkOpticalFlowSessionCreatePrivateDataInfoNV
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -64,7 +64,7 @@ final class VkOpticalFlowSessionCreatePrivateDataInfoNV
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -110,7 +110,7 @@ final class VkOpticalFlowSessionCreatePrivateDataInfoNV
     /**
      * void* /
      */
-    public function getPPrivateData(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPPrivateData(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pPrivateData;
@@ -118,7 +118,7 @@ final class VkOpticalFlowSessionCreatePrivateDataInfoNV
         return $phpValue;
     }
 
-    public function setPPrivateData(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPPrivateData(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

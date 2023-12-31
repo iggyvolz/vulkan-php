@@ -20,10 +20,10 @@ final class VkVideoSessionCreateInfoKHR
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $queueFamilyIndex = null,
         null|array $flags = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pVideoProfile = null,
+        null|\iggyvolz\vulkan\util\Pointer $pVideoProfile = null,
         null|\iggyvolz\vulkan\enum\VkFormat $pictureFormat = null,
         null|VkExtent2D $maxCodedExtent = null,
         null|\iggyvolz\vulkan\enum\VkFormat $referencePictureFormat = null,
@@ -68,7 +68,7 @@ final class VkVideoSessionCreateInfoKHR
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -76,7 +76,7 @@ final class VkVideoSessionCreateInfoKHR
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -122,7 +122,7 @@ final class VkVideoSessionCreateInfoKHR
     /**
      * void* /
      */
-    public function getPVideoProfile(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPVideoProfile(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pVideoProfile;
@@ -130,7 +130,7 @@ final class VkVideoSessionCreateInfoKHR
         return $phpValue;
     }
 
-    public function setPVideoProfile(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPVideoProfile(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

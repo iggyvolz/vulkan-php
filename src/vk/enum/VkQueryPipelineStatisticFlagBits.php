@@ -19,4 +19,7 @@ enum VkQueryPipelineStatisticFlagBits: int
     case TessellationControlShaderPatches = 8;
     case TessellationEvaluationShaderInvocations = 9;
     case ComputeShaderInvocations = 10;
+    case TaskShaderInvocationsBitExt = 11;
+    case MeshShaderInvocationsBitExt = 12;
+    case ClusterCullingShaderInvocationsBitHuawei = 13;
 }

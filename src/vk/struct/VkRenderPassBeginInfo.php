@@ -20,12 +20,12 @@ final class VkRenderPassBeginInfo
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkRenderPass $renderPass = null,
         null|VkFramebuffer $framebuffer = null,
         null|VkRect2D $renderArea = null,
         null|int $clearValueCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pClearValues = null,
+        null|\iggyvolz\vulkan\util\Pointer $pClearValues = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkRenderPassBeginInfo', false), $vulkan->ffi);
@@ -60,7 +60,7 @@ final class VkRenderPassBeginInfo
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -68,7 +68,7 @@ final class VkRenderPassBeginInfo
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -150,7 +150,7 @@ final class VkRenderPassBeginInfo
     /**
      * void* /
      */
-    public function getPClearValues(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPClearValues(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pClearValues;
@@ -158,7 +158,7 @@ final class VkRenderPassBeginInfo
         return $phpValue;
     }
 
-    public function setPClearValues(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPClearValues(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

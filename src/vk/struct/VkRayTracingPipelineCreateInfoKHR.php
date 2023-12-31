@@ -20,15 +20,15 @@ final class VkRayTracingPipelineCreateInfoKHR
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $stageCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pStages = null,
         null|int $groupCount = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pGroups = null,
         null|int $maxPipelineRayRecursionDepth = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pLibraryInfo = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pLibraryInterface = null,
+        null|\iggyvolz\vulkan\util\Pointer $pLibraryInfo = null,
+        null|\iggyvolz\vulkan\util\Pointer $pLibraryInterface = null,
         null|\iggyvolz\vulkan\util\ObjectPointer $pDynamicState = null,
         null|VkPipelineLayout $layout = null,
         null|VkPipeline $basePipelineHandle = null,
@@ -74,7 +74,7 @@ final class VkRayTracingPipelineCreateInfoKHR
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -82,7 +82,7 @@ final class VkRayTracingPipelineCreateInfoKHR
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -200,7 +200,7 @@ final class VkRayTracingPipelineCreateInfoKHR
     /**
      * void* /
      */
-    public function getPLibraryInfo(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPLibraryInfo(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pLibraryInfo;
@@ -208,7 +208,7 @@ final class VkRayTracingPipelineCreateInfoKHR
         return $phpValue;
     }
 
-    public function setPLibraryInfo(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPLibraryInfo(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -218,7 +218,7 @@ final class VkRayTracingPipelineCreateInfoKHR
     /**
      * void* /
      */
-    public function getPLibraryInterface(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPLibraryInterface(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pLibraryInterface;
@@ -226,7 +226,7 @@ final class VkRayTracingPipelineCreateInfoKHR
         return $phpValue;
     }
 
-    public function setPLibraryInterface(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPLibraryInterface(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

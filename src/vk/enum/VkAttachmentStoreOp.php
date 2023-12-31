@@ -8,4 +8,5 @@ enum VkAttachmentStoreOp: int
 {
     case Store = 0;
     case DontCare = 1;
+    case None = 1000301000;
 }

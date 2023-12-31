@@ -12,4 +12,6 @@ enum VkBorderColor: int
     case IntOpaqueBlack = 3;
     case FloatOpaqueWhite = 4;
     case IntOpaqueWhite = 5;
+    case FloatCustomExt = 1000287003;
+    case IntCustomExt = 1000287004;
 }

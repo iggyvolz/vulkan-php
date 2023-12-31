@@ -12,4 +12,6 @@ enum VkGeometryInstanceFlagBitsKHR: int
     case TriangleFlipFacing = 1;
     case ForceOpaque = 2;
     case ForceNoOpaque = 3;
+    case ForceOpacityMicromap2StateExt = 4;
+    case DisableOpacityMicromapsExt = 5;
 }

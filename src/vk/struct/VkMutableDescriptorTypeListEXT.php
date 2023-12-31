@@ -20,7 +20,7 @@ final class VkMutableDescriptorTypeListEXT
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|int $descriptorTypeCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pDescriptorTypes = null,
+        null|\iggyvolz\vulkan\util\Pointer $pDescriptorTypes = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkMutableDescriptorTypeListEXT', false), $vulkan->ffi);
@@ -50,7 +50,7 @@ final class VkMutableDescriptorTypeListEXT
     /**
      * void* /
      */
-    public function getPDescriptorTypes(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPDescriptorTypes(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pDescriptorTypes;
@@ -58,7 +58,7 @@ final class VkMutableDescriptorTypeListEXT
         return $phpValue;
     }
 
-    public function setPDescriptorTypes(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPDescriptorTypes(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

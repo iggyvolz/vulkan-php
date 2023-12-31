@@ -12,4 +12,6 @@ enum VkExternalFenceHandleTypeFlagBits: int
     case OpaqueWin32 = 1;
     case OpaqueWin32Kmt = 2;
     case SyncFd = 3;
+    case SciSyncObjBitNv = 4;
+    case SciSyncFenceBitNv = 5;
 }

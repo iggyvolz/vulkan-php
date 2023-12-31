@@ -20,9 +20,9 @@ final class VkExportMetalCommandQueueInfoEXT
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkQueue $queue = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $mtlCommandQueue = null,
+        null|\iggyvolz\vulkan\util\Pointer $mtlCommandQueue = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkExportMetalCommandQueueInfoEXT', false), $vulkan->ffi);
@@ -54,7 +54,7 @@ final class VkExportMetalCommandQueueInfoEXT
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -62,7 +62,7 @@ final class VkExportMetalCommandQueueInfoEXT
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -90,7 +90,7 @@ final class VkExportMetalCommandQueueInfoEXT
     /**
      * void* /
      */
-    public function getMtlCommandQueue(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getMtlCommandQueue(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->mtlCommandQueue;
@@ -98,7 +98,7 @@ final class VkExportMetalCommandQueueInfoEXT
         return $phpValue;
     }
 
-    public function setMtlCommandQueue(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setMtlCommandQueue(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

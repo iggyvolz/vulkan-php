@@ -20,7 +20,7 @@ final class VkCuLaunchInfoNVX
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkCuFunctionNVX $function = null,
         null|int $gridDimX = null,
         null|int $gridDimY = null,
@@ -30,9 +30,9 @@ final class VkCuLaunchInfoNVX
         null|int $blockDimZ = null,
         null|int $sharedMemBytes = null,
         null|int $paramCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pParams = null,
+        null|\iggyvolz\vulkan\util\Pointer $pParams = null,
         null|int $extraCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pExtras = null,
+        null|\iggyvolz\vulkan\util\Pointer $pExtras = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkCuLaunchInfoNVX', false), $vulkan->ffi);
@@ -74,7 +74,7 @@ final class VkCuLaunchInfoNVX
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -82,7 +82,7 @@ final class VkCuLaunchInfoNVX
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -254,7 +254,7 @@ final class VkCuLaunchInfoNVX
     /**
      * void* /
      */
-    public function getPParams(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPParams(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pParams;
@@ -262,7 +262,7 @@ final class VkCuLaunchInfoNVX
         return $phpValue;
     }
 
-    public function setPParams(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPParams(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -290,7 +290,7 @@ final class VkCuLaunchInfoNVX
     /**
      * void* /
      */
-    public function getPExtras(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPExtras(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pExtras;
@@ -298,7 +298,7 @@ final class VkCuLaunchInfoNVX
         return $phpValue;
     }
 
-    public function setPExtras(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPExtras(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

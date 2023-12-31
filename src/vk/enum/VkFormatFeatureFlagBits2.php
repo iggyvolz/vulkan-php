@@ -35,4 +35,25 @@ enum VkFormatFeatureFlagBits2: int
     case StorageReadWithoutFormat = 31;
     case StorageWriteWithoutFormat = 32;
     case SampledImageDepthComparison = 33;
+    case VideoDecodeOutputBitKhr = 25;
+    case VideoDecodeDpbBitKhr = 26;
+    case AccelerationStructureVertexBufferBitKhr = 29;
+    case FragmentDensityMapBitExt = 24;
+    case FragmentShadingRateAttachmentBitKhr = 30;
+    case Reserved44BitExt = 44;
+    case Reserved45BitExt = 45;
+    case HostImageTransferBitExt = 46;
+    case VideoEncodeInputBitKhr = 27;
+    case VideoEncodeDpbBitKhr = 28;
+    case LinearColorAttachmentBitNv = 38;
+    case WeightImageBitQcom = 34;
+    case WeightSampledImageBitQcom = 35;
+    case BlockMatchingBitQcom = 36;
+    case BoxFilterSampledBitQcom = 37;
+    case Reserved47BitArm = 47;
+    case Reserved39BitExt = 39;
+    case OpticalFlowImageBitNv = 40;
+    case OpticalFlowVectorBitNv = 41;
+    case OpticalFlowCostBitNv = 42;
+    case Reserved48BitExt = 48;
 }

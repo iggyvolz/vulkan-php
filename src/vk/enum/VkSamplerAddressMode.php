@@ -10,4 +10,5 @@ enum VkSamplerAddressMode: int
     case MirroredRepeat = 1;
     case ClampToEdge = 2;
     case ClampToBorder = 3;
+    case MirrorClampToEdge = 4;
 }

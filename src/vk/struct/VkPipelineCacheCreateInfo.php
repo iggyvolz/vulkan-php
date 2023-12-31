@@ -20,10 +20,10 @@ final class VkPipelineCacheCreateInfo
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $initialDataSize = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pInitialData = null,
+        null|\iggyvolz\vulkan\util\Pointer $pInitialData = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkPipelineCacheCreateInfo', false), $vulkan->ffi);
@@ -56,7 +56,7 @@ final class VkPipelineCacheCreateInfo
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -64,7 +64,7 @@ final class VkPipelineCacheCreateInfo
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -110,7 +110,7 @@ final class VkPipelineCacheCreateInfo
     /**
      * void* /
      */
-    public function getPInitialData(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPInitialData(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pInitialData;
@@ -118,7 +118,7 @@ final class VkPipelineCacheCreateInfo
         return $phpValue;
     }
 
-    public function setPInitialData(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPInitialData(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

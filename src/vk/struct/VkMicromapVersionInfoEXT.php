@@ -20,8 +20,8 @@ final class VkMicromapVersionInfoEXT
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pVersionData = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pVersionData = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkMicromapVersionInfoEXT', false), $vulkan->ffi);
@@ -52,7 +52,7 @@ final class VkMicromapVersionInfoEXT
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -60,7 +60,7 @@ final class VkMicromapVersionInfoEXT
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -70,7 +70,7 @@ final class VkMicromapVersionInfoEXT
     /**
      * void* /
      */
-    public function getPVersionData(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPVersionData(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pVersionData;
@@ -78,7 +78,7 @@ final class VkMicromapVersionInfoEXT
         return $phpValue;
     }
 
-    public function setPVersionData(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPVersionData(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

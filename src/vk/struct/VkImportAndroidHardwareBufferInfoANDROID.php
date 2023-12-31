@@ -20,8 +20,8 @@ final class VkImportAndroidHardwareBufferInfoANDROID
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $buffer = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $buffer = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkImportAndroidHardwareBufferInfoANDROID', false), $vulkan->ffi);
@@ -52,7 +52,7 @@ final class VkImportAndroidHardwareBufferInfoANDROID
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -60,7 +60,7 @@ final class VkImportAndroidHardwareBufferInfoANDROID
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -70,7 +70,7 @@ final class VkImportAndroidHardwareBufferInfoANDROID
     /**
      * void* /
      */
-    public function getBuffer(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getBuffer(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->buffer;
@@ -78,7 +78,7 @@ final class VkImportAndroidHardwareBufferInfoANDROID
         return $phpValue;
     }
 
-    public function setBuffer(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setBuffer(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

@@ -20,7 +20,7 @@ final class VkPhysicalDeviceVulkan12Features
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $samplerMirrorClampToEdge = null,
         null|bool $drawIndirectCount = null,
         null|bool $storageBuffer8BitAccess = null,
@@ -144,7 +144,7 @@ final class VkPhysicalDeviceVulkan12Features
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -152,7 +152,7 @@ final class VkPhysicalDeviceVulkan12Features
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

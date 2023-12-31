@@ -8,4 +8,5 @@ enum VkSubpassContents: int
 {
     case Inline = 0;
     case SecondaryCommandBuffers = 1;
+    case InlineAndSecondaryCommandBuffersExt = 1000451000;
 }

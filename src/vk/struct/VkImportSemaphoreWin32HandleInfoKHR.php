@@ -20,12 +20,12 @@ final class VkImportSemaphoreWin32HandleInfoKHR
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkSemaphore $semaphore = null,
         null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkExternalSemaphoreHandleTypeFlagBits $handleType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $handle = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $name = null,
+        null|\iggyvolz\vulkan\util\Pointer $handle = null,
+        null|\iggyvolz\vulkan\util\Pointer $name = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkImportSemaphoreWin32HandleInfoKHR', false), $vulkan->ffi);
@@ -60,7 +60,7 @@ final class VkImportSemaphoreWin32HandleInfoKHR
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -68,7 +68,7 @@ final class VkImportSemaphoreWin32HandleInfoKHR
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -132,7 +132,7 @@ final class VkImportSemaphoreWin32HandleInfoKHR
     /**
      * void* /
      */
-    public function getHandle(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getHandle(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->handle;
@@ -140,7 +140,7 @@ final class VkImportSemaphoreWin32HandleInfoKHR
         return $phpValue;
     }
 
-    public function setHandle(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setHandle(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -150,7 +150,7 @@ final class VkImportSemaphoreWin32HandleInfoKHR
     /**
      * void* /
      */
-    public function getName(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getName(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->name;
@@ -158,7 +158,7 @@ final class VkImportSemaphoreWin32HandleInfoKHR
         return $phpValue;
     }
 
-    public function setName(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setName(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

@@ -20,7 +20,7 @@ final class VkShadingRatePaletteNV
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|int $shadingRatePaletteEntryCount = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pShadingRatePaletteEntries = null,
+        null|\iggyvolz\vulkan\util\Pointer $pShadingRatePaletteEntries = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkShadingRatePaletteNV', false), $vulkan->ffi);
@@ -50,7 +50,7 @@ final class VkShadingRatePaletteNV
     /**
      * void* /
      */
-    public function getPShadingRatePaletteEntries(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPShadingRatePaletteEntries(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pShadingRatePaletteEntries;
@@ -58,7 +58,7 @@ final class VkShadingRatePaletteNV
         return $phpValue;
     }
 
-    public function setPShadingRatePaletteEntries(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPShadingRatePaletteEntries(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

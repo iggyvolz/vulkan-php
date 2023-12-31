@@ -20,10 +20,10 @@ final class VkWin32SurfaceCreateInfoKHR
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $pNext = null,
+        null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $hinstance = null,
-        null|\iggyvolz\vulkan\util\OpaquePointer $hwnd = null,
+        null|\iggyvolz\vulkan\util\Pointer $hinstance = null,
+        null|\iggyvolz\vulkan\util\Pointer $hwnd = null,
     ): self
     {
         $self = new self( $vulkan->ffi->new('VkWin32SurfaceCreateInfoKHR', false), $vulkan->ffi);
@@ -56,7 +56,7 @@ final class VkWin32SurfaceCreateInfoKHR
     /**
      * void* /
      */
-    public function getPNext(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->pNext;
@@ -64,7 +64,7 @@ final class VkWin32SurfaceCreateInfoKHR
         return $phpValue;
     }
 
-    public function setPNext(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -92,7 +92,7 @@ final class VkWin32SurfaceCreateInfoKHR
     /**
      * void* /
      */
-    public function getHinstance(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getHinstance(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->hinstance;
@@ -100,7 +100,7 @@ final class VkWin32SurfaceCreateInfoKHR
         return $phpValue;
     }
 
-    public function setHinstance(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setHinstance(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;
@@ -110,7 +110,7 @@ final class VkWin32SurfaceCreateInfoKHR
     /**
      * void* /
      */
-    public function getHwnd(): \iggyvolz\vulkan\util\OpaquePointer
+    public function getHwnd(): \iggyvolz\vulkan\util\Pointer
     {
         $ffi = $this->ffi;
         $cValue = $this->cdata->hwnd;
@@ -118,7 +118,7 @@ final class VkWin32SurfaceCreateInfoKHR
         return $phpValue;
     }
 
-    public function setHwnd(\iggyvolz\vulkan\util\OpaquePointer $phpValue): void
+    public function setHwnd(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
         $ffi = $this->ffi;
         $cValue = $phpValue->cdata;

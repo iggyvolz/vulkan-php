@@ -15,4 +15,12 @@ enum VkExternalMemoryHandleTypeFlagBits: int
     case D3d11TextureKmt = 4;
     case D3d12Heap = 5;
     case D3d12Resource = 6;
+    case DmaBufBitExt = 9;
+    case AndroidHardwareBufferBitAndroid = 10;
+    case HostAllocationBitExt = 7;
+    case HostMappedForeignMemoryBitExt = 8;
+    case ZirconVmoBitFuchsia = 11;
+    case RdmaAddressBitNv = 12;
+    case SciBufBitNv = 13;
+    case ScreenBufferBitQnx = 14;
 }

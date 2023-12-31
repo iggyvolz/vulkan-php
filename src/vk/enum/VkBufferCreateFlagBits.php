@@ -11,4 +11,8 @@ enum VkBufferCreateFlagBits: int
     case SparseBinding = 0;
     case SparseResidency = 1;
     case SparseAliased = 2;
+    case Protected = 3;
+    case DeviceAddressCaptureReplay = 4;
+    case DescriptorBufferCaptureReplayBitExt = 5;
+    case Reserved6BitKhr = 6;
 }
