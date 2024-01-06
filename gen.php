@@ -63,22 +63,7 @@ var_dump($registry);
 file_put_contents(__DIR__ . "/registry.txt", ob_get_clean());
 $printer = new PsrPrinter();
 
-$cdefsClass = ($cdefsFile = new PhpFile())->setStrictTypes()->addNamespace("iggyvolz\\vulkan")->addClass("CDefs")->setFinal();
-$cdefsClass->addImplement(Stringable::class);
-$cdefsClass->addMethod("__toString")->setReturnType("string")->addBody('return implode("\n", $this->cdefs);');
-$cdefsClass->addProperty("cdefs", [])->setType("array")->addComment("@var list<string>")->setPrivate();
-$cdefsConstructor = $cdefsClass->addMethod("__construct")->setPublic();
-$cdefsAdd = $cdefsClass->addMethod("addExtension")->setReturnType("void");
-$cdefsAdd->addParameter("extension")->setType("string");
-function addCDef(string $cdef, ?string $extension = null): void
-{
-    global $cdefsConstructor, $cdefsAdd;
-    if(is_null($extension)) {
-        $cdefsConstructor->addBody('$this->cdefs[] = ' . var_export($cdef, true) . ';');
-    } else {
-        $cdefsAdd->addBody('if($extension === '. var_export($extension, true).') $this->cdefs[] = ' . var_export($cdef, true) . ';');
-    }
-}
+$cdefs = [];
 foreach($registry->getTypes(Enum::class) as $enum) {
     if(!is_null($enum->alias)) continue;
     $file = new PhpFile();
@@ -91,11 +76,11 @@ foreach($registry->getTypes(Enum::class) as $enum) {
     if($enum->enumType === EnumType::Bitmask) $enumClass->addTrait(BitmapEnum::class);
     if($enum->name === "VkResult") $enumClass->addTrait(VkResultAssert::class);
     file_put_contents($targetDirectory . "/enum/$enum->name.php", $printer->printFile($file));
-    addCDef("typedef int $enum->name;");
+    $cdefs[] = "typedef int $enum->name;";
 }
 // handle flagbits types
 foreach($registry->getTypes(Bitmask::class) as $bitmask) {
-    addCDef("typedef int $bitmask->name;");
+    $cdefs[] = "typedef int $bitmask->name;";
 }
 // Generate events for each VkResult
 foreach(VkResult::cases() as $result) {
@@ -131,7 +116,7 @@ foreach($registry->getTypes(Handle::class) as $handle) {
     $constructor->addPromotedParameter("cdata")->addComment("@internal")->setPublic()->setType(CData::class);
     $constructor->addPromotedParameter("ffi")->addComment("@internal")->setPublic()->setType(FFI::class);
     file_put_contents($targetDirectory . "/struct/$handle->name.php", $printer->printFile($file));
-    addCDef("typedef void* $handle->name;");
+    $cdefs[] = "typedef void* $handle->name;";
 }
 $totalStructs = 0;
 $totalStructMembers = 0;
@@ -180,7 +165,7 @@ foreach($registry->getTypes(Struct::class) as $struct) {
     $create->addBody('return $self;');
     file_put_contents($targetDirectory . "/struct/$struct->name.php", $printer->printFile($file));
     $cdef .= "} $struct->name;";
-    addCDef($cdef);
+    $cdefs[] = $cdef;
     if($structIsOkay) $okayStructs++;
     $totalStructs++;
 }
@@ -200,7 +185,7 @@ foreach ($registry->commands as $command) {
         $isOkay = false;
         registerNotOkayType($command->type);
     }
-    $cdef = $returnTypeTransformer->cTypePrefix() . " " . $command->name . "(";
+    $cdef = "typedef " . $returnTypeTransformer->cTypePrefix() . " (*PFN_PHP_" . $command->name . ")(";
     $first = true;
     foreach($command->parameters as $parameter) {
         if($first) {
@@ -222,7 +207,8 @@ foreach ($registry->commands as $command) {
         $method->addBody("\${$parameter->name}C = \$cValue;");
         $cdef .= $paramType->cTypePrefix() . " " . $parameter->name . $paramType->cTypeSuffix();
     }
-    $method->addBody("\$cValue = \$this->ffi->$command->name(");
+    $method->addBody('$cValue = $this->fnPtr(' . var_export($command->name, true) . ')(');
+//    $method->addBody("\$cValue = \$this->ffi->$command->name(");
     foreach($command->parameters as $parameter) {
         $method->addBody("    \${$parameter->name}C,");
     }
@@ -236,9 +222,7 @@ foreach ($registry->commands as $command) {
         $method->addBody('return $phpValue;');
     }
     $cdef .= ");";
-    foreach($command->availableIn as $featureOrExtension) {
-        addCDef($cdef, $featureOrExtension);
-    }
+    $cdefs[] = $cdef;
     $totalMethods++;
     if($isOkay) $okayMethods++; else $notOkayMethods[] = $method->getName();
 }
@@ -317,7 +301,8 @@ foreach(($notOkayTypes) as $key => $count) {
     $usagesByTag[$tag]+=$count;
 //    if($tag === "Plain Vulkan Type") echo "- $key ($count) [$tag]\n";
 }
-
+// Add in loader function
+$cdefs[] = "void* vkGetInstanceProcAddr(VkInstance, const char*);";
 arsort($uniqueByTag);
 arsort($usagesByTag);
 echo "\nunique types by tag:\n";
@@ -329,4 +314,4 @@ foreach($usagesByTag as $tag => $count) {
     echo "- $tag ($count)\n";
 }
 file_put_contents($targetDirectory . "/Vulkan.php", $printer->printFile($vulkanFile));
-file_put_contents($targetDirectory . "/CDefs.php", $printer->printFile($cdefsFile));
+file_put_contents($targetDirectory . "/vulkan.h", implode("\n", $cdefs));

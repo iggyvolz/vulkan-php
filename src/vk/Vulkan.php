@@ -29,7 +29,7 @@ class Vulkan
         $phpValue = $pInstance;
         $cValue = $phpValue->cdata;
         $pInstanceC = $cValue;
-        $cValue = $this->ffi->vkCreateInstance(
+        $cValue = $this->fnPtr('vkCreateInstance')(
             $pCreateInfoC,
             $pAllocatorC,
             $pInstanceC,
@@ -50,7 +50,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyInstance(
+        $cValue = $this->fnPtr('vkDestroyInstance')(
             $instanceC,
             $pAllocatorC,
         );
@@ -77,7 +77,7 @@ class Vulkan
         $phpValue = $pPhysicalDevices;
         $cValue = $phpValue->cdata;
         $pPhysicalDevicesC = $cValue;
-        $cValue = $this->ffi->vkEnumeratePhysicalDevices(
+        $cValue = $this->fnPtr('vkEnumeratePhysicalDevices')(
             $instanceC,
             $pPhysicalDeviceCountC,
             $pPhysicalDevicesC,
@@ -99,7 +99,7 @@ class Vulkan
         $phpValue = $pName;
         $cValue = $phpValue;
         $pNameC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceProcAddr(
+        $cValue = $this->fnPtr('vkGetDeviceProcAddr')(
             $deviceC,
             $pNameC,
         );
@@ -120,7 +120,7 @@ class Vulkan
         $phpValue = $pName;
         $cValue = $phpValue;
         $pNameC = $cValue;
-        $cValue = $this->ffi->vkGetInstanceProcAddr(
+        $cValue = $this->fnPtr('vkGetInstanceProcAddr')(
             $instanceC,
             $pNameC,
         );
@@ -143,7 +143,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceProperties(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceProperties')(
             $physicalDeviceC,
             $pPropertiesC,
         );
@@ -169,7 +169,7 @@ class Vulkan
         $phpValue = $pQueueFamilyProperties;
         $cValue = $phpValue->cdata;
         $pQueueFamilyPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceQueueFamilyProperties(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceQueueFamilyProperties')(
             $physicalDeviceC,
             $pQueueFamilyPropertyCountC,
             $pQueueFamilyPropertiesC,
@@ -191,7 +191,7 @@ class Vulkan
         $phpValue = $pMemoryProperties;
         $cValue = $phpValue->cdata;
         $pMemoryPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceMemoryProperties(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceMemoryProperties')(
             $physicalDeviceC,
             $pMemoryPropertiesC,
         );
@@ -212,7 +212,7 @@ class Vulkan
         $phpValue = $pFeatures;
         $cValue = $phpValue->cdata;
         $pFeaturesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceFeatures(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceFeatures')(
             $physicalDeviceC,
             $pFeaturesC,
         );
@@ -238,7 +238,7 @@ class Vulkan
         $phpValue = $pFormatProperties;
         $cValue = $phpValue->cdata;
         $pFormatPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceFormatProperties(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceFormatProperties')(
             $physicalDeviceC,
             $formatC,
             $pFormatPropertiesC,
@@ -286,7 +286,7 @@ class Vulkan
         $phpValue = $pImageFormatProperties;
         $cValue = $phpValue->cdata;
         $pImageFormatPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceImageFormatProperties(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceImageFormatProperties')(
             $physicalDeviceC,
             $formatC,
             $typeC,
@@ -325,7 +325,7 @@ class Vulkan
         $phpValue = $pDevice;
         $cValue = $phpValue->cdata;
         $pDeviceC = $cValue;
-        $cValue = $this->ffi->vkCreateDevice(
+        $cValue = $this->fnPtr('vkCreateDevice')(
             $physicalDeviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -347,7 +347,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyDevice(
+        $cValue = $this->fnPtr('vkDestroyDevice')(
             $deviceC,
             $pAllocatorC,
         );
@@ -362,7 +362,7 @@ class Vulkan
         $phpValue = $pApiVersion;
         $cValue = $phpValue->cdata;
         $pApiVersionC = $cValue;
-        $cValue = $this->ffi->vkEnumerateInstanceVersion(
+        $cValue = $this->fnPtr('vkEnumerateInstanceVersion')(
             $pApiVersionC,
         );
         $phpValue = \iggyvolz\vulkan\enum\VkResult::from($cValue);
@@ -385,7 +385,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkEnumerateInstanceLayerProperties(
+        $cValue = $this->fnPtr('vkEnumerateInstanceLayerProperties')(
             $pPropertyCountC,
             $pPropertiesC,
         );
@@ -414,7 +414,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkEnumerateInstanceExtensionProperties(
+        $cValue = $this->fnPtr('vkEnumerateInstanceExtensionProperties')(
             $pLayerNameC,
             $pPropertyCountC,
             $pPropertiesC,
@@ -444,7 +444,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkEnumerateDeviceLayerProperties(
+        $cValue = $this->fnPtr('vkEnumerateDeviceLayerProperties')(
             $physicalDeviceC,
             $pPropertyCountC,
             $pPropertiesC,
@@ -479,7 +479,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkEnumerateDeviceExtensionProperties(
+        $cValue = $this->fnPtr('vkEnumerateDeviceExtensionProperties')(
             $physicalDeviceC,
             $pLayerNameC,
             $pPropertyCountC,
@@ -514,7 +514,7 @@ class Vulkan
         $phpValue = $pQueue;
         $cValue = $phpValue->cdata;
         $pQueueC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceQueue(
+        $cValue = $this->fnPtr('vkGetDeviceQueue')(
             $deviceC,
             $queueFamilyIndexC,
             $queueIndexC,
@@ -548,7 +548,7 @@ class Vulkan
         $phpValue = $fence;
         $cValue = $phpValue->cdata;
         $fenceC = $cValue;
-        $cValue = $this->ffi->vkQueueSubmit(
+        $cValue = $this->fnPtr('vkQueueSubmit')(
             $queueC,
             $submitCountC,
             $pSubmitsC,
@@ -567,7 +567,7 @@ class Vulkan
         $phpValue = $queue;
         $cValue = $phpValue->cdata;
         $queueC = $cValue;
-        $cValue = $this->ffi->vkQueueWaitIdle(
+        $cValue = $this->fnPtr('vkQueueWaitIdle')(
             $queueC,
         );
         $phpValue = \iggyvolz\vulkan\enum\VkResult::from($cValue);
@@ -583,7 +583,7 @@ class Vulkan
         $phpValue = $device;
         $cValue = $phpValue->cdata;
         $deviceC = $cValue;
-        $cValue = $this->ffi->vkDeviceWaitIdle(
+        $cValue = $this->fnPtr('vkDeviceWaitIdle')(
             $deviceC,
         );
         $phpValue = \iggyvolz\vulkan\enum\VkResult::from($cValue);
@@ -616,7 +616,7 @@ class Vulkan
         $phpValue = $pMemory;
         $cValue = $phpValue->cdata;
         $pMemoryC = $cValue;
-        $cValue = $this->ffi->vkAllocateMemory(
+        $cValue = $this->fnPtr('vkAllocateMemory')(
             $deviceC,
             $pAllocateInfoC,
             $pAllocatorC,
@@ -646,7 +646,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkFreeMemory(
+        $cValue = $this->fnPtr('vkFreeMemory')(
             $deviceC,
             $memoryC,
             $pAllocatorC,
@@ -689,7 +689,7 @@ class Vulkan
         $phpValue = $ppData;
         $cValue = $phpValue->cdata;
         $ppDataC = $cValue;
-        $cValue = $this->ffi->vkMapMemory(
+        $cValue = $this->fnPtr('vkMapMemory')(
             $deviceC,
             $memoryC,
             $offsetC,
@@ -713,7 +713,7 @@ class Vulkan
         $phpValue = $memory;
         $cValue = $phpValue->cdata;
         $memoryC = $cValue;
-        $cValue = $this->ffi->vkUnmapMemory(
+        $cValue = $this->fnPtr('vkUnmapMemory')(
             $deviceC,
             $memoryC,
         );
@@ -740,7 +740,7 @@ class Vulkan
         $phpValue = $pMemoryRanges;
         $cValue = $phpValue->cdata;
         $pMemoryRangesC = $cValue;
-        $cValue = $this->ffi->vkFlushMappedMemoryRanges(
+        $cValue = $this->fnPtr('vkFlushMappedMemoryRanges')(
             $deviceC,
             $memoryRangeCountC,
             $pMemoryRangesC,
@@ -770,7 +770,7 @@ class Vulkan
         $phpValue = $pMemoryRanges;
         $cValue = $phpValue->cdata;
         $pMemoryRangesC = $cValue;
-        $cValue = $this->ffi->vkInvalidateMappedMemoryRanges(
+        $cValue = $this->fnPtr('vkInvalidateMappedMemoryRanges')(
             $deviceC,
             $memoryRangeCountC,
             $pMemoryRangesC,
@@ -799,7 +799,7 @@ class Vulkan
         $phpValue = $pCommittedMemoryInBytes;
         $cValue = $phpValue->cdata;
         $pCommittedMemoryInBytesC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceMemoryCommitment(
+        $cValue = $this->fnPtr('vkGetDeviceMemoryCommitment')(
             $deviceC,
             $memoryC,
             $pCommittedMemoryInBytesC,
@@ -826,7 +826,7 @@ class Vulkan
         $phpValue = $pMemoryRequirements;
         $cValue = $phpValue->cdata;
         $pMemoryRequirementsC = $cValue;
-        $cValue = $this->ffi->vkGetBufferMemoryRequirements(
+        $cValue = $this->fnPtr('vkGetBufferMemoryRequirements')(
             $deviceC,
             $bufferC,
             $pMemoryRequirementsC,
@@ -859,7 +859,7 @@ class Vulkan
         $phpValue = $memoryOffset;
         $cValue = $phpValue;
         $memoryOffsetC = $cValue;
-        $cValue = $this->ffi->vkBindBufferMemory(
+        $cValue = $this->fnPtr('vkBindBufferMemory')(
             $deviceC,
             $bufferC,
             $memoryC,
@@ -889,7 +889,7 @@ class Vulkan
         $phpValue = $pMemoryRequirements;
         $cValue = $phpValue->cdata;
         $pMemoryRequirementsC = $cValue;
-        $cValue = $this->ffi->vkGetImageMemoryRequirements(
+        $cValue = $this->fnPtr('vkGetImageMemoryRequirements')(
             $deviceC,
             $imageC,
             $pMemoryRequirementsC,
@@ -922,7 +922,7 @@ class Vulkan
         $phpValue = $memoryOffset;
         $cValue = $phpValue;
         $memoryOffsetC = $cValue;
-        $cValue = $this->ffi->vkBindImageMemory(
+        $cValue = $this->fnPtr('vkBindImageMemory')(
             $deviceC,
             $imageC,
             $memoryC,
@@ -957,7 +957,7 @@ class Vulkan
         $phpValue = $pSparseMemoryRequirements;
         $cValue = $phpValue->cdata;
         $pSparseMemoryRequirementsC = $cValue;
-        $cValue = $this->ffi->vkGetImageSparseMemoryRequirements(
+        $cValue = $this->fnPtr('vkGetImageSparseMemoryRequirements')(
             $deviceC,
             $imageC,
             $pSparseMemoryRequirementCountC,
@@ -1010,7 +1010,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceSparseImageFormatProperties(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceSparseImageFormatProperties')(
             $physicalDeviceC,
             $formatC,
             $typeC,
@@ -1048,7 +1048,7 @@ class Vulkan
         $phpValue = $fence;
         $cValue = $phpValue->cdata;
         $fenceC = $cValue;
-        $cValue = $this->ffi->vkQueueBindSparse(
+        $cValue = $this->fnPtr('vkQueueBindSparse')(
             $queueC,
             $bindInfoCountC,
             $pBindInfoC,
@@ -1084,7 +1084,7 @@ class Vulkan
         $phpValue = $pFence;
         $cValue = $phpValue->cdata;
         $pFenceC = $cValue;
-        $cValue = $this->ffi->vkCreateFence(
+        $cValue = $this->fnPtr('vkCreateFence')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -1114,7 +1114,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyFence(
+        $cValue = $this->fnPtr('vkDestroyFence')(
             $deviceC,
             $fenceC,
             $pAllocatorC,
@@ -1142,7 +1142,7 @@ class Vulkan
         $phpValue = $pFences;
         $cValue = $phpValue->cdata;
         $pFencesC = $cValue;
-        $cValue = $this->ffi->vkResetFences(
+        $cValue = $this->fnPtr('vkResetFences')(
             $deviceC,
             $fenceCountC,
             $pFencesC,
@@ -1164,7 +1164,7 @@ class Vulkan
         $phpValue = $fence;
         $cValue = $phpValue->cdata;
         $fenceC = $cValue;
-        $cValue = $this->ffi->vkGetFenceStatus(
+        $cValue = $this->fnPtr('vkGetFenceStatus')(
             $deviceC,
             $fenceC,
         );
@@ -1203,7 +1203,7 @@ class Vulkan
         $phpValue = $timeout;
         $cValue = $phpValue;
         $timeoutC = $cValue;
-        $cValue = $this->ffi->vkWaitForFences(
+        $cValue = $this->fnPtr('vkWaitForFences')(
             $deviceC,
             $fenceCountC,
             $pFencesC,
@@ -1240,7 +1240,7 @@ class Vulkan
         $phpValue = $pSemaphore;
         $cValue = $phpValue->cdata;
         $pSemaphoreC = $cValue;
-        $cValue = $this->ffi->vkCreateSemaphore(
+        $cValue = $this->fnPtr('vkCreateSemaphore')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -1270,7 +1270,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroySemaphore(
+        $cValue = $this->fnPtr('vkDestroySemaphore')(
             $deviceC,
             $semaphoreC,
             $pAllocatorC,
@@ -1303,7 +1303,7 @@ class Vulkan
         $phpValue = $pEvent;
         $cValue = $phpValue->cdata;
         $pEventC = $cValue;
-        $cValue = $this->ffi->vkCreateEvent(
+        $cValue = $this->fnPtr('vkCreateEvent')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -1333,7 +1333,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyEvent(
+        $cValue = $this->fnPtr('vkDestroyEvent')(
             $deviceC,
             $eventC,
             $pAllocatorC,
@@ -1353,7 +1353,7 @@ class Vulkan
         $phpValue = $event;
         $cValue = $phpValue->cdata;
         $eventC = $cValue;
-        $cValue = $this->ffi->vkGetEventStatus(
+        $cValue = $this->fnPtr('vkGetEventStatus')(
             $deviceC,
             $eventC,
         );
@@ -1374,7 +1374,7 @@ class Vulkan
         $phpValue = $event;
         $cValue = $phpValue->cdata;
         $eventC = $cValue;
-        $cValue = $this->ffi->vkSetEvent(
+        $cValue = $this->fnPtr('vkSetEvent')(
             $deviceC,
             $eventC,
         );
@@ -1395,7 +1395,7 @@ class Vulkan
         $phpValue = $event;
         $cValue = $phpValue->cdata;
         $eventC = $cValue;
-        $cValue = $this->ffi->vkResetEvent(
+        $cValue = $this->fnPtr('vkResetEvent')(
             $deviceC,
             $eventC,
         );
@@ -1429,7 +1429,7 @@ class Vulkan
         $phpValue = $pQueryPool;
         $cValue = $phpValue->cdata;
         $pQueryPoolC = $cValue;
-        $cValue = $this->ffi->vkCreateQueryPool(
+        $cValue = $this->fnPtr('vkCreateQueryPool')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -1459,7 +1459,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyQueryPool(
+        $cValue = $this->fnPtr('vkDestroyQueryPool')(
             $deviceC,
             $queryPoolC,
             $pAllocatorC,
@@ -1512,7 +1512,7 @@ class Vulkan
         $phpValue = $flags;
         $cValue = \iggyvolz\vulkan\enum\VkQueryResultFlagBits::toInt(...$phpValue);
         $flagsC = $cValue;
-        $cValue = $this->ffi->vkGetQueryPoolResults(
+        $cValue = $this->fnPtr('vkGetQueryPoolResults')(
             $deviceC,
             $queryPoolC,
             $firstQueryC,
@@ -1551,7 +1551,7 @@ class Vulkan
         $phpValue = $queryCount;
         $cValue = $phpValue;
         $queryCountC = $cValue;
-        $cValue = $this->ffi->vkResetQueryPool(
+        $cValue = $this->fnPtr('vkResetQueryPool')(
             $deviceC,
             $queryPoolC,
             $firstQueryC,
@@ -1585,7 +1585,7 @@ class Vulkan
         $phpValue = $pBuffer;
         $cValue = $phpValue->cdata;
         $pBufferC = $cValue;
-        $cValue = $this->ffi->vkCreateBuffer(
+        $cValue = $this->fnPtr('vkCreateBuffer')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -1615,7 +1615,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyBuffer(
+        $cValue = $this->fnPtr('vkDestroyBuffer')(
             $deviceC,
             $bufferC,
             $pAllocatorC,
@@ -1648,7 +1648,7 @@ class Vulkan
         $phpValue = $pView;
         $cValue = $phpValue->cdata;
         $pViewC = $cValue;
-        $cValue = $this->ffi->vkCreateBufferView(
+        $cValue = $this->fnPtr('vkCreateBufferView')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -1678,7 +1678,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyBufferView(
+        $cValue = $this->fnPtr('vkDestroyBufferView')(
             $deviceC,
             $bufferViewC,
             $pAllocatorC,
@@ -1711,7 +1711,7 @@ class Vulkan
         $phpValue = $pImage;
         $cValue = $phpValue->cdata;
         $pImageC = $cValue;
-        $cValue = $this->ffi->vkCreateImage(
+        $cValue = $this->fnPtr('vkCreateImage')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -1741,7 +1741,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyImage(
+        $cValue = $this->fnPtr('vkDestroyImage')(
             $deviceC,
             $imageC,
             $pAllocatorC,
@@ -1773,7 +1773,7 @@ class Vulkan
         $phpValue = $pLayout;
         $cValue = $phpValue->cdata;
         $pLayoutC = $cValue;
-        $cValue = $this->ffi->vkGetImageSubresourceLayout(
+        $cValue = $this->fnPtr('vkGetImageSubresourceLayout')(
             $deviceC,
             $imageC,
             $pSubresourceC,
@@ -1807,7 +1807,7 @@ class Vulkan
         $phpValue = $pView;
         $cValue = $phpValue->cdata;
         $pViewC = $cValue;
-        $cValue = $this->ffi->vkCreateImageView(
+        $cValue = $this->fnPtr('vkCreateImageView')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -1837,7 +1837,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyImageView(
+        $cValue = $this->fnPtr('vkDestroyImageView')(
             $deviceC,
             $imageViewC,
             $pAllocatorC,
@@ -1870,7 +1870,7 @@ class Vulkan
         $phpValue = $pShaderModule;
         $cValue = $phpValue->cdata;
         $pShaderModuleC = $cValue;
-        $cValue = $this->ffi->vkCreateShaderModule(
+        $cValue = $this->fnPtr('vkCreateShaderModule')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -1900,7 +1900,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyShaderModule(
+        $cValue = $this->fnPtr('vkDestroyShaderModule')(
             $deviceC,
             $shaderModuleC,
             $pAllocatorC,
@@ -1933,7 +1933,7 @@ class Vulkan
         $phpValue = $pPipelineCache;
         $cValue = $phpValue->cdata;
         $pPipelineCacheC = $cValue;
-        $cValue = $this->ffi->vkCreatePipelineCache(
+        $cValue = $this->fnPtr('vkCreatePipelineCache')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -1963,7 +1963,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyPipelineCache(
+        $cValue = $this->fnPtr('vkDestroyPipelineCache')(
             $deviceC,
             $pipelineCacheC,
             $pAllocatorC,
@@ -1996,7 +1996,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkGetPipelineCacheData(
+        $cValue = $this->fnPtr('vkGetPipelineCacheData')(
             $deviceC,
             $pipelineCacheC,
             $pDataSizeC,
@@ -2032,7 +2032,7 @@ class Vulkan
         $phpValue = $pSrcCaches;
         $cValue = $phpValue->cdata;
         $pSrcCachesC = $cValue;
-        $cValue = $this->ffi->vkMergePipelineCaches(
+        $cValue = $this->fnPtr('vkMergePipelineCaches')(
             $deviceC,
             $dstCacheC,
             $srcCacheCountC,
@@ -2078,7 +2078,7 @@ class Vulkan
         $phpValue = $pPipelines;
         $cValue = $phpValue->cdata;
         $pPipelinesC = $cValue;
-        $cValue = $this->ffi->vkCreateGraphicsPipelines(
+        $cValue = $this->fnPtr('vkCreateGraphicsPipelines')(
             $deviceC,
             $pipelineCacheC,
             $createInfoCountC,
@@ -2126,7 +2126,7 @@ class Vulkan
         $phpValue = $pPipelines;
         $cValue = $phpValue->cdata;
         $pPipelinesC = $cValue;
-        $cValue = $this->ffi->vkCreateComputePipelines(
+        $cValue = $this->fnPtr('vkCreateComputePipelines')(
             $deviceC,
             $pipelineCacheC,
             $createInfoCountC,
@@ -2159,7 +2159,7 @@ class Vulkan
         $phpValue = $pMaxWorkgroupSize;
         $cValue = $phpValue->cdata;
         $pMaxWorkgroupSizeC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI(
+        $cValue = $this->fnPtr('vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI')(
             $deviceC,
             $renderpassC,
             $pMaxWorkgroupSizeC,
@@ -2188,7 +2188,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyPipeline(
+        $cValue = $this->fnPtr('vkDestroyPipeline')(
             $deviceC,
             $pipelineC,
             $pAllocatorC,
@@ -2221,7 +2221,7 @@ class Vulkan
         $phpValue = $pPipelineLayout;
         $cValue = $phpValue->cdata;
         $pPipelineLayoutC = $cValue;
-        $cValue = $this->ffi->vkCreatePipelineLayout(
+        $cValue = $this->fnPtr('vkCreatePipelineLayout')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -2251,7 +2251,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyPipelineLayout(
+        $cValue = $this->fnPtr('vkDestroyPipelineLayout')(
             $deviceC,
             $pipelineLayoutC,
             $pAllocatorC,
@@ -2284,7 +2284,7 @@ class Vulkan
         $phpValue = $pSampler;
         $cValue = $phpValue->cdata;
         $pSamplerC = $cValue;
-        $cValue = $this->ffi->vkCreateSampler(
+        $cValue = $this->fnPtr('vkCreateSampler')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -2314,7 +2314,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroySampler(
+        $cValue = $this->fnPtr('vkDestroySampler')(
             $deviceC,
             $samplerC,
             $pAllocatorC,
@@ -2347,7 +2347,7 @@ class Vulkan
         $phpValue = $pSetLayout;
         $cValue = $phpValue->cdata;
         $pSetLayoutC = $cValue;
-        $cValue = $this->ffi->vkCreateDescriptorSetLayout(
+        $cValue = $this->fnPtr('vkCreateDescriptorSetLayout')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -2377,7 +2377,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyDescriptorSetLayout(
+        $cValue = $this->fnPtr('vkDestroyDescriptorSetLayout')(
             $deviceC,
             $descriptorSetLayoutC,
             $pAllocatorC,
@@ -2410,7 +2410,7 @@ class Vulkan
         $phpValue = $pDescriptorPool;
         $cValue = $phpValue->cdata;
         $pDescriptorPoolC = $cValue;
-        $cValue = $this->ffi->vkCreateDescriptorPool(
+        $cValue = $this->fnPtr('vkCreateDescriptorPool')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -2440,7 +2440,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyDescriptorPool(
+        $cValue = $this->fnPtr('vkDestroyDescriptorPool')(
             $deviceC,
             $descriptorPoolC,
             $pAllocatorC,
@@ -2468,7 +2468,7 @@ class Vulkan
         $phpValue = $flags;
         $cValue = 0;
         $flagsC = $cValue;
-        $cValue = $this->ffi->vkResetDescriptorPool(
+        $cValue = $this->fnPtr('vkResetDescriptorPool')(
             $deviceC,
             $descriptorPoolC,
             $flagsC,
@@ -2498,7 +2498,7 @@ class Vulkan
         $phpValue = $pDescriptorSets;
         $cValue = $phpValue->cdata;
         $pDescriptorSetsC = $cValue;
-        $cValue = $this->ffi->vkAllocateDescriptorSets(
+        $cValue = $this->fnPtr('vkAllocateDescriptorSets')(
             $deviceC,
             $pAllocateInfoC,
             $pDescriptorSetsC,
@@ -2533,7 +2533,7 @@ class Vulkan
         $phpValue = $pDescriptorSets;
         $cValue = $phpValue->cdata;
         $pDescriptorSetsC = $cValue;
-        $cValue = $this->ffi->vkFreeDescriptorSets(
+        $cValue = $this->fnPtr('vkFreeDescriptorSets')(
             $deviceC,
             $descriptorPoolC,
             $descriptorSetCountC,
@@ -2573,7 +2573,7 @@ class Vulkan
         $phpValue = $pDescriptorCopies;
         $cValue = $phpValue->cdata;
         $pDescriptorCopiesC = $cValue;
-        $cValue = $this->ffi->vkUpdateDescriptorSets(
+        $cValue = $this->fnPtr('vkUpdateDescriptorSets')(
             $deviceC,
             $descriptorWriteCountC,
             $pDescriptorWritesC,
@@ -2608,7 +2608,7 @@ class Vulkan
         $phpValue = $pFramebuffer;
         $cValue = $phpValue->cdata;
         $pFramebufferC = $cValue;
-        $cValue = $this->ffi->vkCreateFramebuffer(
+        $cValue = $this->fnPtr('vkCreateFramebuffer')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -2638,7 +2638,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyFramebuffer(
+        $cValue = $this->fnPtr('vkDestroyFramebuffer')(
             $deviceC,
             $framebufferC,
             $pAllocatorC,
@@ -2671,7 +2671,7 @@ class Vulkan
         $phpValue = $pRenderPass;
         $cValue = $phpValue->cdata;
         $pRenderPassC = $cValue;
-        $cValue = $this->ffi->vkCreateRenderPass(
+        $cValue = $this->fnPtr('vkCreateRenderPass')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -2701,7 +2701,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyRenderPass(
+        $cValue = $this->fnPtr('vkDestroyRenderPass')(
             $deviceC,
             $renderPassC,
             $pAllocatorC,
@@ -2728,7 +2728,7 @@ class Vulkan
         $phpValue = $pGranularity;
         $cValue = $phpValue->cdata;
         $pGranularityC = $cValue;
-        $cValue = $this->ffi->vkGetRenderAreaGranularity(
+        $cValue = $this->fnPtr('vkGetRenderAreaGranularity')(
             $deviceC,
             $renderPassC,
             $pGranularityC,
@@ -2755,7 +2755,7 @@ class Vulkan
         $phpValue = $pGranularity;
         $cValue = $phpValue->cdata;
         $pGranularityC = $cValue;
-        $cValue = $this->ffi->vkGetRenderingAreaGranularityKHR(
+        $cValue = $this->fnPtr('vkGetRenderingAreaGranularityKHR')(
             $deviceC,
             $pRenderingAreaInfoC,
             $pGranularityC,
@@ -2788,7 +2788,7 @@ class Vulkan
         $phpValue = $pCommandPool;
         $cValue = $phpValue->cdata;
         $pCommandPoolC = $cValue;
-        $cValue = $this->ffi->vkCreateCommandPool(
+        $cValue = $this->fnPtr('vkCreateCommandPool')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -2818,7 +2818,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyCommandPool(
+        $cValue = $this->fnPtr('vkDestroyCommandPool')(
             $deviceC,
             $commandPoolC,
             $pAllocatorC,
@@ -2846,7 +2846,7 @@ class Vulkan
         $phpValue = $flags;
         $cValue = \iggyvolz\vulkan\enum\VkCommandPoolResetFlagBits::toInt(...$phpValue);
         $flagsC = $cValue;
-        $cValue = $this->ffi->vkResetCommandPool(
+        $cValue = $this->fnPtr('vkResetCommandPool')(
             $deviceC,
             $commandPoolC,
             $flagsC,
@@ -2876,7 +2876,7 @@ class Vulkan
         $phpValue = $pCommandBuffers;
         $cValue = $phpValue->cdata;
         $pCommandBuffersC = $cValue;
-        $cValue = $this->ffi->vkAllocateCommandBuffers(
+        $cValue = $this->fnPtr('vkAllocateCommandBuffers')(
             $deviceC,
             $pAllocateInfoC,
             $pCommandBuffersC,
@@ -2910,7 +2910,7 @@ class Vulkan
         $phpValue = $pCommandBuffers;
         $cValue = $phpValue->cdata;
         $pCommandBuffersC = $cValue;
-        $cValue = $this->ffi->vkFreeCommandBuffers(
+        $cValue = $this->fnPtr('vkFreeCommandBuffers')(
             $deviceC,
             $commandPoolC,
             $commandBufferCountC,
@@ -2934,7 +2934,7 @@ class Vulkan
         $phpValue = $pBeginInfo;
         $cValue = $phpValue->cdata;
         $pBeginInfoC = $cValue;
-        $cValue = $this->ffi->vkBeginCommandBuffer(
+        $cValue = $this->fnPtr('vkBeginCommandBuffer')(
             $commandBufferC,
             $pBeginInfoC,
         );
@@ -2951,7 +2951,7 @@ class Vulkan
         $phpValue = $commandBuffer;
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
-        $cValue = $this->ffi->vkEndCommandBuffer(
+        $cValue = $this->fnPtr('vkEndCommandBuffer')(
             $commandBufferC,
         );
         $phpValue = \iggyvolz\vulkan\enum\VkResult::from($cValue);
@@ -2971,7 +2971,7 @@ class Vulkan
         $phpValue = $flags;
         $cValue = \iggyvolz\vulkan\enum\VkCommandBufferResetFlagBits::toInt(...$phpValue);
         $flagsC = $cValue;
-        $cValue = $this->ffi->vkResetCommandBuffer(
+        $cValue = $this->fnPtr('vkResetCommandBuffer')(
             $commandBufferC,
             $flagsC,
         );
@@ -2999,7 +2999,7 @@ class Vulkan
         $phpValue = $pipeline;
         $cValue = $phpValue->cdata;
         $pipelineC = $cValue;
-        $cValue = $this->ffi->vkCmdBindPipeline(
+        $cValue = $this->fnPtr('vkCmdBindPipeline')(
             $commandBufferC,
             $pipelineBindPointC,
             $pipelineC,
@@ -3021,7 +3021,7 @@ class Vulkan
         $phpValue = $aspectMask;
         $cValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::toInt(...$phpValue);
         $aspectMaskC = $cValue;
-        $cValue = $this->ffi->vkCmdSetAttachmentFeedbackLoopEnableEXT(
+        $cValue = $this->fnPtr('vkCmdSetAttachmentFeedbackLoopEnableEXT')(
             $commandBufferC,
             $aspectMaskC,
         );
@@ -3052,7 +3052,7 @@ class Vulkan
         $phpValue = $pViewports;
         $cValue = $phpValue->cdata;
         $pViewportsC = $cValue;
-        $cValue = $this->ffi->vkCmdSetViewport(
+        $cValue = $this->fnPtr('vkCmdSetViewport')(
             $commandBufferC,
             $firstViewportC,
             $viewportCountC,
@@ -3085,7 +3085,7 @@ class Vulkan
         $phpValue = $pScissors;
         $cValue = $phpValue->cdata;
         $pScissorsC = $cValue;
-        $cValue = $this->ffi->vkCmdSetScissor(
+        $cValue = $this->fnPtr('vkCmdSetScissor')(
             $commandBufferC,
             $firstScissorC,
             $scissorCountC,
@@ -3105,7 +3105,7 @@ class Vulkan
         $phpValue = $lineWidth;
         $cValue = $phpValue;
         $lineWidthC = $cValue;
-        $cValue = $this->ffi->vkCmdSetLineWidth(
+        $cValue = $this->fnPtr('vkCmdSetLineWidth')(
             $commandBufferC,
             $lineWidthC,
         );
@@ -3136,7 +3136,7 @@ class Vulkan
         $phpValue = $depthBiasSlopeFactor;
         $cValue = $phpValue;
         $depthBiasSlopeFactorC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDepthBias(
+        $cValue = $this->fnPtr('vkCmdSetDepthBias')(
             $commandBufferC,
             $depthBiasConstantFactorC,
             $depthBiasClampC,
@@ -3156,7 +3156,7 @@ class Vulkan
         $phpValue = $blendConstants;
         throw new \LogicException("Dummy transformer!");
         $blendConstantsC = $cValue;
-        $cValue = $this->ffi->vkCmdSetBlendConstants(
+        $cValue = $this->fnPtr('vkCmdSetBlendConstants')(
             $commandBufferC,
             $blendConstantsC,
         );
@@ -3182,7 +3182,7 @@ class Vulkan
         $phpValue = $maxDepthBounds;
         $cValue = $phpValue;
         $maxDepthBoundsC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDepthBounds(
+        $cValue = $this->fnPtr('vkCmdSetDepthBounds')(
             $commandBufferC,
             $minDepthBoundsC,
             $maxDepthBoundsC,
@@ -3209,7 +3209,7 @@ class Vulkan
         $phpValue = $compareMask;
         $cValue = $phpValue;
         $compareMaskC = $cValue;
-        $cValue = $this->ffi->vkCmdSetStencilCompareMask(
+        $cValue = $this->fnPtr('vkCmdSetStencilCompareMask')(
             $commandBufferC,
             $faceMaskC,
             $compareMaskC,
@@ -3236,7 +3236,7 @@ class Vulkan
         $phpValue = $writeMask;
         $cValue = $phpValue;
         $writeMaskC = $cValue;
-        $cValue = $this->ffi->vkCmdSetStencilWriteMask(
+        $cValue = $this->fnPtr('vkCmdSetStencilWriteMask')(
             $commandBufferC,
             $faceMaskC,
             $writeMaskC,
@@ -3263,7 +3263,7 @@ class Vulkan
         $phpValue = $reference;
         $cValue = $phpValue;
         $referenceC = $cValue;
-        $cValue = $this->ffi->vkCmdSetStencilReference(
+        $cValue = $this->fnPtr('vkCmdSetStencilReference')(
             $commandBufferC,
             $faceMaskC,
             $referenceC,
@@ -3315,7 +3315,7 @@ class Vulkan
         $phpValue = $pDynamicOffsets;
         $cValue = $phpValue->cdata;
         $pDynamicOffsetsC = $cValue;
-        $cValue = $this->ffi->vkCmdBindDescriptorSets(
+        $cValue = $this->fnPtr('vkCmdBindDescriptorSets')(
             $commandBufferC,
             $pipelineBindPointC,
             $layoutC,
@@ -3352,7 +3352,7 @@ class Vulkan
         $phpValue = $indexType;
         $cValue = $phpValue->value;
         $indexTypeC = $cValue;
-        $cValue = $this->ffi->vkCmdBindIndexBuffer(
+        $cValue = $this->fnPtr('vkCmdBindIndexBuffer')(
             $commandBufferC,
             $bufferC,
             $offsetC,
@@ -3390,7 +3390,7 @@ class Vulkan
         $phpValue = $pOffsets;
         $cValue = $phpValue->cdata;
         $pOffsetsC = $cValue;
-        $cValue = $this->ffi->vkCmdBindVertexBuffers(
+        $cValue = $this->fnPtr('vkCmdBindVertexBuffers')(
             $commandBufferC,
             $firstBindingC,
             $bindingCountC,
@@ -3429,7 +3429,7 @@ class Vulkan
         $phpValue = $firstInstance;
         $cValue = $phpValue;
         $firstInstanceC = $cValue;
-        $cValue = $this->ffi->vkCmdDraw(
+        $cValue = $this->fnPtr('vkCmdDraw')(
             $commandBufferC,
             $vertexCountC,
             $instanceCountC,
@@ -3473,7 +3473,7 @@ class Vulkan
         $phpValue = $firstInstance;
         $cValue = $phpValue;
         $firstInstanceC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawIndexed(
+        $cValue = $this->fnPtr('vkCmdDrawIndexed')(
             $commandBufferC,
             $indexCountC,
             $instanceCountC,
@@ -3518,7 +3518,7 @@ class Vulkan
         $phpValue = $stride;
         $cValue = $phpValue;
         $strideC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawMultiEXT(
+        $cValue = $this->fnPtr('vkCmdDrawMultiEXT')(
             $commandBufferC,
             $drawCountC,
             $pVertexInfoC,
@@ -3568,7 +3568,7 @@ class Vulkan
         $phpValue = $pVertexOffset;
         $cValue = $phpValue->cdata;
         $pVertexOffsetC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawMultiIndexedEXT(
+        $cValue = $this->fnPtr('vkCmdDrawMultiIndexedEXT')(
             $commandBufferC,
             $drawCountC,
             $pIndexInfoC,
@@ -3609,7 +3609,7 @@ class Vulkan
         $phpValue = $stride;
         $cValue = $phpValue;
         $strideC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawIndirect(
+        $cValue = $this->fnPtr('vkCmdDrawIndirect')(
             $commandBufferC,
             $bufferC,
             $offsetC,
@@ -3648,7 +3648,7 @@ class Vulkan
         $phpValue = $stride;
         $cValue = $phpValue;
         $strideC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawIndexedIndirect(
+        $cValue = $this->fnPtr('vkCmdDrawIndexedIndirect')(
             $commandBufferC,
             $bufferC,
             $offsetC,
@@ -3682,7 +3682,7 @@ class Vulkan
         $phpValue = $groupCountZ;
         $cValue = $phpValue;
         $groupCountZC = $cValue;
-        $cValue = $this->ffi->vkCmdDispatch(
+        $cValue = $this->fnPtr('vkCmdDispatch')(
             $commandBufferC,
             $groupCountXC,
             $groupCountYC,
@@ -3710,7 +3710,7 @@ class Vulkan
         $phpValue = $offset;
         $cValue = $phpValue;
         $offsetC = $cValue;
-        $cValue = $this->ffi->vkCmdDispatchIndirect(
+        $cValue = $this->fnPtr('vkCmdDispatchIndirect')(
             $commandBufferC,
             $bufferC,
             $offsetC,
@@ -3725,7 +3725,7 @@ class Vulkan
         $phpValue = $commandBuffer;
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
-        $cValue = $this->ffi->vkCmdSubpassShadingHUAWEI(
+        $cValue = $this->fnPtr('vkCmdSubpassShadingHUAWEI')(
             $commandBufferC,
         );
     }
@@ -3755,7 +3755,7 @@ class Vulkan
         $phpValue = $groupCountZ;
         $cValue = $phpValue;
         $groupCountZC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawClusterHUAWEI(
+        $cValue = $this->fnPtr('vkCmdDrawClusterHUAWEI')(
             $commandBufferC,
             $groupCountXC,
             $groupCountYC,
@@ -3783,7 +3783,7 @@ class Vulkan
         $phpValue = $offset;
         $cValue = $phpValue;
         $offsetC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawClusterIndirectHUAWEI(
+        $cValue = $this->fnPtr('vkCmdDrawClusterIndirectHUAWEI')(
             $commandBufferC,
             $bufferC,
             $offsetC,
@@ -3810,7 +3810,7 @@ class Vulkan
         $phpValue = $pipeline;
         $cValue = $phpValue->cdata;
         $pipelineC = $cValue;
-        $cValue = $this->ffi->vkCmdUpdatePipelineIndirectBufferNV(
+        $cValue = $this->fnPtr('vkCmdUpdatePipelineIndirectBufferNV')(
             $commandBufferC,
             $pipelineBindPointC,
             $pipelineC,
@@ -3847,7 +3847,7 @@ class Vulkan
         $phpValue = $pRegions;
         $cValue = $phpValue->cdata;
         $pRegionsC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyBuffer(
+        $cValue = $this->fnPtr('vkCmdCopyBuffer')(
             $commandBufferC,
             $srcBufferC,
             $dstBufferC,
@@ -3896,7 +3896,7 @@ class Vulkan
         $phpValue = $pRegions;
         $cValue = $phpValue->cdata;
         $pRegionsC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyImage(
+        $cValue = $this->fnPtr('vkCmdCopyImage')(
             $commandBufferC,
             $srcImageC,
             $srcImageLayoutC,
@@ -3952,7 +3952,7 @@ class Vulkan
         $phpValue = $filter;
         $cValue = $phpValue->value;
         $filterC = $cValue;
-        $cValue = $this->ffi->vkCmdBlitImage(
+        $cValue = $this->fnPtr('vkCmdBlitImage')(
             $commandBufferC,
             $srcImageC,
             $srcImageLayoutC,
@@ -3999,7 +3999,7 @@ class Vulkan
         $phpValue = $pRegions;
         $cValue = $phpValue->cdata;
         $pRegionsC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyBufferToImage(
+        $cValue = $this->fnPtr('vkCmdCopyBufferToImage')(
             $commandBufferC,
             $srcBufferC,
             $dstImageC,
@@ -4044,7 +4044,7 @@ class Vulkan
         $phpValue = $pRegions;
         $cValue = $phpValue->cdata;
         $pRegionsC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyImageToBuffer(
+        $cValue = $this->fnPtr('vkCmdCopyImageToBuffer')(
             $commandBufferC,
             $srcImageC,
             $srcImageLayoutC,
@@ -4079,7 +4079,7 @@ class Vulkan
         $phpValue = $stride;
         $cValue = $phpValue;
         $strideC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyMemoryIndirectNV(
+        $cValue = $this->fnPtr('vkCmdCopyMemoryIndirectNV')(
             $commandBufferC,
             $copyBufferAddressC,
             $copyCountC,
@@ -4127,7 +4127,7 @@ class Vulkan
         $phpValue = $pImageSubresources;
         $cValue = $phpValue->cdata;
         $pImageSubresourcesC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyMemoryToImageIndirectNV(
+        $cValue = $this->fnPtr('vkCmdCopyMemoryToImageIndirectNV')(
             $commandBufferC,
             $copyBufferAddressC,
             $copyCountC,
@@ -4168,7 +4168,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkCmdUpdateBuffer(
+        $cValue = $this->fnPtr('vkCmdUpdateBuffer')(
             $commandBufferC,
             $dstBufferC,
             $dstOffsetC,
@@ -4207,7 +4207,7 @@ class Vulkan
         $phpValue = $data;
         $cValue = $phpValue;
         $dataC = $cValue;
-        $cValue = $this->ffi->vkCmdFillBuffer(
+        $cValue = $this->fnPtr('vkCmdFillBuffer')(
             $commandBufferC,
             $dstBufferC,
             $dstOffsetC,
@@ -4251,7 +4251,7 @@ class Vulkan
         $phpValue = $pRanges;
         $cValue = $phpValue->cdata;
         $pRangesC = $cValue;
-        $cValue = $this->ffi->vkCmdClearColorImage(
+        $cValue = $this->fnPtr('vkCmdClearColorImage')(
             $commandBufferC,
             $imageC,
             $imageLayoutC,
@@ -4296,7 +4296,7 @@ class Vulkan
         $phpValue = $pRanges;
         $cValue = $phpValue->cdata;
         $pRangesC = $cValue;
-        $cValue = $this->ffi->vkCmdClearDepthStencilImage(
+        $cValue = $this->fnPtr('vkCmdClearDepthStencilImage')(
             $commandBufferC,
             $imageC,
             $imageLayoutC,
@@ -4336,7 +4336,7 @@ class Vulkan
         $phpValue = $pRects;
         $cValue = $phpValue->cdata;
         $pRectsC = $cValue;
-        $cValue = $this->ffi->vkCmdClearAttachments(
+        $cValue = $this->fnPtr('vkCmdClearAttachments')(
             $commandBufferC,
             $attachmentCountC,
             $pAttachmentsC,
@@ -4385,7 +4385,7 @@ class Vulkan
         $phpValue = $pRegions;
         $cValue = $phpValue->cdata;
         $pRegionsC = $cValue;
-        $cValue = $this->ffi->vkCmdResolveImage(
+        $cValue = $this->fnPtr('vkCmdResolveImage')(
             $commandBufferC,
             $srcImageC,
             $srcImageLayoutC,
@@ -4416,7 +4416,7 @@ class Vulkan
         $phpValue = $stageMask;
         $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::toInt(...$phpValue);
         $stageMaskC = $cValue;
-        $cValue = $this->ffi->vkCmdSetEvent(
+        $cValue = $this->fnPtr('vkCmdSetEvent')(
             $commandBufferC,
             $eventC,
             $stageMaskC,
@@ -4443,7 +4443,7 @@ class Vulkan
         $phpValue = $stageMask;
         $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::toInt(...$phpValue);
         $stageMaskC = $cValue;
-        $cValue = $this->ffi->vkCmdResetEvent(
+        $cValue = $this->fnPtr('vkCmdResetEvent')(
             $commandBufferC,
             $eventC,
             $stageMaskC,
@@ -4510,7 +4510,7 @@ class Vulkan
         $phpValue = $pImageMemoryBarriers;
         $cValue = $phpValue->cdata;
         $pImageMemoryBarriersC = $cValue;
-        $cValue = $this->ffi->vkCmdWaitEvents(
+        $cValue = $this->fnPtr('vkCmdWaitEvents')(
             $commandBufferC,
             $eventCountC,
             $pEventsC,
@@ -4580,7 +4580,7 @@ class Vulkan
         $phpValue = $pImageMemoryBarriers;
         $cValue = $phpValue->cdata;
         $pImageMemoryBarriersC = $cValue;
-        $cValue = $this->ffi->vkCmdPipelineBarrier(
+        $cValue = $this->fnPtr('vkCmdPipelineBarrier')(
             $commandBufferC,
             $srcStageMaskC,
             $dstStageMaskC,
@@ -4619,7 +4619,7 @@ class Vulkan
         $phpValue = $flags;
         $cValue = \iggyvolz\vulkan\enum\VkQueryControlFlagBits::toInt(...$phpValue);
         $flagsC = $cValue;
-        $cValue = $this->ffi->vkCmdBeginQuery(
+        $cValue = $this->fnPtr('vkCmdBeginQuery')(
             $commandBufferC,
             $queryPoolC,
             $queryC,
@@ -4647,7 +4647,7 @@ class Vulkan
         $phpValue = $query;
         $cValue = $phpValue;
         $queryC = $cValue;
-        $cValue = $this->ffi->vkCmdEndQuery(
+        $cValue = $this->fnPtr('vkCmdEndQuery')(
             $commandBufferC,
             $queryPoolC,
             $queryC,
@@ -4669,7 +4669,7 @@ class Vulkan
         $phpValue = $pConditionalRenderingBegin;
         $cValue = $phpValue->cdata;
         $pConditionalRenderingBeginC = $cValue;
-        $cValue = $this->ffi->vkCmdBeginConditionalRenderingEXT(
+        $cValue = $this->fnPtr('vkCmdBeginConditionalRenderingEXT')(
             $commandBufferC,
             $pConditionalRenderingBeginC,
         );
@@ -4683,7 +4683,7 @@ class Vulkan
         $phpValue = $commandBuffer;
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
-        $cValue = $this->ffi->vkCmdEndConditionalRenderingEXT(
+        $cValue = $this->fnPtr('vkCmdEndConditionalRenderingEXT')(
             $commandBufferC,
         );
     }
@@ -4713,7 +4713,7 @@ class Vulkan
         $phpValue = $queryCount;
         $cValue = $phpValue;
         $queryCountC = $cValue;
-        $cValue = $this->ffi->vkCmdResetQueryPool(
+        $cValue = $this->fnPtr('vkCmdResetQueryPool')(
             $commandBufferC,
             $queryPoolC,
             $firstQueryC,
@@ -4746,7 +4746,7 @@ class Vulkan
         $phpValue = $query;
         $cValue = $phpValue;
         $queryC = $cValue;
-        $cValue = $this->ffi->vkCmdWriteTimestamp(
+        $cValue = $this->fnPtr('vkCmdWriteTimestamp')(
             $commandBufferC,
             $pipelineStageC,
             $queryPoolC,
@@ -4799,7 +4799,7 @@ class Vulkan
         $phpValue = $flags;
         $cValue = \iggyvolz\vulkan\enum\VkQueryResultFlagBits::toInt(...$phpValue);
         $flagsC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyQueryPoolResults(
+        $cValue = $this->fnPtr('vkCmdCopyQueryPoolResults')(
             $commandBufferC,
             $queryPoolC,
             $firstQueryC,
@@ -4846,7 +4846,7 @@ class Vulkan
         $phpValue = $pValues;
         $cValue = $phpValue->cdata;
         $pValuesC = $cValue;
-        $cValue = $this->ffi->vkCmdPushConstants(
+        $cValue = $this->fnPtr('vkCmdPushConstants')(
             $commandBufferC,
             $layoutC,
             $stageFlagsC,
@@ -4876,7 +4876,7 @@ class Vulkan
         $phpValue = $contents;
         $cValue = $phpValue->value;
         $contentsC = $cValue;
-        $cValue = $this->ffi->vkCmdBeginRenderPass(
+        $cValue = $this->fnPtr('vkCmdBeginRenderPass')(
             $commandBufferC,
             $pRenderPassBeginC,
             $contentsC,
@@ -4895,7 +4895,7 @@ class Vulkan
         $phpValue = $contents;
         $cValue = $phpValue->value;
         $contentsC = $cValue;
-        $cValue = $this->ffi->vkCmdNextSubpass(
+        $cValue = $this->fnPtr('vkCmdNextSubpass')(
             $commandBufferC,
             $contentsC,
         );
@@ -4909,7 +4909,7 @@ class Vulkan
         $phpValue = $commandBuffer;
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
-        $cValue = $this->ffi->vkCmdEndRenderPass(
+        $cValue = $this->fnPtr('vkCmdEndRenderPass')(
             $commandBufferC,
         );
     }
@@ -4934,7 +4934,7 @@ class Vulkan
         $phpValue = $pCommandBuffers;
         $cValue = $phpValue->cdata;
         $pCommandBuffersC = $cValue;
-        $cValue = $this->ffi->vkCmdExecuteCommands(
+        $cValue = $this->fnPtr('vkCmdExecuteCommands')(
             $commandBufferC,
             $commandBufferCountC,
             $pCommandBuffersC,
@@ -4967,7 +4967,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateAndroidSurfaceKHR(
+        $cValue = $this->fnPtr('vkCreateAndroidSurfaceKHR')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -4998,7 +4998,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceDisplayPropertiesKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceDisplayPropertiesKHR')(
             $physicalDeviceC,
             $pPropertyCountC,
             $pPropertiesC,
@@ -5028,7 +5028,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceDisplayPlanePropertiesKHR')(
             $physicalDeviceC,
             $pPropertyCountC,
             $pPropertiesC,
@@ -5063,7 +5063,7 @@ class Vulkan
         $phpValue = $pDisplays;
         $cValue = $phpValue->cdata;
         $pDisplaysC = $cValue;
-        $cValue = $this->ffi->vkGetDisplayPlaneSupportedDisplaysKHR(
+        $cValue = $this->fnPtr('vkGetDisplayPlaneSupportedDisplaysKHR')(
             $physicalDeviceC,
             $planeIndexC,
             $pDisplayCountC,
@@ -5099,7 +5099,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetDisplayModePropertiesKHR(
+        $cValue = $this->fnPtr('vkGetDisplayModePropertiesKHR')(
             $physicalDeviceC,
             $displayC,
             $pPropertyCountC,
@@ -5140,7 +5140,7 @@ class Vulkan
         $phpValue = $pMode;
         $cValue = $phpValue->cdata;
         $pModeC = $cValue;
-        $cValue = $this->ffi->vkCreateDisplayModeKHR(
+        $cValue = $this->fnPtr('vkCreateDisplayModeKHR')(
             $physicalDeviceC,
             $displayC,
             $pCreateInfoC,
@@ -5177,7 +5177,7 @@ class Vulkan
         $phpValue = $pCapabilities;
         $cValue = $phpValue->cdata;
         $pCapabilitiesC = $cValue;
-        $cValue = $this->ffi->vkGetDisplayPlaneCapabilitiesKHR(
+        $cValue = $this->fnPtr('vkGetDisplayPlaneCapabilitiesKHR')(
             $physicalDeviceC,
             $modeC,
             $planeIndexC,
@@ -5213,7 +5213,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateDisplayPlaneSurfaceKHR(
+        $cValue = $this->fnPtr('vkCreateDisplayPlaneSurfaceKHR')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -5254,7 +5254,7 @@ class Vulkan
         $phpValue = $pSwapchains;
         $cValue = $phpValue->cdata;
         $pSwapchainsC = $cValue;
-        $cValue = $this->ffi->vkCreateSharedSwapchainsKHR(
+        $cValue = $this->fnPtr('vkCreateSharedSwapchainsKHR')(
             $deviceC,
             $swapchainCountC,
             $pCreateInfosC,
@@ -5285,7 +5285,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroySurfaceKHR(
+        $cValue = $this->fnPtr('vkDestroySurfaceKHR')(
             $instanceC,
             $surfaceC,
             $pAllocatorC,
@@ -5318,7 +5318,7 @@ class Vulkan
         $phpValue = $pSupported;
         $cValue = $phpValue->cdata;
         $pSupportedC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceSurfaceSupportKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceSurfaceSupportKHR')(
             $physicalDeviceC,
             $queueFamilyIndexC,
             $surfaceC,
@@ -5349,7 +5349,7 @@ class Vulkan
         $phpValue = $pSurfaceCapabilities;
         $cValue = $phpValue->cdata;
         $pSurfaceCapabilitiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceSurfaceCapabilitiesKHR')(
             $physicalDeviceC,
             $surfaceC,
             $pSurfaceCapabilitiesC,
@@ -5384,7 +5384,7 @@ class Vulkan
         $phpValue = $pSurfaceFormats;
         $cValue = $phpValue->cdata;
         $pSurfaceFormatsC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceSurfaceFormatsKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceSurfaceFormatsKHR')(
             $physicalDeviceC,
             $surfaceC,
             $pSurfaceFormatCountC,
@@ -5420,7 +5420,7 @@ class Vulkan
         $phpValue = $pPresentModes;
         $cValue = $phpValue->cdata;
         $pPresentModesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceSurfacePresentModesKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceSurfacePresentModesKHR')(
             $physicalDeviceC,
             $surfaceC,
             $pPresentModeCountC,
@@ -5456,7 +5456,7 @@ class Vulkan
         $phpValue = $pSwapchain;
         $cValue = $phpValue->cdata;
         $pSwapchainC = $cValue;
-        $cValue = $this->ffi->vkCreateSwapchainKHR(
+        $cValue = $this->fnPtr('vkCreateSwapchainKHR')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -5486,7 +5486,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroySwapchainKHR(
+        $cValue = $this->fnPtr('vkDestroySwapchainKHR')(
             $deviceC,
             $swapchainC,
             $pAllocatorC,
@@ -5519,7 +5519,7 @@ class Vulkan
         $phpValue = $pSwapchainImages;
         $cValue = $phpValue->cdata;
         $pSwapchainImagesC = $cValue;
-        $cValue = $this->ffi->vkGetSwapchainImagesKHR(
+        $cValue = $this->fnPtr('vkGetSwapchainImagesKHR')(
             $deviceC,
             $swapchainC,
             $pSwapchainImageCountC,
@@ -5565,7 +5565,7 @@ class Vulkan
         $phpValue = $pImageIndex;
         $cValue = $phpValue->cdata;
         $pImageIndexC = $cValue;
-        $cValue = $this->ffi->vkAcquireNextImageKHR(
+        $cValue = $this->fnPtr('vkAcquireNextImageKHR')(
             $deviceC,
             $swapchainC,
             $timeoutC,
@@ -5590,7 +5590,7 @@ class Vulkan
         $phpValue = $pPresentInfo;
         $cValue = $phpValue->cdata;
         $pPresentInfoC = $cValue;
-        $cValue = $this->ffi->vkQueuePresentKHR(
+        $cValue = $this->fnPtr('vkQueuePresentKHR')(
             $queueC,
             $pPresentInfoC,
         );
@@ -5624,7 +5624,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateViSurfaceNN(
+        $cValue = $this->fnPtr('vkCreateViSurfaceNN')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -5660,7 +5660,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateWaylandSurfaceKHR(
+        $cValue = $this->fnPtr('vkCreateWaylandSurfaceKHR')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -5691,7 +5691,7 @@ class Vulkan
         $phpValue = $display;
         $cValue = $phpValue->cdata;
         $displayC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceWaylandPresentationSupportKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceWaylandPresentationSupportKHR')(
             $physicalDeviceC,
             $queueFamilyIndexC,
             $displayC,
@@ -5726,7 +5726,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateWin32SurfaceKHR(
+        $cValue = $this->fnPtr('vkCreateWin32SurfaceKHR')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -5752,7 +5752,7 @@ class Vulkan
         $phpValue = $queueFamilyIndex;
         $cValue = $phpValue;
         $queueFamilyIndexC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceWin32PresentationSupportKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceWin32PresentationSupportKHR')(
             $physicalDeviceC,
             $queueFamilyIndexC,
         );
@@ -5786,7 +5786,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateXlibSurfaceKHR(
+        $cValue = $this->fnPtr('vkCreateXlibSurfaceKHR')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -5822,7 +5822,7 @@ class Vulkan
         $phpValue = $visualID;
         $cValue = $phpValue;
         $visualIDC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceXlibPresentationSupportKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceXlibPresentationSupportKHR')(
             $physicalDeviceC,
             $queueFamilyIndexC,
             $dpyC,
@@ -5858,7 +5858,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateXcbSurfaceKHR(
+        $cValue = $this->fnPtr('vkCreateXcbSurfaceKHR')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -5894,7 +5894,7 @@ class Vulkan
         $phpValue = $visual_id;
         throw new \LogicException("Dummy transformer!");
         $visual_idC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceXcbPresentationSupportKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceXcbPresentationSupportKHR')(
             $physicalDeviceC,
             $queueFamilyIndexC,
             $connectionC,
@@ -5930,7 +5930,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateDirectFBSurfaceEXT(
+        $cValue = $this->fnPtr('vkCreateDirectFBSurfaceEXT')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -5961,7 +5961,7 @@ class Vulkan
         $phpValue = $dfb;
         $cValue = $phpValue->cdata;
         $dfbC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceDirectFBPresentationSupportEXT(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceDirectFBPresentationSupportEXT')(
             $physicalDeviceC,
             $queueFamilyIndexC,
             $dfbC,
@@ -5996,7 +5996,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateImagePipeSurfaceFUCHSIA(
+        $cValue = $this->fnPtr('vkCreateImagePipeSurfaceFUCHSIA')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -6032,7 +6032,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateStreamDescriptorSurfaceGGP(
+        $cValue = $this->fnPtr('vkCreateStreamDescriptorSurfaceGGP')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -6068,7 +6068,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateScreenSurfaceQNX(
+        $cValue = $this->fnPtr('vkCreateScreenSurfaceQNX')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -6099,7 +6099,7 @@ class Vulkan
         $phpValue = $window;
         $cValue = $phpValue->cdata;
         $windowC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceScreenPresentationSupportQNX(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceScreenPresentationSupportQNX')(
             $physicalDeviceC,
             $queueFamilyIndexC,
             $windowC,
@@ -6134,7 +6134,7 @@ class Vulkan
         $phpValue = $pCallback;
         $cValue = $phpValue->cdata;
         $pCallbackC = $cValue;
-        $cValue = $this->ffi->vkCreateDebugReportCallbackEXT(
+        $cValue = $this->fnPtr('vkCreateDebugReportCallbackEXT')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -6164,7 +6164,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyDebugReportCallbackEXT(
+        $cValue = $this->fnPtr('vkDestroyDebugReportCallbackEXT')(
             $instanceC,
             $callbackC,
             $pAllocatorC,
@@ -6216,7 +6216,7 @@ class Vulkan
         $phpValue = $pMessage;
         $cValue = $phpValue;
         $pMessageC = $cValue;
-        $cValue = $this->ffi->vkDebugReportMessageEXT(
+        $cValue = $this->fnPtr('vkDebugReportMessageEXT')(
             $instanceC,
             $flagsC,
             $objectTypeC,
@@ -6244,7 +6244,7 @@ class Vulkan
         $phpValue = $pNameInfo;
         $cValue = $phpValue->cdata;
         $pNameInfoC = $cValue;
-        $cValue = $this->ffi->vkDebugMarkerSetObjectNameEXT(
+        $cValue = $this->fnPtr('vkDebugMarkerSetObjectNameEXT')(
             $deviceC,
             $pNameInfoC,
         );
@@ -6265,7 +6265,7 @@ class Vulkan
         $phpValue = $pTagInfo;
         $cValue = $phpValue->cdata;
         $pTagInfoC = $cValue;
-        $cValue = $this->ffi->vkDebugMarkerSetObjectTagEXT(
+        $cValue = $this->fnPtr('vkDebugMarkerSetObjectTagEXT')(
             $deviceC,
             $pTagInfoC,
         );
@@ -6288,7 +6288,7 @@ class Vulkan
         $phpValue = $pMarkerInfo;
         $cValue = $phpValue->cdata;
         $pMarkerInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdDebugMarkerBeginEXT(
+        $cValue = $this->fnPtr('vkCmdDebugMarkerBeginEXT')(
             $commandBufferC,
             $pMarkerInfoC,
         );
@@ -6302,7 +6302,7 @@ class Vulkan
         $phpValue = $commandBuffer;
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
-        $cValue = $this->ffi->vkCmdDebugMarkerEndEXT(
+        $cValue = $this->fnPtr('vkCmdDebugMarkerEndEXT')(
             $commandBufferC,
         );
     }
@@ -6322,7 +6322,7 @@ class Vulkan
         $phpValue = $pMarkerInfo;
         $cValue = $phpValue->cdata;
         $pMarkerInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdDebugMarkerInsertEXT(
+        $cValue = $this->fnPtr('vkCmdDebugMarkerInsertEXT')(
             $commandBufferC,
             $pMarkerInfoC,
         );
@@ -6374,7 +6374,7 @@ class Vulkan
         $phpValue = $pExternalImageFormatProperties;
         $cValue = $phpValue->cdata;
         $pExternalImageFormatPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceExternalImageFormatPropertiesNV(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceExternalImageFormatPropertiesNV')(
             $physicalDeviceC,
             $formatC,
             $typeC,
@@ -6414,7 +6414,7 @@ class Vulkan
         $phpValue = $pHandle;
         $cValue = $phpValue->cdata;
         $pHandleC = $cValue;
-        $cValue = $this->ffi->vkGetMemoryWin32HandleNV(
+        $cValue = $this->fnPtr('vkGetMemoryWin32HandleNV')(
             $deviceC,
             $memoryC,
             $handleTypeC,
@@ -6444,7 +6444,7 @@ class Vulkan
         $phpValue = $pGeneratedCommandsInfo;
         $cValue = $phpValue->cdata;
         $pGeneratedCommandsInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdExecuteGeneratedCommandsNV(
+        $cValue = $this->fnPtr('vkCmdExecuteGeneratedCommandsNV')(
             $commandBufferC,
             $isPreprocessedC,
             $pGeneratedCommandsInfoC,
@@ -6466,7 +6466,7 @@ class Vulkan
         $phpValue = $pGeneratedCommandsInfo;
         $cValue = $phpValue->cdata;
         $pGeneratedCommandsInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdPreprocessGeneratedCommandsNV(
+        $cValue = $this->fnPtr('vkCmdPreprocessGeneratedCommandsNV')(
             $commandBufferC,
             $pGeneratedCommandsInfoC,
         );
@@ -6497,7 +6497,7 @@ class Vulkan
         $phpValue = $groupIndex;
         $cValue = $phpValue;
         $groupIndexC = $cValue;
-        $cValue = $this->ffi->vkCmdBindPipelineShaderGroupNV(
+        $cValue = $this->fnPtr('vkCmdBindPipelineShaderGroupNV')(
             $commandBufferC,
             $pipelineBindPointC,
             $pipelineC,
@@ -6525,7 +6525,7 @@ class Vulkan
         $phpValue = $pMemoryRequirements;
         $cValue = $phpValue->cdata;
         $pMemoryRequirementsC = $cValue;
-        $cValue = $this->ffi->vkGetGeneratedCommandsMemoryRequirementsNV(
+        $cValue = $this->fnPtr('vkGetGeneratedCommandsMemoryRequirementsNV')(
             $deviceC,
             $pInfoC,
             $pMemoryRequirementsC,
@@ -6558,7 +6558,7 @@ class Vulkan
         $phpValue = $pIndirectCommandsLayout;
         $cValue = $phpValue->cdata;
         $pIndirectCommandsLayoutC = $cValue;
-        $cValue = $this->ffi->vkCreateIndirectCommandsLayoutNV(
+        $cValue = $this->fnPtr('vkCreateIndirectCommandsLayoutNV')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -6588,7 +6588,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyIndirectCommandsLayoutNV(
+        $cValue = $this->fnPtr('vkDestroyIndirectCommandsLayoutNV')(
             $deviceC,
             $indirectCommandsLayoutC,
             $pAllocatorC,
@@ -6610,7 +6610,7 @@ class Vulkan
         $phpValue = $pFeatures;
         $cValue = $phpValue->cdata;
         $pFeaturesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceFeatures2(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceFeatures2')(
             $physicalDeviceC,
             $pFeaturesC,
         );
@@ -6631,7 +6631,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceProperties2(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceProperties2')(
             $physicalDeviceC,
             $pPropertiesC,
         );
@@ -6657,7 +6657,7 @@ class Vulkan
         $phpValue = $pFormatProperties;
         $cValue = $phpValue->cdata;
         $pFormatPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceFormatProperties2(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceFormatProperties2')(
             $physicalDeviceC,
             $formatC,
             $pFormatPropertiesC,
@@ -6685,7 +6685,7 @@ class Vulkan
         $phpValue = $pImageFormatProperties;
         $cValue = $phpValue->cdata;
         $pImageFormatPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceImageFormatProperties2(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceImageFormatProperties2')(
             $physicalDeviceC,
             $pImageFormatInfoC,
             $pImageFormatPropertiesC,
@@ -6714,7 +6714,7 @@ class Vulkan
         $phpValue = $pQueueFamilyProperties;
         $cValue = $phpValue->cdata;
         $pQueueFamilyPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceQueueFamilyProperties2(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceQueueFamilyProperties2')(
             $physicalDeviceC,
             $pQueueFamilyPropertyCountC,
             $pQueueFamilyPropertiesC,
@@ -6736,7 +6736,7 @@ class Vulkan
         $phpValue = $pMemoryProperties;
         $cValue = $phpValue->cdata;
         $pMemoryPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceMemoryProperties2(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceMemoryProperties2')(
             $physicalDeviceC,
             $pMemoryPropertiesC,
         );
@@ -6767,7 +6767,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceSparseImageFormatProperties2(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceSparseImageFormatProperties2')(
             $physicalDeviceC,
             $pFormatInfoC,
             $pPropertyCountC,
@@ -6810,7 +6810,7 @@ class Vulkan
         $phpValue = $pDescriptorWrites;
         $cValue = $phpValue->cdata;
         $pDescriptorWritesC = $cValue;
-        $cValue = $this->ffi->vkCmdPushDescriptorSetKHR(
+        $cValue = $this->fnPtr('vkCmdPushDescriptorSetKHR')(
             $commandBufferC,
             $pipelineBindPointC,
             $layoutC,
@@ -6836,7 +6836,7 @@ class Vulkan
         $phpValue = $flags;
         $cValue = 0;
         $flagsC = $cValue;
-        $cValue = $this->ffi->vkTrimCommandPool(
+        $cValue = $this->fnPtr('vkTrimCommandPool')(
             $deviceC,
             $commandPoolC,
             $flagsC,
@@ -6863,7 +6863,7 @@ class Vulkan
         $phpValue = $pExternalBufferProperties;
         $cValue = $phpValue->cdata;
         $pExternalBufferPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceExternalBufferProperties(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceExternalBufferProperties')(
             $physicalDeviceC,
             $pExternalBufferInfoC,
             $pExternalBufferPropertiesC,
@@ -6891,7 +6891,7 @@ class Vulkan
         $phpValue = $pHandle;
         $cValue = $phpValue->cdata;
         $pHandleC = $cValue;
-        $cValue = $this->ffi->vkGetMemoryWin32HandleKHR(
+        $cValue = $this->fnPtr('vkGetMemoryWin32HandleKHR')(
             $deviceC,
             $pGetWin32HandleInfoC,
             $pHandleC,
@@ -6926,7 +6926,7 @@ class Vulkan
         $phpValue = $pMemoryWin32HandleProperties;
         $cValue = $phpValue->cdata;
         $pMemoryWin32HandlePropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetMemoryWin32HandlePropertiesKHR(
+        $cValue = $this->fnPtr('vkGetMemoryWin32HandlePropertiesKHR')(
             $deviceC,
             $handleTypeC,
             $handleC,
@@ -6957,7 +6957,7 @@ class Vulkan
         $phpValue = $pFd;
         $cValue = $phpValue->cdata;
         $pFdC = $cValue;
-        $cValue = $this->ffi->vkGetMemoryFdKHR(
+        $cValue = $this->fnPtr('vkGetMemoryFdKHR')(
             $deviceC,
             $pGetFdInfoC,
             $pFdC,
@@ -6992,7 +6992,7 @@ class Vulkan
         $phpValue = $pMemoryFdProperties;
         $cValue = $phpValue->cdata;
         $pMemoryFdPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetMemoryFdPropertiesKHR(
+        $cValue = $this->fnPtr('vkGetMemoryFdPropertiesKHR')(
             $deviceC,
             $handleTypeC,
             $fdC,
@@ -7023,7 +7023,7 @@ class Vulkan
         $phpValue = $pZirconHandle;
         $cValue = $phpValue->cdata;
         $pZirconHandleC = $cValue;
-        $cValue = $this->ffi->vkGetMemoryZirconHandleFUCHSIA(
+        $cValue = $this->fnPtr('vkGetMemoryZirconHandleFUCHSIA')(
             $deviceC,
             $pGetZirconHandleInfoC,
             $pZirconHandleC,
@@ -7058,7 +7058,7 @@ class Vulkan
         $phpValue = $pMemoryZirconHandleProperties;
         $cValue = $phpValue->cdata;
         $pMemoryZirconHandlePropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetMemoryZirconHandlePropertiesFUCHSIA(
+        $cValue = $this->fnPtr('vkGetMemoryZirconHandlePropertiesFUCHSIA')(
             $deviceC,
             $handleTypeC,
             $zirconHandleC,
@@ -7089,7 +7089,7 @@ class Vulkan
         $phpValue = $pAddress;
         $cValue = $phpValue->cdata;
         $pAddressC = $cValue;
-        $cValue = $this->ffi->vkGetMemoryRemoteAddressNV(
+        $cValue = $this->fnPtr('vkGetMemoryRemoteAddressNV')(
             $deviceC,
             $pMemoryGetRemoteAddressInfoC,
             $pAddressC,
@@ -7119,7 +7119,7 @@ class Vulkan
         $phpValue = $pHandle;
         $cValue = $phpValue->cdata;
         $pHandleC = $cValue;
-        $cValue = $this->ffi->vkGetMemorySciBufNV(
+        $cValue = $this->fnPtr('vkGetMemorySciBufNV')(
             $deviceC,
             $pGetSciBufInfoC,
             $pHandleC,
@@ -7154,7 +7154,7 @@ class Vulkan
         $phpValue = $pMemorySciBufProperties;
         $cValue = $phpValue->cdata;
         $pMemorySciBufPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV')(
             $physicalDeviceC,
             $handleTypeC,
             $handleC,
@@ -7180,7 +7180,7 @@ class Vulkan
         $phpValue = $pAttributes;
         throw new \LogicException("Dummy transformer!");
         $pAttributesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceSciBufAttributesNV(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceSciBufAttributesNV')(
             $physicalDeviceC,
             $pAttributesC,
         );
@@ -7208,7 +7208,7 @@ class Vulkan
         $phpValue = $pExternalSemaphoreProperties;
         $cValue = $phpValue->cdata;
         $pExternalSemaphorePropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceExternalSemaphoreProperties(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceExternalSemaphoreProperties')(
             $physicalDeviceC,
             $pExternalSemaphoreInfoC,
             $pExternalSemaphorePropertiesC,
@@ -7236,7 +7236,7 @@ class Vulkan
         $phpValue = $pHandle;
         $cValue = $phpValue->cdata;
         $pHandleC = $cValue;
-        $cValue = $this->ffi->vkGetSemaphoreWin32HandleKHR(
+        $cValue = $this->fnPtr('vkGetSemaphoreWin32HandleKHR')(
             $deviceC,
             $pGetWin32HandleInfoC,
             $pHandleC,
@@ -7261,7 +7261,7 @@ class Vulkan
         $phpValue = $pImportSemaphoreWin32HandleInfo;
         $cValue = $phpValue->cdata;
         $pImportSemaphoreWin32HandleInfoC = $cValue;
-        $cValue = $this->ffi->vkImportSemaphoreWin32HandleKHR(
+        $cValue = $this->fnPtr('vkImportSemaphoreWin32HandleKHR')(
             $deviceC,
             $pImportSemaphoreWin32HandleInfoC,
         );
@@ -7290,7 +7290,7 @@ class Vulkan
         $phpValue = $pFd;
         $cValue = $phpValue->cdata;
         $pFdC = $cValue;
-        $cValue = $this->ffi->vkGetSemaphoreFdKHR(
+        $cValue = $this->fnPtr('vkGetSemaphoreFdKHR')(
             $deviceC,
             $pGetFdInfoC,
             $pFdC,
@@ -7315,7 +7315,7 @@ class Vulkan
         $phpValue = $pImportSemaphoreFdInfo;
         $cValue = $phpValue->cdata;
         $pImportSemaphoreFdInfoC = $cValue;
-        $cValue = $this->ffi->vkImportSemaphoreFdKHR(
+        $cValue = $this->fnPtr('vkImportSemaphoreFdKHR')(
             $deviceC,
             $pImportSemaphoreFdInfoC,
         );
@@ -7344,7 +7344,7 @@ class Vulkan
         $phpValue = $pZirconHandle;
         $cValue = $phpValue->cdata;
         $pZirconHandleC = $cValue;
-        $cValue = $this->ffi->vkGetSemaphoreZirconHandleFUCHSIA(
+        $cValue = $this->fnPtr('vkGetSemaphoreZirconHandleFUCHSIA')(
             $deviceC,
             $pGetZirconHandleInfoC,
             $pZirconHandleC,
@@ -7369,7 +7369,7 @@ class Vulkan
         $phpValue = $pImportSemaphoreZirconHandleInfo;
         $cValue = $phpValue->cdata;
         $pImportSemaphoreZirconHandleInfoC = $cValue;
-        $cValue = $this->ffi->vkImportSemaphoreZirconHandleFUCHSIA(
+        $cValue = $this->fnPtr('vkImportSemaphoreZirconHandleFUCHSIA')(
             $deviceC,
             $pImportSemaphoreZirconHandleInfoC,
         );
@@ -7397,7 +7397,7 @@ class Vulkan
         $phpValue = $pExternalFenceProperties;
         $cValue = $phpValue->cdata;
         $pExternalFencePropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceExternalFenceProperties(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceExternalFenceProperties')(
             $physicalDeviceC,
             $pExternalFenceInfoC,
             $pExternalFencePropertiesC,
@@ -7425,7 +7425,7 @@ class Vulkan
         $phpValue = $pHandle;
         $cValue = $phpValue->cdata;
         $pHandleC = $cValue;
-        $cValue = $this->ffi->vkGetFenceWin32HandleKHR(
+        $cValue = $this->fnPtr('vkGetFenceWin32HandleKHR')(
             $deviceC,
             $pGetWin32HandleInfoC,
             $pHandleC,
@@ -7450,7 +7450,7 @@ class Vulkan
         $phpValue = $pImportFenceWin32HandleInfo;
         $cValue = $phpValue->cdata;
         $pImportFenceWin32HandleInfoC = $cValue;
-        $cValue = $this->ffi->vkImportFenceWin32HandleKHR(
+        $cValue = $this->fnPtr('vkImportFenceWin32HandleKHR')(
             $deviceC,
             $pImportFenceWin32HandleInfoC,
         );
@@ -7479,7 +7479,7 @@ class Vulkan
         $phpValue = $pFd;
         $cValue = $phpValue->cdata;
         $pFdC = $cValue;
-        $cValue = $this->ffi->vkGetFenceFdKHR(
+        $cValue = $this->fnPtr('vkGetFenceFdKHR')(
             $deviceC,
             $pGetFdInfoC,
             $pFdC,
@@ -7501,7 +7501,7 @@ class Vulkan
         $phpValue = $pImportFenceFdInfo;
         $cValue = $phpValue->cdata;
         $pImportFenceFdInfoC = $cValue;
-        $cValue = $this->ffi->vkImportFenceFdKHR(
+        $cValue = $this->fnPtr('vkImportFenceFdKHR')(
             $deviceC,
             $pImportFenceFdInfoC,
         );
@@ -7530,7 +7530,7 @@ class Vulkan
         $phpValue = $pHandle;
         $cValue = $phpValue->cdata;
         $pHandleC = $cValue;
-        $cValue = $this->ffi->vkGetFenceSciSyncFenceNV(
+        $cValue = $this->fnPtr('vkGetFenceSciSyncFenceNV')(
             $deviceC,
             $pGetSciSyncHandleInfoC,
             $pHandleC,
@@ -7560,7 +7560,7 @@ class Vulkan
         $phpValue = $pHandle;
         $cValue = $phpValue->cdata;
         $pHandleC = $cValue;
-        $cValue = $this->ffi->vkGetFenceSciSyncObjNV(
+        $cValue = $this->fnPtr('vkGetFenceSciSyncObjNV')(
             $deviceC,
             $pGetSciSyncHandleInfoC,
             $pHandleC,
@@ -7585,7 +7585,7 @@ class Vulkan
         $phpValue = $pImportFenceSciSyncInfo;
         $cValue = $phpValue->cdata;
         $pImportFenceSciSyncInfoC = $cValue;
-        $cValue = $this->ffi->vkImportFenceSciSyncFenceNV(
+        $cValue = $this->fnPtr('vkImportFenceSciSyncFenceNV')(
             $deviceC,
             $pImportFenceSciSyncInfoC,
         );
@@ -7609,7 +7609,7 @@ class Vulkan
         $phpValue = $pImportFenceSciSyncInfo;
         $cValue = $phpValue->cdata;
         $pImportFenceSciSyncInfoC = $cValue;
-        $cValue = $this->ffi->vkImportFenceSciSyncObjNV(
+        $cValue = $this->fnPtr('vkImportFenceSciSyncObjNV')(
             $deviceC,
             $pImportFenceSciSyncInfoC,
         );
@@ -7638,7 +7638,7 @@ class Vulkan
         $phpValue = $pHandle;
         $cValue = $phpValue->cdata;
         $pHandleC = $cValue;
-        $cValue = $this->ffi->vkGetSemaphoreSciSyncObjNV(
+        $cValue = $this->fnPtr('vkGetSemaphoreSciSyncObjNV')(
             $deviceC,
             $pGetSciSyncInfoC,
             $pHandleC,
@@ -7663,7 +7663,7 @@ class Vulkan
         $phpValue = $pImportSemaphoreSciSyncInfo;
         $cValue = $phpValue->cdata;
         $pImportSemaphoreSciSyncInfoC = $cValue;
-        $cValue = $this->ffi->vkImportSemaphoreSciSyncObjNV(
+        $cValue = $this->fnPtr('vkImportSemaphoreSciSyncObjNV')(
             $deviceC,
             $pImportSemaphoreSciSyncInfoC,
         );
@@ -7692,7 +7692,7 @@ class Vulkan
         $phpValue = $pAttributes;
         throw new \LogicException("Dummy transformer!");
         $pAttributesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceSciSyncAttributesNV(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceSciSyncAttributesNV')(
             $physicalDeviceC,
             $pSciSyncAttributesInfoC,
             $pAttributesC,
@@ -7727,7 +7727,7 @@ class Vulkan
         $phpValue = $pSemaphorePool;
         $cValue = $phpValue->cdata;
         $pSemaphorePoolC = $cValue;
-        $cValue = $this->ffi->vkCreateSemaphoreSciSyncPoolNV(
+        $cValue = $this->fnPtr('vkCreateSemaphoreSciSyncPoolNV')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -7757,7 +7757,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroySemaphoreSciSyncPoolNV(
+        $cValue = $this->fnPtr('vkDestroySemaphoreSciSyncPoolNV')(
             $deviceC,
             $semaphorePoolC,
             $pAllocatorC,
@@ -7780,7 +7780,7 @@ class Vulkan
         $phpValue = $display;
         $cValue = $phpValue->cdata;
         $displayC = $cValue;
-        $cValue = $this->ffi->vkReleaseDisplayEXT(
+        $cValue = $this->fnPtr('vkReleaseDisplayEXT')(
             $physicalDeviceC,
             $displayC,
         );
@@ -7809,7 +7809,7 @@ class Vulkan
         $phpValue = $display;
         $cValue = $phpValue->cdata;
         $displayC = $cValue;
-        $cValue = $this->ffi->vkAcquireXlibDisplayEXT(
+        $cValue = $this->fnPtr('vkAcquireXlibDisplayEXT')(
             $physicalDeviceC,
             $dpyC,
             $displayC,
@@ -7844,7 +7844,7 @@ class Vulkan
         $phpValue = $pDisplay;
         $cValue = $phpValue->cdata;
         $pDisplayC = $cValue;
-        $cValue = $this->ffi->vkGetRandROutputDisplayEXT(
+        $cValue = $this->fnPtr('vkGetRandROutputDisplayEXT')(
             $physicalDeviceC,
             $dpyC,
             $rrOutputC,
@@ -7870,7 +7870,7 @@ class Vulkan
         $phpValue = $display;
         $cValue = $phpValue->cdata;
         $displayC = $cValue;
-        $cValue = $this->ffi->vkAcquireWinrtDisplayNV(
+        $cValue = $this->fnPtr('vkAcquireWinrtDisplayNV')(
             $physicalDeviceC,
             $displayC,
         );
@@ -7899,7 +7899,7 @@ class Vulkan
         $phpValue = $pDisplay;
         $cValue = $phpValue->cdata;
         $pDisplayC = $cValue;
-        $cValue = $this->ffi->vkGetWinrtDisplayNV(
+        $cValue = $this->fnPtr('vkGetWinrtDisplayNV')(
             $physicalDeviceC,
             $deviceRelativeIdC,
             $pDisplayC,
@@ -7929,7 +7929,7 @@ class Vulkan
         $phpValue = $pDisplayPowerInfo;
         $cValue = $phpValue->cdata;
         $pDisplayPowerInfoC = $cValue;
-        $cValue = $this->ffi->vkDisplayPowerControlEXT(
+        $cValue = $this->fnPtr('vkDisplayPowerControlEXT')(
             $deviceC,
             $displayC,
             $pDisplayPowerInfoC,
@@ -7964,7 +7964,7 @@ class Vulkan
         $phpValue = $pFence;
         $cValue = $phpValue->cdata;
         $pFenceC = $cValue;
-        $cValue = $this->ffi->vkRegisterDeviceEventEXT(
+        $cValue = $this->fnPtr('vkRegisterDeviceEventEXT')(
             $deviceC,
             $pDeviceEventInfoC,
             $pAllocatorC,
@@ -8005,7 +8005,7 @@ class Vulkan
         $phpValue = $pFence;
         $cValue = $phpValue->cdata;
         $pFenceC = $cValue;
-        $cValue = $this->ffi->vkRegisterDisplayEventEXT(
+        $cValue = $this->fnPtr('vkRegisterDisplayEventEXT')(
             $deviceC,
             $displayC,
             $pDisplayEventInfoC,
@@ -8042,7 +8042,7 @@ class Vulkan
         $phpValue = $pCounterValue;
         $cValue = $phpValue->cdata;
         $pCounterValueC = $cValue;
-        $cValue = $this->ffi->vkGetSwapchainCounterEXT(
+        $cValue = $this->fnPtr('vkGetSwapchainCounterEXT')(
             $deviceC,
             $swapchainC,
             $counterC,
@@ -8073,7 +8073,7 @@ class Vulkan
         $phpValue = $pSurfaceCapabilities;
         $cValue = $phpValue->cdata;
         $pSurfaceCapabilitiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceSurfaceCapabilities2EXT(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceSurfaceCapabilities2EXT')(
             $physicalDeviceC,
             $surfaceC,
             $pSurfaceCapabilitiesC,
@@ -8103,7 +8103,7 @@ class Vulkan
         $phpValue = $pPhysicalDeviceGroupProperties;
         $cValue = $phpValue->cdata;
         $pPhysicalDeviceGroupPropertiesC = $cValue;
-        $cValue = $this->ffi->vkEnumeratePhysicalDeviceGroups(
+        $cValue = $this->fnPtr('vkEnumeratePhysicalDeviceGroups')(
             $instanceC,
             $pPhysicalDeviceGroupCountC,
             $pPhysicalDeviceGroupPropertiesC,
@@ -8142,7 +8142,7 @@ class Vulkan
         $phpValue = $pPeerMemoryFeatures;
         $cValue = $phpValue->cdata;
         $pPeerMemoryFeaturesC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceGroupPeerMemoryFeatures(
+        $cValue = $this->fnPtr('vkGetDeviceGroupPeerMemoryFeatures')(
             $deviceC,
             $heapIndexC,
             $localDeviceIndexC,
@@ -8172,7 +8172,7 @@ class Vulkan
         $phpValue = $pBindInfos;
         $cValue = $phpValue->cdata;
         $pBindInfosC = $cValue;
-        $cValue = $this->ffi->vkBindBufferMemory2(
+        $cValue = $this->fnPtr('vkBindBufferMemory2')(
             $deviceC,
             $bindInfoCountC,
             $pBindInfosC,
@@ -8202,7 +8202,7 @@ class Vulkan
         $phpValue = $pBindInfos;
         $cValue = $phpValue->cdata;
         $pBindInfosC = $cValue;
-        $cValue = $this->ffi->vkBindImageMemory2(
+        $cValue = $this->fnPtr('vkBindImageMemory2')(
             $deviceC,
             $bindInfoCountC,
             $pBindInfosC,
@@ -8223,7 +8223,7 @@ class Vulkan
         $phpValue = $deviceMask;
         $cValue = $phpValue;
         $deviceMaskC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDeviceMask(
+        $cValue = $this->fnPtr('vkCmdSetDeviceMask')(
             $commandBufferC,
             $deviceMaskC,
         );
@@ -8245,7 +8245,7 @@ class Vulkan
         $phpValue = $pDeviceGroupPresentCapabilities;
         $cValue = $phpValue->cdata;
         $pDeviceGroupPresentCapabilitiesC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceGroupPresentCapabilitiesKHR(
+        $cValue = $this->fnPtr('vkGetDeviceGroupPresentCapabilitiesKHR')(
             $deviceC,
             $pDeviceGroupPresentCapabilitiesC,
         );
@@ -8274,7 +8274,7 @@ class Vulkan
         $phpValue = $pModes;
         $cValue = $phpValue->cdata;
         $pModesC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceGroupSurfacePresentModesKHR(
+        $cValue = $this->fnPtr('vkGetDeviceGroupSurfacePresentModesKHR')(
             $deviceC,
             $surfaceC,
             $pModesC,
@@ -8304,7 +8304,7 @@ class Vulkan
         $phpValue = $pImageIndex;
         $cValue = $phpValue->cdata;
         $pImageIndexC = $cValue;
-        $cValue = $this->ffi->vkAcquireNextImage2KHR(
+        $cValue = $this->fnPtr('vkAcquireNextImage2KHR')(
             $deviceC,
             $pAcquireInfoC,
             $pImageIndexC,
@@ -8353,7 +8353,7 @@ class Vulkan
         $phpValue = $groupCountZ;
         $cValue = $phpValue;
         $groupCountZC = $cValue;
-        $cValue = $this->ffi->vkCmdDispatchBase(
+        $cValue = $this->fnPtr('vkCmdDispatchBase')(
             $commandBufferC,
             $baseGroupXC,
             $baseGroupYC,
@@ -8390,7 +8390,7 @@ class Vulkan
         $phpValue = $pRects;
         $cValue = $phpValue->cdata;
         $pRectsC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDevicePresentRectanglesKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDevicePresentRectanglesKHR')(
             $physicalDeviceC,
             $surfaceC,
             $pRectCountC,
@@ -8426,7 +8426,7 @@ class Vulkan
         $phpValue = $pDescriptorUpdateTemplate;
         $cValue = $phpValue->cdata;
         $pDescriptorUpdateTemplateC = $cValue;
-        $cValue = $this->ffi->vkCreateDescriptorUpdateTemplate(
+        $cValue = $this->fnPtr('vkCreateDescriptorUpdateTemplate')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -8456,7 +8456,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyDescriptorUpdateTemplate(
+        $cValue = $this->fnPtr('vkDestroyDescriptorUpdateTemplate')(
             $deviceC,
             $descriptorUpdateTemplateC,
             $pAllocatorC,
@@ -8488,7 +8488,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkUpdateDescriptorSetWithTemplate(
+        $cValue = $this->fnPtr('vkUpdateDescriptorSetWithTemplate')(
             $deviceC,
             $descriptorSetC,
             $descriptorUpdateTemplateC,
@@ -8526,7 +8526,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkCmdPushDescriptorSetWithTemplateKHR(
+        $cValue = $this->fnPtr('vkCmdPushDescriptorSetWithTemplateKHR')(
             $commandBufferC,
             $descriptorUpdateTemplateC,
             $layoutC,
@@ -8560,7 +8560,7 @@ class Vulkan
         $phpValue = $pMetadata;
         $cValue = $phpValue->cdata;
         $pMetadataC = $cValue;
-        $cValue = $this->ffi->vkSetHdrMetadataEXT(
+        $cValue = $this->fnPtr('vkSetHdrMetadataEXT')(
             $deviceC,
             $swapchainCountC,
             $pSwapchainsC,
@@ -8581,7 +8581,7 @@ class Vulkan
         $phpValue = $swapchain;
         $cValue = $phpValue->cdata;
         $swapchainC = $cValue;
-        $cValue = $this->ffi->vkGetSwapchainStatusKHR(
+        $cValue = $this->fnPtr('vkGetSwapchainStatusKHR')(
             $deviceC,
             $swapchainC,
         );
@@ -8610,7 +8610,7 @@ class Vulkan
         $phpValue = $pDisplayTimingProperties;
         $cValue = $phpValue->cdata;
         $pDisplayTimingPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetRefreshCycleDurationGOOGLE(
+        $cValue = $this->fnPtr('vkGetRefreshCycleDurationGOOGLE')(
             $deviceC,
             $swapchainC,
             $pDisplayTimingPropertiesC,
@@ -8645,7 +8645,7 @@ class Vulkan
         $phpValue = $pPresentationTimings;
         $cValue = $phpValue->cdata;
         $pPresentationTimingsC = $cValue;
-        $cValue = $this->ffi->vkGetPastPresentationTimingGOOGLE(
+        $cValue = $this->fnPtr('vkGetPastPresentationTimingGOOGLE')(
             $deviceC,
             $swapchainC,
             $pPresentationTimingCountC,
@@ -8681,7 +8681,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateIOSSurfaceMVK(
+        $cValue = $this->fnPtr('vkCreateIOSSurfaceMVK')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -8717,7 +8717,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateMacOSSurfaceMVK(
+        $cValue = $this->fnPtr('vkCreateMacOSSurfaceMVK')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -8753,7 +8753,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateMetalSurfaceEXT(
+        $cValue = $this->fnPtr('vkCreateMetalSurfaceEXT')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -8788,7 +8788,7 @@ class Vulkan
         $phpValue = $pViewportWScalings;
         $cValue = $phpValue->cdata;
         $pViewportWScalingsC = $cValue;
-        $cValue = $this->ffi->vkCmdSetViewportWScalingNV(
+        $cValue = $this->fnPtr('vkCmdSetViewportWScalingNV')(
             $commandBufferC,
             $firstViewportC,
             $viewportCountC,
@@ -8821,7 +8821,7 @@ class Vulkan
         $phpValue = $pDiscardRectangles;
         $cValue = $phpValue->cdata;
         $pDiscardRectanglesC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDiscardRectangleEXT(
+        $cValue = $this->fnPtr('vkCmdSetDiscardRectangleEXT')(
             $commandBufferC,
             $firstDiscardRectangleC,
             $discardRectangleCountC,
@@ -8844,7 +8844,7 @@ class Vulkan
         $phpValue = $discardRectangleEnable;
         $cValue = $phpValue ? 1 : 0;
         $discardRectangleEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDiscardRectangleEnableEXT(
+        $cValue = $this->fnPtr('vkCmdSetDiscardRectangleEnableEXT')(
             $commandBufferC,
             $discardRectangleEnableC,
         );
@@ -8865,7 +8865,7 @@ class Vulkan
         $phpValue = $discardRectangleMode;
         $cValue = $phpValue->value;
         $discardRectangleModeC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDiscardRectangleModeEXT(
+        $cValue = $this->fnPtr('vkCmdSetDiscardRectangleModeEXT')(
             $commandBufferC,
             $discardRectangleModeC,
         );
@@ -8886,7 +8886,7 @@ class Vulkan
         $phpValue = $pSampleLocationsInfo;
         $cValue = $phpValue->cdata;
         $pSampleLocationsInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdSetSampleLocationsEXT(
+        $cValue = $this->fnPtr('vkCmdSetSampleLocationsEXT')(
             $commandBufferC,
             $pSampleLocationsInfoC,
         );
@@ -8912,7 +8912,7 @@ class Vulkan
         $phpValue = $pMultisampleProperties;
         $cValue = $phpValue->cdata;
         $pMultisamplePropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceMultisamplePropertiesEXT(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceMultisamplePropertiesEXT')(
             $physicalDeviceC,
             $samplesC,
             $pMultisamplePropertiesC,
@@ -8940,7 +8940,7 @@ class Vulkan
         $phpValue = $pSurfaceCapabilities;
         $cValue = $phpValue->cdata;
         $pSurfaceCapabilitiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceSurfaceCapabilities2KHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceSurfaceCapabilities2KHR')(
             $physicalDeviceC,
             $pSurfaceInfoC,
             $pSurfaceCapabilitiesC,
@@ -8975,7 +8975,7 @@ class Vulkan
         $phpValue = $pSurfaceFormats;
         $cValue = $phpValue->cdata;
         $pSurfaceFormatsC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceSurfaceFormats2KHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceSurfaceFormats2KHR')(
             $physicalDeviceC,
             $pSurfaceInfoC,
             $pSurfaceFormatCountC,
@@ -9006,7 +9006,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceDisplayProperties2KHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceDisplayProperties2KHR')(
             $physicalDeviceC,
             $pPropertyCountC,
             $pPropertiesC,
@@ -9036,7 +9036,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceDisplayPlaneProperties2KHR')(
             $physicalDeviceC,
             $pPropertyCountC,
             $pPropertiesC,
@@ -9071,7 +9071,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetDisplayModeProperties2KHR(
+        $cValue = $this->fnPtr('vkGetDisplayModeProperties2KHR')(
             $physicalDeviceC,
             $displayC,
             $pPropertyCountC,
@@ -9102,7 +9102,7 @@ class Vulkan
         $phpValue = $pCapabilities;
         $cValue = $phpValue->cdata;
         $pCapabilitiesC = $cValue;
-        $cValue = $this->ffi->vkGetDisplayPlaneCapabilities2KHR(
+        $cValue = $this->fnPtr('vkGetDisplayPlaneCapabilities2KHR')(
             $physicalDeviceC,
             $pDisplayPlaneInfoC,
             $pCapabilitiesC,
@@ -9131,7 +9131,7 @@ class Vulkan
         $phpValue = $pMemoryRequirements;
         $cValue = $phpValue->cdata;
         $pMemoryRequirementsC = $cValue;
-        $cValue = $this->ffi->vkGetBufferMemoryRequirements2(
+        $cValue = $this->fnPtr('vkGetBufferMemoryRequirements2')(
             $deviceC,
             $pInfoC,
             $pMemoryRequirementsC,
@@ -9158,7 +9158,7 @@ class Vulkan
         $phpValue = $pMemoryRequirements;
         $cValue = $phpValue->cdata;
         $pMemoryRequirementsC = $cValue;
-        $cValue = $this->ffi->vkGetImageMemoryRequirements2(
+        $cValue = $this->fnPtr('vkGetImageMemoryRequirements2')(
             $deviceC,
             $pInfoC,
             $pMemoryRequirementsC,
@@ -9190,7 +9190,7 @@ class Vulkan
         $phpValue = $pSparseMemoryRequirements;
         $cValue = $phpValue->cdata;
         $pSparseMemoryRequirementsC = $cValue;
-        $cValue = $this->ffi->vkGetImageSparseMemoryRequirements2(
+        $cValue = $this->fnPtr('vkGetImageSparseMemoryRequirements2')(
             $deviceC,
             $pInfoC,
             $pSparseMemoryRequirementCountC,
@@ -9218,7 +9218,7 @@ class Vulkan
         $phpValue = $pMemoryRequirements;
         $cValue = $phpValue->cdata;
         $pMemoryRequirementsC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceBufferMemoryRequirements(
+        $cValue = $this->fnPtr('vkGetDeviceBufferMemoryRequirements')(
             $deviceC,
             $pInfoC,
             $pMemoryRequirementsC,
@@ -9245,7 +9245,7 @@ class Vulkan
         $phpValue = $pMemoryRequirements;
         $cValue = $phpValue->cdata;
         $pMemoryRequirementsC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceImageMemoryRequirements(
+        $cValue = $this->fnPtr('vkGetDeviceImageMemoryRequirements')(
             $deviceC,
             $pInfoC,
             $pMemoryRequirementsC,
@@ -9277,7 +9277,7 @@ class Vulkan
         $phpValue = $pSparseMemoryRequirements;
         $cValue = $phpValue->cdata;
         $pSparseMemoryRequirementsC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceImageSparseMemoryRequirements(
+        $cValue = $this->fnPtr('vkGetDeviceImageSparseMemoryRequirements')(
             $deviceC,
             $pInfoC,
             $pSparseMemoryRequirementCountC,
@@ -9311,7 +9311,7 @@ class Vulkan
         $phpValue = $pYcbcrConversion;
         $cValue = $phpValue->cdata;
         $pYcbcrConversionC = $cValue;
-        $cValue = $this->ffi->vkCreateSamplerYcbcrConversion(
+        $cValue = $this->fnPtr('vkCreateSamplerYcbcrConversion')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -9341,7 +9341,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroySamplerYcbcrConversion(
+        $cValue = $this->fnPtr('vkDestroySamplerYcbcrConversion')(
             $deviceC,
             $ycbcrConversionC,
             $pAllocatorC,
@@ -9368,7 +9368,7 @@ class Vulkan
         $phpValue = $pQueue;
         $cValue = $phpValue->cdata;
         $pQueueC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceQueue2(
+        $cValue = $this->fnPtr('vkGetDeviceQueue2')(
             $deviceC,
             $pQueueInfoC,
             $pQueueC,
@@ -9401,7 +9401,7 @@ class Vulkan
         $phpValue = $pValidationCache;
         $cValue = $phpValue->cdata;
         $pValidationCacheC = $cValue;
-        $cValue = $this->ffi->vkCreateValidationCacheEXT(
+        $cValue = $this->fnPtr('vkCreateValidationCacheEXT')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -9431,7 +9431,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyValidationCacheEXT(
+        $cValue = $this->fnPtr('vkDestroyValidationCacheEXT')(
             $deviceC,
             $validationCacheC,
             $pAllocatorC,
@@ -9464,7 +9464,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkGetValidationCacheDataEXT(
+        $cValue = $this->fnPtr('vkGetValidationCacheDataEXT')(
             $deviceC,
             $validationCacheC,
             $pDataSizeC,
@@ -9500,7 +9500,7 @@ class Vulkan
         $phpValue = $pSrcCaches;
         $cValue = $phpValue->cdata;
         $pSrcCachesC = $cValue;
-        $cValue = $this->ffi->vkMergeValidationCachesEXT(
+        $cValue = $this->fnPtr('vkMergeValidationCachesEXT')(
             $deviceC,
             $dstCacheC,
             $srcCacheCountC,
@@ -9530,7 +9530,7 @@ class Vulkan
         $phpValue = $pSupport;
         $cValue = $phpValue->cdata;
         $pSupportC = $cValue;
-        $cValue = $this->ffi->vkGetDescriptorSetLayoutSupport(
+        $cValue = $this->fnPtr('vkGetDescriptorSetLayoutSupport')(
             $deviceC,
             $pCreateInfoC,
             $pSupportC,
@@ -9563,7 +9563,7 @@ class Vulkan
         $phpValue = $grallocUsage;
         $cValue = $phpValue->cdata;
         $grallocUsageC = $cValue;
-        $cValue = $this->ffi->vkGetSwapchainGrallocUsageANDROID(
+        $cValue = $this->fnPtr('vkGetSwapchainGrallocUsageANDROID')(
             $deviceC,
             $formatC,
             $imageUsageC,
@@ -9609,7 +9609,7 @@ class Vulkan
         $phpValue = $grallocProducerUsage;
         $cValue = $phpValue->cdata;
         $grallocProducerUsageC = $cValue;
-        $cValue = $this->ffi->vkGetSwapchainGrallocUsage2ANDROID(
+        $cValue = $this->fnPtr('vkGetSwapchainGrallocUsage2ANDROID')(
             $deviceC,
             $formatC,
             $imageUsageC,
@@ -9652,7 +9652,7 @@ class Vulkan
         $phpValue = $fence;
         $cValue = $phpValue->cdata;
         $fenceC = $cValue;
-        $cValue = $this->ffi->vkAcquireImageANDROID(
+        $cValue = $this->fnPtr('vkAcquireImageANDROID')(
             $deviceC,
             $imageC,
             $nativeFenceFdC,
@@ -9694,7 +9694,7 @@ class Vulkan
         $phpValue = $pNativeFenceFd;
         $cValue = $phpValue->cdata;
         $pNativeFenceFdC = $cValue;
-        $cValue = $this->ffi->vkQueueSignalReleaseImageANDROID(
+        $cValue = $this->fnPtr('vkQueueSignalReleaseImageANDROID')(
             $queueC,
             $waitSemaphoreCountC,
             $pWaitSemaphoresC,
@@ -9741,7 +9741,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkGetShaderInfoAMD(
+        $cValue = $this->fnPtr('vkGetShaderInfoAMD')(
             $deviceC,
             $pipelineC,
             $shaderStageC,
@@ -9773,7 +9773,7 @@ class Vulkan
         $phpValue = $localDimmingEnable;
         $cValue = $phpValue ? 1 : 0;
         $localDimmingEnableC = $cValue;
-        $cValue = $this->ffi->vkSetLocalDimmingAMD(
+        $cValue = $this->fnPtr('vkSetLocalDimmingAMD')(
             $deviceC,
             $swapChainC,
             $localDimmingEnableC,
@@ -9801,7 +9801,7 @@ class Vulkan
         $phpValue = $pTimeDomains;
         $cValue = $phpValue->cdata;
         $pTimeDomainsC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceCalibrateableTimeDomainsKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceCalibrateableTimeDomainsKHR')(
             $physicalDeviceC,
             $pTimeDomainCountC,
             $pTimeDomainsC,
@@ -9841,7 +9841,7 @@ class Vulkan
         $phpValue = $pMaxDeviation;
         $cValue = $phpValue->cdata;
         $pMaxDeviationC = $cValue;
-        $cValue = $this->ffi->vkGetCalibratedTimestampsKHR(
+        $cValue = $this->fnPtr('vkGetCalibratedTimestampsKHR')(
             $deviceC,
             $timestampCountC,
             $pTimestampInfosC,
@@ -9868,7 +9868,7 @@ class Vulkan
         $phpValue = $pNameInfo;
         $cValue = $phpValue->cdata;
         $pNameInfoC = $cValue;
-        $cValue = $this->ffi->vkSetDebugUtilsObjectNameEXT(
+        $cValue = $this->fnPtr('vkSetDebugUtilsObjectNameEXT')(
             $deviceC,
             $pNameInfoC,
         );
@@ -9889,7 +9889,7 @@ class Vulkan
         $phpValue = $pTagInfo;
         $cValue = $phpValue->cdata;
         $pTagInfoC = $cValue;
-        $cValue = $this->ffi->vkSetDebugUtilsObjectTagEXT(
+        $cValue = $this->fnPtr('vkSetDebugUtilsObjectTagEXT')(
             $deviceC,
             $pTagInfoC,
         );
@@ -9909,7 +9909,7 @@ class Vulkan
         $phpValue = $pLabelInfo;
         $cValue = $phpValue->cdata;
         $pLabelInfoC = $cValue;
-        $cValue = $this->ffi->vkQueueBeginDebugUtilsLabelEXT(
+        $cValue = $this->fnPtr('vkQueueBeginDebugUtilsLabelEXT')(
             $queueC,
             $pLabelInfoC,
         );
@@ -9923,7 +9923,7 @@ class Vulkan
         $phpValue = $queue;
         $cValue = $phpValue->cdata;
         $queueC = $cValue;
-        $cValue = $this->ffi->vkQueueEndDebugUtilsLabelEXT(
+        $cValue = $this->fnPtr('vkQueueEndDebugUtilsLabelEXT')(
             $queueC,
         );
     }
@@ -9940,7 +9940,7 @@ class Vulkan
         $phpValue = $pLabelInfo;
         $cValue = $phpValue->cdata;
         $pLabelInfoC = $cValue;
-        $cValue = $this->ffi->vkQueueInsertDebugUtilsLabelEXT(
+        $cValue = $this->fnPtr('vkQueueInsertDebugUtilsLabelEXT')(
             $queueC,
             $pLabelInfoC,
         );
@@ -9961,7 +9961,7 @@ class Vulkan
         $phpValue = $pLabelInfo;
         $cValue = $phpValue->cdata;
         $pLabelInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdBeginDebugUtilsLabelEXT(
+        $cValue = $this->fnPtr('vkCmdBeginDebugUtilsLabelEXT')(
             $commandBufferC,
             $pLabelInfoC,
         );
@@ -9975,7 +9975,7 @@ class Vulkan
         $phpValue = $commandBuffer;
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
-        $cValue = $this->ffi->vkCmdEndDebugUtilsLabelEXT(
+        $cValue = $this->fnPtr('vkCmdEndDebugUtilsLabelEXT')(
             $commandBufferC,
         );
     }
@@ -9995,7 +9995,7 @@ class Vulkan
         $phpValue = $pLabelInfo;
         $cValue = $phpValue->cdata;
         $pLabelInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdInsertDebugUtilsLabelEXT(
+        $cValue = $this->fnPtr('vkCmdInsertDebugUtilsLabelEXT')(
             $commandBufferC,
             $pLabelInfoC,
         );
@@ -10027,7 +10027,7 @@ class Vulkan
         $phpValue = $pMessenger;
         $cValue = $phpValue->cdata;
         $pMessengerC = $cValue;
-        $cValue = $this->ffi->vkCreateDebugUtilsMessengerEXT(
+        $cValue = $this->fnPtr('vkCreateDebugUtilsMessengerEXT')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -10057,7 +10057,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyDebugUtilsMessengerEXT(
+        $cValue = $this->fnPtr('vkDestroyDebugUtilsMessengerEXT')(
             $instanceC,
             $messengerC,
             $pAllocatorC,
@@ -10089,7 +10089,7 @@ class Vulkan
         $phpValue = $pCallbackData;
         $cValue = $phpValue->cdata;
         $pCallbackDataC = $cValue;
-        $cValue = $this->ffi->vkSubmitDebugUtilsMessageEXT(
+        $cValue = $this->fnPtr('vkSubmitDebugUtilsMessageEXT')(
             $instanceC,
             $messageSeverityC,
             $messageTypesC,
@@ -10123,7 +10123,7 @@ class Vulkan
         $phpValue = $pMemoryHostPointerProperties;
         $cValue = $phpValue->cdata;
         $pMemoryHostPointerPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetMemoryHostPointerPropertiesEXT(
+        $cValue = $this->fnPtr('vkGetMemoryHostPointerPropertiesEXT')(
             $deviceC,
             $handleTypeC,
             $pHostPointerC,
@@ -10163,7 +10163,7 @@ class Vulkan
         $phpValue = $marker;
         $cValue = $phpValue;
         $markerC = $cValue;
-        $cValue = $this->ffi->vkCmdWriteBufferMarkerAMD(
+        $cValue = $this->fnPtr('vkCmdWriteBufferMarkerAMD')(
             $commandBufferC,
             $pipelineStageC,
             $dstBufferC,
@@ -10198,7 +10198,7 @@ class Vulkan
         $phpValue = $pRenderPass;
         $cValue = $phpValue->cdata;
         $pRenderPassC = $cValue;
-        $cValue = $this->ffi->vkCreateRenderPass2(
+        $cValue = $this->fnPtr('vkCreateRenderPass2')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -10228,7 +10228,7 @@ class Vulkan
         $phpValue = $pSubpassBeginInfo;
         $cValue = $phpValue->cdata;
         $pSubpassBeginInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdBeginRenderPass2(
+        $cValue = $this->fnPtr('vkCmdBeginRenderPass2')(
             $commandBufferC,
             $pRenderPassBeginC,
             $pSubpassBeginInfoC,
@@ -10255,7 +10255,7 @@ class Vulkan
         $phpValue = $pSubpassEndInfo;
         $cValue = $phpValue->cdata;
         $pSubpassEndInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdNextSubpass2(
+        $cValue = $this->fnPtr('vkCmdNextSubpass2')(
             $commandBufferC,
             $pSubpassBeginInfoC,
             $pSubpassEndInfoC,
@@ -10277,7 +10277,7 @@ class Vulkan
         $phpValue = $pSubpassEndInfo;
         $cValue = $phpValue->cdata;
         $pSubpassEndInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdEndRenderPass2(
+        $cValue = $this->fnPtr('vkCmdEndRenderPass2')(
             $commandBufferC,
             $pSubpassEndInfoC,
         );
@@ -10304,7 +10304,7 @@ class Vulkan
         $phpValue = $pValue;
         $cValue = $phpValue->cdata;
         $pValueC = $cValue;
-        $cValue = $this->ffi->vkGetSemaphoreCounterValue(
+        $cValue = $this->fnPtr('vkGetSemaphoreCounterValue')(
             $deviceC,
             $semaphoreC,
             $pValueC,
@@ -10334,7 +10334,7 @@ class Vulkan
         $phpValue = $timeout;
         $cValue = $phpValue;
         $timeoutC = $cValue;
-        $cValue = $this->ffi->vkWaitSemaphores(
+        $cValue = $this->fnPtr('vkWaitSemaphores')(
             $deviceC,
             $pWaitInfoC,
             $timeoutC,
@@ -10356,7 +10356,7 @@ class Vulkan
         $phpValue = $pSignalInfo;
         $cValue = $phpValue->cdata;
         $pSignalInfoC = $cValue;
-        $cValue = $this->ffi->vkSignalSemaphore(
+        $cValue = $this->fnPtr('vkSignalSemaphore')(
             $deviceC,
             $pSignalInfoC,
         );
@@ -10385,7 +10385,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetAndroidHardwareBufferPropertiesANDROID(
+        $cValue = $this->fnPtr('vkGetAndroidHardwareBufferPropertiesANDROID')(
             $deviceC,
             $bufferC,
             $pPropertiesC,
@@ -10415,7 +10415,7 @@ class Vulkan
         $phpValue = $pBuffer;
         $cValue = $phpValue->cdata;
         $pBufferC = $cValue;
-        $cValue = $this->ffi->vkGetMemoryAndroidHardwareBufferANDROID(
+        $cValue = $this->fnPtr('vkGetMemoryAndroidHardwareBufferANDROID')(
             $deviceC,
             $pInfoC,
             $pBufferC,
@@ -10464,7 +10464,7 @@ class Vulkan
         $phpValue = $stride;
         $cValue = $phpValue;
         $strideC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawIndirectCount(
+        $cValue = $this->fnPtr('vkCmdDrawIndirectCount')(
             $commandBufferC,
             $bufferC,
             $offsetC,
@@ -10515,7 +10515,7 @@ class Vulkan
         $phpValue = $stride;
         $cValue = $phpValue;
         $strideC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawIndexedIndirectCount(
+        $cValue = $this->fnPtr('vkCmdDrawIndexedIndirectCount')(
             $commandBufferC,
             $bufferC,
             $offsetC,
@@ -10538,7 +10538,7 @@ class Vulkan
         $phpValue = $pCheckpointMarker;
         $cValue = $phpValue->cdata;
         $pCheckpointMarkerC = $cValue;
-        $cValue = $this->ffi->vkCmdSetCheckpointNV(
+        $cValue = $this->fnPtr('vkCmdSetCheckpointNV')(
             $commandBufferC,
             $pCheckpointMarkerC,
         );
@@ -10564,7 +10564,7 @@ class Vulkan
         $phpValue = $pCheckpointData;
         $cValue = $phpValue->cdata;
         $pCheckpointDataC = $cValue;
-        $cValue = $this->ffi->vkGetQueueCheckpointDataNV(
+        $cValue = $this->fnPtr('vkGetQueueCheckpointDataNV')(
             $queueC,
             $pCheckpointDataCountC,
             $pCheckpointDataC,
@@ -10606,7 +10606,7 @@ class Vulkan
         $phpValue = $pSizes;
         $cValue = $phpValue->cdata;
         $pSizesC = $cValue;
-        $cValue = $this->ffi->vkCmdBindTransformFeedbackBuffersEXT(
+        $cValue = $this->fnPtr('vkCmdBindTransformFeedbackBuffersEXT')(
             $commandBufferC,
             $firstBindingC,
             $bindingCountC,
@@ -10646,7 +10646,7 @@ class Vulkan
         $phpValue = $pCounterBufferOffsets;
         $cValue = $phpValue->cdata;
         $pCounterBufferOffsetsC = $cValue;
-        $cValue = $this->ffi->vkCmdBeginTransformFeedbackEXT(
+        $cValue = $this->fnPtr('vkCmdBeginTransformFeedbackEXT')(
             $commandBufferC,
             $firstCounterBufferC,
             $counterBufferCountC,
@@ -10685,7 +10685,7 @@ class Vulkan
         $phpValue = $pCounterBufferOffsets;
         $cValue = $phpValue->cdata;
         $pCounterBufferOffsetsC = $cValue;
-        $cValue = $this->ffi->vkCmdEndTransformFeedbackEXT(
+        $cValue = $this->fnPtr('vkCmdEndTransformFeedbackEXT')(
             $commandBufferC,
             $firstCounterBufferC,
             $counterBufferCountC,
@@ -10724,7 +10724,7 @@ class Vulkan
         $phpValue = $index;
         $cValue = $phpValue;
         $indexC = $cValue;
-        $cValue = $this->ffi->vkCmdBeginQueryIndexedEXT(
+        $cValue = $this->fnPtr('vkCmdBeginQueryIndexedEXT')(
             $commandBufferC,
             $queryPoolC,
             $queryC,
@@ -10758,7 +10758,7 @@ class Vulkan
         $phpValue = $index;
         $cValue = $phpValue;
         $indexC = $cValue;
-        $cValue = $this->ffi->vkCmdEndQueryIndexedEXT(
+        $cValue = $this->fnPtr('vkCmdEndQueryIndexedEXT')(
             $commandBufferC,
             $queryPoolC,
             $queryC,
@@ -10806,7 +10806,7 @@ class Vulkan
         $phpValue = $vertexStride;
         $cValue = $phpValue;
         $vertexStrideC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawIndirectByteCountEXT(
+        $cValue = $this->fnPtr('vkCmdDrawIndirectByteCountEXT')(
             $commandBufferC,
             $instanceCountC,
             $firstInstanceC,
@@ -10842,7 +10842,7 @@ class Vulkan
         $phpValue = $pExclusiveScissors;
         $cValue = $phpValue->cdata;
         $pExclusiveScissorsC = $cValue;
-        $cValue = $this->ffi->vkCmdSetExclusiveScissorNV(
+        $cValue = $this->fnPtr('vkCmdSetExclusiveScissorNV')(
             $commandBufferC,
             $firstExclusiveScissorC,
             $exclusiveScissorCountC,
@@ -10875,7 +10875,7 @@ class Vulkan
         $phpValue = $pExclusiveScissorEnables;
         $cValue = $phpValue->cdata;
         $pExclusiveScissorEnablesC = $cValue;
-        $cValue = $this->ffi->vkCmdSetExclusiveScissorEnableNV(
+        $cValue = $this->fnPtr('vkCmdSetExclusiveScissorEnableNV')(
             $commandBufferC,
             $firstExclusiveScissorC,
             $exclusiveScissorCountC,
@@ -10903,7 +10903,7 @@ class Vulkan
         $phpValue = $imageLayout;
         $cValue = $phpValue->value;
         $imageLayoutC = $cValue;
-        $cValue = $this->ffi->vkCmdBindShadingRateImageNV(
+        $cValue = $this->fnPtr('vkCmdBindShadingRateImageNV')(
             $commandBufferC,
             $imageViewC,
             $imageLayoutC,
@@ -10935,7 +10935,7 @@ class Vulkan
         $phpValue = $pShadingRatePalettes;
         $cValue = $phpValue->cdata;
         $pShadingRatePalettesC = $cValue;
-        $cValue = $this->ffi->vkCmdSetViewportShadingRatePaletteNV(
+        $cValue = $this->fnPtr('vkCmdSetViewportShadingRatePaletteNV')(
             $commandBufferC,
             $firstViewportC,
             $viewportCountC,
@@ -10968,7 +10968,7 @@ class Vulkan
         $phpValue = $pCustomSampleOrders;
         $cValue = $phpValue->cdata;
         $pCustomSampleOrdersC = $cValue;
-        $cValue = $this->ffi->vkCmdSetCoarseSampleOrderNV(
+        $cValue = $this->fnPtr('vkCmdSetCoarseSampleOrderNV')(
             $commandBufferC,
             $sampleOrderTypeC,
             $customSampleOrderCountC,
@@ -10992,7 +10992,7 @@ class Vulkan
         $phpValue = $firstTask;
         $cValue = $phpValue;
         $firstTaskC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawMeshTasksNV(
+        $cValue = $this->fnPtr('vkCmdDrawMeshTasksNV')(
             $commandBufferC,
             $taskCountC,
             $firstTaskC,
@@ -11029,7 +11029,7 @@ class Vulkan
         $phpValue = $stride;
         $cValue = $phpValue;
         $strideC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawMeshTasksIndirectNV(
+        $cValue = $this->fnPtr('vkCmdDrawMeshTasksIndirectNV')(
             $commandBufferC,
             $bufferC,
             $offsetC,
@@ -11078,7 +11078,7 @@ class Vulkan
         $phpValue = $stride;
         $cValue = $phpValue;
         $strideC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawMeshTasksIndirectCountNV(
+        $cValue = $this->fnPtr('vkCmdDrawMeshTasksIndirectCountNV')(
             $commandBufferC,
             $bufferC,
             $offsetC,
@@ -11114,7 +11114,7 @@ class Vulkan
         $phpValue = $groupCountZ;
         $cValue = $phpValue;
         $groupCountZC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawMeshTasksEXT(
+        $cValue = $this->fnPtr('vkCmdDrawMeshTasksEXT')(
             $commandBufferC,
             $groupCountXC,
             $groupCountYC,
@@ -11152,7 +11152,7 @@ class Vulkan
         $phpValue = $stride;
         $cValue = $phpValue;
         $strideC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawMeshTasksIndirectEXT(
+        $cValue = $this->fnPtr('vkCmdDrawMeshTasksIndirectEXT')(
             $commandBufferC,
             $bufferC,
             $offsetC,
@@ -11201,7 +11201,7 @@ class Vulkan
         $phpValue = $stride;
         $cValue = $phpValue;
         $strideC = $cValue;
-        $cValue = $this->ffi->vkCmdDrawMeshTasksIndirectCountEXT(
+        $cValue = $this->fnPtr('vkCmdDrawMeshTasksIndirectCountEXT')(
             $commandBufferC,
             $bufferC,
             $offsetC,
@@ -11233,7 +11233,7 @@ class Vulkan
         $phpValue = $shader;
         $cValue = $phpValue;
         $shaderC = $cValue;
-        $cValue = $this->ffi->vkCompileDeferredNV(
+        $cValue = $this->fnPtr('vkCompileDeferredNV')(
             $deviceC,
             $pipelineC,
             $shaderC,
@@ -11268,7 +11268,7 @@ class Vulkan
         $phpValue = $pAccelerationStructure;
         $cValue = $phpValue->cdata;
         $pAccelerationStructureC = $cValue;
-        $cValue = $this->ffi->vkCreateAccelerationStructureNV(
+        $cValue = $this->fnPtr('vkCreateAccelerationStructureNV')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -11298,7 +11298,7 @@ class Vulkan
         $phpValue = $imageLayout;
         $cValue = $phpValue->value;
         $imageLayoutC = $cValue;
-        $cValue = $this->ffi->vkCmdBindInvocationMaskHUAWEI(
+        $cValue = $this->fnPtr('vkCmdBindInvocationMaskHUAWEI')(
             $commandBufferC,
             $imageViewC,
             $imageLayoutC,
@@ -11325,7 +11325,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyAccelerationStructureKHR(
+        $cValue = $this->fnPtr('vkDestroyAccelerationStructureKHR')(
             $deviceC,
             $accelerationStructureC,
             $pAllocatorC,
@@ -11352,7 +11352,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyAccelerationStructureNV(
+        $cValue = $this->fnPtr('vkDestroyAccelerationStructureNV')(
             $deviceC,
             $accelerationStructureC,
             $pAllocatorC,
@@ -11379,7 +11379,7 @@ class Vulkan
         $phpValue = $pMemoryRequirements;
         $cValue = $phpValue->cdata;
         $pMemoryRequirementsC = $cValue;
-        $cValue = $this->ffi->vkGetAccelerationStructureMemoryRequirementsNV(
+        $cValue = $this->fnPtr('vkGetAccelerationStructureMemoryRequirementsNV')(
             $deviceC,
             $pInfoC,
             $pMemoryRequirementsC,
@@ -11407,7 +11407,7 @@ class Vulkan
         $phpValue = $pBindInfos;
         $cValue = $phpValue->cdata;
         $pBindInfosC = $cValue;
-        $cValue = $this->ffi->vkBindAccelerationStructureMemoryNV(
+        $cValue = $this->fnPtr('vkBindAccelerationStructureMemoryNV')(
             $deviceC,
             $bindInfoCountC,
             $pBindInfosC,
@@ -11441,7 +11441,7 @@ class Vulkan
         $phpValue = $mode;
         $cValue = $phpValue->value;
         $modeC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyAccelerationStructureNV(
+        $cValue = $this->fnPtr('vkCmdCopyAccelerationStructureNV')(
             $commandBufferC,
             $dstC,
             $srcC,
@@ -11464,7 +11464,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyAccelerationStructureKHR(
+        $cValue = $this->fnPtr('vkCmdCopyAccelerationStructureKHR')(
             $commandBufferC,
             $pInfoC,
         );
@@ -11491,7 +11491,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkCopyAccelerationStructureKHR(
+        $cValue = $this->fnPtr('vkCopyAccelerationStructureKHR')(
             $deviceC,
             $deferredOperationC,
             $pInfoC,
@@ -11515,7 +11515,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyAccelerationStructureToMemoryKHR(
+        $cValue = $this->fnPtr('vkCmdCopyAccelerationStructureToMemoryKHR')(
             $commandBufferC,
             $pInfoC,
         );
@@ -11542,7 +11542,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkCopyAccelerationStructureToMemoryKHR(
+        $cValue = $this->fnPtr('vkCopyAccelerationStructureToMemoryKHR')(
             $deviceC,
             $deferredOperationC,
             $pInfoC,
@@ -11566,7 +11566,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyMemoryToAccelerationStructureKHR(
+        $cValue = $this->fnPtr('vkCmdCopyMemoryToAccelerationStructureKHR')(
             $commandBufferC,
             $pInfoC,
         );
@@ -11593,7 +11593,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkCopyMemoryToAccelerationStructureKHR(
+        $cValue = $this->fnPtr('vkCopyMemoryToAccelerationStructureKHR')(
             $deviceC,
             $deferredOperationC,
             $pInfoC,
@@ -11637,7 +11637,7 @@ class Vulkan
         $phpValue = $firstQuery;
         $cValue = $phpValue;
         $firstQueryC = $cValue;
-        $cValue = $this->ffi->vkCmdWriteAccelerationStructuresPropertiesKHR(
+        $cValue = $this->fnPtr('vkCmdWriteAccelerationStructuresPropertiesKHR')(
             $commandBufferC,
             $accelerationStructureCountC,
             $pAccelerationStructuresC,
@@ -11682,7 +11682,7 @@ class Vulkan
         $phpValue = $firstQuery;
         $cValue = $phpValue;
         $firstQueryC = $cValue;
-        $cValue = $this->ffi->vkCmdWriteAccelerationStructuresPropertiesNV(
+        $cValue = $this->fnPtr('vkCmdWriteAccelerationStructuresPropertiesNV')(
             $commandBufferC,
             $accelerationStructureCountC,
             $pAccelerationStructuresC,
@@ -11742,7 +11742,7 @@ class Vulkan
         $phpValue = $scratchOffset;
         $cValue = $phpValue;
         $scratchOffsetC = $cValue;
-        $cValue = $this->ffi->vkCmdBuildAccelerationStructureNV(
+        $cValue = $this->fnPtr('vkCmdBuildAccelerationStructureNV')(
             $commandBufferC,
             $pInfoC,
             $instanceDataC,
@@ -11796,7 +11796,7 @@ class Vulkan
         $phpValue = $stride;
         $cValue = $phpValue;
         $strideC = $cValue;
-        $cValue = $this->ffi->vkWriteAccelerationStructuresPropertiesKHR(
+        $cValue = $this->fnPtr('vkWriteAccelerationStructuresPropertiesKHR')(
             $deviceC,
             $accelerationStructureCountC,
             $pAccelerationStructuresC,
@@ -11854,7 +11854,7 @@ class Vulkan
         $phpValue = $depth;
         $cValue = $phpValue;
         $depthC = $cValue;
-        $cValue = $this->ffi->vkCmdTraceRaysKHR(
+        $cValue = $this->fnPtr('vkCmdTraceRaysKHR')(
             $commandBufferC,
             $pRaygenShaderBindingTableC,
             $pMissShaderBindingTableC,
@@ -11946,7 +11946,7 @@ class Vulkan
         $phpValue = $depth;
         $cValue = $phpValue;
         $depthC = $cValue;
-        $cValue = $this->ffi->vkCmdTraceRaysNV(
+        $cValue = $this->fnPtr('vkCmdTraceRaysNV')(
             $commandBufferC,
             $raygenShaderBindingTableBufferC,
             $raygenShaderBindingOffsetC,
@@ -12001,7 +12001,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkGetRayTracingShaderGroupHandlesKHR(
+        $cValue = $this->fnPtr('vkGetRayTracingShaderGroupHandlesKHR')(
             $deviceC,
             $pipelineC,
             $firstGroupC,
@@ -12049,7 +12049,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkGetRayTracingCaptureReplayShaderGroupHandlesKHR(
+        $cValue = $this->fnPtr('vkGetRayTracingCaptureReplayShaderGroupHandlesKHR')(
             $deviceC,
             $pipelineC,
             $firstGroupC,
@@ -12087,7 +12087,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkGetAccelerationStructureHandleNV(
+        $cValue = $this->fnPtr('vkGetAccelerationStructureHandleNV')(
             $deviceC,
             $accelerationStructureC,
             $dataSizeC,
@@ -12133,7 +12133,7 @@ class Vulkan
         $phpValue = $pPipelines;
         $cValue = $phpValue->cdata;
         $pPipelinesC = $cValue;
-        $cValue = $this->ffi->vkCreateRayTracingPipelinesNV(
+        $cValue = $this->fnPtr('vkCreateRayTracingPipelinesNV')(
             $deviceC,
             $pipelineCacheC,
             $createInfoCountC,
@@ -12186,7 +12186,7 @@ class Vulkan
         $phpValue = $pPipelines;
         $cValue = $phpValue->cdata;
         $pPipelinesC = $cValue;
-        $cValue = $this->ffi->vkCreateRayTracingPipelinesKHR(
+        $cValue = $this->fnPtr('vkCreateRayTracingPipelinesKHR')(
             $deviceC,
             $deferredOperationC,
             $pipelineCacheC,
@@ -12220,7 +12220,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceCooperativeMatrixPropertiesNV')(
             $physicalDeviceC,
             $pPropertyCountC,
             $pPropertiesC,
@@ -12264,7 +12264,7 @@ class Vulkan
         $phpValue = $indirectDeviceAddress;
         $cValue = $phpValue;
         $indirectDeviceAddressC = $cValue;
-        $cValue = $this->ffi->vkCmdTraceRaysIndirectKHR(
+        $cValue = $this->fnPtr('vkCmdTraceRaysIndirectKHR')(
             $commandBufferC,
             $pRaygenShaderBindingTableC,
             $pMissShaderBindingTableC,
@@ -12289,7 +12289,7 @@ class Vulkan
         $phpValue = $indirectDeviceAddress;
         $cValue = $phpValue;
         $indirectDeviceAddressC = $cValue;
-        $cValue = $this->ffi->vkCmdTraceRaysIndirect2KHR(
+        $cValue = $this->fnPtr('vkCmdTraceRaysIndirect2KHR')(
             $commandBufferC,
             $indirectDeviceAddressC,
         );
@@ -12315,7 +12315,7 @@ class Vulkan
         $phpValue = $pCompatibility;
         $cValue = $phpValue->cdata;
         $pCompatibilityC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceAccelerationStructureCompatibilityKHR(
+        $cValue = $this->fnPtr('vkGetDeviceAccelerationStructureCompatibilityKHR')(
             $deviceC,
             $pVersionInfoC,
             $pCompatibilityC,
@@ -12348,7 +12348,7 @@ class Vulkan
         $phpValue = $groupShader;
         $cValue = $phpValue->value;
         $groupShaderC = $cValue;
-        $cValue = $this->ffi->vkGetRayTracingShaderGroupStackSizeKHR(
+        $cValue = $this->fnPtr('vkGetRayTracingShaderGroupStackSizeKHR')(
             $deviceC,
             $pipelineC,
             $groupC,
@@ -12373,7 +12373,7 @@ class Vulkan
         $phpValue = $pipelineStackSize;
         $cValue = $phpValue;
         $pipelineStackSizeC = $cValue;
-        $cValue = $this->ffi->vkCmdSetRayTracingPipelineStackSizeKHR(
+        $cValue = $this->fnPtr('vkCmdSetRayTracingPipelineStackSizeKHR')(
             $commandBufferC,
             $pipelineStackSizeC,
         );
@@ -12392,7 +12392,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkGetImageViewHandleNVX(
+        $cValue = $this->fnPtr('vkGetImageViewHandleNVX')(
             $deviceC,
             $pInfoC,
         );
@@ -12421,7 +12421,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetImageViewAddressNVX(
+        $cValue = $this->fnPtr('vkGetImageViewAddressNVX')(
             $deviceC,
             $imageViewC,
             $pPropertiesC,
@@ -12456,7 +12456,7 @@ class Vulkan
         $phpValue = $pPresentModes;
         $cValue = $phpValue->cdata;
         $pPresentModesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceSurfacePresentModes2EXT(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceSurfacePresentModes2EXT')(
             $physicalDeviceC,
             $pSurfaceInfoC,
             $pPresentModeCountC,
@@ -12487,7 +12487,7 @@ class Vulkan
         $phpValue = $pModes;
         $cValue = $phpValue->cdata;
         $pModesC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceGroupSurfacePresentModes2EXT(
+        $cValue = $this->fnPtr('vkGetDeviceGroupSurfacePresentModes2EXT')(
             $deviceC,
             $pSurfaceInfoC,
             $pModesC,
@@ -12512,7 +12512,7 @@ class Vulkan
         $phpValue = $swapchain;
         $cValue = $phpValue->cdata;
         $swapchainC = $cValue;
-        $cValue = $this->ffi->vkAcquireFullScreenExclusiveModeEXT(
+        $cValue = $this->fnPtr('vkAcquireFullScreenExclusiveModeEXT')(
             $deviceC,
             $swapchainC,
         );
@@ -12536,7 +12536,7 @@ class Vulkan
         $phpValue = $swapchain;
         $cValue = $phpValue->cdata;
         $swapchainC = $cValue;
-        $cValue = $this->ffi->vkReleaseFullScreenExclusiveModeEXT(
+        $cValue = $this->fnPtr('vkReleaseFullScreenExclusiveModeEXT')(
             $deviceC,
             $swapchainC,
         );
@@ -12575,7 +12575,7 @@ class Vulkan
         $phpValue = $pCounterDescriptions;
         $cValue = $phpValue->cdata;
         $pCounterDescriptionsC = $cValue;
-        $cValue = $this->ffi->vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(
+        $cValue = $this->fnPtr('vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR')(
             $physicalDeviceC,
             $queueFamilyIndexC,
             $pCounterCountC,
@@ -12606,7 +12606,7 @@ class Vulkan
         $phpValue = $pNumPasses;
         $cValue = $phpValue->cdata;
         $pNumPassesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR')(
             $physicalDeviceC,
             $pPerformanceQueryCreateInfoC,
             $pNumPassesC,
@@ -12626,7 +12626,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkAcquireProfilingLockKHR(
+        $cValue = $this->fnPtr('vkAcquireProfilingLockKHR')(
             $deviceC,
             $pInfoC,
         );
@@ -12642,7 +12642,7 @@ class Vulkan
         $phpValue = $device;
         $cValue = $phpValue->cdata;
         $deviceC = $cValue;
-        $cValue = $this->ffi->vkReleaseProfilingLockKHR(
+        $cValue = $this->fnPtr('vkReleaseProfilingLockKHR')(
             $deviceC,
         );
     }
@@ -12668,7 +12668,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetImageDrmFormatModifierPropertiesEXT(
+        $cValue = $this->fnPtr('vkGetImageDrmFormatModifierPropertiesEXT')(
             $deviceC,
             $imageC,
             $pPropertiesC,
@@ -12690,7 +12690,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkGetBufferOpaqueCaptureAddress(
+        $cValue = $this->fnPtr('vkGetBufferOpaqueCaptureAddress')(
             $deviceC,
             $pInfoC,
         );
@@ -12711,7 +12711,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkGetBufferDeviceAddress(
+        $cValue = $this->fnPtr('vkGetBufferDeviceAddress')(
             $deviceC,
             $pInfoC,
         );
@@ -12745,7 +12745,7 @@ class Vulkan
         $phpValue = $pSurface;
         $cValue = $phpValue->cdata;
         $pSurfaceC = $cValue;
-        $cValue = $this->ffi->vkCreateHeadlessSurfaceEXT(
+        $cValue = $this->fnPtr('vkCreateHeadlessSurfaceEXT')(
             $instanceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -12776,7 +12776,7 @@ class Vulkan
         $phpValue = $pCombinations;
         $cValue = $phpValue->cdata;
         $pCombinationsC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV')(
             $physicalDeviceC,
             $pCombinationCountC,
             $pCombinationsC,
@@ -12801,7 +12801,7 @@ class Vulkan
         $phpValue = $pInitializeInfo;
         $cValue = $phpValue->cdata;
         $pInitializeInfoC = $cValue;
-        $cValue = $this->ffi->vkInitializePerformanceApiINTEL(
+        $cValue = $this->fnPtr('vkInitializePerformanceApiINTEL')(
             $deviceC,
             $pInitializeInfoC,
         );
@@ -12817,7 +12817,7 @@ class Vulkan
         $phpValue = $device;
         $cValue = $phpValue->cdata;
         $deviceC = $cValue;
-        $cValue = $this->ffi->vkUninitializePerformanceApiINTEL(
+        $cValue = $this->fnPtr('vkUninitializePerformanceApiINTEL')(
             $deviceC,
         );
     }
@@ -12838,7 +12838,7 @@ class Vulkan
         $phpValue = $pMarkerInfo;
         $cValue = $phpValue->cdata;
         $pMarkerInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdSetPerformanceMarkerINTEL(
+        $cValue = $this->fnPtr('vkCmdSetPerformanceMarkerINTEL')(
             $commandBufferC,
             $pMarkerInfoC,
         );
@@ -12862,7 +12862,7 @@ class Vulkan
         $phpValue = $pMarkerInfo;
         $cValue = $phpValue->cdata;
         $pMarkerInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdSetPerformanceStreamMarkerINTEL(
+        $cValue = $this->fnPtr('vkCmdSetPerformanceStreamMarkerINTEL')(
             $commandBufferC,
             $pMarkerInfoC,
         );
@@ -12886,7 +12886,7 @@ class Vulkan
         $phpValue = $pOverrideInfo;
         $cValue = $phpValue->cdata;
         $pOverrideInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdSetPerformanceOverrideINTEL(
+        $cValue = $this->fnPtr('vkCmdSetPerformanceOverrideINTEL')(
             $commandBufferC,
             $pOverrideInfoC,
         );
@@ -12915,7 +12915,7 @@ class Vulkan
         $phpValue = $pConfiguration;
         $cValue = $phpValue->cdata;
         $pConfigurationC = $cValue;
-        $cValue = $this->ffi->vkAcquirePerformanceConfigurationINTEL(
+        $cValue = $this->fnPtr('vkAcquirePerformanceConfigurationINTEL')(
             $deviceC,
             $pAcquireInfoC,
             $pConfigurationC,
@@ -12940,7 +12940,7 @@ class Vulkan
         $phpValue = $configuration;
         $cValue = $phpValue->cdata;
         $configurationC = $cValue;
-        $cValue = $this->ffi->vkReleasePerformanceConfigurationINTEL(
+        $cValue = $this->fnPtr('vkReleasePerformanceConfigurationINTEL')(
             $deviceC,
             $configurationC,
         );
@@ -12964,7 +12964,7 @@ class Vulkan
         $phpValue = $configuration;
         $cValue = $phpValue->cdata;
         $configurationC = $cValue;
-        $cValue = $this->ffi->vkQueueSetPerformanceConfigurationINTEL(
+        $cValue = $this->fnPtr('vkQueueSetPerformanceConfigurationINTEL')(
             $queueC,
             $configurationC,
         );
@@ -12993,7 +12993,7 @@ class Vulkan
         $phpValue = $pValue;
         $cValue = $phpValue->cdata;
         $pValueC = $cValue;
-        $cValue = $this->ffi->vkGetPerformanceParameterINTEL(
+        $cValue = $this->fnPtr('vkGetPerformanceParameterINTEL')(
             $deviceC,
             $parameterC,
             $pValueC,
@@ -13015,7 +13015,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceMemoryOpaqueCaptureAddress(
+        $cValue = $this->fnPtr('vkGetDeviceMemoryOpaqueCaptureAddress')(
             $deviceC,
             $pInfoC,
         );
@@ -13049,7 +13049,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPipelineExecutablePropertiesKHR(
+        $cValue = $this->fnPtr('vkGetPipelineExecutablePropertiesKHR')(
             $deviceC,
             $pPipelineInfoC,
             $pExecutableCountC,
@@ -13085,7 +13085,7 @@ class Vulkan
         $phpValue = $pStatistics;
         $cValue = $phpValue->cdata;
         $pStatisticsC = $cValue;
-        $cValue = $this->ffi->vkGetPipelineExecutableStatisticsKHR(
+        $cValue = $this->fnPtr('vkGetPipelineExecutableStatisticsKHR')(
             $deviceC,
             $pExecutableInfoC,
             $pStatisticCountC,
@@ -13121,7 +13121,7 @@ class Vulkan
         $phpValue = $pInternalRepresentations;
         $cValue = $phpValue->cdata;
         $pInternalRepresentationsC = $cValue;
-        $cValue = $this->ffi->vkGetPipelineExecutableInternalRepresentationsKHR(
+        $cValue = $this->fnPtr('vkGetPipelineExecutableInternalRepresentationsKHR')(
             $deviceC,
             $pExecutableInfoC,
             $pInternalRepresentationCountC,
@@ -13151,7 +13151,7 @@ class Vulkan
         $phpValue = $lineStipplePattern;
         $cValue = $phpValue;
         $lineStipplePatternC = $cValue;
-        $cValue = $this->ffi->vkCmdSetLineStippleEXT(
+        $cValue = $this->fnPtr('vkCmdSetLineStippleEXT')(
             $commandBufferC,
             $lineStippleFactorC,
             $lineStipplePatternC,
@@ -13189,7 +13189,7 @@ class Vulkan
         $phpValue = $pFaults;
         $cValue = $phpValue->cdata;
         $pFaultsC = $cValue;
-        $cValue = $this->ffi->vkGetFaultData(
+        $cValue = $this->fnPtr('vkGetFaultData')(
             $deviceC,
             $faultQueryBehaviorC,
             $pUnrecordedFaultsC,
@@ -13221,7 +13221,7 @@ class Vulkan
         $phpValue = $pToolProperties;
         $cValue = $phpValue->cdata;
         $pToolPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceToolProperties(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceToolProperties')(
             $physicalDeviceC,
             $pToolCountC,
             $pToolPropertiesC,
@@ -13256,7 +13256,7 @@ class Vulkan
         $phpValue = $pAccelerationStructure;
         $cValue = $phpValue->cdata;
         $pAccelerationStructureC = $cValue;
-        $cValue = $this->ffi->vkCreateAccelerationStructureKHR(
+        $cValue = $this->fnPtr('vkCreateAccelerationStructureKHR')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -13291,7 +13291,7 @@ class Vulkan
         $phpValue = $ppBuildRangeInfos;
         $cValue = $phpValue->cdata;
         $ppBuildRangeInfosC = $cValue;
-        $cValue = $this->ffi->vkCmdBuildAccelerationStructuresKHR(
+        $cValue = $this->fnPtr('vkCmdBuildAccelerationStructuresKHR')(
             $commandBufferC,
             $infoCountC,
             $pInfosC,
@@ -13334,7 +13334,7 @@ class Vulkan
         $phpValue = $ppMaxPrimitiveCounts;
         $cValue = $phpValue->cdata;
         $ppMaxPrimitiveCountsC = $cValue;
-        $cValue = $this->ffi->vkCmdBuildAccelerationStructuresIndirectKHR(
+        $cValue = $this->fnPtr('vkCmdBuildAccelerationStructuresIndirectKHR')(
             $commandBufferC,
             $infoCountC,
             $pInfosC,
@@ -13375,7 +13375,7 @@ class Vulkan
         $phpValue = $ppBuildRangeInfos;
         $cValue = $phpValue->cdata;
         $ppBuildRangeInfosC = $cValue;
-        $cValue = $this->ffi->vkBuildAccelerationStructuresKHR(
+        $cValue = $this->fnPtr('vkBuildAccelerationStructuresKHR')(
             $deviceC,
             $deferredOperationC,
             $infoCountC,
@@ -13402,7 +13402,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkGetAccelerationStructureDeviceAddressKHR(
+        $cValue = $this->fnPtr('vkGetAccelerationStructureDeviceAddressKHR')(
             $deviceC,
             $pInfoC,
         );
@@ -13431,7 +13431,7 @@ class Vulkan
         $phpValue = $pDeferredOperation;
         $cValue = $phpValue->cdata;
         $pDeferredOperationC = $cValue;
-        $cValue = $this->ffi->vkCreateDeferredOperationKHR(
+        $cValue = $this->fnPtr('vkCreateDeferredOperationKHR')(
             $deviceC,
             $pAllocatorC,
             $pDeferredOperationC,
@@ -13460,7 +13460,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyDeferredOperationKHR(
+        $cValue = $this->fnPtr('vkDestroyDeferredOperationKHR')(
             $deviceC,
             $operationC,
             $pAllocatorC,
@@ -13483,7 +13483,7 @@ class Vulkan
         $phpValue = $operation;
         $cValue = $phpValue->cdata;
         $operationC = $cValue;
-        $cValue = $this->ffi->vkGetDeferredOperationMaxConcurrencyKHR(
+        $cValue = $this->fnPtr('vkGetDeferredOperationMaxConcurrencyKHR')(
             $deviceC,
             $operationC,
         );
@@ -13507,7 +13507,7 @@ class Vulkan
         $phpValue = $operation;
         $cValue = $phpValue->cdata;
         $operationC = $cValue;
-        $cValue = $this->ffi->vkGetDeferredOperationResultKHR(
+        $cValue = $this->fnPtr('vkGetDeferredOperationResultKHR')(
             $deviceC,
             $operationC,
         );
@@ -13531,7 +13531,7 @@ class Vulkan
         $phpValue = $operation;
         $cValue = $phpValue->cdata;
         $operationC = $cValue;
-        $cValue = $this->ffi->vkDeferredOperationJoinKHR(
+        $cValue = $this->fnPtr('vkDeferredOperationJoinKHR')(
             $deviceC,
             $operationC,
         );
@@ -13559,7 +13559,7 @@ class Vulkan
         $phpValue = $pMemoryRequirements;
         $cValue = $phpValue->cdata;
         $pMemoryRequirementsC = $cValue;
-        $cValue = $this->ffi->vkGetPipelineIndirectMemoryRequirementsNV(
+        $cValue = $this->fnPtr('vkGetPipelineIndirectMemoryRequirementsNV')(
             $deviceC,
             $pCreateInfoC,
             $pMemoryRequirementsC,
@@ -13579,7 +13579,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkGetPipelineIndirectDeviceAddressNV(
+        $cValue = $this->fnPtr('vkGetPipelineIndirectDeviceAddressNV')(
             $deviceC,
             $pInfoC,
         );
@@ -13599,7 +13599,7 @@ class Vulkan
         $phpValue = $cullMode;
         $cValue = \iggyvolz\vulkan\enum\VkCullModeFlagBits::toInt(...$phpValue);
         $cullModeC = $cValue;
-        $cValue = $this->ffi->vkCmdSetCullMode(
+        $cValue = $this->fnPtr('vkCmdSetCullMode')(
             $commandBufferC,
             $cullModeC,
         );
@@ -13617,7 +13617,7 @@ class Vulkan
         $phpValue = $frontFace;
         $cValue = $phpValue->value;
         $frontFaceC = $cValue;
-        $cValue = $this->ffi->vkCmdSetFrontFace(
+        $cValue = $this->fnPtr('vkCmdSetFrontFace')(
             $commandBufferC,
             $frontFaceC,
         );
@@ -13638,7 +13638,7 @@ class Vulkan
         $phpValue = $primitiveTopology;
         $cValue = $phpValue->value;
         $primitiveTopologyC = $cValue;
-        $cValue = $this->ffi->vkCmdSetPrimitiveTopology(
+        $cValue = $this->fnPtr('vkCmdSetPrimitiveTopology')(
             $commandBufferC,
             $primitiveTopologyC,
         );
@@ -13664,7 +13664,7 @@ class Vulkan
         $phpValue = $pViewports;
         $cValue = $phpValue->cdata;
         $pViewportsC = $cValue;
-        $cValue = $this->ffi->vkCmdSetViewportWithCount(
+        $cValue = $this->fnPtr('vkCmdSetViewportWithCount')(
             $commandBufferC,
             $viewportCountC,
             $pViewportsC,
@@ -13691,7 +13691,7 @@ class Vulkan
         $phpValue = $pScissors;
         $cValue = $phpValue->cdata;
         $pScissorsC = $cValue;
-        $cValue = $this->ffi->vkCmdSetScissorWithCount(
+        $cValue = $this->fnPtr('vkCmdSetScissorWithCount')(
             $commandBufferC,
             $scissorCountC,
             $pScissorsC,
@@ -13728,7 +13728,7 @@ class Vulkan
         $phpValue = $indexType;
         $cValue = $phpValue->value;
         $indexTypeC = $cValue;
-        $cValue = $this->ffi->vkCmdBindIndexBuffer2KHR(
+        $cValue = $this->fnPtr('vkCmdBindIndexBuffer2KHR')(
             $commandBufferC,
             $bufferC,
             $offsetC,
@@ -13777,7 +13777,7 @@ class Vulkan
         $phpValue = $pStrides;
         $cValue = $phpValue->cdata;
         $pStridesC = $cValue;
-        $cValue = $this->ffi->vkCmdBindVertexBuffers2(
+        $cValue = $this->fnPtr('vkCmdBindVertexBuffers2')(
             $commandBufferC,
             $firstBindingC,
             $bindingCountC,
@@ -13800,7 +13800,7 @@ class Vulkan
         $phpValue = $depthTestEnable;
         $cValue = $phpValue ? 1 : 0;
         $depthTestEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDepthTestEnable(
+        $cValue = $this->fnPtr('vkCmdSetDepthTestEnable')(
             $commandBufferC,
             $depthTestEnableC,
         );
@@ -13818,7 +13818,7 @@ class Vulkan
         $phpValue = $depthWriteEnable;
         $cValue = $phpValue ? 1 : 0;
         $depthWriteEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDepthWriteEnable(
+        $cValue = $this->fnPtr('vkCmdSetDepthWriteEnable')(
             $commandBufferC,
             $depthWriteEnableC,
         );
@@ -13839,7 +13839,7 @@ class Vulkan
         $phpValue = $depthCompareOp;
         $cValue = $phpValue->value;
         $depthCompareOpC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDepthCompareOp(
+        $cValue = $this->fnPtr('vkCmdSetDepthCompareOp')(
             $commandBufferC,
             $depthCompareOpC,
         );
@@ -13860,7 +13860,7 @@ class Vulkan
         $phpValue = $depthBoundsTestEnable;
         $cValue = $phpValue ? 1 : 0;
         $depthBoundsTestEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDepthBoundsTestEnable(
+        $cValue = $this->fnPtr('vkCmdSetDepthBoundsTestEnable')(
             $commandBufferC,
             $depthBoundsTestEnableC,
         );
@@ -13878,7 +13878,7 @@ class Vulkan
         $phpValue = $stencilTestEnable;
         $cValue = $phpValue ? 1 : 0;
         $stencilTestEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetStencilTestEnable(
+        $cValue = $this->fnPtr('vkCmdSetStencilTestEnable')(
             $commandBufferC,
             $stencilTestEnableC,
         );
@@ -13919,7 +13919,7 @@ class Vulkan
         $phpValue = $compareOp;
         $cValue = $phpValue->value;
         $compareOpC = $cValue;
-        $cValue = $this->ffi->vkCmdSetStencilOp(
+        $cValue = $this->fnPtr('vkCmdSetStencilOp')(
             $commandBufferC,
             $faceMaskC,
             $failOpC,
@@ -13944,7 +13944,7 @@ class Vulkan
         $phpValue = $patchControlPoints;
         $cValue = $phpValue;
         $patchControlPointsC = $cValue;
-        $cValue = $this->ffi->vkCmdSetPatchControlPointsEXT(
+        $cValue = $this->fnPtr('vkCmdSetPatchControlPointsEXT')(
             $commandBufferC,
             $patchControlPointsC,
         );
@@ -13965,7 +13965,7 @@ class Vulkan
         $phpValue = $rasterizerDiscardEnable;
         $cValue = $phpValue ? 1 : 0;
         $rasterizerDiscardEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetRasterizerDiscardEnable(
+        $cValue = $this->fnPtr('vkCmdSetRasterizerDiscardEnable')(
             $commandBufferC,
             $rasterizerDiscardEnableC,
         );
@@ -13983,7 +13983,7 @@ class Vulkan
         $phpValue = $depthBiasEnable;
         $cValue = $phpValue ? 1 : 0;
         $depthBiasEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDepthBiasEnable(
+        $cValue = $this->fnPtr('vkCmdSetDepthBiasEnable')(
             $commandBufferC,
             $depthBiasEnableC,
         );
@@ -14001,7 +14001,7 @@ class Vulkan
         $phpValue = $logicOp;
         $cValue = $phpValue->value;
         $logicOpC = $cValue;
-        $cValue = $this->ffi->vkCmdSetLogicOpEXT(
+        $cValue = $this->fnPtr('vkCmdSetLogicOpEXT')(
             $commandBufferC,
             $logicOpC,
         );
@@ -14022,7 +14022,7 @@ class Vulkan
         $phpValue = $primitiveRestartEnable;
         $cValue = $phpValue ? 1 : 0;
         $primitiveRestartEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetPrimitiveRestartEnable(
+        $cValue = $this->fnPtr('vkCmdSetPrimitiveRestartEnable')(
             $commandBufferC,
             $primitiveRestartEnableC,
         );
@@ -14043,7 +14043,7 @@ class Vulkan
         $phpValue = $domainOrigin;
         $cValue = $phpValue->value;
         $domainOriginC = $cValue;
-        $cValue = $this->ffi->vkCmdSetTessellationDomainOriginEXT(
+        $cValue = $this->fnPtr('vkCmdSetTessellationDomainOriginEXT')(
             $commandBufferC,
             $domainOriginC,
         );
@@ -14061,7 +14061,7 @@ class Vulkan
         $phpValue = $depthClampEnable;
         $cValue = $phpValue ? 1 : 0;
         $depthClampEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDepthClampEnableEXT(
+        $cValue = $this->fnPtr('vkCmdSetDepthClampEnableEXT')(
             $commandBufferC,
             $depthClampEnableC,
         );
@@ -14082,7 +14082,7 @@ class Vulkan
         $phpValue = $polygonMode;
         $cValue = $phpValue->value;
         $polygonModeC = $cValue;
-        $cValue = $this->ffi->vkCmdSetPolygonModeEXT(
+        $cValue = $this->fnPtr('vkCmdSetPolygonModeEXT')(
             $commandBufferC,
             $polygonModeC,
         );
@@ -14103,7 +14103,7 @@ class Vulkan
         $phpValue = $rasterizationSamples;
         $cValue = $phpValue->value;
         $rasterizationSamplesC = $cValue;
-        $cValue = $this->ffi->vkCmdSetRasterizationSamplesEXT(
+        $cValue = $this->fnPtr('vkCmdSetRasterizationSamplesEXT')(
             $commandBufferC,
             $rasterizationSamplesC,
         );
@@ -14129,7 +14129,7 @@ class Vulkan
         $phpValue = $pSampleMask;
         $cValue = $phpValue->cdata;
         $pSampleMaskC = $cValue;
-        $cValue = $this->ffi->vkCmdSetSampleMaskEXT(
+        $cValue = $this->fnPtr('vkCmdSetSampleMaskEXT')(
             $commandBufferC,
             $samplesC,
             $pSampleMaskC,
@@ -14151,7 +14151,7 @@ class Vulkan
         $phpValue = $alphaToCoverageEnable;
         $cValue = $phpValue ? 1 : 0;
         $alphaToCoverageEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetAlphaToCoverageEnableEXT(
+        $cValue = $this->fnPtr('vkCmdSetAlphaToCoverageEnableEXT')(
             $commandBufferC,
             $alphaToCoverageEnableC,
         );
@@ -14169,7 +14169,7 @@ class Vulkan
         $phpValue = $alphaToOneEnable;
         $cValue = $phpValue ? 1 : 0;
         $alphaToOneEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetAlphaToOneEnableEXT(
+        $cValue = $this->fnPtr('vkCmdSetAlphaToOneEnableEXT')(
             $commandBufferC,
             $alphaToOneEnableC,
         );
@@ -14187,7 +14187,7 @@ class Vulkan
         $phpValue = $logicOpEnable;
         $cValue = $phpValue ? 1 : 0;
         $logicOpEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetLogicOpEnableEXT(
+        $cValue = $this->fnPtr('vkCmdSetLogicOpEnableEXT')(
             $commandBufferC,
             $logicOpEnableC,
         );
@@ -14218,7 +14218,7 @@ class Vulkan
         $phpValue = $pColorBlendEnables;
         $cValue = $phpValue->cdata;
         $pColorBlendEnablesC = $cValue;
-        $cValue = $this->ffi->vkCmdSetColorBlendEnableEXT(
+        $cValue = $this->fnPtr('vkCmdSetColorBlendEnableEXT')(
             $commandBufferC,
             $firstAttachmentC,
             $attachmentCountC,
@@ -14251,7 +14251,7 @@ class Vulkan
         $phpValue = $pColorBlendEquations;
         $cValue = $phpValue->cdata;
         $pColorBlendEquationsC = $cValue;
-        $cValue = $this->ffi->vkCmdSetColorBlendEquationEXT(
+        $cValue = $this->fnPtr('vkCmdSetColorBlendEquationEXT')(
             $commandBufferC,
             $firstAttachmentC,
             $attachmentCountC,
@@ -14284,7 +14284,7 @@ class Vulkan
         $phpValue = $pColorWriteMasks;
         $cValue = $phpValue->cdata;
         $pColorWriteMasksC = $cValue;
-        $cValue = $this->ffi->vkCmdSetColorWriteMaskEXT(
+        $cValue = $this->fnPtr('vkCmdSetColorWriteMaskEXT')(
             $commandBufferC,
             $firstAttachmentC,
             $attachmentCountC,
@@ -14307,7 +14307,7 @@ class Vulkan
         $phpValue = $rasterizationStream;
         $cValue = $phpValue;
         $rasterizationStreamC = $cValue;
-        $cValue = $this->ffi->vkCmdSetRasterizationStreamEXT(
+        $cValue = $this->fnPtr('vkCmdSetRasterizationStreamEXT')(
             $commandBufferC,
             $rasterizationStreamC,
         );
@@ -14328,7 +14328,7 @@ class Vulkan
         $phpValue = $conservativeRasterizationMode;
         $cValue = $phpValue->value;
         $conservativeRasterizationModeC = $cValue;
-        $cValue = $this->ffi->vkCmdSetConservativeRasterizationModeEXT(
+        $cValue = $this->fnPtr('vkCmdSetConservativeRasterizationModeEXT')(
             $commandBufferC,
             $conservativeRasterizationModeC,
         );
@@ -14349,7 +14349,7 @@ class Vulkan
         $phpValue = $extraPrimitiveOverestimationSize;
         $cValue = $phpValue;
         $extraPrimitiveOverestimationSizeC = $cValue;
-        $cValue = $this->ffi->vkCmdSetExtraPrimitiveOverestimationSizeEXT(
+        $cValue = $this->fnPtr('vkCmdSetExtraPrimitiveOverestimationSizeEXT')(
             $commandBufferC,
             $extraPrimitiveOverestimationSizeC,
         );
@@ -14367,7 +14367,7 @@ class Vulkan
         $phpValue = $depthClipEnable;
         $cValue = $phpValue ? 1 : 0;
         $depthClipEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDepthClipEnableEXT(
+        $cValue = $this->fnPtr('vkCmdSetDepthClipEnableEXT')(
             $commandBufferC,
             $depthClipEnableC,
         );
@@ -14388,7 +14388,7 @@ class Vulkan
         $phpValue = $sampleLocationsEnable;
         $cValue = $phpValue ? 1 : 0;
         $sampleLocationsEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetSampleLocationsEnableEXT(
+        $cValue = $this->fnPtr('vkCmdSetSampleLocationsEnableEXT')(
             $commandBufferC,
             $sampleLocationsEnableC,
         );
@@ -14419,7 +14419,7 @@ class Vulkan
         $phpValue = $pColorBlendAdvanced;
         $cValue = $phpValue->cdata;
         $pColorBlendAdvancedC = $cValue;
-        $cValue = $this->ffi->vkCmdSetColorBlendAdvancedEXT(
+        $cValue = $this->fnPtr('vkCmdSetColorBlendAdvancedEXT')(
             $commandBufferC,
             $firstAttachmentC,
             $attachmentCountC,
@@ -14442,7 +14442,7 @@ class Vulkan
         $phpValue = $provokingVertexMode;
         $cValue = $phpValue->value;
         $provokingVertexModeC = $cValue;
-        $cValue = $this->ffi->vkCmdSetProvokingVertexModeEXT(
+        $cValue = $this->fnPtr('vkCmdSetProvokingVertexModeEXT')(
             $commandBufferC,
             $provokingVertexModeC,
         );
@@ -14463,7 +14463,7 @@ class Vulkan
         $phpValue = $lineRasterizationMode;
         $cValue = $phpValue->value;
         $lineRasterizationModeC = $cValue;
-        $cValue = $this->ffi->vkCmdSetLineRasterizationModeEXT(
+        $cValue = $this->fnPtr('vkCmdSetLineRasterizationModeEXT')(
             $commandBufferC,
             $lineRasterizationModeC,
         );
@@ -14484,7 +14484,7 @@ class Vulkan
         $phpValue = $stippledLineEnable;
         $cValue = $phpValue ? 1 : 0;
         $stippledLineEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetLineStippleEnableEXT(
+        $cValue = $this->fnPtr('vkCmdSetLineStippleEnableEXT')(
             $commandBufferC,
             $stippledLineEnableC,
         );
@@ -14505,7 +14505,7 @@ class Vulkan
         $phpValue = $negativeOneToOne;
         $cValue = $phpValue ? 1 : 0;
         $negativeOneToOneC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDepthClipNegativeOneToOneEXT(
+        $cValue = $this->fnPtr('vkCmdSetDepthClipNegativeOneToOneEXT')(
             $commandBufferC,
             $negativeOneToOneC,
         );
@@ -14526,7 +14526,7 @@ class Vulkan
         $phpValue = $viewportWScalingEnable;
         $cValue = $phpValue ? 1 : 0;
         $viewportWScalingEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetViewportWScalingEnableNV(
+        $cValue = $this->fnPtr('vkCmdSetViewportWScalingEnableNV')(
             $commandBufferC,
             $viewportWScalingEnableC,
         );
@@ -14557,7 +14557,7 @@ class Vulkan
         $phpValue = $pViewportSwizzles;
         $cValue = $phpValue->cdata;
         $pViewportSwizzlesC = $cValue;
-        $cValue = $this->ffi->vkCmdSetViewportSwizzleNV(
+        $cValue = $this->fnPtr('vkCmdSetViewportSwizzleNV')(
             $commandBufferC,
             $firstViewportC,
             $viewportCountC,
@@ -14580,7 +14580,7 @@ class Vulkan
         $phpValue = $coverageToColorEnable;
         $cValue = $phpValue ? 1 : 0;
         $coverageToColorEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetCoverageToColorEnableNV(
+        $cValue = $this->fnPtr('vkCmdSetCoverageToColorEnableNV')(
             $commandBufferC,
             $coverageToColorEnableC,
         );
@@ -14601,7 +14601,7 @@ class Vulkan
         $phpValue = $coverageToColorLocation;
         $cValue = $phpValue;
         $coverageToColorLocationC = $cValue;
-        $cValue = $this->ffi->vkCmdSetCoverageToColorLocationNV(
+        $cValue = $this->fnPtr('vkCmdSetCoverageToColorLocationNV')(
             $commandBufferC,
             $coverageToColorLocationC,
         );
@@ -14622,7 +14622,7 @@ class Vulkan
         $phpValue = $coverageModulationMode;
         $cValue = $phpValue->value;
         $coverageModulationModeC = $cValue;
-        $cValue = $this->ffi->vkCmdSetCoverageModulationModeNV(
+        $cValue = $this->fnPtr('vkCmdSetCoverageModulationModeNV')(
             $commandBufferC,
             $coverageModulationModeC,
         );
@@ -14643,7 +14643,7 @@ class Vulkan
         $phpValue = $coverageModulationTableEnable;
         $cValue = $phpValue ? 1 : 0;
         $coverageModulationTableEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetCoverageModulationTableEnableNV(
+        $cValue = $this->fnPtr('vkCmdSetCoverageModulationTableEnableNV')(
             $commandBufferC,
             $coverageModulationTableEnableC,
         );
@@ -14669,7 +14669,7 @@ class Vulkan
         $phpValue = $pCoverageModulationTable;
         $cValue = $phpValue->cdata;
         $pCoverageModulationTableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetCoverageModulationTableNV(
+        $cValue = $this->fnPtr('vkCmdSetCoverageModulationTableNV')(
             $commandBufferC,
             $coverageModulationTableCountC,
             $pCoverageModulationTableC,
@@ -14691,7 +14691,7 @@ class Vulkan
         $phpValue = $shadingRateImageEnable;
         $cValue = $phpValue ? 1 : 0;
         $shadingRateImageEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetShadingRateImageEnableNV(
+        $cValue = $this->fnPtr('vkCmdSetShadingRateImageEnableNV')(
             $commandBufferC,
             $shadingRateImageEnableC,
         );
@@ -14712,7 +14712,7 @@ class Vulkan
         $phpValue = $coverageReductionMode;
         $cValue = $phpValue->value;
         $coverageReductionModeC = $cValue;
-        $cValue = $this->ffi->vkCmdSetCoverageReductionModeNV(
+        $cValue = $this->fnPtr('vkCmdSetCoverageReductionModeNV')(
             $commandBufferC,
             $coverageReductionModeC,
         );
@@ -14733,7 +14733,7 @@ class Vulkan
         $phpValue = $representativeFragmentTestEnable;
         $cValue = $phpValue ? 1 : 0;
         $representativeFragmentTestEnableC = $cValue;
-        $cValue = $this->ffi->vkCmdSetRepresentativeFragmentTestEnableNV(
+        $cValue = $this->fnPtr('vkCmdSetRepresentativeFragmentTestEnableNV')(
             $commandBufferC,
             $representativeFragmentTestEnableC,
         );
@@ -14765,7 +14765,7 @@ class Vulkan
         $phpValue = $pPrivateDataSlot;
         $cValue = $phpValue->cdata;
         $pPrivateDataSlotC = $cValue;
-        $cValue = $this->ffi->vkCreatePrivateDataSlot(
+        $cValue = $this->fnPtr('vkCreatePrivateDataSlot')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -14795,7 +14795,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyPrivateDataSlot(
+        $cValue = $this->fnPtr('vkDestroyPrivateDataSlot')(
             $deviceC,
             $privateDataSlotC,
             $pAllocatorC,
@@ -14833,7 +14833,7 @@ class Vulkan
         $phpValue = $data;
         $cValue = $phpValue;
         $dataC = $cValue;
-        $cValue = $this->ffi->vkSetPrivateData(
+        $cValue = $this->fnPtr('vkSetPrivateData')(
             $deviceC,
             $objectTypeC,
             $objectHandleC,
@@ -14874,7 +14874,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkGetPrivateData(
+        $cValue = $this->fnPtr('vkGetPrivateData')(
             $deviceC,
             $objectTypeC,
             $objectHandleC,
@@ -14895,7 +14895,7 @@ class Vulkan
         $phpValue = $pCopyBufferInfo;
         $cValue = $phpValue->cdata;
         $pCopyBufferInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyBuffer2(
+        $cValue = $this->fnPtr('vkCmdCopyBuffer2')(
             $commandBufferC,
             $pCopyBufferInfoC,
         );
@@ -14913,7 +14913,7 @@ class Vulkan
         $phpValue = $pCopyImageInfo;
         $cValue = $phpValue->cdata;
         $pCopyImageInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyImage2(
+        $cValue = $this->fnPtr('vkCmdCopyImage2')(
             $commandBufferC,
             $pCopyImageInfoC,
         );
@@ -14931,7 +14931,7 @@ class Vulkan
         $phpValue = $pBlitImageInfo;
         $cValue = $phpValue->cdata;
         $pBlitImageInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdBlitImage2(
+        $cValue = $this->fnPtr('vkCmdBlitImage2')(
             $commandBufferC,
             $pBlitImageInfoC,
         );
@@ -14952,7 +14952,7 @@ class Vulkan
         $phpValue = $pCopyBufferToImageInfo;
         $cValue = $phpValue->cdata;
         $pCopyBufferToImageInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyBufferToImage2(
+        $cValue = $this->fnPtr('vkCmdCopyBufferToImage2')(
             $commandBufferC,
             $pCopyBufferToImageInfoC,
         );
@@ -14973,7 +14973,7 @@ class Vulkan
         $phpValue = $pCopyImageToBufferInfo;
         $cValue = $phpValue->cdata;
         $pCopyImageToBufferInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyImageToBuffer2(
+        $cValue = $this->fnPtr('vkCmdCopyImageToBuffer2')(
             $commandBufferC,
             $pCopyImageToBufferInfoC,
         );
@@ -14994,7 +14994,7 @@ class Vulkan
         $phpValue = $pResolveImageInfo;
         $cValue = $phpValue->cdata;
         $pResolveImageInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdResolveImage2(
+        $cValue = $this->fnPtr('vkCmdResolveImage2')(
             $commandBufferC,
             $pResolveImageInfoC,
         );
@@ -15015,7 +15015,7 @@ class Vulkan
         $phpValue = $pRefreshObjects;
         $cValue = $phpValue->cdata;
         $pRefreshObjectsC = $cValue;
-        $cValue = $this->ffi->vkCmdRefreshObjectsKHR(
+        $cValue = $this->fnPtr('vkCmdRefreshObjectsKHR')(
             $commandBufferC,
             $pRefreshObjectsC,
         );
@@ -15042,7 +15042,7 @@ class Vulkan
         $phpValue = $pRefreshableObjectTypes;
         $cValue = $phpValue->cdata;
         $pRefreshableObjectTypesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceRefreshableObjectTypesKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceRefreshableObjectTypesKHR')(
             $physicalDeviceC,
             $pRefreshableObjectTypeCountC,
             $pRefreshableObjectTypesC,
@@ -15071,7 +15071,7 @@ class Vulkan
         $phpValue = $combinerOps;
         throw new \LogicException("Dummy transformer!");
         $combinerOpsC = $cValue;
-        $cValue = $this->ffi->vkCmdSetFragmentShadingRateKHR(
+        $cValue = $this->fnPtr('vkCmdSetFragmentShadingRateKHR')(
             $commandBufferC,
             $pFragmentSizeC,
             $combinerOpsC,
@@ -15099,7 +15099,7 @@ class Vulkan
         $phpValue = $pFragmentShadingRates;
         $cValue = $phpValue->cdata;
         $pFragmentShadingRatesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceFragmentShadingRatesKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceFragmentShadingRatesKHR')(
             $physicalDeviceC,
             $pFragmentShadingRateCountC,
             $pFragmentShadingRatesC,
@@ -15128,7 +15128,7 @@ class Vulkan
         $phpValue = $combinerOps;
         throw new \LogicException("Dummy transformer!");
         $combinerOpsC = $cValue;
-        $cValue = $this->ffi->vkCmdSetFragmentShadingRateEnumNV(
+        $cValue = $this->fnPtr('vkCmdSetFragmentShadingRateEnumNV')(
             $commandBufferC,
             $shadingRateC,
             $combinerOpsC,
@@ -15165,7 +15165,7 @@ class Vulkan
         $phpValue = $pSizeInfo;
         $cValue = $phpValue->cdata;
         $pSizeInfoC = $cValue;
-        $cValue = $this->ffi->vkGetAccelerationStructureBuildSizesKHR(
+        $cValue = $this->fnPtr('vkGetAccelerationStructureBuildSizesKHR')(
             $deviceC,
             $buildTypeC,
             $pBuildInfoC,
@@ -15204,7 +15204,7 @@ class Vulkan
         $phpValue = $pVertexAttributeDescriptions;
         $cValue = $phpValue->cdata;
         $pVertexAttributeDescriptionsC = $cValue;
-        $cValue = $this->ffi->vkCmdSetVertexInputEXT(
+        $cValue = $this->fnPtr('vkCmdSetVertexInputEXT')(
             $commandBufferC,
             $vertexBindingDescriptionCountC,
             $pVertexBindingDescriptionsC,
@@ -15233,7 +15233,7 @@ class Vulkan
         $phpValue = $pColorWriteEnables;
         $cValue = $phpValue->cdata;
         $pColorWriteEnablesC = $cValue;
-        $cValue = $this->ffi->vkCmdSetColorWriteEnableEXT(
+        $cValue = $this->fnPtr('vkCmdSetColorWriteEnableEXT')(
             $commandBufferC,
             $attachmentCountC,
             $pColorWriteEnablesC,
@@ -15260,7 +15260,7 @@ class Vulkan
         $phpValue = $pDependencyInfo;
         $cValue = $phpValue->cdata;
         $pDependencyInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdSetEvent2(
+        $cValue = $this->fnPtr('vkCmdSetEvent2')(
             $commandBufferC,
             $eventC,
             $pDependencyInfoC,
@@ -15287,7 +15287,7 @@ class Vulkan
         $phpValue = $stageMask;
         $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits2::toInt(...$phpValue);
         $stageMaskC = $cValue;
-        $cValue = $this->ffi->vkCmdResetEvent2(
+        $cValue = $this->fnPtr('vkCmdResetEvent2')(
             $commandBufferC,
             $eventC,
             $stageMaskC,
@@ -15319,7 +15319,7 @@ class Vulkan
         $phpValue = $pDependencyInfos;
         $cValue = $phpValue->cdata;
         $pDependencyInfosC = $cValue;
-        $cValue = $this->ffi->vkCmdWaitEvents2(
+        $cValue = $this->fnPtr('vkCmdWaitEvents2')(
             $commandBufferC,
             $eventCountC,
             $pEventsC,
@@ -15342,7 +15342,7 @@ class Vulkan
         $phpValue = $pDependencyInfo;
         $cValue = $phpValue->cdata;
         $pDependencyInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdPipelineBarrier2(
+        $cValue = $this->fnPtr('vkCmdPipelineBarrier2')(
             $commandBufferC,
             $pDependencyInfoC,
         );
@@ -15374,7 +15374,7 @@ class Vulkan
         $phpValue = $fence;
         $cValue = $phpValue->cdata;
         $fenceC = $cValue;
-        $cValue = $this->ffi->vkQueueSubmit2(
+        $cValue = $this->fnPtr('vkQueueSubmit2')(
             $queueC,
             $submitCountC,
             $pSubmitsC,
@@ -15409,7 +15409,7 @@ class Vulkan
         $phpValue = $query;
         $cValue = $phpValue;
         $queryC = $cValue;
-        $cValue = $this->ffi->vkCmdWriteTimestamp2(
+        $cValue = $this->fnPtr('vkCmdWriteTimestamp2')(
             $commandBufferC,
             $stageC,
             $queryPoolC,
@@ -15447,7 +15447,7 @@ class Vulkan
         $phpValue = $marker;
         $cValue = $phpValue;
         $markerC = $cValue;
-        $cValue = $this->ffi->vkCmdWriteBufferMarker2AMD(
+        $cValue = $this->fnPtr('vkCmdWriteBufferMarker2AMD')(
             $commandBufferC,
             $stageC,
             $dstBufferC,
@@ -15476,7 +15476,7 @@ class Vulkan
         $phpValue = $pCheckpointData;
         $cValue = $phpValue->cdata;
         $pCheckpointDataC = $cValue;
-        $cValue = $this->ffi->vkGetQueueCheckpointData2NV(
+        $cValue = $this->fnPtr('vkGetQueueCheckpointData2NV')(
             $queueC,
             $pCheckpointDataCountC,
             $pCheckpointDataC,
@@ -15499,7 +15499,7 @@ class Vulkan
         $phpValue = $pCopyMemoryToImageInfo;
         $cValue = $phpValue->cdata;
         $pCopyMemoryToImageInfoC = $cValue;
-        $cValue = $this->ffi->vkCopyMemoryToImageEXT(
+        $cValue = $this->fnPtr('vkCopyMemoryToImageEXT')(
             $deviceC,
             $pCopyMemoryToImageInfoC,
         );
@@ -15523,7 +15523,7 @@ class Vulkan
         $phpValue = $pCopyImageToMemoryInfo;
         $cValue = $phpValue->cdata;
         $pCopyImageToMemoryInfoC = $cValue;
-        $cValue = $this->ffi->vkCopyImageToMemoryEXT(
+        $cValue = $this->fnPtr('vkCopyImageToMemoryEXT')(
             $deviceC,
             $pCopyImageToMemoryInfoC,
         );
@@ -15547,7 +15547,7 @@ class Vulkan
         $phpValue = $pCopyImageToImageInfo;
         $cValue = $phpValue->cdata;
         $pCopyImageToImageInfoC = $cValue;
-        $cValue = $this->ffi->vkCopyImageToImageEXT(
+        $cValue = $this->fnPtr('vkCopyImageToImageEXT')(
             $deviceC,
             $pCopyImageToImageInfoC,
         );
@@ -15576,7 +15576,7 @@ class Vulkan
         $phpValue = $pTransitions;
         $cValue = $phpValue->cdata;
         $pTransitionsC = $cValue;
-        $cValue = $this->ffi->vkTransitionImageLayoutEXT(
+        $cValue = $this->fnPtr('vkTransitionImageLayoutEXT')(
             $deviceC,
             $transitionCountC,
             $pTransitionsC,
@@ -15610,7 +15610,7 @@ class Vulkan
         $phpValue = $pConsumption;
         $cValue = $phpValue->cdata;
         $pConsumptionC = $cValue;
-        $cValue = $this->ffi->vkGetCommandPoolMemoryConsumption(
+        $cValue = $this->fnPtr('vkGetCommandPoolMemoryConsumption')(
             $deviceC,
             $commandPoolC,
             $commandBufferC,
@@ -15639,7 +15639,7 @@ class Vulkan
         $phpValue = $pCapabilities;
         $cValue = $phpValue->cdata;
         $pCapabilitiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceVideoCapabilitiesKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceVideoCapabilitiesKHR')(
             $physicalDeviceC,
             $pVideoProfileC,
             $pCapabilitiesC,
@@ -15674,7 +15674,7 @@ class Vulkan
         $phpValue = $pVideoFormatProperties;
         $cValue = $phpValue->cdata;
         $pVideoFormatPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceVideoFormatPropertiesKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceVideoFormatPropertiesKHR')(
             $physicalDeviceC,
             $pVideoFormatInfoC,
             $pVideoFormatPropertyCountC,
@@ -15705,7 +15705,7 @@ class Vulkan
         $phpValue = $pQualityLevelProperties;
         $cValue = $phpValue->cdata;
         $pQualityLevelPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR')(
             $physicalDeviceC,
             $pQualityLevelInfoC,
             $pQualityLevelPropertiesC,
@@ -15740,7 +15740,7 @@ class Vulkan
         $phpValue = $pVideoSession;
         $cValue = $phpValue->cdata;
         $pVideoSessionC = $cValue;
-        $cValue = $this->ffi->vkCreateVideoSessionKHR(
+        $cValue = $this->fnPtr('vkCreateVideoSessionKHR')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -15770,7 +15770,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyVideoSessionKHR(
+        $cValue = $this->fnPtr('vkDestroyVideoSessionKHR')(
             $deviceC,
             $videoSessionC,
             $pAllocatorC,
@@ -15803,7 +15803,7 @@ class Vulkan
         $phpValue = $pVideoSessionParameters;
         $cValue = $phpValue->cdata;
         $pVideoSessionParametersC = $cValue;
-        $cValue = $this->ffi->vkCreateVideoSessionParametersKHR(
+        $cValue = $this->fnPtr('vkCreateVideoSessionParametersKHR')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -15834,7 +15834,7 @@ class Vulkan
         $phpValue = $pUpdateInfo;
         $cValue = $phpValue->cdata;
         $pUpdateInfoC = $cValue;
-        $cValue = $this->ffi->vkUpdateVideoSessionParametersKHR(
+        $cValue = $this->fnPtr('vkUpdateVideoSessionParametersKHR')(
             $deviceC,
             $videoSessionParametersC,
             $pUpdateInfoC,
@@ -15874,7 +15874,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkGetEncodedVideoSessionParametersKHR(
+        $cValue = $this->fnPtr('vkGetEncodedVideoSessionParametersKHR')(
             $deviceC,
             $pVideoSessionParametersInfoC,
             $pFeedbackInfoC,
@@ -15905,7 +15905,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyVideoSessionParametersKHR(
+        $cValue = $this->fnPtr('vkDestroyVideoSessionParametersKHR')(
             $deviceC,
             $videoSessionParametersC,
             $pAllocatorC,
@@ -15938,7 +15938,7 @@ class Vulkan
         $phpValue = $pMemoryRequirements;
         $cValue = $phpValue->cdata;
         $pMemoryRequirementsC = $cValue;
-        $cValue = $this->ffi->vkGetVideoSessionMemoryRequirementsKHR(
+        $cValue = $this->fnPtr('vkGetVideoSessionMemoryRequirementsKHR')(
             $deviceC,
             $videoSessionC,
             $pMemoryRequirementsCountC,
@@ -15974,7 +15974,7 @@ class Vulkan
         $phpValue = $pBindSessionMemoryInfos;
         $cValue = $phpValue->cdata;
         $pBindSessionMemoryInfosC = $cValue;
-        $cValue = $this->ffi->vkBindVideoSessionMemoryKHR(
+        $cValue = $this->fnPtr('vkBindVideoSessionMemoryKHR')(
             $deviceC,
             $videoSessionC,
             $bindSessionMemoryInfoCountC,
@@ -15996,7 +15996,7 @@ class Vulkan
         $phpValue = $pDecodeInfo;
         $cValue = $phpValue->cdata;
         $pDecodeInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdDecodeVideoKHR(
+        $cValue = $this->fnPtr('vkCmdDecodeVideoKHR')(
             $commandBufferC,
             $pDecodeInfoC,
         );
@@ -16017,7 +16017,7 @@ class Vulkan
         $phpValue = $pBeginInfo;
         $cValue = $phpValue->cdata;
         $pBeginInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdBeginVideoCodingKHR(
+        $cValue = $this->fnPtr('vkCmdBeginVideoCodingKHR')(
             $commandBufferC,
             $pBeginInfoC,
         );
@@ -16038,7 +16038,7 @@ class Vulkan
         $phpValue = $pCodingControlInfo;
         $cValue = $phpValue->cdata;
         $pCodingControlInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdControlVideoCodingKHR(
+        $cValue = $this->fnPtr('vkCmdControlVideoCodingKHR')(
             $commandBufferC,
             $pCodingControlInfoC,
         );
@@ -16059,7 +16059,7 @@ class Vulkan
         $phpValue = $pEndCodingInfo;
         $cValue = $phpValue->cdata;
         $pEndCodingInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdEndVideoCodingKHR(
+        $cValue = $this->fnPtr('vkCmdEndVideoCodingKHR')(
             $commandBufferC,
             $pEndCodingInfoC,
         );
@@ -16077,7 +16077,7 @@ class Vulkan
         $phpValue = $pEncodeInfo;
         $cValue = $phpValue->cdata;
         $pEncodeInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdEncodeVideoKHR(
+        $cValue = $this->fnPtr('vkCmdEncodeVideoKHR')(
             $commandBufferC,
             $pEncodeInfoC,
         );
@@ -16103,7 +16103,7 @@ class Vulkan
         $phpValue = $pDecompressMemoryRegions;
         $cValue = $phpValue->cdata;
         $pDecompressMemoryRegionsC = $cValue;
-        $cValue = $this->ffi->vkCmdDecompressMemoryNV(
+        $cValue = $this->fnPtr('vkCmdDecompressMemoryNV')(
             $commandBufferC,
             $decompressRegionCountC,
             $pDecompressMemoryRegionsC,
@@ -16135,7 +16135,7 @@ class Vulkan
         $phpValue = $stride;
         $cValue = $phpValue;
         $strideC = $cValue;
-        $cValue = $this->ffi->vkCmdDecompressMemoryIndirectCountNV(
+        $cValue = $this->fnPtr('vkCmdDecompressMemoryIndirectCountNV')(
             $commandBufferC,
             $indirectCommandsAddressC,
             $indirectCommandsCountAddressC,
@@ -16169,7 +16169,7 @@ class Vulkan
         $phpValue = $pModule;
         $cValue = $phpValue->cdata;
         $pModuleC = $cValue;
-        $cValue = $this->ffi->vkCreateCuModuleNVX(
+        $cValue = $this->fnPtr('vkCreateCuModuleNVX')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -16205,7 +16205,7 @@ class Vulkan
         $phpValue = $pFunction;
         $cValue = $phpValue->cdata;
         $pFunctionC = $cValue;
-        $cValue = $this->ffi->vkCreateCuFunctionNVX(
+        $cValue = $this->fnPtr('vkCreateCuFunctionNVX')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -16235,7 +16235,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyCuModuleNVX(
+        $cValue = $this->fnPtr('vkDestroyCuModuleNVX')(
             $deviceC,
             $moduleC,
             $pAllocatorC,
@@ -16262,7 +16262,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyCuFunctionNVX(
+        $cValue = $this->fnPtr('vkDestroyCuFunctionNVX')(
             $deviceC,
             $functionC,
             $pAllocatorC,
@@ -16284,7 +16284,7 @@ class Vulkan
         $phpValue = $pLaunchInfo;
         $cValue = $phpValue->cdata;
         $pLaunchInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdCuLaunchKernelNVX(
+        $cValue = $this->fnPtr('vkCmdCuLaunchKernelNVX')(
             $commandBufferC,
             $pLaunchInfoC,
         );
@@ -16310,7 +16310,7 @@ class Vulkan
         $phpValue = $pLayoutSizeInBytes;
         $cValue = $phpValue->cdata;
         $pLayoutSizeInBytesC = $cValue;
-        $cValue = $this->ffi->vkGetDescriptorSetLayoutSizeEXT(
+        $cValue = $this->fnPtr('vkGetDescriptorSetLayoutSizeEXT')(
             $deviceC,
             $layoutC,
             $pLayoutSizeInBytesC,
@@ -16342,7 +16342,7 @@ class Vulkan
         $phpValue = $pOffset;
         $cValue = $phpValue->cdata;
         $pOffsetC = $cValue;
-        $cValue = $this->ffi->vkGetDescriptorSetLayoutBindingOffsetEXT(
+        $cValue = $this->fnPtr('vkGetDescriptorSetLayoutBindingOffsetEXT')(
             $deviceC,
             $layoutC,
             $bindingC,
@@ -16375,7 +16375,7 @@ class Vulkan
         $phpValue = $pDescriptor;
         $cValue = $phpValue->cdata;
         $pDescriptorC = $cValue;
-        $cValue = $this->ffi->vkGetDescriptorEXT(
+        $cValue = $this->fnPtr('vkGetDescriptorEXT')(
             $deviceC,
             $pDescriptorInfoC,
             $dataSizeC,
@@ -16403,7 +16403,7 @@ class Vulkan
         $phpValue = $pBindingInfos;
         $cValue = $phpValue->cdata;
         $pBindingInfosC = $cValue;
-        $cValue = $this->ffi->vkCmdBindDescriptorBuffersEXT(
+        $cValue = $this->fnPtr('vkCmdBindDescriptorBuffersEXT')(
             $commandBufferC,
             $bufferCountC,
             $pBindingInfosC,
@@ -16450,7 +16450,7 @@ class Vulkan
         $phpValue = $pOffsets;
         $cValue = $phpValue->cdata;
         $pOffsetsC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDescriptorBufferOffsetsEXT(
+        $cValue = $this->fnPtr('vkCmdSetDescriptorBufferOffsetsEXT')(
             $commandBufferC,
             $pipelineBindPointC,
             $layoutC,
@@ -16486,7 +16486,7 @@ class Vulkan
         $phpValue = $set;
         $cValue = $phpValue;
         $setC = $cValue;
-        $cValue = $this->ffi->vkCmdBindDescriptorBufferEmbeddedSamplersEXT(
+        $cValue = $this->fnPtr('vkCmdBindDescriptorBufferEmbeddedSamplersEXT')(
             $commandBufferC,
             $pipelineBindPointC,
             $layoutC,
@@ -16515,7 +16515,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkGetBufferOpaqueCaptureDescriptorDataEXT(
+        $cValue = $this->fnPtr('vkGetBufferOpaqueCaptureDescriptorDataEXT')(
             $deviceC,
             $pInfoC,
             $pDataC,
@@ -16545,7 +16545,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkGetImageOpaqueCaptureDescriptorDataEXT(
+        $cValue = $this->fnPtr('vkGetImageOpaqueCaptureDescriptorDataEXT')(
             $deviceC,
             $pInfoC,
             $pDataC,
@@ -16575,7 +16575,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkGetImageViewOpaqueCaptureDescriptorDataEXT(
+        $cValue = $this->fnPtr('vkGetImageViewOpaqueCaptureDescriptorDataEXT')(
             $deviceC,
             $pInfoC,
             $pDataC,
@@ -16605,7 +16605,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkGetSamplerOpaqueCaptureDescriptorDataEXT(
+        $cValue = $this->fnPtr('vkGetSamplerOpaqueCaptureDescriptorDataEXT')(
             $deviceC,
             $pInfoC,
             $pDataC,
@@ -16635,7 +16635,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT(
+        $cValue = $this->fnPtr('vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT')(
             $deviceC,
             $pInfoC,
             $pDataC,
@@ -16664,7 +16664,7 @@ class Vulkan
         $phpValue = $priority;
         $cValue = $phpValue;
         $priorityC = $cValue;
-        $cValue = $this->ffi->vkSetDeviceMemoryPriorityEXT(
+        $cValue = $this->fnPtr('vkSetDeviceMemoryPriorityEXT')(
             $deviceC,
             $memoryC,
             $priorityC,
@@ -16692,7 +16692,7 @@ class Vulkan
         $phpValue = $display;
         $cValue = $phpValue->cdata;
         $displayC = $cValue;
-        $cValue = $this->ffi->vkAcquireDrmDisplayEXT(
+        $cValue = $this->fnPtr('vkAcquireDrmDisplayEXT')(
             $physicalDeviceC,
             $drmFdC,
             $displayC,
@@ -16727,7 +16727,7 @@ class Vulkan
         $phpValue = $display;
         $cValue = $phpValue->cdata;
         $displayC = $cValue;
-        $cValue = $this->ffi->vkGetDrmDisplayEXT(
+        $cValue = $this->fnPtr('vkGetDrmDisplayEXT')(
             $physicalDeviceC,
             $drmFdC,
             $connectorIdC,
@@ -16763,7 +16763,7 @@ class Vulkan
         $phpValue = $timeout;
         $cValue = $phpValue;
         $timeoutC = $cValue;
-        $cValue = $this->ffi->vkWaitForPresentKHR(
+        $cValue = $this->fnPtr('vkWaitForPresentKHR')(
             $deviceC,
             $swapchainC,
             $presentIdC,
@@ -16799,7 +16799,7 @@ class Vulkan
         $phpValue = $pCollection;
         $cValue = $phpValue->cdata;
         $pCollectionC = $cValue;
-        $cValue = $this->ffi->vkCreateBufferCollectionFUCHSIA(
+        $cValue = $this->fnPtr('vkCreateBufferCollectionFUCHSIA')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -16830,7 +16830,7 @@ class Vulkan
         $phpValue = $pBufferConstraintsInfo;
         $cValue = $phpValue->cdata;
         $pBufferConstraintsInfoC = $cValue;
-        $cValue = $this->ffi->vkSetBufferCollectionBufferConstraintsFUCHSIA(
+        $cValue = $this->fnPtr('vkSetBufferCollectionBufferConstraintsFUCHSIA')(
             $deviceC,
             $collectionC,
             $pBufferConstraintsInfoC,
@@ -16860,7 +16860,7 @@ class Vulkan
         $phpValue = $pImageConstraintsInfo;
         $cValue = $phpValue->cdata;
         $pImageConstraintsInfoC = $cValue;
-        $cValue = $this->ffi->vkSetBufferCollectionImageConstraintsFUCHSIA(
+        $cValue = $this->fnPtr('vkSetBufferCollectionImageConstraintsFUCHSIA')(
             $deviceC,
             $collectionC,
             $pImageConstraintsInfoC,
@@ -16889,7 +16889,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyBufferCollectionFUCHSIA(
+        $cValue = $this->fnPtr('vkDestroyBufferCollectionFUCHSIA')(
             $deviceC,
             $collectionC,
             $pAllocatorC,
@@ -16917,7 +16917,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetBufferCollectionPropertiesFUCHSIA(
+        $cValue = $this->fnPtr('vkGetBufferCollectionPropertiesFUCHSIA')(
             $deviceC,
             $collectionC,
             $pPropertiesC,
@@ -16952,7 +16952,7 @@ class Vulkan
         $phpValue = $pModule;
         $cValue = $phpValue->cdata;
         $pModuleC = $cValue;
-        $cValue = $this->ffi->vkCreateCudaModuleNV(
+        $cValue = $this->fnPtr('vkCreateCudaModuleNV')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -16988,7 +16988,7 @@ class Vulkan
         $phpValue = $pCacheData;
         $cValue = $phpValue->cdata;
         $pCacheDataC = $cValue;
-        $cValue = $this->ffi->vkGetCudaModuleCacheNV(
+        $cValue = $this->fnPtr('vkGetCudaModuleCacheNV')(
             $deviceC,
             $moduleC,
             $pCacheSizeC,
@@ -17024,7 +17024,7 @@ class Vulkan
         $phpValue = $pFunction;
         $cValue = $phpValue->cdata;
         $pFunctionC = $cValue;
-        $cValue = $this->ffi->vkCreateCudaFunctionNV(
+        $cValue = $this->fnPtr('vkCreateCudaFunctionNV')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -17054,7 +17054,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyCudaModuleNV(
+        $cValue = $this->fnPtr('vkDestroyCudaModuleNV')(
             $deviceC,
             $moduleC,
             $pAllocatorC,
@@ -17081,7 +17081,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyCudaFunctionNV(
+        $cValue = $this->fnPtr('vkDestroyCudaFunctionNV')(
             $deviceC,
             $functionC,
             $pAllocatorC,
@@ -17103,7 +17103,7 @@ class Vulkan
         $phpValue = $pLaunchInfo;
         $cValue = $phpValue->cdata;
         $pLaunchInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdCudaLaunchKernelNV(
+        $cValue = $this->fnPtr('vkCmdCudaLaunchKernelNV')(
             $commandBufferC,
             $pLaunchInfoC,
         );
@@ -17124,7 +17124,7 @@ class Vulkan
         $phpValue = $pRenderingInfo;
         $cValue = $phpValue->cdata;
         $pRenderingInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdBeginRendering(
+        $cValue = $this->fnPtr('vkCmdBeginRendering')(
             $commandBufferC,
             $pRenderingInfoC,
         );
@@ -17138,7 +17138,7 @@ class Vulkan
         $phpValue = $commandBuffer;
         $cValue = $phpValue->cdata;
         $commandBufferC = $cValue;
-        $cValue = $this->ffi->vkCmdEndRendering(
+        $cValue = $this->fnPtr('vkCmdEndRendering')(
             $commandBufferC,
         );
     }
@@ -17163,7 +17163,7 @@ class Vulkan
         $phpValue = $pHostMapping;
         $cValue = $phpValue->cdata;
         $pHostMappingC = $cValue;
-        $cValue = $this->ffi->vkGetDescriptorSetLayoutHostMappingInfoVALVE(
+        $cValue = $this->fnPtr('vkGetDescriptorSetLayoutHostMappingInfoVALVE')(
             $deviceC,
             $pBindingReferenceC,
             $pHostMappingC,
@@ -17190,7 +17190,7 @@ class Vulkan
         $phpValue = $ppData;
         $cValue = $phpValue->cdata;
         $ppDataC = $cValue;
-        $cValue = $this->ffi->vkGetDescriptorSetHostMappingVALVE(
+        $cValue = $this->fnPtr('vkGetDescriptorSetHostMappingVALVE')(
             $deviceC,
             $descriptorSetC,
             $ppDataC,
@@ -17223,7 +17223,7 @@ class Vulkan
         $phpValue = $pMicromap;
         $cValue = $phpValue->cdata;
         $pMicromapC = $cValue;
-        $cValue = $this->ffi->vkCreateMicromapEXT(
+        $cValue = $this->fnPtr('vkCreateMicromapEXT')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -17253,7 +17253,7 @@ class Vulkan
         $phpValue = $pInfos;
         $cValue = $phpValue->cdata;
         $pInfosC = $cValue;
-        $cValue = $this->ffi->vkCmdBuildMicromapsEXT(
+        $cValue = $this->fnPtr('vkCmdBuildMicromapsEXT')(
             $commandBufferC,
             $infoCountC,
             $pInfosC,
@@ -17286,7 +17286,7 @@ class Vulkan
         $phpValue = $pInfos;
         $cValue = $phpValue->cdata;
         $pInfosC = $cValue;
-        $cValue = $this->ffi->vkBuildMicromapsEXT(
+        $cValue = $this->fnPtr('vkBuildMicromapsEXT')(
             $deviceC,
             $deferredOperationC,
             $infoCountC,
@@ -17316,7 +17316,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyMicromapEXT(
+        $cValue = $this->fnPtr('vkDestroyMicromapEXT')(
             $deviceC,
             $micromapC,
             $pAllocatorC,
@@ -17335,7 +17335,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyMicromapEXT(
+        $cValue = $this->fnPtr('vkCmdCopyMicromapEXT')(
             $commandBufferC,
             $pInfoC,
         );
@@ -17362,7 +17362,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkCopyMicromapEXT(
+        $cValue = $this->fnPtr('vkCopyMicromapEXT')(
             $deviceC,
             $deferredOperationC,
             $pInfoC,
@@ -17386,7 +17386,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyMicromapToMemoryEXT(
+        $cValue = $this->fnPtr('vkCmdCopyMicromapToMemoryEXT')(
             $commandBufferC,
             $pInfoC,
         );
@@ -17413,7 +17413,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkCopyMicromapToMemoryEXT(
+        $cValue = $this->fnPtr('vkCopyMicromapToMemoryEXT')(
             $deviceC,
             $deferredOperationC,
             $pInfoC,
@@ -17437,7 +17437,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdCopyMemoryToMicromapEXT(
+        $cValue = $this->fnPtr('vkCmdCopyMemoryToMicromapEXT')(
             $commandBufferC,
             $pInfoC,
         );
@@ -17464,7 +17464,7 @@ class Vulkan
         $phpValue = $pInfo;
         $cValue = $phpValue->cdata;
         $pInfoC = $cValue;
-        $cValue = $this->ffi->vkCopyMemoryToMicromapEXT(
+        $cValue = $this->fnPtr('vkCopyMemoryToMicromapEXT')(
             $deviceC,
             $deferredOperationC,
             $pInfoC,
@@ -17508,7 +17508,7 @@ class Vulkan
         $phpValue = $firstQuery;
         $cValue = $phpValue;
         $firstQueryC = $cValue;
-        $cValue = $this->ffi->vkCmdWriteMicromapsPropertiesEXT(
+        $cValue = $this->fnPtr('vkCmdWriteMicromapsPropertiesEXT')(
             $commandBufferC,
             $micromapCountC,
             $pMicromapsC,
@@ -17559,7 +17559,7 @@ class Vulkan
         $phpValue = $stride;
         $cValue = $phpValue;
         $strideC = $cValue;
-        $cValue = $this->ffi->vkWriteMicromapsPropertiesEXT(
+        $cValue = $this->fnPtr('vkWriteMicromapsPropertiesEXT')(
             $deviceC,
             $micromapCountC,
             $pMicromapsC,
@@ -17592,7 +17592,7 @@ class Vulkan
         $phpValue = $pCompatibility;
         $cValue = $phpValue->cdata;
         $pCompatibilityC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceMicromapCompatibilityEXT(
+        $cValue = $this->fnPtr('vkGetDeviceMicromapCompatibilityEXT')(
             $deviceC,
             $pVersionInfoC,
             $pCompatibilityC,
@@ -17624,7 +17624,7 @@ class Vulkan
         $phpValue = $pSizeInfo;
         $cValue = $phpValue->cdata;
         $pSizeInfoC = $cValue;
-        $cValue = $this->ffi->vkGetMicromapBuildSizesEXT(
+        $cValue = $this->fnPtr('vkGetMicromapBuildSizesEXT')(
             $deviceC,
             $buildTypeC,
             $pBuildInfoC,
@@ -17652,7 +17652,7 @@ class Vulkan
         $phpValue = $pIdentifier;
         $cValue = $phpValue->cdata;
         $pIdentifierC = $cValue;
-        $cValue = $this->ffi->vkGetShaderModuleIdentifierEXT(
+        $cValue = $this->fnPtr('vkGetShaderModuleIdentifierEXT')(
             $deviceC,
             $shaderModuleC,
             $pIdentifierC,
@@ -17679,7 +17679,7 @@ class Vulkan
         $phpValue = $pIdentifier;
         $cValue = $phpValue->cdata;
         $pIdentifierC = $cValue;
-        $cValue = $this->ffi->vkGetShaderModuleCreateInfoIdentifierEXT(
+        $cValue = $this->fnPtr('vkGetShaderModuleCreateInfoIdentifierEXT')(
             $deviceC,
             $pCreateInfoC,
             $pIdentifierC,
@@ -17711,7 +17711,7 @@ class Vulkan
         $phpValue = $pLayout;
         $cValue = $phpValue->cdata;
         $pLayoutC = $cValue;
-        $cValue = $this->ffi->vkGetImageSubresourceLayout2KHR(
+        $cValue = $this->fnPtr('vkGetImageSubresourceLayout2KHR')(
             $deviceC,
             $imageC,
             $pSubresourceC,
@@ -17740,7 +17740,7 @@ class Vulkan
         $phpValue = $pPipelineProperties;
         $cValue = $phpValue->cdata;
         $pPipelinePropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPipelinePropertiesEXT(
+        $cValue = $this->fnPtr('vkGetPipelinePropertiesEXT')(
             $deviceC,
             $pPipelineInfoC,
             $pPipelinePropertiesC,
@@ -17761,7 +17761,7 @@ class Vulkan
         $phpValue = $pMetalObjectsInfo;
         $cValue = $phpValue->cdata;
         $pMetalObjectsInfoC = $cValue;
-        $cValue = $this->ffi->vkExportMetalObjectsEXT(
+        $cValue = $this->fnPtr('vkExportMetalObjectsEXT')(
             $deviceC,
             $pMetalObjectsInfoC,
         );
@@ -17793,7 +17793,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetFramebufferTilePropertiesQCOM(
+        $cValue = $this->fnPtr('vkGetFramebufferTilePropertiesQCOM')(
             $deviceC,
             $framebufferC,
             $pPropertiesCountC,
@@ -17824,7 +17824,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetDynamicRenderingTilePropertiesQCOM(
+        $cValue = $this->fnPtr('vkGetDynamicRenderingTilePropertiesQCOM')(
             $deviceC,
             $pRenderingInfoC,
             $pPropertiesC,
@@ -17859,7 +17859,7 @@ class Vulkan
         $phpValue = $pImageFormatProperties;
         $cValue = $phpValue->cdata;
         $pImageFormatPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceOpticalFlowImageFormatsNV(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceOpticalFlowImageFormatsNV')(
             $physicalDeviceC,
             $pOpticalFlowImageFormatInfoC,
             $pFormatCountC,
@@ -17895,7 +17895,7 @@ class Vulkan
         $phpValue = $pSession;
         $cValue = $phpValue->cdata;
         $pSessionC = $cValue;
-        $cValue = $this->ffi->vkCreateOpticalFlowSessionNV(
+        $cValue = $this->fnPtr('vkCreateOpticalFlowSessionNV')(
             $deviceC,
             $pCreateInfoC,
             $pAllocatorC,
@@ -17925,7 +17925,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyOpticalFlowSessionNV(
+        $cValue = $this->fnPtr('vkDestroyOpticalFlowSessionNV')(
             $deviceC,
             $sessionC,
             $pAllocatorC,
@@ -17963,7 +17963,7 @@ class Vulkan
         $phpValue = $layout;
         $cValue = $phpValue->value;
         $layoutC = $cValue;
-        $cValue = $this->ffi->vkBindOpticalFlowSessionImageNV(
+        $cValue = $this->fnPtr('vkBindOpticalFlowSessionImageNV')(
             $deviceC,
             $sessionC,
             $bindingPointC,
@@ -17994,7 +17994,7 @@ class Vulkan
         $phpValue = $pExecuteInfo;
         $cValue = $phpValue->cdata;
         $pExecuteInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdOpticalFlowExecuteNV(
+        $cValue = $this->fnPtr('vkCmdOpticalFlowExecuteNV')(
             $commandBufferC,
             $sessionC,
             $pExecuteInfoC,
@@ -18022,7 +18022,7 @@ class Vulkan
         $phpValue = $pFaultInfo;
         $cValue = $phpValue->cdata;
         $pFaultInfoC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceFaultInfoEXT(
+        $cValue = $this->fnPtr('vkGetDeviceFaultInfoEXT')(
             $deviceC,
             $pFaultCountsC,
             $pFaultInfoC,
@@ -18046,7 +18046,7 @@ class Vulkan
         $phpValue = $pDepthBiasInfo;
         $cValue = $phpValue->cdata;
         $pDepthBiasInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDepthBias2EXT(
+        $cValue = $this->fnPtr('vkCmdSetDepthBias2EXT')(
             $commandBufferC,
             $pDepthBiasInfoC,
         );
@@ -18068,7 +18068,7 @@ class Vulkan
         $phpValue = $pReleaseInfo;
         $cValue = $phpValue->cdata;
         $pReleaseInfoC = $cValue;
-        $cValue = $this->ffi->vkReleaseSwapchainImagesEXT(
+        $cValue = $this->fnPtr('vkReleaseSwapchainImagesEXT')(
             $deviceC,
             $pReleaseInfoC,
         );
@@ -18096,7 +18096,7 @@ class Vulkan
         $phpValue = $pLayout;
         $cValue = $phpValue->cdata;
         $pLayoutC = $cValue;
-        $cValue = $this->ffi->vkGetDeviceImageSubresourceLayoutKHR(
+        $cValue = $this->fnPtr('vkGetDeviceImageSubresourceLayoutKHR')(
             $deviceC,
             $pInfoC,
             $pLayoutC,
@@ -18124,7 +18124,7 @@ class Vulkan
         $phpValue = $ppData;
         $cValue = $phpValue->cdata;
         $ppDataC = $cValue;
-        $cValue = $this->ffi->vkMapMemory2KHR(
+        $cValue = $this->fnPtr('vkMapMemory2KHR')(
             $deviceC,
             $pMemoryMapInfoC,
             $ppDataC,
@@ -18146,7 +18146,7 @@ class Vulkan
         $phpValue = $pMemoryUnmapInfo;
         $cValue = $phpValue->cdata;
         $pMemoryUnmapInfoC = $cValue;
-        $cValue = $this->ffi->vkUnmapMemory2KHR(
+        $cValue = $this->fnPtr('vkUnmapMemory2KHR')(
             $deviceC,
             $pMemoryUnmapInfoC,
         );
@@ -18185,7 +18185,7 @@ class Vulkan
         $phpValue = $pShaders;
         $cValue = $phpValue->cdata;
         $pShadersC = $cValue;
-        $cValue = $this->ffi->vkCreateShadersEXT(
+        $cValue = $this->fnPtr('vkCreateShadersEXT')(
             $deviceC,
             $createInfoCountC,
             $pCreateInfosC,
@@ -18216,7 +18216,7 @@ class Vulkan
         $phpValue = $pAllocator;
         $cValue = $phpValue->cdata;
         $pAllocatorC = $cValue;
-        $cValue = $this->ffi->vkDestroyShaderEXT(
+        $cValue = $this->fnPtr('vkDestroyShaderEXT')(
             $deviceC,
             $shaderC,
             $pAllocatorC,
@@ -18249,7 +18249,7 @@ class Vulkan
         $phpValue = $pData;
         $cValue = $phpValue->cdata;
         $pDataC = $cValue;
-        $cValue = $this->ffi->vkGetShaderBinaryDataEXT(
+        $cValue = $this->fnPtr('vkGetShaderBinaryDataEXT')(
             $deviceC,
             $shaderC,
             $pDataSizeC,
@@ -18284,7 +18284,7 @@ class Vulkan
         $phpValue = $pShaders;
         $cValue = $phpValue->cdata;
         $pShadersC = $cValue;
-        $cValue = $this->ffi->vkCmdBindShadersEXT(
+        $cValue = $this->fnPtr('vkCmdBindShadersEXT')(
             $commandBufferC,
             $stageCountC,
             $pStagesC,
@@ -18313,7 +18313,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetScreenBufferPropertiesQNX(
+        $cValue = $this->fnPtr('vkGetScreenBufferPropertiesQNX')(
             $deviceC,
             $bufferC,
             $pPropertiesC,
@@ -18343,7 +18343,7 @@ class Vulkan
         $phpValue = $pProperties;
         $cValue = $phpValue->cdata;
         $pPropertiesC = $cValue;
-        $cValue = $this->ffi->vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(
+        $cValue = $this->fnPtr('vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR')(
             $physicalDeviceC,
             $pPropertyCountC,
             $pPropertiesC,
@@ -18373,7 +18373,7 @@ class Vulkan
         $phpValue = $pSizeInfo;
         $cValue = $phpValue->cdata;
         $pSizeInfoC = $cValue;
-        $cValue = $this->ffi->vkGetExecutionGraphPipelineScratchSizeAMDX(
+        $cValue = $this->fnPtr('vkGetExecutionGraphPipelineScratchSizeAMDX')(
             $deviceC,
             $executionGraphC,
             $pSizeInfoC,
@@ -18408,7 +18408,7 @@ class Vulkan
         $phpValue = $pNodeIndex;
         $cValue = $phpValue->cdata;
         $pNodeIndexC = $cValue;
-        $cValue = $this->ffi->vkGetExecutionGraphPipelineNodeIndexAMDX(
+        $cValue = $this->fnPtr('vkGetExecutionGraphPipelineNodeIndexAMDX')(
             $deviceC,
             $executionGraphC,
             $pNodeInfoC,
@@ -18454,7 +18454,7 @@ class Vulkan
         $phpValue = $pPipelines;
         $cValue = $phpValue->cdata;
         $pPipelinesC = $cValue;
-        $cValue = $this->ffi->vkCreateExecutionGraphPipelinesAMDX(
+        $cValue = $this->fnPtr('vkCreateExecutionGraphPipelinesAMDX')(
             $deviceC,
             $pipelineCacheC,
             $createInfoCountC,
@@ -18478,7 +18478,7 @@ class Vulkan
         $phpValue = $scratch;
         $cValue = $phpValue;
         $scratchC = $cValue;
-        $cValue = $this->ffi->vkCmdInitializeGraphScratchMemoryAMDX(
+        $cValue = $this->fnPtr('vkCmdInitializeGraphScratchMemoryAMDX')(
             $commandBufferC,
             $scratchC,
         );
@@ -18504,7 +18504,7 @@ class Vulkan
         $phpValue = $pCountInfo;
         $cValue = $phpValue->cdata;
         $pCountInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdDispatchGraphAMDX(
+        $cValue = $this->fnPtr('vkCmdDispatchGraphAMDX')(
             $commandBufferC,
             $scratchC,
             $pCountInfoC,
@@ -18531,7 +18531,7 @@ class Vulkan
         $phpValue = $pCountInfo;
         $cValue = $phpValue->cdata;
         $pCountInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdDispatchGraphIndirectAMDX(
+        $cValue = $this->fnPtr('vkCmdDispatchGraphIndirectAMDX')(
             $commandBufferC,
             $scratchC,
             $pCountInfoC,
@@ -18558,7 +18558,7 @@ class Vulkan
         $phpValue = $countInfo;
         $cValue = $phpValue;
         $countInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdDispatchGraphIndirectCountAMDX(
+        $cValue = $this->fnPtr('vkCmdDispatchGraphIndirectCountAMDX')(
             $commandBufferC,
             $scratchC,
             $countInfoC,
@@ -18580,7 +18580,7 @@ class Vulkan
         $phpValue = $pBindDescriptorSetsInfo;
         $cValue = $phpValue->cdata;
         $pBindDescriptorSetsInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdBindDescriptorSets2KHR(
+        $cValue = $this->fnPtr('vkCmdBindDescriptorSets2KHR')(
             $commandBufferC,
             $pBindDescriptorSetsInfoC,
         );
@@ -18601,7 +18601,7 @@ class Vulkan
         $phpValue = $pPushConstantsInfo;
         $cValue = $phpValue->cdata;
         $pPushConstantsInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdPushConstants2KHR(
+        $cValue = $this->fnPtr('vkCmdPushConstants2KHR')(
             $commandBufferC,
             $pPushConstantsInfoC,
         );
@@ -18622,7 +18622,7 @@ class Vulkan
         $phpValue = $pPushDescriptorSetInfo;
         $cValue = $phpValue->cdata;
         $pPushDescriptorSetInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdPushDescriptorSet2KHR(
+        $cValue = $this->fnPtr('vkCmdPushDescriptorSet2KHR')(
             $commandBufferC,
             $pPushDescriptorSetInfoC,
         );
@@ -18643,7 +18643,7 @@ class Vulkan
         $phpValue = $pPushDescriptorSetWithTemplateInfo;
         $cValue = $phpValue->cdata;
         $pPushDescriptorSetWithTemplateInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdPushDescriptorSetWithTemplate2KHR(
+        $cValue = $this->fnPtr('vkCmdPushDescriptorSetWithTemplate2KHR')(
             $commandBufferC,
             $pPushDescriptorSetWithTemplateInfoC,
         );
@@ -18664,7 +18664,7 @@ class Vulkan
         $phpValue = $pSetDescriptorBufferOffsetsInfo;
         $cValue = $phpValue->cdata;
         $pSetDescriptorBufferOffsetsInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdSetDescriptorBufferOffsets2EXT(
+        $cValue = $this->fnPtr('vkCmdSetDescriptorBufferOffsets2EXT')(
             $commandBufferC,
             $pSetDescriptorBufferOffsetsInfoC,
         );
@@ -18685,7 +18685,7 @@ class Vulkan
         $phpValue = $pBindDescriptorBufferEmbeddedSamplersInfo;
         $cValue = $phpValue->cdata;
         $pBindDescriptorBufferEmbeddedSamplersInfoC = $cValue;
-        $cValue = $this->ffi->vkCmdBindDescriptorBufferEmbeddedSamplers2EXT(
+        $cValue = $this->fnPtr('vkCmdBindDescriptorBufferEmbeddedSamplers2EXT')(
             $commandBufferC,
             $pBindDescriptorBufferEmbeddedSamplersInfoC,
         );
@@ -18712,7 +18712,7 @@ class Vulkan
         $phpValue = $pSleepModeInfo;
         $cValue = $phpValue->cdata;
         $pSleepModeInfoC = $cValue;
-        $cValue = $this->ffi->vkSetLatencySleepModeNV(
+        $cValue = $this->fnPtr('vkSetLatencySleepModeNV')(
             $deviceC,
             $swapchainC,
             $pSleepModeInfoC,
@@ -18742,7 +18742,7 @@ class Vulkan
         $phpValue = $pSleepInfo;
         $cValue = $phpValue->cdata;
         $pSleepInfoC = $cValue;
-        $cValue = $this->ffi->vkLatencySleepNV(
+        $cValue = $this->fnPtr('vkLatencySleepNV')(
             $deviceC,
             $swapchainC,
             $pSleepInfoC,
@@ -18771,7 +18771,7 @@ class Vulkan
         $phpValue = $pLatencyMarkerInfo;
         $cValue = $phpValue->cdata;
         $pLatencyMarkerInfoC = $cValue;
-        $cValue = $this->ffi->vkSetLatencyMarkerNV(
+        $cValue = $this->fnPtr('vkSetLatencyMarkerNV')(
             $deviceC,
             $swapchainC,
             $pLatencyMarkerInfoC,
@@ -18798,7 +18798,7 @@ class Vulkan
         $phpValue = $pLatencyMarkerInfo;
         $cValue = $phpValue->cdata;
         $pLatencyMarkerInfoC = $cValue;
-        $cValue = $this->ffi->vkGetLatencyTimingsNV(
+        $cValue = $this->fnPtr('vkGetLatencyTimingsNV')(
             $deviceC,
             $swapchainC,
             $pLatencyMarkerInfoC,
@@ -18817,7 +18817,7 @@ class Vulkan
         $phpValue = $pQueueTypeInfo;
         $cValue = $phpValue->cdata;
         $pQueueTypeInfoC = $cValue;
-        $cValue = $this->ffi->vkQueueNotifyOutOfBandNV(
+        $cValue = $this->fnPtr('vkQueueNotifyOutOfBandNV')(
             $queueC,
             $pQueueTypeInfoC,
         );

@@ -16,82 +16,37 @@ use iggyvolz\vulkan\struct\VkQueueFamilyProperties;
 use iggyvolz\vulkan\struct\VkSurfaceKHR;
 use iggyvolz\vulkan\util\ObjectPointer;
 use iggyvolz\vulkan\util\OpaquePointer;
-use iggyvolz\vulkan\util\VulkanVersion;
+use iggyvolz\vulkan\util\SimpleInstanceInitializer;
+use iggyvolz\vulkan\util\Version;
 use iggyvolz\vulkan\Vulkan;
 use iggyvolz\x11\gen\X11;
 use iggyvolz\x11\gen\XEventPtr;
 
 require_once __DIR__ . "/vendor/autoload.php";
-$vulkan = Vulkan::init();
-
-$version = $vulkan->getVersion();
-$extensions = $vulkan->getExtensions();
-
-function printEntry(?string $name, array $properties): string
-{
-    return (is_null($name) ? "" : "$name (") . implode(", ",
-        array_map(fn(string $value, string $key) => "$key: $value", $properties, array_keys($properties))
-        ) . (is_null($name) ? "; " : (")" . PHP_EOL));
-}
-
-echo "Vulkan $version with " . count($extensions) . " extensions:" . PHP_EOL;
-foreach ($extensions as $extension) {
-    echo "- " . printEntry($extension->getExtensionName(), [
-        "version" => $extension->getSpecVersion(),
-        "url" => "https://registry.khronos.org/vulkan/specs/$version->major.$version->minor-extensions/man/html/".$extension->getExtensionName() . ".html"
-    ]);
-}
-
-echo PHP_EOL;
-
-$layers = ["VK_LAYER_KHRONOS_validation"];
-$layersCDataArr = array_map(function (string $s) use($vulkan): \FFI\CData {
-    $cdata = $vulkan->ffi->new("char[" . strlen($s) + 1 . "]");
-    FFI::memcpy($cdata, "$s\0", strlen($s) + 1);
-    return $cdata;
-}, $layers);
-$layersCData = $vulkan->ffi->new("char*[" . count($layersCDataArr) . "]")[0];
-for($i = 0; $i < count($layersCDataArr); $i++) {
-    $layersCData[$i] = FFI::addr($layersCDataArr[$i][0]);
-}
-$createInfo = VkInstanceCreateInfo::create($vulkan,
-    sType: VkStructureType::InstanceCreateInfo,
-    pApplicationInfo: ObjectPointer::of(VkApplicationInfo::create($vulkan,
-        sType: VkStructureType::ApplicationInfo
-    )),
-    enabledLayerCount: 1,
-    ppEnabledLayerNames: new OpaquePointer(FFI::addr($layersCData[0]), null, null),
-);
-$instanceLayers = $vulkan->enum("vkEnumerateInstanceLayerProperties", VkLayerProperties::class);
-echo count($instanceLayers) . " available layers:" . PHP_EOL;
-foreach($instanceLayers as $instanceLayer) {
-    echo "- " . printEntry($instanceLayer->getLayerName(), [
-        "description" => $instanceLayer->getDescription(),
-    ]);
-}
-
-/** @var VkInstance $instance */
-$instance = $vulkan->get("vkCreateInstance", VkInstance::class, ObjectPointer::of($createInfo), ObjectPointer::null());
-
-$physicalDevices = $vulkan->enum("vkEnumeratePhysicalDevices", VkPhysicalDevice::class, $instance);
+$vulkan = new Vulkan(new SimpleInstanceInitializer(
+    requiredExtensions: ["VK_KHR_surface", "VK_KHR_display", "VK_KHR_xlib_surface"],
+    requiredLayers: ["VK_LAYER_KHRONOS_validation"],
+    printDebugInfo: true
+));
+$physicalDevices = $vulkan->enum("vkEnumeratePhysicalDevices", VkPhysicalDevice::class, $vulkan->instance);
 echo count($physicalDevices) . " devices connected:" . PHP_EOL;
 foreach ($physicalDevices as $physicalDevice) {
     /** @var VkPhysicalDeviceProperties $properties */
     $properties = $vulkan->get("vkGetPhysicalDeviceProperties", VkPhysicalDeviceProperties::class, $physicalDevice);
 
-    echo "- " . printEntry($properties->getDeviceName(), [
-        "type" => $properties->getDeviceType()->name,
-        "device ID" => $properties->getDeviceID(),
-        "api version" => VulkanVersion::from($properties->getApiVersion()),
-        "driver version" => VulkanVersion::from($properties->getDriverVersion()),
-        "vendor id" => $properties->getVendorID(),
-        "layers" => implode(", ", array_map(fn(VkLayerProperties $p) => $p->getLayerName(), $vulkan->enum("vkEnumerateDeviceLayerProperties", VkLayerProperties::class, $physicalDevice))),
-        "queue families" => implode("", array_map(fn(VkQueueFamilyProperties $p) => printEntry(null, [
-            "minImageTransferGranularity" => "(" . $p->getMinImageTransferGranularity()->getWidth() . "," . $p->getMinImageTransferGranularity()->getDepth() . "," . $p->getMinImageTransferGranularity()->getHeight() . ")",
-            "queueCount" => $p->getQueueCount(),
-            "flags" => implode("|",array_map(fn(VkQueueFlagBits $b) => $b->name, $p->getQueueFlags()))
-        ]), $vulkan->enum("vkGetPhysicalDeviceQueueFamilyProperties", VkQueueFamilyProperties::class, $physicalDevice))),
-    ]);
+//    echo "- " . printEntry($properties->getDeviceName(), [
+//        "type" => $properties->getDeviceType()->name,
+//        "device ID" => $properties->getDeviceID(),
+//        "api version" => Version::from($properties->getApiVersion()),
+//        "driver version" => Version::from($properties->getDriverVersion()),
+//        "vendor id" => $properties->getVendorID(),
+//        "layers" => implode(", ", array_map(fn(VkLayerProperties $p) => $p->getLayerName(), $vulkan->enum("vkEnumerateDeviceLayerProperties", VkLayerProperties::class, $physicalDevice))),
+//        "queue families" => implode("", array_map(fn(VkQueueFamilyProperties $p) => printEntry(null, [
+//            "minImageTransferGranularity" => "(" . $p->getMinImageTransferGranularity()->getWidth() . "," . $p->getMinImageTransferGranularity()->getDepth() . "," . $p->getMinImageTransferGranularity()->getHeight() . ")",
+//            "queueCount" => $p->getQueueCount(),
+//            "flags" => implode("|",array_map(fn(VkQueueFlagBits $b) => $b->name, $p->getQueueFlags()))
+//        ]), $vulkan->enum("vkGetPhysicalDeviceQueueFamilyProperties", VkQueueFamilyProperties::class, $physicalDevice))),
+//    ]);
 }
 // go with physical device 0 out of laziness
 $physicalDevice = $physicalDevices[0];
@@ -139,7 +94,7 @@ $surfaceCreateInfo = \iggyvolz\vulkan\struct\VkXlibSurfaceCreateInfoKHR::create(
     window: $window,
 );
 
-$surface = $vulkan->get("vkCreateXlibSurfaceKHR", VkSurfaceKHR::class, $instance, ObjectPointer::of($surfaceCreateInfo), ObjectPointer::null());
+$surface = $vulkan->get("vkCreateXlibSurfaceKHR", VkSurfaceKHR::class, $vulkan->instance, ObjectPointer::of($surfaceCreateInfo), ObjectPointer::null());
 
 
 // X event loop

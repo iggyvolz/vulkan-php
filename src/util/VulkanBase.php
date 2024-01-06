@@ -6,11 +6,36 @@ use FFI;
 use iggyvolz\vulkan\CDefs;
 use iggyvolz\vulkan\enum\VkResult;
 use iggyvolz\vulkan\struct\VkExtensionProperties;
+use iggyvolz\vulkan\struct\VkInstance;
+use iggyvolz\vulkan\struct\VkLayerProperties;
 
 trait VulkanBase
 {
     /** @internal  */
     public readonly FFI $ffi;
+    public VkInstance $instance;
+    private array $functionPointers = [];
+    private function fnPtr(string $function): FFI\CData
+    {
+        $fnPtr = $this->tryFnPtr($function);
+        if(is_null($fnPtr)) {
+            throw new \RuntimeException("Could not find function $function");
+        }
+        return $fnPtr;
+    }
+    private function tryFnPtr(string $function): ?FFI\CData
+    {
+        return $this->functionPointers[$function] ??= $this->getFnPtr($function);
+    }
+    private function getFnPtr(string $function): ?FFI\CData
+    {
+        $isGlobal = in_array($function, ["vkEnumerateInstanceVersion", "vkEnumerateInstanceExtensionProperties", "vkEnumerateInstanceLayerProperties", "vkCreateInstance"]); // TODO
+        if(!isset($this->instance) && !$isGlobal) {
+            throw new \LogicException("Attempt to call non-global $function before instance initialized");
+        }
+        $fnPtr = $this->ffi->vkGetInstanceProcAddr($isGlobal ? null : $this->instance->cdata, $function);
+        return is_null($fnPtr) ? null : $this->ffi->cast("PFN_PHP_$function", $fnPtr);
+    }
     private static function libName(): string
     {
         return match(PHP_OS_FAMILY) {
@@ -19,38 +44,45 @@ trait VulkanBase
             default => throw new \RuntimeException("Unsupported platform"),
         };
     }
-    private final function __construct(
-        private array $extensions,
+    public final function __construct(
+        InstanceInitializer $initializer
     ){
-        $cdefs = new CDefs();
-        foreach($this->extensions as $extension) $cdefs->addExtension($extension);
-        // debug
-//        file_put_contents(__DIR__ . "/cdefs.h", $cdefs);
-        $this->ffi = FFI::cdef($cdefs, self::libName());
-    }
-    public static function init(): self
-    {
-        // TODO extensions causing headaches
-//        $extensions = array_map(fn(VkExtensionProperties $extensionProperties) =>  $extensionProperties->getExtensionName(),self::getInitialExtensions());
-        $extensions = [];
-        $version = self::getInitialVersion();
-        for($i = 0; $i <= $version->minor; $i++) {
-            $extensions[] = ("VK_VERSION_".$version->major."_$i");
-        }
-        return new self($extensions);
-    }
+        $this->ffi = FFI::cdef(file_get_contents(__DIR__ . "/../vk/vulkan.h"), self::libName());
 
-    public function getVersion(): VulkanVersion
-    {
-        if(in_array("VK_VERSION_1_1", $this->extensions)) {
-            return VulkanVersion::from($this->getInt("vkEnumerateInstanceVersion", "uint32_t"));
+        if($this->tryFnPtr("vkEnumerateInstanceVersion")) {
+            $this->systemVersion = Version::from($this->getInt("vkEnumerateInstanceVersion", "uint32_t"));
         } else {
-            return new VulkanVersion(1, 0);
+            // Welp we can't look up the version, and that was added in 1.1
+            $this->systemVersion =  new Version(1, 0);
         }
+        $this->instance = $initializer->getCreateInfo(
+            systemVersion: $this->systemVersion,
+            availableExtensions: $this->enum("vkEnumerateInstanceExtensionProperties", VkExtensionProperties::class, null),
+            availableLayers: $this->enum("vkEnumerateInstanceLayerProperties", VkLayerProperties::class)
+        )($this);
+        // todo fill instance()
+    }
+    public readonly Version $systemVersion;
+    /** @deprecated  */
+    public static function init(InstanceInitializer $initializer): self
+    {
+        return new self($initializer);
+    }
+
+    /** @deprecated  */
+    public function getVersion(): Version
+    {
+        return $this->systemVersion;
+//        if($this->tryFnPtr("vkEnumerateInstanceVersion")) {
+//            return Version::from($this->getInt("vkEnumerateInstanceVersion", "uint32_t"));
+//        } else {
+//            // Welp we can't look up the version, and that was added in 1.1
+//            return new Version(1, 0);
+//        }
 
     }
 
-    private static function getInitialVersion(): VulkanVersion
+    private static function getInitialVersion(): Version
     {
         try {
             return (new self(["VK_VERSION_1_0", "VK_VERSION_1_1"]))->getVersion();
@@ -61,28 +93,12 @@ trait VulkanBase
     }
 
     /**
-     * @return list<VkExtensionProperties>
-     */
-    private static function getInitialExtensions(): array
-    {
-        return (new self(["VK_VERSION_1_0"]))->getExtensions();
-    }
-
-    /**
+     * @deprecated
      * @return list<VkExtensionProperties>
      */
     public function getExtensions(): array
     {
-        // Get the list of extensions
-        $count = IntPointer::new("uint32_t", $this);
-
-        $this->vkEnumerateInstanceExtensionProperties(null, $count, ObjectPointer::null())->assert(VkResult::Incomplete);
-
-        $extensionList = ObjectPointer::new($this, VkExtensionProperties::class, $count->get());
-
-        $this->vkEnumerateInstanceExtensionProperties(null, $count, $extensionList)->assert();
-
-        return $extensionList->getLen($count->get());
+        return $this->enum("vkEnumerateInstanceExtensionProperties", VkExtensionProperties::class, null);
     }
 
     /**
