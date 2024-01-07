@@ -20,6 +20,7 @@
     "ramsey/uuid": "^4.7"
   },
   "require-dev": {
-    "iggyvolz/x11": "dev-main"
+    "iggyvolz/x11": "dev-main",
+    "iggyvolz/windowsphp": "dev-main"
   }
 }

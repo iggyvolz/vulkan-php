@@ -16,4 +16,10 @@ class OpaquePointer extends Pointer
     {
         throw new \LogicException("Can't dereference an opaque pointer");
     }
+
+    public static function null(): self
+    {
+        return new self(null);
+    }
+
 }

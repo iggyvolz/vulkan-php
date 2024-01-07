@@ -3,7 +3,7 @@
 namespace iggyvolz\vulkan\util;
 
 use FFI;
-use iggyvolz\vulkan\CDefs;
+use FFI\CData;
 use iggyvolz\vulkan\enum\VkResult;
 use iggyvolz\vulkan\struct\VkExtensionProperties;
 use iggyvolz\vulkan\struct\VkInstance;
@@ -11,11 +11,10 @@ use iggyvolz\vulkan\struct\VkLayerProperties;
 
 trait VulkanBase
 {
-    /** @internal  */
     public readonly FFI $ffi;
     public VkInstance $instance;
     private array $functionPointers = [];
-    private function fnPtr(string $function): FFI\CData
+    private function fnPtr(string $function): CData
     {
         $fnPtr = $this->tryFnPtr($function);
         if(is_null($fnPtr)) {
@@ -23,11 +22,11 @@ trait VulkanBase
         }
         return $fnPtr;
     }
-    private function tryFnPtr(string $function): ?FFI\CData
+    private function tryFnPtr(string $function): ?CData
     {
         return $this->functionPointers[$function] ??= $this->getFnPtr($function);
     }
-    private function getFnPtr(string $function): ?FFI\CData
+    private function getFnPtr(string $function): ?CData
     {
         $isGlobal = in_array($function, ["vkEnumerateInstanceVersion", "vkEnumerateInstanceExtensionProperties", "vkEnumerateInstanceLayerProperties", "vkCreateInstance"]); // TODO
         if(!isset($this->instance) && !$isGlobal) {
@@ -60,46 +59,8 @@ trait VulkanBase
             availableExtensions: $this->enum("vkEnumerateInstanceExtensionProperties", VkExtensionProperties::class, null),
             availableLayers: $this->enum("vkEnumerateInstanceLayerProperties", VkLayerProperties::class)
         )($this);
-        // todo fill instance()
     }
     public readonly Version $systemVersion;
-    /** @deprecated  */
-    public static function init(InstanceInitializer $initializer): self
-    {
-        return new self($initializer);
-    }
-
-    /** @deprecated  */
-    public function getVersion(): Version
-    {
-        return $this->systemVersion;
-//        if($this->tryFnPtr("vkEnumerateInstanceVersion")) {
-//            return Version::from($this->getInt("vkEnumerateInstanceVersion", "uint32_t"));
-//        } else {
-//            // Welp we can't look up the version, and that was added in 1.1
-//            return new Version(1, 0);
-//        }
-
-    }
-
-    private static function getInitialVersion(): Version
-    {
-        try {
-            return (new self(["VK_VERSION_1_0", "VK_VERSION_1_1"]))->getVersion();
-        } catch(FFI\Exception) {
-            // Try again, only loading 1.0
-            return (new self(["VK_VERSION_1_0"]))->getVersion();
-        }
-    }
-
-    /**
-     * @deprecated
-     * @return list<VkExtensionProperties>
-     */
-    public function getExtensions(): array
-    {
-        return $this->enum("vkEnumerateInstanceExtensionProperties", VkExtensionProperties::class, null);
-    }
 
     /**
      * Utility method for taking an enum method and running the "call with null and a pointer to length, then a buffer with count length"
@@ -138,5 +99,21 @@ trait VulkanBase
         $ptr = IntPointer::new($type, $this);
         $this->$method(...[...$args, $ptr])?->assert();
         return $ptr->get();
+    }
+
+    public function stringsToDoubleCharPointer(string ...$data): Pointer
+    {
+        if(empty($data)) return OpaquePointer::null();
+        $cdataArr = array_map(function (string $s): CData {
+            // todo don't leak memory like a motherfucker (my brain hurts from the pointer math, I'll clean this up later)
+            $cdata = $this->ffi->new("char[" . strlen($s) + 1 . "]", owned: false);
+            FFI::memcpy($cdata, "$s\0", strlen($s) + 1);
+            return $cdata;
+        }, $data);
+        $cdata = $this->ffi->new("char*[" . count($data) . "]", owned: false);
+        for($i = 0; $i < count($data); $i++) {
+            $cdata[$i] = $cdataArr[$i];
+        }
+        return new OpaquePointer(FFI::addr($cdata[0]));
     }
 }

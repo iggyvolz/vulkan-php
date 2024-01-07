@@ -33,7 +33,11 @@ final class ObjectPointer extends Pointer
     public function get(int $i=0): object
     {
         $type = $this->innerType;
-        return new $type(parent::get($i), $this->ffi);
+        if(is_subclass_of($type, \BackedEnum::class)) {
+            return $type::from(parent::get($i));
+        } else {
+            return new $type(parent::get($i), $this->ffi);
+        }
     }
 
     /**

@@ -21,6 +21,11 @@ final class IntPointer extends Pointer
         return parent::getLen($len);
     }
 
+    public function set(int $val, int $i = 0): void
+    {
+        $this->cdata[$i] = $val;
+    }
+
     public static function null(): self
     {
         return new self(null, null);
