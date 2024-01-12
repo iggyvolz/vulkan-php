@@ -4,8 +4,29 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkCudaLaunchInfoNV
+final class VkCudaLaunchInfoNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "function" => $this->getFunction(),
+          "gridDimX" => $this->getGridDimX(),
+          "gridDimY" => $this->getGridDimY(),
+          "gridDimZ" => $this->getGridDimZ(),
+          "blockDimX" => $this->getBlockDimX(),
+          "blockDimY" => $this->getBlockDimY(),
+          "blockDimZ" => $this->getBlockDimZ(),
+          "sharedMemBytes" => $this->getSharedMemBytes(),
+          "paramCount" => $this->getParamCount(),
+          "pParams" => $this->getPParams(),
+          "extraCount" => $this->getExtraCount(),
+          "pExtras" => $this->getPExtras(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +34,7 @@ final class VkCudaLaunchInfoNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -35,7 +56,7 @@ final class VkCudaLaunchInfoNV
         null|\iggyvolz\vulkan\util\Pointer $pExtras = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCudaLaunchInfoNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkCudaLaunchInfoNV', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($function)) $self->setFunction($function);
@@ -58,7 +79,7 @@ final class VkCudaLaunchInfoNV
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +87,7 @@ final class VkCudaLaunchInfoNV
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,15 +97,15 @@ final class VkCudaLaunchInfoNV
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +115,7 @@ final class VkCudaLaunchInfoNV
      */
     public function getFunction(): VkCudaFunctionNV
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->function;
         $phpValue = new \iggyvolz\vulkan\struct\VkCudaFunctionNV($cValue, $ffi);
         return $phpValue;
@@ -102,7 +123,7 @@ final class VkCudaLaunchInfoNV
 
     public function setFunction(VkCudaFunctionNV $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->function = $cValue;
     }
@@ -112,7 +133,7 @@ final class VkCudaLaunchInfoNV
      */
     public function getGridDimX(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->gridDimX;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +141,7 @@ final class VkCudaLaunchInfoNV
 
     public function setGridDimX(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->gridDimX = $cValue;
     }
@@ -130,7 +151,7 @@ final class VkCudaLaunchInfoNV
      */
     public function getGridDimY(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->gridDimY;
         $phpValue = $cValue;
         return $phpValue;
@@ -138,7 +159,7 @@ final class VkCudaLaunchInfoNV
 
     public function setGridDimY(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->gridDimY = $cValue;
     }
@@ -148,7 +169,7 @@ final class VkCudaLaunchInfoNV
      */
     public function getGridDimZ(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->gridDimZ;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +177,7 @@ final class VkCudaLaunchInfoNV
 
     public function setGridDimZ(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->gridDimZ = $cValue;
     }
@@ -166,7 +187,7 @@ final class VkCudaLaunchInfoNV
      */
     public function getBlockDimX(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->blockDimX;
         $phpValue = $cValue;
         return $phpValue;
@@ -174,7 +195,7 @@ final class VkCudaLaunchInfoNV
 
     public function setBlockDimX(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->blockDimX = $cValue;
     }
@@ -184,7 +205,7 @@ final class VkCudaLaunchInfoNV
      */
     public function getBlockDimY(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->blockDimY;
         $phpValue = $cValue;
         return $phpValue;
@@ -192,7 +213,7 @@ final class VkCudaLaunchInfoNV
 
     public function setBlockDimY(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->blockDimY = $cValue;
     }
@@ -202,7 +223,7 @@ final class VkCudaLaunchInfoNV
      */
     public function getBlockDimZ(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->blockDimZ;
         $phpValue = $cValue;
         return $phpValue;
@@ -210,7 +231,7 @@ final class VkCudaLaunchInfoNV
 
     public function setBlockDimZ(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->blockDimZ = $cValue;
     }
@@ -220,7 +241,7 @@ final class VkCudaLaunchInfoNV
      */
     public function getSharedMemBytes(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sharedMemBytes;
         $phpValue = $cValue;
         return $phpValue;
@@ -228,7 +249,7 @@ final class VkCudaLaunchInfoNV
 
     public function setSharedMemBytes(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sharedMemBytes = $cValue;
     }
@@ -238,7 +259,7 @@ final class VkCudaLaunchInfoNV
      */
     public function getParamCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->paramCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -246,7 +267,7 @@ final class VkCudaLaunchInfoNV
 
     public function setParamCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->paramCount = $cValue;
     }
@@ -256,15 +277,15 @@ final class VkCudaLaunchInfoNV
      */
     public function getPParams(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pParams;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPParams(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pParams = $cValue;
     }
@@ -274,7 +295,7 @@ final class VkCudaLaunchInfoNV
      */
     public function getExtraCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extraCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -282,7 +303,7 @@ final class VkCudaLaunchInfoNV
 
     public function setExtraCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->extraCount = $cValue;
     }
@@ -292,15 +313,15 @@ final class VkCudaLaunchInfoNV
      */
     public function getPExtras(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pExtras;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPExtras(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pExtras = $cValue;
     }

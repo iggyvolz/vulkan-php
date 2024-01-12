@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkViewport
+final class VkViewport implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "x" => $this->getX(),
+          "y" => $this->getY(),
+          "width" => $this->getWidth(),
+          "height" => $this->getHeight(),
+          "minDepth" => $this->getMinDepth(),
+          "maxDepth" => $this->getMaxDepth(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkViewport
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkViewport
         null|float $maxDepth = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkViewport', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkViewport', false), $vulkan);
         if(!is_null($x)) $self->setX($x);
         if(!is_null($y)) $self->setY($y);
         if(!is_null($width)) $self->setWidth($width);
@@ -42,7 +55,7 @@ final class VkViewport
      */
     public function getX(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->x;
         $phpValue = $cValue;
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkViewport
 
     public function setX(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->x = $cValue;
     }
@@ -60,7 +73,7 @@ final class VkViewport
      */
     public function getY(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->y;
         $phpValue = $cValue;
         return $phpValue;
@@ -68,7 +81,7 @@ final class VkViewport
 
     public function setY(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->y = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkViewport
      */
     public function getWidth(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->width;
         $phpValue = $cValue;
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkViewport
 
     public function setWidth(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->width = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkViewport
      */
     public function getHeight(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->height;
         $phpValue = $cValue;
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkViewport
 
     public function setHeight(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->height = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkViewport
      */
     public function getMinDepth(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minDepth;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkViewport
 
     public function setMinDepth(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minDepth = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkViewport
      */
     public function getMaxDepth(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDepth;
         $phpValue = $cValue;
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkViewport
 
     public function setMaxDepth(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDepth = $cValue;
     }

@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkCopyBufferInfo2
+final class VkCopyBufferInfo2 implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "srcBuffer" => $this->getSrcBuffer(),
+          "dstBuffer" => $this->getDstBuffer(),
+          "regionCount" => $this->getRegionCount(),
+          "pRegions" => $this->getPRegions(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkCopyBufferInfo2
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkCopyBufferInfo2
         null|\iggyvolz\vulkan\util\ObjectPointer $pRegions = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCopyBufferInfo2', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkCopyBufferInfo2', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($srcBuffer)) $self->setSrcBuffer($srcBuffer);
@@ -42,7 +55,7 @@ final class VkCopyBufferInfo2
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkCopyBufferInfo2
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkCopyBufferInfo2
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkCopyBufferInfo2
      */
     public function getSrcBuffer(): VkBuffer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcBuffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkCopyBufferInfo2
 
     public function setSrcBuffer(VkBuffer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->srcBuffer = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkCopyBufferInfo2
      */
     public function getDstBuffer(): VkBuffer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstBuffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkCopyBufferInfo2
 
     public function setDstBuffer(VkBuffer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->dstBuffer = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkCopyBufferInfo2
      */
     public function getRegionCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->regionCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkCopyBufferInfo2
 
     public function setRegionCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->regionCount = $cValue;
     }
@@ -132,15 +145,15 @@ final class VkCopyBufferInfo2
      */
     public function getPRegions(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pRegions;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkBufferCopy2', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkBufferCopy2', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPRegions(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pRegions = $cValue;
     }

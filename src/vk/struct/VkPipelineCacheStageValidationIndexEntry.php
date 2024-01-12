@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPipelineCacheStageValidationIndexEntry
+final class VkPipelineCacheStageValidationIndexEntry implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "codeSize" => $this->getCodeSize(),
+          "codeOffset" => $this->getCodeOffset(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkPipelineCacheStageValidationIndexEntry
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkPipelineCacheStageValidationIndexEntry
         null|int $codeOffset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineCacheStageValidationIndexEntry', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPipelineCacheStageValidationIndexEntry', false), $vulkan);
         if(!is_null($codeSize)) $self->setCodeSize($codeSize);
         if(!is_null($codeOffset)) $self->setCodeOffset($codeOffset);
         return $self;
@@ -34,7 +43,7 @@ final class VkPipelineCacheStageValidationIndexEntry
      */
     public function getCodeSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->codeSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkPipelineCacheStageValidationIndexEntry
 
     public function setCodeSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->codeSize = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkPipelineCacheStageValidationIndexEntry
      */
     public function getCodeOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->codeOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkPipelineCacheStageValidationIndexEntry
 
     public function setCodeOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->codeOffset = $cValue;
     }

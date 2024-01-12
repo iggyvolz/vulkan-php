@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceOpacityMicromapFeaturesEXT
+final class VkPhysicalDeviceOpacityMicromapFeaturesEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "micromap" => $this->getMicromap(),
+          "micromapCaptureReplay" => $this->getMicromapCaptureReplay(),
+          "micromapHostCommands" => $this->getMicromapHostCommands(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkPhysicalDeviceOpacityMicromapFeaturesEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkPhysicalDeviceOpacityMicromapFeaturesEXT
         null|bool $micromapHostCommands = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceOpacityMicromapFeaturesEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceOpacityMicromapFeaturesEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($micromap)) $self->setMicromap($micromap);
@@ -40,7 +52,7 @@ final class VkPhysicalDeviceOpacityMicromapFeaturesEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkPhysicalDeviceOpacityMicromapFeaturesEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkPhysicalDeviceOpacityMicromapFeaturesEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkPhysicalDeviceOpacityMicromapFeaturesEXT
      */
     public function getMicromap(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->micromap;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkPhysicalDeviceOpacityMicromapFeaturesEXT
 
     public function setMicromap(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->micromap = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkPhysicalDeviceOpacityMicromapFeaturesEXT
      */
     public function getMicromapCaptureReplay(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->micromapCaptureReplay;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkPhysicalDeviceOpacityMicromapFeaturesEXT
 
     public function setMicromapCaptureReplay(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->micromapCaptureReplay = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkPhysicalDeviceOpacityMicromapFeaturesEXT
      */
     public function getMicromapHostCommands(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->micromapHostCommands;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkPhysicalDeviceOpacityMicromapFeaturesEXT
 
     public function setMicromapHostCommands(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->micromapHostCommands = $cValue;
     }

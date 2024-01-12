@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPipelineTessellationDomainOriginStateCreateInfo
+final class VkPipelineTessellationDomainOriginStateCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "domainOrigin" => $this->getDomainOrigin(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkPipelineTessellationDomainOriginStateCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkPipelineTessellationDomainOriginStateCreateInfo
         null|\iggyvolz\vulkan\enum\VkTessellationDomainOrigin $domainOrigin = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineTessellationDomainOriginStateCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPipelineTessellationDomainOriginStateCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($domainOrigin)) $self->setDomainOrigin($domainOrigin);
@@ -36,7 +46,7 @@ final class VkPipelineTessellationDomainOriginStateCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkPipelineTessellationDomainOriginStateCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -54,15 +64,15 @@ final class VkPipelineTessellationDomainOriginStateCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkPipelineTessellationDomainOriginStateCreateInfo
      */
     public function getDomainOrigin(): \iggyvolz\vulkan\enum\VkTessellationDomainOrigin
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->domainOrigin;
         $phpValue = \iggyvolz\vulkan\enum\VkTessellationDomainOrigin::from($cValue);
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkPipelineTessellationDomainOriginStateCreateInfo
 
     public function setDomainOrigin(\iggyvolz\vulkan\enum\VkTessellationDomainOrigin $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->domainOrigin = $cValue;
     }

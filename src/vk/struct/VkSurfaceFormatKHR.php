@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSurfaceFormatKHR
+final class VkSurfaceFormatKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "format" => $this->getFormat(),
+          "colorSpace" => $this->getColorSpace(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkSurfaceFormatKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkSurfaceFormatKHR
         null|\iggyvolz\vulkan\enum\VkColorSpaceKHR $colorSpace = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSurfaceFormatKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSurfaceFormatKHR', false), $vulkan);
         if(!is_null($format)) $self->setFormat($format);
         if(!is_null($colorSpace)) $self->setColorSpace($colorSpace);
         return $self;
@@ -34,7 +43,7 @@ final class VkSurfaceFormatKHR
      */
     public function getFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkSurfaceFormatKHR
 
     public function setFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->format = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkSurfaceFormatKHR
      */
     public function getColorSpace(): \iggyvolz\vulkan\enum\VkColorSpaceKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->colorSpace;
         $phpValue = \iggyvolz\vulkan\enum\VkColorSpaceKHR::from($cValue);
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkSurfaceFormatKHR
 
     public function setColorSpace(\iggyvolz\vulkan\enum\VkColorSpaceKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->colorSpace = $cValue;
     }

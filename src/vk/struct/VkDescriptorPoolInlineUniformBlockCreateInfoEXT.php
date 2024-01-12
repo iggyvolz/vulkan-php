@@ -4,8 +4,15 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDescriptorPoolInlineUniformBlockCreateInfoEXT
+final class VkDescriptorPoolInlineUniformBlockCreateInfoEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,13 +20,13 @@ final class VkDescriptorPoolInlineUniformBlockCreateInfoEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorPoolInlineUniformBlockCreateInfoEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDescriptorPoolInlineUniformBlockCreateInfoEXT', false), $vulkan);
         return $self;
     }
 }

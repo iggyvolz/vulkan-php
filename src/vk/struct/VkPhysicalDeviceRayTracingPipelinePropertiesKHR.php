@@ -4,8 +4,25 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
+final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "shaderGroupHandleSize" => $this->getShaderGroupHandleSize(),
+          "maxRayRecursionDepth" => $this->getMaxRayRecursionDepth(),
+          "maxShaderGroupStride" => $this->getMaxShaderGroupStride(),
+          "shaderGroupBaseAlignment" => $this->getShaderGroupBaseAlignment(),
+          "shaderGroupHandleCaptureReplaySize" => $this->getShaderGroupHandleCaptureReplaySize(),
+          "maxRayDispatchInvocationCount" => $this->getMaxRayDispatchInvocationCount(),
+          "shaderGroupHandleAlignment" => $this->getShaderGroupHandleAlignment(),
+          "maxRayHitAttributeSize" => $this->getMaxRayHitAttributeSize(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +30,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -31,7 +48,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
         null|int $maxRayHitAttributeSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceRayTracingPipelinePropertiesKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceRayTracingPipelinePropertiesKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderGroupHandleSize)) $self->setShaderGroupHandleSize($shaderGroupHandleSize);
@@ -50,7 +67,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -58,7 +75,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -68,15 +85,15 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -86,7 +103,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
      */
     public function getShaderGroupHandleSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderGroupHandleSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -94,7 +111,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
 
     public function setShaderGroupHandleSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->shaderGroupHandleSize = $cValue;
     }
@@ -104,7 +121,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
      */
     public function getMaxRayRecursionDepth(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxRayRecursionDepth;
         $phpValue = $cValue;
         return $phpValue;
@@ -112,7 +129,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
 
     public function setMaxRayRecursionDepth(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxRayRecursionDepth = $cValue;
     }
@@ -122,7 +139,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
      */
     public function getMaxShaderGroupStride(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxShaderGroupStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -130,7 +147,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
 
     public function setMaxShaderGroupStride(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxShaderGroupStride = $cValue;
     }
@@ -140,7 +157,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
      */
     public function getShaderGroupBaseAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderGroupBaseAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -148,7 +165,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
 
     public function setShaderGroupBaseAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->shaderGroupBaseAlignment = $cValue;
     }
@@ -158,7 +175,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
      */
     public function getShaderGroupHandleCaptureReplaySize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderGroupHandleCaptureReplaySize;
         $phpValue = $cValue;
         return $phpValue;
@@ -166,7 +183,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
 
     public function setShaderGroupHandleCaptureReplaySize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->shaderGroupHandleCaptureReplaySize = $cValue;
     }
@@ -176,7 +193,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
      */
     public function getMaxRayDispatchInvocationCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxRayDispatchInvocationCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -184,7 +201,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
 
     public function setMaxRayDispatchInvocationCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxRayDispatchInvocationCount = $cValue;
     }
@@ -194,7 +211,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
      */
     public function getShaderGroupHandleAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderGroupHandleAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -202,7 +219,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
 
     public function setShaderGroupHandleAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->shaderGroupHandleAlignment = $cValue;
     }
@@ -212,7 +229,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
      */
     public function getMaxRayHitAttributeSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxRayHitAttributeSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -220,7 +237,7 @@ final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR
 
     public function setMaxRayHitAttributeSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxRayHitAttributeSize = $cValue;
     }

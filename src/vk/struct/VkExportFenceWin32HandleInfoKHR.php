@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkExportFenceWin32HandleInfoKHR
+final class VkExportFenceWin32HandleInfoKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "pAttributes" => $this->getPAttributes(),
+          "dwAccess" => $this->getDwAccess(),
+          "name" => $this->getName(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkExportFenceWin32HandleInfoKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkExportFenceWin32HandleInfoKHR
         null|\iggyvolz\vulkan\util\Pointer $name = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkExportFenceWin32HandleInfoKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkExportFenceWin32HandleInfoKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pAttributes)) $self->setPAttributes($pAttributes);
@@ -40,7 +52,7 @@ final class VkExportFenceWin32HandleInfoKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkExportFenceWin32HandleInfoKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkExportFenceWin32HandleInfoKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,15 +88,15 @@ final class VkExportFenceWin32HandleInfoKHR
      */
     public function getPAttributes(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pAttributes;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPAttributes(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pAttributes = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkExportFenceWin32HandleInfoKHR
      */
     public function getDwAccess(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dwAccess;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkExportFenceWin32HandleInfoKHR
 
     public function setDwAccess(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dwAccess = $cValue;
     }
@@ -112,15 +124,15 @@ final class VkExportFenceWin32HandleInfoKHR
      */
     public function getName(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->name;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setName(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->name = $cValue;
     }

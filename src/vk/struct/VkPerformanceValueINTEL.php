@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPerformanceValueINTEL
+final class VkPerformanceValueINTEL implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "type" => $this->getType(),
+          "data" => $this->getData(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkPerformanceValueINTEL
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkPerformanceValueINTEL
         mixed $data = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPerformanceValueINTEL', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPerformanceValueINTEL', false), $vulkan);
         if(!is_null($type)) $self->setType($type);
         if(!is_null($data)) $self->setData($data);
         return $self;
@@ -34,7 +43,7 @@ final class VkPerformanceValueINTEL
      */
     public function getType(): \iggyvolz\vulkan\enum\VkPerformanceValueTypeINTEL
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->type;
         $phpValue = \iggyvolz\vulkan\enum\VkPerformanceValueTypeINTEL::from($cValue);
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkPerformanceValueINTEL
 
     public function setType(\iggyvolz\vulkan\enum\VkPerformanceValueTypeINTEL $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->type = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkPerformanceValueINTEL
      */
     public function getData(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->data;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkPerformanceValueINTEL
 
     public function setData(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->data = $cValue;
     }

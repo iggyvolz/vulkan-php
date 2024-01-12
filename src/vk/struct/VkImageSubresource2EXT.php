@@ -4,8 +4,15 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkImageSubresource2EXT
+final class VkImageSubresource2EXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,13 +20,13 @@ final class VkImageSubresource2EXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageSubresource2EXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkImageSubresource2EXT', false), $vulkan);
         return $self;
     }
 }

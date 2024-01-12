@@ -4,8 +4,26 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkAttachmentDescription2
+final class VkAttachmentDescription2 implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "format" => $this->getFormat(),
+          "samples" => $this->getSamples(),
+          "loadOp" => $this->getLoadOp(),
+          "storeOp" => $this->getStoreOp(),
+          "stencilLoadOp" => $this->getStencilLoadOp(),
+          "stencilStoreOp" => $this->getStencilStoreOp(),
+          "initialLayout" => $this->getInitialLayout(),
+          "finalLayout" => $this->getFinalLayout(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +31,7 @@ final class VkAttachmentDescription2
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +50,7 @@ final class VkAttachmentDescription2
         null|\iggyvolz\vulkan\enum\VkImageLayout $finalLayout = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAttachmentDescription2', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkAttachmentDescription2', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -52,7 +70,7 @@ final class VkAttachmentDescription2
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +78,7 @@ final class VkAttachmentDescription2
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,15 +88,15 @@ final class VkAttachmentDescription2
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +106,7 @@ final class VkAttachmentDescription2
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkAttachmentDescriptionFlagBits::fromInt($cValue);
         return $phpValue;
@@ -96,7 +114,7 @@ final class VkAttachmentDescription2
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkAttachmentDescriptionFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -106,7 +124,7 @@ final class VkAttachmentDescription2
      */
     public function getFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -114,7 +132,7 @@ final class VkAttachmentDescription2
 
     public function setFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->format = $cValue;
     }
@@ -124,7 +142,7 @@ final class VkAttachmentDescription2
      */
     public function getSamples(): \iggyvolz\vulkan\enum\VkSampleCountFlagBits
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samples;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::from($cValue);
         return $phpValue;
@@ -132,7 +150,7 @@ final class VkAttachmentDescription2
 
     public function setSamples(\iggyvolz\vulkan\enum\VkSampleCountFlagBits $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->samples = $cValue;
     }
@@ -142,7 +160,7 @@ final class VkAttachmentDescription2
      */
     public function getLoadOp(): \iggyvolz\vulkan\enum\VkAttachmentLoadOp
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->loadOp;
         $phpValue = \iggyvolz\vulkan\enum\VkAttachmentLoadOp::from($cValue);
         return $phpValue;
@@ -150,7 +168,7 @@ final class VkAttachmentDescription2
 
     public function setLoadOp(\iggyvolz\vulkan\enum\VkAttachmentLoadOp $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->loadOp = $cValue;
     }
@@ -160,7 +178,7 @@ final class VkAttachmentDescription2
      */
     public function getStoreOp(): \iggyvolz\vulkan\enum\VkAttachmentStoreOp
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storeOp;
         $phpValue = \iggyvolz\vulkan\enum\VkAttachmentStoreOp::from($cValue);
         return $phpValue;
@@ -168,7 +186,7 @@ final class VkAttachmentDescription2
 
     public function setStoreOp(\iggyvolz\vulkan\enum\VkAttachmentStoreOp $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->storeOp = $cValue;
     }
@@ -178,7 +196,7 @@ final class VkAttachmentDescription2
      */
     public function getStencilLoadOp(): \iggyvolz\vulkan\enum\VkAttachmentLoadOp
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stencilLoadOp;
         $phpValue = \iggyvolz\vulkan\enum\VkAttachmentLoadOp::from($cValue);
         return $phpValue;
@@ -186,7 +204,7 @@ final class VkAttachmentDescription2
 
     public function setStencilLoadOp(\iggyvolz\vulkan\enum\VkAttachmentLoadOp $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->stencilLoadOp = $cValue;
     }
@@ -196,7 +214,7 @@ final class VkAttachmentDescription2
      */
     public function getStencilStoreOp(): \iggyvolz\vulkan\enum\VkAttachmentStoreOp
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stencilStoreOp;
         $phpValue = \iggyvolz\vulkan\enum\VkAttachmentStoreOp::from($cValue);
         return $phpValue;
@@ -204,7 +222,7 @@ final class VkAttachmentDescription2
 
     public function setStencilStoreOp(\iggyvolz\vulkan\enum\VkAttachmentStoreOp $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->stencilStoreOp = $cValue;
     }
@@ -214,7 +232,7 @@ final class VkAttachmentDescription2
      */
     public function getInitialLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->initialLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -222,7 +240,7 @@ final class VkAttachmentDescription2
 
     public function setInitialLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->initialLayout = $cValue;
     }
@@ -232,7 +250,7 @@ final class VkAttachmentDescription2
      */
     public function getFinalLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->finalLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -240,7 +258,7 @@ final class VkAttachmentDescription2
 
     public function setFinalLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->finalLayout = $cValue;
     }

@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkCoarseSampleLocationNV
+final class VkCoarseSampleLocationNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "pixelX" => $this->getPixelX(),
+          "pixelY" => $this->getPixelY(),
+          "sample" => $this->getSample(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkCoarseSampleLocationNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkCoarseSampleLocationNV
         null|int $sample = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCoarseSampleLocationNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkCoarseSampleLocationNV', false), $vulkan);
         if(!is_null($pixelX)) $self->setPixelX($pixelX);
         if(!is_null($pixelY)) $self->setPixelY($pixelY);
         if(!is_null($sample)) $self->setSample($sample);
@@ -36,7 +46,7 @@ final class VkCoarseSampleLocationNV
      */
     public function getPixelX(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pixelX;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkCoarseSampleLocationNV
 
     public function setPixelX(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pixelX = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkCoarseSampleLocationNV
      */
     public function getPixelY(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pixelY;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkCoarseSampleLocationNV
 
     public function setPixelY(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pixelY = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkCoarseSampleLocationNV
      */
     public function getSample(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sample;
         $phpValue = $cValue;
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkCoarseSampleLocationNV
 
     public function setSample(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sample = $cValue;
     }

@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkBindImageMemoryDeviceGroupInfo
+final class VkBindImageMemoryDeviceGroupInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "deviceIndexCount" => $this->getDeviceIndexCount(),
+          "pDeviceIndices" => $this->getPDeviceIndices(),
+          "splitInstanceBindRegionCount" => $this->getSplitInstanceBindRegionCount(),
+          "pSplitInstanceBindRegions" => $this->getPSplitInstanceBindRegions(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkBindImageMemoryDeviceGroupInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkBindImageMemoryDeviceGroupInfo
         null|\iggyvolz\vulkan\util\ObjectPointer $pSplitInstanceBindRegions = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBindImageMemoryDeviceGroupInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkBindImageMemoryDeviceGroupInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($deviceIndexCount)) $self->setDeviceIndexCount($deviceIndexCount);
@@ -42,7 +55,7 @@ final class VkBindImageMemoryDeviceGroupInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkBindImageMemoryDeviceGroupInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkBindImageMemoryDeviceGroupInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkBindImageMemoryDeviceGroupInfo
      */
     public function getDeviceIndexCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceIndexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkBindImageMemoryDeviceGroupInfo
 
     public function setDeviceIndexCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->deviceIndexCount = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkBindImageMemoryDeviceGroupInfo
      */
     public function getPDeviceIndices(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDeviceIndices;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkBindImageMemoryDeviceGroupInfo
 
     public function setPDeviceIndices(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDeviceIndices = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkBindImageMemoryDeviceGroupInfo
      */
     public function getSplitInstanceBindRegionCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->splitInstanceBindRegionCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkBindImageMemoryDeviceGroupInfo
 
     public function setSplitInstanceBindRegionCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->splitInstanceBindRegionCount = $cValue;
     }
@@ -132,15 +145,15 @@ final class VkBindImageMemoryDeviceGroupInfo
      */
     public function getPSplitInstanceBindRegions(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pSplitInstanceBindRegions;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRect2D', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRect2D', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPSplitInstanceBindRegions(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pSplitInstanceBindRegions = $cValue;
     }

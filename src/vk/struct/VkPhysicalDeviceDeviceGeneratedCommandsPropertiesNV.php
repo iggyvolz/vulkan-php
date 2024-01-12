@@ -4,8 +4,26 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
+final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "maxGraphicsShaderGroupCount" => $this->getMaxGraphicsShaderGroupCount(),
+          "maxIndirectSequenceCount" => $this->getMaxIndirectSequenceCount(),
+          "maxIndirectCommandsTokenCount" => $this->getMaxIndirectCommandsTokenCount(),
+          "maxIndirectCommandsStreamCount" => $this->getMaxIndirectCommandsStreamCount(),
+          "maxIndirectCommandsTokenOffset" => $this->getMaxIndirectCommandsTokenOffset(),
+          "maxIndirectCommandsStreamStride" => $this->getMaxIndirectCommandsStreamStride(),
+          "minSequencesCountBufferOffsetAlignment" => $this->getMinSequencesCountBufferOffsetAlignment(),
+          "minSequencesIndexBufferOffsetAlignment" => $this->getMinSequencesIndexBufferOffsetAlignment(),
+          "minIndirectCommandsBufferOffsetAlignment" => $this->getMinIndirectCommandsBufferOffsetAlignment(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +31,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +50,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
         null|int $minIndirectCommandsBufferOffsetAlignment = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxGraphicsShaderGroupCount)) $self->setMaxGraphicsShaderGroupCount($maxGraphicsShaderGroupCount);
@@ -52,7 +70,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +78,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,15 +88,15 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +106,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
      */
     public function getMaxGraphicsShaderGroupCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxGraphicsShaderGroupCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +114,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 
     public function setMaxGraphicsShaderGroupCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxGraphicsShaderGroupCount = $cValue;
     }
@@ -106,7 +124,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
      */
     public function getMaxIndirectSequenceCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxIndirectSequenceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +132,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 
     public function setMaxIndirectSequenceCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxIndirectSequenceCount = $cValue;
     }
@@ -124,7 +142,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
      */
     public function getMaxIndirectCommandsTokenCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxIndirectCommandsTokenCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +150,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 
     public function setMaxIndirectCommandsTokenCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxIndirectCommandsTokenCount = $cValue;
     }
@@ -142,7 +160,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
      */
     public function getMaxIndirectCommandsStreamCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxIndirectCommandsStreamCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -150,7 +168,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 
     public function setMaxIndirectCommandsStreamCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxIndirectCommandsStreamCount = $cValue;
     }
@@ -160,7 +178,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
      */
     public function getMaxIndirectCommandsTokenOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxIndirectCommandsTokenOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -168,7 +186,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 
     public function setMaxIndirectCommandsTokenOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxIndirectCommandsTokenOffset = $cValue;
     }
@@ -178,7 +196,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
      */
     public function getMaxIndirectCommandsStreamStride(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxIndirectCommandsStreamStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -186,7 +204,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 
     public function setMaxIndirectCommandsStreamStride(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxIndirectCommandsStreamStride = $cValue;
     }
@@ -196,7 +214,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
      */
     public function getMinSequencesCountBufferOffsetAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minSequencesCountBufferOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -204,7 +222,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 
     public function setMinSequencesCountBufferOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minSequencesCountBufferOffsetAlignment = $cValue;
     }
@@ -214,7 +232,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
      */
     public function getMinSequencesIndexBufferOffsetAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minSequencesIndexBufferOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -222,7 +240,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 
     public function setMinSequencesIndexBufferOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minSequencesIndexBufferOffsetAlignment = $cValue;
     }
@@ -232,7 +250,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
      */
     public function getMinIndirectCommandsBufferOffsetAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minIndirectCommandsBufferOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -240,7 +258,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 
     public function setMinIndirectCommandsBufferOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minIndirectCommandsBufferOffsetAlignment = $cValue;
     }

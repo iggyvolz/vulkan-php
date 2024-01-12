@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPastPresentationTimingGOOGLE
+final class VkPastPresentationTimingGOOGLE implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "presentID" => $this->getPresentID(),
+          "desiredPresentTime" => $this->getDesiredPresentTime(),
+          "actualPresentTime" => $this->getActualPresentTime(),
+          "earliestPresentTime" => $this->getEarliestPresentTime(),
+          "presentMargin" => $this->getPresentMargin(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkPastPresentationTimingGOOGLE
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkPastPresentationTimingGOOGLE
         null|int $presentMargin = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPastPresentationTimingGOOGLE', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPastPresentationTimingGOOGLE', false), $vulkan);
         if(!is_null($presentID)) $self->setPresentID($presentID);
         if(!is_null($desiredPresentTime)) $self->setDesiredPresentTime($desiredPresentTime);
         if(!is_null($actualPresentTime)) $self->setActualPresentTime($actualPresentTime);
@@ -40,7 +52,7 @@ final class VkPastPresentationTimingGOOGLE
      */
     public function getPresentID(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->presentID;
         $phpValue = $cValue;
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkPastPresentationTimingGOOGLE
 
     public function setPresentID(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->presentID = $cValue;
     }
@@ -58,7 +70,7 @@ final class VkPastPresentationTimingGOOGLE
      */
     public function getDesiredPresentTime(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->desiredPresentTime;
         $phpValue = $cValue;
         return $phpValue;
@@ -66,7 +78,7 @@ final class VkPastPresentationTimingGOOGLE
 
     public function setDesiredPresentTime(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->desiredPresentTime = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkPastPresentationTimingGOOGLE
      */
     public function getActualPresentTime(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->actualPresentTime;
         $phpValue = $cValue;
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkPastPresentationTimingGOOGLE
 
     public function setActualPresentTime(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->actualPresentTime = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkPastPresentationTimingGOOGLE
      */
     public function getEarliestPresentTime(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->earliestPresentTime;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkPastPresentationTimingGOOGLE
 
     public function setEarliestPresentTime(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->earliestPresentTime = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkPastPresentationTimingGOOGLE
      */
     public function getPresentMargin(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->presentMargin;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkPastPresentationTimingGOOGLE
 
     public function setPresentMargin(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->presentMargin = $cValue;
     }

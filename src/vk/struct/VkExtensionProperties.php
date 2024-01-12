@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkExtensionProperties
+final class VkExtensionProperties implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "extensionName" => $this->getExtensionName(),
+          "specVersion" => $this->getSpecVersion(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkExtensionProperties
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkExtensionProperties
         null|int $specVersion = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkExtensionProperties', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkExtensionProperties', false), $vulkan);
         if(!is_null($extensionName)) $self->setExtensionName($extensionName);
         if(!is_null($specVersion)) $self->setSpecVersion($specVersion);
         return $self;
@@ -34,7 +43,7 @@ final class VkExtensionProperties
      */
     public function getExtensionName(): string
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extensionName;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkExtensionProperties
 
     public function setExtensionName(string $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->extensionName = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkExtensionProperties
      */
     public function getSpecVersion(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->specVersion;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkExtensionProperties
 
     public function setSpecVersion(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->specVersion = $cValue;
     }

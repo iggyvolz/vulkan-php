@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkAabbPositionsKHR
+final class VkAabbPositionsKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "minX" => $this->getMinX(),
+          "minY" => $this->getMinY(),
+          "minZ" => $this->getMinZ(),
+          "maxX" => $this->getMaxX(),
+          "maxY" => $this->getMaxY(),
+          "maxZ" => $this->getMaxZ(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkAabbPositionsKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkAabbPositionsKHR
         null|float $maxZ = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAabbPositionsKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkAabbPositionsKHR', false), $vulkan);
         if(!is_null($minX)) $self->setMinX($minX);
         if(!is_null($minY)) $self->setMinY($minY);
         if(!is_null($minZ)) $self->setMinZ($minZ);
@@ -42,7 +55,7 @@ final class VkAabbPositionsKHR
      */
     public function getMinX(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minX;
         $phpValue = $cValue;
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkAabbPositionsKHR
 
     public function setMinX(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minX = $cValue;
     }
@@ -60,7 +73,7 @@ final class VkAabbPositionsKHR
      */
     public function getMinY(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minY;
         $phpValue = $cValue;
         return $phpValue;
@@ -68,7 +81,7 @@ final class VkAabbPositionsKHR
 
     public function setMinY(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minY = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkAabbPositionsKHR
      */
     public function getMinZ(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minZ;
         $phpValue = $cValue;
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkAabbPositionsKHR
 
     public function setMinZ(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minZ = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkAabbPositionsKHR
      */
     public function getMaxX(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxX;
         $phpValue = $cValue;
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkAabbPositionsKHR
 
     public function setMaxX(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxX = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkAabbPositionsKHR
      */
     public function getMaxY(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxY;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkAabbPositionsKHR
 
     public function setMaxY(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxY = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkAabbPositionsKHR
      */
     public function getMaxZ(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxZ;
         $phpValue = $cValue;
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkAabbPositionsKHR
 
     public function setMaxZ(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxZ = $cValue;
     }

@@ -4,8 +4,34 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkGraphicsPipelineCreateInfo
+final class VkGraphicsPipelineCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "stageCount" => $this->getStageCount(),
+          "pStages" => $this->getPStages(),
+          "pVertexInputState" => $this->getPVertexInputState(),
+          "pInputAssemblyState" => $this->getPInputAssemblyState(),
+          "pTessellationState" => $this->getPTessellationState(),
+          "pViewportState" => $this->getPViewportState(),
+          "pRasterizationState" => $this->getPRasterizationState(),
+          "pMultisampleState" => $this->getPMultisampleState(),
+          "pDepthStencilState" => $this->getPDepthStencilState(),
+          "pColorBlendState" => $this->getPColorBlendState(),
+          "pDynamicState" => $this->getPDynamicState(),
+          "layout" => $this->getLayout(),
+          "renderPass" => $this->getRenderPass(),
+          "subpass" => $this->getSubpass(),
+          "basePipelineHandle" => $this->getBasePipelineHandle(),
+          "basePipelineIndex" => $this->getBasePipelineIndex(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +39,7 @@ final class VkGraphicsPipelineCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +66,7 @@ final class VkGraphicsPipelineCreateInfo
         null|int $basePipelineIndex = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkGraphicsPipelineCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkGraphicsPipelineCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -68,7 +94,7 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -76,7 +102,7 @@ final class VkGraphicsPipelineCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -86,15 +112,15 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -104,7 +130,7 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -112,7 +138,7 @@ final class VkGraphicsPipelineCreateInfo
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkPipelineCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -122,7 +148,7 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getStageCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stageCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -130,7 +156,7 @@ final class VkGraphicsPipelineCreateInfo
 
     public function setStageCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stageCount = $cValue;
     }
@@ -140,15 +166,15 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getPStages(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pStages;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineShaderStageCreateInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineShaderStageCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPStages(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pStages = $cValue;
     }
@@ -158,15 +184,15 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getPVertexInputState(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pVertexInputState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineVertexInputStateCreateInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineVertexInputStateCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPVertexInputState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pVertexInputState = $cValue;
     }
@@ -176,15 +202,15 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getPInputAssemblyState(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pInputAssemblyState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineInputAssemblyStateCreateInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineInputAssemblyStateCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPInputAssemblyState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pInputAssemblyState = $cValue;
     }
@@ -194,15 +220,15 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getPTessellationState(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pTessellationState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineTessellationStateCreateInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineTessellationStateCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPTessellationState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pTessellationState = $cValue;
     }
@@ -212,15 +238,15 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getPViewportState(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pViewportState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineViewportStateCreateInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineViewportStateCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPViewportState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pViewportState = $cValue;
     }
@@ -230,15 +256,15 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getPRasterizationState(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pRasterizationState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineRasterizationStateCreateInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineRasterizationStateCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPRasterizationState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pRasterizationState = $cValue;
     }
@@ -248,15 +274,15 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getPMultisampleState(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pMultisampleState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineMultisampleStateCreateInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineMultisampleStateCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPMultisampleState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pMultisampleState = $cValue;
     }
@@ -266,15 +292,15 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getPDepthStencilState(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDepthStencilState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineDepthStencilStateCreateInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineDepthStencilStateCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPDepthStencilState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDepthStencilState = $cValue;
     }
@@ -284,15 +310,15 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getPColorBlendState(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pColorBlendState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineColorBlendStateCreateInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineColorBlendStateCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPColorBlendState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pColorBlendState = $cValue;
     }
@@ -302,15 +328,15 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getPDynamicState(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDynamicState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineDynamicStateCreateInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineDynamicStateCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPDynamicState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDynamicState = $cValue;
     }
@@ -320,7 +346,7 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getLayout(): VkPipelineLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layout;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipelineLayout($cValue, $ffi);
         return $phpValue;
@@ -328,7 +354,7 @@ final class VkGraphicsPipelineCreateInfo
 
     public function setLayout(VkPipelineLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->layout = $cValue;
     }
@@ -338,7 +364,7 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getRenderPass(): VkRenderPass
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->renderPass;
         $phpValue = new \iggyvolz\vulkan\struct\VkRenderPass($cValue, $ffi);
         return $phpValue;
@@ -346,7 +372,7 @@ final class VkGraphicsPipelineCreateInfo
 
     public function setRenderPass(VkRenderPass $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->renderPass = $cValue;
     }
@@ -356,7 +382,7 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getSubpass(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subpass;
         $phpValue = $cValue;
         return $phpValue;
@@ -364,7 +390,7 @@ final class VkGraphicsPipelineCreateInfo
 
     public function setSubpass(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subpass = $cValue;
     }
@@ -374,7 +400,7 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getBasePipelineHandle(): VkPipeline
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->basePipelineHandle;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipeline($cValue, $ffi);
         return $phpValue;
@@ -382,7 +408,7 @@ final class VkGraphicsPipelineCreateInfo
 
     public function setBasePipelineHandle(VkPipeline $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->basePipelineHandle = $cValue;
     }
@@ -392,7 +418,7 @@ final class VkGraphicsPipelineCreateInfo
      */
     public function getBasePipelineIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->basePipelineIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -400,7 +426,7 @@ final class VkGraphicsPipelineCreateInfo
 
     public function setBasePipelineIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->basePipelineIndex = $cValue;
     }

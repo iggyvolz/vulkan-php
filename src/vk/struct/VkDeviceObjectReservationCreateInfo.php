@@ -4,8 +4,58 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDeviceObjectReservationCreateInfo
+final class VkDeviceObjectReservationCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "pipelineCacheCreateInfoCount" => $this->getPipelineCacheCreateInfoCount(),
+          "pPipelineCacheCreateInfos" => $this->getPPipelineCacheCreateInfos(),
+          "pipelinePoolSizeCount" => $this->getPipelinePoolSizeCount(),
+          "pPipelinePoolSizes" => $this->getPPipelinePoolSizes(),
+          "semaphoreRequestCount" => $this->getSemaphoreRequestCount(),
+          "commandBufferRequestCount" => $this->getCommandBufferRequestCount(),
+          "fenceRequestCount" => $this->getFenceRequestCount(),
+          "deviceMemoryRequestCount" => $this->getDeviceMemoryRequestCount(),
+          "bufferRequestCount" => $this->getBufferRequestCount(),
+          "imageRequestCount" => $this->getImageRequestCount(),
+          "eventRequestCount" => $this->getEventRequestCount(),
+          "queryPoolRequestCount" => $this->getQueryPoolRequestCount(),
+          "bufferViewRequestCount" => $this->getBufferViewRequestCount(),
+          "imageViewRequestCount" => $this->getImageViewRequestCount(),
+          "layeredImageViewRequestCount" => $this->getLayeredImageViewRequestCount(),
+          "pipelineCacheRequestCount" => $this->getPipelineCacheRequestCount(),
+          "pipelineLayoutRequestCount" => $this->getPipelineLayoutRequestCount(),
+          "renderPassRequestCount" => $this->getRenderPassRequestCount(),
+          "graphicsPipelineRequestCount" => $this->getGraphicsPipelineRequestCount(),
+          "computePipelineRequestCount" => $this->getComputePipelineRequestCount(),
+          "descriptorSetLayoutRequestCount" => $this->getDescriptorSetLayoutRequestCount(),
+          "samplerRequestCount" => $this->getSamplerRequestCount(),
+          "descriptorPoolRequestCount" => $this->getDescriptorPoolRequestCount(),
+          "descriptorSetRequestCount" => $this->getDescriptorSetRequestCount(),
+          "framebufferRequestCount" => $this->getFramebufferRequestCount(),
+          "commandPoolRequestCount" => $this->getCommandPoolRequestCount(),
+          "samplerYcbcrConversionRequestCount" => $this->getSamplerYcbcrConversionRequestCount(),
+          "surfaceRequestCount" => $this->getSurfaceRequestCount(),
+          "swapchainRequestCount" => $this->getSwapchainRequestCount(),
+          "displayModeRequestCount" => $this->getDisplayModeRequestCount(),
+          "subpassDescriptionRequestCount" => $this->getSubpassDescriptionRequestCount(),
+          "attachmentDescriptionRequestCount" => $this->getAttachmentDescriptionRequestCount(),
+          "descriptorSetLayoutBindingRequestCount" => $this->getDescriptorSetLayoutBindingRequestCount(),
+          "descriptorSetLayoutBindingLimit" => $this->getDescriptorSetLayoutBindingLimit(),
+          "maxImageViewMipLevels" => $this->getMaxImageViewMipLevels(),
+          "maxImageViewArrayLayers" => $this->getMaxImageViewArrayLayers(),
+          "maxLayeredImageViewMipLevels" => $this->getMaxLayeredImageViewMipLevels(),
+          "maxOcclusionQueriesPerPool" => $this->getMaxOcclusionQueriesPerPool(),
+          "maxPipelineStatisticsQueriesPerPool" => $this->getMaxPipelineStatisticsQueriesPerPool(),
+          "maxTimestampQueriesPerPool" => $this->getMaxTimestampQueriesPerPool(),
+          "maxImmutableSamplersPerDescriptorSetLayout" => $this->getMaxImmutableSamplersPerDescriptorSetLayout(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +63,7 @@ final class VkDeviceObjectReservationCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -64,7 +114,7 @@ final class VkDeviceObjectReservationCreateInfo
         null|int $maxImmutableSamplersPerDescriptorSetLayout = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceObjectReservationCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDeviceObjectReservationCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pipelineCacheCreateInfoCount)) $self->setPipelineCacheCreateInfoCount($pipelineCacheCreateInfoCount);
@@ -116,7 +166,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -124,7 +174,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -134,15 +184,15 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -152,7 +202,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getPipelineCacheCreateInfoCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineCacheCreateInfoCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -160,7 +210,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setPipelineCacheCreateInfoCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelineCacheCreateInfoCount = $cValue;
     }
@@ -170,15 +220,15 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getPPipelineCacheCreateInfos(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pPipelineCacheCreateInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineCacheCreateInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineCacheCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPPipelineCacheCreateInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pPipelineCacheCreateInfos = $cValue;
     }
@@ -188,7 +238,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getPipelinePoolSizeCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelinePoolSizeCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -196,7 +246,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setPipelinePoolSizeCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelinePoolSizeCount = $cValue;
     }
@@ -206,15 +256,15 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getPPipelinePoolSizes(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pPipelinePoolSizes;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelinePoolSize', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelinePoolSize', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPPipelinePoolSizes(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pPipelinePoolSizes = $cValue;
     }
@@ -224,7 +274,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getSemaphoreRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->semaphoreRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -232,7 +282,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setSemaphoreRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->semaphoreRequestCount = $cValue;
     }
@@ -242,7 +292,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getCommandBufferRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->commandBufferRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -250,7 +300,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setCommandBufferRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->commandBufferRequestCount = $cValue;
     }
@@ -260,7 +310,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getFenceRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fenceRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -268,7 +318,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setFenceRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->fenceRequestCount = $cValue;
     }
@@ -278,7 +328,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getDeviceMemoryRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceMemoryRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -286,7 +336,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setDeviceMemoryRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->deviceMemoryRequestCount = $cValue;
     }
@@ -296,7 +346,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getBufferRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -304,7 +354,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setBufferRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferRequestCount = $cValue;
     }
@@ -314,7 +364,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getImageRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -322,7 +372,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setImageRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageRequestCount = $cValue;
     }
@@ -332,7 +382,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getEventRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->eventRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -340,7 +390,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setEventRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->eventRequestCount = $cValue;
     }
@@ -350,7 +400,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getQueryPoolRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->queryPoolRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -358,7 +408,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setQueryPoolRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->queryPoolRequestCount = $cValue;
     }
@@ -368,7 +418,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getBufferViewRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferViewRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -376,7 +426,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setBufferViewRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferViewRequestCount = $cValue;
     }
@@ -386,7 +436,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getImageViewRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageViewRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -394,7 +444,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setImageViewRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageViewRequestCount = $cValue;
     }
@@ -404,7 +454,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getLayeredImageViewRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layeredImageViewRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -412,7 +462,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setLayeredImageViewRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->layeredImageViewRequestCount = $cValue;
     }
@@ -422,7 +472,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getPipelineCacheRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineCacheRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -430,7 +480,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setPipelineCacheRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelineCacheRequestCount = $cValue;
     }
@@ -440,7 +490,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getPipelineLayoutRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineLayoutRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -448,7 +498,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setPipelineLayoutRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelineLayoutRequestCount = $cValue;
     }
@@ -458,7 +508,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getRenderPassRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->renderPassRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -466,7 +516,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setRenderPassRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->renderPassRequestCount = $cValue;
     }
@@ -476,7 +526,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getGraphicsPipelineRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->graphicsPipelineRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -484,7 +534,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setGraphicsPipelineRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->graphicsPipelineRequestCount = $cValue;
     }
@@ -494,7 +544,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getComputePipelineRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->computePipelineRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -502,7 +552,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setComputePipelineRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->computePipelineRequestCount = $cValue;
     }
@@ -512,7 +562,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getDescriptorSetLayoutRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorSetLayoutRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -520,7 +570,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setDescriptorSetLayoutRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorSetLayoutRequestCount = $cValue;
     }
@@ -530,7 +580,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getSamplerRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samplerRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -538,7 +588,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setSamplerRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->samplerRequestCount = $cValue;
     }
@@ -548,7 +598,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getDescriptorPoolRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorPoolRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -556,7 +606,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setDescriptorPoolRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorPoolRequestCount = $cValue;
     }
@@ -566,7 +616,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getDescriptorSetRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorSetRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -574,7 +624,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setDescriptorSetRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorSetRequestCount = $cValue;
     }
@@ -584,7 +634,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getFramebufferRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->framebufferRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -592,7 +642,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setFramebufferRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->framebufferRequestCount = $cValue;
     }
@@ -602,7 +652,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getCommandPoolRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->commandPoolRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -610,7 +660,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setCommandPoolRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->commandPoolRequestCount = $cValue;
     }
@@ -620,7 +670,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getSamplerYcbcrConversionRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samplerYcbcrConversionRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -628,7 +678,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setSamplerYcbcrConversionRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->samplerYcbcrConversionRequestCount = $cValue;
     }
@@ -638,7 +688,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getSurfaceRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->surfaceRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -646,7 +696,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setSurfaceRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->surfaceRequestCount = $cValue;
     }
@@ -656,7 +706,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getSwapchainRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->swapchainRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -664,7 +714,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setSwapchainRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->swapchainRequestCount = $cValue;
     }
@@ -674,7 +724,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getDisplayModeRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->displayModeRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -682,7 +732,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setDisplayModeRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->displayModeRequestCount = $cValue;
     }
@@ -692,7 +742,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getSubpassDescriptionRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subpassDescriptionRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -700,7 +750,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setSubpassDescriptionRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subpassDescriptionRequestCount = $cValue;
     }
@@ -710,7 +760,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getAttachmentDescriptionRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->attachmentDescriptionRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -718,7 +768,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setAttachmentDescriptionRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->attachmentDescriptionRequestCount = $cValue;
     }
@@ -728,7 +778,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getDescriptorSetLayoutBindingRequestCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorSetLayoutBindingRequestCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -736,7 +786,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setDescriptorSetLayoutBindingRequestCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorSetLayoutBindingRequestCount = $cValue;
     }
@@ -746,7 +796,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getDescriptorSetLayoutBindingLimit(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorSetLayoutBindingLimit;
         $phpValue = $cValue;
         return $phpValue;
@@ -754,7 +804,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setDescriptorSetLayoutBindingLimit(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorSetLayoutBindingLimit = $cValue;
     }
@@ -764,7 +814,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getMaxImageViewMipLevels(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageViewMipLevels;
         $phpValue = $cValue;
         return $phpValue;
@@ -772,7 +822,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setMaxImageViewMipLevels(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageViewMipLevels = $cValue;
     }
@@ -782,7 +832,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getMaxImageViewArrayLayers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageViewArrayLayers;
         $phpValue = $cValue;
         return $phpValue;
@@ -790,7 +840,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setMaxImageViewArrayLayers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageViewArrayLayers = $cValue;
     }
@@ -800,7 +850,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getMaxLayeredImageViewMipLevels(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxLayeredImageViewMipLevels;
         $phpValue = $cValue;
         return $phpValue;
@@ -808,7 +858,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setMaxLayeredImageViewMipLevels(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxLayeredImageViewMipLevels = $cValue;
     }
@@ -818,7 +868,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getMaxOcclusionQueriesPerPool(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxOcclusionQueriesPerPool;
         $phpValue = $cValue;
         return $phpValue;
@@ -826,7 +876,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setMaxOcclusionQueriesPerPool(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxOcclusionQueriesPerPool = $cValue;
     }
@@ -836,7 +886,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getMaxPipelineStatisticsQueriesPerPool(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPipelineStatisticsQueriesPerPool;
         $phpValue = $cValue;
         return $phpValue;
@@ -844,7 +894,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setMaxPipelineStatisticsQueriesPerPool(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPipelineStatisticsQueriesPerPool = $cValue;
     }
@@ -854,7 +904,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getMaxTimestampQueriesPerPool(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTimestampQueriesPerPool;
         $phpValue = $cValue;
         return $phpValue;
@@ -862,7 +912,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setMaxTimestampQueriesPerPool(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTimestampQueriesPerPool = $cValue;
     }
@@ -872,7 +922,7 @@ final class VkDeviceObjectReservationCreateInfo
      */
     public function getMaxImmutableSamplersPerDescriptorSetLayout(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImmutableSamplersPerDescriptorSetLayout;
         $phpValue = $cValue;
         return $phpValue;
@@ -880,7 +930,7 @@ final class VkDeviceObjectReservationCreateInfo
 
     public function setMaxImmutableSamplersPerDescriptorSetLayout(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImmutableSamplersPerDescriptorSetLayout = $cValue;
     }

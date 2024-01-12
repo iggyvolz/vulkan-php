@@ -4,8 +4,30 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkIndirectCommandsLayoutTokenNV
+final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "tokenType" => $this->getTokenType(),
+          "stream" => $this->getStream(),
+          "offset" => $this->getOffset(),
+          "vertexBindingUnit" => $this->getVertexBindingUnit(),
+          "vertexDynamicStride" => $this->getVertexDynamicStride(),
+          "pushconstantPipelineLayout" => $this->getPushconstantPipelineLayout(),
+          "pushconstantShaderStageFlags" => $this->getPushconstantShaderStageFlags(),
+          "pushconstantOffset" => $this->getPushconstantOffset(),
+          "pushconstantSize" => $this->getPushconstantSize(),
+          "indirectStateFlags" => $this->getIndirectStateFlags(),
+          "indexTypeCount" => $this->getIndexTypeCount(),
+          "pIndexTypes" => $this->getPIndexTypes(),
+          "pIndexTypeValues" => $this->getPIndexTypeValues(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +35,7 @@ final class VkIndirectCommandsLayoutTokenNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +58,7 @@ final class VkIndirectCommandsLayoutTokenNV
         null|\iggyvolz\vulkan\util\IntPointer $pIndexTypeValues = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkIndirectCommandsLayoutTokenNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkIndirectCommandsLayoutTokenNV', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($tokenType)) $self->setTokenType($tokenType);
@@ -60,7 +82,7 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -68,7 +90,7 @@ final class VkIndirectCommandsLayoutTokenNV
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -78,15 +100,15 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -96,7 +118,7 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getTokenType(): \iggyvolz\vulkan\enum\VkIndirectCommandsTokenTypeNV
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tokenType;
         $phpValue = \iggyvolz\vulkan\enum\VkIndirectCommandsTokenTypeNV::from($cValue);
         return $phpValue;
@@ -104,7 +126,7 @@ final class VkIndirectCommandsLayoutTokenNV
 
     public function setTokenType(\iggyvolz\vulkan\enum\VkIndirectCommandsTokenTypeNV $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->tokenType = $cValue;
     }
@@ -114,7 +136,7 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getStream(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stream;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +144,7 @@ final class VkIndirectCommandsLayoutTokenNV
 
     public function setStream(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stream = $cValue;
     }
@@ -132,7 +154,7 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = $cValue;
         return $phpValue;
@@ -140,7 +162,7 @@ final class VkIndirectCommandsLayoutTokenNV
 
     public function setOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->offset = $cValue;
     }
@@ -150,7 +172,7 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getVertexBindingUnit(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexBindingUnit;
         $phpValue = $cValue;
         return $phpValue;
@@ -158,7 +180,7 @@ final class VkIndirectCommandsLayoutTokenNV
 
     public function setVertexBindingUnit(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexBindingUnit = $cValue;
     }
@@ -168,7 +190,7 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getVertexDynamicStride(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexDynamicStride;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -176,7 +198,7 @@ final class VkIndirectCommandsLayoutTokenNV
 
     public function setVertexDynamicStride(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->vertexDynamicStride = $cValue;
     }
@@ -186,7 +208,7 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getPushconstantPipelineLayout(): VkPipelineLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pushconstantPipelineLayout;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipelineLayout($cValue, $ffi);
         return $phpValue;
@@ -194,7 +216,7 @@ final class VkIndirectCommandsLayoutTokenNV
 
     public function setPushconstantPipelineLayout(VkPipelineLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pushconstantPipelineLayout = $cValue;
     }
@@ -204,7 +226,7 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getPushconstantShaderStageFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pushconstantShaderStageFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -212,7 +234,7 @@ final class VkIndirectCommandsLayoutTokenNV
 
     public function setPushconstantShaderStageFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->pushconstantShaderStageFlags = $cValue;
     }
@@ -222,7 +244,7 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getPushconstantOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pushconstantOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -230,7 +252,7 @@ final class VkIndirectCommandsLayoutTokenNV
 
     public function setPushconstantOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pushconstantOffset = $cValue;
     }
@@ -240,7 +262,7 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getPushconstantSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pushconstantSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -248,7 +270,7 @@ final class VkIndirectCommandsLayoutTokenNV
 
     public function setPushconstantSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pushconstantSize = $cValue;
     }
@@ -258,7 +280,7 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getIndirectStateFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indirectStateFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkIndirectStateFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -266,7 +288,7 @@ final class VkIndirectCommandsLayoutTokenNV
 
     public function setIndirectStateFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkIndirectStateFlagBitsNV::toInt(...$phpValue);
         $this->cdata->indirectStateFlags = $cValue;
     }
@@ -276,7 +298,7 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getIndexTypeCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexTypeCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -284,7 +306,7 @@ final class VkIndirectCommandsLayoutTokenNV
 
     public function setIndexTypeCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->indexTypeCount = $cValue;
     }
@@ -294,15 +316,15 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getPIndexTypes(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pIndexTypes;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPIndexTypes(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pIndexTypes = $cValue;
     }
@@ -312,7 +334,7 @@ final class VkIndirectCommandsLayoutTokenNV
      */
     public function getPIndexTypeValues(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pIndexTypeValues;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -320,7 +342,7 @@ final class VkIndirectCommandsLayoutTokenNV
 
     public function setPIndexTypeValues(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pIndexTypeValues = $cValue;
     }

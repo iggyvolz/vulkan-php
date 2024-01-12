@@ -4,8 +4,15 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSamplerYcbcrConversionInfoKHR
+final class VkSamplerYcbcrConversionInfoKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,13 +20,13 @@ final class VkSamplerYcbcrConversionInfoKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
     {
-        $self = new self( $vulkan->ffi->new('VkSamplerYcbcrConversionInfoKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSamplerYcbcrConversionInfoKHR', false), $vulkan);
         return $self;
     }
 }

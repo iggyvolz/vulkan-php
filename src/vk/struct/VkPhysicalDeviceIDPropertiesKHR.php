@@ -4,8 +4,15 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceIDPropertiesKHR
+final class VkPhysicalDeviceIDPropertiesKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,13 +20,13 @@ final class VkPhysicalDeviceIDPropertiesKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceIDPropertiesKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceIDPropertiesKHR', false), $vulkan);
         return $self;
     }
 }

@@ -4,8 +4,25 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSurfaceCapabilitiesKHR
+final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "minImageCount" => $this->getMinImageCount(),
+          "maxImageCount" => $this->getMaxImageCount(),
+          "currentExtent" => $this->getCurrentExtent(),
+          "minImageExtent" => $this->getMinImageExtent(),
+          "maxImageExtent" => $this->getMaxImageExtent(),
+          "maxImageArrayLayers" => $this->getMaxImageArrayLayers(),
+          "supportedTransforms" => $this->getSupportedTransforms(),
+          "currentTransform" => $this->getCurrentTransform(),
+          "supportedCompositeAlpha" => $this->getSupportedCompositeAlpha(),
+          "supportedUsageFlags" => $this->getSupportedUsageFlags(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +30,7 @@ final class VkSurfaceCapabilitiesKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -31,7 +48,7 @@ final class VkSurfaceCapabilitiesKHR
         null|array $supportedUsageFlags = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSurfaceCapabilitiesKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSurfaceCapabilitiesKHR', false), $vulkan);
         if(!is_null($minImageCount)) $self->setMinImageCount($minImageCount);
         if(!is_null($maxImageCount)) $self->setMaxImageCount($maxImageCount);
         if(!is_null($currentExtent)) $self->setCurrentExtent($currentExtent);
@@ -50,7 +67,7 @@ final class VkSurfaceCapabilitiesKHR
      */
     public function getMinImageCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minImageCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -58,7 +75,7 @@ final class VkSurfaceCapabilitiesKHR
 
     public function setMinImageCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minImageCount = $cValue;
     }
@@ -68,7 +85,7 @@ final class VkSurfaceCapabilitiesKHR
      */
     public function getMaxImageCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -76,7 +93,7 @@ final class VkSurfaceCapabilitiesKHR
 
     public function setMaxImageCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageCount = $cValue;
     }
@@ -86,7 +103,7 @@ final class VkSurfaceCapabilitiesKHR
      */
     public function getCurrentExtent(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->currentExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -94,7 +111,7 @@ final class VkSurfaceCapabilitiesKHR
 
     public function setCurrentExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->currentExtent = $cValue;
     }
@@ -104,7 +121,7 @@ final class VkSurfaceCapabilitiesKHR
      */
     public function getMinImageExtent(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minImageExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -112,7 +129,7 @@ final class VkSurfaceCapabilitiesKHR
 
     public function setMinImageExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->minImageExtent = $cValue;
     }
@@ -122,7 +139,7 @@ final class VkSurfaceCapabilitiesKHR
      */
     public function getMaxImageExtent(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -130,7 +147,7 @@ final class VkSurfaceCapabilitiesKHR
 
     public function setMaxImageExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxImageExtent = $cValue;
     }
@@ -140,7 +157,7 @@ final class VkSurfaceCapabilitiesKHR
      */
     public function getMaxImageArrayLayers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageArrayLayers;
         $phpValue = $cValue;
         return $phpValue;
@@ -148,7 +165,7 @@ final class VkSurfaceCapabilitiesKHR
 
     public function setMaxImageArrayLayers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageArrayLayers = $cValue;
     }
@@ -158,7 +175,7 @@ final class VkSurfaceCapabilitiesKHR
      */
     public function getSupportedTransforms(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedTransforms;
         $phpValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -166,7 +183,7 @@ final class VkSurfaceCapabilitiesKHR
 
     public function setSupportedTransforms(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->supportedTransforms = $cValue;
     }
@@ -176,7 +193,7 @@ final class VkSurfaceCapabilitiesKHR
      */
     public function getCurrentTransform(): \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->currentTransform;
         $phpValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::from($cValue);
         return $phpValue;
@@ -184,7 +201,7 @@ final class VkSurfaceCapabilitiesKHR
 
     public function setCurrentTransform(\iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->currentTransform = $cValue;
     }
@@ -194,7 +211,7 @@ final class VkSurfaceCapabilitiesKHR
      */
     public function getSupportedCompositeAlpha(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedCompositeAlpha;
         $phpValue = \iggyvolz\vulkan\enum\VkCompositeAlphaFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -202,7 +219,7 @@ final class VkSurfaceCapabilitiesKHR
 
     public function setSupportedCompositeAlpha(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkCompositeAlphaFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->supportedCompositeAlpha = $cValue;
     }
@@ -212,7 +229,7 @@ final class VkSurfaceCapabilitiesKHR
      */
     public function getSupportedUsageFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedUsageFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -220,7 +237,7 @@ final class VkSurfaceCapabilitiesKHR
 
     public function setSupportedUsageFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->supportedUsageFlags = $cValue;
     }

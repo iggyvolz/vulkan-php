@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkStridedDeviceAddressRegionKHR
+final class VkStridedDeviceAddressRegionKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "deviceAddress" => $this->getDeviceAddress(),
+          "stride" => $this->getStride(),
+          "size" => $this->getSize(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkStridedDeviceAddressRegionKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkStridedDeviceAddressRegionKHR
         null|int $size = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkStridedDeviceAddressRegionKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkStridedDeviceAddressRegionKHR', false), $vulkan);
         if(!is_null($deviceAddress)) $self->setDeviceAddress($deviceAddress);
         if(!is_null($stride)) $self->setStride($stride);
         if(!is_null($size)) $self->setSize($size);
@@ -36,7 +46,7 @@ final class VkStridedDeviceAddressRegionKHR
      */
     public function getDeviceAddress(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkStridedDeviceAddressRegionKHR
 
     public function setDeviceAddress(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->deviceAddress = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkStridedDeviceAddressRegionKHR
      */
     public function getStride(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stride;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkStridedDeviceAddressRegionKHR
 
     public function setStride(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stride = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkStridedDeviceAddressRegionKHR
      */
     public function getSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkStridedDeviceAddressRegionKHR
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }

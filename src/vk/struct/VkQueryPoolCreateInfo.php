@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkQueryPoolCreateInfo
+final class VkQueryPoolCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "queryType" => $this->getQueryType(),
+          "queryCount" => $this->getQueryCount(),
+          "pipelineStatistics" => $this->getPipelineStatistics(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkQueryPoolCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkQueryPoolCreateInfo
         null|array $pipelineStatistics = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkQueryPoolCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkQueryPoolCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -42,7 +55,7 @@ final class VkQueryPoolCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkQueryPoolCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkQueryPoolCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkQueryPoolCreateInfo
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkQueryPoolCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkQueryPoolCreateInfo
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkQueryPoolCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkQueryPoolCreateInfo
      */
     public function getQueryType(): \iggyvolz\vulkan\enum\VkQueryType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->queryType;
         $phpValue = \iggyvolz\vulkan\enum\VkQueryType::from($cValue);
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkQueryPoolCreateInfo
 
     public function setQueryType(\iggyvolz\vulkan\enum\VkQueryType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->queryType = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkQueryPoolCreateInfo
      */
     public function getQueryCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->queryCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkQueryPoolCreateInfo
 
     public function setQueryCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->queryCount = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkQueryPoolCreateInfo
      */
     public function getPipelineStatistics(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineStatistics;
         $phpValue = \iggyvolz\vulkan\enum\VkQueryPipelineStatisticFlagBits::fromInt($cValue);
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkQueryPoolCreateInfo
 
     public function setPipelineStatistics(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkQueryPipelineStatisticFlagBits::toInt(...$phpValue);
         $this->cdata->pipelineStatistics = $cValue;
     }

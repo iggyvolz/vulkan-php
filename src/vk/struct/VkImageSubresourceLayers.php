@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkImageSubresourceLayers
+final class VkImageSubresourceLayers implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "aspectMask" => $this->getAspectMask(),
+          "mipLevel" => $this->getMipLevel(),
+          "baseArrayLayer" => $this->getBaseArrayLayer(),
+          "layerCount" => $this->getLayerCount(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +24,7 @@ final class VkImageSubresourceLayers
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -25,7 +36,7 @@ final class VkImageSubresourceLayers
         null|int $layerCount = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageSubresourceLayers', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkImageSubresourceLayers', false), $vulkan);
         if(!is_null($aspectMask)) $self->setAspectMask($aspectMask);
         if(!is_null($mipLevel)) $self->setMipLevel($mipLevel);
         if(!is_null($baseArrayLayer)) $self->setBaseArrayLayer($baseArrayLayer);
@@ -38,7 +49,7 @@ final class VkImageSubresourceLayers
      */
     public function getAspectMask(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->aspectMask;
         $phpValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::fromInt($cValue);
         return $phpValue;
@@ -46,7 +57,7 @@ final class VkImageSubresourceLayers
 
     public function setAspectMask(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::toInt(...$phpValue);
         $this->cdata->aspectMask = $cValue;
     }
@@ -56,7 +67,7 @@ final class VkImageSubresourceLayers
      */
     public function getMipLevel(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mipLevel;
         $phpValue = $cValue;
         return $phpValue;
@@ -64,7 +75,7 @@ final class VkImageSubresourceLayers
 
     public function setMipLevel(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->mipLevel = $cValue;
     }
@@ -74,7 +85,7 @@ final class VkImageSubresourceLayers
      */
     public function getBaseArrayLayer(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->baseArrayLayer;
         $phpValue = $cValue;
         return $phpValue;
@@ -82,7 +93,7 @@ final class VkImageSubresourceLayers
 
     public function setBaseArrayLayer(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->baseArrayLayer = $cValue;
     }
@@ -92,7 +103,7 @@ final class VkImageSubresourceLayers
      */
     public function getLayerCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layerCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -100,7 +111,7 @@ final class VkImageSubresourceLayers
 
     public function setLayerCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->layerCount = $cValue;
     }

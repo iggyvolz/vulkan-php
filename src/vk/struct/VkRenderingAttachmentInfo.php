@@ -4,8 +4,25 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkRenderingAttachmentInfo
+final class VkRenderingAttachmentInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "imageView" => $this->getImageView(),
+          "imageLayout" => $this->getImageLayout(),
+          "resolveMode" => $this->getResolveMode(),
+          "resolveImageView" => $this->getResolveImageView(),
+          "resolveImageLayout" => $this->getResolveImageLayout(),
+          "loadOp" => $this->getLoadOp(),
+          "storeOp" => $this->getStoreOp(),
+          "clearValue" => $this->getClearValue(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +30,7 @@ final class VkRenderingAttachmentInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -31,7 +48,7 @@ final class VkRenderingAttachmentInfo
         mixed $clearValue = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkRenderingAttachmentInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkRenderingAttachmentInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($imageView)) $self->setImageView($imageView);
@@ -50,7 +67,7 @@ final class VkRenderingAttachmentInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -58,7 +75,7 @@ final class VkRenderingAttachmentInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -68,15 +85,15 @@ final class VkRenderingAttachmentInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -86,7 +103,7 @@ final class VkRenderingAttachmentInfo
      */
     public function getImageView(): VkImageView
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageView;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageView($cValue, $ffi);
         return $phpValue;
@@ -94,7 +111,7 @@ final class VkRenderingAttachmentInfo
 
     public function setImageView(VkImageView $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageView = $cValue;
     }
@@ -104,7 +121,7 @@ final class VkRenderingAttachmentInfo
      */
     public function getImageLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -112,7 +129,7 @@ final class VkRenderingAttachmentInfo
 
     public function setImageLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->imageLayout = $cValue;
     }
@@ -122,7 +139,7 @@ final class VkRenderingAttachmentInfo
      */
     public function getResolveMode(): \iggyvolz\vulkan\enum\VkResolveModeFlagBits
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->resolveMode;
         $phpValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::from($cValue);
         return $phpValue;
@@ -130,7 +147,7 @@ final class VkRenderingAttachmentInfo
 
     public function setResolveMode(\iggyvolz\vulkan\enum\VkResolveModeFlagBits $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->resolveMode = $cValue;
     }
@@ -140,7 +157,7 @@ final class VkRenderingAttachmentInfo
      */
     public function getResolveImageView(): VkImageView
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->resolveImageView;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageView($cValue, $ffi);
         return $phpValue;
@@ -148,7 +165,7 @@ final class VkRenderingAttachmentInfo
 
     public function setResolveImageView(VkImageView $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->resolveImageView = $cValue;
     }
@@ -158,7 +175,7 @@ final class VkRenderingAttachmentInfo
      */
     public function getResolveImageLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->resolveImageLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -166,7 +183,7 @@ final class VkRenderingAttachmentInfo
 
     public function setResolveImageLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->resolveImageLayout = $cValue;
     }
@@ -176,7 +193,7 @@ final class VkRenderingAttachmentInfo
      */
     public function getLoadOp(): \iggyvolz\vulkan\enum\VkAttachmentLoadOp
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->loadOp;
         $phpValue = \iggyvolz\vulkan\enum\VkAttachmentLoadOp::from($cValue);
         return $phpValue;
@@ -184,7 +201,7 @@ final class VkRenderingAttachmentInfo
 
     public function setLoadOp(\iggyvolz\vulkan\enum\VkAttachmentLoadOp $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->loadOp = $cValue;
     }
@@ -194,7 +211,7 @@ final class VkRenderingAttachmentInfo
      */
     public function getStoreOp(): \iggyvolz\vulkan\enum\VkAttachmentStoreOp
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storeOp;
         $phpValue = \iggyvolz\vulkan\enum\VkAttachmentStoreOp::from($cValue);
         return $phpValue;
@@ -202,7 +219,7 @@ final class VkRenderingAttachmentInfo
 
     public function setStoreOp(\iggyvolz\vulkan\enum\VkAttachmentStoreOp $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->storeOp = $cValue;
     }
@@ -212,7 +229,7 @@ final class VkRenderingAttachmentInfo
      */
     public function getClearValue(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->clearValue;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -220,7 +237,7 @@ final class VkRenderingAttachmentInfo
 
     public function setClearValue(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->clearValue = $cValue;
     }

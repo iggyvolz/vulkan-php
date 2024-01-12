@@ -4,8 +4,24 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkFramebufferCreateInfo
+final class VkFramebufferCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "renderPass" => $this->getRenderPass(),
+          "attachmentCount" => $this->getAttachmentCount(),
+          "pAttachments" => $this->getPAttachments(),
+          "width" => $this->getWidth(),
+          "height" => $this->getHeight(),
+          "layers" => $this->getLayers(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +29,7 @@ final class VkFramebufferCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -30,7 +46,7 @@ final class VkFramebufferCreateInfo
         null|int $layers = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkFramebufferCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkFramebufferCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -48,7 +64,7 @@ final class VkFramebufferCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -56,7 +72,7 @@ final class VkFramebufferCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -66,15 +82,15 @@ final class VkFramebufferCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -84,7 +100,7 @@ final class VkFramebufferCreateInfo
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkFramebufferCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -92,7 +108,7 @@ final class VkFramebufferCreateInfo
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkFramebufferCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -102,7 +118,7 @@ final class VkFramebufferCreateInfo
      */
     public function getRenderPass(): VkRenderPass
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->renderPass;
         $phpValue = new \iggyvolz\vulkan\struct\VkRenderPass($cValue, $ffi);
         return $phpValue;
@@ -110,7 +126,7 @@ final class VkFramebufferCreateInfo
 
     public function setRenderPass(VkRenderPass $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->renderPass = $cValue;
     }
@@ -120,7 +136,7 @@ final class VkFramebufferCreateInfo
      */
     public function getAttachmentCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->attachmentCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -128,7 +144,7 @@ final class VkFramebufferCreateInfo
 
     public function setAttachmentCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->attachmentCount = $cValue;
     }
@@ -138,15 +154,15 @@ final class VkFramebufferCreateInfo
      */
     public function getPAttachments(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pAttachments;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImageView', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImageView', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPAttachments(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pAttachments = $cValue;
     }
@@ -156,7 +172,7 @@ final class VkFramebufferCreateInfo
      */
     public function getWidth(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->width;
         $phpValue = $cValue;
         return $phpValue;
@@ -164,7 +180,7 @@ final class VkFramebufferCreateInfo
 
     public function setWidth(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->width = $cValue;
     }
@@ -174,7 +190,7 @@ final class VkFramebufferCreateInfo
      */
     public function getHeight(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->height;
         $phpValue = $cValue;
         return $phpValue;
@@ -182,7 +198,7 @@ final class VkFramebufferCreateInfo
 
     public function setHeight(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->height = $cValue;
     }
@@ -192,7 +208,7 @@ final class VkFramebufferCreateInfo
      */
     public function getLayers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layers;
         $phpValue = $cValue;
         return $phpValue;
@@ -200,7 +216,7 @@ final class VkFramebufferCreateInfo
 
     public function setLayers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->layers = $cValue;
     }

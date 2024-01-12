@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSpecializationMapEntry
+final class VkSpecializationMapEntry implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "constantID" => $this->getConstantID(),
+          "offset" => $this->getOffset(),
+          "size" => $this->getSize(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkSpecializationMapEntry
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkSpecializationMapEntry
         null|int $size = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSpecializationMapEntry', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSpecializationMapEntry', false), $vulkan);
         if(!is_null($constantID)) $self->setConstantID($constantID);
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($size)) $self->setSize($size);
@@ -36,7 +46,7 @@ final class VkSpecializationMapEntry
      */
     public function getConstantID(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->constantID;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkSpecializationMapEntry
 
     public function setConstantID(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->constantID = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkSpecializationMapEntry
      */
     public function getOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkSpecializationMapEntry
 
     public function setOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->offset = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkSpecializationMapEntry
      */
     public function getSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkSpecializationMapEntry
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }

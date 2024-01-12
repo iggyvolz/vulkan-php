@@ -4,8 +4,28 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkGeometryTrianglesNV
+final class VkGeometryTrianglesNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "vertexData" => $this->getVertexData(),
+          "vertexOffset" => $this->getVertexOffset(),
+          "vertexCount" => $this->getVertexCount(),
+          "vertexStride" => $this->getVertexStride(),
+          "vertexFormat" => $this->getVertexFormat(),
+          "indexData" => $this->getIndexData(),
+          "indexOffset" => $this->getIndexOffset(),
+          "indexCount" => $this->getIndexCount(),
+          "indexType" => $this->getIndexType(),
+          "transformData" => $this->getTransformData(),
+          "transformOffset" => $this->getTransformOffset(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +33,7 @@ final class VkGeometryTrianglesNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +54,7 @@ final class VkGeometryTrianglesNV
         null|int $transformOffset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkGeometryTrianglesNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkGeometryTrianglesNV', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($vertexData)) $self->setVertexData($vertexData);
@@ -56,7 +76,7 @@ final class VkGeometryTrianglesNV
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -64,7 +84,7 @@ final class VkGeometryTrianglesNV
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -74,15 +94,15 @@ final class VkGeometryTrianglesNV
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -92,7 +112,7 @@ final class VkGeometryTrianglesNV
      */
     public function getVertexData(): VkBuffer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexData;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -100,7 +120,7 @@ final class VkGeometryTrianglesNV
 
     public function setVertexData(VkBuffer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->vertexData = $cValue;
     }
@@ -110,7 +130,7 @@ final class VkGeometryTrianglesNV
      */
     public function getVertexOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -118,7 +138,7 @@ final class VkGeometryTrianglesNV
 
     public function setVertexOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexOffset = $cValue;
     }
@@ -128,7 +148,7 @@ final class VkGeometryTrianglesNV
      */
     public function getVertexCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -136,7 +156,7 @@ final class VkGeometryTrianglesNV
 
     public function setVertexCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexCount = $cValue;
     }
@@ -146,7 +166,7 @@ final class VkGeometryTrianglesNV
      */
     public function getVertexStride(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -154,7 +174,7 @@ final class VkGeometryTrianglesNV
 
     public function setVertexStride(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexStride = $cValue;
     }
@@ -164,7 +184,7 @@ final class VkGeometryTrianglesNV
      */
     public function getVertexFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexFormat;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -172,7 +192,7 @@ final class VkGeometryTrianglesNV
 
     public function setVertexFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->vertexFormat = $cValue;
     }
@@ -182,7 +202,7 @@ final class VkGeometryTrianglesNV
      */
     public function getIndexData(): VkBuffer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexData;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -190,7 +210,7 @@ final class VkGeometryTrianglesNV
 
     public function setIndexData(VkBuffer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->indexData = $cValue;
     }
@@ -200,7 +220,7 @@ final class VkGeometryTrianglesNV
      */
     public function getIndexOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -208,7 +228,7 @@ final class VkGeometryTrianglesNV
 
     public function setIndexOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->indexOffset = $cValue;
     }
@@ -218,7 +238,7 @@ final class VkGeometryTrianglesNV
      */
     public function getIndexCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -226,7 +246,7 @@ final class VkGeometryTrianglesNV
 
     public function setIndexCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->indexCount = $cValue;
     }
@@ -236,7 +256,7 @@ final class VkGeometryTrianglesNV
      */
     public function getIndexType(): \iggyvolz\vulkan\enum\VkIndexType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexType;
         $phpValue = \iggyvolz\vulkan\enum\VkIndexType::from($cValue);
         return $phpValue;
@@ -244,7 +264,7 @@ final class VkGeometryTrianglesNV
 
     public function setIndexType(\iggyvolz\vulkan\enum\VkIndexType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->indexType = $cValue;
     }
@@ -254,7 +274,7 @@ final class VkGeometryTrianglesNV
      */
     public function getTransformData(): VkBuffer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformData;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -262,7 +282,7 @@ final class VkGeometryTrianglesNV
 
     public function setTransformData(VkBuffer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->transformData = $cValue;
     }
@@ -272,7 +292,7 @@ final class VkGeometryTrianglesNV
      */
     public function getTransformOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -280,7 +300,7 @@ final class VkGeometryTrianglesNV
 
     public function setTransformOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->transformOffset = $cValue;
     }

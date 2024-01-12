@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDescriptorPoolSize
+final class VkDescriptorPoolSize implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "type" => $this->getType(),
+          "descriptorCount" => $this->getDescriptorCount(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkDescriptorPoolSize
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkDescriptorPoolSize
         null|int $descriptorCount = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorPoolSize', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDescriptorPoolSize', false), $vulkan);
         if(!is_null($type)) $self->setType($type);
         if(!is_null($descriptorCount)) $self->setDescriptorCount($descriptorCount);
         return $self;
@@ -34,7 +43,7 @@ final class VkDescriptorPoolSize
      */
     public function getType(): \iggyvolz\vulkan\enum\VkDescriptorType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->type;
         $phpValue = \iggyvolz\vulkan\enum\VkDescriptorType::from($cValue);
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkDescriptorPoolSize
 
     public function setType(\iggyvolz\vulkan\enum\VkDescriptorType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->type = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkDescriptorPoolSize
      */
     public function getDescriptorCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkDescriptorPoolSize
 
     public function setDescriptorCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorCount = $cValue;
     }

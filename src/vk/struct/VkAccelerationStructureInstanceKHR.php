@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkAccelerationStructureInstanceKHR
+final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "transform" => $this->getTransform(),
+          "instanceCustomIndex" => $this->getInstanceCustomIndex(),
+          "mask" => $this->getMask(),
+          "instanceShaderBindingTableRecordOffset" => $this->getInstanceShaderBindingTableRecordOffset(),
+          "flags" => $this->getFlags(),
+          "accelerationStructureReference" => $this->getAccelerationStructureReference(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkAccelerationStructureInstanceKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkAccelerationStructureInstanceKHR
         null|int $accelerationStructureReference = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureInstanceKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkAccelerationStructureInstanceKHR', false), $vulkan);
         if(!is_null($transform)) $self->setTransform($transform);
         if(!is_null($instanceCustomIndex)) $self->setInstanceCustomIndex($instanceCustomIndex);
         if(!is_null($mask)) $self->setMask($mask);
@@ -42,7 +55,7 @@ final class VkAccelerationStructureInstanceKHR
      */
     public function getTransform(): VkTransformMatrixKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transform;
         $phpValue = new \iggyvolz\vulkan\struct\VkTransformMatrixKHR($cValue, $ffi);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkAccelerationStructureInstanceKHR
 
     public function setTransform(VkTransformMatrixKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->transform = $cValue;
     }
@@ -60,7 +73,7 @@ final class VkAccelerationStructureInstanceKHR
      */
     public function getInstanceCustomIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->instanceCustomIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -68,7 +81,7 @@ final class VkAccelerationStructureInstanceKHR
 
     public function setInstanceCustomIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->instanceCustomIndex = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkAccelerationStructureInstanceKHR
      */
     public function getMask(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mask;
         $phpValue = $cValue;
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkAccelerationStructureInstanceKHR
 
     public function setMask(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->mask = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkAccelerationStructureInstanceKHR
      */
     public function getInstanceShaderBindingTableRecordOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->instanceShaderBindingTableRecordOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkAccelerationStructureInstanceKHR
 
     public function setInstanceShaderBindingTableRecordOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->instanceShaderBindingTableRecordOffset = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkAccelerationStructureInstanceKHR
      */
     public function getFlags(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkAccelerationStructureInstanceKHR
 
     public function setFlags(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->flags = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkAccelerationStructureInstanceKHR
      */
     public function getAccelerationStructureReference(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->accelerationStructureReference;
         $phpValue = $cValue;
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkAccelerationStructureInstanceKHR
 
     public function setAccelerationStructureReference(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->accelerationStructureReference = $cValue;
     }

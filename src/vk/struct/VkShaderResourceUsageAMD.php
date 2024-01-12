@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkShaderResourceUsageAMD
+final class VkShaderResourceUsageAMD implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "numUsedVgprs" => $this->getNumUsedVgprs(),
+          "numUsedSgprs" => $this->getNumUsedSgprs(),
+          "ldsSizePerLocalWorkGroup" => $this->getLdsSizePerLocalWorkGroup(),
+          "ldsUsageSizeInBytes" => $this->getLdsUsageSizeInBytes(),
+          "scratchMemUsageInBytes" => $this->getScratchMemUsageInBytes(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkShaderResourceUsageAMD
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkShaderResourceUsageAMD
         null|int $scratchMemUsageInBytes = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkShaderResourceUsageAMD', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkShaderResourceUsageAMD', false), $vulkan);
         if(!is_null($numUsedVgprs)) $self->setNumUsedVgprs($numUsedVgprs);
         if(!is_null($numUsedSgprs)) $self->setNumUsedSgprs($numUsedSgprs);
         if(!is_null($ldsSizePerLocalWorkGroup)) $self->setLdsSizePerLocalWorkGroup($ldsSizePerLocalWorkGroup);
@@ -40,7 +52,7 @@ final class VkShaderResourceUsageAMD
      */
     public function getNumUsedVgprs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->numUsedVgprs;
         $phpValue = $cValue;
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkShaderResourceUsageAMD
 
     public function setNumUsedVgprs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->numUsedVgprs = $cValue;
     }
@@ -58,7 +70,7 @@ final class VkShaderResourceUsageAMD
      */
     public function getNumUsedSgprs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->numUsedSgprs;
         $phpValue = $cValue;
         return $phpValue;
@@ -66,7 +78,7 @@ final class VkShaderResourceUsageAMD
 
     public function setNumUsedSgprs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->numUsedSgprs = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkShaderResourceUsageAMD
      */
     public function getLdsSizePerLocalWorkGroup(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ldsSizePerLocalWorkGroup;
         $phpValue = $cValue;
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkShaderResourceUsageAMD
 
     public function setLdsSizePerLocalWorkGroup(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->ldsSizePerLocalWorkGroup = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkShaderResourceUsageAMD
      */
     public function getLdsUsageSizeInBytes(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ldsUsageSizeInBytes;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkShaderResourceUsageAMD
 
     public function setLdsUsageSizeInBytes(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->ldsUsageSizeInBytes = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkShaderResourceUsageAMD
      */
     public function getScratchMemUsageInBytes(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->scratchMemUsageInBytes;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkShaderResourceUsageAMD
 
     public function setScratchMemUsageInBytes(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->scratchMemUsageInBytes = $cValue;
     }

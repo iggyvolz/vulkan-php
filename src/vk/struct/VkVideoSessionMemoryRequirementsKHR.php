@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkVideoSessionMemoryRequirementsKHR
+final class VkVideoSessionMemoryRequirementsKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "memoryBindIndex" => $this->getMemoryBindIndex(),
+          "memoryRequirements" => $this->getMemoryRequirements(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +24,7 @@ final class VkVideoSessionMemoryRequirementsKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -25,7 +36,7 @@ final class VkVideoSessionMemoryRequirementsKHR
         null|VkMemoryRequirements $memoryRequirements = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoSessionMemoryRequirementsKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkVideoSessionMemoryRequirementsKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($memoryBindIndex)) $self->setMemoryBindIndex($memoryBindIndex);
@@ -38,7 +49,7 @@ final class VkVideoSessionMemoryRequirementsKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -46,7 +57,7 @@ final class VkVideoSessionMemoryRequirementsKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -56,15 +67,15 @@ final class VkVideoSessionMemoryRequirementsKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -74,7 +85,7 @@ final class VkVideoSessionMemoryRequirementsKHR
      */
     public function getMemoryBindIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryBindIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -82,7 +93,7 @@ final class VkVideoSessionMemoryRequirementsKHR
 
     public function setMemoryBindIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->memoryBindIndex = $cValue;
     }
@@ -92,7 +103,7 @@ final class VkVideoSessionMemoryRequirementsKHR
      */
     public function getMemoryRequirements(): VkMemoryRequirements
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryRequirements;
         $phpValue = new \iggyvolz\vulkan\struct\VkMemoryRequirements($cValue, $ffi);
         return $phpValue;
@@ -100,7 +111,7 @@ final class VkVideoSessionMemoryRequirementsKHR
 
     public function setMemoryRequirements(VkMemoryRequirements $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->memoryRequirements = $cValue;
     }

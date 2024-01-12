@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkIndirectCommandsStreamNV
+final class VkIndirectCommandsStreamNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "buffer" => $this->getBuffer(),
+          "offset" => $this->getOffset(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkIndirectCommandsStreamNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkIndirectCommandsStreamNV
         null|int $offset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkIndirectCommandsStreamNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkIndirectCommandsStreamNV', false), $vulkan);
         if(!is_null($buffer)) $self->setBuffer($buffer);
         if(!is_null($offset)) $self->setOffset($offset);
         return $self;
@@ -34,7 +43,7 @@ final class VkIndirectCommandsStreamNV
      */
     public function getBuffer(): VkBuffer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->buffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkIndirectCommandsStreamNV
 
     public function setBuffer(VkBuffer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->buffer = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkIndirectCommandsStreamNV
      */
     public function getOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkIndirectCommandsStreamNV
 
     public function setOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->offset = $cValue;
     }

@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceSubgroupProperties
+final class VkPhysicalDeviceSubgroupProperties implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "subgroupSize" => $this->getSubgroupSize(),
+          "supportedStages" => $this->getSupportedStages(),
+          "supportedOperations" => $this->getSupportedOperations(),
+          "quadOperationsInAllStages" => $this->getQuadOperationsInAllStages(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkPhysicalDeviceSubgroupProperties
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkPhysicalDeviceSubgroupProperties
         null|bool $quadOperationsInAllStages = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSubgroupProperties', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSubgroupProperties', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($subgroupSize)) $self->setSubgroupSize($subgroupSize);
@@ -42,7 +55,7 @@ final class VkPhysicalDeviceSubgroupProperties
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkPhysicalDeviceSubgroupProperties
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkPhysicalDeviceSubgroupProperties
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkPhysicalDeviceSubgroupProperties
      */
     public function getSubgroupSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subgroupSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkPhysicalDeviceSubgroupProperties
 
     public function setSubgroupSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subgroupSize = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkPhysicalDeviceSubgroupProperties
      */
     public function getSupportedStages(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedStages;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkPhysicalDeviceSubgroupProperties
 
     public function setSupportedStages(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->supportedStages = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkPhysicalDeviceSubgroupProperties
      */
     public function getSupportedOperations(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedOperations;
         $phpValue = \iggyvolz\vulkan\enum\VkSubgroupFeatureFlagBits::fromInt($cValue);
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkPhysicalDeviceSubgroupProperties
 
     public function setSupportedOperations(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSubgroupFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->supportedOperations = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkPhysicalDeviceSubgroupProperties
      */
     public function getQuadOperationsInAllStages(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->quadOperationsInAllStages;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkPhysicalDeviceSubgroupProperties
 
     public function setQuadOperationsInAllStages(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->quadOperationsInAllStages = $cValue;
     }

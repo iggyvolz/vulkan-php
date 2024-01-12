@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkConditionalRenderingBeginInfoEXT
+final class VkConditionalRenderingBeginInfoEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "buffer" => $this->getBuffer(),
+          "offset" => $this->getOffset(),
+          "flags" => $this->getFlags(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkConditionalRenderingBeginInfoEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkConditionalRenderingBeginInfoEXT
         null|array $flags = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkConditionalRenderingBeginInfoEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkConditionalRenderingBeginInfoEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($buffer)) $self->setBuffer($buffer);
@@ -40,7 +52,7 @@ final class VkConditionalRenderingBeginInfoEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkConditionalRenderingBeginInfoEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkConditionalRenderingBeginInfoEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkConditionalRenderingBeginInfoEXT
      */
     public function getBuffer(): VkBuffer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->buffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkConditionalRenderingBeginInfoEXT
 
     public function setBuffer(VkBuffer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->buffer = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkConditionalRenderingBeginInfoEXT
      */
     public function getOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkConditionalRenderingBeginInfoEXT
 
     public function setOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->offset = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkConditionalRenderingBeginInfoEXT
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkConditionalRenderingFlagBitsEXT::fromInt($cValue);
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkConditionalRenderingBeginInfoEXT
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkConditionalRenderingFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }

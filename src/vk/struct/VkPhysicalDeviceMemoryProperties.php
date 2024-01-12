@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceMemoryProperties
+final class VkPhysicalDeviceMemoryProperties implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "memoryTypeCount" => $this->getMemoryTypeCount(),
+          "memoryTypes" => $this->getMemoryTypes(),
+          "memoryHeapCount" => $this->getMemoryHeapCount(),
+          "memoryHeaps" => $this->getMemoryHeaps(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +24,7 @@ final class VkPhysicalDeviceMemoryProperties
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -25,7 +36,7 @@ final class VkPhysicalDeviceMemoryProperties
         mixed $memoryHeaps = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMemoryProperties', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMemoryProperties', false), $vulkan);
         if(!is_null($memoryTypeCount)) $self->setMemoryTypeCount($memoryTypeCount);
         if(!is_null($memoryTypes)) $self->setMemoryTypes($memoryTypes);
         if(!is_null($memoryHeapCount)) $self->setMemoryHeapCount($memoryHeapCount);
@@ -38,7 +49,7 @@ final class VkPhysicalDeviceMemoryProperties
      */
     public function getMemoryTypeCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryTypeCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -46,7 +57,7 @@ final class VkPhysicalDeviceMemoryProperties
 
     public function setMemoryTypeCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->memoryTypeCount = $cValue;
     }
@@ -56,7 +67,7 @@ final class VkPhysicalDeviceMemoryProperties
      */
     public function getMemoryTypes(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryTypes;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -64,7 +75,7 @@ final class VkPhysicalDeviceMemoryProperties
 
     public function setMemoryTypes(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->memoryTypes = $cValue;
     }
@@ -74,7 +85,7 @@ final class VkPhysicalDeviceMemoryProperties
      */
     public function getMemoryHeapCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryHeapCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -82,7 +93,7 @@ final class VkPhysicalDeviceMemoryProperties
 
     public function setMemoryHeapCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->memoryHeapCount = $cValue;
     }
@@ -92,7 +103,7 @@ final class VkPhysicalDeviceMemoryProperties
      */
     public function getMemoryHeaps(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryHeaps;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -100,7 +111,7 @@ final class VkPhysicalDeviceMemoryProperties
 
     public function setMemoryHeaps(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->memoryHeaps = $cValue;
     }

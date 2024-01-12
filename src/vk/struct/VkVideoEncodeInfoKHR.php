@@ -4,8 +4,26 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkVideoEncodeInfoKHR
+final class VkVideoEncodeInfoKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "dstBuffer" => $this->getDstBuffer(),
+          "dstBufferOffset" => $this->getDstBufferOffset(),
+          "dstBufferRange" => $this->getDstBufferRange(),
+          "srcPictureResource" => $this->getSrcPictureResource(),
+          "pSetupReferenceSlot" => $this->getPSetupReferenceSlot(),
+          "referenceSlotCount" => $this->getReferenceSlotCount(),
+          "pReferenceSlots" => $this->getPReferenceSlots(),
+          "precedingExternallyEncodedBytes" => $this->getPrecedingExternallyEncodedBytes(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +31,7 @@ final class VkVideoEncodeInfoKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +50,7 @@ final class VkVideoEncodeInfoKHR
         null|int $precedingExternallyEncodedBytes = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeInfoKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkVideoEncodeInfoKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -52,7 +70,7 @@ final class VkVideoEncodeInfoKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +78,7 @@ final class VkVideoEncodeInfoKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,15 +88,15 @@ final class VkVideoEncodeInfoKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +106,7 @@ final class VkVideoEncodeInfoKHR
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = [];
         return $phpValue;
@@ -96,7 +114,7 @@ final class VkVideoEncodeInfoKHR
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = 0;
         $this->cdata->flags = $cValue;
     }
@@ -106,7 +124,7 @@ final class VkVideoEncodeInfoKHR
      */
     public function getDstBuffer(): VkBuffer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstBuffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -114,7 +132,7 @@ final class VkVideoEncodeInfoKHR
 
     public function setDstBuffer(VkBuffer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->dstBuffer = $cValue;
     }
@@ -124,7 +142,7 @@ final class VkVideoEncodeInfoKHR
      */
     public function getDstBufferOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstBufferOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +150,7 @@ final class VkVideoEncodeInfoKHR
 
     public function setDstBufferOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstBufferOffset = $cValue;
     }
@@ -142,7 +160,7 @@ final class VkVideoEncodeInfoKHR
      */
     public function getDstBufferRange(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstBufferRange;
         $phpValue = $cValue;
         return $phpValue;
@@ -150,7 +168,7 @@ final class VkVideoEncodeInfoKHR
 
     public function setDstBufferRange(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstBufferRange = $cValue;
     }
@@ -160,7 +178,7 @@ final class VkVideoEncodeInfoKHR
      */
     public function getSrcPictureResource(): VkVideoPictureResourceInfoKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcPictureResource;
         $phpValue = new \iggyvolz\vulkan\struct\VkVideoPictureResourceInfoKHR($cValue, $ffi);
         return $phpValue;
@@ -168,7 +186,7 @@ final class VkVideoEncodeInfoKHR
 
     public function setSrcPictureResource(VkVideoPictureResourceInfoKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->srcPictureResource = $cValue;
     }
@@ -178,15 +196,15 @@ final class VkVideoEncodeInfoKHR
      */
     public function getPSetupReferenceSlot(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pSetupReferenceSlot;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkVideoReferenceSlotInfoKHR', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkVideoReferenceSlotInfoKHR', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPSetupReferenceSlot(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pSetupReferenceSlot = $cValue;
     }
@@ -196,7 +214,7 @@ final class VkVideoEncodeInfoKHR
      */
     public function getReferenceSlotCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->referenceSlotCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -204,7 +222,7 @@ final class VkVideoEncodeInfoKHR
 
     public function setReferenceSlotCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->referenceSlotCount = $cValue;
     }
@@ -214,15 +232,15 @@ final class VkVideoEncodeInfoKHR
      */
     public function getPReferenceSlots(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pReferenceSlots;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkVideoReferenceSlotInfoKHR', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkVideoReferenceSlotInfoKHR', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPReferenceSlots(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pReferenceSlots = $cValue;
     }
@@ -232,7 +250,7 @@ final class VkVideoEncodeInfoKHR
      */
     public function getPrecedingExternallyEncodedBytes(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->precedingExternallyEncodedBytes;
         $phpValue = $cValue;
         return $phpValue;
@@ -240,7 +258,7 @@ final class VkVideoEncodeInfoKHR
 
     public function setPrecedingExternallyEncodedBytes(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->precedingExternallyEncodedBytes = $cValue;
     }

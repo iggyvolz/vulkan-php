@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkOffset3D
+final class VkOffset3D implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "x" => $this->getX(),
+          "y" => $this->getY(),
+          "z" => $this->getZ(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkOffset3D
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkOffset3D
         null|int $z = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkOffset3D', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkOffset3D', false), $vulkan);
         if(!is_null($x)) $self->setX($x);
         if(!is_null($y)) $self->setY($y);
         if(!is_null($z)) $self->setZ($z);
@@ -36,7 +46,7 @@ final class VkOffset3D
      */
     public function getX(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->x;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkOffset3D
 
     public function setX(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->x = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkOffset3D
      */
     public function getY(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->y;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkOffset3D
 
     public function setY(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->y = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkOffset3D
      */
     public function getZ(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->z;
         $phpValue = $cValue;
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkOffset3D
 
     public function setZ(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->z = $cValue;
     }

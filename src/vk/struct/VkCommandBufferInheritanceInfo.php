@@ -4,8 +4,23 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkCommandBufferInheritanceInfo
+final class VkCommandBufferInheritanceInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "renderPass" => $this->getRenderPass(),
+          "subpass" => $this->getSubpass(),
+          "framebuffer" => $this->getFramebuffer(),
+          "occlusionQueryEnable" => $this->getOcclusionQueryEnable(),
+          "queryFlags" => $this->getQueryFlags(),
+          "pipelineStatistics" => $this->getPipelineStatistics(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +28,7 @@ final class VkCommandBufferInheritanceInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -29,7 +44,7 @@ final class VkCommandBufferInheritanceInfo
         null|array $pipelineStatistics = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCommandBufferInheritanceInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkCommandBufferInheritanceInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($renderPass)) $self->setRenderPass($renderPass);
@@ -46,7 +61,7 @@ final class VkCommandBufferInheritanceInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -54,7 +69,7 @@ final class VkCommandBufferInheritanceInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -64,15 +79,15 @@ final class VkCommandBufferInheritanceInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -82,7 +97,7 @@ final class VkCommandBufferInheritanceInfo
      */
     public function getRenderPass(): VkRenderPass
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->renderPass;
         $phpValue = new \iggyvolz\vulkan\struct\VkRenderPass($cValue, $ffi);
         return $phpValue;
@@ -90,7 +105,7 @@ final class VkCommandBufferInheritanceInfo
 
     public function setRenderPass(VkRenderPass $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->renderPass = $cValue;
     }
@@ -100,7 +115,7 @@ final class VkCommandBufferInheritanceInfo
      */
     public function getSubpass(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subpass;
         $phpValue = $cValue;
         return $phpValue;
@@ -108,7 +123,7 @@ final class VkCommandBufferInheritanceInfo
 
     public function setSubpass(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subpass = $cValue;
     }
@@ -118,7 +133,7 @@ final class VkCommandBufferInheritanceInfo
      */
     public function getFramebuffer(): VkFramebuffer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->framebuffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkFramebuffer($cValue, $ffi);
         return $phpValue;
@@ -126,7 +141,7 @@ final class VkCommandBufferInheritanceInfo
 
     public function setFramebuffer(VkFramebuffer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->framebuffer = $cValue;
     }
@@ -136,7 +151,7 @@ final class VkCommandBufferInheritanceInfo
      */
     public function getOcclusionQueryEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->occlusionQueryEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -144,7 +159,7 @@ final class VkCommandBufferInheritanceInfo
 
     public function setOcclusionQueryEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->occlusionQueryEnable = $cValue;
     }
@@ -154,7 +169,7 @@ final class VkCommandBufferInheritanceInfo
      */
     public function getQueryFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->queryFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkQueryControlFlagBits::fromInt($cValue);
         return $phpValue;
@@ -162,7 +177,7 @@ final class VkCommandBufferInheritanceInfo
 
     public function setQueryFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkQueryControlFlagBits::toInt(...$phpValue);
         $this->cdata->queryFlags = $cValue;
     }
@@ -172,7 +187,7 @@ final class VkCommandBufferInheritanceInfo
      */
     public function getPipelineStatistics(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineStatistics;
         $phpValue = \iggyvolz\vulkan\enum\VkQueryPipelineStatisticFlagBits::fromInt($cValue);
         return $phpValue;
@@ -180,7 +195,7 @@ final class VkCommandBufferInheritanceInfo
 
     public function setPipelineStatistics(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkQueryPipelineStatisticFlagBits::toInt(...$phpValue);
         $this->cdata->pipelineStatistics = $cValue;
     }

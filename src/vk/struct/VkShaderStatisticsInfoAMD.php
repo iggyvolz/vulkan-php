@@ -4,8 +4,22 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkShaderStatisticsInfoAMD
+final class VkShaderStatisticsInfoAMD implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "shaderStageMask" => $this->getShaderStageMask(),
+          "resourceUsage" => $this->getResourceUsage(),
+          "numPhysicalVgprs" => $this->getNumPhysicalVgprs(),
+          "numPhysicalSgprs" => $this->getNumPhysicalSgprs(),
+          "numAvailableVgprs" => $this->getNumAvailableVgprs(),
+          "numAvailableSgprs" => $this->getNumAvailableSgprs(),
+          "computeWorkGroupSize" => $this->getComputeWorkGroupSize(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +27,7 @@ final class VkShaderStatisticsInfoAMD
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -28,7 +42,7 @@ final class VkShaderStatisticsInfoAMD
         mixed $computeWorkGroupSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkShaderStatisticsInfoAMD', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkShaderStatisticsInfoAMD', false), $vulkan);
         if(!is_null($shaderStageMask)) $self->setShaderStageMask($shaderStageMask);
         if(!is_null($resourceUsage)) $self->setResourceUsage($resourceUsage);
         if(!is_null($numPhysicalVgprs)) $self->setNumPhysicalVgprs($numPhysicalVgprs);
@@ -44,7 +58,7 @@ final class VkShaderStatisticsInfoAMD
      */
     public function getShaderStageMask(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStageMask;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -52,7 +66,7 @@ final class VkShaderStatisticsInfoAMD
 
     public function setShaderStageMask(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->shaderStageMask = $cValue;
     }
@@ -62,7 +76,7 @@ final class VkShaderStatisticsInfoAMD
      */
     public function getResourceUsage(): VkShaderResourceUsageAMD
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->resourceUsage;
         $phpValue = new \iggyvolz\vulkan\struct\VkShaderResourceUsageAMD($cValue, $ffi);
         return $phpValue;
@@ -70,7 +84,7 @@ final class VkShaderStatisticsInfoAMD
 
     public function setResourceUsage(VkShaderResourceUsageAMD $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->resourceUsage = $cValue;
     }
@@ -80,7 +94,7 @@ final class VkShaderStatisticsInfoAMD
      */
     public function getNumPhysicalVgprs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->numPhysicalVgprs;
         $phpValue = $cValue;
         return $phpValue;
@@ -88,7 +102,7 @@ final class VkShaderStatisticsInfoAMD
 
     public function setNumPhysicalVgprs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->numPhysicalVgprs = $cValue;
     }
@@ -98,7 +112,7 @@ final class VkShaderStatisticsInfoAMD
      */
     public function getNumPhysicalSgprs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->numPhysicalSgprs;
         $phpValue = $cValue;
         return $phpValue;
@@ -106,7 +120,7 @@ final class VkShaderStatisticsInfoAMD
 
     public function setNumPhysicalSgprs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->numPhysicalSgprs = $cValue;
     }
@@ -116,7 +130,7 @@ final class VkShaderStatisticsInfoAMD
      */
     public function getNumAvailableVgprs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->numAvailableVgprs;
         $phpValue = $cValue;
         return $phpValue;
@@ -124,7 +138,7 @@ final class VkShaderStatisticsInfoAMD
 
     public function setNumAvailableVgprs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->numAvailableVgprs = $cValue;
     }
@@ -134,7 +148,7 @@ final class VkShaderStatisticsInfoAMD
      */
     public function getNumAvailableSgprs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->numAvailableSgprs;
         $phpValue = $cValue;
         return $phpValue;
@@ -142,7 +156,7 @@ final class VkShaderStatisticsInfoAMD
 
     public function setNumAvailableSgprs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->numAvailableSgprs = $cValue;
     }
@@ -152,7 +166,7 @@ final class VkShaderStatisticsInfoAMD
      */
     public function getComputeWorkGroupSize(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->computeWorkGroupSize;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -160,7 +174,7 @@ final class VkShaderStatisticsInfoAMD
 
     public function setComputeWorkGroupSize(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->computeWorkGroupSize = $cValue;
     }

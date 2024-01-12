@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkExportMetalSharedEventInfoEXT
+final class VkExportMetalSharedEventInfoEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "semaphore" => $this->getSemaphore(),
+          "event" => $this->getEvent(),
+          "mtlSharedEvent" => $this->getMtlSharedEvent(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkExportMetalSharedEventInfoEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkExportMetalSharedEventInfoEXT
         mixed $mtlSharedEvent = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkExportMetalSharedEventInfoEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkExportMetalSharedEventInfoEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($semaphore)) $self->setSemaphore($semaphore);
@@ -40,7 +52,7 @@ final class VkExportMetalSharedEventInfoEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkExportMetalSharedEventInfoEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkExportMetalSharedEventInfoEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkExportMetalSharedEventInfoEXT
      */
     public function getSemaphore(): VkSemaphore
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->semaphore;
         $phpValue = new \iggyvolz\vulkan\struct\VkSemaphore($cValue, $ffi);
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkExportMetalSharedEventInfoEXT
 
     public function setSemaphore(VkSemaphore $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->semaphore = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkExportMetalSharedEventInfoEXT
      */
     public function getEvent(): VkEvent
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->event;
         $phpValue = new \iggyvolz\vulkan\struct\VkEvent($cValue, $ffi);
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkExportMetalSharedEventInfoEXT
 
     public function setEvent(VkEvent $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->event = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkExportMetalSharedEventInfoEXT
      */
     public function getMtlSharedEvent(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mtlSharedEvent;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkExportMetalSharedEventInfoEXT
 
     public function setMtlSharedEvent(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->mtlSharedEvent = $cValue;
     }

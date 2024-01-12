@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDrmFormatModifierProperties2EXT
+final class VkDrmFormatModifierProperties2EXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "drmFormatModifier" => $this->getDrmFormatModifier(),
+          "drmFormatModifierPlaneCount" => $this->getDrmFormatModifierPlaneCount(),
+          "drmFormatModifierTilingFeatures" => $this->getDrmFormatModifierTilingFeatures(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkDrmFormatModifierProperties2EXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkDrmFormatModifierProperties2EXT
         null|array $drmFormatModifierTilingFeatures = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDrmFormatModifierProperties2EXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDrmFormatModifierProperties2EXT', false), $vulkan);
         if(!is_null($drmFormatModifier)) $self->setDrmFormatModifier($drmFormatModifier);
         if(!is_null($drmFormatModifierPlaneCount)) $self->setDrmFormatModifierPlaneCount($drmFormatModifierPlaneCount);
         if(!is_null($drmFormatModifierTilingFeatures)) $self->setDrmFormatModifierTilingFeatures($drmFormatModifierTilingFeatures);
@@ -36,7 +46,7 @@ final class VkDrmFormatModifierProperties2EXT
      */
     public function getDrmFormatModifier(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->drmFormatModifier;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkDrmFormatModifierProperties2EXT
 
     public function setDrmFormatModifier(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->drmFormatModifier = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkDrmFormatModifierProperties2EXT
      */
     public function getDrmFormatModifierPlaneCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->drmFormatModifierPlaneCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkDrmFormatModifierProperties2EXT
 
     public function setDrmFormatModifierPlaneCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->drmFormatModifierPlaneCount = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkDrmFormatModifierProperties2EXT
      */
     public function getDrmFormatModifierTilingFeatures(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->drmFormatModifierTilingFeatures;
         $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits2::fromInt($cValue);
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkDrmFormatModifierProperties2EXT
 
     public function setDrmFormatModifierTilingFeatures(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits2::toInt(...$phpValue);
         $this->cdata->drmFormatModifierTilingFeatures = $cValue;
     }

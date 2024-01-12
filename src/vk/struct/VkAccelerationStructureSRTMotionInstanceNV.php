@@ -4,8 +4,22 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkAccelerationStructureSRTMotionInstanceNV
+final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "transformT0" => $this->getTransformT0(),
+          "transformT1" => $this->getTransformT1(),
+          "instanceCustomIndex" => $this->getInstanceCustomIndex(),
+          "mask" => $this->getMask(),
+          "instanceShaderBindingTableRecordOffset" => $this->getInstanceShaderBindingTableRecordOffset(),
+          "flags" => $this->getFlags(),
+          "accelerationStructureReference" => $this->getAccelerationStructureReference(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +27,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -28,7 +42,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
         null|int $accelerationStructureReference = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureSRTMotionInstanceNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkAccelerationStructureSRTMotionInstanceNV', false), $vulkan);
         if(!is_null($transformT0)) $self->setTransformT0($transformT0);
         if(!is_null($transformT1)) $self->setTransformT1($transformT1);
         if(!is_null($instanceCustomIndex)) $self->setInstanceCustomIndex($instanceCustomIndex);
@@ -44,7 +58,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
      */
     public function getTransformT0(): VkSRTDataNV
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformT0;
         $phpValue = new \iggyvolz\vulkan\struct\VkSRTDataNV($cValue, $ffi);
         return $phpValue;
@@ -52,7 +66,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
 
     public function setTransformT0(VkSRTDataNV $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->transformT0 = $cValue;
     }
@@ -62,7 +76,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
      */
     public function getTransformT1(): VkSRTDataNV
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformT1;
         $phpValue = new \iggyvolz\vulkan\struct\VkSRTDataNV($cValue, $ffi);
         return $phpValue;
@@ -70,7 +84,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
 
     public function setTransformT1(VkSRTDataNV $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->transformT1 = $cValue;
     }
@@ -80,7 +94,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
      */
     public function getInstanceCustomIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->instanceCustomIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -88,7 +102,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
 
     public function setInstanceCustomIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->instanceCustomIndex = $cValue;
     }
@@ -98,7 +112,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
      */
     public function getMask(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mask;
         $phpValue = $cValue;
         return $phpValue;
@@ -106,7 +120,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
 
     public function setMask(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->mask = $cValue;
     }
@@ -116,7 +130,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
      */
     public function getInstanceShaderBindingTableRecordOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->instanceShaderBindingTableRecordOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -124,7 +138,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
 
     public function setInstanceShaderBindingTableRecordOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->instanceShaderBindingTableRecordOffset = $cValue;
     }
@@ -134,7 +148,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
      */
     public function getFlags(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -142,7 +156,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
 
     public function setFlags(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->flags = $cValue;
     }
@@ -152,7 +166,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
      */
     public function getAccelerationStructureReference(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->accelerationStructureReference;
         $phpValue = $cValue;
         return $phpValue;
@@ -160,7 +174,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV
 
     public function setAccelerationStructureReference(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->accelerationStructureReference = $cValue;
     }

@@ -2,6 +2,7 @@
 
 use FFI\CData;
 use iggyvolz\vulkan\enum\VkResult;
+use iggyvolz\vulkan\generator\Registry\Command\Parameter;
 use iggyvolz\vulkan\generator\Registry\EnumType;
 use iggyvolz\vulkan\generator\Registry\Registry;
 use iggyvolz\vulkan\generator\Registry\Type\Bitmask;
@@ -15,11 +16,15 @@ use iggyvolz\vulkan\util\BitmapEnum;
 use iggyvolz\vulkan\util\ResultEvent;
 use iggyvolz\vulkan\util\VkResultAssert;
 use iggyvolz\vulkan\util\VulkanBase;
+use iggyvolz\vulkan\util\VulkanInstanceBase;
 use iggyvolz\vulkan\Vulkan;
 use Nette\PhpGenerator\PhpFile;
 use Nette\PhpGenerator\PsrPrinter;
 
 require_once __DIR__ . "/vendor/autoload.php";
+
+const REPORT = false;
+
 $targetDirectory = __DIR__ . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . "vk";
 
 function removeDirectory(string $directory): void {
@@ -104,19 +109,24 @@ function nullable(string $type): string
     }
 }
 
-
+$structClasses = [];
+$structFiles = [];
 
 foreach($registry->getTypes(Handle::class) as $handle) {
-    $file = new PhpFile();
+    $structFiles[$filename = $targetDirectory . "/struct/$handle->name.php"] = $file = new PhpFile();
     $file->setStrictTypes();
     $namespace = $file->addNamespace("iggyvolz\\vulkan\\struct");
-    $class = $namespace->addClass($handle->name)->setFinal();
+    $structClasses[$handle->name] = $class = $namespace->addClass($handle->name)->setFinal();
+    if($handle->name === "VkInstance") $class->addTrait(VulkanInstanceBase::class);
+    $class->addImplement(JsonSerializable::class)->addMethod("jsonSerialize")->setReturnType("array")->addBody("return ['_type' => static::class];");
     $constructor = $class->addMethod("__construct");
     $constructor->addComment("@internal");
     $constructor->addPromotedParameter("cdata")->addComment("@internal")->setPublic()->setType(CData::class);
-    $constructor->addPromotedParameter("ffi")->addComment("@internal")->setPublic()->setType(FFI::class);
-    file_put_contents($targetDirectory . "/struct/$handle->name.php", $printer->printFile($file));
+    $constructor->addPromotedParameter("vulkan")->addComment("@internal")->setPublic()->setType(Vulkan::class);
     $cdefs[] = "typedef void* $handle->name;";
+
+    // Put a temporary copy of the file, some methods could get added later that's fine
+    file_put_contents($filename, $printer->printFile($file));
 }
 $totalStructs = 0;
 $totalStructMembers = 0;
@@ -124,18 +134,20 @@ $okayStructs = 0;
 $okayStructMembers = 0;
 foreach($registry->getTypes(Struct::class) as $struct) {
     $structIsOkay = true;
-    $file = new PhpFile();
+    $structFiles[$filename = $targetDirectory . "/struct/$struct->name.php"] = $file = new PhpFile();
     $file->setStrictTypes();
     $namespace = $file->addNamespace("iggyvolz\\vulkan\\struct");
-    $class = $namespace->addClass($struct->name)->setFinal();
+    $structClasses[$struct->name] = $class = $namespace->addClass($struct->name)->setFinal();
+    $class->addImplement(JsonSerializable::class);
+    $jsonSerialize = $class->addMethod("jsonSerialize")->setReturnType("array");
+    $jsonSerialize->addBody("return [\n  '_type' => static::class,");
     $constructor = $class->addMethod("__construct");
     $constructor->addComment("@internal");
     $constructor->addPromotedParameter("cdata")->addComment("@internal")->setPublic()->setType(CData::class);
-    $constructor->addPromotedParameter("ffi")->addComment("@internal")->setPublic()->setType(FFI::class);
+    $constructor->addPromotedParameter("vulkan")->addComment("@internal")->setPublic()->setType(Vulkan::class);
     $create = $class->addMethod("create")->setPublic()->setStatic()->setReturnType("self");
     $create->addParameter("vulkan")->setType(Vulkan::class);
-    $create->addBody('$self = new self( $vulkan->ffi->new(' . var_export($struct->name, true) . ', false), $vulkan->ffi);');
-//    $class->addMethod("__destruct")->addBody('\FFI::free($this->cdata);');
+    $create->addBody('$self = new self( $vulkan->ffi->new(' . var_export($struct->name, true) . ', false), $vulkan);');
     $cdef = "typedef struct {";
     foreach($struct->members as $member) {
         $memberType = Transformer::get($member->type);
@@ -147,27 +159,30 @@ foreach($registry->getTypes(Struct::class) as $struct) {
         }
         $totalStructMembers++;
         $getter = $class->addMethod("get" . ucfirst($member->name));
-        $getter->addBody('$ffi = $this->ffi;');
+        $getter->addBody('$ffi = $this->vulkan->ffi;');
         $getter->addBody('$cValue = $this->cdata->' . $member->name . ';');
         $getter->addBody($memberType->fromC());
         $getter->addBody('return $phpValue;');
         $getter->setReturnType($memberType->phpType());
         $setter = $class->addMethod("set" . ucfirst($member->name))->setReturnType('void');
         $setter->addParameter("phpValue")->setType($memberType->phpType());
-        $setter->addBody('$ffi = $this->ffi;');
+        $setter->addBody('$ffi = $this->vulkan->ffi;');
         $setter->addBody($memberType->toC());
         $setter->addBody('$this->cdata->' . $member->name . ' = $cValue;');
         $create->addParameter($member->name)->setType(nullable($memberType->phpType()))->setDefaultValue(null);
         $create->addBody('if(!is_null($' . $member->name . ')) $self->set' . ucfirst($member->name) . '($' . $member->name . ');');
         $getter->addComment($memberType->cTypePrefix() . "/" . $memberType->cTypeSuffix());
         $cdef.=$memberType->cTypePrefix() . ' ' . $member->name . ' ' . $memberType->cTypeSuffix() . ';';
+        $jsonSerialize->addBody("  \"$member->name\" => \$this->" . $getter->getName() . "(),");
     }
     $create->addBody('return $self;');
-    file_put_contents($targetDirectory . "/struct/$struct->name.php", $printer->printFile($file));
+    $jsonSerialize->addBody("];");
     $cdef .= "} $struct->name;";
     $cdefs[] = $cdef;
     if($structIsOkay) $okayStructs++;
     $totalStructs++;
+    // Put a temporary copy of the file, some methods could get added later that's fine
+    file_put_contents($filename, $printer->printFile($file));
 }
 $pctStructs = round(100 * ($okayStructs / $totalStructs), 2);
 $pctMembers = round(100 * ($okayStructMembers / $totalStructMembers), 2);
@@ -179,37 +194,73 @@ $okayMethods = 0;
 $notOkayMethods=[];
 foreach ($registry->commands as $command) {
     $isOkay = true;
-    $method = $vulkanClass->addMethod($command->name);
     $returnTypeTransformer = Transformer::get($command->type);
     if($returnTypeTransformer instanceof DummyTransformer) {
         $isOkay = false;
         registerNotOkayType($command->type);
     }
     $cdef = "typedef " . $returnTypeTransformer->cTypePrefix() . " (*PFN_PHP_" . $command->name . ")(";
-    $first = true;
-    foreach($command->parameters as $parameter) {
-        if($first) {
-            $first = false;
-        } else {
-            $cdef .= ",";
+    $methodName = lcfirst(substr($command->name, 2));
+    $phpParameters = $command->parameters; // Parameters that will be used by PHP (skips the first if $this is used as context)
+    if(in_array($command->parameters[0]->type, ["VkCommandBuffer", "VkDevice", "VkPhysicalDevice", "VkInstance", "VkQueue"])) {
+        $targetClass = $structClasses[$command->parameters[0]->type];
+        array_shift($phpParameters);
+        $phpParameters = array_values($phpParameters);
+    } else {
+        $targetClass = $vulkanClass;
+    }
+    $method = $targetClass->addMethod($methodName);
+    if(str_starts_with($methodName, "enumerate")) {
+        // Create a method that does the "make a pointer, call the function with null, then allocate an array(s) with that many things then re-call
+        $counts = array_filter($phpParameters, fn(Parameter $parameter) => str_ends_with($parameter->name, "Count"));
+        if(count($counts) !== 1) goto skip;
+        $countIndex = array_key_first($counts);
+        if(count($phpParameters) !== $countIndex + 2) goto skip; // todo support items with multiple entries (currently (enumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR)
+        $itemsParam = $phpParameters[array_key_last($phpParameters)];
+        if(!str_ends_with($itemsParam->type, "*")) {
+            goto skip;
         }
-        $param = $method->addParameter($parameter->name);
+        $entryTransformer = Transformer::get(substr($itemsParam->type, 0, -1));
+        $getMethod = $targetClass->addMethod("get" . substr($methodName, strlen("enumerate")));
+        $getMethod->setReturnType("array");
+//        $count = IntPointer::new("uint32_t", $this->vulkan);
+//        $this->enumerateInstanceExtensionProperties(...[...\func_get_args(), $count, ObjectPointer::null()])->assert(VkResult::Incomplete);
+//        $ptr = ObjectPointer::new($this->vulkan, "VkExtensionProperties", $count->get());
+//        $this->enumerateInstanceExtensionProperties(...[...\func_get_args(), $count, $ptr])->assert();
+//        return $ptr->getLen($count->get());
+        $vulkanRef = "\$this" . ($targetClass->getName() === "Vulkan" ? "" : "->vulkan");
+        $getMethod->addBody("\$count = \\iggyvolz\\vulkan\\util\\IntPointer::new('uint32_t', $vulkanRef);");
+        $getMethod->addBody("\$this->$methodName(...[...\\func_get_args(), \$count, \\iggyvolz\\vulkan\\util\\ObjectPointer::null($vulkanRef)])->assert(\\iggyvolz\\vulkan\\enum\\VkResult::Incomplete);");
+        $getMethod->addBody("\$ptr = \\iggyvolz\\vulkan\\util\\ObjectPointer::new($vulkanRef, ". var_export($entryTransformer->phpType(), true).", \$count->get());");
+        $getMethod->addBody("\$this->$methodName(...[...\\func_get_args(), \$count, \$ptr])->assert();");
+        $getMethod->addBody("return \$ptr->getLen(\$count->get());");
+        foreach($phpParameters as $parameter) {
+            if(str_ends_with($parameter->name, "Count")) break; // Reached the count param
+            $param = $getMethod->addParameter($parameter->name);
+            $paramTransformer = Transformer::get($parameter->type);
+            $param->setType($paramTransformer->phpType());
+            $getMethod->addComment("@param " . $paramTransformer->phpDocType() . " $parameter->name");
+        }
+        $getMethod->addComment("@return list<" . $entryTransformer->phpDocType() . ">");
+        skip:
+    }
+    $cdef .= implode(",", array_map(fn(Transformer $t, Parameter $p): string => $t->cTypePrefix() . " " . $p->name . $t->cTypeSuffix(), array_map(fn(Parameter $p) => Transformer::get($p->type), $command->parameters), $command->parameters));
+    foreach($phpParameters as $parameter) {
         $paramType = Transformer::get($parameter->type);
         if($paramType instanceof DummyTransformer)
         {
             $isOkay = false;
             registerNotOkayType($parameter->type);
         }
+        $param = $method->addParameter($parameter->name);
         $param->setType($paramType->phpType());
         $method->addComment("@param " . $paramType->phpDocType() . " \$$parameter->name $parameter->type");
         $method->addBody("\$phpValue = \$$parameter->name;");
         $method->addBody($paramType->toC());
         $method->addBody("\${$parameter->name}C = \$cValue;");
-        $cdef .= $paramType->cTypePrefix() . " " . $parameter->name . $paramType->cTypeSuffix();
     }
-    $method->addBody('$cValue = $this->fnPtr(' . var_export($command->name, true) . ')(');
-//    $method->addBody("\$cValue = \$this->ffi->$command->name(");
-    foreach($command->parameters as $parameter) {
+    $method->addBody('$cValue = $this->exec(' . var_export($command->name, true) . ',');
+    foreach($phpParameters as $parameter) {
         $method->addBody("    \${$parameter->name}C,");
     }
     $method->addBody(");");
@@ -226,20 +277,7 @@ foreach ($registry->commands as $command) {
     $totalMethods++;
     if($isOkay) $okayMethods++; else $notOkayMethods[] = $method->getName();
 }
-// Some reporting - usually hack around this or dump it into the README
-$pctMethods = round(100 * ($okayMethods / $totalMethods), 2);
-echo "- $okayStructs/$totalStructs ($pctStructs%) structs are complete\n";
-echo "- $okayStructMembers/$totalStructMembers ($pctMembers%) struct members are complete\n";
-echo "- $okayMethods/$totalMethods ($pctMethods%) methods are callable\n";
-arsort($notOkayTypes);
-echo "- total number of unique incomplete types: " . count($notOkayTypes) . "\n\n";
-echo "number of types by usages:\n";
-echo "- more than 5 usages: " . count(array_filter($notOkayTypes, fn(int $x) => $x > 5)) . "\n";
-$uniqueByTag = [];
-$usagesByTag = [];
-for($i = 5; $i > 0; $i--) {
-    echo "- $i usages: " . count(array_filter($notOkayTypes, fn(int $x) => $x === $i)) . "\n";
-}
+
 // quick and dirty organization of these to try and sum up some categories
 function tag(string $key): string {
     if(preg_match("/^u?int[0-9]+_t *\\[[0-9A-Z_]+]$/", $key)) {
@@ -292,26 +330,48 @@ function tag(string $key): string {
     }
     return "UNKNOWN";
 }
+
+if(REPORT) {
+// Some reporting - usually hack around this or dump it into the README
+    $pctMethods = round(100 * ($okayMethods / $totalMethods), 2);
+    echo "- $okayStructs/$totalStructs ($pctStructs%) structs are complete\n";
+    echo "- $okayStructMembers/$totalStructMembers ($pctMembers%) struct members are complete\n";
+    echo "- $okayMethods/$totalMethods ($pctMethods%) methods are callable\n";
+    arsort($notOkayTypes);
+    echo "- total number of unique incomplete types: " . count($notOkayTypes) . "\n\n";
+    echo "number of types by usages:\n";
+    echo "- more than 5 usages: " . count(array_filter($notOkayTypes, fn(int $x) => $x > 5)) . "\n";
+    $uniqueByTag = [];
+    $usagesByTag = [];
+    for ($i = 5; $i > 0; $i--) {
+        echo "- $i usages: " . count(array_filter($notOkayTypes, fn(int $x) => $x === $i)) . "\n";
+    }
 //echo "\nPlain Vulkan Type by count:\n";
-foreach(($notOkayTypes) as $key => $count) {
-    $tag = tag($key);
-    $uniqueByTag[$tag] ??= 0;
-    $usagesByTag[$tag] ??= 0;
-    $uniqueByTag[$tag]++;
-    $usagesByTag[$tag]+=$count;
+    foreach (($notOkayTypes) as $key => $count) {
+        $tag = tag($key);
+        $uniqueByTag[$tag] ??= 0;
+        $usagesByTag[$tag] ??= 0;
+        $uniqueByTag[$tag]++;
+        $usagesByTag[$tag] += $count;
 //    if($tag === "Plain Vulkan Type") echo "- $key ($count) [$tag]\n";
+    }
+    arsort($uniqueByTag);
+    arsort($usagesByTag);
+    echo "\nunique types by tag:\n";
+    foreach ($uniqueByTag as $tag => $count) {
+        echo "- $tag ($count)\n";
+    }
+    echo "\nusages by tag:\n";
+    foreach ($usagesByTag as $tag => $count) {
+        echo "- $tag ($count)\n";
+    }
 }
 // Add in loader function
 $cdefs[] = "void* vkGetInstanceProcAddr(VkInstance, const char*);";
-arsort($uniqueByTag);
-arsort($usagesByTag);
-echo "\nunique types by tag:\n";
-foreach($uniqueByTag as $tag => $count) {
-    echo "- $tag ($count)\n";
-}
-echo "\nusages by tag:\n";
-foreach($usagesByTag as $tag => $count) {
-    echo "- $tag ($count)\n";
+$cdefs[] = "void* vkGetDeviceProcAddr(VkDevice, const char*);";
+
+foreach($structFiles as $fileName => $structFile) {
+    file_put_contents($fileName, $printer->printFile($structFile));
 }
 file_put_contents($targetDirectory . "/Vulkan.php", $printer->printFile($vulkanFile));
 file_put_contents($targetDirectory . "/vulkan.h", implode("\n", $cdefs));

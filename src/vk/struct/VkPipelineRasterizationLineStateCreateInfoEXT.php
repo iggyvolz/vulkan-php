@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPipelineRasterizationLineStateCreateInfoEXT
+final class VkPipelineRasterizationLineStateCreateInfoEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "lineRasterizationMode" => $this->getLineRasterizationMode(),
+          "stippledLineEnable" => $this->getStippledLineEnable(),
+          "lineStippleFactor" => $this->getLineStippleFactor(),
+          "lineStipplePattern" => $this->getLineStipplePattern(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkPipelineRasterizationLineStateCreateInfoEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkPipelineRasterizationLineStateCreateInfoEXT
         null|int $lineStipplePattern = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineRasterizationLineStateCreateInfoEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPipelineRasterizationLineStateCreateInfoEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($lineRasterizationMode)) $self->setLineRasterizationMode($lineRasterizationMode);
@@ -42,7 +55,7 @@ final class VkPipelineRasterizationLineStateCreateInfoEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkPipelineRasterizationLineStateCreateInfoEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkPipelineRasterizationLineStateCreateInfoEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkPipelineRasterizationLineStateCreateInfoEXT
      */
     public function getLineRasterizationMode(): \iggyvolz\vulkan\enum\VkLineRasterizationModeEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->lineRasterizationMode;
         $phpValue = \iggyvolz\vulkan\enum\VkLineRasterizationModeEXT::from($cValue);
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkPipelineRasterizationLineStateCreateInfoEXT
 
     public function setLineRasterizationMode(\iggyvolz\vulkan\enum\VkLineRasterizationModeEXT $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->lineRasterizationMode = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkPipelineRasterizationLineStateCreateInfoEXT
      */
     public function getStippledLineEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stippledLineEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkPipelineRasterizationLineStateCreateInfoEXT
 
     public function setStippledLineEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->stippledLineEnable = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkPipelineRasterizationLineStateCreateInfoEXT
      */
     public function getLineStippleFactor(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->lineStippleFactor;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkPipelineRasterizationLineStateCreateInfoEXT
 
     public function setLineStippleFactor(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->lineStippleFactor = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkPipelineRasterizationLineStateCreateInfoEXT
      */
     public function getLineStipplePattern(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->lineStipplePattern;
         $phpValue = $cValue;
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkPipelineRasterizationLineStateCreateInfoEXT
 
     public function setLineStipplePattern(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->lineStipplePattern = $cValue;
     }

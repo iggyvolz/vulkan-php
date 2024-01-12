@@ -4,8 +4,29 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkTraceRaysIndirectCommand2KHR
+final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "raygenShaderRecordAddress" => $this->getRaygenShaderRecordAddress(),
+          "raygenShaderRecordSize" => $this->getRaygenShaderRecordSize(),
+          "missShaderBindingTableAddress" => $this->getMissShaderBindingTableAddress(),
+          "missShaderBindingTableSize" => $this->getMissShaderBindingTableSize(),
+          "missShaderBindingTableStride" => $this->getMissShaderBindingTableStride(),
+          "hitShaderBindingTableAddress" => $this->getHitShaderBindingTableAddress(),
+          "hitShaderBindingTableSize" => $this->getHitShaderBindingTableSize(),
+          "hitShaderBindingTableStride" => $this->getHitShaderBindingTableStride(),
+          "callableShaderBindingTableAddress" => $this->getCallableShaderBindingTableAddress(),
+          "callableShaderBindingTableSize" => $this->getCallableShaderBindingTableSize(),
+          "callableShaderBindingTableStride" => $this->getCallableShaderBindingTableStride(),
+          "width" => $this->getWidth(),
+          "height" => $this->getHeight(),
+          "depth" => $this->getDepth(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +34,7 @@ final class VkTraceRaysIndirectCommand2KHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -35,7 +56,7 @@ final class VkTraceRaysIndirectCommand2KHR
         null|int $depth = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkTraceRaysIndirectCommand2KHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkTraceRaysIndirectCommand2KHR', false), $vulkan);
         if(!is_null($raygenShaderRecordAddress)) $self->setRaygenShaderRecordAddress($raygenShaderRecordAddress);
         if(!is_null($raygenShaderRecordSize)) $self->setRaygenShaderRecordSize($raygenShaderRecordSize);
         if(!is_null($missShaderBindingTableAddress)) $self->setMissShaderBindingTableAddress($missShaderBindingTableAddress);
@@ -58,7 +79,7 @@ final class VkTraceRaysIndirectCommand2KHR
      */
     public function getRaygenShaderRecordAddress(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->raygenShaderRecordAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -66,7 +87,7 @@ final class VkTraceRaysIndirectCommand2KHR
 
     public function setRaygenShaderRecordAddress(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->raygenShaderRecordAddress = $cValue;
     }
@@ -76,7 +97,7 @@ final class VkTraceRaysIndirectCommand2KHR
      */
     public function getRaygenShaderRecordSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->raygenShaderRecordSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -84,7 +105,7 @@ final class VkTraceRaysIndirectCommand2KHR
 
     public function setRaygenShaderRecordSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->raygenShaderRecordSize = $cValue;
     }
@@ -94,7 +115,7 @@ final class VkTraceRaysIndirectCommand2KHR
      */
     public function getMissShaderBindingTableAddress(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->missShaderBindingTableAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +123,7 @@ final class VkTraceRaysIndirectCommand2KHR
 
     public function setMissShaderBindingTableAddress(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->missShaderBindingTableAddress = $cValue;
     }
@@ -112,7 +133,7 @@ final class VkTraceRaysIndirectCommand2KHR
      */
     public function getMissShaderBindingTableSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->missShaderBindingTableSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +141,7 @@ final class VkTraceRaysIndirectCommand2KHR
 
     public function setMissShaderBindingTableSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->missShaderBindingTableSize = $cValue;
     }
@@ -130,7 +151,7 @@ final class VkTraceRaysIndirectCommand2KHR
      */
     public function getMissShaderBindingTableStride(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->missShaderBindingTableStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -138,7 +159,7 @@ final class VkTraceRaysIndirectCommand2KHR
 
     public function setMissShaderBindingTableStride(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->missShaderBindingTableStride = $cValue;
     }
@@ -148,7 +169,7 @@ final class VkTraceRaysIndirectCommand2KHR
      */
     public function getHitShaderBindingTableAddress(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->hitShaderBindingTableAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +177,7 @@ final class VkTraceRaysIndirectCommand2KHR
 
     public function setHitShaderBindingTableAddress(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->hitShaderBindingTableAddress = $cValue;
     }
@@ -166,7 +187,7 @@ final class VkTraceRaysIndirectCommand2KHR
      */
     public function getHitShaderBindingTableSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->hitShaderBindingTableSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -174,7 +195,7 @@ final class VkTraceRaysIndirectCommand2KHR
 
     public function setHitShaderBindingTableSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->hitShaderBindingTableSize = $cValue;
     }
@@ -184,7 +205,7 @@ final class VkTraceRaysIndirectCommand2KHR
      */
     public function getHitShaderBindingTableStride(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->hitShaderBindingTableStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -192,7 +213,7 @@ final class VkTraceRaysIndirectCommand2KHR
 
     public function setHitShaderBindingTableStride(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->hitShaderBindingTableStride = $cValue;
     }
@@ -202,7 +223,7 @@ final class VkTraceRaysIndirectCommand2KHR
      */
     public function getCallableShaderBindingTableAddress(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->callableShaderBindingTableAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -210,7 +231,7 @@ final class VkTraceRaysIndirectCommand2KHR
 
     public function setCallableShaderBindingTableAddress(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->callableShaderBindingTableAddress = $cValue;
     }
@@ -220,7 +241,7 @@ final class VkTraceRaysIndirectCommand2KHR
      */
     public function getCallableShaderBindingTableSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->callableShaderBindingTableSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -228,7 +249,7 @@ final class VkTraceRaysIndirectCommand2KHR
 
     public function setCallableShaderBindingTableSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->callableShaderBindingTableSize = $cValue;
     }
@@ -238,7 +259,7 @@ final class VkTraceRaysIndirectCommand2KHR
      */
     public function getCallableShaderBindingTableStride(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->callableShaderBindingTableStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -246,7 +267,7 @@ final class VkTraceRaysIndirectCommand2KHR
 
     public function setCallableShaderBindingTableStride(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->callableShaderBindingTableStride = $cValue;
     }
@@ -256,7 +277,7 @@ final class VkTraceRaysIndirectCommand2KHR
      */
     public function getWidth(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->width;
         $phpValue = $cValue;
         return $phpValue;
@@ -264,7 +285,7 @@ final class VkTraceRaysIndirectCommand2KHR
 
     public function setWidth(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->width = $cValue;
     }
@@ -274,7 +295,7 @@ final class VkTraceRaysIndirectCommand2KHR
      */
     public function getHeight(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->height;
         $phpValue = $cValue;
         return $phpValue;
@@ -282,7 +303,7 @@ final class VkTraceRaysIndirectCommand2KHR
 
     public function setHeight(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->height = $cValue;
     }
@@ -292,7 +313,7 @@ final class VkTraceRaysIndirectCommand2KHR
      */
     public function getDepth(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depth;
         $phpValue = $cValue;
         return $phpValue;
@@ -300,7 +321,7 @@ final class VkTraceRaysIndirectCommand2KHR
 
     public function setDepth(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->depth = $cValue;
     }

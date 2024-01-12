@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkVertexInputBindingDivisorDescriptionKHR
+final class VkVertexInputBindingDivisorDescriptionKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "binding" => $this->getBinding(),
+          "divisor" => $this->getDivisor(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkVertexInputBindingDivisorDescriptionKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkVertexInputBindingDivisorDescriptionKHR
         null|int $divisor = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVertexInputBindingDivisorDescriptionKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkVertexInputBindingDivisorDescriptionKHR', false), $vulkan);
         if(!is_null($binding)) $self->setBinding($binding);
         if(!is_null($divisor)) $self->setDivisor($divisor);
         return $self;
@@ -34,7 +43,7 @@ final class VkVertexInputBindingDivisorDescriptionKHR
      */
     public function getBinding(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->binding;
         $phpValue = $cValue;
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkVertexInputBindingDivisorDescriptionKHR
 
     public function setBinding(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->binding = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkVertexInputBindingDivisorDescriptionKHR
      */
     public function getDivisor(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->divisor;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkVertexInputBindingDivisorDescriptionKHR
 
     public function setDivisor(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->divisor = $cValue;
     }

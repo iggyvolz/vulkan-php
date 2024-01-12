@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceSubgroupSizeControlProperties
+final class VkPhysicalDeviceSubgroupSizeControlProperties implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "minSubgroupSize" => $this->getMinSubgroupSize(),
+          "maxSubgroupSize" => $this->getMaxSubgroupSize(),
+          "maxComputeWorkgroupSubgroups" => $this->getMaxComputeWorkgroupSubgroups(),
+          "requiredSubgroupSizeStages" => $this->getRequiredSubgroupSizeStages(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkPhysicalDeviceSubgroupSizeControlProperties
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkPhysicalDeviceSubgroupSizeControlProperties
         null|array $requiredSubgroupSizeStages = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSubgroupSizeControlProperties', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSubgroupSizeControlProperties', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($minSubgroupSize)) $self->setMinSubgroupSize($minSubgroupSize);
@@ -42,7 +55,7 @@ final class VkPhysicalDeviceSubgroupSizeControlProperties
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkPhysicalDeviceSubgroupSizeControlProperties
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkPhysicalDeviceSubgroupSizeControlProperties
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkPhysicalDeviceSubgroupSizeControlProperties
      */
     public function getMinSubgroupSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minSubgroupSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkPhysicalDeviceSubgroupSizeControlProperties
 
     public function setMinSubgroupSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minSubgroupSize = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkPhysicalDeviceSubgroupSizeControlProperties
      */
     public function getMaxSubgroupSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSubgroupSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkPhysicalDeviceSubgroupSizeControlProperties
 
     public function setMaxSubgroupSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSubgroupSize = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkPhysicalDeviceSubgroupSizeControlProperties
      */
     public function getMaxComputeWorkgroupSubgroups(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxComputeWorkgroupSubgroups;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkPhysicalDeviceSubgroupSizeControlProperties
 
     public function setMaxComputeWorkgroupSubgroups(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxComputeWorkgroupSubgroups = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkPhysicalDeviceSubgroupSizeControlProperties
      */
     public function getRequiredSubgroupSizeStages(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->requiredSubgroupSizeStages;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkPhysicalDeviceSubgroupSizeControlProperties
 
     public function setRequiredSubgroupSizeStages(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->requiredSubgroupSizeStages = $cValue;
     }

@@ -4,8 +4,26 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkVideoCapabilitiesKHR
+final class VkVideoCapabilitiesKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "minBitstreamBufferOffsetAlignment" => $this->getMinBitstreamBufferOffsetAlignment(),
+          "minBitstreamBufferSizeAlignment" => $this->getMinBitstreamBufferSizeAlignment(),
+          "pictureAccessGranularity" => $this->getPictureAccessGranularity(),
+          "minCodedExtent" => $this->getMinCodedExtent(),
+          "maxCodedExtent" => $this->getMaxCodedExtent(),
+          "maxDpbSlots" => $this->getMaxDpbSlots(),
+          "maxActiveReferencePictures" => $this->getMaxActiveReferencePictures(),
+          "stdHeaderVersion" => $this->getStdHeaderVersion(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +31,7 @@ final class VkVideoCapabilitiesKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +50,7 @@ final class VkVideoCapabilitiesKHR
         null|VkExtensionProperties $stdHeaderVersion = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoCapabilitiesKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkVideoCapabilitiesKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -52,7 +70,7 @@ final class VkVideoCapabilitiesKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +78,7 @@ final class VkVideoCapabilitiesKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,15 +88,15 @@ final class VkVideoCapabilitiesKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +106,7 @@ final class VkVideoCapabilitiesKHR
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoCapabilityFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -96,7 +114,7 @@ final class VkVideoCapabilitiesKHR
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkVideoCapabilityFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -106,7 +124,7 @@ final class VkVideoCapabilitiesKHR
      */
     public function getMinBitstreamBufferOffsetAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minBitstreamBufferOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +132,7 @@ final class VkVideoCapabilitiesKHR
 
     public function setMinBitstreamBufferOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minBitstreamBufferOffsetAlignment = $cValue;
     }
@@ -124,7 +142,7 @@ final class VkVideoCapabilitiesKHR
      */
     public function getMinBitstreamBufferSizeAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minBitstreamBufferSizeAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +150,7 @@ final class VkVideoCapabilitiesKHR
 
     public function setMinBitstreamBufferSizeAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minBitstreamBufferSizeAlignment = $cValue;
     }
@@ -142,7 +160,7 @@ final class VkVideoCapabilitiesKHR
      */
     public function getPictureAccessGranularity(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pictureAccessGranularity;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -150,7 +168,7 @@ final class VkVideoCapabilitiesKHR
 
     public function setPictureAccessGranularity(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pictureAccessGranularity = $cValue;
     }
@@ -160,7 +178,7 @@ final class VkVideoCapabilitiesKHR
      */
     public function getMinCodedExtent(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minCodedExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -168,7 +186,7 @@ final class VkVideoCapabilitiesKHR
 
     public function setMinCodedExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->minCodedExtent = $cValue;
     }
@@ -178,7 +196,7 @@ final class VkVideoCapabilitiesKHR
      */
     public function getMaxCodedExtent(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxCodedExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -186,7 +204,7 @@ final class VkVideoCapabilitiesKHR
 
     public function setMaxCodedExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxCodedExtent = $cValue;
     }
@@ -196,7 +214,7 @@ final class VkVideoCapabilitiesKHR
      */
     public function getMaxDpbSlots(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDpbSlots;
         $phpValue = $cValue;
         return $phpValue;
@@ -204,7 +222,7 @@ final class VkVideoCapabilitiesKHR
 
     public function setMaxDpbSlots(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDpbSlots = $cValue;
     }
@@ -214,7 +232,7 @@ final class VkVideoCapabilitiesKHR
      */
     public function getMaxActiveReferencePictures(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxActiveReferencePictures;
         $phpValue = $cValue;
         return $phpValue;
@@ -222,7 +240,7 @@ final class VkVideoCapabilitiesKHR
 
     public function setMaxActiveReferencePictures(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxActiveReferencePictures = $cValue;
     }
@@ -232,7 +250,7 @@ final class VkVideoCapabilitiesKHR
      */
     public function getStdHeaderVersion(): VkExtensionProperties
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stdHeaderVersion;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtensionProperties($cValue, $ffi);
         return $phpValue;
@@ -240,7 +258,7 @@ final class VkVideoCapabilitiesKHR
 
     public function setStdHeaderVersion(VkExtensionProperties $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->stdHeaderVersion = $cValue;
     }

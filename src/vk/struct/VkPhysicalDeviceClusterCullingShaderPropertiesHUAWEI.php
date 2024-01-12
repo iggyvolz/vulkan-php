@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
+final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "maxWorkGroupCount" => $this->getMaxWorkGroupCount(),
+          "maxWorkGroupSize" => $this->getMaxWorkGroupSize(),
+          "maxOutputClusterCount" => $this->getMaxOutputClusterCount(),
+          "indirectBufferOffsetAlignment" => $this->getIndirectBufferOffsetAlignment(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
         null|int $indirectBufferOffsetAlignment = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxWorkGroupCount)) $self->setMaxWorkGroupCount($maxWorkGroupCount);
@@ -42,7 +55,7 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
      */
     public function getMaxWorkGroupCount(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxWorkGroupCount;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
 
     public function setMaxWorkGroupCount(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxWorkGroupCount = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
      */
     public function getMaxWorkGroupSize(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxWorkGroupSize;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
 
     public function setMaxWorkGroupSize(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxWorkGroupSize = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
      */
     public function getMaxOutputClusterCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxOutputClusterCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
 
     public function setMaxOutputClusterCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxOutputClusterCount = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
      */
     public function getIndirectBufferOffsetAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indirectBufferOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
 
     public function setIndirectBufferOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->indirectBufferOffsetAlignment = $cValue;
     }

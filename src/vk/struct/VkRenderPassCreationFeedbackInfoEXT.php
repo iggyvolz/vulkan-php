@@ -4,8 +4,16 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkRenderPassCreationFeedbackInfoEXT
+final class VkRenderPassCreationFeedbackInfoEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "postMergeSubpassCount" => $this->getPostMergeSubpassCount(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,13 +21,13 @@ final class VkRenderPassCreationFeedbackInfoEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan, null|int $postMergeSubpassCount = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkRenderPassCreationFeedbackInfoEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkRenderPassCreationFeedbackInfoEXT', false), $vulkan);
         if(!is_null($postMergeSubpassCount)) $self->setPostMergeSubpassCount($postMergeSubpassCount);
         return $self;
     }
@@ -29,7 +37,7 @@ final class VkRenderPassCreationFeedbackInfoEXT
      */
     public function getPostMergeSubpassCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->postMergeSubpassCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -37,7 +45,7 @@ final class VkRenderPassCreationFeedbackInfoEXT
 
     public function setPostMergeSubpassCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->postMergeSubpassCount = $cValue;
     }

@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceSparseProperties
+final class VkPhysicalDeviceSparseProperties implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "residencyStandard2DBlockShape" => $this->getResidencyStandard2DBlockShape(),
+          "residencyStandard2DMultisampleBlockShape" => $this->getResidencyStandard2DMultisampleBlockShape(),
+          "residencyStandard3DBlockShape" => $this->getResidencyStandard3DBlockShape(),
+          "residencyAlignedMipSize" => $this->getResidencyAlignedMipSize(),
+          "residencyNonResidentStrict" => $this->getResidencyNonResidentStrict(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkPhysicalDeviceSparseProperties
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkPhysicalDeviceSparseProperties
         null|bool $residencyNonResidentStrict = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSparseProperties', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSparseProperties', false), $vulkan);
         if(!is_null($residencyStandard2DBlockShape)) $self->setResidencyStandard2DBlockShape($residencyStandard2DBlockShape);
         if(!is_null($residencyStandard2DMultisampleBlockShape)) $self->setResidencyStandard2DMultisampleBlockShape($residencyStandard2DMultisampleBlockShape);
         if(!is_null($residencyStandard3DBlockShape)) $self->setResidencyStandard3DBlockShape($residencyStandard3DBlockShape);
@@ -40,7 +52,7 @@ final class VkPhysicalDeviceSparseProperties
      */
     public function getResidencyStandard2DBlockShape(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->residencyStandard2DBlockShape;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkPhysicalDeviceSparseProperties
 
     public function setResidencyStandard2DBlockShape(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->residencyStandard2DBlockShape = $cValue;
     }
@@ -58,7 +70,7 @@ final class VkPhysicalDeviceSparseProperties
      */
     public function getResidencyStandard2DMultisampleBlockShape(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->residencyStandard2DMultisampleBlockShape;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -66,7 +78,7 @@ final class VkPhysicalDeviceSparseProperties
 
     public function setResidencyStandard2DMultisampleBlockShape(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->residencyStandard2DMultisampleBlockShape = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkPhysicalDeviceSparseProperties
      */
     public function getResidencyStandard3DBlockShape(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->residencyStandard3DBlockShape;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkPhysicalDeviceSparseProperties
 
     public function setResidencyStandard3DBlockShape(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->residencyStandard3DBlockShape = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkPhysicalDeviceSparseProperties
      */
     public function getResidencyAlignedMipSize(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->residencyAlignedMipSize;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkPhysicalDeviceSparseProperties
 
     public function setResidencyAlignedMipSize(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->residencyAlignedMipSize = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkPhysicalDeviceSparseProperties
      */
     public function getResidencyNonResidentStrict(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->residencyNonResidentStrict;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkPhysicalDeviceSparseProperties
 
     public function setResidencyNonResidentStrict(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->residencyNonResidentStrict = $cValue;
     }

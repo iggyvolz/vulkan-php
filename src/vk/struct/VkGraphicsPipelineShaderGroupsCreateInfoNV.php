@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkGraphicsPipelineShaderGroupsCreateInfoNV
+final class VkGraphicsPipelineShaderGroupsCreateInfoNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "groupCount" => $this->getGroupCount(),
+          "pGroups" => $this->getPGroups(),
+          "pipelineCount" => $this->getPipelineCount(),
+          "pPipelines" => $this->getPPipelines(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkGraphicsPipelineShaderGroupsCreateInfoNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkGraphicsPipelineShaderGroupsCreateInfoNV
         null|\iggyvolz\vulkan\util\ObjectPointer $pPipelines = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkGraphicsPipelineShaderGroupsCreateInfoNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkGraphicsPipelineShaderGroupsCreateInfoNV', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($groupCount)) $self->setGroupCount($groupCount);
@@ -42,7 +55,7 @@ final class VkGraphicsPipelineShaderGroupsCreateInfoNV
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkGraphicsPipelineShaderGroupsCreateInfoNV
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkGraphicsPipelineShaderGroupsCreateInfoNV
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkGraphicsPipelineShaderGroupsCreateInfoNV
      */
     public function getGroupCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->groupCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkGraphicsPipelineShaderGroupsCreateInfoNV
 
     public function setGroupCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->groupCount = $cValue;
     }
@@ -96,15 +109,15 @@ final class VkGraphicsPipelineShaderGroupsCreateInfoNV
      */
     public function getPGroups(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pGroups;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkGraphicsShaderGroupCreateInfoNV', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkGraphicsShaderGroupCreateInfoNV', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPGroups(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pGroups = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkGraphicsPipelineShaderGroupsCreateInfoNV
      */
     public function getPipelineCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkGraphicsPipelineShaderGroupsCreateInfoNV
 
     public function setPipelineCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelineCount = $cValue;
     }
@@ -132,15 +145,15 @@ final class VkGraphicsPipelineShaderGroupsCreateInfoNV
      */
     public function getPPipelines(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pPipelines;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipeline', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipeline', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPPipelines(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pPipelines = $cValue;
     }

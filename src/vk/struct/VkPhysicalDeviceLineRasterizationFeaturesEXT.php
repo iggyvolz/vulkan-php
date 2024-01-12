@@ -4,8 +4,23 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceLineRasterizationFeaturesEXT
+final class VkPhysicalDeviceLineRasterizationFeaturesEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "rectangularLines" => $this->getRectangularLines(),
+          "bresenhamLines" => $this->getBresenhamLines(),
+          "smoothLines" => $this->getSmoothLines(),
+          "stippledRectangularLines" => $this->getStippledRectangularLines(),
+          "stippledBresenhamLines" => $this->getStippledBresenhamLines(),
+          "stippledSmoothLines" => $this->getStippledSmoothLines(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +28,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -29,7 +44,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
         null|bool $stippledSmoothLines = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceLineRasterizationFeaturesEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceLineRasterizationFeaturesEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($rectangularLines)) $self->setRectangularLines($rectangularLines);
@@ -46,7 +61,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -54,7 +69,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -64,15 +79,15 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -82,7 +97,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
      */
     public function getRectangularLines(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->rectangularLines;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -90,7 +105,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
 
     public function setRectangularLines(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->rectangularLines = $cValue;
     }
@@ -100,7 +115,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
      */
     public function getBresenhamLines(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bresenhamLines;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -108,7 +123,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
 
     public function setBresenhamLines(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->bresenhamLines = $cValue;
     }
@@ -118,7 +133,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
      */
     public function getSmoothLines(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->smoothLines;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -126,7 +141,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
 
     public function setSmoothLines(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->smoothLines = $cValue;
     }
@@ -136,7 +151,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
      */
     public function getStippledRectangularLines(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stippledRectangularLines;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -144,7 +159,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
 
     public function setStippledRectangularLines(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->stippledRectangularLines = $cValue;
     }
@@ -154,7 +169,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
      */
     public function getStippledBresenhamLines(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stippledBresenhamLines;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -162,7 +177,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
 
     public function setStippledBresenhamLines(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->stippledBresenhamLines = $cValue;
     }
@@ -172,7 +187,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
      */
     public function getStippledSmoothLines(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stippledSmoothLines;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -180,7 +195,7 @@ final class VkPhysicalDeviceLineRasterizationFeaturesEXT
 
     public function setStippledSmoothLines(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->stippledSmoothLines = $cValue;
     }

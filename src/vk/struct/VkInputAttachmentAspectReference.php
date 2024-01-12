@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkInputAttachmentAspectReference
+final class VkInputAttachmentAspectReference implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "subpass" => $this->getSubpass(),
+          "inputAttachmentIndex" => $this->getInputAttachmentIndex(),
+          "aspectMask" => $this->getAspectMask(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkInputAttachmentAspectReference
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkInputAttachmentAspectReference
         null|array $aspectMask = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkInputAttachmentAspectReference', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkInputAttachmentAspectReference', false), $vulkan);
         if(!is_null($subpass)) $self->setSubpass($subpass);
         if(!is_null($inputAttachmentIndex)) $self->setInputAttachmentIndex($inputAttachmentIndex);
         if(!is_null($aspectMask)) $self->setAspectMask($aspectMask);
@@ -36,7 +46,7 @@ final class VkInputAttachmentAspectReference
      */
     public function getSubpass(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subpass;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkInputAttachmentAspectReference
 
     public function setSubpass(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subpass = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkInputAttachmentAspectReference
      */
     public function getInputAttachmentIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->inputAttachmentIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkInputAttachmentAspectReference
 
     public function setInputAttachmentIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->inputAttachmentIndex = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkInputAttachmentAspectReference
      */
     public function getAspectMask(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->aspectMask;
         $phpValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::fromInt($cValue);
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkInputAttachmentAspectReference
 
     public function setAspectMask(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::toInt(...$phpValue);
         $this->cdata->aspectMask = $cValue;
     }

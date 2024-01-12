@@ -4,8 +4,33 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkVideoEncodeH265CapabilitiesKHR
+final class VkVideoEncodeH265CapabilitiesKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "maxLevelIdc" => $this->getMaxLevelIdc(),
+          "maxSliceSegmentCount" => $this->getMaxSliceSegmentCount(),
+          "maxTiles" => $this->getMaxTiles(),
+          "ctbSizes" => $this->getCtbSizes(),
+          "transformBlockSizes" => $this->getTransformBlockSizes(),
+          "maxPPictureL0ReferenceCount" => $this->getMaxPPictureL0ReferenceCount(),
+          "maxBPictureL0ReferenceCount" => $this->getMaxBPictureL0ReferenceCount(),
+          "maxL1ReferenceCount" => $this->getMaxL1ReferenceCount(),
+          "maxSubLayerCount" => $this->getMaxSubLayerCount(),
+          "expectDyadicTemporalSubLayerPattern" => $this->getExpectDyadicTemporalSubLayerPattern(),
+          "minQp" => $this->getMinQp(),
+          "maxQp" => $this->getMaxQp(),
+          "prefersGopRemainingFrames" => $this->getPrefersGopRemainingFrames(),
+          "requiresGopRemainingFrames" => $this->getRequiresGopRemainingFrames(),
+          "stdSyntaxFlags" => $this->getStdSyntaxFlags(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +38,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -39,7 +64,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
         null|array $stdSyntaxFlags = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265CapabilitiesKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265CapabilitiesKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -66,7 +91,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -74,7 +99,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -84,15 +109,15 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -102,7 +127,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeH265CapabilityFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -110,7 +135,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeH265CapabilityFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -120,7 +145,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getMaxLevelIdc(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxLevelIdc;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -128,7 +153,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setMaxLevelIdc(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxLevelIdc = $cValue;
     }
@@ -138,7 +163,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getMaxSliceSegmentCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSliceSegmentCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -146,7 +171,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setMaxSliceSegmentCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSliceSegmentCount = $cValue;
     }
@@ -156,7 +181,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getMaxTiles(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTiles;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -164,7 +189,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setMaxTiles(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxTiles = $cValue;
     }
@@ -174,7 +199,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getCtbSizes(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ctbSizes;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeH265CtbSizeFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -182,7 +207,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setCtbSizes(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeH265CtbSizeFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->ctbSizes = $cValue;
     }
@@ -192,7 +217,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getTransformBlockSizes(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformBlockSizes;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeH265TransformBlockSizeFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -200,7 +225,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setTransformBlockSizes(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeH265TransformBlockSizeFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->transformBlockSizes = $cValue;
     }
@@ -210,7 +235,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getMaxPPictureL0ReferenceCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPPictureL0ReferenceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -218,7 +243,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setMaxPPictureL0ReferenceCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPPictureL0ReferenceCount = $cValue;
     }
@@ -228,7 +253,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getMaxBPictureL0ReferenceCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxBPictureL0ReferenceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -236,7 +261,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setMaxBPictureL0ReferenceCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxBPictureL0ReferenceCount = $cValue;
     }
@@ -246,7 +271,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getMaxL1ReferenceCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxL1ReferenceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -254,7 +279,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setMaxL1ReferenceCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxL1ReferenceCount = $cValue;
     }
@@ -264,7 +289,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getMaxSubLayerCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSubLayerCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -272,7 +297,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setMaxSubLayerCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSubLayerCount = $cValue;
     }
@@ -282,7 +307,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getExpectDyadicTemporalSubLayerPattern(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->expectDyadicTemporalSubLayerPattern;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -290,7 +315,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setExpectDyadicTemporalSubLayerPattern(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->expectDyadicTemporalSubLayerPattern = $cValue;
     }
@@ -300,7 +325,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getMinQp(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minQp;
         $phpValue = $cValue;
         return $phpValue;
@@ -308,7 +333,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setMinQp(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minQp = $cValue;
     }
@@ -318,7 +343,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getMaxQp(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxQp;
         $phpValue = $cValue;
         return $phpValue;
@@ -326,7 +351,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setMaxQp(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxQp = $cValue;
     }
@@ -336,7 +361,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getPrefersGopRemainingFrames(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->prefersGopRemainingFrames;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -344,7 +369,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setPrefersGopRemainingFrames(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->prefersGopRemainingFrames = $cValue;
     }
@@ -354,7 +379,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getRequiresGopRemainingFrames(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->requiresGopRemainingFrames;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -362,7 +387,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setRequiresGopRemainingFrames(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->requiresGopRemainingFrames = $cValue;
     }
@@ -372,7 +397,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
      */
     public function getStdSyntaxFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stdSyntaxFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeH265StdFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -380,7 +405,7 @@ final class VkVideoEncodeH265CapabilitiesKHR
 
     public function setStdSyntaxFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeH265StdFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->stdSyntaxFlags = $cValue;
     }

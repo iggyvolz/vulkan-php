@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSparseImageMemoryRequirements
+final class VkSparseImageMemoryRequirements implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "formatProperties" => $this->getFormatProperties(),
+          "imageMipTailFirstLod" => $this->getImageMipTailFirstLod(),
+          "imageMipTailSize" => $this->getImageMipTailSize(),
+          "imageMipTailOffset" => $this->getImageMipTailOffset(),
+          "imageMipTailStride" => $this->getImageMipTailStride(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkSparseImageMemoryRequirements
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkSparseImageMemoryRequirements
         null|int $imageMipTailStride = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSparseImageMemoryRequirements', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSparseImageMemoryRequirements', false), $vulkan);
         if(!is_null($formatProperties)) $self->setFormatProperties($formatProperties);
         if(!is_null($imageMipTailFirstLod)) $self->setImageMipTailFirstLod($imageMipTailFirstLod);
         if(!is_null($imageMipTailSize)) $self->setImageMipTailSize($imageMipTailSize);
@@ -40,7 +52,7 @@ final class VkSparseImageMemoryRequirements
      */
     public function getFormatProperties(): VkSparseImageFormatProperties
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->formatProperties;
         $phpValue = new \iggyvolz\vulkan\struct\VkSparseImageFormatProperties($cValue, $ffi);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkSparseImageMemoryRequirements
 
     public function setFormatProperties(VkSparseImageFormatProperties $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->formatProperties = $cValue;
     }
@@ -58,7 +70,7 @@ final class VkSparseImageMemoryRequirements
      */
     public function getImageMipTailFirstLod(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageMipTailFirstLod;
         $phpValue = $cValue;
         return $phpValue;
@@ -66,7 +78,7 @@ final class VkSparseImageMemoryRequirements
 
     public function setImageMipTailFirstLod(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageMipTailFirstLod = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkSparseImageMemoryRequirements
      */
     public function getImageMipTailSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageMipTailSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkSparseImageMemoryRequirements
 
     public function setImageMipTailSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageMipTailSize = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkSparseImageMemoryRequirements
      */
     public function getImageMipTailOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageMipTailOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkSparseImageMemoryRequirements
 
     public function setImageMipTailOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageMipTailOffset = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkSparseImageMemoryRequirements
      */
     public function getImageMipTailStride(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageMipTailStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkSparseImageMemoryRequirements
 
     public function setImageMipTailStride(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageMipTailStride = $cValue;
     }

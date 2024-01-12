@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceImagelessFramebufferFeatures
+final class VkPhysicalDeviceImagelessFramebufferFeatures implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "imagelessFramebuffer" => $this->getImagelessFramebuffer(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkPhysicalDeviceImagelessFramebufferFeatures
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkPhysicalDeviceImagelessFramebufferFeatures
         null|bool $imagelessFramebuffer = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceImagelessFramebufferFeatures', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceImagelessFramebufferFeatures', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($imagelessFramebuffer)) $self->setImagelessFramebuffer($imagelessFramebuffer);
@@ -36,7 +46,7 @@ final class VkPhysicalDeviceImagelessFramebufferFeatures
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkPhysicalDeviceImagelessFramebufferFeatures
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -54,15 +64,15 @@ final class VkPhysicalDeviceImagelessFramebufferFeatures
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkPhysicalDeviceImagelessFramebufferFeatures
      */
     public function getImagelessFramebuffer(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imagelessFramebuffer;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkPhysicalDeviceImagelessFramebufferFeatures
 
     public function setImagelessFramebuffer(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->imagelessFramebuffer = $cValue;
     }

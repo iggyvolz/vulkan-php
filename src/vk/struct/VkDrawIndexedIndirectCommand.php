@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDrawIndexedIndirectCommand
+final class VkDrawIndexedIndirectCommand implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "indexCount" => $this->getIndexCount(),
+          "instanceCount" => $this->getInstanceCount(),
+          "firstIndex" => $this->getFirstIndex(),
+          "vertexOffset" => $this->getVertexOffset(),
+          "firstInstance" => $this->getFirstInstance(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkDrawIndexedIndirectCommand
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkDrawIndexedIndirectCommand
         null|int $firstInstance = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDrawIndexedIndirectCommand', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDrawIndexedIndirectCommand', false), $vulkan);
         if(!is_null($indexCount)) $self->setIndexCount($indexCount);
         if(!is_null($instanceCount)) $self->setInstanceCount($instanceCount);
         if(!is_null($firstIndex)) $self->setFirstIndex($firstIndex);
@@ -40,7 +52,7 @@ final class VkDrawIndexedIndirectCommand
      */
     public function getIndexCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkDrawIndexedIndirectCommand
 
     public function setIndexCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->indexCount = $cValue;
     }
@@ -58,7 +70,7 @@ final class VkDrawIndexedIndirectCommand
      */
     public function getInstanceCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->instanceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -66,7 +78,7 @@ final class VkDrawIndexedIndirectCommand
 
     public function setInstanceCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->instanceCount = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkDrawIndexedIndirectCommand
      */
     public function getFirstIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->firstIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkDrawIndexedIndirectCommand
 
     public function setFirstIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->firstIndex = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkDrawIndexedIndirectCommand
      */
     public function getVertexOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkDrawIndexedIndirectCommand
 
     public function setVertexOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexOffset = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkDrawIndexedIndirectCommand
      */
     public function getFirstInstance(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->firstInstance;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkDrawIndexedIndirectCommand
 
     public function setFirstInstance(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->firstInstance = $cValue;
     }

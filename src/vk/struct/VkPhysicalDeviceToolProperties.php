@@ -4,8 +4,22 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceToolProperties
+final class VkPhysicalDeviceToolProperties implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "name" => $this->getName(),
+          "version" => $this->getVersion(),
+          "purposes" => $this->getPurposes(),
+          "description" => $this->getDescription(),
+          "layer" => $this->getLayer(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +27,7 @@ final class VkPhysicalDeviceToolProperties
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -28,7 +42,7 @@ final class VkPhysicalDeviceToolProperties
         null|string $layer = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceToolProperties', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceToolProperties', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($name)) $self->setName($name);
@@ -44,7 +58,7 @@ final class VkPhysicalDeviceToolProperties
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -52,7 +66,7 @@ final class VkPhysicalDeviceToolProperties
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -62,15 +76,15 @@ final class VkPhysicalDeviceToolProperties
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -80,7 +94,7 @@ final class VkPhysicalDeviceToolProperties
      */
     public function getName(): string
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->name;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -88,7 +102,7 @@ final class VkPhysicalDeviceToolProperties
 
     public function setName(string $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->name = $cValue;
     }
@@ -98,7 +112,7 @@ final class VkPhysicalDeviceToolProperties
      */
     public function getVersion(): string
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->version;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -106,7 +120,7 @@ final class VkPhysicalDeviceToolProperties
 
     public function setVersion(string $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->version = $cValue;
     }
@@ -116,7 +130,7 @@ final class VkPhysicalDeviceToolProperties
      */
     public function getPurposes(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->purposes;
         $phpValue = \iggyvolz\vulkan\enum\VkToolPurposeFlagBits::fromInt($cValue);
         return $phpValue;
@@ -124,7 +138,7 @@ final class VkPhysicalDeviceToolProperties
 
     public function setPurposes(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkToolPurposeFlagBits::toInt(...$phpValue);
         $this->cdata->purposes = $cValue;
     }
@@ -134,7 +148,7 @@ final class VkPhysicalDeviceToolProperties
      */
     public function getDescription(): string
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->description;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -142,7 +156,7 @@ final class VkPhysicalDeviceToolProperties
 
     public function setDescription(string $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->description = $cValue;
     }
@@ -152,7 +166,7 @@ final class VkPhysicalDeviceToolProperties
      */
     public function getLayer(): string
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layer;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -160,7 +174,7 @@ final class VkPhysicalDeviceToolProperties
 
     public function setLayer(string $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->layer = $cValue;
     }

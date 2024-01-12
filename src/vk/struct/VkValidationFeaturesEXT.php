@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkValidationFeaturesEXT
+final class VkValidationFeaturesEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "enabledValidationFeatureCount" => $this->getEnabledValidationFeatureCount(),
+          "pEnabledValidationFeatures" => $this->getPEnabledValidationFeatures(),
+          "disabledValidationFeatureCount" => $this->getDisabledValidationFeatureCount(),
+          "pDisabledValidationFeatures" => $this->getPDisabledValidationFeatures(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkValidationFeaturesEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkValidationFeaturesEXT
         null|\iggyvolz\vulkan\util\Pointer $pDisabledValidationFeatures = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkValidationFeaturesEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkValidationFeaturesEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($enabledValidationFeatureCount)) $self->setEnabledValidationFeatureCount($enabledValidationFeatureCount);
@@ -42,7 +55,7 @@ final class VkValidationFeaturesEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkValidationFeaturesEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkValidationFeaturesEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkValidationFeaturesEXT
      */
     public function getEnabledValidationFeatureCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->enabledValidationFeatureCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkValidationFeaturesEXT
 
     public function setEnabledValidationFeatureCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->enabledValidationFeatureCount = $cValue;
     }
@@ -96,15 +109,15 @@ final class VkValidationFeaturesEXT
      */
     public function getPEnabledValidationFeatures(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pEnabledValidationFeatures;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPEnabledValidationFeatures(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pEnabledValidationFeatures = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkValidationFeaturesEXT
      */
     public function getDisabledValidationFeatureCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->disabledValidationFeatureCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkValidationFeaturesEXT
 
     public function setDisabledValidationFeatureCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->disabledValidationFeatureCount = $cValue;
     }
@@ -132,15 +145,15 @@ final class VkValidationFeaturesEXT
      */
     public function getPDisabledValidationFeatures(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDisabledValidationFeatures;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPDisabledValidationFeatures(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDisabledValidationFeatures = $cValue;
     }

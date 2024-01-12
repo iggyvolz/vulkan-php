@@ -4,8 +4,29 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
+final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "shaderBufferFloat32Atomics" => $this->getShaderBufferFloat32Atomics(),
+          "shaderBufferFloat32AtomicAdd" => $this->getShaderBufferFloat32AtomicAdd(),
+          "shaderBufferFloat64Atomics" => $this->getShaderBufferFloat64Atomics(),
+          "shaderBufferFloat64AtomicAdd" => $this->getShaderBufferFloat64AtomicAdd(),
+          "shaderSharedFloat32Atomics" => $this->getShaderSharedFloat32Atomics(),
+          "shaderSharedFloat32AtomicAdd" => $this->getShaderSharedFloat32AtomicAdd(),
+          "shaderSharedFloat64Atomics" => $this->getShaderSharedFloat64Atomics(),
+          "shaderSharedFloat64AtomicAdd" => $this->getShaderSharedFloat64AtomicAdd(),
+          "shaderImageFloat32Atomics" => $this->getShaderImageFloat32Atomics(),
+          "shaderImageFloat32AtomicAdd" => $this->getShaderImageFloat32AtomicAdd(),
+          "sparseImageFloat32Atomics" => $this->getSparseImageFloat32Atomics(),
+          "sparseImageFloat32AtomicAdd" => $this->getSparseImageFloat32AtomicAdd(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +34,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -35,7 +56,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
         null|bool $sparseImageFloat32AtomicAdd = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderAtomicFloatFeaturesEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderAtomicFloatFeaturesEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderBufferFloat32Atomics)) $self->setShaderBufferFloat32Atomics($shaderBufferFloat32Atomics);
@@ -58,7 +79,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +87,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,15 +97,15 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +115,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
      */
     public function getShaderBufferFloat32Atomics(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderBufferFloat32Atomics;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -102,7 +123,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 
     public function setShaderBufferFloat32Atomics(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderBufferFloat32Atomics = $cValue;
     }
@@ -112,7 +133,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
      */
     public function getShaderBufferFloat32AtomicAdd(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderBufferFloat32AtomicAdd;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -120,7 +141,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 
     public function setShaderBufferFloat32AtomicAdd(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderBufferFloat32AtomicAdd = $cValue;
     }
@@ -130,7 +151,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
      */
     public function getShaderBufferFloat64Atomics(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderBufferFloat64Atomics;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -138,7 +159,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 
     public function setShaderBufferFloat64Atomics(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderBufferFloat64Atomics = $cValue;
     }
@@ -148,7 +169,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
      */
     public function getShaderBufferFloat64AtomicAdd(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderBufferFloat64AtomicAdd;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -156,7 +177,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 
     public function setShaderBufferFloat64AtomicAdd(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderBufferFloat64AtomicAdd = $cValue;
     }
@@ -166,7 +187,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
      */
     public function getShaderSharedFloat32Atomics(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSharedFloat32Atomics;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -174,7 +195,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 
     public function setShaderSharedFloat32Atomics(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSharedFloat32Atomics = $cValue;
     }
@@ -184,7 +205,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
      */
     public function getShaderSharedFloat32AtomicAdd(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSharedFloat32AtomicAdd;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -192,7 +213,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 
     public function setShaderSharedFloat32AtomicAdd(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSharedFloat32AtomicAdd = $cValue;
     }
@@ -202,7 +223,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
      */
     public function getShaderSharedFloat64Atomics(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSharedFloat64Atomics;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -210,7 +231,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 
     public function setShaderSharedFloat64Atomics(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSharedFloat64Atomics = $cValue;
     }
@@ -220,7 +241,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
      */
     public function getShaderSharedFloat64AtomicAdd(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSharedFloat64AtomicAdd;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -228,7 +249,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 
     public function setShaderSharedFloat64AtomicAdd(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSharedFloat64AtomicAdd = $cValue;
     }
@@ -238,7 +259,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
      */
     public function getShaderImageFloat32Atomics(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderImageFloat32Atomics;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -246,7 +267,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 
     public function setShaderImageFloat32Atomics(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderImageFloat32Atomics = $cValue;
     }
@@ -256,7 +277,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
      */
     public function getShaderImageFloat32AtomicAdd(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderImageFloat32AtomicAdd;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -264,7 +285,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 
     public function setShaderImageFloat32AtomicAdd(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderImageFloat32AtomicAdd = $cValue;
     }
@@ -274,7 +295,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
      */
     public function getSparseImageFloat32Atomics(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sparseImageFloat32Atomics;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -282,7 +303,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 
     public function setSparseImageFloat32Atomics(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->sparseImageFloat32Atomics = $cValue;
     }
@@ -292,7 +313,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
      */
     public function getSparseImageFloat32AtomicAdd(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sparseImageFloat32AtomicAdd;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -300,7 +321,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 
     public function setSparseImageFloat32AtomicAdd(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->sparseImageFloat32AtomicAdd = $cValue;
     }

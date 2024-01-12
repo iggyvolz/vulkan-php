@@ -18,6 +18,7 @@ use iggyvolz\vulkan\struct\VkComponentMapping;
 use iggyvolz\vulkan\struct\VkDevice;
 use iggyvolz\vulkan\struct\VkDeviceCreateInfo;
 use iggyvolz\vulkan\struct\VkDeviceQueueCreateInfo;
+use iggyvolz\vulkan\struct\VkExtensionProperties;
 use iggyvolz\vulkan\struct\VkImage;
 use iggyvolz\vulkan\struct\VkImageSubresourceRange;
 use iggyvolz\vulkan\struct\VkImageView;
@@ -43,7 +44,7 @@ use iggyvolz\vulkan\struct\VkXlibSurfaceCreateInfoKHR;
 use iggyvolz\vulkan\util\IntPointer;
 use iggyvolz\vulkan\util\ObjectPointer;
 use iggyvolz\vulkan\util\OpaquePointer;
-use iggyvolz\vulkan\util\SimpleInstanceInitializer;
+use iggyvolz\vulkan\util\Pointer;
 use iggyvolz\vulkan\util\Version;
 use iggyvolz\vulkan\Vulkan;
 use iggyvolz\windows\Window;
@@ -52,15 +53,62 @@ use iggyvolz\x11\gen\XEventPtr;
 use Revolt\EventLoop;
 
 require_once __DIR__ . "/../vendor/autoload.php";
-$vulkan = new Vulkan(new SimpleInstanceInitializer(
-    requiredExtensions: ["VK_KHR_surface", ...match(PHP_OS_FAMILY) {
-        "Windows" => ["VK_KHR_win32_surface"],
-        "Linux" => ["VK_KHR_display", "VK_KHR_xlib_surface"]
-    }],
-    requiredLayers: ["VK_LAYER_KHRONOS_validation"],
-    printDebugInfo: false
-));
-$physicalDevices = $vulkan->enum("vkEnumeratePhysicalDevices", VkPhysicalDevice::class, $vulkan->instance);
+$vulkan = new Vulkan();
+echo $vulkan->systemVersion . PHP_EOL;
+echo json_encode($availableLayers = $vulkan->getInstanceLayerProperties(), JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT) . PHP_EOL;
+echo json_encode($availableExtensions = $vulkan->getInstanceExtensionProperties(null), JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT) . PHP_EOL;
+$availableLayerNames = array_map(fn(VkLayerProperties $layerProperties): string => $layerProperties->getLayerName(), $availableLayers);
+$availableExtensionNames = array_map(fn(VkExtensionProperties $extensionProperties): string => $extensionProperties->getExtensionName(), $availableExtensions);
+function stringsToDoubleCharPointer(string ...$data): Pointer
+{
+    global $vulkan;
+    if(empty($data)) return OpaquePointer::null($vulkan);
+    $cdataArr = array_map(function (string $s) use($vulkan): CData {
+        // todo don't leak memory like a motherfucker (my brain hurts from the pointer math, I'll clean this up later)
+        $cdata = $vulkan->ffi->new("char[" . strlen($s) + 1 . "]", owned: false);
+        FFI::memcpy($cdata, "$s\0", strlen($s) + 1);
+        return $cdata;
+    }, $data);
+    $cdata = $vulkan->ffi->new("char*[" . count($data) . "]", owned: false);
+    for($i = 0; $i < count($data); $i++) {
+        $cdata[$i] = $cdataArr[$i];
+    }
+    return new OpaquePointer(FFI::addr($cdata[0]), $vulkan);
+}
+$enabledLayers = [];
+if(in_array("VK_LAYER_KHRONOS_validation", $availableLayerNames)) {
+    $enabledLayers[] = "VK_LAYER_KHRONOS_validation";
+}
+$enabledExtensions = ["VK_KHR_surface"];
+$enabledExtensions = array_merge($enabledExtensions, match(PHP_OS_FAMILY) {
+    "Windows" => ["VK_KHR_win32_surface"],
+    "Linux" => ["VK_KHR_display", "VK_KHR_xlib_surface"],
+    default => throw new RuntimeException("Not sure how to handle platform"),
+});
+foreach ($enabledExtensions as $extension) {
+    if(!in_array($extension, $availableExtensionNames)) {
+        throw new RuntimeException("Missing extension $extension.  Get a better graphics card or install requisite packages!");
+    }
+}
+$vulkan->createInstance(ObjectPointer::of(VkInstanceCreateInfo::create($vulkan,
+    sType: VkStructureType::InstanceCreateInfo,
+    pApplicationInfo: ObjectPointer::of(VkApplicationInfo::create($vulkan,
+        sType: VkStructureType::ApplicationInfo,
+//        pApplicationName: "My Application",
+        applicationVersion: (new Version(0, 1))->toInt(),
+//        pEngineName: "My Engine",
+        engineVersion: (new Version(0, 1))->toInt(),
+        apiVersion: $vulkan->systemVersion->toInt()
+    )),
+    enabledLayerCount: count($enabledLayers),
+    ppEnabledLayerNames: stringsToDoubleCharPointer(...$enabledLayers),
+    enabledExtensionCount: count($enabledExtensions),
+    ppEnabledExtensionNames: stringsToDoubleCharPointer(...$enabledExtensions),
+)), ObjectPointer::null($vulkan), $pInstance = ObjectPointer::new($vulkan, VkInstance::class))->assert();
+/** @var VkInstance $instance */
+$instance = $pInstance->get();
+echo json_encode($instance);
+$physicalDevices = $instance->getPhysicalDevices();
 
 // go with physical device 0 out of laziness
 $physicalDevice = $physicalDevices[0];
@@ -74,7 +122,7 @@ $queueCreateInfo = VkDeviceQueueCreateInfo::create($vulkan,
     sType: VkStructureType::DeviceQueueCreateInfo,
     queueFamilyIndex: $queueFamily,
     queueCount: 1,
-    pQueuePriorities: new OpaquePointer(FFI::addr($queuePriority), $vulkan->ffi, $queuePriority)
+    pQueuePriorities: new OpaquePointer(FFI::addr($queuePriority), $vulkan, $queuePriority)
 );
 
 $physicalDeviceFeatures = VkPhysicalDeviceFeatures::create($vulkan
@@ -84,11 +132,13 @@ $deviceCreateInfo = VkDeviceCreateInfo::create($vulkan,
     queueCreateInfoCount: 1,
     pQueueCreateInfos: ObjectPointer::of($queueCreateInfo),
     enabledExtensionCount: 1,
-    ppEnabledExtensionNames: $vulkan->stringsToDoubleCharPointer("VK_KHR_swapchain"),
+    ppEnabledExtensionNames: stringsToDoubleCharPointer("VK_KHR_swapchain"),
     pEnabledFeatures: ObjectPointer::of($physicalDeviceFeatures)
 );
 
-$device = $vulkan->get("vkCreateDevice", VkDevice::class, $physicalDevice, ObjectPointer::of($deviceCreateInfo), ObjectPointer::null());
+$physicalDevice->createDevice(ObjectPointer::of($deviceCreateInfo), ObjectPointer::null($vulkan), $pDevice = ObjectPointer::new($vulkan, VkDevice::class))->assert();
+/** @var VkDevice $device */
+$device = $pDevice->get();
 $queue = $vulkan->get("vkGetDeviceQueue", VkQueue::class, $device, $queueFamily, 0);
 
 

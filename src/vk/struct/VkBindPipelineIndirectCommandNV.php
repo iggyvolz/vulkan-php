@@ -4,8 +4,16 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkBindPipelineIndirectCommandNV
+final class VkBindPipelineIndirectCommandNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "pipelineAddress" => $this->getPipelineAddress(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,13 +21,13 @@ final class VkBindPipelineIndirectCommandNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan, null|int $pipelineAddress = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkBindPipelineIndirectCommandNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkBindPipelineIndirectCommandNV', false), $vulkan);
         if(!is_null($pipelineAddress)) $self->setPipelineAddress($pipelineAddress);
         return $self;
     }
@@ -29,7 +37,7 @@ final class VkBindPipelineIndirectCommandNV
      */
     public function getPipelineAddress(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -37,7 +45,7 @@ final class VkBindPipelineIndirectCommandNV
 
     public function setPipelineAddress(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelineAddress = $cValue;
     }

@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDrawMeshTasksIndirectCommandNV
+final class VkDrawMeshTasksIndirectCommandNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "taskCount" => $this->getTaskCount(),
+          "firstTask" => $this->getFirstTask(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkDrawMeshTasksIndirectCommandNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkDrawMeshTasksIndirectCommandNV
         null|int $firstTask = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDrawMeshTasksIndirectCommandNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDrawMeshTasksIndirectCommandNV', false), $vulkan);
         if(!is_null($taskCount)) $self->setTaskCount($taskCount);
         if(!is_null($firstTask)) $self->setFirstTask($firstTask);
         return $self;
@@ -34,7 +43,7 @@ final class VkDrawMeshTasksIndirectCommandNV
      */
     public function getTaskCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->taskCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkDrawMeshTasksIndirectCommandNV
 
     public function setTaskCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->taskCount = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkDrawMeshTasksIndirectCommandNV
      */
     public function getFirstTask(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->firstTask;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkDrawMeshTasksIndirectCommandNV
 
     public function setFirstTask(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->firstTask = $cValue;
     }

@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkMicromapTriangleEXT
+final class VkMicromapTriangleEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "dataOffset" => $this->getDataOffset(),
+          "subdivisionLevel" => $this->getSubdivisionLevel(),
+          "format" => $this->getFormat(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkMicromapTriangleEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkMicromapTriangleEXT
         null|int $format = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkMicromapTriangleEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkMicromapTriangleEXT', false), $vulkan);
         if(!is_null($dataOffset)) $self->setDataOffset($dataOffset);
         if(!is_null($subdivisionLevel)) $self->setSubdivisionLevel($subdivisionLevel);
         if(!is_null($format)) $self->setFormat($format);
@@ -36,7 +46,7 @@ final class VkMicromapTriangleEXT
      */
     public function getDataOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dataOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkMicromapTriangleEXT
 
     public function setDataOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dataOffset = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkMicromapTriangleEXT
      */
     public function getSubdivisionLevel(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subdivisionLevel;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkMicromapTriangleEXT
 
     public function setSubdivisionLevel(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subdivisionLevel = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkMicromapTriangleEXT
      */
     public function getFormat(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = $cValue;
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkMicromapTriangleEXT
 
     public function setFormat(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->format = $cValue;
     }

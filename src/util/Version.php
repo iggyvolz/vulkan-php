@@ -6,7 +6,7 @@ final readonly class Version
 {
     public function __construct(
         public int $major,
-        public int $minor,
+        public int $minor = 0,
         public int $patch = 0,
         public int $variant = 0
     )

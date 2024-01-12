@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDevicePipelineRobustnessPropertiesEXT
+final class VkPhysicalDevicePipelineRobustnessPropertiesEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "defaultRobustnessStorageBuffers" => $this->getDefaultRobustnessStorageBuffers(),
+          "defaultRobustnessUniformBuffers" => $this->getDefaultRobustnessUniformBuffers(),
+          "defaultRobustnessVertexInputs" => $this->getDefaultRobustnessVertexInputs(),
+          "defaultRobustnessImages" => $this->getDefaultRobustnessImages(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT
         null|\iggyvolz\vulkan\enum\VkPipelineRobustnessImageBehaviorEXT $defaultRobustnessImages = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDevicePipelineRobustnessPropertiesEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDevicePipelineRobustnessPropertiesEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($defaultRobustnessStorageBuffers)) $self->setDefaultRobustnessStorageBuffers($defaultRobustnessStorageBuffers);
@@ -42,7 +55,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT
      */
     public function getDefaultRobustnessStorageBuffers(): \iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->defaultRobustnessStorageBuffers;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT::from($cValue);
         return $phpValue;
@@ -88,7 +101,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT
         \iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT $phpValue,
     ): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->defaultRobustnessStorageBuffers = $cValue;
     }
@@ -98,7 +111,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT
      */
     public function getDefaultRobustnessUniformBuffers(): \iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->defaultRobustnessUniformBuffers;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT::from($cValue);
         return $phpValue;
@@ -108,7 +121,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT
         \iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT $phpValue,
     ): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->defaultRobustnessUniformBuffers = $cValue;
     }
@@ -118,7 +131,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT
      */
     public function getDefaultRobustnessVertexInputs(): \iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->defaultRobustnessVertexInputs;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT::from($cValue);
         return $phpValue;
@@ -128,7 +141,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT
         \iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT $phpValue,
     ): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->defaultRobustnessVertexInputs = $cValue;
     }
@@ -138,7 +151,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT
      */
     public function getDefaultRobustnessImages(): \iggyvolz\vulkan\enum\VkPipelineRobustnessImageBehaviorEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->defaultRobustnessImages;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineRobustnessImageBehaviorEXT::from($cValue);
         return $phpValue;
@@ -148,7 +161,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT
         \iggyvolz\vulkan\enum\VkPipelineRobustnessImageBehaviorEXT $phpValue,
     ): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->defaultRobustnessImages = $cValue;
     }

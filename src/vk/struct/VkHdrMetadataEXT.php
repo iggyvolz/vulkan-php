@@ -4,8 +4,25 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkHdrMetadataEXT
+final class VkHdrMetadataEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "displayPrimaryRed" => $this->getDisplayPrimaryRed(),
+          "displayPrimaryGreen" => $this->getDisplayPrimaryGreen(),
+          "displayPrimaryBlue" => $this->getDisplayPrimaryBlue(),
+          "whitePoint" => $this->getWhitePoint(),
+          "maxLuminance" => $this->getMaxLuminance(),
+          "minLuminance" => $this->getMinLuminance(),
+          "maxContentLightLevel" => $this->getMaxContentLightLevel(),
+          "maxFrameAverageLightLevel" => $this->getMaxFrameAverageLightLevel(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +30,7 @@ final class VkHdrMetadataEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -31,7 +48,7 @@ final class VkHdrMetadataEXT
         null|float $maxFrameAverageLightLevel = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkHdrMetadataEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkHdrMetadataEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($displayPrimaryRed)) $self->setDisplayPrimaryRed($displayPrimaryRed);
@@ -50,7 +67,7 @@ final class VkHdrMetadataEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -58,7 +75,7 @@ final class VkHdrMetadataEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -68,15 +85,15 @@ final class VkHdrMetadataEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -86,7 +103,7 @@ final class VkHdrMetadataEXT
      */
     public function getDisplayPrimaryRed(): VkXYColorEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->displayPrimaryRed;
         $phpValue = new \iggyvolz\vulkan\struct\VkXYColorEXT($cValue, $ffi);
         return $phpValue;
@@ -94,7 +111,7 @@ final class VkHdrMetadataEXT
 
     public function setDisplayPrimaryRed(VkXYColorEXT $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->displayPrimaryRed = $cValue;
     }
@@ -104,7 +121,7 @@ final class VkHdrMetadataEXT
      */
     public function getDisplayPrimaryGreen(): VkXYColorEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->displayPrimaryGreen;
         $phpValue = new \iggyvolz\vulkan\struct\VkXYColorEXT($cValue, $ffi);
         return $phpValue;
@@ -112,7 +129,7 @@ final class VkHdrMetadataEXT
 
     public function setDisplayPrimaryGreen(VkXYColorEXT $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->displayPrimaryGreen = $cValue;
     }
@@ -122,7 +139,7 @@ final class VkHdrMetadataEXT
      */
     public function getDisplayPrimaryBlue(): VkXYColorEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->displayPrimaryBlue;
         $phpValue = new \iggyvolz\vulkan\struct\VkXYColorEXT($cValue, $ffi);
         return $phpValue;
@@ -130,7 +147,7 @@ final class VkHdrMetadataEXT
 
     public function setDisplayPrimaryBlue(VkXYColorEXT $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->displayPrimaryBlue = $cValue;
     }
@@ -140,7 +157,7 @@ final class VkHdrMetadataEXT
      */
     public function getWhitePoint(): VkXYColorEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->whitePoint;
         $phpValue = new \iggyvolz\vulkan\struct\VkXYColorEXT($cValue, $ffi);
         return $phpValue;
@@ -148,7 +165,7 @@ final class VkHdrMetadataEXT
 
     public function setWhitePoint(VkXYColorEXT $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->whitePoint = $cValue;
     }
@@ -158,7 +175,7 @@ final class VkHdrMetadataEXT
      */
     public function getMaxLuminance(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxLuminance;
         $phpValue = $cValue;
         return $phpValue;
@@ -166,7 +183,7 @@ final class VkHdrMetadataEXT
 
     public function setMaxLuminance(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxLuminance = $cValue;
     }
@@ -176,7 +193,7 @@ final class VkHdrMetadataEXT
      */
     public function getMinLuminance(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minLuminance;
         $phpValue = $cValue;
         return $phpValue;
@@ -184,7 +201,7 @@ final class VkHdrMetadataEXT
 
     public function setMinLuminance(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minLuminance = $cValue;
     }
@@ -194,7 +211,7 @@ final class VkHdrMetadataEXT
      */
     public function getMaxContentLightLevel(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxContentLightLevel;
         $phpValue = $cValue;
         return $phpValue;
@@ -202,7 +219,7 @@ final class VkHdrMetadataEXT
 
     public function setMaxContentLightLevel(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxContentLightLevel = $cValue;
     }
@@ -212,7 +229,7 @@ final class VkHdrMetadataEXT
      */
     public function getMaxFrameAverageLightLevel(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFrameAverageLightLevel;
         $phpValue = $cValue;
         return $phpValue;
@@ -220,7 +237,7 @@ final class VkHdrMetadataEXT
 
     public function setMaxFrameAverageLightLevel(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFrameAverageLightLevel = $cValue;
     }

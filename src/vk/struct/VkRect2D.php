@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkRect2D
+final class VkRect2D implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "offset" => $this->getOffset(),
+          "extent" => $this->getExtent(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkRect2D
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkRect2D
         null|VkExtent2D $extent = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkRect2D', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkRect2D', false), $vulkan);
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($extent)) $self->setExtent($extent);
         return $self;
@@ -34,7 +43,7 @@ final class VkRect2D
      */
     public function getOffset(): VkOffset2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset2D($cValue, $ffi);
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkRect2D
 
     public function setOffset(VkOffset2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->offset = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkRect2D
      */
     public function getExtent(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkRect2D
 
     public function setExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->extent = $cValue;
     }

@@ -4,8 +4,23 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkBufferCreateInfo
+final class VkBufferCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "size" => $this->getSize(),
+          "usage" => $this->getUsage(),
+          "sharingMode" => $this->getSharingMode(),
+          "queueFamilyIndexCount" => $this->getQueueFamilyIndexCount(),
+          "pQueueFamilyIndices" => $this->getPQueueFamilyIndices(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +28,7 @@ final class VkBufferCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -29,7 +44,7 @@ final class VkBufferCreateInfo
         null|\iggyvolz\vulkan\util\IntPointer $pQueueFamilyIndices = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBufferCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkBufferCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -46,7 +61,7 @@ final class VkBufferCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -54,7 +69,7 @@ final class VkBufferCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -64,15 +79,15 @@ final class VkBufferCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -82,7 +97,7 @@ final class VkBufferCreateInfo
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkBufferCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -90,7 +105,7 @@ final class VkBufferCreateInfo
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkBufferCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -100,7 +115,7 @@ final class VkBufferCreateInfo
      */
     public function getSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -108,7 +123,7 @@ final class VkBufferCreateInfo
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }
@@ -118,7 +133,7 @@ final class VkBufferCreateInfo
      */
     public function getUsage(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->usage;
         $phpValue = \iggyvolz\vulkan\enum\VkBufferUsageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -126,7 +141,7 @@ final class VkBufferCreateInfo
 
     public function setUsage(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkBufferUsageFlagBits::toInt(...$phpValue);
         $this->cdata->usage = $cValue;
     }
@@ -136,7 +151,7 @@ final class VkBufferCreateInfo
      */
     public function getSharingMode(): \iggyvolz\vulkan\enum\VkSharingMode
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sharingMode;
         $phpValue = \iggyvolz\vulkan\enum\VkSharingMode::from($cValue);
         return $phpValue;
@@ -144,7 +159,7 @@ final class VkBufferCreateInfo
 
     public function setSharingMode(\iggyvolz\vulkan\enum\VkSharingMode $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sharingMode = $cValue;
     }
@@ -154,7 +169,7 @@ final class VkBufferCreateInfo
      */
     public function getQueueFamilyIndexCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->queueFamilyIndexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -162,7 +177,7 @@ final class VkBufferCreateInfo
 
     public function setQueueFamilyIndexCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->queueFamilyIndexCount = $cValue;
     }
@@ -172,7 +187,7 @@ final class VkBufferCreateInfo
      */
     public function getPQueueFamilyIndices(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pQueueFamilyIndices;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -180,7 +195,7 @@ final class VkBufferCreateInfo
 
     public function setPQueueFamilyIndices(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pQueueFamilyIndices = $cValue;
     }

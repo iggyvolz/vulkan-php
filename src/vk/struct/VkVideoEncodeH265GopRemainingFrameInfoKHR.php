@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkVideoEncodeH265GopRemainingFrameInfoKHR
+final class VkVideoEncodeH265GopRemainingFrameInfoKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "useGopRemainingFrames" => $this->getUseGopRemainingFrames(),
+          "gopRemainingI" => $this->getGopRemainingI(),
+          "gopRemainingP" => $this->getGopRemainingP(),
+          "gopRemainingB" => $this->getGopRemainingB(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkVideoEncodeH265GopRemainingFrameInfoKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkVideoEncodeH265GopRemainingFrameInfoKHR
         null|int $gopRemainingB = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265GopRemainingFrameInfoKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265GopRemainingFrameInfoKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($useGopRemainingFrames)) $self->setUseGopRemainingFrames($useGopRemainingFrames);
@@ -42,7 +55,7 @@ final class VkVideoEncodeH265GopRemainingFrameInfoKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkVideoEncodeH265GopRemainingFrameInfoKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkVideoEncodeH265GopRemainingFrameInfoKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkVideoEncodeH265GopRemainingFrameInfoKHR
      */
     public function getUseGopRemainingFrames(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->useGopRemainingFrames;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkVideoEncodeH265GopRemainingFrameInfoKHR
 
     public function setUseGopRemainingFrames(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->useGopRemainingFrames = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkVideoEncodeH265GopRemainingFrameInfoKHR
      */
     public function getGopRemainingI(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->gopRemainingI;
         $phpValue = $cValue;
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkVideoEncodeH265GopRemainingFrameInfoKHR
 
     public function setGopRemainingI(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->gopRemainingI = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkVideoEncodeH265GopRemainingFrameInfoKHR
      */
     public function getGopRemainingP(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->gopRemainingP;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkVideoEncodeH265GopRemainingFrameInfoKHR
 
     public function setGopRemainingP(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->gopRemainingP = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkVideoEncodeH265GopRemainingFrameInfoKHR
      */
     public function getGopRemainingB(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->gopRemainingB;
         $phpValue = $cValue;
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkVideoEncodeH265GopRemainingFrameInfoKHR
 
     public function setGopRemainingB(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->gopRemainingB = $cValue;
     }

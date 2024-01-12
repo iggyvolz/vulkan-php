@@ -4,8 +4,22 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDisplayPropertiesKHR
+final class VkDisplayPropertiesKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "display" => $this->getDisplay(),
+          "displayName" => $this->getDisplayName(),
+          "physicalDimensions" => $this->getPhysicalDimensions(),
+          "physicalResolution" => $this->getPhysicalResolution(),
+          "supportedTransforms" => $this->getSupportedTransforms(),
+          "planeReorderPossible" => $this->getPlaneReorderPossible(),
+          "persistentContent" => $this->getPersistentContent(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +27,7 @@ final class VkDisplayPropertiesKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -28,7 +42,7 @@ final class VkDisplayPropertiesKHR
         null|bool $persistentContent = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDisplayPropertiesKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDisplayPropertiesKHR', false), $vulkan);
         if(!is_null($display)) $self->setDisplay($display);
         if(!is_null($displayName)) $self->setDisplayName($displayName);
         if(!is_null($physicalDimensions)) $self->setPhysicalDimensions($physicalDimensions);
@@ -44,7 +58,7 @@ final class VkDisplayPropertiesKHR
      */
     public function getDisplay(): VkDisplayKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->display;
         $phpValue = new \iggyvolz\vulkan\struct\VkDisplayKHR($cValue, $ffi);
         return $phpValue;
@@ -52,7 +66,7 @@ final class VkDisplayPropertiesKHR
 
     public function setDisplay(VkDisplayKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->display = $cValue;
     }
@@ -62,7 +76,7 @@ final class VkDisplayPropertiesKHR
      */
     public function getDisplayName(): ?string
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->displayName;
         $phpValue = $cValue;
         return $phpValue;
@@ -70,7 +84,7 @@ final class VkDisplayPropertiesKHR
 
     public function setDisplayName(?string $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->displayName = $cValue;
     }
@@ -80,7 +94,7 @@ final class VkDisplayPropertiesKHR
      */
     public function getPhysicalDimensions(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->physicalDimensions;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -88,7 +102,7 @@ final class VkDisplayPropertiesKHR
 
     public function setPhysicalDimensions(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->physicalDimensions = $cValue;
     }
@@ -98,7 +112,7 @@ final class VkDisplayPropertiesKHR
      */
     public function getPhysicalResolution(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->physicalResolution;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -106,7 +120,7 @@ final class VkDisplayPropertiesKHR
 
     public function setPhysicalResolution(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->physicalResolution = $cValue;
     }
@@ -116,7 +130,7 @@ final class VkDisplayPropertiesKHR
      */
     public function getSupportedTransforms(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedTransforms;
         $phpValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -124,7 +138,7 @@ final class VkDisplayPropertiesKHR
 
     public function setSupportedTransforms(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->supportedTransforms = $cValue;
     }
@@ -134,7 +148,7 @@ final class VkDisplayPropertiesKHR
      */
     public function getPlaneReorderPossible(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->planeReorderPossible;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -142,7 +156,7 @@ final class VkDisplayPropertiesKHR
 
     public function setPlaneReorderPossible(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->planeReorderPossible = $cValue;
     }
@@ -152,7 +166,7 @@ final class VkDisplayPropertiesKHR
      */
     public function getPersistentContent(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->persistentContent;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -160,7 +174,7 @@ final class VkDisplayPropertiesKHR
 
     public function setPersistentContent(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->persistentContent = $cValue;
     }

@@ -4,8 +4,22 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPipelineLayoutCreateInfo
+final class VkPipelineLayoutCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "setLayoutCount" => $this->getSetLayoutCount(),
+          "pSetLayouts" => $this->getPSetLayouts(),
+          "pushConstantRangeCount" => $this->getPushConstantRangeCount(),
+          "pPushConstantRanges" => $this->getPPushConstantRanges(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +27,7 @@ final class VkPipelineLayoutCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -28,7 +42,7 @@ final class VkPipelineLayoutCreateInfo
         null|\iggyvolz\vulkan\util\ObjectPointer $pPushConstantRanges = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineLayoutCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPipelineLayoutCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -44,7 +58,7 @@ final class VkPipelineLayoutCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -52,7 +66,7 @@ final class VkPipelineLayoutCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -62,15 +76,15 @@ final class VkPipelineLayoutCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -80,7 +94,7 @@ final class VkPipelineLayoutCreateInfo
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineLayoutCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -88,7 +102,7 @@ final class VkPipelineLayoutCreateInfo
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkPipelineLayoutCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -98,7 +112,7 @@ final class VkPipelineLayoutCreateInfo
      */
     public function getSetLayoutCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->setLayoutCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -106,7 +120,7 @@ final class VkPipelineLayoutCreateInfo
 
     public function setSetLayoutCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->setLayoutCount = $cValue;
     }
@@ -116,15 +130,15 @@ final class VkPipelineLayoutCreateInfo
      */
     public function getPSetLayouts(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pSetLayouts;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorSetLayout', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorSetLayout', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPSetLayouts(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pSetLayouts = $cValue;
     }
@@ -134,7 +148,7 @@ final class VkPipelineLayoutCreateInfo
      */
     public function getPushConstantRangeCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pushConstantRangeCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -142,7 +156,7 @@ final class VkPipelineLayoutCreateInfo
 
     public function setPushConstantRangeCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pushConstantRangeCount = $cValue;
     }
@@ -152,15 +166,15 @@ final class VkPipelineLayoutCreateInfo
      */
     public function getPPushConstantRanges(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pPushConstantRanges;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPushConstantRange', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPushConstantRange', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPPushConstantRanges(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pPushConstantRanges = $cValue;
     }

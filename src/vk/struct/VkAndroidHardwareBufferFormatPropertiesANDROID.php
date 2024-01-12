@@ -4,8 +4,25 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkAndroidHardwareBufferFormatPropertiesANDROID
+final class VkAndroidHardwareBufferFormatPropertiesANDROID implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "format" => $this->getFormat(),
+          "externalFormat" => $this->getExternalFormat(),
+          "formatFeatures" => $this->getFormatFeatures(),
+          "samplerYcbcrConversionComponents" => $this->getSamplerYcbcrConversionComponents(),
+          "suggestedYcbcrModel" => $this->getSuggestedYcbcrModel(),
+          "suggestedYcbcrRange" => $this->getSuggestedYcbcrRange(),
+          "suggestedXChromaOffset" => $this->getSuggestedXChromaOffset(),
+          "suggestedYChromaOffset" => $this->getSuggestedYChromaOffset(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +30,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -31,7 +48,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
         null|\iggyvolz\vulkan\enum\VkChromaLocation $suggestedYChromaOffset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAndroidHardwareBufferFormatPropertiesANDROID', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkAndroidHardwareBufferFormatPropertiesANDROID', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($format)) $self->setFormat($format);
@@ -50,7 +67,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -58,7 +75,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -68,15 +85,15 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -86,7 +103,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
      */
     public function getFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -94,7 +111,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
 
     public function setFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->format = $cValue;
     }
@@ -104,7 +121,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
      */
     public function getExternalFormat(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->externalFormat;
         $phpValue = $cValue;
         return $phpValue;
@@ -112,7 +129,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
 
     public function setExternalFormat(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->externalFormat = $cValue;
     }
@@ -122,7 +139,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
      */
     public function getFormatFeatures(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->formatFeatures;
         $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::fromInt($cValue);
         return $phpValue;
@@ -130,7 +147,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
 
     public function setFormatFeatures(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->formatFeatures = $cValue;
     }
@@ -140,7 +157,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
      */
     public function getSamplerYcbcrConversionComponents(): VkComponentMapping
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samplerYcbcrConversionComponents;
         $phpValue = new \iggyvolz\vulkan\struct\VkComponentMapping($cValue, $ffi);
         return $phpValue;
@@ -148,7 +165,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
 
     public function setSamplerYcbcrConversionComponents(VkComponentMapping $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->samplerYcbcrConversionComponents = $cValue;
     }
@@ -158,7 +175,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
      */
     public function getSuggestedYcbcrModel(): \iggyvolz\vulkan\enum\VkSamplerYcbcrModelConversion
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->suggestedYcbcrModel;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerYcbcrModelConversion::from($cValue);
         return $phpValue;
@@ -166,7 +183,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
 
     public function setSuggestedYcbcrModel(\iggyvolz\vulkan\enum\VkSamplerYcbcrModelConversion $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->suggestedYcbcrModel = $cValue;
     }
@@ -176,7 +193,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
      */
     public function getSuggestedYcbcrRange(): \iggyvolz\vulkan\enum\VkSamplerYcbcrRange
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->suggestedYcbcrRange;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerYcbcrRange::from($cValue);
         return $phpValue;
@@ -184,7 +201,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
 
     public function setSuggestedYcbcrRange(\iggyvolz\vulkan\enum\VkSamplerYcbcrRange $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->suggestedYcbcrRange = $cValue;
     }
@@ -194,7 +211,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
      */
     public function getSuggestedXChromaOffset(): \iggyvolz\vulkan\enum\VkChromaLocation
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->suggestedXChromaOffset;
         $phpValue = \iggyvolz\vulkan\enum\VkChromaLocation::from($cValue);
         return $phpValue;
@@ -202,7 +219,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
 
     public function setSuggestedXChromaOffset(\iggyvolz\vulkan\enum\VkChromaLocation $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->suggestedXChromaOffset = $cValue;
     }
@@ -212,7 +229,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
      */
     public function getSuggestedYChromaOffset(): \iggyvolz\vulkan\enum\VkChromaLocation
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->suggestedYChromaOffset;
         $phpValue = \iggyvolz\vulkan\enum\VkChromaLocation::from($cValue);
         return $phpValue;
@@ -220,7 +237,7 @@ final class VkAndroidHardwareBufferFormatPropertiesANDROID
 
     public function setSuggestedYChromaOffset(\iggyvolz\vulkan\enum\VkChromaLocation $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->suggestedYChromaOffset = $cValue;
     }

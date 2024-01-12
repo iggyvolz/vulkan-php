@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkClearAttachment
+final class VkClearAttachment implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "aspectMask" => $this->getAspectMask(),
+          "colorAttachment" => $this->getColorAttachment(),
+          "clearValue" => $this->getClearValue(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkClearAttachment
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkClearAttachment
         mixed $clearValue = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkClearAttachment', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkClearAttachment', false), $vulkan);
         if(!is_null($aspectMask)) $self->setAspectMask($aspectMask);
         if(!is_null($colorAttachment)) $self->setColorAttachment($colorAttachment);
         if(!is_null($clearValue)) $self->setClearValue($clearValue);
@@ -36,7 +46,7 @@ final class VkClearAttachment
      */
     public function getAspectMask(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->aspectMask;
         $phpValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::fromInt($cValue);
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkClearAttachment
 
     public function setAspectMask(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::toInt(...$phpValue);
         $this->cdata->aspectMask = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkClearAttachment
      */
     public function getColorAttachment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->colorAttachment;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkClearAttachment
 
     public function setColorAttachment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->colorAttachment = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkClearAttachment
      */
     public function getClearValue(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->clearValue;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkClearAttachment
 
     public function setClearValue(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->clearValue = $cValue;
     }

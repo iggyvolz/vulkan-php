@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkBufferImageCopy
+final class VkBufferImageCopy implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "bufferOffset" => $this->getBufferOffset(),
+          "bufferRowLength" => $this->getBufferRowLength(),
+          "bufferImageHeight" => $this->getBufferImageHeight(),
+          "imageSubresource" => $this->getImageSubresource(),
+          "imageOffset" => $this->getImageOffset(),
+          "imageExtent" => $this->getImageExtent(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkBufferImageCopy
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkBufferImageCopy
         null|VkExtent3D $imageExtent = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBufferImageCopy', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkBufferImageCopy', false), $vulkan);
         if(!is_null($bufferOffset)) $self->setBufferOffset($bufferOffset);
         if(!is_null($bufferRowLength)) $self->setBufferRowLength($bufferRowLength);
         if(!is_null($bufferImageHeight)) $self->setBufferImageHeight($bufferImageHeight);
@@ -42,7 +55,7 @@ final class VkBufferImageCopy
      */
     public function getBufferOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkBufferImageCopy
 
     public function setBufferOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferOffset = $cValue;
     }
@@ -60,7 +73,7 @@ final class VkBufferImageCopy
      */
     public function getBufferRowLength(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferRowLength;
         $phpValue = $cValue;
         return $phpValue;
@@ -68,7 +81,7 @@ final class VkBufferImageCopy
 
     public function setBufferRowLength(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferRowLength = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkBufferImageCopy
      */
     public function getBufferImageHeight(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferImageHeight;
         $phpValue = $cValue;
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkBufferImageCopy
 
     public function setBufferImageHeight(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferImageHeight = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkBufferImageCopy
      */
     public function getImageSubresource(): VkImageSubresourceLayers
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageSubresource;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageSubresourceLayers($cValue, $ffi);
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkBufferImageCopy
 
     public function setImageSubresource(VkImageSubresourceLayers $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageSubresource = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkBufferImageCopy
      */
     public function getImageOffset(): VkOffset3D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageOffset;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset3D($cValue, $ffi);
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkBufferImageCopy
 
     public function setImageOffset(VkOffset3D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageOffset = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkBufferImageCopy
      */
     public function getImageExtent(): VkExtent3D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent3D($cValue, $ffi);
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkBufferImageCopy
 
     public function setImageExtent(VkExtent3D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageExtent = $cValue;
     }

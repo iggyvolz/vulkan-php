@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDescriptorUpdateTemplateEntry
+final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "dstBinding" => $this->getDstBinding(),
+          "dstArrayElement" => $this->getDstArrayElement(),
+          "descriptorCount" => $this->getDescriptorCount(),
+          "descriptorType" => $this->getDescriptorType(),
+          "offset" => $this->getOffset(),
+          "stride" => $this->getStride(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkDescriptorUpdateTemplateEntry
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkDescriptorUpdateTemplateEntry
         null|int $stride = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorUpdateTemplateEntry', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDescriptorUpdateTemplateEntry', false), $vulkan);
         if(!is_null($dstBinding)) $self->setDstBinding($dstBinding);
         if(!is_null($dstArrayElement)) $self->setDstArrayElement($dstArrayElement);
         if(!is_null($descriptorCount)) $self->setDescriptorCount($descriptorCount);
@@ -42,7 +55,7 @@ final class VkDescriptorUpdateTemplateEntry
      */
     public function getDstBinding(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstBinding;
         $phpValue = $cValue;
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkDescriptorUpdateTemplateEntry
 
     public function setDstBinding(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstBinding = $cValue;
     }
@@ -60,7 +73,7 @@ final class VkDescriptorUpdateTemplateEntry
      */
     public function getDstArrayElement(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstArrayElement;
         $phpValue = $cValue;
         return $phpValue;
@@ -68,7 +81,7 @@ final class VkDescriptorUpdateTemplateEntry
 
     public function setDstArrayElement(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstArrayElement = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkDescriptorUpdateTemplateEntry
      */
     public function getDescriptorCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkDescriptorUpdateTemplateEntry
 
     public function setDescriptorCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorCount = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkDescriptorUpdateTemplateEntry
      */
     public function getDescriptorType(): \iggyvolz\vulkan\enum\VkDescriptorType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorType;
         $phpValue = \iggyvolz\vulkan\enum\VkDescriptorType::from($cValue);
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkDescriptorUpdateTemplateEntry
 
     public function setDescriptorType(\iggyvolz\vulkan\enum\VkDescriptorType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->descriptorType = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkDescriptorUpdateTemplateEntry
      */
     public function getOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkDescriptorUpdateTemplateEntry
 
     public function setOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->offset = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkDescriptorUpdateTemplateEntry
      */
     public function getStride(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stride;
         $phpValue = $cValue;
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkDescriptorUpdateTemplateEntry
 
     public function setStride(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stride = $cValue;
     }

@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkAttachmentSampleLocationsEXT
+final class VkAttachmentSampleLocationsEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "attachmentIndex" => $this->getAttachmentIndex(),
+          "sampleLocationsInfo" => $this->getSampleLocationsInfo(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkAttachmentSampleLocationsEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkAttachmentSampleLocationsEXT
         null|VkSampleLocationsInfoEXT $sampleLocationsInfo = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAttachmentSampleLocationsEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkAttachmentSampleLocationsEXT', false), $vulkan);
         if(!is_null($attachmentIndex)) $self->setAttachmentIndex($attachmentIndex);
         if(!is_null($sampleLocationsInfo)) $self->setSampleLocationsInfo($sampleLocationsInfo);
         return $self;
@@ -34,7 +43,7 @@ final class VkAttachmentSampleLocationsEXT
      */
     public function getAttachmentIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->attachmentIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkAttachmentSampleLocationsEXT
 
     public function setAttachmentIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->attachmentIndex = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkAttachmentSampleLocationsEXT
      */
     public function getSampleLocationsInfo(): VkSampleLocationsInfoEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampleLocationsInfo;
         $phpValue = new \iggyvolz\vulkan\struct\VkSampleLocationsInfoEXT($cValue, $ffi);
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkAttachmentSampleLocationsEXT
 
     public function setSampleLocationsInfo(VkSampleLocationsInfoEXT $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->sampleLocationsInfo = $cValue;
     }

@@ -4,8 +4,24 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkBufferMemoryBarrier
+final class VkBufferMemoryBarrier implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "srcAccessMask" => $this->getSrcAccessMask(),
+          "dstAccessMask" => $this->getDstAccessMask(),
+          "srcQueueFamilyIndex" => $this->getSrcQueueFamilyIndex(),
+          "dstQueueFamilyIndex" => $this->getDstQueueFamilyIndex(),
+          "buffer" => $this->getBuffer(),
+          "offset" => $this->getOffset(),
+          "size" => $this->getSize(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +29,7 @@ final class VkBufferMemoryBarrier
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -30,7 +46,7 @@ final class VkBufferMemoryBarrier
         null|int $size = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBufferMemoryBarrier', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkBufferMemoryBarrier', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($srcAccessMask)) $self->setSrcAccessMask($srcAccessMask);
@@ -48,7 +64,7 @@ final class VkBufferMemoryBarrier
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -56,7 +72,7 @@ final class VkBufferMemoryBarrier
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -66,15 +82,15 @@ final class VkBufferMemoryBarrier
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -84,7 +100,7 @@ final class VkBufferMemoryBarrier
      */
     public function getSrcAccessMask(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcAccessMask;
         $phpValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::fromInt($cValue);
         return $phpValue;
@@ -92,7 +108,7 @@ final class VkBufferMemoryBarrier
 
     public function setSrcAccessMask(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::toInt(...$phpValue);
         $this->cdata->srcAccessMask = $cValue;
     }
@@ -102,7 +118,7 @@ final class VkBufferMemoryBarrier
      */
     public function getDstAccessMask(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstAccessMask;
         $phpValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::fromInt($cValue);
         return $phpValue;
@@ -110,7 +126,7 @@ final class VkBufferMemoryBarrier
 
     public function setDstAccessMask(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::toInt(...$phpValue);
         $this->cdata->dstAccessMask = $cValue;
     }
@@ -120,7 +136,7 @@ final class VkBufferMemoryBarrier
      */
     public function getSrcQueueFamilyIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcQueueFamilyIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -128,7 +144,7 @@ final class VkBufferMemoryBarrier
 
     public function setSrcQueueFamilyIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->srcQueueFamilyIndex = $cValue;
     }
@@ -138,7 +154,7 @@ final class VkBufferMemoryBarrier
      */
     public function getDstQueueFamilyIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstQueueFamilyIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -146,7 +162,7 @@ final class VkBufferMemoryBarrier
 
     public function setDstQueueFamilyIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstQueueFamilyIndex = $cValue;
     }
@@ -156,7 +172,7 @@ final class VkBufferMemoryBarrier
      */
     public function getBuffer(): VkBuffer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->buffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -164,7 +180,7 @@ final class VkBufferMemoryBarrier
 
     public function setBuffer(VkBuffer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->buffer = $cValue;
     }
@@ -174,7 +190,7 @@ final class VkBufferMemoryBarrier
      */
     public function getOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = $cValue;
         return $phpValue;
@@ -182,7 +198,7 @@ final class VkBufferMemoryBarrier
 
     public function setOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->offset = $cValue;
     }
@@ -192,7 +208,7 @@ final class VkBufferMemoryBarrier
      */
     public function getSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -200,7 +216,7 @@ final class VkBufferMemoryBarrier
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }

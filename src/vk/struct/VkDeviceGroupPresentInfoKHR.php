@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDeviceGroupPresentInfoKHR
+final class VkDeviceGroupPresentInfoKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "swapchainCount" => $this->getSwapchainCount(),
+          "pDeviceMasks" => $this->getPDeviceMasks(),
+          "mode" => $this->getMode(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkDeviceGroupPresentInfoKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkDeviceGroupPresentInfoKHR
         null|\iggyvolz\vulkan\enum\VkDeviceGroupPresentModeFlagBitsKHR $mode = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceGroupPresentInfoKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDeviceGroupPresentInfoKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($swapchainCount)) $self->setSwapchainCount($swapchainCount);
@@ -40,7 +52,7 @@ final class VkDeviceGroupPresentInfoKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkDeviceGroupPresentInfoKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkDeviceGroupPresentInfoKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkDeviceGroupPresentInfoKHR
      */
     public function getSwapchainCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->swapchainCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkDeviceGroupPresentInfoKHR
 
     public function setSwapchainCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->swapchainCount = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkDeviceGroupPresentInfoKHR
      */
     public function getPDeviceMasks(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDeviceMasks;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkDeviceGroupPresentInfoKHR
 
     public function setPDeviceMasks(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDeviceMasks = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkDeviceGroupPresentInfoKHR
      */
     public function getMode(): \iggyvolz\vulkan\enum\VkDeviceGroupPresentModeFlagBitsKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mode;
         $phpValue = \iggyvolz\vulkan\enum\VkDeviceGroupPresentModeFlagBitsKHR::from($cValue);
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkDeviceGroupPresentInfoKHR
 
     public function setMode(\iggyvolz\vulkan\enum\VkDeviceGroupPresentModeFlagBitsKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->mode = $cValue;
     }

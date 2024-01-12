@@ -4,8 +4,22 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkVideoEncodeH265RateControlInfoKHR
+final class VkVideoEncodeH265RateControlInfoKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "gopFrameCount" => $this->getGopFrameCount(),
+          "idrPeriod" => $this->getIdrPeriod(),
+          "consecutiveBFrameCount" => $this->getConsecutiveBFrameCount(),
+          "subLayerCount" => $this->getSubLayerCount(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +27,7 @@ final class VkVideoEncodeH265RateControlInfoKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -28,7 +42,7 @@ final class VkVideoEncodeH265RateControlInfoKHR
         null|int $subLayerCount = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265RateControlInfoKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265RateControlInfoKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -44,7 +58,7 @@ final class VkVideoEncodeH265RateControlInfoKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -52,7 +66,7 @@ final class VkVideoEncodeH265RateControlInfoKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -62,15 +76,15 @@ final class VkVideoEncodeH265RateControlInfoKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -80,7 +94,7 @@ final class VkVideoEncodeH265RateControlInfoKHR
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeH265RateControlFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -88,7 +102,7 @@ final class VkVideoEncodeH265RateControlInfoKHR
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeH265RateControlFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -98,7 +112,7 @@ final class VkVideoEncodeH265RateControlInfoKHR
      */
     public function getGopFrameCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->gopFrameCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -106,7 +120,7 @@ final class VkVideoEncodeH265RateControlInfoKHR
 
     public function setGopFrameCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->gopFrameCount = $cValue;
     }
@@ -116,7 +130,7 @@ final class VkVideoEncodeH265RateControlInfoKHR
      */
     public function getIdrPeriod(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->idrPeriod;
         $phpValue = $cValue;
         return $phpValue;
@@ -124,7 +138,7 @@ final class VkVideoEncodeH265RateControlInfoKHR
 
     public function setIdrPeriod(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->idrPeriod = $cValue;
     }
@@ -134,7 +148,7 @@ final class VkVideoEncodeH265RateControlInfoKHR
      */
     public function getConsecutiveBFrameCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->consecutiveBFrameCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -142,7 +156,7 @@ final class VkVideoEncodeH265RateControlInfoKHR
 
     public function setConsecutiveBFrameCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->consecutiveBFrameCount = $cValue;
     }
@@ -152,7 +166,7 @@ final class VkVideoEncodeH265RateControlInfoKHR
      */
     public function getSubLayerCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subLayerCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -160,7 +174,7 @@ final class VkVideoEncodeH265RateControlInfoKHR
 
     public function setSubLayerCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subLayerCount = $cValue;
     }

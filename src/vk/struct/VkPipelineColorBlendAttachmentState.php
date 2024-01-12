@@ -4,8 +4,23 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPipelineColorBlendAttachmentState
+final class VkPipelineColorBlendAttachmentState implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "blendEnable" => $this->getBlendEnable(),
+          "srcColorBlendFactor" => $this->getSrcColorBlendFactor(),
+          "dstColorBlendFactor" => $this->getDstColorBlendFactor(),
+          "colorBlendOp" => $this->getColorBlendOp(),
+          "srcAlphaBlendFactor" => $this->getSrcAlphaBlendFactor(),
+          "dstAlphaBlendFactor" => $this->getDstAlphaBlendFactor(),
+          "alphaBlendOp" => $this->getAlphaBlendOp(),
+          "colorWriteMask" => $this->getColorWriteMask(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +28,7 @@ final class VkPipelineColorBlendAttachmentState
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -29,7 +44,7 @@ final class VkPipelineColorBlendAttachmentState
         null|array $colorWriteMask = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineColorBlendAttachmentState', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPipelineColorBlendAttachmentState', false), $vulkan);
         if(!is_null($blendEnable)) $self->setBlendEnable($blendEnable);
         if(!is_null($srcColorBlendFactor)) $self->setSrcColorBlendFactor($srcColorBlendFactor);
         if(!is_null($dstColorBlendFactor)) $self->setDstColorBlendFactor($dstColorBlendFactor);
@@ -46,7 +61,7 @@ final class VkPipelineColorBlendAttachmentState
      */
     public function getBlendEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->blendEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -54,7 +69,7 @@ final class VkPipelineColorBlendAttachmentState
 
     public function setBlendEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->blendEnable = $cValue;
     }
@@ -64,7 +79,7 @@ final class VkPipelineColorBlendAttachmentState
      */
     public function getSrcColorBlendFactor(): \iggyvolz\vulkan\enum\VkBlendFactor
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcColorBlendFactor;
         $phpValue = \iggyvolz\vulkan\enum\VkBlendFactor::from($cValue);
         return $phpValue;
@@ -72,7 +87,7 @@ final class VkPipelineColorBlendAttachmentState
 
     public function setSrcColorBlendFactor(\iggyvolz\vulkan\enum\VkBlendFactor $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->srcColorBlendFactor = $cValue;
     }
@@ -82,7 +97,7 @@ final class VkPipelineColorBlendAttachmentState
      */
     public function getDstColorBlendFactor(): \iggyvolz\vulkan\enum\VkBlendFactor
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstColorBlendFactor;
         $phpValue = \iggyvolz\vulkan\enum\VkBlendFactor::from($cValue);
         return $phpValue;
@@ -90,7 +105,7 @@ final class VkPipelineColorBlendAttachmentState
 
     public function setDstColorBlendFactor(\iggyvolz\vulkan\enum\VkBlendFactor $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->dstColorBlendFactor = $cValue;
     }
@@ -100,7 +115,7 @@ final class VkPipelineColorBlendAttachmentState
      */
     public function getColorBlendOp(): \iggyvolz\vulkan\enum\VkBlendOp
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->colorBlendOp;
         $phpValue = \iggyvolz\vulkan\enum\VkBlendOp::from($cValue);
         return $phpValue;
@@ -108,7 +123,7 @@ final class VkPipelineColorBlendAttachmentState
 
     public function setColorBlendOp(\iggyvolz\vulkan\enum\VkBlendOp $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->colorBlendOp = $cValue;
     }
@@ -118,7 +133,7 @@ final class VkPipelineColorBlendAttachmentState
      */
     public function getSrcAlphaBlendFactor(): \iggyvolz\vulkan\enum\VkBlendFactor
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcAlphaBlendFactor;
         $phpValue = \iggyvolz\vulkan\enum\VkBlendFactor::from($cValue);
         return $phpValue;
@@ -126,7 +141,7 @@ final class VkPipelineColorBlendAttachmentState
 
     public function setSrcAlphaBlendFactor(\iggyvolz\vulkan\enum\VkBlendFactor $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->srcAlphaBlendFactor = $cValue;
     }
@@ -136,7 +151,7 @@ final class VkPipelineColorBlendAttachmentState
      */
     public function getDstAlphaBlendFactor(): \iggyvolz\vulkan\enum\VkBlendFactor
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstAlphaBlendFactor;
         $phpValue = \iggyvolz\vulkan\enum\VkBlendFactor::from($cValue);
         return $phpValue;
@@ -144,7 +159,7 @@ final class VkPipelineColorBlendAttachmentState
 
     public function setDstAlphaBlendFactor(\iggyvolz\vulkan\enum\VkBlendFactor $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->dstAlphaBlendFactor = $cValue;
     }
@@ -154,7 +169,7 @@ final class VkPipelineColorBlendAttachmentState
      */
     public function getAlphaBlendOp(): \iggyvolz\vulkan\enum\VkBlendOp
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->alphaBlendOp;
         $phpValue = \iggyvolz\vulkan\enum\VkBlendOp::from($cValue);
         return $phpValue;
@@ -162,7 +177,7 @@ final class VkPipelineColorBlendAttachmentState
 
     public function setAlphaBlendOp(\iggyvolz\vulkan\enum\VkBlendOp $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->alphaBlendOp = $cValue;
     }
@@ -172,7 +187,7 @@ final class VkPipelineColorBlendAttachmentState
      */
     public function getColorWriteMask(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->colorWriteMask;
         $phpValue = \iggyvolz\vulkan\enum\VkColorComponentFlagBits::fromInt($cValue);
         return $phpValue;
@@ -180,7 +195,7 @@ final class VkPipelineColorBlendAttachmentState
 
     public function setColorWriteMask(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkColorComponentFlagBits::toInt(...$phpValue);
         $this->cdata->colorWriteMask = $cValue;
     }

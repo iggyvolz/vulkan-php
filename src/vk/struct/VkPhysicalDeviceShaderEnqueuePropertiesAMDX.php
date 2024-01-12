@@ -4,8 +4,22 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
+final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "maxExecutionGraphDepth" => $this->getMaxExecutionGraphDepth(),
+          "maxExecutionGraphShaderOutputNodes" => $this->getMaxExecutionGraphShaderOutputNodes(),
+          "maxExecutionGraphShaderPayloadSize" => $this->getMaxExecutionGraphShaderPayloadSize(),
+          "maxExecutionGraphShaderPayloadCount" => $this->getMaxExecutionGraphShaderPayloadCount(),
+          "executionGraphDispatchAddressAlignment" => $this->getExecutionGraphDispatchAddressAlignment(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +27,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -28,7 +42,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
         null|int $executionGraphDispatchAddressAlignment = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderEnqueuePropertiesAMDX', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderEnqueuePropertiesAMDX', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxExecutionGraphDepth)) $self->setMaxExecutionGraphDepth($maxExecutionGraphDepth);
@@ -44,7 +58,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -52,7 +66,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -62,15 +76,15 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -80,7 +94,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
      */
     public function getMaxExecutionGraphDepth(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxExecutionGraphDepth;
         $phpValue = $cValue;
         return $phpValue;
@@ -88,7 +102,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
 
     public function setMaxExecutionGraphDepth(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxExecutionGraphDepth = $cValue;
     }
@@ -98,7 +112,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
      */
     public function getMaxExecutionGraphShaderOutputNodes(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxExecutionGraphShaderOutputNodes;
         $phpValue = $cValue;
         return $phpValue;
@@ -106,7 +120,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
 
     public function setMaxExecutionGraphShaderOutputNodes(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxExecutionGraphShaderOutputNodes = $cValue;
     }
@@ -116,7 +130,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
      */
     public function getMaxExecutionGraphShaderPayloadSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxExecutionGraphShaderPayloadSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -124,7 +138,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
 
     public function setMaxExecutionGraphShaderPayloadSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxExecutionGraphShaderPayloadSize = $cValue;
     }
@@ -134,7 +148,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
      */
     public function getMaxExecutionGraphShaderPayloadCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxExecutionGraphShaderPayloadCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -142,7 +156,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
 
     public function setMaxExecutionGraphShaderPayloadCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxExecutionGraphShaderPayloadCount = $cValue;
     }
@@ -152,7 +166,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
      */
     public function getExecutionGraphDispatchAddressAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->executionGraphDispatchAddressAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -160,7 +174,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX
 
     public function setExecutionGraphDispatchAddressAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->executionGraphDispatchAddressAlignment = $cValue;
     }

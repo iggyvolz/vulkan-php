@@ -4,8 +4,31 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkLatencyTimingsFrameReportNV
+final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "presentID" => $this->getPresentID(),
+          "inputSampleTimeUs" => $this->getInputSampleTimeUs(),
+          "simStartTimeUs" => $this->getSimStartTimeUs(),
+          "simEndTimeUs" => $this->getSimEndTimeUs(),
+          "renderSubmitStartTimeUs" => $this->getRenderSubmitStartTimeUs(),
+          "renderSubmitEndTimeUs" => $this->getRenderSubmitEndTimeUs(),
+          "presentStartTimeUs" => $this->getPresentStartTimeUs(),
+          "presentEndTimeUs" => $this->getPresentEndTimeUs(),
+          "driverStartTimeUs" => $this->getDriverStartTimeUs(),
+          "driverEndTimeUs" => $this->getDriverEndTimeUs(),
+          "osRenderQueueStartTimeUs" => $this->getOsRenderQueueStartTimeUs(),
+          "osRenderQueueEndTimeUs" => $this->getOsRenderQueueEndTimeUs(),
+          "gpuRenderStartTimeUs" => $this->getGpuRenderStartTimeUs(),
+          "gpuRenderEndTimeUs" => $this->getGpuRenderEndTimeUs(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +36,7 @@ final class VkLatencyTimingsFrameReportNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -37,7 +60,7 @@ final class VkLatencyTimingsFrameReportNV
         null|int $gpuRenderEndTimeUs = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkLatencyTimingsFrameReportNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkLatencyTimingsFrameReportNV', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($presentID)) $self->setPresentID($presentID);
@@ -62,7 +85,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -70,7 +93,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -80,15 +103,15 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -98,7 +121,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getPresentID(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->presentID;
         $phpValue = $cValue;
         return $phpValue;
@@ -106,7 +129,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setPresentID(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->presentID = $cValue;
     }
@@ -116,7 +139,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getInputSampleTimeUs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->inputSampleTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -124,7 +147,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setInputSampleTimeUs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->inputSampleTimeUs = $cValue;
     }
@@ -134,7 +157,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getSimStartTimeUs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->simStartTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -142,7 +165,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setSimStartTimeUs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->simStartTimeUs = $cValue;
     }
@@ -152,7 +175,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getSimEndTimeUs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->simEndTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -160,7 +183,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setSimEndTimeUs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->simEndTimeUs = $cValue;
     }
@@ -170,7 +193,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getRenderSubmitStartTimeUs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->renderSubmitStartTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -178,7 +201,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setRenderSubmitStartTimeUs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->renderSubmitStartTimeUs = $cValue;
     }
@@ -188,7 +211,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getRenderSubmitEndTimeUs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->renderSubmitEndTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -196,7 +219,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setRenderSubmitEndTimeUs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->renderSubmitEndTimeUs = $cValue;
     }
@@ -206,7 +229,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getPresentStartTimeUs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->presentStartTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -214,7 +237,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setPresentStartTimeUs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->presentStartTimeUs = $cValue;
     }
@@ -224,7 +247,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getPresentEndTimeUs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->presentEndTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -232,7 +255,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setPresentEndTimeUs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->presentEndTimeUs = $cValue;
     }
@@ -242,7 +265,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getDriverStartTimeUs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->driverStartTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -250,7 +273,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setDriverStartTimeUs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->driverStartTimeUs = $cValue;
     }
@@ -260,7 +283,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getDriverEndTimeUs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->driverEndTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -268,7 +291,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setDriverEndTimeUs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->driverEndTimeUs = $cValue;
     }
@@ -278,7 +301,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getOsRenderQueueStartTimeUs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->osRenderQueueStartTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -286,7 +309,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setOsRenderQueueStartTimeUs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->osRenderQueueStartTimeUs = $cValue;
     }
@@ -296,7 +319,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getOsRenderQueueEndTimeUs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->osRenderQueueEndTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -304,7 +327,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setOsRenderQueueEndTimeUs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->osRenderQueueEndTimeUs = $cValue;
     }
@@ -314,7 +337,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getGpuRenderStartTimeUs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->gpuRenderStartTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -322,7 +345,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setGpuRenderStartTimeUs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->gpuRenderStartTimeUs = $cValue;
     }
@@ -332,7 +355,7 @@ final class VkLatencyTimingsFrameReportNV
      */
     public function getGpuRenderEndTimeUs(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->gpuRenderEndTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -340,7 +363,7 @@ final class VkLatencyTimingsFrameReportNV
 
     public function setGpuRenderEndTimeUs(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->gpuRenderEndTimeUs = $cValue;
     }

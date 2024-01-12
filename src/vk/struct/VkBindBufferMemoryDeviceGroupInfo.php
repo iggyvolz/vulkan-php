@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkBindBufferMemoryDeviceGroupInfo
+final class VkBindBufferMemoryDeviceGroupInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "deviceIndexCount" => $this->getDeviceIndexCount(),
+          "pDeviceIndices" => $this->getPDeviceIndices(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +24,7 @@ final class VkBindBufferMemoryDeviceGroupInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -25,7 +36,7 @@ final class VkBindBufferMemoryDeviceGroupInfo
         null|\iggyvolz\vulkan\util\IntPointer $pDeviceIndices = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBindBufferMemoryDeviceGroupInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkBindBufferMemoryDeviceGroupInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($deviceIndexCount)) $self->setDeviceIndexCount($deviceIndexCount);
@@ -38,7 +49,7 @@ final class VkBindBufferMemoryDeviceGroupInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -46,7 +57,7 @@ final class VkBindBufferMemoryDeviceGroupInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -56,15 +67,15 @@ final class VkBindBufferMemoryDeviceGroupInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -74,7 +85,7 @@ final class VkBindBufferMemoryDeviceGroupInfo
      */
     public function getDeviceIndexCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceIndexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -82,7 +93,7 @@ final class VkBindBufferMemoryDeviceGroupInfo
 
     public function setDeviceIndexCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->deviceIndexCount = $cValue;
     }
@@ -92,7 +103,7 @@ final class VkBindBufferMemoryDeviceGroupInfo
      */
     public function getPDeviceIndices(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDeviceIndices;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -100,7 +111,7 @@ final class VkBindBufferMemoryDeviceGroupInfo
 
     public function setPDeviceIndices(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDeviceIndices = $cValue;
     }

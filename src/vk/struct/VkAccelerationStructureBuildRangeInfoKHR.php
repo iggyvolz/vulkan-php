@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkAccelerationStructureBuildRangeInfoKHR
+final class VkAccelerationStructureBuildRangeInfoKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "primitiveCount" => $this->getPrimitiveCount(),
+          "primitiveOffset" => $this->getPrimitiveOffset(),
+          "firstVertex" => $this->getFirstVertex(),
+          "transformOffset" => $this->getTransformOffset(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +24,7 @@ final class VkAccelerationStructureBuildRangeInfoKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -25,7 +36,7 @@ final class VkAccelerationStructureBuildRangeInfoKHR
         null|int $transformOffset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureBuildRangeInfoKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkAccelerationStructureBuildRangeInfoKHR', false), $vulkan);
         if(!is_null($primitiveCount)) $self->setPrimitiveCount($primitiveCount);
         if(!is_null($primitiveOffset)) $self->setPrimitiveOffset($primitiveOffset);
         if(!is_null($firstVertex)) $self->setFirstVertex($firstVertex);
@@ -38,7 +49,7 @@ final class VkAccelerationStructureBuildRangeInfoKHR
      */
     public function getPrimitiveCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->primitiveCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -46,7 +57,7 @@ final class VkAccelerationStructureBuildRangeInfoKHR
 
     public function setPrimitiveCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->primitiveCount = $cValue;
     }
@@ -56,7 +67,7 @@ final class VkAccelerationStructureBuildRangeInfoKHR
      */
     public function getPrimitiveOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->primitiveOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -64,7 +75,7 @@ final class VkAccelerationStructureBuildRangeInfoKHR
 
     public function setPrimitiveOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->primitiveOffset = $cValue;
     }
@@ -74,7 +85,7 @@ final class VkAccelerationStructureBuildRangeInfoKHR
      */
     public function getFirstVertex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->firstVertex;
         $phpValue = $cValue;
         return $phpValue;
@@ -82,7 +93,7 @@ final class VkAccelerationStructureBuildRangeInfoKHR
 
     public function setFirstVertex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->firstVertex = $cValue;
     }
@@ -92,7 +103,7 @@ final class VkAccelerationStructureBuildRangeInfoKHR
      */
     public function getTransformOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -100,7 +111,7 @@ final class VkAccelerationStructureBuildRangeInfoKHR
 
     public function setTransformOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->transformOffset = $cValue;
     }

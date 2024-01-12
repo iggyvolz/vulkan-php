@@ -4,8 +4,22 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceSparseImageFormatInfo2
+final class VkPhysicalDeviceSparseImageFormatInfo2 implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "format" => $this->getFormat(),
+          "type" => $this->getType(),
+          "samples" => $this->getSamples(),
+          "usage" => $this->getUsage(),
+          "tiling" => $this->getTiling(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +27,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -28,7 +42,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
         null|\iggyvolz\vulkan\enum\VkImageTiling $tiling = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSparseImageFormatInfo2', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSparseImageFormatInfo2', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($format)) $self->setFormat($format);
@@ -44,7 +58,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -52,7 +66,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -62,15 +76,15 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -80,7 +94,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
      */
     public function getFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -88,7 +102,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
 
     public function setFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->format = $cValue;
     }
@@ -98,7 +112,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
      */
     public function getType(): \iggyvolz\vulkan\enum\VkImageType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->type;
         $phpValue = \iggyvolz\vulkan\enum\VkImageType::from($cValue);
         return $phpValue;
@@ -106,7 +120,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
 
     public function setType(\iggyvolz\vulkan\enum\VkImageType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->type = $cValue;
     }
@@ -116,7 +130,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
      */
     public function getSamples(): \iggyvolz\vulkan\enum\VkSampleCountFlagBits
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samples;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::from($cValue);
         return $phpValue;
@@ -124,7 +138,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
 
     public function setSamples(\iggyvolz\vulkan\enum\VkSampleCountFlagBits $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->samples = $cValue;
     }
@@ -134,7 +148,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
      */
     public function getUsage(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->usage;
         $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -142,7 +156,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
 
     public function setUsage(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->usage = $cValue;
     }
@@ -152,7 +166,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
      */
     public function getTiling(): \iggyvolz\vulkan\enum\VkImageTiling
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tiling;
         $phpValue = \iggyvolz\vulkan\enum\VkImageTiling::from($cValue);
         return $phpValue;
@@ -160,7 +174,7 @@ final class VkPhysicalDeviceSparseImageFormatInfo2
 
     public function setTiling(\iggyvolz\vulkan\enum\VkImageTiling $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->tiling = $cValue;
     }

@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDeviceFaultInfoEXT
+final class VkDeviceFaultInfoEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "description" => $this->getDescription(),
+          "pAddressInfos" => $this->getPAddressInfos(),
+          "pVendorInfos" => $this->getPVendorInfos(),
+          "pVendorBinaryData" => $this->getPVendorBinaryData(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkDeviceFaultInfoEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkDeviceFaultInfoEXT
         null|\iggyvolz\vulkan\util\Pointer $pVendorBinaryData = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceFaultInfoEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDeviceFaultInfoEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($description)) $self->setDescription($description);
@@ -42,7 +55,7 @@ final class VkDeviceFaultInfoEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkDeviceFaultInfoEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkDeviceFaultInfoEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkDeviceFaultInfoEXT
      */
     public function getDescription(): string
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->description;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkDeviceFaultInfoEXT
 
     public function setDescription(string $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->description = $cValue;
     }
@@ -96,15 +109,15 @@ final class VkDeviceFaultInfoEXT
      */
     public function getPAddressInfos(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pAddressInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDeviceFaultAddressInfoEXT', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDeviceFaultAddressInfoEXT', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPAddressInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pAddressInfos = $cValue;
     }
@@ -114,15 +127,15 @@ final class VkDeviceFaultInfoEXT
      */
     public function getPVendorInfos(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pVendorInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDeviceFaultVendorInfoEXT', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDeviceFaultVendorInfoEXT', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPVendorInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pVendorInfos = $cValue;
     }
@@ -132,15 +145,15 @@ final class VkDeviceFaultInfoEXT
      */
     public function getPVendorBinaryData(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pVendorBinaryData;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPVendorBinaryData(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pVendorBinaryData = $cValue;
     }

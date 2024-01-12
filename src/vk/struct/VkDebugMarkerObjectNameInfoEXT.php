@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDebugMarkerObjectNameInfoEXT
+final class VkDebugMarkerObjectNameInfoEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "objectType" => $this->getObjectType(),
+          "object" => $this->getObject(),
+          "pObjectName" => $this->getPObjectName(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkDebugMarkerObjectNameInfoEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkDebugMarkerObjectNameInfoEXT
         ?string $pObjectName = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDebugMarkerObjectNameInfoEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDebugMarkerObjectNameInfoEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($objectType)) $self->setObjectType($objectType);
@@ -40,7 +52,7 @@ final class VkDebugMarkerObjectNameInfoEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkDebugMarkerObjectNameInfoEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkDebugMarkerObjectNameInfoEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkDebugMarkerObjectNameInfoEXT
      */
     public function getObjectType(): \iggyvolz\vulkan\enum\VkDebugReportObjectTypeEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->objectType;
         $phpValue = \iggyvolz\vulkan\enum\VkDebugReportObjectTypeEXT::from($cValue);
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkDebugMarkerObjectNameInfoEXT
 
     public function setObjectType(\iggyvolz\vulkan\enum\VkDebugReportObjectTypeEXT $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->objectType = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkDebugMarkerObjectNameInfoEXT
      */
     public function getObject(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->object;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkDebugMarkerObjectNameInfoEXT
 
     public function setObject(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->object = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkDebugMarkerObjectNameInfoEXT
      */
     public function getPObjectName(): ?string
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pObjectName;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkDebugMarkerObjectNameInfoEXT
 
     public function setPObjectName(?string $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pObjectName = $cValue;
     }

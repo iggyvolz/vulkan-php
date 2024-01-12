@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkAccelerationStructureKHR
+final class VkAccelerationStructureKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return ['_type' => static::class];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +18,7 @@ final class VkAccelerationStructureKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 }

@@ -2387,3 +2387,4 @@ typedef void (*PFN_PHP_vkSetLatencyMarkerNV)(VkDevice device,VkSwapchainKHR swap
 typedef void (*PFN_PHP_vkGetLatencyTimingsNV)(VkDevice device,VkSwapchainKHR swapchain,VkGetLatencyMarkerInfoNV* pLatencyMarkerInfo);
 typedef void (*PFN_PHP_vkQueueNotifyOutOfBandNV)(VkQueue queue,VkOutOfBandQueueTypeInfoNV* pQueueTypeInfo);
 void* vkGetInstanceProcAddr(VkInstance, const char*);
+void* vkGetDeviceProcAddr(VkDevice, const char*);

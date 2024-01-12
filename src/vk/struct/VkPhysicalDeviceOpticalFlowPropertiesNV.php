@@ -4,8 +4,28 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceOpticalFlowPropertiesNV
+final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "supportedOutputGridSizes" => $this->getSupportedOutputGridSizes(),
+          "supportedHintGridSizes" => $this->getSupportedHintGridSizes(),
+          "hintSupported" => $this->getHintSupported(),
+          "costSupported" => $this->getCostSupported(),
+          "bidirectionalFlowSupported" => $this->getBidirectionalFlowSupported(),
+          "globalFlowSupported" => $this->getGlobalFlowSupported(),
+          "minWidth" => $this->getMinWidth(),
+          "minHeight" => $this->getMinHeight(),
+          "maxWidth" => $this->getMaxWidth(),
+          "maxHeight" => $this->getMaxHeight(),
+          "maxNumRegionsOfInterest" => $this->getMaxNumRegionsOfInterest(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +33,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +54,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
         null|int $maxNumRegionsOfInterest = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceOpticalFlowPropertiesNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceOpticalFlowPropertiesNV', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($supportedOutputGridSizes)) $self->setSupportedOutputGridSizes($supportedOutputGridSizes);
@@ -56,7 +76,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -64,7 +84,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -74,15 +94,15 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -92,7 +112,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
      */
     public function getSupportedOutputGridSizes(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedOutputGridSizes;
         $phpValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -100,7 +120,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
 
     public function setSupportedOutputGridSizes(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->supportedOutputGridSizes = $cValue;
     }
@@ -110,7 +130,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
      */
     public function getSupportedHintGridSizes(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedHintGridSizes;
         $phpValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -118,7 +138,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
 
     public function setSupportedHintGridSizes(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->supportedHintGridSizes = $cValue;
     }
@@ -128,7 +148,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
      */
     public function getHintSupported(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->hintSupported;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -136,7 +156,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
 
     public function setHintSupported(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->hintSupported = $cValue;
     }
@@ -146,7 +166,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
      */
     public function getCostSupported(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->costSupported;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -154,7 +174,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
 
     public function setCostSupported(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->costSupported = $cValue;
     }
@@ -164,7 +184,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
      */
     public function getBidirectionalFlowSupported(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bidirectionalFlowSupported;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -172,7 +192,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
 
     public function setBidirectionalFlowSupported(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->bidirectionalFlowSupported = $cValue;
     }
@@ -182,7 +202,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
      */
     public function getGlobalFlowSupported(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->globalFlowSupported;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -190,7 +210,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
 
     public function setGlobalFlowSupported(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->globalFlowSupported = $cValue;
     }
@@ -200,7 +220,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
      */
     public function getMinWidth(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minWidth;
         $phpValue = $cValue;
         return $phpValue;
@@ -208,7 +228,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
 
     public function setMinWidth(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minWidth = $cValue;
     }
@@ -218,7 +238,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
      */
     public function getMinHeight(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minHeight;
         $phpValue = $cValue;
         return $phpValue;
@@ -226,7 +246,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
 
     public function setMinHeight(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minHeight = $cValue;
     }
@@ -236,7 +256,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
      */
     public function getMaxWidth(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxWidth;
         $phpValue = $cValue;
         return $phpValue;
@@ -244,7 +264,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
 
     public function setMaxWidth(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxWidth = $cValue;
     }
@@ -254,7 +274,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
      */
     public function getMaxHeight(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxHeight;
         $phpValue = $cValue;
         return $phpValue;
@@ -262,7 +282,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
 
     public function setMaxHeight(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxHeight = $cValue;
     }
@@ -272,7 +292,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
      */
     public function getMaxNumRegionsOfInterest(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxNumRegionsOfInterest;
         $phpValue = $cValue;
         return $phpValue;
@@ -280,7 +300,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV
 
     public function setMaxNumRegionsOfInterest(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxNumRegionsOfInterest = $cValue;
     }

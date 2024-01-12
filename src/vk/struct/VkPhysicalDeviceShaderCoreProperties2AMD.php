@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceShaderCoreProperties2AMD
+final class VkPhysicalDeviceShaderCoreProperties2AMD implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "shaderCoreFeatures" => $this->getShaderCoreFeatures(),
+          "activeComputeUnitCount" => $this->getActiveComputeUnitCount(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +24,7 @@ final class VkPhysicalDeviceShaderCoreProperties2AMD
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -25,7 +36,7 @@ final class VkPhysicalDeviceShaderCoreProperties2AMD
         null|int $activeComputeUnitCount = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderCoreProperties2AMD', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderCoreProperties2AMD', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderCoreFeatures)) $self->setShaderCoreFeatures($shaderCoreFeatures);
@@ -38,7 +49,7 @@ final class VkPhysicalDeviceShaderCoreProperties2AMD
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -46,7 +57,7 @@ final class VkPhysicalDeviceShaderCoreProperties2AMD
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -56,15 +67,15 @@ final class VkPhysicalDeviceShaderCoreProperties2AMD
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -74,7 +85,7 @@ final class VkPhysicalDeviceShaderCoreProperties2AMD
      */
     public function getShaderCoreFeatures(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderCoreFeatures;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderCorePropertiesFlagBitsAMD::fromInt($cValue);
         return $phpValue;
@@ -82,7 +93,7 @@ final class VkPhysicalDeviceShaderCoreProperties2AMD
 
     public function setShaderCoreFeatures(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderCorePropertiesFlagBitsAMD::toInt(...$phpValue);
         $this->cdata->shaderCoreFeatures = $cValue;
     }
@@ -92,7 +103,7 @@ final class VkPhysicalDeviceShaderCoreProperties2AMD
      */
     public function getActiveComputeUnitCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->activeComputeUnitCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -100,7 +111,7 @@ final class VkPhysicalDeviceShaderCoreProperties2AMD
 
     public function setActiveComputeUnitCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->activeComputeUnitCount = $cValue;
     }

@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkVertexInputAttributeDescription
+final class VkVertexInputAttributeDescription implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "location" => $this->getLocation(),
+          "binding" => $this->getBinding(),
+          "format" => $this->getFormat(),
+          "offset" => $this->getOffset(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +24,7 @@ final class VkVertexInputAttributeDescription
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -25,7 +36,7 @@ final class VkVertexInputAttributeDescription
         null|int $offset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVertexInputAttributeDescription', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkVertexInputAttributeDescription', false), $vulkan);
         if(!is_null($location)) $self->setLocation($location);
         if(!is_null($binding)) $self->setBinding($binding);
         if(!is_null($format)) $self->setFormat($format);
@@ -38,7 +49,7 @@ final class VkVertexInputAttributeDescription
      */
     public function getLocation(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->location;
         $phpValue = $cValue;
         return $phpValue;
@@ -46,7 +57,7 @@ final class VkVertexInputAttributeDescription
 
     public function setLocation(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->location = $cValue;
     }
@@ -56,7 +67,7 @@ final class VkVertexInputAttributeDescription
      */
     public function getBinding(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->binding;
         $phpValue = $cValue;
         return $phpValue;
@@ -64,7 +75,7 @@ final class VkVertexInputAttributeDescription
 
     public function setBinding(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->binding = $cValue;
     }
@@ -74,7 +85,7 @@ final class VkVertexInputAttributeDescription
      */
     public function getFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -82,7 +93,7 @@ final class VkVertexInputAttributeDescription
 
     public function setFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->format = $cValue;
     }
@@ -92,7 +103,7 @@ final class VkVertexInputAttributeDescription
      */
     public function getOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = $cValue;
         return $phpValue;
@@ -100,7 +111,7 @@ final class VkVertexInputAttributeDescription
 
     public function setOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->offset = $cValue;
     }

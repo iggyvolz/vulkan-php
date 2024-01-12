@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkConformanceVersion
+final class VkConformanceVersion implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "major" => $this->getMajor(),
+          "minor" => $this->getMinor(),
+          "subminor" => $this->getSubminor(),
+          "patch" => $this->getPatch(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +24,7 @@ final class VkConformanceVersion
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -25,7 +36,7 @@ final class VkConformanceVersion
         null|int $patch = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkConformanceVersion', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkConformanceVersion', false), $vulkan);
         if(!is_null($major)) $self->setMajor($major);
         if(!is_null($minor)) $self->setMinor($minor);
         if(!is_null($subminor)) $self->setSubminor($subminor);
@@ -38,7 +49,7 @@ final class VkConformanceVersion
      */
     public function getMajor(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->major;
         $phpValue = $cValue;
         return $phpValue;
@@ -46,7 +57,7 @@ final class VkConformanceVersion
 
     public function setMajor(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->major = $cValue;
     }
@@ -56,7 +67,7 @@ final class VkConformanceVersion
      */
     public function getMinor(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minor;
         $phpValue = $cValue;
         return $phpValue;
@@ -64,7 +75,7 @@ final class VkConformanceVersion
 
     public function setMinor(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minor = $cValue;
     }
@@ -74,7 +85,7 @@ final class VkConformanceVersion
      */
     public function getSubminor(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subminor;
         $phpValue = $cValue;
         return $phpValue;
@@ -82,7 +93,7 @@ final class VkConformanceVersion
 
     public function setSubminor(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subminor = $cValue;
     }
@@ -92,7 +103,7 @@ final class VkConformanceVersion
      */
     public function getPatch(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->patch;
         $phpValue = $cValue;
         return $phpValue;
@@ -100,7 +111,7 @@ final class VkConformanceVersion
 
     public function setPatch(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->patch = $cValue;
     }

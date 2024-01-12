@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkTraceRaysIndirectCommandKHR
+final class VkTraceRaysIndirectCommandKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "width" => $this->getWidth(),
+          "height" => $this->getHeight(),
+          "depth" => $this->getDepth(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkTraceRaysIndirectCommandKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkTraceRaysIndirectCommandKHR
         null|int $depth = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkTraceRaysIndirectCommandKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkTraceRaysIndirectCommandKHR', false), $vulkan);
         if(!is_null($width)) $self->setWidth($width);
         if(!is_null($height)) $self->setHeight($height);
         if(!is_null($depth)) $self->setDepth($depth);
@@ -36,7 +46,7 @@ final class VkTraceRaysIndirectCommandKHR
      */
     public function getWidth(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->width;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkTraceRaysIndirectCommandKHR
 
     public function setWidth(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->width = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkTraceRaysIndirectCommandKHR
      */
     public function getHeight(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->height;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkTraceRaysIndirectCommandKHR
 
     public function setHeight(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->height = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkTraceRaysIndirectCommandKHR
      */
     public function getDepth(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depth;
         $phpValue = $cValue;
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkTraceRaysIndirectCommandKHR
 
     public function setDepth(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->depth = $cValue;
     }

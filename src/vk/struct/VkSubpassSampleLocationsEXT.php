@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSubpassSampleLocationsEXT
+final class VkSubpassSampleLocationsEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "subpassIndex" => $this->getSubpassIndex(),
+          "sampleLocationsInfo" => $this->getSampleLocationsInfo(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkSubpassSampleLocationsEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkSubpassSampleLocationsEXT
         null|VkSampleLocationsInfoEXT $sampleLocationsInfo = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSubpassSampleLocationsEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSubpassSampleLocationsEXT', false), $vulkan);
         if(!is_null($subpassIndex)) $self->setSubpassIndex($subpassIndex);
         if(!is_null($sampleLocationsInfo)) $self->setSampleLocationsInfo($sampleLocationsInfo);
         return $self;
@@ -34,7 +43,7 @@ final class VkSubpassSampleLocationsEXT
      */
     public function getSubpassIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subpassIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkSubpassSampleLocationsEXT
 
     public function setSubpassIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subpassIndex = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkSubpassSampleLocationsEXT
      */
     public function getSampleLocationsInfo(): VkSampleLocationsInfoEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampleLocationsInfo;
         $phpValue = new \iggyvolz\vulkan\struct\VkSampleLocationsInfoEXT($cValue, $ffi);
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkSubpassSampleLocationsEXT
 
     public function setSampleLocationsInfo(VkSampleLocationsInfoEXT $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->sampleLocationsInfo = $cValue;
     }

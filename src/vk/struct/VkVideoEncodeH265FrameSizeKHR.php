@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkVideoEncodeH265FrameSizeKHR
+final class VkVideoEncodeH265FrameSizeKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "frameISize" => $this->getFrameISize(),
+          "framePSize" => $this->getFramePSize(),
+          "frameBSize" => $this->getFrameBSize(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkVideoEncodeH265FrameSizeKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkVideoEncodeH265FrameSizeKHR
         null|int $frameBSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265FrameSizeKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265FrameSizeKHR', false), $vulkan);
         if(!is_null($frameISize)) $self->setFrameISize($frameISize);
         if(!is_null($framePSize)) $self->setFramePSize($framePSize);
         if(!is_null($frameBSize)) $self->setFrameBSize($frameBSize);
@@ -36,7 +46,7 @@ final class VkVideoEncodeH265FrameSizeKHR
      */
     public function getFrameISize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->frameISize;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkVideoEncodeH265FrameSizeKHR
 
     public function setFrameISize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->frameISize = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkVideoEncodeH265FrameSizeKHR
      */
     public function getFramePSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->framePSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkVideoEncodeH265FrameSizeKHR
 
     public function setFramePSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->framePSize = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkVideoEncodeH265FrameSizeKHR
      */
     public function getFrameBSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->frameBSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkVideoEncodeH265FrameSizeKHR
 
     public function setFrameBSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->frameBSize = $cValue;
     }

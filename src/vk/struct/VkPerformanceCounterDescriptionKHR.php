@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPerformanceCounterDescriptionKHR
+final class VkPerformanceCounterDescriptionKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "name" => $this->getName(),
+          "category" => $this->getCategory(),
+          "description" => $this->getDescription(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkPerformanceCounterDescriptionKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkPerformanceCounterDescriptionKHR
         null|string $description = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPerformanceCounterDescriptionKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPerformanceCounterDescriptionKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -42,7 +55,7 @@ final class VkPerformanceCounterDescriptionKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkPerformanceCounterDescriptionKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkPerformanceCounterDescriptionKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkPerformanceCounterDescriptionKHR
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkPerformanceCounterDescriptionFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkPerformanceCounterDescriptionKHR
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkPerformanceCounterDescriptionFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkPerformanceCounterDescriptionKHR
      */
     public function getName(): string
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->name;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkPerformanceCounterDescriptionKHR
 
     public function setName(string $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->name = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkPerformanceCounterDescriptionKHR
      */
     public function getCategory(): string
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->category;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkPerformanceCounterDescriptionKHR
 
     public function setCategory(string $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->category = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkPerformanceCounterDescriptionKHR
      */
     public function getDescription(): string
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->description;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkPerformanceCounterDescriptionKHR
 
     public function setDescription(string $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->description = $cValue;
     }

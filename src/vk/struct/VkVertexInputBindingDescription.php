@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkVertexInputBindingDescription
+final class VkVertexInputBindingDescription implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "binding" => $this->getBinding(),
+          "stride" => $this->getStride(),
+          "inputRate" => $this->getInputRate(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkVertexInputBindingDescription
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkVertexInputBindingDescription
         null|\iggyvolz\vulkan\enum\VkVertexInputRate $inputRate = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVertexInputBindingDescription', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkVertexInputBindingDescription', false), $vulkan);
         if(!is_null($binding)) $self->setBinding($binding);
         if(!is_null($stride)) $self->setStride($stride);
         if(!is_null($inputRate)) $self->setInputRate($inputRate);
@@ -36,7 +46,7 @@ final class VkVertexInputBindingDescription
      */
     public function getBinding(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->binding;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkVertexInputBindingDescription
 
     public function setBinding(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->binding = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkVertexInputBindingDescription
      */
     public function getStride(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stride;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkVertexInputBindingDescription
 
     public function setStride(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stride = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkVertexInputBindingDescription
      */
     public function getInputRate(): \iggyvolz\vulkan\enum\VkVertexInputRate
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->inputRate;
         $phpValue = \iggyvolz\vulkan\enum\VkVertexInputRate::from($cValue);
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkVertexInputBindingDescription
 
     public function setInputRate(\iggyvolz\vulkan\enum\VkVertexInputRate $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->inputRate = $cValue;
     }

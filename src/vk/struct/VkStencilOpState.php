@@ -4,8 +4,22 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkStencilOpState
+final class VkStencilOpState implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "failOp" => $this->getFailOp(),
+          "passOp" => $this->getPassOp(),
+          "depthFailOp" => $this->getDepthFailOp(),
+          "compareOp" => $this->getCompareOp(),
+          "compareMask" => $this->getCompareMask(),
+          "writeMask" => $this->getWriteMask(),
+          "reference" => $this->getReference(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +27,7 @@ final class VkStencilOpState
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -28,7 +42,7 @@ final class VkStencilOpState
         null|int $reference = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkStencilOpState', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkStencilOpState', false), $vulkan);
         if(!is_null($failOp)) $self->setFailOp($failOp);
         if(!is_null($passOp)) $self->setPassOp($passOp);
         if(!is_null($depthFailOp)) $self->setDepthFailOp($depthFailOp);
@@ -44,7 +58,7 @@ final class VkStencilOpState
      */
     public function getFailOp(): \iggyvolz\vulkan\enum\VkStencilOp
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->failOp;
         $phpValue = \iggyvolz\vulkan\enum\VkStencilOp::from($cValue);
         return $phpValue;
@@ -52,7 +66,7 @@ final class VkStencilOpState
 
     public function setFailOp(\iggyvolz\vulkan\enum\VkStencilOp $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->failOp = $cValue;
     }
@@ -62,7 +76,7 @@ final class VkStencilOpState
      */
     public function getPassOp(): \iggyvolz\vulkan\enum\VkStencilOp
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->passOp;
         $phpValue = \iggyvolz\vulkan\enum\VkStencilOp::from($cValue);
         return $phpValue;
@@ -70,7 +84,7 @@ final class VkStencilOpState
 
     public function setPassOp(\iggyvolz\vulkan\enum\VkStencilOp $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->passOp = $cValue;
     }
@@ -80,7 +94,7 @@ final class VkStencilOpState
      */
     public function getDepthFailOp(): \iggyvolz\vulkan\enum\VkStencilOp
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthFailOp;
         $phpValue = \iggyvolz\vulkan\enum\VkStencilOp::from($cValue);
         return $phpValue;
@@ -88,7 +102,7 @@ final class VkStencilOpState
 
     public function setDepthFailOp(\iggyvolz\vulkan\enum\VkStencilOp $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->depthFailOp = $cValue;
     }
@@ -98,7 +112,7 @@ final class VkStencilOpState
      */
     public function getCompareOp(): \iggyvolz\vulkan\enum\VkCompareOp
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->compareOp;
         $phpValue = \iggyvolz\vulkan\enum\VkCompareOp::from($cValue);
         return $phpValue;
@@ -106,7 +120,7 @@ final class VkStencilOpState
 
     public function setCompareOp(\iggyvolz\vulkan\enum\VkCompareOp $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->compareOp = $cValue;
     }
@@ -116,7 +130,7 @@ final class VkStencilOpState
      */
     public function getCompareMask(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->compareMask;
         $phpValue = $cValue;
         return $phpValue;
@@ -124,7 +138,7 @@ final class VkStencilOpState
 
     public function setCompareMask(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->compareMask = $cValue;
     }
@@ -134,7 +148,7 @@ final class VkStencilOpState
      */
     public function getWriteMask(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->writeMask;
         $phpValue = $cValue;
         return $phpValue;
@@ -142,7 +156,7 @@ final class VkStencilOpState
 
     public function setWriteMask(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->writeMask = $cValue;
     }
@@ -152,7 +166,7 @@ final class VkStencilOpState
      */
     public function getReference(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->reference;
         $phpValue = $cValue;
         return $phpValue;
@@ -160,7 +174,7 @@ final class VkStencilOpState
 
     public function setReference(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->reference = $cValue;
     }

@@ -4,8 +4,16 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSetStateFlagsIndirectCommandNV
+final class VkSetStateFlagsIndirectCommandNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "data" => $this->getData(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,13 +21,13 @@ final class VkSetStateFlagsIndirectCommandNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan, null|int $data = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkSetStateFlagsIndirectCommandNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSetStateFlagsIndirectCommandNV', false), $vulkan);
         if(!is_null($data)) $self->setData($data);
         return $self;
     }
@@ -29,7 +37,7 @@ final class VkSetStateFlagsIndirectCommandNV
      */
     public function getData(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->data;
         $phpValue = $cValue;
         return $phpValue;
@@ -37,7 +45,7 @@ final class VkSetStateFlagsIndirectCommandNV
 
     public function setData(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->data = $cValue;
     }

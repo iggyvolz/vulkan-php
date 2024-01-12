@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkVideoEncodeH264SessionParametersGetInfoKHR
+final class VkVideoEncodeH264SessionParametersGetInfoKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "writeStdSPS" => $this->getWriteStdSPS(),
+          "writeStdPPS" => $this->getWriteStdPPS(),
+          "stdSPSId" => $this->getStdSPSId(),
+          "stdPPSId" => $this->getStdPPSId(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkVideoEncodeH264SessionParametersGetInfoKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkVideoEncodeH264SessionParametersGetInfoKHR
         null|int $stdPPSId = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264SessionParametersGetInfoKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264SessionParametersGetInfoKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($writeStdSPS)) $self->setWriteStdSPS($writeStdSPS);
@@ -42,7 +55,7 @@ final class VkVideoEncodeH264SessionParametersGetInfoKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkVideoEncodeH264SessionParametersGetInfoKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkVideoEncodeH264SessionParametersGetInfoKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkVideoEncodeH264SessionParametersGetInfoKHR
      */
     public function getWriteStdSPS(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->writeStdSPS;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkVideoEncodeH264SessionParametersGetInfoKHR
 
     public function setWriteStdSPS(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->writeStdSPS = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkVideoEncodeH264SessionParametersGetInfoKHR
      */
     public function getWriteStdPPS(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->writeStdPPS;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkVideoEncodeH264SessionParametersGetInfoKHR
 
     public function setWriteStdPPS(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->writeStdPPS = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkVideoEncodeH264SessionParametersGetInfoKHR
      */
     public function getStdSPSId(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stdSPSId;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkVideoEncodeH264SessionParametersGetInfoKHR
 
     public function setStdSPSId(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stdSPSId = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkVideoEncodeH264SessionParametersGetInfoKHR
      */
     public function getStdPPSId(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stdPPSId;
         $phpValue = $cValue;
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkVideoEncodeH264SessionParametersGetInfoKHR
 
     public function setStdPPSId(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stdPPSId = $cValue;
     }

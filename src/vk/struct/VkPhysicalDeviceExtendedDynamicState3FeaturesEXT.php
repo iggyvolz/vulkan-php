@@ -4,8 +4,48 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
+final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "extendedDynamicState3TessellationDomainOrigin" => $this->getExtendedDynamicState3TessellationDomainOrigin(),
+          "extendedDynamicState3DepthClampEnable" => $this->getExtendedDynamicState3DepthClampEnable(),
+          "extendedDynamicState3PolygonMode" => $this->getExtendedDynamicState3PolygonMode(),
+          "extendedDynamicState3RasterizationSamples" => $this->getExtendedDynamicState3RasterizationSamples(),
+          "extendedDynamicState3SampleMask" => $this->getExtendedDynamicState3SampleMask(),
+          "extendedDynamicState3AlphaToCoverageEnable" => $this->getExtendedDynamicState3AlphaToCoverageEnable(),
+          "extendedDynamicState3AlphaToOneEnable" => $this->getExtendedDynamicState3AlphaToOneEnable(),
+          "extendedDynamicState3LogicOpEnable" => $this->getExtendedDynamicState3LogicOpEnable(),
+          "extendedDynamicState3ColorBlendEnable" => $this->getExtendedDynamicState3ColorBlendEnable(),
+          "extendedDynamicState3ColorBlendEquation" => $this->getExtendedDynamicState3ColorBlendEquation(),
+          "extendedDynamicState3ColorWriteMask" => $this->getExtendedDynamicState3ColorWriteMask(),
+          "extendedDynamicState3RasterizationStream" => $this->getExtendedDynamicState3RasterizationStream(),
+          "extendedDynamicState3ConservativeRasterizationMode" => $this->getExtendedDynamicState3ConservativeRasterizationMode(),
+          "extendedDynamicState3ExtraPrimitiveOverestimationSize" => $this->getExtendedDynamicState3ExtraPrimitiveOverestimationSize(),
+          "extendedDynamicState3DepthClipEnable" => $this->getExtendedDynamicState3DepthClipEnable(),
+          "extendedDynamicState3SampleLocationsEnable" => $this->getExtendedDynamicState3SampleLocationsEnable(),
+          "extendedDynamicState3ColorBlendAdvanced" => $this->getExtendedDynamicState3ColorBlendAdvanced(),
+          "extendedDynamicState3ProvokingVertexMode" => $this->getExtendedDynamicState3ProvokingVertexMode(),
+          "extendedDynamicState3LineRasterizationMode" => $this->getExtendedDynamicState3LineRasterizationMode(),
+          "extendedDynamicState3LineStippleEnable" => $this->getExtendedDynamicState3LineStippleEnable(),
+          "extendedDynamicState3DepthClipNegativeOneToOne" => $this->getExtendedDynamicState3DepthClipNegativeOneToOne(),
+          "extendedDynamicState3ViewportWScalingEnable" => $this->getExtendedDynamicState3ViewportWScalingEnable(),
+          "extendedDynamicState3ViewportSwizzle" => $this->getExtendedDynamicState3ViewportSwizzle(),
+          "extendedDynamicState3CoverageToColorEnable" => $this->getExtendedDynamicState3CoverageToColorEnable(),
+          "extendedDynamicState3CoverageToColorLocation" => $this->getExtendedDynamicState3CoverageToColorLocation(),
+          "extendedDynamicState3CoverageModulationMode" => $this->getExtendedDynamicState3CoverageModulationMode(),
+          "extendedDynamicState3CoverageModulationTableEnable" => $this->getExtendedDynamicState3CoverageModulationTableEnable(),
+          "extendedDynamicState3CoverageModulationTable" => $this->getExtendedDynamicState3CoverageModulationTable(),
+          "extendedDynamicState3CoverageReductionMode" => $this->getExtendedDynamicState3CoverageReductionMode(),
+          "extendedDynamicState3RepresentativeFragmentTestEnable" => $this->getExtendedDynamicState3RepresentativeFragmentTestEnable(),
+          "extendedDynamicState3ShadingRateImageEnable" => $this->getExtendedDynamicState3ShadingRateImageEnable(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +53,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -54,7 +94,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
         null|bool $extendedDynamicState3ShadingRateImageEnable = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceExtendedDynamicState3FeaturesEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceExtendedDynamicState3FeaturesEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($extendedDynamicState3TessellationDomainOrigin)) $self->setExtendedDynamicState3TessellationDomainOrigin($extendedDynamicState3TessellationDomainOrigin);
@@ -96,7 +136,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -104,7 +144,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -114,15 +154,15 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -132,7 +172,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3TessellationDomainOrigin(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3TessellationDomainOrigin;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -140,7 +180,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3TessellationDomainOrigin(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3TessellationDomainOrigin = $cValue;
     }
@@ -150,7 +190,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3DepthClampEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3DepthClampEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -158,7 +198,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3DepthClampEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3DepthClampEnable = $cValue;
     }
@@ -168,7 +208,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3PolygonMode(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3PolygonMode;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -176,7 +216,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3PolygonMode(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3PolygonMode = $cValue;
     }
@@ -186,7 +226,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3RasterizationSamples(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3RasterizationSamples;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -194,7 +234,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3RasterizationSamples(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3RasterizationSamples = $cValue;
     }
@@ -204,7 +244,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3SampleMask(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3SampleMask;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -212,7 +252,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3SampleMask(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3SampleMask = $cValue;
     }
@@ -222,7 +262,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3AlphaToCoverageEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3AlphaToCoverageEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -230,7 +270,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3AlphaToCoverageEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3AlphaToCoverageEnable = $cValue;
     }
@@ -240,7 +280,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3AlphaToOneEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3AlphaToOneEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -248,7 +288,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3AlphaToOneEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3AlphaToOneEnable = $cValue;
     }
@@ -258,7 +298,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3LogicOpEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3LogicOpEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -266,7 +306,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3LogicOpEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3LogicOpEnable = $cValue;
     }
@@ -276,7 +316,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3ColorBlendEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ColorBlendEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -284,7 +324,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3ColorBlendEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ColorBlendEnable = $cValue;
     }
@@ -294,7 +334,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3ColorBlendEquation(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ColorBlendEquation;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -302,7 +342,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3ColorBlendEquation(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ColorBlendEquation = $cValue;
     }
@@ -312,7 +352,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3ColorWriteMask(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ColorWriteMask;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -320,7 +360,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3ColorWriteMask(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ColorWriteMask = $cValue;
     }
@@ -330,7 +370,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3RasterizationStream(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3RasterizationStream;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -338,7 +378,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3RasterizationStream(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3RasterizationStream = $cValue;
     }
@@ -348,7 +388,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3ConservativeRasterizationMode(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ConservativeRasterizationMode;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -356,7 +396,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3ConservativeRasterizationMode(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ConservativeRasterizationMode = $cValue;
     }
@@ -366,7 +406,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3ExtraPrimitiveOverestimationSize(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ExtraPrimitiveOverestimationSize;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -374,7 +414,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3ExtraPrimitiveOverestimationSize(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ExtraPrimitiveOverestimationSize = $cValue;
     }
@@ -384,7 +424,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3DepthClipEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3DepthClipEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -392,7 +432,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3DepthClipEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3DepthClipEnable = $cValue;
     }
@@ -402,7 +442,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3SampleLocationsEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3SampleLocationsEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -410,7 +450,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3SampleLocationsEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3SampleLocationsEnable = $cValue;
     }
@@ -420,7 +460,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3ColorBlendAdvanced(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ColorBlendAdvanced;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -428,7 +468,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3ColorBlendAdvanced(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ColorBlendAdvanced = $cValue;
     }
@@ -438,7 +478,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3ProvokingVertexMode(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ProvokingVertexMode;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -446,7 +486,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3ProvokingVertexMode(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ProvokingVertexMode = $cValue;
     }
@@ -456,7 +496,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3LineRasterizationMode(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3LineRasterizationMode;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -464,7 +504,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3LineRasterizationMode(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3LineRasterizationMode = $cValue;
     }
@@ -474,7 +514,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3LineStippleEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3LineStippleEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -482,7 +522,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3LineStippleEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3LineStippleEnable = $cValue;
     }
@@ -492,7 +532,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3DepthClipNegativeOneToOne(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3DepthClipNegativeOneToOne;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -500,7 +540,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3DepthClipNegativeOneToOne(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3DepthClipNegativeOneToOne = $cValue;
     }
@@ -510,7 +550,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3ViewportWScalingEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ViewportWScalingEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -518,7 +558,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3ViewportWScalingEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ViewportWScalingEnable = $cValue;
     }
@@ -528,7 +568,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3ViewportSwizzle(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ViewportSwizzle;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -536,7 +576,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3ViewportSwizzle(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ViewportSwizzle = $cValue;
     }
@@ -546,7 +586,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3CoverageToColorEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3CoverageToColorEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -554,7 +594,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3CoverageToColorEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3CoverageToColorEnable = $cValue;
     }
@@ -564,7 +604,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3CoverageToColorLocation(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3CoverageToColorLocation;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -572,7 +612,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3CoverageToColorLocation(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3CoverageToColorLocation = $cValue;
     }
@@ -582,7 +622,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3CoverageModulationMode(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3CoverageModulationMode;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -590,7 +630,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3CoverageModulationMode(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3CoverageModulationMode = $cValue;
     }
@@ -600,7 +640,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3CoverageModulationTableEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3CoverageModulationTableEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -608,7 +648,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3CoverageModulationTableEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3CoverageModulationTableEnable = $cValue;
     }
@@ -618,7 +658,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3CoverageModulationTable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3CoverageModulationTable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -626,7 +666,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3CoverageModulationTable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3CoverageModulationTable = $cValue;
     }
@@ -636,7 +676,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3CoverageReductionMode(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3CoverageReductionMode;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -644,7 +684,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3CoverageReductionMode(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3CoverageReductionMode = $cValue;
     }
@@ -654,7 +694,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3RepresentativeFragmentTestEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3RepresentativeFragmentTestEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -662,7 +702,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3RepresentativeFragmentTestEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3RepresentativeFragmentTestEnable = $cValue;
     }
@@ -672,7 +712,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
      */
     public function getExtendedDynamicState3ShadingRateImageEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ShadingRateImageEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -680,7 +720,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT
 
     public function setExtendedDynamicState3ShadingRateImageEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ShadingRateImageEnable = $cValue;
     }

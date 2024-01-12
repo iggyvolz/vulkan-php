@@ -4,8 +4,26 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkCooperativeMatrixPropertiesKHR
+final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "MSize" => $this->getMSize(),
+          "NSize" => $this->getNSize(),
+          "KSize" => $this->getKSize(),
+          "AType" => $this->getAType(),
+          "BType" => $this->getBType(),
+          "CType" => $this->getCType(),
+          "ResultType" => $this->getResultType(),
+          "saturatingAccumulation" => $this->getSaturatingAccumulation(),
+          "scope" => $this->getScope(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +31,7 @@ final class VkCooperativeMatrixPropertiesKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +50,7 @@ final class VkCooperativeMatrixPropertiesKHR
         null|\iggyvolz\vulkan\enum\VkScopeKHR $scope = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCooperativeMatrixPropertiesKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkCooperativeMatrixPropertiesKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($MSize)) $self->setMSize($MSize);
@@ -52,7 +70,7 @@ final class VkCooperativeMatrixPropertiesKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +78,7 @@ final class VkCooperativeMatrixPropertiesKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,15 +88,15 @@ final class VkCooperativeMatrixPropertiesKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +106,7 @@ final class VkCooperativeMatrixPropertiesKHR
      */
     public function getMSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->MSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +114,7 @@ final class VkCooperativeMatrixPropertiesKHR
 
     public function setMSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->MSize = $cValue;
     }
@@ -106,7 +124,7 @@ final class VkCooperativeMatrixPropertiesKHR
      */
     public function getNSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->NSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +132,7 @@ final class VkCooperativeMatrixPropertiesKHR
 
     public function setNSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->NSize = $cValue;
     }
@@ -124,7 +142,7 @@ final class VkCooperativeMatrixPropertiesKHR
      */
     public function getKSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->KSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +150,7 @@ final class VkCooperativeMatrixPropertiesKHR
 
     public function setKSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->KSize = $cValue;
     }
@@ -142,7 +160,7 @@ final class VkCooperativeMatrixPropertiesKHR
      */
     public function getAType(): \iggyvolz\vulkan\enum\VkComponentTypeKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->AType;
         $phpValue = \iggyvolz\vulkan\enum\VkComponentTypeKHR::from($cValue);
         return $phpValue;
@@ -150,7 +168,7 @@ final class VkCooperativeMatrixPropertiesKHR
 
     public function setAType(\iggyvolz\vulkan\enum\VkComponentTypeKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->AType = $cValue;
     }
@@ -160,7 +178,7 @@ final class VkCooperativeMatrixPropertiesKHR
      */
     public function getBType(): \iggyvolz\vulkan\enum\VkComponentTypeKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->BType;
         $phpValue = \iggyvolz\vulkan\enum\VkComponentTypeKHR::from($cValue);
         return $phpValue;
@@ -168,7 +186,7 @@ final class VkCooperativeMatrixPropertiesKHR
 
     public function setBType(\iggyvolz\vulkan\enum\VkComponentTypeKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->BType = $cValue;
     }
@@ -178,7 +196,7 @@ final class VkCooperativeMatrixPropertiesKHR
      */
     public function getCType(): \iggyvolz\vulkan\enum\VkComponentTypeKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->CType;
         $phpValue = \iggyvolz\vulkan\enum\VkComponentTypeKHR::from($cValue);
         return $phpValue;
@@ -186,7 +204,7 @@ final class VkCooperativeMatrixPropertiesKHR
 
     public function setCType(\iggyvolz\vulkan\enum\VkComponentTypeKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->CType = $cValue;
     }
@@ -196,7 +214,7 @@ final class VkCooperativeMatrixPropertiesKHR
      */
     public function getResultType(): \iggyvolz\vulkan\enum\VkComponentTypeKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ResultType;
         $phpValue = \iggyvolz\vulkan\enum\VkComponentTypeKHR::from($cValue);
         return $phpValue;
@@ -204,7 +222,7 @@ final class VkCooperativeMatrixPropertiesKHR
 
     public function setResultType(\iggyvolz\vulkan\enum\VkComponentTypeKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->ResultType = $cValue;
     }
@@ -214,7 +232,7 @@ final class VkCooperativeMatrixPropertiesKHR
      */
     public function getSaturatingAccumulation(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->saturatingAccumulation;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -222,7 +240,7 @@ final class VkCooperativeMatrixPropertiesKHR
 
     public function setSaturatingAccumulation(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->saturatingAccumulation = $cValue;
     }
@@ -232,7 +250,7 @@ final class VkCooperativeMatrixPropertiesKHR
      */
     public function getScope(): \iggyvolz\vulkan\enum\VkScopeKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->scope;
         $phpValue = \iggyvolz\vulkan\enum\VkScopeKHR::from($cValue);
         return $phpValue;
@@ -240,7 +258,7 @@ final class VkCooperativeMatrixPropertiesKHR
 
     public function setScope(\iggyvolz\vulkan\enum\VkScopeKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->scope = $cValue;
     }

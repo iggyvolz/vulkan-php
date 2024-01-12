@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSparseImageFormatProperties
+final class VkSparseImageFormatProperties implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "aspectMask" => $this->getAspectMask(),
+          "imageGranularity" => $this->getImageGranularity(),
+          "flags" => $this->getFlags(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkSparseImageFormatProperties
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkSparseImageFormatProperties
         null|array $flags = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSparseImageFormatProperties', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSparseImageFormatProperties', false), $vulkan);
         if(!is_null($aspectMask)) $self->setAspectMask($aspectMask);
         if(!is_null($imageGranularity)) $self->setImageGranularity($imageGranularity);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -36,7 +46,7 @@ final class VkSparseImageFormatProperties
      */
     public function getAspectMask(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->aspectMask;
         $phpValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::fromInt($cValue);
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkSparseImageFormatProperties
 
     public function setAspectMask(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::toInt(...$phpValue);
         $this->cdata->aspectMask = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkSparseImageFormatProperties
      */
     public function getImageGranularity(): VkExtent3D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageGranularity;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent3D($cValue, $ffi);
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkSparseImageFormatProperties
 
     public function setImageGranularity(VkExtent3D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageGranularity = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkSparseImageFormatProperties
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkSparseImageFormatFlagBits::fromInt($cValue);
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkSparseImageFormatProperties
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSparseImageFormatFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }

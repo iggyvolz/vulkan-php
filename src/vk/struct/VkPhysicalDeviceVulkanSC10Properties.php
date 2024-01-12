@@ -4,8 +4,35 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceVulkanSC10Properties
+final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "deviceNoDynamicHostAllocations" => $this->getDeviceNoDynamicHostAllocations(),
+          "deviceDestroyFreesMemory" => $this->getDeviceDestroyFreesMemory(),
+          "commandPoolMultipleCommandBuffersRecording" => $this->getCommandPoolMultipleCommandBuffersRecording(),
+          "commandPoolResetCommandBuffer" => $this->getCommandPoolResetCommandBuffer(),
+          "commandBufferSimultaneousUse" => $this->getCommandBufferSimultaneousUse(),
+          "secondaryCommandBufferNullOrImagelessFramebuffer" => $this->getSecondaryCommandBufferNullOrImagelessFramebuffer(),
+          "recycleDescriptorSetMemory" => $this->getRecycleDescriptorSetMemory(),
+          "recyclePipelineMemory" => $this->getRecyclePipelineMemory(),
+          "maxRenderPassSubpasses" => $this->getMaxRenderPassSubpasses(),
+          "maxRenderPassDependencies" => $this->getMaxRenderPassDependencies(),
+          "maxSubpassInputAttachments" => $this->getMaxSubpassInputAttachments(),
+          "maxSubpassPreserveAttachments" => $this->getMaxSubpassPreserveAttachments(),
+          "maxFramebufferAttachments" => $this->getMaxFramebufferAttachments(),
+          "maxDescriptorSetLayoutBindings" => $this->getMaxDescriptorSetLayoutBindings(),
+          "maxQueryFaultCount" => $this->getMaxQueryFaultCount(),
+          "maxCallbackFaultCount" => $this->getMaxCallbackFaultCount(),
+          "maxCommandPoolCommandBuffers" => $this->getMaxCommandPoolCommandBuffers(),
+          "maxCommandBufferSize" => $this->getMaxCommandBufferSize(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +40,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -41,7 +68,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
         null|int $maxCommandBufferSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkanSC10Properties', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkanSC10Properties', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($deviceNoDynamicHostAllocations)) $self->setDeviceNoDynamicHostAllocations($deviceNoDynamicHostAllocations);
@@ -70,7 +97,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -78,7 +105,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -88,15 +115,15 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -106,7 +133,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getDeviceNoDynamicHostAllocations(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceNoDynamicHostAllocations;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -114,7 +141,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setDeviceNoDynamicHostAllocations(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->deviceNoDynamicHostAllocations = $cValue;
     }
@@ -124,7 +151,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getDeviceDestroyFreesMemory(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceDestroyFreesMemory;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -132,7 +159,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setDeviceDestroyFreesMemory(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->deviceDestroyFreesMemory = $cValue;
     }
@@ -142,7 +169,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getCommandPoolMultipleCommandBuffersRecording(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->commandPoolMultipleCommandBuffersRecording;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -150,7 +177,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setCommandPoolMultipleCommandBuffersRecording(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->commandPoolMultipleCommandBuffersRecording = $cValue;
     }
@@ -160,7 +187,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getCommandPoolResetCommandBuffer(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->commandPoolResetCommandBuffer;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -168,7 +195,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setCommandPoolResetCommandBuffer(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->commandPoolResetCommandBuffer = $cValue;
     }
@@ -178,7 +205,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getCommandBufferSimultaneousUse(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->commandBufferSimultaneousUse;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -186,7 +213,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setCommandBufferSimultaneousUse(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->commandBufferSimultaneousUse = $cValue;
     }
@@ -196,7 +223,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getSecondaryCommandBufferNullOrImagelessFramebuffer(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->secondaryCommandBufferNullOrImagelessFramebuffer;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -204,7 +231,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setSecondaryCommandBufferNullOrImagelessFramebuffer(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->secondaryCommandBufferNullOrImagelessFramebuffer = $cValue;
     }
@@ -214,7 +241,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getRecycleDescriptorSetMemory(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->recycleDescriptorSetMemory;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -222,7 +249,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setRecycleDescriptorSetMemory(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->recycleDescriptorSetMemory = $cValue;
     }
@@ -232,7 +259,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getRecyclePipelineMemory(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->recyclePipelineMemory;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -240,7 +267,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setRecyclePipelineMemory(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->recyclePipelineMemory = $cValue;
     }
@@ -250,7 +277,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getMaxRenderPassSubpasses(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxRenderPassSubpasses;
         $phpValue = $cValue;
         return $phpValue;
@@ -258,7 +285,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setMaxRenderPassSubpasses(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxRenderPassSubpasses = $cValue;
     }
@@ -268,7 +295,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getMaxRenderPassDependencies(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxRenderPassDependencies;
         $phpValue = $cValue;
         return $phpValue;
@@ -276,7 +303,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setMaxRenderPassDependencies(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxRenderPassDependencies = $cValue;
     }
@@ -286,7 +313,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getMaxSubpassInputAttachments(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSubpassInputAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -294,7 +321,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setMaxSubpassInputAttachments(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSubpassInputAttachments = $cValue;
     }
@@ -304,7 +331,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getMaxSubpassPreserveAttachments(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSubpassPreserveAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -312,7 +339,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setMaxSubpassPreserveAttachments(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSubpassPreserveAttachments = $cValue;
     }
@@ -322,7 +349,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getMaxFramebufferAttachments(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFramebufferAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -330,7 +357,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setMaxFramebufferAttachments(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFramebufferAttachments = $cValue;
     }
@@ -340,7 +367,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getMaxDescriptorSetLayoutBindings(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetLayoutBindings;
         $phpValue = $cValue;
         return $phpValue;
@@ -348,7 +375,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setMaxDescriptorSetLayoutBindings(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetLayoutBindings = $cValue;
     }
@@ -358,7 +385,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getMaxQueryFaultCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxQueryFaultCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -366,7 +393,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setMaxQueryFaultCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxQueryFaultCount = $cValue;
     }
@@ -376,7 +403,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getMaxCallbackFaultCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxCallbackFaultCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -384,7 +411,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setMaxCallbackFaultCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxCallbackFaultCount = $cValue;
     }
@@ -394,7 +421,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getMaxCommandPoolCommandBuffers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxCommandPoolCommandBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -402,7 +429,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setMaxCommandPoolCommandBuffers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxCommandPoolCommandBuffers = $cValue;
     }
@@ -412,7 +439,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
      */
     public function getMaxCommandBufferSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxCommandBufferSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -420,7 +447,7 @@ final class VkPhysicalDeviceVulkanSC10Properties
 
     public function setMaxCommandBufferSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxCommandBufferSize = $cValue;
     }

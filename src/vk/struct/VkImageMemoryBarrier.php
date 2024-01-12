@@ -4,8 +4,25 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkImageMemoryBarrier
+final class VkImageMemoryBarrier implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "srcAccessMask" => $this->getSrcAccessMask(),
+          "dstAccessMask" => $this->getDstAccessMask(),
+          "oldLayout" => $this->getOldLayout(),
+          "newLayout" => $this->getNewLayout(),
+          "srcQueueFamilyIndex" => $this->getSrcQueueFamilyIndex(),
+          "dstQueueFamilyIndex" => $this->getDstQueueFamilyIndex(),
+          "image" => $this->getImage(),
+          "subresourceRange" => $this->getSubresourceRange(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +30,7 @@ final class VkImageMemoryBarrier
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -31,7 +48,7 @@ final class VkImageMemoryBarrier
         null|VkImageSubresourceRange $subresourceRange = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageMemoryBarrier', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkImageMemoryBarrier', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($srcAccessMask)) $self->setSrcAccessMask($srcAccessMask);
@@ -50,7 +67,7 @@ final class VkImageMemoryBarrier
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -58,7 +75,7 @@ final class VkImageMemoryBarrier
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -68,15 +85,15 @@ final class VkImageMemoryBarrier
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -86,7 +103,7 @@ final class VkImageMemoryBarrier
      */
     public function getSrcAccessMask(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcAccessMask;
         $phpValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::fromInt($cValue);
         return $phpValue;
@@ -94,7 +111,7 @@ final class VkImageMemoryBarrier
 
     public function setSrcAccessMask(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::toInt(...$phpValue);
         $this->cdata->srcAccessMask = $cValue;
     }
@@ -104,7 +121,7 @@ final class VkImageMemoryBarrier
      */
     public function getDstAccessMask(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstAccessMask;
         $phpValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::fromInt($cValue);
         return $phpValue;
@@ -112,7 +129,7 @@ final class VkImageMemoryBarrier
 
     public function setDstAccessMask(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::toInt(...$phpValue);
         $this->cdata->dstAccessMask = $cValue;
     }
@@ -122,7 +139,7 @@ final class VkImageMemoryBarrier
      */
     public function getOldLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->oldLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -130,7 +147,7 @@ final class VkImageMemoryBarrier
 
     public function setOldLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->oldLayout = $cValue;
     }
@@ -140,7 +157,7 @@ final class VkImageMemoryBarrier
      */
     public function getNewLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->newLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -148,7 +165,7 @@ final class VkImageMemoryBarrier
 
     public function setNewLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->newLayout = $cValue;
     }
@@ -158,7 +175,7 @@ final class VkImageMemoryBarrier
      */
     public function getSrcQueueFamilyIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcQueueFamilyIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -166,7 +183,7 @@ final class VkImageMemoryBarrier
 
     public function setSrcQueueFamilyIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->srcQueueFamilyIndex = $cValue;
     }
@@ -176,7 +193,7 @@ final class VkImageMemoryBarrier
      */
     public function getDstQueueFamilyIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstQueueFamilyIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -184,7 +201,7 @@ final class VkImageMemoryBarrier
 
     public function setDstQueueFamilyIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstQueueFamilyIndex = $cValue;
     }
@@ -194,7 +211,7 @@ final class VkImageMemoryBarrier
      */
     public function getImage(): VkImage
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->image;
         $phpValue = new \iggyvolz\vulkan\struct\VkImage($cValue, $ffi);
         return $phpValue;
@@ -202,7 +219,7 @@ final class VkImageMemoryBarrier
 
     public function setImage(VkImage $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->image = $cValue;
     }
@@ -212,7 +229,7 @@ final class VkImageMemoryBarrier
      */
     public function getSubresourceRange(): VkImageSubresourceRange
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subresourceRange;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageSubresourceRange($cValue, $ffi);
         return $phpValue;
@@ -220,7 +237,7 @@ final class VkImageMemoryBarrier
 
     public function setSubresourceRange(VkImageSubresourceRange $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->subresourceRange = $cValue;
     }

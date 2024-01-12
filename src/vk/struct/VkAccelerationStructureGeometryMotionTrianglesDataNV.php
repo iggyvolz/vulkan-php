@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkAccelerationStructureGeometryMotionTrianglesDataNV
+final class VkAccelerationStructureGeometryMotionTrianglesDataNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "vertexData" => $this->getVertexData(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkAccelerationStructureGeometryMotionTrianglesDataNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkAccelerationStructureGeometryMotionTrianglesDataNV
         mixed $vertexData = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureGeometryMotionTrianglesDataNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkAccelerationStructureGeometryMotionTrianglesDataNV', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($vertexData)) $self->setVertexData($vertexData);
@@ -36,7 +46,7 @@ final class VkAccelerationStructureGeometryMotionTrianglesDataNV
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkAccelerationStructureGeometryMotionTrianglesDataNV
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -54,15 +64,15 @@ final class VkAccelerationStructureGeometryMotionTrianglesDataNV
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkAccelerationStructureGeometryMotionTrianglesDataNV
      */
     public function getVertexData(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexData;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkAccelerationStructureGeometryMotionTrianglesDataNV
 
     public function setVertexData(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->vertexData = $cValue;
     }

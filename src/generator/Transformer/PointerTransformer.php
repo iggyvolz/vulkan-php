@@ -45,6 +45,6 @@ readonly final class PointerTransformer extends Transformer
      */
     public function fromC(): string
     {
-        return '$phpValue = new \\' . ObjectPointer::class . '('. var_export($this->type, true).', $cValue, $ffi);';
+        return '$phpValue = new \\' . ObjectPointer::class . '('. var_export($this->type, true).', $cValue, $ffi); /** PTRANS */';
     }
 }

@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkCopyMemoryIndirectCommandNV
+final class VkCopyMemoryIndirectCommandNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "srcAddress" => $this->getSrcAddress(),
+          "dstAddress" => $this->getDstAddress(),
+          "size" => $this->getSize(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkCopyMemoryIndirectCommandNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkCopyMemoryIndirectCommandNV
         null|int $size = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCopyMemoryIndirectCommandNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkCopyMemoryIndirectCommandNV', false), $vulkan);
         if(!is_null($srcAddress)) $self->setSrcAddress($srcAddress);
         if(!is_null($dstAddress)) $self->setDstAddress($dstAddress);
         if(!is_null($size)) $self->setSize($size);
@@ -36,7 +46,7 @@ final class VkCopyMemoryIndirectCommandNV
      */
     public function getSrcAddress(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkCopyMemoryIndirectCommandNV
 
     public function setSrcAddress(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->srcAddress = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkCopyMemoryIndirectCommandNV
      */
     public function getDstAddress(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkCopyMemoryIndirectCommandNV
 
     public function setDstAddress(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstAddress = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkCopyMemoryIndirectCommandNV
      */
     public function getSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkCopyMemoryIndirectCommandNV
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }

@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkBufferCopy
+final class VkBufferCopy implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "srcOffset" => $this->getSrcOffset(),
+          "dstOffset" => $this->getDstOffset(),
+          "size" => $this->getSize(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkBufferCopy
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkBufferCopy
         null|int $size = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBufferCopy', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkBufferCopy', false), $vulkan);
         if(!is_null($srcOffset)) $self->setSrcOffset($srcOffset);
         if(!is_null($dstOffset)) $self->setDstOffset($dstOffset);
         if(!is_null($size)) $self->setSize($size);
@@ -36,7 +46,7 @@ final class VkBufferCopy
      */
     public function getSrcOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkBufferCopy
 
     public function setSrcOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->srcOffset = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkBufferCopy
      */
     public function getDstOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkBufferCopy
 
     public function setDstOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstOffset = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkBufferCopy
      */
     public function getSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkBufferCopy
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }

@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceSurfaceInfo2KHR
+final class VkPhysicalDeviceSurfaceInfo2KHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "surface" => $this->getSurface(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkPhysicalDeviceSurfaceInfo2KHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkPhysicalDeviceSurfaceInfo2KHR
         null|VkSurfaceKHR $surface = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSurfaceInfo2KHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSurfaceInfo2KHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($surface)) $self->setSurface($surface);
@@ -36,7 +46,7 @@ final class VkPhysicalDeviceSurfaceInfo2KHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkPhysicalDeviceSurfaceInfo2KHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -54,15 +64,15 @@ final class VkPhysicalDeviceSurfaceInfo2KHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkPhysicalDeviceSurfaceInfo2KHR
      */
     public function getSurface(): VkSurfaceKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->surface;
         $phpValue = new \iggyvolz\vulkan\struct\VkSurfaceKHR($cValue, $ffi);
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkPhysicalDeviceSurfaceInfo2KHR
 
     public function setSurface(VkSurfaceKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->surface = $cValue;
     }

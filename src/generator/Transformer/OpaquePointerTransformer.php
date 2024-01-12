@@ -41,6 +41,6 @@ readonly final class OpaquePointerTransformer extends Transformer
      */
     public function fromC(): string
     {
-        return '$phpValue = new \\' . OpaquePointer::class . '($cValue, $ffi);';
+        return '$phpValue = new \\' . OpaquePointer::class . '($cValue, $this->vulkan);';
     }
 }

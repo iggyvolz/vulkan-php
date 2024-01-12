@@ -4,8 +4,28 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSurfaceCapabilities2EXT
+final class VkSurfaceCapabilities2EXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "minImageCount" => $this->getMinImageCount(),
+          "maxImageCount" => $this->getMaxImageCount(),
+          "currentExtent" => $this->getCurrentExtent(),
+          "minImageExtent" => $this->getMinImageExtent(),
+          "maxImageExtent" => $this->getMaxImageExtent(),
+          "maxImageArrayLayers" => $this->getMaxImageArrayLayers(),
+          "supportedTransforms" => $this->getSupportedTransforms(),
+          "currentTransform" => $this->getCurrentTransform(),
+          "supportedCompositeAlpha" => $this->getSupportedCompositeAlpha(),
+          "supportedUsageFlags" => $this->getSupportedUsageFlags(),
+          "supportedSurfaceCounters" => $this->getSupportedSurfaceCounters(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +33,7 @@ final class VkSurfaceCapabilities2EXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +54,7 @@ final class VkSurfaceCapabilities2EXT
         null|array $supportedSurfaceCounters = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSurfaceCapabilities2EXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSurfaceCapabilities2EXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($minImageCount)) $self->setMinImageCount($minImageCount);
@@ -56,7 +76,7 @@ final class VkSurfaceCapabilities2EXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -64,7 +84,7 @@ final class VkSurfaceCapabilities2EXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -74,15 +94,15 @@ final class VkSurfaceCapabilities2EXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -92,7 +112,7 @@ final class VkSurfaceCapabilities2EXT
      */
     public function getMinImageCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minImageCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -100,7 +120,7 @@ final class VkSurfaceCapabilities2EXT
 
     public function setMinImageCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minImageCount = $cValue;
     }
@@ -110,7 +130,7 @@ final class VkSurfaceCapabilities2EXT
      */
     public function getMaxImageCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -118,7 +138,7 @@ final class VkSurfaceCapabilities2EXT
 
     public function setMaxImageCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageCount = $cValue;
     }
@@ -128,7 +148,7 @@ final class VkSurfaceCapabilities2EXT
      */
     public function getCurrentExtent(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->currentExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -136,7 +156,7 @@ final class VkSurfaceCapabilities2EXT
 
     public function setCurrentExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->currentExtent = $cValue;
     }
@@ -146,7 +166,7 @@ final class VkSurfaceCapabilities2EXT
      */
     public function getMinImageExtent(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minImageExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -154,7 +174,7 @@ final class VkSurfaceCapabilities2EXT
 
     public function setMinImageExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->minImageExtent = $cValue;
     }
@@ -164,7 +184,7 @@ final class VkSurfaceCapabilities2EXT
      */
     public function getMaxImageExtent(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -172,7 +192,7 @@ final class VkSurfaceCapabilities2EXT
 
     public function setMaxImageExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxImageExtent = $cValue;
     }
@@ -182,7 +202,7 @@ final class VkSurfaceCapabilities2EXT
      */
     public function getMaxImageArrayLayers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageArrayLayers;
         $phpValue = $cValue;
         return $phpValue;
@@ -190,7 +210,7 @@ final class VkSurfaceCapabilities2EXT
 
     public function setMaxImageArrayLayers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageArrayLayers = $cValue;
     }
@@ -200,7 +220,7 @@ final class VkSurfaceCapabilities2EXT
      */
     public function getSupportedTransforms(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedTransforms;
         $phpValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -208,7 +228,7 @@ final class VkSurfaceCapabilities2EXT
 
     public function setSupportedTransforms(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->supportedTransforms = $cValue;
     }
@@ -218,7 +238,7 @@ final class VkSurfaceCapabilities2EXT
      */
     public function getCurrentTransform(): \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->currentTransform;
         $phpValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::from($cValue);
         return $phpValue;
@@ -226,7 +246,7 @@ final class VkSurfaceCapabilities2EXT
 
     public function setCurrentTransform(\iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->currentTransform = $cValue;
     }
@@ -236,7 +256,7 @@ final class VkSurfaceCapabilities2EXT
      */
     public function getSupportedCompositeAlpha(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedCompositeAlpha;
         $phpValue = \iggyvolz\vulkan\enum\VkCompositeAlphaFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -244,7 +264,7 @@ final class VkSurfaceCapabilities2EXT
 
     public function setSupportedCompositeAlpha(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkCompositeAlphaFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->supportedCompositeAlpha = $cValue;
     }
@@ -254,7 +274,7 @@ final class VkSurfaceCapabilities2EXT
      */
     public function getSupportedUsageFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedUsageFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -262,7 +282,7 @@ final class VkSurfaceCapabilities2EXT
 
     public function setSupportedUsageFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->supportedUsageFlags = $cValue;
     }
@@ -272,7 +292,7 @@ final class VkSurfaceCapabilities2EXT
      */
     public function getSupportedSurfaceCounters(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedSurfaceCounters;
         $phpValue = \iggyvolz\vulkan\enum\VkSurfaceCounterFlagBitsEXT::fromInt($cValue);
         return $phpValue;
@@ -280,7 +300,7 @@ final class VkSurfaceCapabilities2EXT
 
     public function setSupportedSurfaceCounters(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSurfaceCounterFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->supportedSurfaceCounters = $cValue;
     }

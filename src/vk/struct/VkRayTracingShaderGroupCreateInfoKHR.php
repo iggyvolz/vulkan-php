@@ -4,8 +4,23 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkRayTracingShaderGroupCreateInfoKHR
+final class VkRayTracingShaderGroupCreateInfoKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "type" => $this->getType(),
+          "generalShader" => $this->getGeneralShader(),
+          "closestHitShader" => $this->getClosestHitShader(),
+          "anyHitShader" => $this->getAnyHitShader(),
+          "intersectionShader" => $this->getIntersectionShader(),
+          "pShaderGroupCaptureReplayHandle" => $this->getPShaderGroupCaptureReplayHandle(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +28,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -29,7 +44,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
         null|\iggyvolz\vulkan\util\Pointer $pShaderGroupCaptureReplayHandle = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkRayTracingShaderGroupCreateInfoKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkRayTracingShaderGroupCreateInfoKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($type)) $self->setType($type);
@@ -46,7 +61,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -54,7 +69,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -64,15 +79,15 @@ final class VkRayTracingShaderGroupCreateInfoKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -82,7 +97,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
      */
     public function getType(): \iggyvolz\vulkan\enum\VkRayTracingShaderGroupTypeKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->type;
         $phpValue = \iggyvolz\vulkan\enum\VkRayTracingShaderGroupTypeKHR::from($cValue);
         return $phpValue;
@@ -90,7 +105,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
 
     public function setType(\iggyvolz\vulkan\enum\VkRayTracingShaderGroupTypeKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->type = $cValue;
     }
@@ -100,7 +115,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
      */
     public function getGeneralShader(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->generalShader;
         $phpValue = $cValue;
         return $phpValue;
@@ -108,7 +123,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
 
     public function setGeneralShader(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->generalShader = $cValue;
     }
@@ -118,7 +133,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
      */
     public function getClosestHitShader(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->closestHitShader;
         $phpValue = $cValue;
         return $phpValue;
@@ -126,7 +141,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
 
     public function setClosestHitShader(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->closestHitShader = $cValue;
     }
@@ -136,7 +151,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
      */
     public function getAnyHitShader(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->anyHitShader;
         $phpValue = $cValue;
         return $phpValue;
@@ -144,7 +159,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
 
     public function setAnyHitShader(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->anyHitShader = $cValue;
     }
@@ -154,7 +169,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
      */
     public function getIntersectionShader(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->intersectionShader;
         $phpValue = $cValue;
         return $phpValue;
@@ -162,7 +177,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR
 
     public function setIntersectionShader(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->intersectionShader = $cValue;
     }
@@ -172,15 +187,15 @@ final class VkRayTracingShaderGroupCreateInfoKHR
      */
     public function getPShaderGroupCaptureReplayHandle(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pShaderGroupCaptureReplayHandle;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPShaderGroupCaptureReplayHandle(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pShaderGroupCaptureReplayHandle = $cValue;
     }

@@ -4,8 +4,22 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkComputePipelineCreateInfo
+final class VkComputePipelineCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "stage" => $this->getStage(),
+          "layout" => $this->getLayout(),
+          "basePipelineHandle" => $this->getBasePipelineHandle(),
+          "basePipelineIndex" => $this->getBasePipelineIndex(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +27,7 @@ final class VkComputePipelineCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -28,7 +42,7 @@ final class VkComputePipelineCreateInfo
         null|int $basePipelineIndex = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkComputePipelineCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkComputePipelineCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -44,7 +58,7 @@ final class VkComputePipelineCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -52,7 +66,7 @@ final class VkComputePipelineCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -62,15 +76,15 @@ final class VkComputePipelineCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -80,7 +94,7 @@ final class VkComputePipelineCreateInfo
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -88,7 +102,7 @@ final class VkComputePipelineCreateInfo
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkPipelineCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -98,7 +112,7 @@ final class VkComputePipelineCreateInfo
      */
     public function getStage(): VkPipelineShaderStageCreateInfo
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stage;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipelineShaderStageCreateInfo($cValue, $ffi);
         return $phpValue;
@@ -106,7 +120,7 @@ final class VkComputePipelineCreateInfo
 
     public function setStage(VkPipelineShaderStageCreateInfo $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->stage = $cValue;
     }
@@ -116,7 +130,7 @@ final class VkComputePipelineCreateInfo
      */
     public function getLayout(): VkPipelineLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layout;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipelineLayout($cValue, $ffi);
         return $phpValue;
@@ -124,7 +138,7 @@ final class VkComputePipelineCreateInfo
 
     public function setLayout(VkPipelineLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->layout = $cValue;
     }
@@ -134,7 +148,7 @@ final class VkComputePipelineCreateInfo
      */
     public function getBasePipelineHandle(): VkPipeline
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->basePipelineHandle;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipeline($cValue, $ffi);
         return $phpValue;
@@ -142,7 +156,7 @@ final class VkComputePipelineCreateInfo
 
     public function setBasePipelineHandle(VkPipeline $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->basePipelineHandle = $cValue;
     }
@@ -152,7 +166,7 @@ final class VkComputePipelineCreateInfo
      */
     public function getBasePipelineIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->basePipelineIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -160,7 +174,7 @@ final class VkComputePipelineCreateInfo
 
     public function setBasePipelineIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->basePipelineIndex = $cValue;
     }

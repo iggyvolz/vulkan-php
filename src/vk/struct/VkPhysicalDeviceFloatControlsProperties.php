@@ -4,8 +4,34 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceFloatControlsProperties
+final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "denormBehaviorIndependence" => $this->getDenormBehaviorIndependence(),
+          "roundingModeIndependence" => $this->getRoundingModeIndependence(),
+          "shaderSignedZeroInfNanPreserveFloat16" => $this->getShaderSignedZeroInfNanPreserveFloat16(),
+          "shaderSignedZeroInfNanPreserveFloat32" => $this->getShaderSignedZeroInfNanPreserveFloat32(),
+          "shaderSignedZeroInfNanPreserveFloat64" => $this->getShaderSignedZeroInfNanPreserveFloat64(),
+          "shaderDenormPreserveFloat16" => $this->getShaderDenormPreserveFloat16(),
+          "shaderDenormPreserveFloat32" => $this->getShaderDenormPreserveFloat32(),
+          "shaderDenormPreserveFloat64" => $this->getShaderDenormPreserveFloat64(),
+          "shaderDenormFlushToZeroFloat16" => $this->getShaderDenormFlushToZeroFloat16(),
+          "shaderDenormFlushToZeroFloat32" => $this->getShaderDenormFlushToZeroFloat32(),
+          "shaderDenormFlushToZeroFloat64" => $this->getShaderDenormFlushToZeroFloat64(),
+          "shaderRoundingModeRTEFloat16" => $this->getShaderRoundingModeRTEFloat16(),
+          "shaderRoundingModeRTEFloat32" => $this->getShaderRoundingModeRTEFloat32(),
+          "shaderRoundingModeRTEFloat64" => $this->getShaderRoundingModeRTEFloat64(),
+          "shaderRoundingModeRTZFloat16" => $this->getShaderRoundingModeRTZFloat16(),
+          "shaderRoundingModeRTZFloat32" => $this->getShaderRoundingModeRTZFloat32(),
+          "shaderRoundingModeRTZFloat64" => $this->getShaderRoundingModeRTZFloat64(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +39,7 @@ final class VkPhysicalDeviceFloatControlsProperties
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +66,7 @@ final class VkPhysicalDeviceFloatControlsProperties
         null|bool $shaderRoundingModeRTZFloat64 = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFloatControlsProperties', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFloatControlsProperties', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($denormBehaviorIndependence)) $self->setDenormBehaviorIndependence($denormBehaviorIndependence);
@@ -68,7 +94,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -76,7 +102,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -86,15 +112,15 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -104,7 +130,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getDenormBehaviorIndependence(): \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->denormBehaviorIndependence;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence::from($cValue);
         return $phpValue;
@@ -114,7 +140,7 @@ final class VkPhysicalDeviceFloatControlsProperties
         \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence $phpValue,
     ): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->denormBehaviorIndependence = $cValue;
     }
@@ -124,7 +150,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getRoundingModeIndependence(): \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->roundingModeIndependence;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence::from($cValue);
         return $phpValue;
@@ -134,7 +160,7 @@ final class VkPhysicalDeviceFloatControlsProperties
         \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence $phpValue,
     ): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->roundingModeIndependence = $cValue;
     }
@@ -144,7 +170,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderSignedZeroInfNanPreserveFloat16(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSignedZeroInfNanPreserveFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -152,7 +178,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderSignedZeroInfNanPreserveFloat16(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSignedZeroInfNanPreserveFloat16 = $cValue;
     }
@@ -162,7 +188,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderSignedZeroInfNanPreserveFloat32(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSignedZeroInfNanPreserveFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -170,7 +196,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderSignedZeroInfNanPreserveFloat32(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSignedZeroInfNanPreserveFloat32 = $cValue;
     }
@@ -180,7 +206,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderSignedZeroInfNanPreserveFloat64(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSignedZeroInfNanPreserveFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -188,7 +214,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderSignedZeroInfNanPreserveFloat64(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSignedZeroInfNanPreserveFloat64 = $cValue;
     }
@@ -198,7 +224,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderDenormPreserveFloat16(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormPreserveFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -206,7 +232,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderDenormPreserveFloat16(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormPreserveFloat16 = $cValue;
     }
@@ -216,7 +242,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderDenormPreserveFloat32(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormPreserveFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -224,7 +250,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderDenormPreserveFloat32(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormPreserveFloat32 = $cValue;
     }
@@ -234,7 +260,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderDenormPreserveFloat64(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormPreserveFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -242,7 +268,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderDenormPreserveFloat64(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormPreserveFloat64 = $cValue;
     }
@@ -252,7 +278,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderDenormFlushToZeroFloat16(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormFlushToZeroFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -260,7 +286,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderDenormFlushToZeroFloat16(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormFlushToZeroFloat16 = $cValue;
     }
@@ -270,7 +296,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderDenormFlushToZeroFloat32(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormFlushToZeroFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -278,7 +304,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderDenormFlushToZeroFloat32(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormFlushToZeroFloat32 = $cValue;
     }
@@ -288,7 +314,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderDenormFlushToZeroFloat64(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormFlushToZeroFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -296,7 +322,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderDenormFlushToZeroFloat64(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormFlushToZeroFloat64 = $cValue;
     }
@@ -306,7 +332,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderRoundingModeRTEFloat16(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTEFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -314,7 +340,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderRoundingModeRTEFloat16(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTEFloat16 = $cValue;
     }
@@ -324,7 +350,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderRoundingModeRTEFloat32(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTEFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -332,7 +358,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderRoundingModeRTEFloat32(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTEFloat32 = $cValue;
     }
@@ -342,7 +368,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderRoundingModeRTEFloat64(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTEFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -350,7 +376,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderRoundingModeRTEFloat64(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTEFloat64 = $cValue;
     }
@@ -360,7 +386,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderRoundingModeRTZFloat16(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTZFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -368,7 +394,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderRoundingModeRTZFloat16(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTZFloat16 = $cValue;
     }
@@ -378,7 +404,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderRoundingModeRTZFloat32(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTZFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -386,7 +412,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderRoundingModeRTZFloat32(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTZFloat32 = $cValue;
     }
@@ -396,7 +422,7 @@ final class VkPhysicalDeviceFloatControlsProperties
      */
     public function getShaderRoundingModeRTZFloat64(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTZFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -404,7 +430,7 @@ final class VkPhysicalDeviceFloatControlsProperties
 
     public function setShaderRoundingModeRTZFloat64(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTZFloat64 = $cValue;
     }

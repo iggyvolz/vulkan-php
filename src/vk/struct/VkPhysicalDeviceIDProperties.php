@@ -4,8 +4,22 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceIDProperties
+final class VkPhysicalDeviceIDProperties implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "deviceUUID" => $this->getDeviceUUID(),
+          "driverUUID" => $this->getDriverUUID(),
+          "deviceLUID" => $this->getDeviceLUID(),
+          "deviceNodeMask" => $this->getDeviceNodeMask(),
+          "deviceLUIDValid" => $this->getDeviceLUIDValid(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +27,7 @@ final class VkPhysicalDeviceIDProperties
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -28,7 +42,7 @@ final class VkPhysicalDeviceIDProperties
         null|bool $deviceLUIDValid = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceIDProperties', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceIDProperties', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($deviceUUID)) $self->setDeviceUUID($deviceUUID);
@@ -44,7 +58,7 @@ final class VkPhysicalDeviceIDProperties
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -52,7 +66,7 @@ final class VkPhysicalDeviceIDProperties
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -62,15 +76,15 @@ final class VkPhysicalDeviceIDProperties
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -80,7 +94,7 @@ final class VkPhysicalDeviceIDProperties
      */
     public function getDeviceUUID(): \Ramsey\Uuid\UuidInterface
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceUUID;
         $phpValue = \Ramsey\Uuid\Uuid::fromBytes(\FFI::string($cValue, 16));
         return $phpValue;
@@ -88,7 +102,7 @@ final class VkPhysicalDeviceIDProperties
 
     public function setDeviceUUID(\Ramsey\Uuid\UuidInterface $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $ffi->new("uint8_t[16]"); $ffi->memcpy($cValue, $phpValue->getBytes(), 16);
         $this->cdata->deviceUUID = $cValue;
     }
@@ -98,7 +112,7 @@ final class VkPhysicalDeviceIDProperties
      */
     public function getDriverUUID(): \Ramsey\Uuid\UuidInterface
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->driverUUID;
         $phpValue = \Ramsey\Uuid\Uuid::fromBytes(\FFI::string($cValue, 16));
         return $phpValue;
@@ -106,7 +120,7 @@ final class VkPhysicalDeviceIDProperties
 
     public function setDriverUUID(\Ramsey\Uuid\UuidInterface $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $ffi->new("uint8_t[16]"); $ffi->memcpy($cValue, $phpValue->getBytes(), 16);
         $this->cdata->driverUUID = $cValue;
     }
@@ -116,7 +130,7 @@ final class VkPhysicalDeviceIDProperties
      */
     public function getDeviceLUID(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceLUID;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -124,7 +138,7 @@ final class VkPhysicalDeviceIDProperties
 
     public function setDeviceLUID(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->deviceLUID = $cValue;
     }
@@ -134,7 +148,7 @@ final class VkPhysicalDeviceIDProperties
      */
     public function getDeviceNodeMask(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceNodeMask;
         $phpValue = $cValue;
         return $phpValue;
@@ -142,7 +156,7 @@ final class VkPhysicalDeviceIDProperties
 
     public function setDeviceNodeMask(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->deviceNodeMask = $cValue;
     }
@@ -152,7 +166,7 @@ final class VkPhysicalDeviceIDProperties
      */
     public function getDeviceLUIDValid(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceLUIDValid;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -160,7 +174,7 @@ final class VkPhysicalDeviceIDProperties
 
     public function setDeviceLUIDValid(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->deviceLUIDValid = $cValue;
     }

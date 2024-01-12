@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPipelineRasterizationConservativeStateCreateInfoEXT
+final class VkPipelineRasterizationConservativeStateCreateInfoEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "conservativeRasterizationMode" => $this->getConservativeRasterizationMode(),
+          "extraPrimitiveOverestimationSize" => $this->getExtraPrimitiveOverestimationSize(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkPipelineRasterizationConservativeStateCreateInfoEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkPipelineRasterizationConservativeStateCreateInfoEXT
         null|float $extraPrimitiveOverestimationSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineRasterizationConservativeStateCreateInfoEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPipelineRasterizationConservativeStateCreateInfoEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -40,7 +52,7 @@ final class VkPipelineRasterizationConservativeStateCreateInfoEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkPipelineRasterizationConservativeStateCreateInfoEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkPipelineRasterizationConservativeStateCreateInfoEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkPipelineRasterizationConservativeStateCreateInfoEXT
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = [];
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkPipelineRasterizationConservativeStateCreateInfoEXT
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = 0;
         $this->cdata->flags = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkPipelineRasterizationConservativeStateCreateInfoEXT
      */
     public function getConservativeRasterizationMode(): \iggyvolz\vulkan\enum\VkConservativeRasterizationModeEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->conservativeRasterizationMode;
         $phpValue = \iggyvolz\vulkan\enum\VkConservativeRasterizationModeEXT::from($cValue);
         return $phpValue;
@@ -104,7 +116,7 @@ final class VkPipelineRasterizationConservativeStateCreateInfoEXT
         \iggyvolz\vulkan\enum\VkConservativeRasterizationModeEXT $phpValue,
     ): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->conservativeRasterizationMode = $cValue;
     }
@@ -114,7 +126,7 @@ final class VkPipelineRasterizationConservativeStateCreateInfoEXT
      */
     public function getExtraPrimitiveOverestimationSize(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extraPrimitiveOverestimationSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +134,7 @@ final class VkPipelineRasterizationConservativeStateCreateInfoEXT
 
     public function setExtraPrimitiveOverestimationSize(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->extraPrimitiveOverestimationSize = $cValue;
     }

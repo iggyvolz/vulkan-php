@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkQueueFamilyProperties
+final class VkQueueFamilyProperties implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "queueFlags" => $this->getQueueFlags(),
+          "queueCount" => $this->getQueueCount(),
+          "timestampValidBits" => $this->getTimestampValidBits(),
+          "minImageTransferGranularity" => $this->getMinImageTransferGranularity(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +24,7 @@ final class VkQueueFamilyProperties
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -25,7 +36,7 @@ final class VkQueueFamilyProperties
         null|VkExtent3D $minImageTransferGranularity = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkQueueFamilyProperties', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkQueueFamilyProperties', false), $vulkan);
         if(!is_null($queueFlags)) $self->setQueueFlags($queueFlags);
         if(!is_null($queueCount)) $self->setQueueCount($queueCount);
         if(!is_null($timestampValidBits)) $self->setTimestampValidBits($timestampValidBits);
@@ -38,7 +49,7 @@ final class VkQueueFamilyProperties
      */
     public function getQueueFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->queueFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkQueueFlagBits::fromInt($cValue);
         return $phpValue;
@@ -46,7 +57,7 @@ final class VkQueueFamilyProperties
 
     public function setQueueFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkQueueFlagBits::toInt(...$phpValue);
         $this->cdata->queueFlags = $cValue;
     }
@@ -56,7 +67,7 @@ final class VkQueueFamilyProperties
      */
     public function getQueueCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->queueCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -64,7 +75,7 @@ final class VkQueueFamilyProperties
 
     public function setQueueCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->queueCount = $cValue;
     }
@@ -74,7 +85,7 @@ final class VkQueueFamilyProperties
      */
     public function getTimestampValidBits(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->timestampValidBits;
         $phpValue = $cValue;
         return $phpValue;
@@ -82,7 +93,7 @@ final class VkQueueFamilyProperties
 
     public function setTimestampValidBits(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->timestampValidBits = $cValue;
     }
@@ -92,7 +103,7 @@ final class VkQueueFamilyProperties
      */
     public function getMinImageTransferGranularity(): VkExtent3D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minImageTransferGranularity;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent3D($cValue, $ffi);
         return $phpValue;
@@ -100,7 +111,7 @@ final class VkQueueFamilyProperties
 
     public function setMinImageTransferGranularity(VkExtent3D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->minImageTransferGranularity = $cValue;
     }

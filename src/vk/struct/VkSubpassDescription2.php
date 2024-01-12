@@ -4,8 +4,28 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSubpassDescription2
+final class VkSubpassDescription2 implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "pipelineBindPoint" => $this->getPipelineBindPoint(),
+          "viewMask" => $this->getViewMask(),
+          "inputAttachmentCount" => $this->getInputAttachmentCount(),
+          "pInputAttachments" => $this->getPInputAttachments(),
+          "colorAttachmentCount" => $this->getColorAttachmentCount(),
+          "pColorAttachments" => $this->getPColorAttachments(),
+          "pResolveAttachments" => $this->getPResolveAttachments(),
+          "pDepthStencilAttachment" => $this->getPDepthStencilAttachment(),
+          "preserveAttachmentCount" => $this->getPreserveAttachmentCount(),
+          "pPreserveAttachments" => $this->getPPreserveAttachments(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +33,7 @@ final class VkSubpassDescription2
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +54,7 @@ final class VkSubpassDescription2
         null|\iggyvolz\vulkan\util\IntPointer $pPreserveAttachments = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSubpassDescription2', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSubpassDescription2', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -56,7 +76,7 @@ final class VkSubpassDescription2
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -64,7 +84,7 @@ final class VkSubpassDescription2
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -74,15 +94,15 @@ final class VkSubpassDescription2
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -92,7 +112,7 @@ final class VkSubpassDescription2
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkSubpassDescriptionFlagBits::fromInt($cValue);
         return $phpValue;
@@ -100,7 +120,7 @@ final class VkSubpassDescription2
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSubpassDescriptionFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -110,7 +130,7 @@ final class VkSubpassDescription2
      */
     public function getPipelineBindPoint(): \iggyvolz\vulkan\enum\VkPipelineBindPoint
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineBindPoint;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineBindPoint::from($cValue);
         return $phpValue;
@@ -118,7 +138,7 @@ final class VkSubpassDescription2
 
     public function setPipelineBindPoint(\iggyvolz\vulkan\enum\VkPipelineBindPoint $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->pipelineBindPoint = $cValue;
     }
@@ -128,7 +148,7 @@ final class VkSubpassDescription2
      */
     public function getViewMask(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->viewMask;
         $phpValue = $cValue;
         return $phpValue;
@@ -136,7 +156,7 @@ final class VkSubpassDescription2
 
     public function setViewMask(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->viewMask = $cValue;
     }
@@ -146,7 +166,7 @@ final class VkSubpassDescription2
      */
     public function getInputAttachmentCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->inputAttachmentCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -154,7 +174,7 @@ final class VkSubpassDescription2
 
     public function setInputAttachmentCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->inputAttachmentCount = $cValue;
     }
@@ -164,15 +184,15 @@ final class VkSubpassDescription2
      */
     public function getPInputAttachments(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pInputAttachments;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentReference2', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentReference2', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPInputAttachments(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pInputAttachments = $cValue;
     }
@@ -182,7 +202,7 @@ final class VkSubpassDescription2
      */
     public function getColorAttachmentCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->colorAttachmentCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -190,7 +210,7 @@ final class VkSubpassDescription2
 
     public function setColorAttachmentCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->colorAttachmentCount = $cValue;
     }
@@ -200,15 +220,15 @@ final class VkSubpassDescription2
      */
     public function getPColorAttachments(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pColorAttachments;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentReference2', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentReference2', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPColorAttachments(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pColorAttachments = $cValue;
     }
@@ -218,15 +238,15 @@ final class VkSubpassDescription2
      */
     public function getPResolveAttachments(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pResolveAttachments;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentReference2', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentReference2', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPResolveAttachments(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pResolveAttachments = $cValue;
     }
@@ -236,15 +256,15 @@ final class VkSubpassDescription2
      */
     public function getPDepthStencilAttachment(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDepthStencilAttachment;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentReference2', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentReference2', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPDepthStencilAttachment(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDepthStencilAttachment = $cValue;
     }
@@ -254,7 +274,7 @@ final class VkSubpassDescription2
      */
     public function getPreserveAttachmentCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preserveAttachmentCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -262,7 +282,7 @@ final class VkSubpassDescription2
 
     public function setPreserveAttachmentCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->preserveAttachmentCount = $cValue;
     }
@@ -272,7 +292,7 @@ final class VkSubpassDescription2
      */
     public function getPPreserveAttachments(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pPreserveAttachments;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -280,7 +300,7 @@ final class VkSubpassDescription2
 
     public function setPPreserveAttachments(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pPreserveAttachments = $cValue;
     }

@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkRenderPassSampleLocationsBeginInfoEXT
+final class VkRenderPassSampleLocationsBeginInfoEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "attachmentInitialSampleLocationsCount" => $this->getAttachmentInitialSampleLocationsCount(),
+          "pAttachmentInitialSampleLocations" => $this->getPAttachmentInitialSampleLocations(),
+          "postSubpassSampleLocationsCount" => $this->getPostSubpassSampleLocationsCount(),
+          "pPostSubpassSampleLocations" => $this->getPPostSubpassSampleLocations(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkRenderPassSampleLocationsBeginInfoEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkRenderPassSampleLocationsBeginInfoEXT
         null|\iggyvolz\vulkan\util\ObjectPointer $pPostSubpassSampleLocations = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkRenderPassSampleLocationsBeginInfoEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkRenderPassSampleLocationsBeginInfoEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($attachmentInitialSampleLocationsCount)) $self->setAttachmentInitialSampleLocationsCount($attachmentInitialSampleLocationsCount);
@@ -42,7 +55,7 @@ final class VkRenderPassSampleLocationsBeginInfoEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkRenderPassSampleLocationsBeginInfoEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkRenderPassSampleLocationsBeginInfoEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkRenderPassSampleLocationsBeginInfoEXT
      */
     public function getAttachmentInitialSampleLocationsCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->attachmentInitialSampleLocationsCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkRenderPassSampleLocationsBeginInfoEXT
 
     public function setAttachmentInitialSampleLocationsCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->attachmentInitialSampleLocationsCount = $cValue;
     }
@@ -96,15 +109,15 @@ final class VkRenderPassSampleLocationsBeginInfoEXT
      */
     public function getPAttachmentInitialSampleLocations(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pAttachmentInitialSampleLocations;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentSampleLocationsEXT', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentSampleLocationsEXT', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPAttachmentInitialSampleLocations(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pAttachmentInitialSampleLocations = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkRenderPassSampleLocationsBeginInfoEXT
      */
     public function getPostSubpassSampleLocationsCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->postSubpassSampleLocationsCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkRenderPassSampleLocationsBeginInfoEXT
 
     public function setPostSubpassSampleLocationsCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->postSubpassSampleLocationsCount = $cValue;
     }
@@ -132,15 +145,15 @@ final class VkRenderPassSampleLocationsBeginInfoEXT
      */
     public function getPPostSubpassSampleLocations(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pPostSubpassSampleLocations;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSubpassSampleLocationsEXT', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSubpassSampleLocationsEXT', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPPostSubpassSampleLocations(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pPostSubpassSampleLocations = $cValue;
     }

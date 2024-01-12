@@ -4,8 +4,23 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSetDescriptorBufferOffsetsInfoEXT
+final class VkSetDescriptorBufferOffsetsInfoEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "stageFlags" => $this->getStageFlags(),
+          "layout" => $this->getLayout(),
+          "firstSet" => $this->getFirstSet(),
+          "setCount" => $this->getSetCount(),
+          "pBufferIndices" => $this->getPBufferIndices(),
+          "pOffsets" => $this->getPOffsets(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +28,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -29,7 +44,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
         null|\iggyvolz\vulkan\util\Pointer $pOffsets = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSetDescriptorBufferOffsetsInfoEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSetDescriptorBufferOffsetsInfoEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($stageFlags)) $self->setStageFlags($stageFlags);
@@ -46,7 +61,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -54,7 +69,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -64,15 +79,15 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -82,7 +97,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
      */
     public function getStageFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stageFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -90,7 +105,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
 
     public function setStageFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->stageFlags = $cValue;
     }
@@ -100,7 +115,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
      */
     public function getLayout(): VkPipelineLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layout;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipelineLayout($cValue, $ffi);
         return $phpValue;
@@ -108,7 +123,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
 
     public function setLayout(VkPipelineLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->layout = $cValue;
     }
@@ -118,7 +133,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
      */
     public function getFirstSet(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->firstSet;
         $phpValue = $cValue;
         return $phpValue;
@@ -126,7 +141,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
 
     public function setFirstSet(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->firstSet = $cValue;
     }
@@ -136,7 +151,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
      */
     public function getSetCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->setCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -144,7 +159,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
 
     public function setSetCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->setCount = $cValue;
     }
@@ -154,7 +169,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
      */
     public function getPBufferIndices(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pBufferIndices;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -162,7 +177,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
 
     public function setPBufferIndices(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pBufferIndices = $cValue;
     }
@@ -172,15 +187,15 @@ final class VkSetDescriptorBufferOffsetsInfoEXT
      */
     public function getPOffsets(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pOffsets;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPOffsets(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pOffsets = $cValue;
     }

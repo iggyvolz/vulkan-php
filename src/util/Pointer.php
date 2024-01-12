@@ -4,6 +4,7 @@ namespace iggyvolz\vulkan\util;
 
 use FFI;
 use FFI\CData;
+use iggyvolz\vulkan\Vulkan;
 
 /** @template T */
 abstract class Pointer
@@ -12,7 +13,7 @@ abstract class Pointer
         /** @internal */
         public ?CData  $cdata,
         /** @internal */
-        public ?FFI   $ffi,
+        public Vulkan  $vulkan,
         /** @internal - for keeping alive */
         private ?CData $entry = null,
     )

@@ -4,8 +4,31 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSRTDataNV
+final class VkSRTDataNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sx" => $this->getSx(),
+          "a" => $this->getA(),
+          "b" => $this->getB(),
+          "pvx" => $this->getPvx(),
+          "sy" => $this->getSy(),
+          "c" => $this->getC(),
+          "pvy" => $this->getPvy(),
+          "sz" => $this->getSz(),
+          "pvz" => $this->getPvz(),
+          "qx" => $this->getQx(),
+          "qy" => $this->getQy(),
+          "qz" => $this->getQz(),
+          "qw" => $this->getQw(),
+          "tx" => $this->getTx(),
+          "ty" => $this->getTy(),
+          "tz" => $this->getTz(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +36,7 @@ final class VkSRTDataNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -37,7 +60,7 @@ final class VkSRTDataNV
         null|float $tz = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSRTDataNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSRTDataNV', false), $vulkan);
         if(!is_null($sx)) $self->setSx($sx);
         if(!is_null($a)) $self->setA($a);
         if(!is_null($b)) $self->setB($b);
@@ -62,7 +85,7 @@ final class VkSRTDataNV
      */
     public function getSx(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sx;
         $phpValue = $cValue;
         return $phpValue;
@@ -70,7 +93,7 @@ final class VkSRTDataNV
 
     public function setSx(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sx = $cValue;
     }
@@ -80,7 +103,7 @@ final class VkSRTDataNV
      */
     public function getA(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->a;
         $phpValue = $cValue;
         return $phpValue;
@@ -88,7 +111,7 @@ final class VkSRTDataNV
 
     public function setA(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->a = $cValue;
     }
@@ -98,7 +121,7 @@ final class VkSRTDataNV
      */
     public function getB(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->b;
         $phpValue = $cValue;
         return $phpValue;
@@ -106,7 +129,7 @@ final class VkSRTDataNV
 
     public function setB(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->b = $cValue;
     }
@@ -116,7 +139,7 @@ final class VkSRTDataNV
      */
     public function getPvx(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pvx;
         $phpValue = $cValue;
         return $phpValue;
@@ -124,7 +147,7 @@ final class VkSRTDataNV
 
     public function setPvx(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pvx = $cValue;
     }
@@ -134,7 +157,7 @@ final class VkSRTDataNV
      */
     public function getSy(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sy;
         $phpValue = $cValue;
         return $phpValue;
@@ -142,7 +165,7 @@ final class VkSRTDataNV
 
     public function setSy(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sy = $cValue;
     }
@@ -152,7 +175,7 @@ final class VkSRTDataNV
      */
     public function getC(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->c;
         $phpValue = $cValue;
         return $phpValue;
@@ -160,7 +183,7 @@ final class VkSRTDataNV
 
     public function setC(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->c = $cValue;
     }
@@ -170,7 +193,7 @@ final class VkSRTDataNV
      */
     public function getPvy(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pvy;
         $phpValue = $cValue;
         return $phpValue;
@@ -178,7 +201,7 @@ final class VkSRTDataNV
 
     public function setPvy(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pvy = $cValue;
     }
@@ -188,7 +211,7 @@ final class VkSRTDataNV
      */
     public function getSz(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sz;
         $phpValue = $cValue;
         return $phpValue;
@@ -196,7 +219,7 @@ final class VkSRTDataNV
 
     public function setSz(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sz = $cValue;
     }
@@ -206,7 +229,7 @@ final class VkSRTDataNV
      */
     public function getPvz(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pvz;
         $phpValue = $cValue;
         return $phpValue;
@@ -214,7 +237,7 @@ final class VkSRTDataNV
 
     public function setPvz(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pvz = $cValue;
     }
@@ -224,7 +247,7 @@ final class VkSRTDataNV
      */
     public function getQx(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qx;
         $phpValue = $cValue;
         return $phpValue;
@@ -232,7 +255,7 @@ final class VkSRTDataNV
 
     public function setQx(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qx = $cValue;
     }
@@ -242,7 +265,7 @@ final class VkSRTDataNV
      */
     public function getQy(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qy;
         $phpValue = $cValue;
         return $phpValue;
@@ -250,7 +273,7 @@ final class VkSRTDataNV
 
     public function setQy(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qy = $cValue;
     }
@@ -260,7 +283,7 @@ final class VkSRTDataNV
      */
     public function getQz(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qz;
         $phpValue = $cValue;
         return $phpValue;
@@ -268,7 +291,7 @@ final class VkSRTDataNV
 
     public function setQz(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qz = $cValue;
     }
@@ -278,7 +301,7 @@ final class VkSRTDataNV
      */
     public function getQw(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qw;
         $phpValue = $cValue;
         return $phpValue;
@@ -286,7 +309,7 @@ final class VkSRTDataNV
 
     public function setQw(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qw = $cValue;
     }
@@ -296,7 +319,7 @@ final class VkSRTDataNV
      */
     public function getTx(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tx;
         $phpValue = $cValue;
         return $phpValue;
@@ -304,7 +327,7 @@ final class VkSRTDataNV
 
     public function setTx(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->tx = $cValue;
     }
@@ -314,7 +337,7 @@ final class VkSRTDataNV
      */
     public function getTy(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ty;
         $phpValue = $cValue;
         return $phpValue;
@@ -322,7 +345,7 @@ final class VkSRTDataNV
 
     public function setTy(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->ty = $cValue;
     }
@@ -332,7 +355,7 @@ final class VkSRTDataNV
      */
     public function getTz(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tz;
         $phpValue = $cValue;
         return $phpValue;
@@ -340,7 +363,7 @@ final class VkSRTDataNV
 
     public function setTz(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->tz = $cValue;
     }

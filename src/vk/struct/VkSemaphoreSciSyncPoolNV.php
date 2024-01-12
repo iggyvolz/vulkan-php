@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSemaphoreSciSyncPoolNV
+final class VkSemaphoreSciSyncPoolNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return ['_type' => static::class];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +18,7 @@ final class VkSemaphoreSciSyncPoolNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 }

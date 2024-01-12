@@ -4,8 +4,30 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkGeneratedCommandsInfoNV
+final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "pipelineBindPoint" => $this->getPipelineBindPoint(),
+          "pipeline" => $this->getPipeline(),
+          "indirectCommandsLayout" => $this->getIndirectCommandsLayout(),
+          "streamCount" => $this->getStreamCount(),
+          "pStreams" => $this->getPStreams(),
+          "sequencesCount" => $this->getSequencesCount(),
+          "preprocessBuffer" => $this->getPreprocessBuffer(),
+          "preprocessOffset" => $this->getPreprocessOffset(),
+          "preprocessSize" => $this->getPreprocessSize(),
+          "sequencesCountBuffer" => $this->getSequencesCountBuffer(),
+          "sequencesCountOffset" => $this->getSequencesCountOffset(),
+          "sequencesIndexBuffer" => $this->getSequencesIndexBuffer(),
+          "sequencesIndexOffset" => $this->getSequencesIndexOffset(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +35,7 @@ final class VkGeneratedCommandsInfoNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +58,7 @@ final class VkGeneratedCommandsInfoNV
         null|int $sequencesIndexOffset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkGeneratedCommandsInfoNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkGeneratedCommandsInfoNV', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pipelineBindPoint)) $self->setPipelineBindPoint($pipelineBindPoint);
@@ -60,7 +82,7 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -68,7 +90,7 @@ final class VkGeneratedCommandsInfoNV
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -78,15 +100,15 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -96,7 +118,7 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getPipelineBindPoint(): \iggyvolz\vulkan\enum\VkPipelineBindPoint
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineBindPoint;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineBindPoint::from($cValue);
         return $phpValue;
@@ -104,7 +126,7 @@ final class VkGeneratedCommandsInfoNV
 
     public function setPipelineBindPoint(\iggyvolz\vulkan\enum\VkPipelineBindPoint $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->pipelineBindPoint = $cValue;
     }
@@ -114,7 +136,7 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getPipeline(): VkPipeline
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipeline;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipeline($cValue, $ffi);
         return $phpValue;
@@ -122,7 +144,7 @@ final class VkGeneratedCommandsInfoNV
 
     public function setPipeline(VkPipeline $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pipeline = $cValue;
     }
@@ -132,7 +154,7 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getIndirectCommandsLayout(): VkIndirectCommandsLayoutNV
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indirectCommandsLayout;
         $phpValue = new \iggyvolz\vulkan\struct\VkIndirectCommandsLayoutNV($cValue, $ffi);
         return $phpValue;
@@ -140,7 +162,7 @@ final class VkGeneratedCommandsInfoNV
 
     public function setIndirectCommandsLayout(VkIndirectCommandsLayoutNV $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->indirectCommandsLayout = $cValue;
     }
@@ -150,7 +172,7 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getStreamCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->streamCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -158,7 +180,7 @@ final class VkGeneratedCommandsInfoNV
 
     public function setStreamCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->streamCount = $cValue;
     }
@@ -168,15 +190,15 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getPStreams(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pStreams;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkIndirectCommandsStreamNV', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkIndirectCommandsStreamNV', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPStreams(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pStreams = $cValue;
     }
@@ -186,7 +208,7 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getSequencesCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sequencesCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -194,7 +216,7 @@ final class VkGeneratedCommandsInfoNV
 
     public function setSequencesCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sequencesCount = $cValue;
     }
@@ -204,7 +226,7 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getPreprocessBuffer(): VkBuffer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preprocessBuffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -212,7 +234,7 @@ final class VkGeneratedCommandsInfoNV
 
     public function setPreprocessBuffer(VkBuffer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->preprocessBuffer = $cValue;
     }
@@ -222,7 +244,7 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getPreprocessOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preprocessOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -230,7 +252,7 @@ final class VkGeneratedCommandsInfoNV
 
     public function setPreprocessOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->preprocessOffset = $cValue;
     }
@@ -240,7 +262,7 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getPreprocessSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preprocessSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -248,7 +270,7 @@ final class VkGeneratedCommandsInfoNV
 
     public function setPreprocessSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->preprocessSize = $cValue;
     }
@@ -258,7 +280,7 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getSequencesCountBuffer(): VkBuffer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sequencesCountBuffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -266,7 +288,7 @@ final class VkGeneratedCommandsInfoNV
 
     public function setSequencesCountBuffer(VkBuffer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->sequencesCountBuffer = $cValue;
     }
@@ -276,7 +298,7 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getSequencesCountOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sequencesCountOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -284,7 +306,7 @@ final class VkGeneratedCommandsInfoNV
 
     public function setSequencesCountOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sequencesCountOffset = $cValue;
     }
@@ -294,7 +316,7 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getSequencesIndexBuffer(): VkBuffer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sequencesIndexBuffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -302,7 +324,7 @@ final class VkGeneratedCommandsInfoNV
 
     public function setSequencesIndexBuffer(VkBuffer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->sequencesIndexBuffer = $cValue;
     }
@@ -312,7 +334,7 @@ final class VkGeneratedCommandsInfoNV
      */
     public function getSequencesIndexOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sequencesIndexOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -320,7 +342,7 @@ final class VkGeneratedCommandsInfoNV
 
     public function setSequencesIndexOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sequencesIndexOffset = $cValue;
     }

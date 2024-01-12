@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkColorBlendAdvancedEXT
+final class VkColorBlendAdvancedEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "advancedBlendOp" => $this->getAdvancedBlendOp(),
+          "srcPremultiplied" => $this->getSrcPremultiplied(),
+          "dstPremultiplied" => $this->getDstPremultiplied(),
+          "blendOverlap" => $this->getBlendOverlap(),
+          "clampResults" => $this->getClampResults(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkColorBlendAdvancedEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkColorBlendAdvancedEXT
         null|bool $clampResults = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkColorBlendAdvancedEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkColorBlendAdvancedEXT', false), $vulkan);
         if(!is_null($advancedBlendOp)) $self->setAdvancedBlendOp($advancedBlendOp);
         if(!is_null($srcPremultiplied)) $self->setSrcPremultiplied($srcPremultiplied);
         if(!is_null($dstPremultiplied)) $self->setDstPremultiplied($dstPremultiplied);
@@ -40,7 +52,7 @@ final class VkColorBlendAdvancedEXT
      */
     public function getAdvancedBlendOp(): \iggyvolz\vulkan\enum\VkBlendOp
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->advancedBlendOp;
         $phpValue = \iggyvolz\vulkan\enum\VkBlendOp::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkColorBlendAdvancedEXT
 
     public function setAdvancedBlendOp(\iggyvolz\vulkan\enum\VkBlendOp $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->advancedBlendOp = $cValue;
     }
@@ -58,7 +70,7 @@ final class VkColorBlendAdvancedEXT
      */
     public function getSrcPremultiplied(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcPremultiplied;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -66,7 +78,7 @@ final class VkColorBlendAdvancedEXT
 
     public function setSrcPremultiplied(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->srcPremultiplied = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkColorBlendAdvancedEXT
      */
     public function getDstPremultiplied(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstPremultiplied;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkColorBlendAdvancedEXT
 
     public function setDstPremultiplied(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->dstPremultiplied = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkColorBlendAdvancedEXT
      */
     public function getBlendOverlap(): \iggyvolz\vulkan\enum\VkBlendOverlapEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->blendOverlap;
         $phpValue = \iggyvolz\vulkan\enum\VkBlendOverlapEXT::from($cValue);
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkColorBlendAdvancedEXT
 
     public function setBlendOverlap(\iggyvolz\vulkan\enum\VkBlendOverlapEXT $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->blendOverlap = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkColorBlendAdvancedEXT
      */
     public function getClampResults(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->clampResults;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkColorBlendAdvancedEXT
 
     public function setClampResults(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->clampResults = $cValue;
     }

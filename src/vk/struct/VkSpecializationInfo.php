@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSpecializationInfo
+final class VkSpecializationInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "mapEntryCount" => $this->getMapEntryCount(),
+          "pMapEntries" => $this->getPMapEntries(),
+          "dataSize" => $this->getDataSize(),
+          "pData" => $this->getPData(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +24,7 @@ final class VkSpecializationInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -25,7 +36,7 @@ final class VkSpecializationInfo
         null|\iggyvolz\vulkan\util\Pointer $pData = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSpecializationInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSpecializationInfo', false), $vulkan);
         if(!is_null($mapEntryCount)) $self->setMapEntryCount($mapEntryCount);
         if(!is_null($pMapEntries)) $self->setPMapEntries($pMapEntries);
         if(!is_null($dataSize)) $self->setDataSize($dataSize);
@@ -38,7 +49,7 @@ final class VkSpecializationInfo
      */
     public function getMapEntryCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mapEntryCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -46,7 +57,7 @@ final class VkSpecializationInfo
 
     public function setMapEntryCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->mapEntryCount = $cValue;
     }
@@ -56,15 +67,15 @@ final class VkSpecializationInfo
      */
     public function getPMapEntries(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pMapEntries;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSpecializationMapEntry', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSpecializationMapEntry', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPMapEntries(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pMapEntries = $cValue;
     }
@@ -74,7 +85,7 @@ final class VkSpecializationInfo
      */
     public function getDataSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dataSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -82,7 +93,7 @@ final class VkSpecializationInfo
 
     public function setDataSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dataSize = $cValue;
     }
@@ -92,15 +103,15 @@ final class VkSpecializationInfo
      */
     public function getPData(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pData;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPData(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pData = $cValue;
     }

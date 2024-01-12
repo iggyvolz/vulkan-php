@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkMultiDrawInfoEXT
+final class VkMultiDrawInfoEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "firstVertex" => $this->getFirstVertex(),
+          "vertexCount" => $this->getVertexCount(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkMultiDrawInfoEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkMultiDrawInfoEXT
         null|int $vertexCount = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkMultiDrawInfoEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkMultiDrawInfoEXT', false), $vulkan);
         if(!is_null($firstVertex)) $self->setFirstVertex($firstVertex);
         if(!is_null($vertexCount)) $self->setVertexCount($vertexCount);
         return $self;
@@ -34,7 +43,7 @@ final class VkMultiDrawInfoEXT
      */
     public function getFirstVertex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->firstVertex;
         $phpValue = $cValue;
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkMultiDrawInfoEXT
 
     public function setFirstVertex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->firstVertex = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkMultiDrawInfoEXT
      */
     public function getVertexCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkMultiDrawInfoEXT
 
     public function setVertexCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexCount = $cValue;
     }

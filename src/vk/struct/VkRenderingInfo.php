@@ -4,8 +4,25 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkRenderingInfo
+final class VkRenderingInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "renderArea" => $this->getRenderArea(),
+          "layerCount" => $this->getLayerCount(),
+          "viewMask" => $this->getViewMask(),
+          "colorAttachmentCount" => $this->getColorAttachmentCount(),
+          "pColorAttachments" => $this->getPColorAttachments(),
+          "pDepthAttachment" => $this->getPDepthAttachment(),
+          "pStencilAttachment" => $this->getPStencilAttachment(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +30,7 @@ final class VkRenderingInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -31,7 +48,7 @@ final class VkRenderingInfo
         null|\iggyvolz\vulkan\util\Pointer $pStencilAttachment = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkRenderingInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkRenderingInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -50,7 +67,7 @@ final class VkRenderingInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -58,7 +75,7 @@ final class VkRenderingInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -68,15 +85,15 @@ final class VkRenderingInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -86,7 +103,7 @@ final class VkRenderingInfo
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkRenderingFlagBits::fromInt($cValue);
         return $phpValue;
@@ -94,7 +111,7 @@ final class VkRenderingInfo
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkRenderingFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -104,7 +121,7 @@ final class VkRenderingInfo
      */
     public function getRenderArea(): VkRect2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->renderArea;
         $phpValue = new \iggyvolz\vulkan\struct\VkRect2D($cValue, $ffi);
         return $phpValue;
@@ -112,7 +129,7 @@ final class VkRenderingInfo
 
     public function setRenderArea(VkRect2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->renderArea = $cValue;
     }
@@ -122,7 +139,7 @@ final class VkRenderingInfo
      */
     public function getLayerCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layerCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -130,7 +147,7 @@ final class VkRenderingInfo
 
     public function setLayerCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->layerCount = $cValue;
     }
@@ -140,7 +157,7 @@ final class VkRenderingInfo
      */
     public function getViewMask(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->viewMask;
         $phpValue = $cValue;
         return $phpValue;
@@ -148,7 +165,7 @@ final class VkRenderingInfo
 
     public function setViewMask(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->viewMask = $cValue;
     }
@@ -158,7 +175,7 @@ final class VkRenderingInfo
      */
     public function getColorAttachmentCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->colorAttachmentCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -166,7 +183,7 @@ final class VkRenderingInfo
 
     public function setColorAttachmentCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->colorAttachmentCount = $cValue;
     }
@@ -176,15 +193,15 @@ final class VkRenderingInfo
      */
     public function getPColorAttachments(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pColorAttachments;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPColorAttachments(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pColorAttachments = $cValue;
     }
@@ -194,15 +211,15 @@ final class VkRenderingInfo
      */
     public function getPDepthAttachment(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDepthAttachment;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPDepthAttachment(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDepthAttachment = $cValue;
     }
@@ -212,15 +229,15 @@ final class VkRenderingInfo
      */
     public function getPStencilAttachment(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pStencilAttachment;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPStencilAttachment(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pStencilAttachment = $cValue;
     }

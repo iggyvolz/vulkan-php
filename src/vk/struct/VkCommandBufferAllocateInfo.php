@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkCommandBufferAllocateInfo
+final class VkCommandBufferAllocateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "commandPool" => $this->getCommandPool(),
+          "level" => $this->getLevel(),
+          "commandBufferCount" => $this->getCommandBufferCount(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkCommandBufferAllocateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkCommandBufferAllocateInfo
         null|int $commandBufferCount = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCommandBufferAllocateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkCommandBufferAllocateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($commandPool)) $self->setCommandPool($commandPool);
@@ -40,7 +52,7 @@ final class VkCommandBufferAllocateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkCommandBufferAllocateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkCommandBufferAllocateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkCommandBufferAllocateInfo
      */
     public function getCommandPool(): VkCommandPool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->commandPool;
         $phpValue = new \iggyvolz\vulkan\struct\VkCommandPool($cValue, $ffi);
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkCommandBufferAllocateInfo
 
     public function setCommandPool(VkCommandPool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->commandPool = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkCommandBufferAllocateInfo
      */
     public function getLevel(): \iggyvolz\vulkan\enum\VkCommandBufferLevel
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->level;
         $phpValue = \iggyvolz\vulkan\enum\VkCommandBufferLevel::from($cValue);
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkCommandBufferAllocateInfo
 
     public function setLevel(\iggyvolz\vulkan\enum\VkCommandBufferLevel $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->level = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkCommandBufferAllocateInfo
      */
     public function getCommandBufferCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->commandBufferCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkCommandBufferAllocateInfo
 
     public function setCommandBufferCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->commandBufferCount = $cValue;
     }

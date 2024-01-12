@@ -4,8 +4,26 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
+final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "primitiveOverestimationSize" => $this->getPrimitiveOverestimationSize(),
+          "maxExtraPrimitiveOverestimationSize" => $this->getMaxExtraPrimitiveOverestimationSize(),
+          "extraPrimitiveOverestimationSizeGranularity" => $this->getExtraPrimitiveOverestimationSizeGranularity(),
+          "primitiveUnderestimation" => $this->getPrimitiveUnderestimation(),
+          "conservativePointAndLineRasterization" => $this->getConservativePointAndLineRasterization(),
+          "degenerateTrianglesRasterized" => $this->getDegenerateTrianglesRasterized(),
+          "degenerateLinesRasterized" => $this->getDegenerateLinesRasterized(),
+          "fullyCoveredFragmentShaderInputVariable" => $this->getFullyCoveredFragmentShaderInputVariable(),
+          "conservativeRasterizationPostDepthCoverage" => $this->getConservativeRasterizationPostDepthCoverage(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +31,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +50,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
         null|bool $conservativeRasterizationPostDepthCoverage = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceConservativeRasterizationPropertiesEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceConservativeRasterizationPropertiesEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($primitiveOverestimationSize)) $self->setPrimitiveOverestimationSize($primitiveOverestimationSize);
@@ -52,7 +70,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +78,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,15 +88,15 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +106,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
      */
     public function getPrimitiveOverestimationSize(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->primitiveOverestimationSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +114,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
 
     public function setPrimitiveOverestimationSize(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->primitiveOverestimationSize = $cValue;
     }
@@ -106,7 +124,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
      */
     public function getMaxExtraPrimitiveOverestimationSize(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxExtraPrimitiveOverestimationSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +132,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
 
     public function setMaxExtraPrimitiveOverestimationSize(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxExtraPrimitiveOverestimationSize = $cValue;
     }
@@ -124,7 +142,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
      */
     public function getExtraPrimitiveOverestimationSizeGranularity(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extraPrimitiveOverestimationSizeGranularity;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +150,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
 
     public function setExtraPrimitiveOverestimationSizeGranularity(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->extraPrimitiveOverestimationSizeGranularity = $cValue;
     }
@@ -142,7 +160,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
      */
     public function getPrimitiveUnderestimation(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->primitiveUnderestimation;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -150,7 +168,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
 
     public function setPrimitiveUnderestimation(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->primitiveUnderestimation = $cValue;
     }
@@ -160,7 +178,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
      */
     public function getConservativePointAndLineRasterization(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->conservativePointAndLineRasterization;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -168,7 +186,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
 
     public function setConservativePointAndLineRasterization(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->conservativePointAndLineRasterization = $cValue;
     }
@@ -178,7 +196,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
      */
     public function getDegenerateTrianglesRasterized(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->degenerateTrianglesRasterized;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -186,7 +204,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
 
     public function setDegenerateTrianglesRasterized(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->degenerateTrianglesRasterized = $cValue;
     }
@@ -196,7 +214,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
      */
     public function getDegenerateLinesRasterized(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->degenerateLinesRasterized;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -204,7 +222,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
 
     public function setDegenerateLinesRasterized(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->degenerateLinesRasterized = $cValue;
     }
@@ -214,7 +232,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
      */
     public function getFullyCoveredFragmentShaderInputVariable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fullyCoveredFragmentShaderInputVariable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -222,7 +240,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
 
     public function setFullyCoveredFragmentShaderInputVariable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->fullyCoveredFragmentShaderInputVariable = $cValue;
     }
@@ -232,7 +250,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
      */
     public function getConservativeRasterizationPostDepthCoverage(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->conservativeRasterizationPostDepthCoverage;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -240,7 +258,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT
 
     public function setConservativeRasterizationPostDepthCoverage(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->conservativeRasterizationPostDepthCoverage = $cValue;
     }

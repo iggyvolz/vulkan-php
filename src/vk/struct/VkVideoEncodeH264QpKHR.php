@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkVideoEncodeH264QpKHR
+final class VkVideoEncodeH264QpKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "qpI" => $this->getQpI(),
+          "qpP" => $this->getQpP(),
+          "qpB" => $this->getQpB(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkVideoEncodeH264QpKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkVideoEncodeH264QpKHR
         null|int $qpB = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264QpKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264QpKHR', false), $vulkan);
         if(!is_null($qpI)) $self->setQpI($qpI);
         if(!is_null($qpP)) $self->setQpP($qpP);
         if(!is_null($qpB)) $self->setQpB($qpB);
@@ -36,7 +46,7 @@ final class VkVideoEncodeH264QpKHR
      */
     public function getQpI(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qpI;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkVideoEncodeH264QpKHR
 
     public function setQpI(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qpI = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkVideoEncodeH264QpKHR
      */
     public function getQpP(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qpP;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkVideoEncodeH264QpKHR
 
     public function setQpP(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qpP = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkVideoEncodeH264QpKHR
      */
     public function getQpB(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qpB;
         $phpValue = $cValue;
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkVideoEncodeH264QpKHR
 
     public function setQpB(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qpB = $cValue;
     }

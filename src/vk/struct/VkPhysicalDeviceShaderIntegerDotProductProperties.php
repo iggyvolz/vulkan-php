@@ -4,8 +4,47 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceShaderIntegerDotProductProperties
+final class VkPhysicalDeviceShaderIntegerDotProductProperties implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "integerDotProduct8BitUnsignedAccelerated" => $this->getIntegerDotProduct8BitUnsignedAccelerated(),
+          "integerDotProduct8BitSignedAccelerated" => $this->getIntegerDotProduct8BitSignedAccelerated(),
+          "integerDotProduct8BitMixedSignednessAccelerated" => $this->getIntegerDotProduct8BitMixedSignednessAccelerated(),
+          "integerDotProduct4x8BitPackedUnsignedAccelerated" => $this->getIntegerDotProduct4x8BitPackedUnsignedAccelerated(),
+          "integerDotProduct4x8BitPackedSignedAccelerated" => $this->getIntegerDotProduct4x8BitPackedSignedAccelerated(),
+          "integerDotProduct4x8BitPackedMixedSignednessAccelerated" => $this->getIntegerDotProduct4x8BitPackedMixedSignednessAccelerated(),
+          "integerDotProduct16BitUnsignedAccelerated" => $this->getIntegerDotProduct16BitUnsignedAccelerated(),
+          "integerDotProduct16BitSignedAccelerated" => $this->getIntegerDotProduct16BitSignedAccelerated(),
+          "integerDotProduct16BitMixedSignednessAccelerated" => $this->getIntegerDotProduct16BitMixedSignednessAccelerated(),
+          "integerDotProduct32BitUnsignedAccelerated" => $this->getIntegerDotProduct32BitUnsignedAccelerated(),
+          "integerDotProduct32BitSignedAccelerated" => $this->getIntegerDotProduct32BitSignedAccelerated(),
+          "integerDotProduct32BitMixedSignednessAccelerated" => $this->getIntegerDotProduct32BitMixedSignednessAccelerated(),
+          "integerDotProduct64BitUnsignedAccelerated" => $this->getIntegerDotProduct64BitUnsignedAccelerated(),
+          "integerDotProduct64BitSignedAccelerated" => $this->getIntegerDotProduct64BitSignedAccelerated(),
+          "integerDotProduct64BitMixedSignednessAccelerated" => $this->getIntegerDotProduct64BitMixedSignednessAccelerated(),
+          "integerDotProductAccumulatingSaturating8BitUnsignedAccelerated" => $this->getIntegerDotProductAccumulatingSaturating8BitUnsignedAccelerated(),
+          "integerDotProductAccumulatingSaturating8BitSignedAccelerated" => $this->getIntegerDotProductAccumulatingSaturating8BitSignedAccelerated(),
+          "integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated" => $this->getIntegerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(),
+          "integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated" => $this->getIntegerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(),
+          "integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated" => $this->getIntegerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(),
+          "integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated" => $this->getIntegerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(),
+          "integerDotProductAccumulatingSaturating16BitUnsignedAccelerated" => $this->getIntegerDotProductAccumulatingSaturating16BitUnsignedAccelerated(),
+          "integerDotProductAccumulatingSaturating16BitSignedAccelerated" => $this->getIntegerDotProductAccumulatingSaturating16BitSignedAccelerated(),
+          "integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated" => $this->getIntegerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(),
+          "integerDotProductAccumulatingSaturating32BitUnsignedAccelerated" => $this->getIntegerDotProductAccumulatingSaturating32BitUnsignedAccelerated(),
+          "integerDotProductAccumulatingSaturating32BitSignedAccelerated" => $this->getIntegerDotProductAccumulatingSaturating32BitSignedAccelerated(),
+          "integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated" => $this->getIntegerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(),
+          "integerDotProductAccumulatingSaturating64BitUnsignedAccelerated" => $this->getIntegerDotProductAccumulatingSaturating64BitUnsignedAccelerated(),
+          "integerDotProductAccumulatingSaturating64BitSignedAccelerated" => $this->getIntegerDotProductAccumulatingSaturating64BitSignedAccelerated(),
+          "integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated" => $this->getIntegerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +52,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -53,7 +92,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
         null|bool $integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderIntegerDotProductProperties', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderIntegerDotProductProperties', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($integerDotProduct8BitUnsignedAccelerated)) $self->setIntegerDotProduct8BitUnsignedAccelerated($integerDotProduct8BitUnsignedAccelerated);
@@ -94,7 +133,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -102,7 +141,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -112,15 +151,15 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -130,7 +169,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct8BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct8BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -138,7 +177,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct8BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct8BitUnsignedAccelerated = $cValue;
     }
@@ -148,7 +187,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct8BitSignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct8BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -156,7 +195,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct8BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct8BitSignedAccelerated = $cValue;
     }
@@ -166,7 +205,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct8BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct8BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -174,7 +213,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct8BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct8BitMixedSignednessAccelerated = $cValue;
     }
@@ -184,7 +223,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct4x8BitPackedUnsignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct4x8BitPackedUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -192,7 +231,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct4x8BitPackedUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct4x8BitPackedUnsignedAccelerated = $cValue;
     }
@@ -202,7 +241,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct4x8BitPackedSignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct4x8BitPackedSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -210,7 +249,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct4x8BitPackedSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct4x8BitPackedSignedAccelerated = $cValue;
     }
@@ -220,7 +259,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct4x8BitPackedMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct4x8BitPackedMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -228,7 +267,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct4x8BitPackedMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct4x8BitPackedMixedSignednessAccelerated = $cValue;
     }
@@ -238,7 +277,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct16BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct16BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -246,7 +285,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct16BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct16BitUnsignedAccelerated = $cValue;
     }
@@ -256,7 +295,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct16BitSignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct16BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -264,7 +303,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct16BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct16BitSignedAccelerated = $cValue;
     }
@@ -274,7 +313,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct16BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct16BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -282,7 +321,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct16BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct16BitMixedSignednessAccelerated = $cValue;
     }
@@ -292,7 +331,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct32BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct32BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -300,7 +339,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct32BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct32BitUnsignedAccelerated = $cValue;
     }
@@ -310,7 +349,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct32BitSignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct32BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -318,7 +357,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct32BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct32BitSignedAccelerated = $cValue;
     }
@@ -328,7 +367,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct32BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct32BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -336,7 +375,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct32BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct32BitMixedSignednessAccelerated = $cValue;
     }
@@ -346,7 +385,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct64BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct64BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -354,7 +393,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct64BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct64BitUnsignedAccelerated = $cValue;
     }
@@ -364,7 +403,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct64BitSignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct64BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -372,7 +411,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct64BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct64BitSignedAccelerated = $cValue;
     }
@@ -382,7 +421,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProduct64BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct64BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -390,7 +429,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProduct64BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct64BitMixedSignednessAccelerated = $cValue;
     }
@@ -400,7 +439,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating8BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating8BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -408,7 +447,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProductAccumulatingSaturating8BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating8BitUnsignedAccelerated = $cValue;
     }
@@ -418,7 +457,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating8BitSignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating8BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -426,7 +465,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProductAccumulatingSaturating8BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating8BitSignedAccelerated = $cValue;
     }
@@ -436,7 +475,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -444,7 +483,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated = $cValue;
     }
@@ -454,7 +493,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -462,7 +501,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated = $cValue;
     }
@@ -472,7 +511,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -480,7 +519,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated = $cValue;
     }
@@ -490,7 +529,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -500,7 +539,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
         bool $phpValue,
     ): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = $cValue;
     }
@@ -510,7 +549,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating16BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating16BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -518,7 +557,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProductAccumulatingSaturating16BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating16BitUnsignedAccelerated = $cValue;
     }
@@ -528,7 +567,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating16BitSignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating16BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -536,7 +575,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProductAccumulatingSaturating16BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating16BitSignedAccelerated = $cValue;
     }
@@ -546,7 +585,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -554,7 +593,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated = $cValue;
     }
@@ -564,7 +603,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating32BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating32BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -572,7 +611,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProductAccumulatingSaturating32BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating32BitUnsignedAccelerated = $cValue;
     }
@@ -582,7 +621,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating32BitSignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating32BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -590,7 +629,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProductAccumulatingSaturating32BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating32BitSignedAccelerated = $cValue;
     }
@@ -600,7 +639,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -608,7 +647,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated = $cValue;
     }
@@ -618,7 +657,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating64BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating64BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -626,7 +665,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProductAccumulatingSaturating64BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating64BitUnsignedAccelerated = $cValue;
     }
@@ -636,7 +675,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating64BitSignedAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating64BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -644,7 +683,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProductAccumulatingSaturating64BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating64BitSignedAccelerated = $cValue;
     }
@@ -654,7 +693,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
      */
     public function getIntegerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -662,7 +701,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties
 
     public function setIntegerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = $cValue;
     }

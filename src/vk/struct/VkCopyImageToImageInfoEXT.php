@@ -4,8 +4,24 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkCopyImageToImageInfoEXT
+final class VkCopyImageToImageInfoEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "srcImage" => $this->getSrcImage(),
+          "srcImageLayout" => $this->getSrcImageLayout(),
+          "dstImage" => $this->getDstImage(),
+          "dstImageLayout" => $this->getDstImageLayout(),
+          "regionCount" => $this->getRegionCount(),
+          "pRegions" => $this->getPRegions(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +29,7 @@ final class VkCopyImageToImageInfoEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -30,7 +46,7 @@ final class VkCopyImageToImageInfoEXT
         null|\iggyvolz\vulkan\util\ObjectPointer $pRegions = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCopyImageToImageInfoEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkCopyImageToImageInfoEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -48,7 +64,7 @@ final class VkCopyImageToImageInfoEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -56,7 +72,7 @@ final class VkCopyImageToImageInfoEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -66,15 +82,15 @@ final class VkCopyImageToImageInfoEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -84,7 +100,7 @@ final class VkCopyImageToImageInfoEXT
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkHostImageCopyFlagBitsEXT::fromInt($cValue);
         return $phpValue;
@@ -92,7 +108,7 @@ final class VkCopyImageToImageInfoEXT
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkHostImageCopyFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -102,7 +118,7 @@ final class VkCopyImageToImageInfoEXT
      */
     public function getSrcImage(): VkImage
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcImage;
         $phpValue = new \iggyvolz\vulkan\struct\VkImage($cValue, $ffi);
         return $phpValue;
@@ -110,7 +126,7 @@ final class VkCopyImageToImageInfoEXT
 
     public function setSrcImage(VkImage $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->srcImage = $cValue;
     }
@@ -120,7 +136,7 @@ final class VkCopyImageToImageInfoEXT
      */
     public function getSrcImageLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcImageLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -128,7 +144,7 @@ final class VkCopyImageToImageInfoEXT
 
     public function setSrcImageLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->srcImageLayout = $cValue;
     }
@@ -138,7 +154,7 @@ final class VkCopyImageToImageInfoEXT
      */
     public function getDstImage(): VkImage
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstImage;
         $phpValue = new \iggyvolz\vulkan\struct\VkImage($cValue, $ffi);
         return $phpValue;
@@ -146,7 +162,7 @@ final class VkCopyImageToImageInfoEXT
 
     public function setDstImage(VkImage $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->dstImage = $cValue;
     }
@@ -156,7 +172,7 @@ final class VkCopyImageToImageInfoEXT
      */
     public function getDstImageLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstImageLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -164,7 +180,7 @@ final class VkCopyImageToImageInfoEXT
 
     public function setDstImageLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->dstImageLayout = $cValue;
     }
@@ -174,7 +190,7 @@ final class VkCopyImageToImageInfoEXT
      */
     public function getRegionCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->regionCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -182,7 +198,7 @@ final class VkCopyImageToImageInfoEXT
 
     public function setRegionCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->regionCount = $cValue;
     }
@@ -192,15 +208,15 @@ final class VkCopyImageToImageInfoEXT
      */
     public function getPRegions(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pRegions;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImageCopy2', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImageCopy2', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPRegions(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pRegions = $cValue;
     }

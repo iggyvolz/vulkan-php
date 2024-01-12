@@ -4,8 +4,34 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
+final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "minFragmentShadingRateAttachmentTexelSize" => $this->getMinFragmentShadingRateAttachmentTexelSize(),
+          "maxFragmentShadingRateAttachmentTexelSize" => $this->getMaxFragmentShadingRateAttachmentTexelSize(),
+          "maxFragmentShadingRateAttachmentTexelSizeAspectRatio" => $this->getMaxFragmentShadingRateAttachmentTexelSizeAspectRatio(),
+          "primitiveFragmentShadingRateWithMultipleViewports" => $this->getPrimitiveFragmentShadingRateWithMultipleViewports(),
+          "layeredShadingRateAttachments" => $this->getLayeredShadingRateAttachments(),
+          "fragmentShadingRateNonTrivialCombinerOps" => $this->getFragmentShadingRateNonTrivialCombinerOps(),
+          "maxFragmentSize" => $this->getMaxFragmentSize(),
+          "maxFragmentSizeAspectRatio" => $this->getMaxFragmentSizeAspectRatio(),
+          "maxFragmentShadingRateCoverageSamples" => $this->getMaxFragmentShadingRateCoverageSamples(),
+          "maxFragmentShadingRateRasterizationSamples" => $this->getMaxFragmentShadingRateRasterizationSamples(),
+          "fragmentShadingRateWithShaderDepthStencilWrites" => $this->getFragmentShadingRateWithShaderDepthStencilWrites(),
+          "fragmentShadingRateWithSampleMask" => $this->getFragmentShadingRateWithSampleMask(),
+          "fragmentShadingRateWithShaderSampleMask" => $this->getFragmentShadingRateWithShaderSampleMask(),
+          "fragmentShadingRateWithConservativeRasterization" => $this->getFragmentShadingRateWithConservativeRasterization(),
+          "fragmentShadingRateWithFragmentShaderInterlock" => $this->getFragmentShadingRateWithFragmentShaderInterlock(),
+          "fragmentShadingRateWithCustomSampleLocations" => $this->getFragmentShadingRateWithCustomSampleLocations(),
+          "fragmentShadingRateStrictMultiplyCombiner" => $this->getFragmentShadingRateStrictMultiplyCombiner(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +39,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +66,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
         null|bool $fragmentShadingRateStrictMultiplyCombiner = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFragmentShadingRatePropertiesKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFragmentShadingRatePropertiesKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($minFragmentShadingRateAttachmentTexelSize)) $self->setMinFragmentShadingRateAttachmentTexelSize($minFragmentShadingRateAttachmentTexelSize);
@@ -68,7 +94,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -76,7 +102,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -86,15 +112,15 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -104,7 +130,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getMinFragmentShadingRateAttachmentTexelSize(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minFragmentShadingRateAttachmentTexelSize;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -112,7 +138,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setMinFragmentShadingRateAttachmentTexelSize(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->minFragmentShadingRateAttachmentTexelSize = $cValue;
     }
@@ -122,7 +148,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getMaxFragmentShadingRateAttachmentTexelSize(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFragmentShadingRateAttachmentTexelSize;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -130,7 +156,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setMaxFragmentShadingRateAttachmentTexelSize(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxFragmentShadingRateAttachmentTexelSize = $cValue;
     }
@@ -140,7 +166,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getMaxFragmentShadingRateAttachmentTexelSizeAspectRatio(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFragmentShadingRateAttachmentTexelSizeAspectRatio;
         $phpValue = $cValue;
         return $phpValue;
@@ -148,7 +174,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setMaxFragmentShadingRateAttachmentTexelSizeAspectRatio(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFragmentShadingRateAttachmentTexelSizeAspectRatio = $cValue;
     }
@@ -158,7 +184,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getPrimitiveFragmentShadingRateWithMultipleViewports(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->primitiveFragmentShadingRateWithMultipleViewports;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -166,7 +192,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setPrimitiveFragmentShadingRateWithMultipleViewports(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->primitiveFragmentShadingRateWithMultipleViewports = $cValue;
     }
@@ -176,7 +202,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getLayeredShadingRateAttachments(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layeredShadingRateAttachments;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -184,7 +210,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setLayeredShadingRateAttachments(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->layeredShadingRateAttachments = $cValue;
     }
@@ -194,7 +220,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getFragmentShadingRateNonTrivialCombinerOps(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fragmentShadingRateNonTrivialCombinerOps;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -202,7 +228,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setFragmentShadingRateNonTrivialCombinerOps(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->fragmentShadingRateNonTrivialCombinerOps = $cValue;
     }
@@ -212,7 +238,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getMaxFragmentSize(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFragmentSize;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -220,7 +246,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setMaxFragmentSize(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxFragmentSize = $cValue;
     }
@@ -230,7 +256,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getMaxFragmentSizeAspectRatio(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFragmentSizeAspectRatio;
         $phpValue = $cValue;
         return $phpValue;
@@ -238,7 +264,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setMaxFragmentSizeAspectRatio(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFragmentSizeAspectRatio = $cValue;
     }
@@ -248,7 +274,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getMaxFragmentShadingRateCoverageSamples(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFragmentShadingRateCoverageSamples;
         $phpValue = $cValue;
         return $phpValue;
@@ -256,7 +282,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setMaxFragmentShadingRateCoverageSamples(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFragmentShadingRateCoverageSamples = $cValue;
     }
@@ -266,7 +292,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getMaxFragmentShadingRateRasterizationSamples(): \iggyvolz\vulkan\enum\VkSampleCountFlagBits
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFragmentShadingRateRasterizationSamples;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::from($cValue);
         return $phpValue;
@@ -276,7 +302,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
         \iggyvolz\vulkan\enum\VkSampleCountFlagBits $phpValue,
     ): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->maxFragmentShadingRateRasterizationSamples = $cValue;
     }
@@ -286,7 +312,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getFragmentShadingRateWithShaderDepthStencilWrites(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fragmentShadingRateWithShaderDepthStencilWrites;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -294,7 +320,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setFragmentShadingRateWithShaderDepthStencilWrites(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->fragmentShadingRateWithShaderDepthStencilWrites = $cValue;
     }
@@ -304,7 +330,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getFragmentShadingRateWithSampleMask(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fragmentShadingRateWithSampleMask;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -312,7 +338,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setFragmentShadingRateWithSampleMask(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->fragmentShadingRateWithSampleMask = $cValue;
     }
@@ -322,7 +348,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getFragmentShadingRateWithShaderSampleMask(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fragmentShadingRateWithShaderSampleMask;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -330,7 +356,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setFragmentShadingRateWithShaderSampleMask(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->fragmentShadingRateWithShaderSampleMask = $cValue;
     }
@@ -340,7 +366,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getFragmentShadingRateWithConservativeRasterization(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fragmentShadingRateWithConservativeRasterization;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -348,7 +374,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setFragmentShadingRateWithConservativeRasterization(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->fragmentShadingRateWithConservativeRasterization = $cValue;
     }
@@ -358,7 +384,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getFragmentShadingRateWithFragmentShaderInterlock(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fragmentShadingRateWithFragmentShaderInterlock;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -366,7 +392,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setFragmentShadingRateWithFragmentShaderInterlock(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->fragmentShadingRateWithFragmentShaderInterlock = $cValue;
     }
@@ -376,7 +402,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getFragmentShadingRateWithCustomSampleLocations(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fragmentShadingRateWithCustomSampleLocations;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -384,7 +410,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setFragmentShadingRateWithCustomSampleLocations(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->fragmentShadingRateWithCustomSampleLocations = $cValue;
     }
@@ -394,7 +420,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
      */
     public function getFragmentShadingRateStrictMultiplyCombiner(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fragmentShadingRateStrictMultiplyCombiner;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -402,7 +428,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 
     public function setFragmentShadingRateStrictMultiplyCombiner(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->fragmentShadingRateStrictMultiplyCombiner = $cValue;
     }

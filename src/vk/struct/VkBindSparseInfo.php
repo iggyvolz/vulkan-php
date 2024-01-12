@@ -4,8 +4,27 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkBindSparseInfo
+final class VkBindSparseInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "waitSemaphoreCount" => $this->getWaitSemaphoreCount(),
+          "pWaitSemaphores" => $this->getPWaitSemaphores(),
+          "bufferBindCount" => $this->getBufferBindCount(),
+          "pBufferBinds" => $this->getPBufferBinds(),
+          "imageOpaqueBindCount" => $this->getImageOpaqueBindCount(),
+          "pImageOpaqueBinds" => $this->getPImageOpaqueBinds(),
+          "imageBindCount" => $this->getImageBindCount(),
+          "pImageBinds" => $this->getPImageBinds(),
+          "signalSemaphoreCount" => $this->getSignalSemaphoreCount(),
+          "pSignalSemaphores" => $this->getPSignalSemaphores(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +32,7 @@ final class VkBindSparseInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -33,7 +52,7 @@ final class VkBindSparseInfo
         null|\iggyvolz\vulkan\util\ObjectPointer $pSignalSemaphores = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBindSparseInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkBindSparseInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($waitSemaphoreCount)) $self->setWaitSemaphoreCount($waitSemaphoreCount);
@@ -54,7 +73,7 @@ final class VkBindSparseInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -62,7 +81,7 @@ final class VkBindSparseInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -72,15 +91,15 @@ final class VkBindSparseInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -90,7 +109,7 @@ final class VkBindSparseInfo
      */
     public function getWaitSemaphoreCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->waitSemaphoreCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -98,7 +117,7 @@ final class VkBindSparseInfo
 
     public function setWaitSemaphoreCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->waitSemaphoreCount = $cValue;
     }
@@ -108,15 +127,15 @@ final class VkBindSparseInfo
      */
     public function getPWaitSemaphores(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pWaitSemaphores;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSemaphore', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSemaphore', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPWaitSemaphores(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pWaitSemaphores = $cValue;
     }
@@ -126,7 +145,7 @@ final class VkBindSparseInfo
      */
     public function getBufferBindCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferBindCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -134,7 +153,7 @@ final class VkBindSparseInfo
 
     public function setBufferBindCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferBindCount = $cValue;
     }
@@ -144,15 +163,15 @@ final class VkBindSparseInfo
      */
     public function getPBufferBinds(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pBufferBinds;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSparseBufferMemoryBindInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSparseBufferMemoryBindInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPBufferBinds(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pBufferBinds = $cValue;
     }
@@ -162,7 +181,7 @@ final class VkBindSparseInfo
      */
     public function getImageOpaqueBindCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageOpaqueBindCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -170,7 +189,7 @@ final class VkBindSparseInfo
 
     public function setImageOpaqueBindCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageOpaqueBindCount = $cValue;
     }
@@ -180,15 +199,15 @@ final class VkBindSparseInfo
      */
     public function getPImageOpaqueBinds(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pImageOpaqueBinds;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSparseImageOpaqueMemoryBindInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSparseImageOpaqueMemoryBindInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPImageOpaqueBinds(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pImageOpaqueBinds = $cValue;
     }
@@ -198,7 +217,7 @@ final class VkBindSparseInfo
      */
     public function getImageBindCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageBindCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -206,7 +225,7 @@ final class VkBindSparseInfo
 
     public function setImageBindCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageBindCount = $cValue;
     }
@@ -216,15 +235,15 @@ final class VkBindSparseInfo
      */
     public function getPImageBinds(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pImageBinds;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSparseImageMemoryBindInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSparseImageMemoryBindInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPImageBinds(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pImageBinds = $cValue;
     }
@@ -234,7 +253,7 @@ final class VkBindSparseInfo
      */
     public function getSignalSemaphoreCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->signalSemaphoreCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -242,7 +261,7 @@ final class VkBindSparseInfo
 
     public function setSignalSemaphoreCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->signalSemaphoreCount = $cValue;
     }
@@ -252,15 +271,15 @@ final class VkBindSparseInfo
      */
     public function getPSignalSemaphores(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pSignalSemaphores;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSemaphore', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSemaphore', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPSignalSemaphores(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pSignalSemaphores = $cValue;
     }

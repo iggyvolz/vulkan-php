@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDeviceFaultAddressInfoEXT
+final class VkDeviceFaultAddressInfoEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "addressType" => $this->getAddressType(),
+          "reportedAddress" => $this->getReportedAddress(),
+          "addressPrecision" => $this->getAddressPrecision(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkDeviceFaultAddressInfoEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkDeviceFaultAddressInfoEXT
         null|int $addressPrecision = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceFaultAddressInfoEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDeviceFaultAddressInfoEXT', false), $vulkan);
         if(!is_null($addressType)) $self->setAddressType($addressType);
         if(!is_null($reportedAddress)) $self->setReportedAddress($reportedAddress);
         if(!is_null($addressPrecision)) $self->setAddressPrecision($addressPrecision);
@@ -36,7 +46,7 @@ final class VkDeviceFaultAddressInfoEXT
      */
     public function getAddressType(): \iggyvolz\vulkan\enum\VkDeviceFaultAddressTypeEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->addressType;
         $phpValue = \iggyvolz\vulkan\enum\VkDeviceFaultAddressTypeEXT::from($cValue);
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkDeviceFaultAddressInfoEXT
 
     public function setAddressType(\iggyvolz\vulkan\enum\VkDeviceFaultAddressTypeEXT $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->addressType = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkDeviceFaultAddressInfoEXT
      */
     public function getReportedAddress(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->reportedAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkDeviceFaultAddressInfoEXT
 
     public function setReportedAddress(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->reportedAddress = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkDeviceFaultAddressInfoEXT
      */
     public function getAddressPrecision(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->addressPrecision;
         $phpValue = $cValue;
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkDeviceFaultAddressInfoEXT
 
     public function setAddressPrecision(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->addressPrecision = $cValue;
     }

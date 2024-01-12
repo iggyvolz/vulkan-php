@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDecompressMemoryRegionNV
+final class VkDecompressMemoryRegionNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "srcAddress" => $this->getSrcAddress(),
+          "dstAddress" => $this->getDstAddress(),
+          "compressedSize" => $this->getCompressedSize(),
+          "decompressedSize" => $this->getDecompressedSize(),
+          "decompressionMethod" => $this->getDecompressionMethod(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkDecompressMemoryRegionNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkDecompressMemoryRegionNV
         null|array $decompressionMethod = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDecompressMemoryRegionNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDecompressMemoryRegionNV', false), $vulkan);
         if(!is_null($srcAddress)) $self->setSrcAddress($srcAddress);
         if(!is_null($dstAddress)) $self->setDstAddress($dstAddress);
         if(!is_null($compressedSize)) $self->setCompressedSize($compressedSize);
@@ -40,7 +52,7 @@ final class VkDecompressMemoryRegionNV
      */
     public function getSrcAddress(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkDecompressMemoryRegionNV
 
     public function setSrcAddress(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->srcAddress = $cValue;
     }
@@ -58,7 +70,7 @@ final class VkDecompressMemoryRegionNV
      */
     public function getDstAddress(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -66,7 +78,7 @@ final class VkDecompressMemoryRegionNV
 
     public function setDstAddress(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstAddress = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkDecompressMemoryRegionNV
      */
     public function getCompressedSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->compressedSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkDecompressMemoryRegionNV
 
     public function setCompressedSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->compressedSize = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkDecompressMemoryRegionNV
      */
     public function getDecompressedSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->decompressedSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkDecompressMemoryRegionNV
 
     public function setDecompressedSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->decompressedSize = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkDecompressMemoryRegionNV
      */
     public function getDecompressionMethod(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->decompressionMethod;
         $phpValue = \iggyvolz\vulkan\enum\VkMemoryDecompressionMethodFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkDecompressMemoryRegionNV
 
     public function setDecompressionMethod(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkMemoryDecompressionMethodFlagBitsNV::toInt(...$phpValue);
         $this->cdata->decompressionMethod = $cValue;
     }

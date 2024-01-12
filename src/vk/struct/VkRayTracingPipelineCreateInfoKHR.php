@@ -4,8 +4,29 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkRayTracingPipelineCreateInfoKHR
+final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "stageCount" => $this->getStageCount(),
+          "pStages" => $this->getPStages(),
+          "groupCount" => $this->getGroupCount(),
+          "pGroups" => $this->getPGroups(),
+          "maxPipelineRayRecursionDepth" => $this->getMaxPipelineRayRecursionDepth(),
+          "pLibraryInfo" => $this->getPLibraryInfo(),
+          "pLibraryInterface" => $this->getPLibraryInterface(),
+          "pDynamicState" => $this->getPDynamicState(),
+          "layout" => $this->getLayout(),
+          "basePipelineHandle" => $this->getBasePipelineHandle(),
+          "basePipelineIndex" => $this->getBasePipelineIndex(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +34,7 @@ final class VkRayTracingPipelineCreateInfoKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -35,7 +56,7 @@ final class VkRayTracingPipelineCreateInfoKHR
         null|int $basePipelineIndex = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkRayTracingPipelineCreateInfoKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkRayTracingPipelineCreateInfoKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -58,7 +79,7 @@ final class VkRayTracingPipelineCreateInfoKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +87,7 @@ final class VkRayTracingPipelineCreateInfoKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,15 +97,15 @@ final class VkRayTracingPipelineCreateInfoKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +115,7 @@ final class VkRayTracingPipelineCreateInfoKHR
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -102,7 +123,7 @@ final class VkRayTracingPipelineCreateInfoKHR
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkPipelineCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -112,7 +133,7 @@ final class VkRayTracingPipelineCreateInfoKHR
      */
     public function getStageCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stageCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +141,7 @@ final class VkRayTracingPipelineCreateInfoKHR
 
     public function setStageCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stageCount = $cValue;
     }
@@ -130,15 +151,15 @@ final class VkRayTracingPipelineCreateInfoKHR
      */
     public function getPStages(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pStages;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineShaderStageCreateInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineShaderStageCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPStages(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pStages = $cValue;
     }
@@ -148,7 +169,7 @@ final class VkRayTracingPipelineCreateInfoKHR
      */
     public function getGroupCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->groupCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +177,7 @@ final class VkRayTracingPipelineCreateInfoKHR
 
     public function setGroupCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->groupCount = $cValue;
     }
@@ -166,15 +187,15 @@ final class VkRayTracingPipelineCreateInfoKHR
      */
     public function getPGroups(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pGroups;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRayTracingShaderGroupCreateInfoKHR', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRayTracingShaderGroupCreateInfoKHR', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPGroups(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pGroups = $cValue;
     }
@@ -184,7 +205,7 @@ final class VkRayTracingPipelineCreateInfoKHR
      */
     public function getMaxPipelineRayRecursionDepth(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPipelineRayRecursionDepth;
         $phpValue = $cValue;
         return $phpValue;
@@ -192,7 +213,7 @@ final class VkRayTracingPipelineCreateInfoKHR
 
     public function setMaxPipelineRayRecursionDepth(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPipelineRayRecursionDepth = $cValue;
     }
@@ -202,15 +223,15 @@ final class VkRayTracingPipelineCreateInfoKHR
      */
     public function getPLibraryInfo(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pLibraryInfo;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPLibraryInfo(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pLibraryInfo = $cValue;
     }
@@ -220,15 +241,15 @@ final class VkRayTracingPipelineCreateInfoKHR
      */
     public function getPLibraryInterface(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pLibraryInterface;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPLibraryInterface(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pLibraryInterface = $cValue;
     }
@@ -238,15 +259,15 @@ final class VkRayTracingPipelineCreateInfoKHR
      */
     public function getPDynamicState(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDynamicState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineDynamicStateCreateInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineDynamicStateCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPDynamicState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDynamicState = $cValue;
     }
@@ -256,7 +277,7 @@ final class VkRayTracingPipelineCreateInfoKHR
      */
     public function getLayout(): VkPipelineLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layout;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipelineLayout($cValue, $ffi);
         return $phpValue;
@@ -264,7 +285,7 @@ final class VkRayTracingPipelineCreateInfoKHR
 
     public function setLayout(VkPipelineLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->layout = $cValue;
     }
@@ -274,7 +295,7 @@ final class VkRayTracingPipelineCreateInfoKHR
      */
     public function getBasePipelineHandle(): VkPipeline
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->basePipelineHandle;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipeline($cValue, $ffi);
         return $phpValue;
@@ -282,7 +303,7 @@ final class VkRayTracingPipelineCreateInfoKHR
 
     public function setBasePipelineHandle(VkPipeline $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->basePipelineHandle = $cValue;
     }
@@ -292,7 +313,7 @@ final class VkRayTracingPipelineCreateInfoKHR
      */
     public function getBasePipelineIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->basePipelineIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -300,7 +321,7 @@ final class VkRayTracingPipelineCreateInfoKHR
 
     public function setBasePipelineIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->basePipelineIndex = $cValue;
     }

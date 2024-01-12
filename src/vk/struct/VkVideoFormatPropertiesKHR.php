@@ -4,8 +4,23 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkVideoFormatPropertiesKHR
+final class VkVideoFormatPropertiesKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "format" => $this->getFormat(),
+          "componentMapping" => $this->getComponentMapping(),
+          "imageCreateFlags" => $this->getImageCreateFlags(),
+          "imageType" => $this->getImageType(),
+          "imageTiling" => $this->getImageTiling(),
+          "imageUsageFlags" => $this->getImageUsageFlags(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +28,7 @@ final class VkVideoFormatPropertiesKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -29,7 +44,7 @@ final class VkVideoFormatPropertiesKHR
         null|array $imageUsageFlags = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoFormatPropertiesKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkVideoFormatPropertiesKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($format)) $self->setFormat($format);
@@ -46,7 +61,7 @@ final class VkVideoFormatPropertiesKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -54,7 +69,7 @@ final class VkVideoFormatPropertiesKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -64,15 +79,15 @@ final class VkVideoFormatPropertiesKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -82,7 +97,7 @@ final class VkVideoFormatPropertiesKHR
      */
     public function getFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -90,7 +105,7 @@ final class VkVideoFormatPropertiesKHR
 
     public function setFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->format = $cValue;
     }
@@ -100,7 +115,7 @@ final class VkVideoFormatPropertiesKHR
      */
     public function getComponentMapping(): VkComponentMapping
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->componentMapping;
         $phpValue = new \iggyvolz\vulkan\struct\VkComponentMapping($cValue, $ffi);
         return $phpValue;
@@ -108,7 +123,7 @@ final class VkVideoFormatPropertiesKHR
 
     public function setComponentMapping(VkComponentMapping $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->componentMapping = $cValue;
     }
@@ -118,7 +133,7 @@ final class VkVideoFormatPropertiesKHR
      */
     public function getImageCreateFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageCreateFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkImageCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -126,7 +141,7 @@ final class VkVideoFormatPropertiesKHR
 
     public function setImageCreateFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageCreateFlagBits::toInt(...$phpValue);
         $this->cdata->imageCreateFlags = $cValue;
     }
@@ -136,7 +151,7 @@ final class VkVideoFormatPropertiesKHR
      */
     public function getImageType(): \iggyvolz\vulkan\enum\VkImageType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageType;
         $phpValue = \iggyvolz\vulkan\enum\VkImageType::from($cValue);
         return $phpValue;
@@ -144,7 +159,7 @@ final class VkVideoFormatPropertiesKHR
 
     public function setImageType(\iggyvolz\vulkan\enum\VkImageType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->imageType = $cValue;
     }
@@ -154,7 +169,7 @@ final class VkVideoFormatPropertiesKHR
      */
     public function getImageTiling(): \iggyvolz\vulkan\enum\VkImageTiling
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageTiling;
         $phpValue = \iggyvolz\vulkan\enum\VkImageTiling::from($cValue);
         return $phpValue;
@@ -162,7 +177,7 @@ final class VkVideoFormatPropertiesKHR
 
     public function setImageTiling(\iggyvolz\vulkan\enum\VkImageTiling $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->imageTiling = $cValue;
     }
@@ -172,7 +187,7 @@ final class VkVideoFormatPropertiesKHR
      */
     public function getImageUsageFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageUsageFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -180,7 +195,7 @@ final class VkVideoFormatPropertiesKHR
 
     public function setImageUsageFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->imageUsageFlags = $cValue;
     }

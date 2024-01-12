@@ -4,8 +4,26 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkVideoEncodeH264QualityLevelPropertiesKHR
+final class VkVideoEncodeH264QualityLevelPropertiesKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "preferredRateControlFlags" => $this->getPreferredRateControlFlags(),
+          "preferredGopFrameCount" => $this->getPreferredGopFrameCount(),
+          "preferredIdrPeriod" => $this->getPreferredIdrPeriod(),
+          "preferredConsecutiveBFrameCount" => $this->getPreferredConsecutiveBFrameCount(),
+          "preferredTemporalLayerCount" => $this->getPreferredTemporalLayerCount(),
+          "preferredConstantQp" => $this->getPreferredConstantQp(),
+          "preferredMaxL0ReferenceCount" => $this->getPreferredMaxL0ReferenceCount(),
+          "preferredMaxL1ReferenceCount" => $this->getPreferredMaxL1ReferenceCount(),
+          "preferredStdEntropyCodingModeFlag" => $this->getPreferredStdEntropyCodingModeFlag(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +31,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +50,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
         null|bool $preferredStdEntropyCodingModeFlag = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264QualityLevelPropertiesKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264QualityLevelPropertiesKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($preferredRateControlFlags)) $self->setPreferredRateControlFlags($preferredRateControlFlags);
@@ -52,7 +70,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +78,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,15 +88,15 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +106,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
      */
     public function getPreferredRateControlFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preferredRateControlFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeH264RateControlFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -96,7 +114,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
 
     public function setPreferredRateControlFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeH264RateControlFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->preferredRateControlFlags = $cValue;
     }
@@ -106,7 +124,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
      */
     public function getPreferredGopFrameCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preferredGopFrameCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +132,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
 
     public function setPreferredGopFrameCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->preferredGopFrameCount = $cValue;
     }
@@ -124,7 +142,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
      */
     public function getPreferredIdrPeriod(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preferredIdrPeriod;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +150,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
 
     public function setPreferredIdrPeriod(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->preferredIdrPeriod = $cValue;
     }
@@ -142,7 +160,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
      */
     public function getPreferredConsecutiveBFrameCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preferredConsecutiveBFrameCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -150,7 +168,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
 
     public function setPreferredConsecutiveBFrameCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->preferredConsecutiveBFrameCount = $cValue;
     }
@@ -160,7 +178,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
      */
     public function getPreferredTemporalLayerCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preferredTemporalLayerCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -168,7 +186,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
 
     public function setPreferredTemporalLayerCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->preferredTemporalLayerCount = $cValue;
     }
@@ -178,7 +196,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
      */
     public function getPreferredConstantQp(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preferredConstantQp;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -186,7 +204,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
 
     public function setPreferredConstantQp(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->preferredConstantQp = $cValue;
     }
@@ -196,7 +214,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
      */
     public function getPreferredMaxL0ReferenceCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preferredMaxL0ReferenceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -204,7 +222,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
 
     public function setPreferredMaxL0ReferenceCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->preferredMaxL0ReferenceCount = $cValue;
     }
@@ -214,7 +232,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
      */
     public function getPreferredMaxL1ReferenceCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preferredMaxL1ReferenceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -222,7 +240,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
 
     public function setPreferredMaxL1ReferenceCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->preferredMaxL1ReferenceCount = $cValue;
     }
@@ -232,7 +250,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
      */
     public function getPreferredStdEntropyCodingModeFlag(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preferredStdEntropyCodingModeFlag;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -240,7 +258,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR
 
     public function setPreferredStdEntropyCodingModeFlag(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->preferredStdEntropyCodingModeFlag = $cValue;
     }

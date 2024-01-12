@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkClearDepthStencilValue
+final class VkClearDepthStencilValue implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "depth" => $this->getDepth(),
+          "stencil" => $this->getStencil(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkClearDepthStencilValue
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkClearDepthStencilValue
         null|int $stencil = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkClearDepthStencilValue', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkClearDepthStencilValue', false), $vulkan);
         if(!is_null($depth)) $self->setDepth($depth);
         if(!is_null($stencil)) $self->setStencil($stencil);
         return $self;
@@ -34,7 +43,7 @@ final class VkClearDepthStencilValue
      */
     public function getDepth(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depth;
         $phpValue = $cValue;
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkClearDepthStencilValue
 
     public function setDepth(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->depth = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkClearDepthStencilValue
      */
     public function getStencil(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stencil;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkClearDepthStencilValue
 
     public function setStencil(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stencil = $cValue;
     }

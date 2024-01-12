@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPresentTimeGOOGLE
+final class VkPresentTimeGOOGLE implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "presentID" => $this->getPresentID(),
+          "desiredPresentTime" => $this->getDesiredPresentTime(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkPresentTimeGOOGLE
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkPresentTimeGOOGLE
         null|int $desiredPresentTime = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPresentTimeGOOGLE', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPresentTimeGOOGLE', false), $vulkan);
         if(!is_null($presentID)) $self->setPresentID($presentID);
         if(!is_null($desiredPresentTime)) $self->setDesiredPresentTime($desiredPresentTime);
         return $self;
@@ -34,7 +43,7 @@ final class VkPresentTimeGOOGLE
      */
     public function getPresentID(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->presentID;
         $phpValue = $cValue;
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkPresentTimeGOOGLE
 
     public function setPresentID(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->presentID = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkPresentTimeGOOGLE
      */
     public function getDesiredPresentTime(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->desiredPresentTime;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkPresentTimeGOOGLE
 
     public function setDesiredPresentTime(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->desiredPresentTime = $cValue;
     }

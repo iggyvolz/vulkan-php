@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDrawMeshTasksIndirectCommandEXT
+final class VkDrawMeshTasksIndirectCommandEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "groupCountX" => $this->getGroupCountX(),
+          "groupCountY" => $this->getGroupCountY(),
+          "groupCountZ" => $this->getGroupCountZ(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkDrawMeshTasksIndirectCommandEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkDrawMeshTasksIndirectCommandEXT
         null|int $groupCountZ = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDrawMeshTasksIndirectCommandEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDrawMeshTasksIndirectCommandEXT', false), $vulkan);
         if(!is_null($groupCountX)) $self->setGroupCountX($groupCountX);
         if(!is_null($groupCountY)) $self->setGroupCountY($groupCountY);
         if(!is_null($groupCountZ)) $self->setGroupCountZ($groupCountZ);
@@ -36,7 +46,7 @@ final class VkDrawMeshTasksIndirectCommandEXT
      */
     public function getGroupCountX(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->groupCountX;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkDrawMeshTasksIndirectCommandEXT
 
     public function setGroupCountX(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->groupCountX = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkDrawMeshTasksIndirectCommandEXT
      */
     public function getGroupCountY(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->groupCountY;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkDrawMeshTasksIndirectCommandEXT
 
     public function setGroupCountY(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->groupCountY = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkDrawMeshTasksIndirectCommandEXT
      */
     public function getGroupCountZ(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->groupCountZ;
         $phpValue = $cValue;
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkDrawMeshTasksIndirectCommandEXT
 
     public function setGroupCountZ(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->groupCountZ = $cValue;
     }

@@ -4,8 +4,24 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkAccelerationStructureGeometryTrianglesDataKHR
+final class VkAccelerationStructureGeometryTrianglesDataKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "vertexFormat" => $this->getVertexFormat(),
+          "vertexData" => $this->getVertexData(),
+          "vertexStride" => $this->getVertexStride(),
+          "maxVertex" => $this->getMaxVertex(),
+          "indexType" => $this->getIndexType(),
+          "indexData" => $this->getIndexData(),
+          "transformData" => $this->getTransformData(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +29,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -30,7 +46,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
         mixed $transformData = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureGeometryTrianglesDataKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkAccelerationStructureGeometryTrianglesDataKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($vertexFormat)) $self->setVertexFormat($vertexFormat);
@@ -48,7 +64,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -56,7 +72,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -66,15 +82,15 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -84,7 +100,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
      */
     public function getVertexFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexFormat;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -92,7 +108,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
 
     public function setVertexFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->vertexFormat = $cValue;
     }
@@ -102,7 +118,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
      */
     public function getVertexData(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexData;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -110,7 +126,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
 
     public function setVertexData(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->vertexData = $cValue;
     }
@@ -120,7 +136,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
      */
     public function getVertexStride(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -128,7 +144,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
 
     public function setVertexStride(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexStride = $cValue;
     }
@@ -138,7 +154,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
      */
     public function getMaxVertex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxVertex;
         $phpValue = $cValue;
         return $phpValue;
@@ -146,7 +162,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
 
     public function setMaxVertex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxVertex = $cValue;
     }
@@ -156,7 +172,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
      */
     public function getIndexType(): \iggyvolz\vulkan\enum\VkIndexType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexType;
         $phpValue = \iggyvolz\vulkan\enum\VkIndexType::from($cValue);
         return $phpValue;
@@ -164,7 +180,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
 
     public function setIndexType(\iggyvolz\vulkan\enum\VkIndexType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->indexType = $cValue;
     }
@@ -174,7 +190,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
      */
     public function getIndexData(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexData;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -182,7 +198,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
 
     public function setIndexData(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->indexData = $cValue;
     }
@@ -192,7 +208,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
      */
     public function getTransformData(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformData;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -200,7 +216,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR
 
     public function setTransformData(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->transformData = $cValue;
     }

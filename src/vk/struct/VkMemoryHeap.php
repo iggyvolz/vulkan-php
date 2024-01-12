@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkMemoryHeap
+final class VkMemoryHeap implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "size" => $this->getSize(),
+          "flags" => $this->getFlags(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkMemoryHeap
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkMemoryHeap
         null|array $flags = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkMemoryHeap', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkMemoryHeap', false), $vulkan);
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($flags)) $self->setFlags($flags);
         return $self;
@@ -34,7 +43,7 @@ final class VkMemoryHeap
      */
     public function getSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkMemoryHeap
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkMemoryHeap
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkMemoryHeapFlagBits::fromInt($cValue);
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkMemoryHeap
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkMemoryHeapFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }

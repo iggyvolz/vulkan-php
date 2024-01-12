@@ -4,8 +4,25 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDeviceCreateInfo
+final class VkDeviceCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "queueCreateInfoCount" => $this->getQueueCreateInfoCount(),
+          "pQueueCreateInfos" => $this->getPQueueCreateInfos(),
+          "enabledLayerCount" => $this->getEnabledLayerCount(),
+          "ppEnabledLayerNames" => $this->getPpEnabledLayerNames(),
+          "enabledExtensionCount" => $this->getEnabledExtensionCount(),
+          "ppEnabledExtensionNames" => $this->getPpEnabledExtensionNames(),
+          "pEnabledFeatures" => $this->getPEnabledFeatures(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +30,7 @@ final class VkDeviceCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -31,7 +48,7 @@ final class VkDeviceCreateInfo
         null|\iggyvolz\vulkan\util\Pointer $pEnabledFeatures = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDeviceCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -50,7 +67,7 @@ final class VkDeviceCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -58,7 +75,7 @@ final class VkDeviceCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -68,15 +85,15 @@ final class VkDeviceCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -86,7 +103,7 @@ final class VkDeviceCreateInfo
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkDeviceCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -94,7 +111,7 @@ final class VkDeviceCreateInfo
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkDeviceCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -104,7 +121,7 @@ final class VkDeviceCreateInfo
      */
     public function getQueueCreateInfoCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->queueCreateInfoCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -112,7 +129,7 @@ final class VkDeviceCreateInfo
 
     public function setQueueCreateInfoCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->queueCreateInfoCount = $cValue;
     }
@@ -122,15 +139,15 @@ final class VkDeviceCreateInfo
      */
     public function getPQueueCreateInfos(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pQueueCreateInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDeviceQueueCreateInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDeviceQueueCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPQueueCreateInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pQueueCreateInfos = $cValue;
     }
@@ -140,7 +157,7 @@ final class VkDeviceCreateInfo
      */
     public function getEnabledLayerCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->enabledLayerCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -148,7 +165,7 @@ final class VkDeviceCreateInfo
 
     public function setEnabledLayerCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->enabledLayerCount = $cValue;
     }
@@ -158,15 +175,15 @@ final class VkDeviceCreateInfo
      */
     public function getPpEnabledLayerNames(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ppEnabledLayerNames;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPpEnabledLayerNames(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->ppEnabledLayerNames = $cValue;
     }
@@ -176,7 +193,7 @@ final class VkDeviceCreateInfo
      */
     public function getEnabledExtensionCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->enabledExtensionCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -184,7 +201,7 @@ final class VkDeviceCreateInfo
 
     public function setEnabledExtensionCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->enabledExtensionCount = $cValue;
     }
@@ -194,15 +211,15 @@ final class VkDeviceCreateInfo
      */
     public function getPpEnabledExtensionNames(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ppEnabledExtensionNames;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPpEnabledExtensionNames(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->ppEnabledExtensionNames = $cValue;
     }
@@ -212,15 +229,15 @@ final class VkDeviceCreateInfo
      */
     public function getPEnabledFeatures(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pEnabledFeatures;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPEnabledFeatures(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pEnabledFeatures = $cValue;
     }

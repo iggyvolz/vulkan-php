@@ -4,8 +4,26 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
+final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "headerSize" => $this->getHeaderSize(),
+          "headerVersion" => $this->getHeaderVersion(),
+          "vendorID" => $this->getVendorID(),
+          "deviceID" => $this->getDeviceID(),
+          "driverVersion" => $this->getDriverVersion(),
+          "pipelineCacheUUID" => $this->getPipelineCacheUUID(),
+          "applicationNameOffset" => $this->getApplicationNameOffset(),
+          "applicationVersion" => $this->getApplicationVersion(),
+          "engineNameOffset" => $this->getEngineNameOffset(),
+          "engineVersion" => $this->getEngineVersion(),
+          "apiVersion" => $this->getApiVersion(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +31,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +50,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
         null|int $apiVersion = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceFaultVendorBinaryHeaderVersionOneEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDeviceFaultVendorBinaryHeaderVersionOneEXT', false), $vulkan);
         if(!is_null($headerSize)) $self->setHeaderSize($headerSize);
         if(!is_null($headerVersion)) $self->setHeaderVersion($headerVersion);
         if(!is_null($vendorID)) $self->setVendorID($vendorID);
@@ -52,7 +70,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
      */
     public function getHeaderSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->headerSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +78,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
 
     public function setHeaderSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->headerSize = $cValue;
     }
@@ -70,7 +88,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
      */
     public function getHeaderVersion(): \iggyvolz\vulkan\enum\VkDeviceFaultVendorBinaryHeaderVersionEXT
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->headerVersion;
         $phpValue = \iggyvolz\vulkan\enum\VkDeviceFaultVendorBinaryHeaderVersionEXT::from($cValue);
         return $phpValue;
@@ -78,7 +96,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
 
     public function setHeaderVersion(\iggyvolz\vulkan\enum\VkDeviceFaultVendorBinaryHeaderVersionEXT $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->headerVersion = $cValue;
     }
@@ -88,7 +106,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
      */
     public function getVendorID(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vendorID;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +114,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
 
     public function setVendorID(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vendorID = $cValue;
     }
@@ -106,7 +124,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
      */
     public function getDeviceID(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceID;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +132,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
 
     public function setDeviceID(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->deviceID = $cValue;
     }
@@ -124,7 +142,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
      */
     public function getDriverVersion(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->driverVersion;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +150,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
 
     public function setDriverVersion(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->driverVersion = $cValue;
     }
@@ -142,7 +160,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
      */
     public function getPipelineCacheUUID(): \Ramsey\Uuid\UuidInterface
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineCacheUUID;
         $phpValue = \Ramsey\Uuid\Uuid::fromBytes(\FFI::string($cValue, 16));
         return $phpValue;
@@ -150,7 +168,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
 
     public function setPipelineCacheUUID(\Ramsey\Uuid\UuidInterface $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $ffi->new("uint8_t[16]"); $ffi->memcpy($cValue, $phpValue->getBytes(), 16);
         $this->cdata->pipelineCacheUUID = $cValue;
     }
@@ -160,7 +178,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
      */
     public function getApplicationNameOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->applicationNameOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -168,7 +186,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
 
     public function setApplicationNameOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->applicationNameOffset = $cValue;
     }
@@ -178,7 +196,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
      */
     public function getApplicationVersion(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->applicationVersion;
         $phpValue = $cValue;
         return $phpValue;
@@ -186,7 +204,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
 
     public function setApplicationVersion(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->applicationVersion = $cValue;
     }
@@ -196,7 +214,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
      */
     public function getEngineNameOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->engineNameOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -204,7 +222,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
 
     public function setEngineNameOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->engineNameOffset = $cValue;
     }
@@ -214,7 +232,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
      */
     public function getEngineVersion(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->engineVersion;
         $phpValue = $cValue;
         return $phpValue;
@@ -222,7 +240,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
 
     public function setEngineVersion(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->engineVersion = $cValue;
     }
@@ -232,7 +250,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
      */
     public function getApiVersion(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->apiVersion;
         $phpValue = $cValue;
         return $phpValue;
@@ -240,7 +258,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT
 
     public function setApiVersion(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->apiVersion = $cValue;
     }

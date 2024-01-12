@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkBindIndexBufferIndirectCommandNV
+final class VkBindIndexBufferIndirectCommandNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "bufferAddress" => $this->getBufferAddress(),
+          "size" => $this->getSize(),
+          "indexType" => $this->getIndexType(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkBindIndexBufferIndirectCommandNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkBindIndexBufferIndirectCommandNV
         null|\iggyvolz\vulkan\enum\VkIndexType $indexType = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBindIndexBufferIndirectCommandNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkBindIndexBufferIndirectCommandNV', false), $vulkan);
         if(!is_null($bufferAddress)) $self->setBufferAddress($bufferAddress);
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($indexType)) $self->setIndexType($indexType);
@@ -36,7 +46,7 @@ final class VkBindIndexBufferIndirectCommandNV
      */
     public function getBufferAddress(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkBindIndexBufferIndirectCommandNV
 
     public function setBufferAddress(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferAddress = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkBindIndexBufferIndirectCommandNV
      */
     public function getSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkBindIndexBufferIndirectCommandNV
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkBindIndexBufferIndirectCommandNV
      */
     public function getIndexType(): \iggyvolz\vulkan\enum\VkIndexType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexType;
         $phpValue = \iggyvolz\vulkan\enum\VkIndexType::from($cValue);
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkBindIndexBufferIndirectCommandNV
 
     public function setIndexType(\iggyvolz\vulkan\enum\VkIndexType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->indexType = $cValue;
     }

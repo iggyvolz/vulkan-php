@@ -4,8 +4,25 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSamplerYcbcrConversionCreateInfo
+final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "format" => $this->getFormat(),
+          "ycbcrModel" => $this->getYcbcrModel(),
+          "ycbcrRange" => $this->getYcbcrRange(),
+          "components" => $this->getComponents(),
+          "xChromaOffset" => $this->getXChromaOffset(),
+          "yChromaOffset" => $this->getYChromaOffset(),
+          "chromaFilter" => $this->getChromaFilter(),
+          "forceExplicitReconstruction" => $this->getForceExplicitReconstruction(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +30,7 @@ final class VkSamplerYcbcrConversionCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -31,7 +48,7 @@ final class VkSamplerYcbcrConversionCreateInfo
         null|bool $forceExplicitReconstruction = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSamplerYcbcrConversionCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSamplerYcbcrConversionCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($format)) $self->setFormat($format);
@@ -50,7 +67,7 @@ final class VkSamplerYcbcrConversionCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -58,7 +75,7 @@ final class VkSamplerYcbcrConversionCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -68,15 +85,15 @@ final class VkSamplerYcbcrConversionCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -86,7 +103,7 @@ final class VkSamplerYcbcrConversionCreateInfo
      */
     public function getFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -94,7 +111,7 @@ final class VkSamplerYcbcrConversionCreateInfo
 
     public function setFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->format = $cValue;
     }
@@ -104,7 +121,7 @@ final class VkSamplerYcbcrConversionCreateInfo
      */
     public function getYcbcrModel(): \iggyvolz\vulkan\enum\VkSamplerYcbcrModelConversion
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ycbcrModel;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerYcbcrModelConversion::from($cValue);
         return $phpValue;
@@ -112,7 +129,7 @@ final class VkSamplerYcbcrConversionCreateInfo
 
     public function setYcbcrModel(\iggyvolz\vulkan\enum\VkSamplerYcbcrModelConversion $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->ycbcrModel = $cValue;
     }
@@ -122,7 +139,7 @@ final class VkSamplerYcbcrConversionCreateInfo
      */
     public function getYcbcrRange(): \iggyvolz\vulkan\enum\VkSamplerYcbcrRange
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ycbcrRange;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerYcbcrRange::from($cValue);
         return $phpValue;
@@ -130,7 +147,7 @@ final class VkSamplerYcbcrConversionCreateInfo
 
     public function setYcbcrRange(\iggyvolz\vulkan\enum\VkSamplerYcbcrRange $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->ycbcrRange = $cValue;
     }
@@ -140,7 +157,7 @@ final class VkSamplerYcbcrConversionCreateInfo
      */
     public function getComponents(): VkComponentMapping
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->components;
         $phpValue = new \iggyvolz\vulkan\struct\VkComponentMapping($cValue, $ffi);
         return $phpValue;
@@ -148,7 +165,7 @@ final class VkSamplerYcbcrConversionCreateInfo
 
     public function setComponents(VkComponentMapping $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->components = $cValue;
     }
@@ -158,7 +175,7 @@ final class VkSamplerYcbcrConversionCreateInfo
      */
     public function getXChromaOffset(): \iggyvolz\vulkan\enum\VkChromaLocation
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->xChromaOffset;
         $phpValue = \iggyvolz\vulkan\enum\VkChromaLocation::from($cValue);
         return $phpValue;
@@ -166,7 +183,7 @@ final class VkSamplerYcbcrConversionCreateInfo
 
     public function setXChromaOffset(\iggyvolz\vulkan\enum\VkChromaLocation $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->xChromaOffset = $cValue;
     }
@@ -176,7 +193,7 @@ final class VkSamplerYcbcrConversionCreateInfo
      */
     public function getYChromaOffset(): \iggyvolz\vulkan\enum\VkChromaLocation
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->yChromaOffset;
         $phpValue = \iggyvolz\vulkan\enum\VkChromaLocation::from($cValue);
         return $phpValue;
@@ -184,7 +201,7 @@ final class VkSamplerYcbcrConversionCreateInfo
 
     public function setYChromaOffset(\iggyvolz\vulkan\enum\VkChromaLocation $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->yChromaOffset = $cValue;
     }
@@ -194,7 +211,7 @@ final class VkSamplerYcbcrConversionCreateInfo
      */
     public function getChromaFilter(): \iggyvolz\vulkan\enum\VkFilter
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->chromaFilter;
         $phpValue = \iggyvolz\vulkan\enum\VkFilter::from($cValue);
         return $phpValue;
@@ -202,7 +219,7 @@ final class VkSamplerYcbcrConversionCreateInfo
 
     public function setChromaFilter(\iggyvolz\vulkan\enum\VkFilter $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->chromaFilter = $cValue;
     }
@@ -212,7 +229,7 @@ final class VkSamplerYcbcrConversionCreateInfo
      */
     public function getForceExplicitReconstruction(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->forceExplicitReconstruction;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -220,7 +237,7 @@ final class VkSamplerYcbcrConversionCreateInfo
 
     public function setForceExplicitReconstruction(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->forceExplicitReconstruction = $cValue;
     }

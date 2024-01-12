@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkCopyAccelerationStructureInfoKHR
+final class VkCopyAccelerationStructureInfoKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "src" => $this->getSrc(),
+          "dst" => $this->getDst(),
+          "mode" => $this->getMode(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkCopyAccelerationStructureInfoKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkCopyAccelerationStructureInfoKHR
         null|\iggyvolz\vulkan\enum\VkCopyAccelerationStructureModeKHR $mode = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCopyAccelerationStructureInfoKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkCopyAccelerationStructureInfoKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($src)) $self->setSrc($src);
@@ -40,7 +52,7 @@ final class VkCopyAccelerationStructureInfoKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkCopyAccelerationStructureInfoKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkCopyAccelerationStructureInfoKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkCopyAccelerationStructureInfoKHR
      */
     public function getSrc(): VkAccelerationStructureKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->src;
         $phpValue = new \iggyvolz\vulkan\struct\VkAccelerationStructureKHR($cValue, $ffi);
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkCopyAccelerationStructureInfoKHR
 
     public function setSrc(VkAccelerationStructureKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->src = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkCopyAccelerationStructureInfoKHR
      */
     public function getDst(): VkAccelerationStructureKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dst;
         $phpValue = new \iggyvolz\vulkan\struct\VkAccelerationStructureKHR($cValue, $ffi);
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkCopyAccelerationStructureInfoKHR
 
     public function setDst(VkAccelerationStructureKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->dst = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkCopyAccelerationStructureInfoKHR
      */
     public function getMode(): \iggyvolz\vulkan\enum\VkCopyAccelerationStructureModeKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mode;
         $phpValue = \iggyvolz\vulkan\enum\VkCopyAccelerationStructureModeKHR::from($cValue);
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkCopyAccelerationStructureInfoKHR
 
     public function setMode(\iggyvolz\vulkan\enum\VkCopyAccelerationStructureModeKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->mode = $cValue;
     }

@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPipelineCacheHeaderVersionSafetyCriticalOne
+final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "headerVersionOne" => $this->getHeaderVersionOne(),
+          "validationVersion" => $this->getValidationVersion(),
+          "implementationData" => $this->getImplementationData(),
+          "pipelineIndexCount" => $this->getPipelineIndexCount(),
+          "pipelineIndexStride" => $this->getPipelineIndexStride(),
+          "pipelineIndexOffset" => $this->getPipelineIndexOffset(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne
         null|int $pipelineIndexOffset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineCacheHeaderVersionSafetyCriticalOne', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPipelineCacheHeaderVersionSafetyCriticalOne', false), $vulkan);
         if(!is_null($headerVersionOne)) $self->setHeaderVersionOne($headerVersionOne);
         if(!is_null($validationVersion)) $self->setValidationVersion($validationVersion);
         if(!is_null($implementationData)) $self->setImplementationData($implementationData);
@@ -42,7 +55,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne
      */
     public function getHeaderVersionOne(): VkPipelineCacheHeaderVersionOne
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->headerVersionOne;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipelineCacheHeaderVersionOne($cValue, $ffi);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne
 
     public function setHeaderVersionOne(VkPipelineCacheHeaderVersionOne $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->headerVersionOne = $cValue;
     }
@@ -60,7 +73,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne
      */
     public function getValidationVersion(): \iggyvolz\vulkan\enum\VkPipelineCacheValidationVersion
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->validationVersion;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineCacheValidationVersion::from($cValue);
         return $phpValue;
@@ -68,7 +81,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne
 
     public function setValidationVersion(\iggyvolz\vulkan\enum\VkPipelineCacheValidationVersion $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->validationVersion = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne
      */
     public function getImplementationData(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->implementationData;
         $phpValue = $cValue;
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne
 
     public function setImplementationData(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->implementationData = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne
      */
     public function getPipelineIndexCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineIndexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne
 
     public function setPipelineIndexCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelineIndexCount = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne
      */
     public function getPipelineIndexStride(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineIndexStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne
 
     public function setPipelineIndexStride(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelineIndexStride = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne
      */
     public function getPipelineIndexOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineIndexOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne
 
     public function setPipelineIndexOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelineIndexOffset = $cValue;
     }

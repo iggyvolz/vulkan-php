@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceShaderCorePropertiesARM
+final class VkPhysicalDeviceShaderCorePropertiesARM implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "pixelRate" => $this->getPixelRate(),
+          "texelRate" => $this->getTexelRate(),
+          "fmaRate" => $this->getFmaRate(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkPhysicalDeviceShaderCorePropertiesARM
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkPhysicalDeviceShaderCorePropertiesARM
         null|int $fmaRate = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderCorePropertiesARM', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderCorePropertiesARM', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pixelRate)) $self->setPixelRate($pixelRate);
@@ -40,7 +52,7 @@ final class VkPhysicalDeviceShaderCorePropertiesARM
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkPhysicalDeviceShaderCorePropertiesARM
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkPhysicalDeviceShaderCorePropertiesARM
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkPhysicalDeviceShaderCorePropertiesARM
      */
     public function getPixelRate(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pixelRate;
         $phpValue = $cValue;
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkPhysicalDeviceShaderCorePropertiesARM
 
     public function setPixelRate(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pixelRate = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkPhysicalDeviceShaderCorePropertiesARM
      */
     public function getTexelRate(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->texelRate;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkPhysicalDeviceShaderCorePropertiesARM
 
     public function setTexelRate(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->texelRate = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkPhysicalDeviceShaderCorePropertiesARM
      */
     public function getFmaRate(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fmaRate;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkPhysicalDeviceShaderCorePropertiesARM
 
     public function setFmaRate(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->fmaRate = $cValue;
     }

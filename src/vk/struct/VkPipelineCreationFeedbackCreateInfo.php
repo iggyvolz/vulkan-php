@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPipelineCreationFeedbackCreateInfo
+final class VkPipelineCreationFeedbackCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "pPipelineCreationFeedback" => $this->getPPipelineCreationFeedback(),
+          "pipelineStageCreationFeedbackCount" => $this->getPipelineStageCreationFeedbackCount(),
+          "pPipelineStageCreationFeedbacks" => $this->getPPipelineStageCreationFeedbacks(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkPipelineCreationFeedbackCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkPipelineCreationFeedbackCreateInfo
         null|\iggyvolz\vulkan\util\ObjectPointer $pPipelineStageCreationFeedbacks = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineCreationFeedbackCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPipelineCreationFeedbackCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pPipelineCreationFeedback)) $self->setPPipelineCreationFeedback($pPipelineCreationFeedback);
@@ -40,7 +52,7 @@ final class VkPipelineCreationFeedbackCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkPipelineCreationFeedbackCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkPipelineCreationFeedbackCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,15 +88,15 @@ final class VkPipelineCreationFeedbackCreateInfo
      */
     public function getPPipelineCreationFeedback(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pPipelineCreationFeedback;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineCreationFeedback', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineCreationFeedback', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPPipelineCreationFeedback(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pPipelineCreationFeedback = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkPipelineCreationFeedbackCreateInfo
      */
     public function getPipelineStageCreationFeedbackCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineStageCreationFeedbackCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkPipelineCreationFeedbackCreateInfo
 
     public function setPipelineStageCreationFeedbackCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelineStageCreationFeedbackCount = $cValue;
     }
@@ -112,15 +124,15 @@ final class VkPipelineCreationFeedbackCreateInfo
      */
     public function getPPipelineStageCreationFeedbacks(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pPipelineStageCreationFeedbacks;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineCreationFeedback', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineCreationFeedback', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPPipelineStageCreationFeedbacks(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pPipelineStageCreationFeedbacks = $cValue;
     }

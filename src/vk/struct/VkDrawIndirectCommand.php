@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDrawIndirectCommand
+final class VkDrawIndirectCommand implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "vertexCount" => $this->getVertexCount(),
+          "instanceCount" => $this->getInstanceCount(),
+          "firstVertex" => $this->getFirstVertex(),
+          "firstInstance" => $this->getFirstInstance(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +24,7 @@ final class VkDrawIndirectCommand
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -25,7 +36,7 @@ final class VkDrawIndirectCommand
         null|int $firstInstance = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDrawIndirectCommand', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDrawIndirectCommand', false), $vulkan);
         if(!is_null($vertexCount)) $self->setVertexCount($vertexCount);
         if(!is_null($instanceCount)) $self->setInstanceCount($instanceCount);
         if(!is_null($firstVertex)) $self->setFirstVertex($firstVertex);
@@ -38,7 +49,7 @@ final class VkDrawIndirectCommand
      */
     public function getVertexCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -46,7 +57,7 @@ final class VkDrawIndirectCommand
 
     public function setVertexCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexCount = $cValue;
     }
@@ -56,7 +67,7 @@ final class VkDrawIndirectCommand
      */
     public function getInstanceCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->instanceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -64,7 +75,7 @@ final class VkDrawIndirectCommand
 
     public function setInstanceCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->instanceCount = $cValue;
     }
@@ -74,7 +85,7 @@ final class VkDrawIndirectCommand
      */
     public function getFirstVertex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->firstVertex;
         $phpValue = $cValue;
         return $phpValue;
@@ -82,7 +93,7 @@ final class VkDrawIndirectCommand
 
     public function setFirstVertex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->firstVertex = $cValue;
     }
@@ -92,7 +103,7 @@ final class VkDrawIndirectCommand
      */
     public function getFirstInstance(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->firstInstance;
         $phpValue = $cValue;
         return $phpValue;
@@ -100,7 +111,7 @@ final class VkDrawIndirectCommand
 
     public function setFirstInstance(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->firstInstance = $cValue;
     }

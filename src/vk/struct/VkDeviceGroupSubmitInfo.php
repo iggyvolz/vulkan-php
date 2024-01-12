@@ -4,8 +4,23 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDeviceGroupSubmitInfo
+final class VkDeviceGroupSubmitInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "waitSemaphoreCount" => $this->getWaitSemaphoreCount(),
+          "pWaitSemaphoreDeviceIndices" => $this->getPWaitSemaphoreDeviceIndices(),
+          "commandBufferCount" => $this->getCommandBufferCount(),
+          "pCommandBufferDeviceMasks" => $this->getPCommandBufferDeviceMasks(),
+          "signalSemaphoreCount" => $this->getSignalSemaphoreCount(),
+          "pSignalSemaphoreDeviceIndices" => $this->getPSignalSemaphoreDeviceIndices(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +28,7 @@ final class VkDeviceGroupSubmitInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -29,7 +44,7 @@ final class VkDeviceGroupSubmitInfo
         null|\iggyvolz\vulkan\util\IntPointer $pSignalSemaphoreDeviceIndices = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceGroupSubmitInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDeviceGroupSubmitInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($waitSemaphoreCount)) $self->setWaitSemaphoreCount($waitSemaphoreCount);
@@ -46,7 +61,7 @@ final class VkDeviceGroupSubmitInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -54,7 +69,7 @@ final class VkDeviceGroupSubmitInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -64,15 +79,15 @@ final class VkDeviceGroupSubmitInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -82,7 +97,7 @@ final class VkDeviceGroupSubmitInfo
      */
     public function getWaitSemaphoreCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->waitSemaphoreCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +105,7 @@ final class VkDeviceGroupSubmitInfo
 
     public function setWaitSemaphoreCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->waitSemaphoreCount = $cValue;
     }
@@ -100,7 +115,7 @@ final class VkDeviceGroupSubmitInfo
      */
     public function getPWaitSemaphoreDeviceIndices(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pWaitSemaphoreDeviceIndices;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -108,7 +123,7 @@ final class VkDeviceGroupSubmitInfo
 
     public function setPWaitSemaphoreDeviceIndices(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pWaitSemaphoreDeviceIndices = $cValue;
     }
@@ -118,7 +133,7 @@ final class VkDeviceGroupSubmitInfo
      */
     public function getCommandBufferCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->commandBufferCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -126,7 +141,7 @@ final class VkDeviceGroupSubmitInfo
 
     public function setCommandBufferCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->commandBufferCount = $cValue;
     }
@@ -136,7 +151,7 @@ final class VkDeviceGroupSubmitInfo
      */
     public function getPCommandBufferDeviceMasks(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pCommandBufferDeviceMasks;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -144,7 +159,7 @@ final class VkDeviceGroupSubmitInfo
 
     public function setPCommandBufferDeviceMasks(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pCommandBufferDeviceMasks = $cValue;
     }
@@ -154,7 +169,7 @@ final class VkDeviceGroupSubmitInfo
      */
     public function getSignalSemaphoreCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->signalSemaphoreCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -162,7 +177,7 @@ final class VkDeviceGroupSubmitInfo
 
     public function setSignalSemaphoreCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->signalSemaphoreCount = $cValue;
     }
@@ -172,7 +187,7 @@ final class VkDeviceGroupSubmitInfo
      */
     public function getPSignalSemaphoreDeviceIndices(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pSignalSemaphoreDeviceIndices;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -180,7 +195,7 @@ final class VkDeviceGroupSubmitInfo
 
     public function setPSignalSemaphoreDeviceIndices(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pSignalSemaphoreDeviceIndices = $cValue;
     }

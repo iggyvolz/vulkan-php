@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSubresourceLayout
+final class VkSubresourceLayout implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "offset" => $this->getOffset(),
+          "size" => $this->getSize(),
+          "rowPitch" => $this->getRowPitch(),
+          "arrayPitch" => $this->getArrayPitch(),
+          "depthPitch" => $this->getDepthPitch(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkSubresourceLayout
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkSubresourceLayout
         null|int $depthPitch = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSubresourceLayout', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSubresourceLayout', false), $vulkan);
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($rowPitch)) $self->setRowPitch($rowPitch);
@@ -40,7 +52,7 @@ final class VkSubresourceLayout
      */
     public function getOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = $cValue;
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkSubresourceLayout
 
     public function setOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->offset = $cValue;
     }
@@ -58,7 +70,7 @@ final class VkSubresourceLayout
      */
     public function getSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -66,7 +78,7 @@ final class VkSubresourceLayout
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkSubresourceLayout
      */
     public function getRowPitch(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->rowPitch;
         $phpValue = $cValue;
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkSubresourceLayout
 
     public function setRowPitch(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->rowPitch = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkSubresourceLayout
      */
     public function getArrayPitch(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->arrayPitch;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkSubresourceLayout
 
     public function setArrayPitch(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->arrayPitch = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkSubresourceLayout
      */
     public function getDepthPitch(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthPitch;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkSubresourceLayout
 
     public function setDepthPitch(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->depthPitch = $cValue;
     }

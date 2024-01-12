@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDirectDriverLoadingListLUNARG
+final class VkDirectDriverLoadingListLUNARG implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "mode" => $this->getMode(),
+          "driverCount" => $this->getDriverCount(),
+          "pDrivers" => $this->getPDrivers(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkDirectDriverLoadingListLUNARG
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkDirectDriverLoadingListLUNARG
         null|\iggyvolz\vulkan\util\ObjectPointer $pDrivers = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDirectDriverLoadingListLUNARG', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDirectDriverLoadingListLUNARG', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($mode)) $self->setMode($mode);
@@ -40,7 +52,7 @@ final class VkDirectDriverLoadingListLUNARG
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkDirectDriverLoadingListLUNARG
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkDirectDriverLoadingListLUNARG
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkDirectDriverLoadingListLUNARG
      */
     public function getMode(): \iggyvolz\vulkan\enum\VkDirectDriverLoadingModeLUNARG
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mode;
         $phpValue = \iggyvolz\vulkan\enum\VkDirectDriverLoadingModeLUNARG::from($cValue);
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkDirectDriverLoadingListLUNARG
 
     public function setMode(\iggyvolz\vulkan\enum\VkDirectDriverLoadingModeLUNARG $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->mode = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkDirectDriverLoadingListLUNARG
      */
     public function getDriverCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->driverCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkDirectDriverLoadingListLUNARG
 
     public function setDriverCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->driverCount = $cValue;
     }
@@ -112,15 +124,15 @@ final class VkDirectDriverLoadingListLUNARG
      */
     public function getPDrivers(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDrivers;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDirectDriverLoadingInfoLUNARG', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDirectDriverLoadingInfoLUNARG', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPDrivers(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDrivers = $cValue;
     }

@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPerformanceCounterKHR
+final class VkPerformanceCounterKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "unit" => $this->getUnit(),
+          "scope" => $this->getScope(),
+          "storage" => $this->getStorage(),
+          "uuid" => $this->getUuid(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkPerformanceCounterKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkPerformanceCounterKHR
         null|\Ramsey\Uuid\UuidInterface $uuid = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPerformanceCounterKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPerformanceCounterKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($unit)) $self->setUnit($unit);
@@ -42,7 +55,7 @@ final class VkPerformanceCounterKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkPerformanceCounterKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkPerformanceCounterKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkPerformanceCounterKHR
      */
     public function getUnit(): \iggyvolz\vulkan\enum\VkPerformanceCounterUnitKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->unit;
         $phpValue = \iggyvolz\vulkan\enum\VkPerformanceCounterUnitKHR::from($cValue);
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkPerformanceCounterKHR
 
     public function setUnit(\iggyvolz\vulkan\enum\VkPerformanceCounterUnitKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->unit = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkPerformanceCounterKHR
      */
     public function getScope(): \iggyvolz\vulkan\enum\VkPerformanceCounterScopeKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->scope;
         $phpValue = \iggyvolz\vulkan\enum\VkPerformanceCounterScopeKHR::from($cValue);
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkPerformanceCounterKHR
 
     public function setScope(\iggyvolz\vulkan\enum\VkPerformanceCounterScopeKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->scope = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkPerformanceCounterKHR
      */
     public function getStorage(): \iggyvolz\vulkan\enum\VkPerformanceCounterStorageKHR
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storage;
         $phpValue = \iggyvolz\vulkan\enum\VkPerformanceCounterStorageKHR::from($cValue);
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkPerformanceCounterKHR
 
     public function setStorage(\iggyvolz\vulkan\enum\VkPerformanceCounterStorageKHR $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->storage = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkPerformanceCounterKHR
      */
     public function getUuid(): \Ramsey\Uuid\UuidInterface
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->uuid;
         $phpValue = \Ramsey\Uuid\Uuid::fromBytes(\FFI::string($cValue, 16));
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkPerformanceCounterKHR
 
     public function setUuid(\Ramsey\Uuid\UuidInterface $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $ffi->new("uint8_t[16]"); $ffi->memcpy($cValue, $phpValue->getBytes(), 16);
         $this->cdata->uuid = $cValue;
     }

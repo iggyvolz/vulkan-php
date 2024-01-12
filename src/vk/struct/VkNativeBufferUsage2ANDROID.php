@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkNativeBufferUsage2ANDROID
+final class VkNativeBufferUsage2ANDROID implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "consumer" => $this->getConsumer(),
+          "producer" => $this->getProducer(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkNativeBufferUsage2ANDROID
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkNativeBufferUsage2ANDROID
         null|int $producer = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkNativeBufferUsage2ANDROID', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkNativeBufferUsage2ANDROID', false), $vulkan);
         if(!is_null($consumer)) $self->setConsumer($consumer);
         if(!is_null($producer)) $self->setProducer($producer);
         return $self;
@@ -34,7 +43,7 @@ final class VkNativeBufferUsage2ANDROID
      */
     public function getConsumer(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->consumer;
         $phpValue = $cValue;
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkNativeBufferUsage2ANDROID
 
     public function setConsumer(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->consumer = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkNativeBufferUsage2ANDROID
      */
     public function getProducer(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->producer;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkNativeBufferUsage2ANDROID
 
     public function setProducer(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->producer = $cValue;
     }

@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkCoarseSampleOrderCustomNV
+final class VkCoarseSampleOrderCustomNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "shadingRate" => $this->getShadingRate(),
+          "sampleCount" => $this->getSampleCount(),
+          "sampleLocationCount" => $this->getSampleLocationCount(),
+          "pSampleLocations" => $this->getPSampleLocations(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +24,7 @@ final class VkCoarseSampleOrderCustomNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -25,7 +36,7 @@ final class VkCoarseSampleOrderCustomNV
         null|\iggyvolz\vulkan\util\ObjectPointer $pSampleLocations = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCoarseSampleOrderCustomNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkCoarseSampleOrderCustomNV', false), $vulkan);
         if(!is_null($shadingRate)) $self->setShadingRate($shadingRate);
         if(!is_null($sampleCount)) $self->setSampleCount($sampleCount);
         if(!is_null($sampleLocationCount)) $self->setSampleLocationCount($sampleLocationCount);
@@ -38,7 +49,7 @@ final class VkCoarseSampleOrderCustomNV
      */
     public function getShadingRate(): \iggyvolz\vulkan\enum\VkShadingRatePaletteEntryNV
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shadingRate;
         $phpValue = \iggyvolz\vulkan\enum\VkShadingRatePaletteEntryNV::from($cValue);
         return $phpValue;
@@ -46,7 +57,7 @@ final class VkCoarseSampleOrderCustomNV
 
     public function setShadingRate(\iggyvolz\vulkan\enum\VkShadingRatePaletteEntryNV $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->shadingRate = $cValue;
     }
@@ -56,7 +67,7 @@ final class VkCoarseSampleOrderCustomNV
      */
     public function getSampleCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampleCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -64,7 +75,7 @@ final class VkCoarseSampleOrderCustomNV
 
     public function setSampleCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sampleCount = $cValue;
     }
@@ -74,7 +85,7 @@ final class VkCoarseSampleOrderCustomNV
      */
     public function getSampleLocationCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampleLocationCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -82,7 +93,7 @@ final class VkCoarseSampleOrderCustomNV
 
     public function setSampleLocationCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sampleLocationCount = $cValue;
     }
@@ -92,15 +103,15 @@ final class VkCoarseSampleOrderCustomNV
      */
     public function getPSampleLocations(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pSampleLocations;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkCoarseSampleLocationNV', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkCoarseSampleLocationNV', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPSampleLocations(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pSampleLocations = $cValue;
     }

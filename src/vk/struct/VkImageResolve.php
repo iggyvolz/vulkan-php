@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkImageResolve
+final class VkImageResolve implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "srcSubresource" => $this->getSrcSubresource(),
+          "srcOffset" => $this->getSrcOffset(),
+          "dstSubresource" => $this->getDstSubresource(),
+          "dstOffset" => $this->getDstOffset(),
+          "extent" => $this->getExtent(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkImageResolve
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkImageResolve
         null|VkExtent3D $extent = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageResolve', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkImageResolve', false), $vulkan);
         if(!is_null($srcSubresource)) $self->setSrcSubresource($srcSubresource);
         if(!is_null($srcOffset)) $self->setSrcOffset($srcOffset);
         if(!is_null($dstSubresource)) $self->setDstSubresource($dstSubresource);
@@ -40,7 +52,7 @@ final class VkImageResolve
      */
     public function getSrcSubresource(): VkImageSubresourceLayers
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcSubresource;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageSubresourceLayers($cValue, $ffi);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkImageResolve
 
     public function setSrcSubresource(VkImageSubresourceLayers $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->srcSubresource = $cValue;
     }
@@ -58,7 +70,7 @@ final class VkImageResolve
      */
     public function getSrcOffset(): VkOffset3D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcOffset;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset3D($cValue, $ffi);
         return $phpValue;
@@ -66,7 +78,7 @@ final class VkImageResolve
 
     public function setSrcOffset(VkOffset3D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->srcOffset = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkImageResolve
      */
     public function getDstSubresource(): VkImageSubresourceLayers
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstSubresource;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageSubresourceLayers($cValue, $ffi);
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkImageResolve
 
     public function setDstSubresource(VkImageSubresourceLayers $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->dstSubresource = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkImageResolve
      */
     public function getDstOffset(): VkOffset3D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstOffset;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset3D($cValue, $ffi);
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkImageResolve
 
     public function setDstOffset(VkOffset3D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->dstOffset = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkImageResolve
      */
     public function getExtent(): VkExtent3D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent3D($cValue, $ffi);
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkImageResolve
 
     public function setExtent(VkExtent3D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->extent = $cValue;
     }

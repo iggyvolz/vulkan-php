@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkAccelerationStructureMotionInstanceNV
+final class VkAccelerationStructureMotionInstanceNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "type" => $this->getType(),
+          "flags" => $this->getFlags(),
+          "data" => $this->getData(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkAccelerationStructureMotionInstanceNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkAccelerationStructureMotionInstanceNV
         mixed $data = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureMotionInstanceNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkAccelerationStructureMotionInstanceNV', false), $vulkan);
         if(!is_null($type)) $self->setType($type);
         if(!is_null($flags)) $self->setFlags($flags);
         if(!is_null($data)) $self->setData($data);
@@ -36,7 +46,7 @@ final class VkAccelerationStructureMotionInstanceNV
      */
     public function getType(): \iggyvolz\vulkan\enum\VkAccelerationStructureMotionInstanceTypeNV
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->type;
         $phpValue = \iggyvolz\vulkan\enum\VkAccelerationStructureMotionInstanceTypeNV::from($cValue);
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkAccelerationStructureMotionInstanceNV
 
     public function setType(\iggyvolz\vulkan\enum\VkAccelerationStructureMotionInstanceTypeNV $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->type = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkAccelerationStructureMotionInstanceNV
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = [];
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkAccelerationStructureMotionInstanceNV
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = 0;
         $this->cdata->flags = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkAccelerationStructureMotionInstanceNV
      */
     public function getData(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->data;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkAccelerationStructureMotionInstanceNV
 
     public function setData(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->data = $cValue;
     }

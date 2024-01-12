@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkMemoryType
+final class VkMemoryType implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "propertyFlags" => $this->getPropertyFlags(),
+          "heapIndex" => $this->getHeapIndex(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkMemoryType
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkMemoryType
         null|int $heapIndex = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkMemoryType', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkMemoryType', false), $vulkan);
         if(!is_null($propertyFlags)) $self->setPropertyFlags($propertyFlags);
         if(!is_null($heapIndex)) $self->setHeapIndex($heapIndex);
         return $self;
@@ -34,7 +43,7 @@ final class VkMemoryType
      */
     public function getPropertyFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->propertyFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkMemoryPropertyFlagBits::fromInt($cValue);
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkMemoryType
 
     public function setPropertyFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkMemoryPropertyFlagBits::toInt(...$phpValue);
         $this->cdata->propertyFlags = $cValue;
     }
@@ -52,7 +61,7 @@ final class VkMemoryType
      */
     public function getHeapIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->heapIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +69,7 @@ final class VkMemoryType
 
     public function setHeapIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->heapIndex = $cValue;
     }

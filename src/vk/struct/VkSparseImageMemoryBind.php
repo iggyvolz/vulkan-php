@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSparseImageMemoryBind
+final class VkSparseImageMemoryBind implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "subresource" => $this->getSubresource(),
+          "offset" => $this->getOffset(),
+          "extent" => $this->getExtent(),
+          "memory" => $this->getMemory(),
+          "memoryOffset" => $this->getMemoryOffset(),
+          "flags" => $this->getFlags(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkSparseImageMemoryBind
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkSparseImageMemoryBind
         null|array $flags = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSparseImageMemoryBind', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSparseImageMemoryBind', false), $vulkan);
         if(!is_null($subresource)) $self->setSubresource($subresource);
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($extent)) $self->setExtent($extent);
@@ -42,7 +55,7 @@ final class VkSparseImageMemoryBind
      */
     public function getSubresource(): VkImageSubresource
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subresource;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageSubresource($cValue, $ffi);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkSparseImageMemoryBind
 
     public function setSubresource(VkImageSubresource $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->subresource = $cValue;
     }
@@ -60,7 +73,7 @@ final class VkSparseImageMemoryBind
      */
     public function getOffset(): VkOffset3D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset3D($cValue, $ffi);
         return $phpValue;
@@ -68,7 +81,7 @@ final class VkSparseImageMemoryBind
 
     public function setOffset(VkOffset3D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->offset = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkSparseImageMemoryBind
      */
     public function getExtent(): VkExtent3D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent3D($cValue, $ffi);
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkSparseImageMemoryBind
 
     public function setExtent(VkExtent3D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->extent = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkSparseImageMemoryBind
      */
     public function getMemory(): VkDeviceMemory
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memory;
         $phpValue = new \iggyvolz\vulkan\struct\VkDeviceMemory($cValue, $ffi);
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkSparseImageMemoryBind
 
     public function setMemory(VkDeviceMemory $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->memory = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkSparseImageMemoryBind
      */
     public function getMemoryOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkSparseImageMemoryBind
 
     public function setMemoryOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->memoryOffset = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkSparseImageMemoryBind
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkSparseMemoryBindFlagBits::fromInt($cValue);
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkSparseImageMemoryBind
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSparseMemoryBindFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }

@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSparseImageOpaqueMemoryBindInfo
+final class VkSparseImageOpaqueMemoryBindInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "image" => $this->getImage(),
+          "bindCount" => $this->getBindCount(),
+          "pBinds" => $this->getPBinds(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkSparseImageOpaqueMemoryBindInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkSparseImageOpaqueMemoryBindInfo
         null|\iggyvolz\vulkan\util\ObjectPointer $pBinds = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSparseImageOpaqueMemoryBindInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSparseImageOpaqueMemoryBindInfo', false), $vulkan);
         if(!is_null($image)) $self->setImage($image);
         if(!is_null($bindCount)) $self->setBindCount($bindCount);
         if(!is_null($pBinds)) $self->setPBinds($pBinds);
@@ -36,7 +46,7 @@ final class VkSparseImageOpaqueMemoryBindInfo
      */
     public function getImage(): VkImage
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->image;
         $phpValue = new \iggyvolz\vulkan\struct\VkImage($cValue, $ffi);
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkSparseImageOpaqueMemoryBindInfo
 
     public function setImage(VkImage $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->image = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkSparseImageOpaqueMemoryBindInfo
      */
     public function getBindCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bindCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkSparseImageOpaqueMemoryBindInfo
 
     public function setBindCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bindCount = $cValue;
     }
@@ -72,15 +82,15 @@ final class VkSparseImageOpaqueMemoryBindInfo
      */
     public function getPBinds(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pBinds;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSparseMemoryBind', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSparseMemoryBind', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPBinds(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pBinds = $cValue;
     }

@@ -4,8 +4,23 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkIndirectCommandsLayoutCreateInfoNV
+final class VkIndirectCommandsLayoutCreateInfoNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "pipelineBindPoint" => $this->getPipelineBindPoint(),
+          "tokenCount" => $this->getTokenCount(),
+          "pTokens" => $this->getPTokens(),
+          "streamCount" => $this->getStreamCount(),
+          "pStreamStrides" => $this->getPStreamStrides(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +28,7 @@ final class VkIndirectCommandsLayoutCreateInfoNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -29,7 +44,7 @@ final class VkIndirectCommandsLayoutCreateInfoNV
         null|\iggyvolz\vulkan\util\IntPointer $pStreamStrides = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkIndirectCommandsLayoutCreateInfoNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkIndirectCommandsLayoutCreateInfoNV', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -46,7 +61,7 @@ final class VkIndirectCommandsLayoutCreateInfoNV
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -54,7 +69,7 @@ final class VkIndirectCommandsLayoutCreateInfoNV
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -64,15 +79,15 @@ final class VkIndirectCommandsLayoutCreateInfoNV
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -82,7 +97,7 @@ final class VkIndirectCommandsLayoutCreateInfoNV
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkIndirectCommandsLayoutUsageFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -90,7 +105,7 @@ final class VkIndirectCommandsLayoutCreateInfoNV
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkIndirectCommandsLayoutUsageFlagBitsNV::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -100,7 +115,7 @@ final class VkIndirectCommandsLayoutCreateInfoNV
      */
     public function getPipelineBindPoint(): \iggyvolz\vulkan\enum\VkPipelineBindPoint
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineBindPoint;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineBindPoint::from($cValue);
         return $phpValue;
@@ -108,7 +123,7 @@ final class VkIndirectCommandsLayoutCreateInfoNV
 
     public function setPipelineBindPoint(\iggyvolz\vulkan\enum\VkPipelineBindPoint $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->pipelineBindPoint = $cValue;
     }
@@ -118,7 +133,7 @@ final class VkIndirectCommandsLayoutCreateInfoNV
      */
     public function getTokenCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tokenCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -126,7 +141,7 @@ final class VkIndirectCommandsLayoutCreateInfoNV
 
     public function setTokenCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->tokenCount = $cValue;
     }
@@ -136,15 +151,15 @@ final class VkIndirectCommandsLayoutCreateInfoNV
      */
     public function getPTokens(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pTokens;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkIndirectCommandsLayoutTokenNV', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkIndirectCommandsLayoutTokenNV', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPTokens(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pTokens = $cValue;
     }
@@ -154,7 +169,7 @@ final class VkIndirectCommandsLayoutCreateInfoNV
      */
     public function getStreamCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->streamCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -162,7 +177,7 @@ final class VkIndirectCommandsLayoutCreateInfoNV
 
     public function setStreamCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->streamCount = $cValue;
     }
@@ -172,7 +187,7 @@ final class VkIndirectCommandsLayoutCreateInfoNV
      */
     public function getPStreamStrides(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pStreamStrides;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -180,7 +195,7 @@ final class VkIndirectCommandsLayoutCreateInfoNV
 
     public function setPStreamStrides(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pStreamStrides = $cValue;
     }

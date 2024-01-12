@@ -4,8 +4,22 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkBufferCollectionConstraintsInfoFUCHSIA
+final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "minBufferCount" => $this->getMinBufferCount(),
+          "maxBufferCount" => $this->getMaxBufferCount(),
+          "minBufferCountForCamping" => $this->getMinBufferCountForCamping(),
+          "minBufferCountForDedicatedSlack" => $this->getMinBufferCountForDedicatedSlack(),
+          "minBufferCountForSharedSlack" => $this->getMinBufferCountForSharedSlack(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +27,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -28,7 +42,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
         null|int $minBufferCountForSharedSlack = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBufferCollectionConstraintsInfoFUCHSIA', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkBufferCollectionConstraintsInfoFUCHSIA', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($minBufferCount)) $self->setMinBufferCount($minBufferCount);
@@ -44,7 +58,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -52,7 +66,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -62,15 +76,15 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -80,7 +94,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
      */
     public function getMinBufferCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minBufferCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -88,7 +102,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
 
     public function setMinBufferCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minBufferCount = $cValue;
     }
@@ -98,7 +112,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
      */
     public function getMaxBufferCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxBufferCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -106,7 +120,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
 
     public function setMaxBufferCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxBufferCount = $cValue;
     }
@@ -116,7 +130,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
      */
     public function getMinBufferCountForCamping(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minBufferCountForCamping;
         $phpValue = $cValue;
         return $phpValue;
@@ -124,7 +138,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
 
     public function setMinBufferCountForCamping(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minBufferCountForCamping = $cValue;
     }
@@ -134,7 +148,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
      */
     public function getMinBufferCountForDedicatedSlack(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minBufferCountForDedicatedSlack;
         $phpValue = $cValue;
         return $phpValue;
@@ -142,7 +156,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
 
     public function setMinBufferCountForDedicatedSlack(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minBufferCountForDedicatedSlack = $cValue;
     }
@@ -152,7 +166,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
      */
     public function getMinBufferCountForSharedSlack(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minBufferCountForSharedSlack;
         $phpValue = $cValue;
         return $phpValue;
@@ -160,7 +174,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA
 
     public function setMinBufferCountForSharedSlack(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minBufferCountForSharedSlack = $cValue;
     }

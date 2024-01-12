@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPipelineOfflineCreateInfo
+final class VkPipelineOfflineCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "pipelineIdentifier" => $this->getPipelineIdentifier(),
+          "matchControl" => $this->getMatchControl(),
+          "poolEntrySize" => $this->getPoolEntrySize(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkPipelineOfflineCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkPipelineOfflineCreateInfo
         null|int $poolEntrySize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineOfflineCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPipelineOfflineCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pipelineIdentifier)) $self->setPipelineIdentifier($pipelineIdentifier);
@@ -40,7 +52,7 @@ final class VkPipelineOfflineCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkPipelineOfflineCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkPipelineOfflineCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkPipelineOfflineCreateInfo
      */
     public function getPipelineIdentifier(): \Ramsey\Uuid\UuidInterface
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineIdentifier;
         $phpValue = \Ramsey\Uuid\Uuid::fromBytes(\FFI::string($cValue, 16));
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkPipelineOfflineCreateInfo
 
     public function setPipelineIdentifier(\Ramsey\Uuid\UuidInterface $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $ffi->new("uint8_t[16]"); $ffi->memcpy($cValue, $phpValue->getBytes(), 16);
         $this->cdata->pipelineIdentifier = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkPipelineOfflineCreateInfo
      */
     public function getMatchControl(): \iggyvolz\vulkan\enum\VkPipelineMatchControl
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->matchControl;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineMatchControl::from($cValue);
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkPipelineOfflineCreateInfo
 
     public function setMatchControl(\iggyvolz\vulkan\enum\VkPipelineMatchControl $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->matchControl = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkPipelineOfflineCreateInfo
      */
     public function getPoolEntrySize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->poolEntrySize;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkPipelineOfflineCreateInfo
 
     public function setPoolEntrySize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->poolEntrySize = $cValue;
     }

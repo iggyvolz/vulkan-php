@@ -26,14 +26,14 @@ final class IntPointer extends Pointer
         $this->cdata[$i] = $val;
     }
 
-    public static function null(): self
+    public static function null(Vulkan $vulkan): self
     {
-        return new self(null, null);
+        return new self(null, $vulkan);
     }
 
     public static function new(string $type, Vulkan $vulkan, int $length = 1): self
     {
         $cdata = $vulkan->ffi->new("$type" . "[$length]", false);
-        return new self(FFI::addr($cdata[0]), $vulkan->ffi, $cdata);
+        return new self(FFI::addr($cdata[0]), $vulkan, $cdata);
     }
 }

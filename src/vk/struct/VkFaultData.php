@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkFaultData
+final class VkFaultData implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "faultLevel" => $this->getFaultLevel(),
+          "faultType" => $this->getFaultType(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +24,7 @@ final class VkFaultData
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -25,7 +36,7 @@ final class VkFaultData
         null|\iggyvolz\vulkan\enum\VkFaultType $faultType = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkFaultData', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkFaultData', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($faultLevel)) $self->setFaultLevel($faultLevel);
@@ -38,7 +49,7 @@ final class VkFaultData
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -46,7 +57,7 @@ final class VkFaultData
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -56,15 +67,15 @@ final class VkFaultData
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -74,7 +85,7 @@ final class VkFaultData
      */
     public function getFaultLevel(): \iggyvolz\vulkan\enum\VkFaultLevel
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->faultLevel;
         $phpValue = \iggyvolz\vulkan\enum\VkFaultLevel::from($cValue);
         return $phpValue;
@@ -82,7 +93,7 @@ final class VkFaultData
 
     public function setFaultLevel(\iggyvolz\vulkan\enum\VkFaultLevel $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->faultLevel = $cValue;
     }
@@ -92,7 +103,7 @@ final class VkFaultData
      */
     public function getFaultType(): \iggyvolz\vulkan\enum\VkFaultType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->faultType;
         $phpValue = \iggyvolz\vulkan\enum\VkFaultType::from($cValue);
         return $phpValue;
@@ -100,7 +111,7 @@ final class VkFaultData
 
     public function setFaultType(\iggyvolz\vulkan\enum\VkFaultType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->faultType = $cValue;
     }

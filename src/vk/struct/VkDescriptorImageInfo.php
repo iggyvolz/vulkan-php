@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDescriptorImageInfo
+final class VkDescriptorImageInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sampler" => $this->getSampler(),
+          "imageView" => $this->getImageView(),
+          "imageLayout" => $this->getImageLayout(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +23,7 @@ final class VkDescriptorImageInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -24,7 +34,7 @@ final class VkDescriptorImageInfo
         null|\iggyvolz\vulkan\enum\VkImageLayout $imageLayout = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorImageInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDescriptorImageInfo', false), $vulkan);
         if(!is_null($sampler)) $self->setSampler($sampler);
         if(!is_null($imageView)) $self->setImageView($imageView);
         if(!is_null($imageLayout)) $self->setImageLayout($imageLayout);
@@ -36,7 +46,7 @@ final class VkDescriptorImageInfo
      */
     public function getSampler(): VkSampler
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampler;
         $phpValue = new \iggyvolz\vulkan\struct\VkSampler($cValue, $ffi);
         return $phpValue;
@@ -44,7 +54,7 @@ final class VkDescriptorImageInfo
 
     public function setSampler(VkSampler $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->sampler = $cValue;
     }
@@ -54,7 +64,7 @@ final class VkDescriptorImageInfo
      */
     public function getImageView(): VkImageView
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageView;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageView($cValue, $ffi);
         return $phpValue;
@@ -62,7 +72,7 @@ final class VkDescriptorImageInfo
 
     public function setImageView(VkImageView $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageView = $cValue;
     }
@@ -72,7 +82,7 @@ final class VkDescriptorImageInfo
      */
     public function getImageLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -80,7 +90,7 @@ final class VkDescriptorImageInfo
 
     public function setImageLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->imageLayout = $cValue;
     }

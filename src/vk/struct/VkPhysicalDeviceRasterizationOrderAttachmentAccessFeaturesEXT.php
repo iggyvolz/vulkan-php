@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
+final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "rasterizationOrderColorAttachmentAccess" => $this->getRasterizationOrderColorAttachmentAccess(),
+          "rasterizationOrderDepthAttachmentAccess" => $this->getRasterizationOrderDepthAttachmentAccess(),
+          "rasterizationOrderStencilAttachmentAccess" => $this->getRasterizationOrderStencilAttachmentAccess(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
         null|bool $rasterizationOrderStencilAttachmentAccess = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($rasterizationOrderColorAttachmentAccess)) $self->setRasterizationOrderColorAttachmentAccess($rasterizationOrderColorAttachmentAccess);
@@ -40,7 +52,7 @@ final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
      */
     public function getRasterizationOrderColorAttachmentAccess(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->rasterizationOrderColorAttachmentAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
 
     public function setRasterizationOrderColorAttachmentAccess(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->rasterizationOrderColorAttachmentAccess = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
      */
     public function getRasterizationOrderDepthAttachmentAccess(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->rasterizationOrderDepthAttachmentAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
 
     public function setRasterizationOrderDepthAttachmentAccess(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->rasterizationOrderDepthAttachmentAccess = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
      */
     public function getRasterizationOrderStencilAttachmentAccess(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->rasterizationOrderStencilAttachmentAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
 
     public function setRasterizationOrderStencilAttachmentAccess(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->rasterizationOrderStencilAttachmentAccess = $cValue;
     }

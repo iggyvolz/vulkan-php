@@ -4,8 +4,22 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceMeshShaderFeaturesEXT
+final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "taskShader" => $this->getTaskShader(),
+          "meshShader" => $this->getMeshShader(),
+          "multiviewMeshShader" => $this->getMultiviewMeshShader(),
+          "primitiveFragmentShadingRateMeshShader" => $this->getPrimitiveFragmentShadingRateMeshShader(),
+          "meshShaderQueries" => $this->getMeshShaderQueries(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +27,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -28,7 +42,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
         null|bool $meshShaderQueries = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMeshShaderFeaturesEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMeshShaderFeaturesEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($taskShader)) $self->setTaskShader($taskShader);
@@ -44,7 +58,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -52,7 +66,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -62,15 +76,15 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -80,7 +94,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
      */
     public function getTaskShader(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->taskShader;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -88,7 +102,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
 
     public function setTaskShader(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->taskShader = $cValue;
     }
@@ -98,7 +112,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
      */
     public function getMeshShader(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->meshShader;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -106,7 +120,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
 
     public function setMeshShader(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->meshShader = $cValue;
     }
@@ -116,7 +130,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
      */
     public function getMultiviewMeshShader(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->multiviewMeshShader;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -124,7 +138,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
 
     public function setMultiviewMeshShader(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->multiviewMeshShader = $cValue;
     }
@@ -134,7 +148,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
      */
     public function getPrimitiveFragmentShadingRateMeshShader(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->primitiveFragmentShadingRateMeshShader;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -142,7 +156,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
 
     public function setPrimitiveFragmentShadingRateMeshShader(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->primitiveFragmentShadingRateMeshShader = $cValue;
     }
@@ -152,7 +166,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
      */
     public function getMeshShaderQueries(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->meshShaderQueries;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -160,7 +174,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT
 
     public function setMeshShaderQueries(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->meshShaderQueries = $cValue;
     }

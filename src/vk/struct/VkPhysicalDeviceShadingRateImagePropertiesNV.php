@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceShadingRateImagePropertiesNV
+final class VkPhysicalDeviceShadingRateImagePropertiesNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "shadingRateTexelSize" => $this->getShadingRateTexelSize(),
+          "shadingRatePaletteSize" => $this->getShadingRatePaletteSize(),
+          "shadingRateMaxCoarseSamples" => $this->getShadingRateMaxCoarseSamples(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkPhysicalDeviceShadingRateImagePropertiesNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkPhysicalDeviceShadingRateImagePropertiesNV
         null|int $shadingRateMaxCoarseSamples = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShadingRateImagePropertiesNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShadingRateImagePropertiesNV', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shadingRateTexelSize)) $self->setShadingRateTexelSize($shadingRateTexelSize);
@@ -40,7 +52,7 @@ final class VkPhysicalDeviceShadingRateImagePropertiesNV
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkPhysicalDeviceShadingRateImagePropertiesNV
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkPhysicalDeviceShadingRateImagePropertiesNV
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkPhysicalDeviceShadingRateImagePropertiesNV
      */
     public function getShadingRateTexelSize(): VkExtent2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shadingRateTexelSize;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkPhysicalDeviceShadingRateImagePropertiesNV
 
     public function setShadingRateTexelSize(VkExtent2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->shadingRateTexelSize = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkPhysicalDeviceShadingRateImagePropertiesNV
      */
     public function getShadingRatePaletteSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shadingRatePaletteSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkPhysicalDeviceShadingRateImagePropertiesNV
 
     public function setShadingRatePaletteSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->shadingRatePaletteSize = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkPhysicalDeviceShadingRateImagePropertiesNV
      */
     public function getShadingRateMaxCoarseSamples(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shadingRateMaxCoarseSamples;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkPhysicalDeviceShadingRateImagePropertiesNV
 
     public function setShadingRateMaxCoarseSamples(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->shadingRateMaxCoarseSamples = $cValue;
     }

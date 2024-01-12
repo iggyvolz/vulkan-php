@@ -4,8 +4,16 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkBindShaderGroupIndirectCommandNV
+final class VkBindShaderGroupIndirectCommandNV implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "groupIndex" => $this->getGroupIndex(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,13 +21,13 @@ final class VkBindShaderGroupIndirectCommandNV
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan, null|int $groupIndex = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkBindShaderGroupIndirectCommandNV', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkBindShaderGroupIndirectCommandNV', false), $vulkan);
         if(!is_null($groupIndex)) $self->setGroupIndex($groupIndex);
         return $self;
     }
@@ -29,7 +37,7 @@ final class VkBindShaderGroupIndirectCommandNV
      */
     public function getGroupIndex(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->groupIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -37,7 +45,7 @@ final class VkBindShaderGroupIndirectCommandNV
 
     public function setGroupIndex(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->groupIndex = $cValue;
     }

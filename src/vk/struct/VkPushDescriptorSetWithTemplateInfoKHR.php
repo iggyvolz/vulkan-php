@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPushDescriptorSetWithTemplateInfoKHR
+final class VkPushDescriptorSetWithTemplateInfoKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "descriptorUpdateTemplate" => $this->getDescriptorUpdateTemplate(),
+          "layout" => $this->getLayout(),
+          "set" => $this->getSet(),
+          "pData" => $this->getPData(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkPushDescriptorSetWithTemplateInfoKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkPushDescriptorSetWithTemplateInfoKHR
         null|\iggyvolz\vulkan\util\Pointer $pData = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPushDescriptorSetWithTemplateInfoKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPushDescriptorSetWithTemplateInfoKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($descriptorUpdateTemplate)) $self->setDescriptorUpdateTemplate($descriptorUpdateTemplate);
@@ -42,7 +55,7 @@ final class VkPushDescriptorSetWithTemplateInfoKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkPushDescriptorSetWithTemplateInfoKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkPushDescriptorSetWithTemplateInfoKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkPushDescriptorSetWithTemplateInfoKHR
      */
     public function getDescriptorUpdateTemplate(): VkDescriptorUpdateTemplate
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorUpdateTemplate;
         $phpValue = new \iggyvolz\vulkan\struct\VkDescriptorUpdateTemplate($cValue, $ffi);
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkPushDescriptorSetWithTemplateInfoKHR
 
     public function setDescriptorUpdateTemplate(VkDescriptorUpdateTemplate $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->descriptorUpdateTemplate = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkPushDescriptorSetWithTemplateInfoKHR
      */
     public function getLayout(): VkPipelineLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layout;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipelineLayout($cValue, $ffi);
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkPushDescriptorSetWithTemplateInfoKHR
 
     public function setLayout(VkPipelineLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->layout = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkPushDescriptorSetWithTemplateInfoKHR
      */
     public function getSet(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->set;
         $phpValue = $cValue;
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkPushDescriptorSetWithTemplateInfoKHR
 
     public function setSet(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->set = $cValue;
     }
@@ -132,15 +145,15 @@ final class VkPushDescriptorSetWithTemplateInfoKHR
      */
     public function getPData(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pData;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPData(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pData = $cValue;
     }

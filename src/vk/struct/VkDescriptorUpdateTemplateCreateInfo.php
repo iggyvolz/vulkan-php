@@ -4,8 +4,25 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDescriptorUpdateTemplateCreateInfo
+final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "descriptorUpdateEntryCount" => $this->getDescriptorUpdateEntryCount(),
+          "pDescriptorUpdateEntries" => $this->getPDescriptorUpdateEntries(),
+          "templateType" => $this->getTemplateType(),
+          "descriptorSetLayout" => $this->getDescriptorSetLayout(),
+          "pipelineBindPoint" => $this->getPipelineBindPoint(),
+          "pipelineLayout" => $this->getPipelineLayout(),
+          "set" => $this->getSet(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +30,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -31,7 +48,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
         null|int $set = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorUpdateTemplateCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDescriptorUpdateTemplateCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -50,7 +67,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -58,7 +75,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -68,15 +85,15 @@ final class VkDescriptorUpdateTemplateCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -86,7 +103,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = [];
         return $phpValue;
@@ -94,7 +111,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = 0;
         $this->cdata->flags = $cValue;
     }
@@ -104,7 +121,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
      */
     public function getDescriptorUpdateEntryCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorUpdateEntryCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -112,7 +129,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
 
     public function setDescriptorUpdateEntryCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorUpdateEntryCount = $cValue;
     }
@@ -122,15 +139,15 @@ final class VkDescriptorUpdateTemplateCreateInfo
      */
     public function getPDescriptorUpdateEntries(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDescriptorUpdateEntries;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorUpdateTemplateEntry', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorUpdateTemplateEntry', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPDescriptorUpdateEntries(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDescriptorUpdateEntries = $cValue;
     }
@@ -140,7 +157,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
      */
     public function getTemplateType(): \iggyvolz\vulkan\enum\VkDescriptorUpdateTemplateType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->templateType;
         $phpValue = \iggyvolz\vulkan\enum\VkDescriptorUpdateTemplateType::from($cValue);
         return $phpValue;
@@ -148,7 +165,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
 
     public function setTemplateType(\iggyvolz\vulkan\enum\VkDescriptorUpdateTemplateType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->templateType = $cValue;
     }
@@ -158,7 +175,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
      */
     public function getDescriptorSetLayout(): VkDescriptorSetLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorSetLayout;
         $phpValue = new \iggyvolz\vulkan\struct\VkDescriptorSetLayout($cValue, $ffi);
         return $phpValue;
@@ -166,7 +183,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
 
     public function setDescriptorSetLayout(VkDescriptorSetLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->descriptorSetLayout = $cValue;
     }
@@ -176,7 +193,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
      */
     public function getPipelineBindPoint(): \iggyvolz\vulkan\enum\VkPipelineBindPoint
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineBindPoint;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineBindPoint::from($cValue);
         return $phpValue;
@@ -184,7 +201,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
 
     public function setPipelineBindPoint(\iggyvolz\vulkan\enum\VkPipelineBindPoint $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->pipelineBindPoint = $cValue;
     }
@@ -194,7 +211,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
      */
     public function getPipelineLayout(): VkPipelineLayout
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineLayout;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipelineLayout($cValue, $ffi);
         return $phpValue;
@@ -202,7 +219,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
 
     public function setPipelineLayout(VkPipelineLayout $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pipelineLayout = $cValue;
     }
@@ -212,7 +229,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
      */
     public function getSet(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->set;
         $phpValue = $cValue;
         return $phpValue;
@@ -220,7 +237,7 @@ final class VkDescriptorUpdateTemplateCreateInfo
 
     public function setSet(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->set = $cValue;
     }

@@ -4,8 +4,24 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkCommandBufferInheritanceRenderingInfo
+final class VkCommandBufferInheritanceRenderingInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "viewMask" => $this->getViewMask(),
+          "colorAttachmentCount" => $this->getColorAttachmentCount(),
+          "pColorAttachmentFormats" => $this->getPColorAttachmentFormats(),
+          "depthAttachmentFormat" => $this->getDepthAttachmentFormat(),
+          "stencilAttachmentFormat" => $this->getStencilAttachmentFormat(),
+          "rasterizationSamples" => $this->getRasterizationSamples(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +29,7 @@ final class VkCommandBufferInheritanceRenderingInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -30,7 +46,7 @@ final class VkCommandBufferInheritanceRenderingInfo
         null|\iggyvolz\vulkan\enum\VkSampleCountFlagBits $rasterizationSamples = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCommandBufferInheritanceRenderingInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkCommandBufferInheritanceRenderingInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -48,7 +64,7 @@ final class VkCommandBufferInheritanceRenderingInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -56,7 +72,7 @@ final class VkCommandBufferInheritanceRenderingInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -66,15 +82,15 @@ final class VkCommandBufferInheritanceRenderingInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -84,7 +100,7 @@ final class VkCommandBufferInheritanceRenderingInfo
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkRenderingFlagBits::fromInt($cValue);
         return $phpValue;
@@ -92,7 +108,7 @@ final class VkCommandBufferInheritanceRenderingInfo
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkRenderingFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -102,7 +118,7 @@ final class VkCommandBufferInheritanceRenderingInfo
      */
     public function getViewMask(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->viewMask;
         $phpValue = $cValue;
         return $phpValue;
@@ -110,7 +126,7 @@ final class VkCommandBufferInheritanceRenderingInfo
 
     public function setViewMask(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->viewMask = $cValue;
     }
@@ -120,7 +136,7 @@ final class VkCommandBufferInheritanceRenderingInfo
      */
     public function getColorAttachmentCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->colorAttachmentCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -128,7 +144,7 @@ final class VkCommandBufferInheritanceRenderingInfo
 
     public function setColorAttachmentCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->colorAttachmentCount = $cValue;
     }
@@ -138,15 +154,15 @@ final class VkCommandBufferInheritanceRenderingInfo
      */
     public function getPColorAttachmentFormats(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pColorAttachmentFormats;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPColorAttachmentFormats(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pColorAttachmentFormats = $cValue;
     }
@@ -156,7 +172,7 @@ final class VkCommandBufferInheritanceRenderingInfo
      */
     public function getDepthAttachmentFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthAttachmentFormat;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -164,7 +180,7 @@ final class VkCommandBufferInheritanceRenderingInfo
 
     public function setDepthAttachmentFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->depthAttachmentFormat = $cValue;
     }
@@ -174,7 +190,7 @@ final class VkCommandBufferInheritanceRenderingInfo
      */
     public function getStencilAttachmentFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stencilAttachmentFormat;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -182,7 +198,7 @@ final class VkCommandBufferInheritanceRenderingInfo
 
     public function setStencilAttachmentFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->stencilAttachmentFormat = $cValue;
     }
@@ -192,7 +208,7 @@ final class VkCommandBufferInheritanceRenderingInfo
      */
     public function getRasterizationSamples(): \iggyvolz\vulkan\enum\VkSampleCountFlagBits
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->rasterizationSamples;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::from($cValue);
         return $phpValue;
@@ -200,7 +216,7 @@ final class VkCommandBufferInheritanceRenderingInfo
 
     public function setRasterizationSamples(\iggyvolz\vulkan\enum\VkSampleCountFlagBits $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->rasterizationSamples = $cValue;
     }

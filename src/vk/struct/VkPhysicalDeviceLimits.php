@@ -4,8 +4,121 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceLimits
+final class VkPhysicalDeviceLimits implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "maxImageDimension1D" => $this->getMaxImageDimension1D(),
+          "maxImageDimension2D" => $this->getMaxImageDimension2D(),
+          "maxImageDimension3D" => $this->getMaxImageDimension3D(),
+          "maxImageDimensionCube" => $this->getMaxImageDimensionCube(),
+          "maxImageArrayLayers" => $this->getMaxImageArrayLayers(),
+          "maxTexelBufferElements" => $this->getMaxTexelBufferElements(),
+          "maxUniformBufferRange" => $this->getMaxUniformBufferRange(),
+          "maxStorageBufferRange" => $this->getMaxStorageBufferRange(),
+          "maxPushConstantsSize" => $this->getMaxPushConstantsSize(),
+          "maxMemoryAllocationCount" => $this->getMaxMemoryAllocationCount(),
+          "maxSamplerAllocationCount" => $this->getMaxSamplerAllocationCount(),
+          "bufferImageGranularity" => $this->getBufferImageGranularity(),
+          "sparseAddressSpaceSize" => $this->getSparseAddressSpaceSize(),
+          "maxBoundDescriptorSets" => $this->getMaxBoundDescriptorSets(),
+          "maxPerStageDescriptorSamplers" => $this->getMaxPerStageDescriptorSamplers(),
+          "maxPerStageDescriptorUniformBuffers" => $this->getMaxPerStageDescriptorUniformBuffers(),
+          "maxPerStageDescriptorStorageBuffers" => $this->getMaxPerStageDescriptorStorageBuffers(),
+          "maxPerStageDescriptorSampledImages" => $this->getMaxPerStageDescriptorSampledImages(),
+          "maxPerStageDescriptorStorageImages" => $this->getMaxPerStageDescriptorStorageImages(),
+          "maxPerStageDescriptorInputAttachments" => $this->getMaxPerStageDescriptorInputAttachments(),
+          "maxPerStageResources" => $this->getMaxPerStageResources(),
+          "maxDescriptorSetSamplers" => $this->getMaxDescriptorSetSamplers(),
+          "maxDescriptorSetUniformBuffers" => $this->getMaxDescriptorSetUniformBuffers(),
+          "maxDescriptorSetUniformBuffersDynamic" => $this->getMaxDescriptorSetUniformBuffersDynamic(),
+          "maxDescriptorSetStorageBuffers" => $this->getMaxDescriptorSetStorageBuffers(),
+          "maxDescriptorSetStorageBuffersDynamic" => $this->getMaxDescriptorSetStorageBuffersDynamic(),
+          "maxDescriptorSetSampledImages" => $this->getMaxDescriptorSetSampledImages(),
+          "maxDescriptorSetStorageImages" => $this->getMaxDescriptorSetStorageImages(),
+          "maxDescriptorSetInputAttachments" => $this->getMaxDescriptorSetInputAttachments(),
+          "maxVertexInputAttributes" => $this->getMaxVertexInputAttributes(),
+          "maxVertexInputBindings" => $this->getMaxVertexInputBindings(),
+          "maxVertexInputAttributeOffset" => $this->getMaxVertexInputAttributeOffset(),
+          "maxVertexInputBindingStride" => $this->getMaxVertexInputBindingStride(),
+          "maxVertexOutputComponents" => $this->getMaxVertexOutputComponents(),
+          "maxTessellationGenerationLevel" => $this->getMaxTessellationGenerationLevel(),
+          "maxTessellationPatchSize" => $this->getMaxTessellationPatchSize(),
+          "maxTessellationControlPerVertexInputComponents" => $this->getMaxTessellationControlPerVertexInputComponents(),
+          "maxTessellationControlPerVertexOutputComponents" => $this->getMaxTessellationControlPerVertexOutputComponents(),
+          "maxTessellationControlPerPatchOutputComponents" => $this->getMaxTessellationControlPerPatchOutputComponents(),
+          "maxTessellationControlTotalOutputComponents" => $this->getMaxTessellationControlTotalOutputComponents(),
+          "maxTessellationEvaluationInputComponents" => $this->getMaxTessellationEvaluationInputComponents(),
+          "maxTessellationEvaluationOutputComponents" => $this->getMaxTessellationEvaluationOutputComponents(),
+          "maxGeometryShaderInvocations" => $this->getMaxGeometryShaderInvocations(),
+          "maxGeometryInputComponents" => $this->getMaxGeometryInputComponents(),
+          "maxGeometryOutputComponents" => $this->getMaxGeometryOutputComponents(),
+          "maxGeometryOutputVertices" => $this->getMaxGeometryOutputVertices(),
+          "maxGeometryTotalOutputComponents" => $this->getMaxGeometryTotalOutputComponents(),
+          "maxFragmentInputComponents" => $this->getMaxFragmentInputComponents(),
+          "maxFragmentOutputAttachments" => $this->getMaxFragmentOutputAttachments(),
+          "maxFragmentDualSrcAttachments" => $this->getMaxFragmentDualSrcAttachments(),
+          "maxFragmentCombinedOutputResources" => $this->getMaxFragmentCombinedOutputResources(),
+          "maxComputeSharedMemorySize" => $this->getMaxComputeSharedMemorySize(),
+          "maxComputeWorkGroupCount" => $this->getMaxComputeWorkGroupCount(),
+          "maxComputeWorkGroupInvocations" => $this->getMaxComputeWorkGroupInvocations(),
+          "maxComputeWorkGroupSize" => $this->getMaxComputeWorkGroupSize(),
+          "subPixelPrecisionBits" => $this->getSubPixelPrecisionBits(),
+          "subTexelPrecisionBits" => $this->getSubTexelPrecisionBits(),
+          "mipmapPrecisionBits" => $this->getMipmapPrecisionBits(),
+          "maxDrawIndexedIndexValue" => $this->getMaxDrawIndexedIndexValue(),
+          "maxDrawIndirectCount" => $this->getMaxDrawIndirectCount(),
+          "maxSamplerLodBias" => $this->getMaxSamplerLodBias(),
+          "maxSamplerAnisotropy" => $this->getMaxSamplerAnisotropy(),
+          "maxViewports" => $this->getMaxViewports(),
+          "maxViewportDimensions" => $this->getMaxViewportDimensions(),
+          "viewportBoundsRange" => $this->getViewportBoundsRange(),
+          "viewportSubPixelBits" => $this->getViewportSubPixelBits(),
+          "minMemoryMapAlignment" => $this->getMinMemoryMapAlignment(),
+          "minTexelBufferOffsetAlignment" => $this->getMinTexelBufferOffsetAlignment(),
+          "minUniformBufferOffsetAlignment" => $this->getMinUniformBufferOffsetAlignment(),
+          "minStorageBufferOffsetAlignment" => $this->getMinStorageBufferOffsetAlignment(),
+          "minTexelOffset" => $this->getMinTexelOffset(),
+          "maxTexelOffset" => $this->getMaxTexelOffset(),
+          "minTexelGatherOffset" => $this->getMinTexelGatherOffset(),
+          "maxTexelGatherOffset" => $this->getMaxTexelGatherOffset(),
+          "minInterpolationOffset" => $this->getMinInterpolationOffset(),
+          "maxInterpolationOffset" => $this->getMaxInterpolationOffset(),
+          "subPixelInterpolationOffsetBits" => $this->getSubPixelInterpolationOffsetBits(),
+          "maxFramebufferWidth" => $this->getMaxFramebufferWidth(),
+          "maxFramebufferHeight" => $this->getMaxFramebufferHeight(),
+          "maxFramebufferLayers" => $this->getMaxFramebufferLayers(),
+          "framebufferColorSampleCounts" => $this->getFramebufferColorSampleCounts(),
+          "framebufferDepthSampleCounts" => $this->getFramebufferDepthSampleCounts(),
+          "framebufferStencilSampleCounts" => $this->getFramebufferStencilSampleCounts(),
+          "framebufferNoAttachmentsSampleCounts" => $this->getFramebufferNoAttachmentsSampleCounts(),
+          "maxColorAttachments" => $this->getMaxColorAttachments(),
+          "sampledImageColorSampleCounts" => $this->getSampledImageColorSampleCounts(),
+          "sampledImageIntegerSampleCounts" => $this->getSampledImageIntegerSampleCounts(),
+          "sampledImageDepthSampleCounts" => $this->getSampledImageDepthSampleCounts(),
+          "sampledImageStencilSampleCounts" => $this->getSampledImageStencilSampleCounts(),
+          "storageImageSampleCounts" => $this->getStorageImageSampleCounts(),
+          "maxSampleMaskWords" => $this->getMaxSampleMaskWords(),
+          "timestampComputeAndGraphics" => $this->getTimestampComputeAndGraphics(),
+          "timestampPeriod" => $this->getTimestampPeriod(),
+          "maxClipDistances" => $this->getMaxClipDistances(),
+          "maxCullDistances" => $this->getMaxCullDistances(),
+          "maxCombinedClipAndCullDistances" => $this->getMaxCombinedClipAndCullDistances(),
+          "discreteQueuePriorities" => $this->getDiscreteQueuePriorities(),
+          "pointSizeRange" => $this->getPointSizeRange(),
+          "lineWidthRange" => $this->getLineWidthRange(),
+          "pointSizeGranularity" => $this->getPointSizeGranularity(),
+          "lineWidthGranularity" => $this->getLineWidthGranularity(),
+          "strictLines" => $this->getStrictLines(),
+          "standardSampleLocations" => $this->getStandardSampleLocations(),
+          "optimalBufferCopyOffsetAlignment" => $this->getOptimalBufferCopyOffsetAlignment(),
+          "optimalBufferCopyRowPitchAlignment" => $this->getOptimalBufferCopyRowPitchAlignment(),
+          "nonCoherentAtomSize" => $this->getNonCoherentAtomSize(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +126,7 @@ final class VkPhysicalDeviceLimits
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -127,7 +240,7 @@ final class VkPhysicalDeviceLimits
         null|int $nonCoherentAtomSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceLimits', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceLimits', false), $vulkan);
         if(!is_null($maxImageDimension1D)) $self->setMaxImageDimension1D($maxImageDimension1D);
         if(!is_null($maxImageDimension2D)) $self->setMaxImageDimension2D($maxImageDimension2D);
         if(!is_null($maxImageDimension3D)) $self->setMaxImageDimension3D($maxImageDimension3D);
@@ -242,7 +355,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxImageDimension1D(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageDimension1D;
         $phpValue = $cValue;
         return $phpValue;
@@ -250,7 +363,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxImageDimension1D(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageDimension1D = $cValue;
     }
@@ -260,7 +373,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxImageDimension2D(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageDimension2D;
         $phpValue = $cValue;
         return $phpValue;
@@ -268,7 +381,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxImageDimension2D(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageDimension2D = $cValue;
     }
@@ -278,7 +391,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxImageDimension3D(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageDimension3D;
         $phpValue = $cValue;
         return $phpValue;
@@ -286,7 +399,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxImageDimension3D(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageDimension3D = $cValue;
     }
@@ -296,7 +409,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxImageDimensionCube(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageDimensionCube;
         $phpValue = $cValue;
         return $phpValue;
@@ -304,7 +417,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxImageDimensionCube(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageDimensionCube = $cValue;
     }
@@ -314,7 +427,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxImageArrayLayers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageArrayLayers;
         $phpValue = $cValue;
         return $phpValue;
@@ -322,7 +435,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxImageArrayLayers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageArrayLayers = $cValue;
     }
@@ -332,7 +445,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxTexelBufferElements(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTexelBufferElements;
         $phpValue = $cValue;
         return $phpValue;
@@ -340,7 +453,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxTexelBufferElements(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTexelBufferElements = $cValue;
     }
@@ -350,7 +463,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxUniformBufferRange(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxUniformBufferRange;
         $phpValue = $cValue;
         return $phpValue;
@@ -358,7 +471,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxUniformBufferRange(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxUniformBufferRange = $cValue;
     }
@@ -368,7 +481,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxStorageBufferRange(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxStorageBufferRange;
         $phpValue = $cValue;
         return $phpValue;
@@ -376,7 +489,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxStorageBufferRange(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxStorageBufferRange = $cValue;
     }
@@ -386,7 +499,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxPushConstantsSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPushConstantsSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -394,7 +507,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxPushConstantsSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPushConstantsSize = $cValue;
     }
@@ -404,7 +517,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxMemoryAllocationCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMemoryAllocationCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -412,7 +525,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxMemoryAllocationCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMemoryAllocationCount = $cValue;
     }
@@ -422,7 +535,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxSamplerAllocationCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSamplerAllocationCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -430,7 +543,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxSamplerAllocationCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSamplerAllocationCount = $cValue;
     }
@@ -440,7 +553,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getBufferImageGranularity(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferImageGranularity;
         $phpValue = $cValue;
         return $phpValue;
@@ -448,7 +561,7 @@ final class VkPhysicalDeviceLimits
 
     public function setBufferImageGranularity(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferImageGranularity = $cValue;
     }
@@ -458,7 +571,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getSparseAddressSpaceSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sparseAddressSpaceSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -466,7 +579,7 @@ final class VkPhysicalDeviceLimits
 
     public function setSparseAddressSpaceSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sparseAddressSpaceSize = $cValue;
     }
@@ -476,7 +589,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxBoundDescriptorSets(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxBoundDescriptorSets;
         $phpValue = $cValue;
         return $phpValue;
@@ -484,7 +597,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxBoundDescriptorSets(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxBoundDescriptorSets = $cValue;
     }
@@ -494,7 +607,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxPerStageDescriptorSamplers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorSamplers;
         $phpValue = $cValue;
         return $phpValue;
@@ -502,7 +615,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxPerStageDescriptorSamplers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorSamplers = $cValue;
     }
@@ -512,7 +625,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxPerStageDescriptorUniformBuffers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUniformBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -520,7 +633,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxPerStageDescriptorUniformBuffers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUniformBuffers = $cValue;
     }
@@ -530,7 +643,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxPerStageDescriptorStorageBuffers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorStorageBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -538,7 +651,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxPerStageDescriptorStorageBuffers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorStorageBuffers = $cValue;
     }
@@ -548,7 +661,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxPerStageDescriptorSampledImages(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorSampledImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -556,7 +669,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxPerStageDescriptorSampledImages(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorSampledImages = $cValue;
     }
@@ -566,7 +679,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxPerStageDescriptorStorageImages(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorStorageImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -574,7 +687,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxPerStageDescriptorStorageImages(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorStorageImages = $cValue;
     }
@@ -584,7 +697,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxPerStageDescriptorInputAttachments(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorInputAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -592,7 +705,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxPerStageDescriptorInputAttachments(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorInputAttachments = $cValue;
     }
@@ -602,7 +715,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxPerStageResources(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageResources;
         $phpValue = $cValue;
         return $phpValue;
@@ -610,7 +723,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxPerStageResources(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageResources = $cValue;
     }
@@ -620,7 +733,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxDescriptorSetSamplers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetSamplers;
         $phpValue = $cValue;
         return $phpValue;
@@ -628,7 +741,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxDescriptorSetSamplers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetSamplers = $cValue;
     }
@@ -638,7 +751,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxDescriptorSetUniformBuffers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUniformBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -646,7 +759,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxDescriptorSetUniformBuffers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUniformBuffers = $cValue;
     }
@@ -656,7 +769,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxDescriptorSetUniformBuffersDynamic(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUniformBuffersDynamic;
         $phpValue = $cValue;
         return $phpValue;
@@ -664,7 +777,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxDescriptorSetUniformBuffersDynamic(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUniformBuffersDynamic = $cValue;
     }
@@ -674,7 +787,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxDescriptorSetStorageBuffers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetStorageBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -682,7 +795,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxDescriptorSetStorageBuffers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetStorageBuffers = $cValue;
     }
@@ -692,7 +805,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxDescriptorSetStorageBuffersDynamic(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetStorageBuffersDynamic;
         $phpValue = $cValue;
         return $phpValue;
@@ -700,7 +813,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxDescriptorSetStorageBuffersDynamic(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetStorageBuffersDynamic = $cValue;
     }
@@ -710,7 +823,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxDescriptorSetSampledImages(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetSampledImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -718,7 +831,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxDescriptorSetSampledImages(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetSampledImages = $cValue;
     }
@@ -728,7 +841,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxDescriptorSetStorageImages(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetStorageImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -736,7 +849,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxDescriptorSetStorageImages(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetStorageImages = $cValue;
     }
@@ -746,7 +859,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxDescriptorSetInputAttachments(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetInputAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -754,7 +867,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxDescriptorSetInputAttachments(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetInputAttachments = $cValue;
     }
@@ -764,7 +877,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxVertexInputAttributes(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxVertexInputAttributes;
         $phpValue = $cValue;
         return $phpValue;
@@ -772,7 +885,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxVertexInputAttributes(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxVertexInputAttributes = $cValue;
     }
@@ -782,7 +895,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxVertexInputBindings(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxVertexInputBindings;
         $phpValue = $cValue;
         return $phpValue;
@@ -790,7 +903,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxVertexInputBindings(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxVertexInputBindings = $cValue;
     }
@@ -800,7 +913,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxVertexInputAttributeOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxVertexInputAttributeOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -808,7 +921,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxVertexInputAttributeOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxVertexInputAttributeOffset = $cValue;
     }
@@ -818,7 +931,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxVertexInputBindingStride(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxVertexInputBindingStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -826,7 +939,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxVertexInputBindingStride(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxVertexInputBindingStride = $cValue;
     }
@@ -836,7 +949,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxVertexOutputComponents(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxVertexOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -844,7 +957,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxVertexOutputComponents(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxVertexOutputComponents = $cValue;
     }
@@ -854,7 +967,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxTessellationGenerationLevel(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationGenerationLevel;
         $phpValue = $cValue;
         return $phpValue;
@@ -862,7 +975,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxTessellationGenerationLevel(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationGenerationLevel = $cValue;
     }
@@ -872,7 +985,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxTessellationPatchSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationPatchSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -880,7 +993,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxTessellationPatchSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationPatchSize = $cValue;
     }
@@ -890,7 +1003,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxTessellationControlPerVertexInputComponents(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationControlPerVertexInputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -898,7 +1011,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxTessellationControlPerVertexInputComponents(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationControlPerVertexInputComponents = $cValue;
     }
@@ -908,7 +1021,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxTessellationControlPerVertexOutputComponents(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationControlPerVertexOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -916,7 +1029,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxTessellationControlPerVertexOutputComponents(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationControlPerVertexOutputComponents = $cValue;
     }
@@ -926,7 +1039,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxTessellationControlPerPatchOutputComponents(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationControlPerPatchOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -934,7 +1047,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxTessellationControlPerPatchOutputComponents(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationControlPerPatchOutputComponents = $cValue;
     }
@@ -944,7 +1057,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxTessellationControlTotalOutputComponents(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationControlTotalOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -952,7 +1065,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxTessellationControlTotalOutputComponents(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationControlTotalOutputComponents = $cValue;
     }
@@ -962,7 +1075,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxTessellationEvaluationInputComponents(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationEvaluationInputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -970,7 +1083,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxTessellationEvaluationInputComponents(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationEvaluationInputComponents = $cValue;
     }
@@ -980,7 +1093,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxTessellationEvaluationOutputComponents(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationEvaluationOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -988,7 +1101,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxTessellationEvaluationOutputComponents(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationEvaluationOutputComponents = $cValue;
     }
@@ -998,7 +1111,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxGeometryShaderInvocations(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxGeometryShaderInvocations;
         $phpValue = $cValue;
         return $phpValue;
@@ -1006,7 +1119,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxGeometryShaderInvocations(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxGeometryShaderInvocations = $cValue;
     }
@@ -1016,7 +1129,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxGeometryInputComponents(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxGeometryInputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -1024,7 +1137,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxGeometryInputComponents(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxGeometryInputComponents = $cValue;
     }
@@ -1034,7 +1147,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxGeometryOutputComponents(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxGeometryOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -1042,7 +1155,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxGeometryOutputComponents(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxGeometryOutputComponents = $cValue;
     }
@@ -1052,7 +1165,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxGeometryOutputVertices(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxGeometryOutputVertices;
         $phpValue = $cValue;
         return $phpValue;
@@ -1060,7 +1173,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxGeometryOutputVertices(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxGeometryOutputVertices = $cValue;
     }
@@ -1070,7 +1183,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxGeometryTotalOutputComponents(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxGeometryTotalOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -1078,7 +1191,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxGeometryTotalOutputComponents(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxGeometryTotalOutputComponents = $cValue;
     }
@@ -1088,7 +1201,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxFragmentInputComponents(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFragmentInputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -1096,7 +1209,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxFragmentInputComponents(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFragmentInputComponents = $cValue;
     }
@@ -1106,7 +1219,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxFragmentOutputAttachments(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFragmentOutputAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -1114,7 +1227,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxFragmentOutputAttachments(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFragmentOutputAttachments = $cValue;
     }
@@ -1124,7 +1237,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxFragmentDualSrcAttachments(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFragmentDualSrcAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -1132,7 +1245,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxFragmentDualSrcAttachments(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFragmentDualSrcAttachments = $cValue;
     }
@@ -1142,7 +1255,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxFragmentCombinedOutputResources(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFragmentCombinedOutputResources;
         $phpValue = $cValue;
         return $phpValue;
@@ -1150,7 +1263,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxFragmentCombinedOutputResources(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFragmentCombinedOutputResources = $cValue;
     }
@@ -1160,7 +1273,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxComputeSharedMemorySize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxComputeSharedMemorySize;
         $phpValue = $cValue;
         return $phpValue;
@@ -1168,7 +1281,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxComputeSharedMemorySize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxComputeSharedMemorySize = $cValue;
     }
@@ -1178,7 +1291,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxComputeWorkGroupCount(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxComputeWorkGroupCount;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -1186,7 +1299,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxComputeWorkGroupCount(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxComputeWorkGroupCount = $cValue;
     }
@@ -1196,7 +1309,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxComputeWorkGroupInvocations(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxComputeWorkGroupInvocations;
         $phpValue = $cValue;
         return $phpValue;
@@ -1204,7 +1317,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxComputeWorkGroupInvocations(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxComputeWorkGroupInvocations = $cValue;
     }
@@ -1214,7 +1327,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxComputeWorkGroupSize(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxComputeWorkGroupSize;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -1222,7 +1335,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxComputeWorkGroupSize(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxComputeWorkGroupSize = $cValue;
     }
@@ -1232,7 +1345,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getSubPixelPrecisionBits(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subPixelPrecisionBits;
         $phpValue = $cValue;
         return $phpValue;
@@ -1240,7 +1353,7 @@ final class VkPhysicalDeviceLimits
 
     public function setSubPixelPrecisionBits(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subPixelPrecisionBits = $cValue;
     }
@@ -1250,7 +1363,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getSubTexelPrecisionBits(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subTexelPrecisionBits;
         $phpValue = $cValue;
         return $phpValue;
@@ -1258,7 +1371,7 @@ final class VkPhysicalDeviceLimits
 
     public function setSubTexelPrecisionBits(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subTexelPrecisionBits = $cValue;
     }
@@ -1268,7 +1381,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMipmapPrecisionBits(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mipmapPrecisionBits;
         $phpValue = $cValue;
         return $phpValue;
@@ -1276,7 +1389,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMipmapPrecisionBits(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->mipmapPrecisionBits = $cValue;
     }
@@ -1286,7 +1399,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxDrawIndexedIndexValue(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDrawIndexedIndexValue;
         $phpValue = $cValue;
         return $phpValue;
@@ -1294,7 +1407,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxDrawIndexedIndexValue(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDrawIndexedIndexValue = $cValue;
     }
@@ -1304,7 +1417,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxDrawIndirectCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDrawIndirectCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -1312,7 +1425,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxDrawIndirectCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDrawIndirectCount = $cValue;
     }
@@ -1322,7 +1435,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxSamplerLodBias(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSamplerLodBias;
         $phpValue = $cValue;
         return $phpValue;
@@ -1330,7 +1443,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxSamplerLodBias(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSamplerLodBias = $cValue;
     }
@@ -1340,7 +1453,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxSamplerAnisotropy(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSamplerAnisotropy;
         $phpValue = $cValue;
         return $phpValue;
@@ -1348,7 +1461,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxSamplerAnisotropy(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSamplerAnisotropy = $cValue;
     }
@@ -1358,7 +1471,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxViewports(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxViewports;
         $phpValue = $cValue;
         return $phpValue;
@@ -1366,7 +1479,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxViewports(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxViewports = $cValue;
     }
@@ -1376,7 +1489,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxViewportDimensions(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxViewportDimensions;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -1384,7 +1497,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxViewportDimensions(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxViewportDimensions = $cValue;
     }
@@ -1394,7 +1507,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getViewportBoundsRange(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->viewportBoundsRange;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -1402,7 +1515,7 @@ final class VkPhysicalDeviceLimits
 
     public function setViewportBoundsRange(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->viewportBoundsRange = $cValue;
     }
@@ -1412,7 +1525,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getViewportSubPixelBits(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->viewportSubPixelBits;
         $phpValue = $cValue;
         return $phpValue;
@@ -1420,7 +1533,7 @@ final class VkPhysicalDeviceLimits
 
     public function setViewportSubPixelBits(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->viewportSubPixelBits = $cValue;
     }
@@ -1430,7 +1543,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMinMemoryMapAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minMemoryMapAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -1438,7 +1551,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMinMemoryMapAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minMemoryMapAlignment = $cValue;
     }
@@ -1448,7 +1561,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMinTexelBufferOffsetAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minTexelBufferOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -1456,7 +1569,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMinTexelBufferOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minTexelBufferOffsetAlignment = $cValue;
     }
@@ -1466,7 +1579,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMinUniformBufferOffsetAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minUniformBufferOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -1474,7 +1587,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMinUniformBufferOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minUniformBufferOffsetAlignment = $cValue;
     }
@@ -1484,7 +1597,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMinStorageBufferOffsetAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minStorageBufferOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -1492,7 +1605,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMinStorageBufferOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minStorageBufferOffsetAlignment = $cValue;
     }
@@ -1502,7 +1615,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMinTexelOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minTexelOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -1510,7 +1623,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMinTexelOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minTexelOffset = $cValue;
     }
@@ -1520,7 +1633,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxTexelOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTexelOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -1528,7 +1641,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxTexelOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTexelOffset = $cValue;
     }
@@ -1538,7 +1651,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMinTexelGatherOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minTexelGatherOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -1546,7 +1659,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMinTexelGatherOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minTexelGatherOffset = $cValue;
     }
@@ -1556,7 +1669,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxTexelGatherOffset(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTexelGatherOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -1564,7 +1677,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxTexelGatherOffset(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTexelGatherOffset = $cValue;
     }
@@ -1574,7 +1687,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMinInterpolationOffset(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minInterpolationOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -1582,7 +1695,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMinInterpolationOffset(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minInterpolationOffset = $cValue;
     }
@@ -1592,7 +1705,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxInterpolationOffset(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxInterpolationOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -1600,7 +1713,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxInterpolationOffset(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxInterpolationOffset = $cValue;
     }
@@ -1610,7 +1723,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getSubPixelInterpolationOffsetBits(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subPixelInterpolationOffsetBits;
         $phpValue = $cValue;
         return $phpValue;
@@ -1618,7 +1731,7 @@ final class VkPhysicalDeviceLimits
 
     public function setSubPixelInterpolationOffsetBits(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subPixelInterpolationOffsetBits = $cValue;
     }
@@ -1628,7 +1741,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxFramebufferWidth(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFramebufferWidth;
         $phpValue = $cValue;
         return $phpValue;
@@ -1636,7 +1749,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxFramebufferWidth(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFramebufferWidth = $cValue;
     }
@@ -1646,7 +1759,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxFramebufferHeight(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFramebufferHeight;
         $phpValue = $cValue;
         return $phpValue;
@@ -1654,7 +1767,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxFramebufferHeight(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFramebufferHeight = $cValue;
     }
@@ -1664,7 +1777,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxFramebufferLayers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFramebufferLayers;
         $phpValue = $cValue;
         return $phpValue;
@@ -1672,7 +1785,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxFramebufferLayers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFramebufferLayers = $cValue;
     }
@@ -1682,7 +1795,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getFramebufferColorSampleCounts(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->framebufferColorSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1690,7 +1803,7 @@ final class VkPhysicalDeviceLimits
 
     public function setFramebufferColorSampleCounts(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->framebufferColorSampleCounts = $cValue;
     }
@@ -1700,7 +1813,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getFramebufferDepthSampleCounts(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->framebufferDepthSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1708,7 +1821,7 @@ final class VkPhysicalDeviceLimits
 
     public function setFramebufferDepthSampleCounts(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->framebufferDepthSampleCounts = $cValue;
     }
@@ -1718,7 +1831,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getFramebufferStencilSampleCounts(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->framebufferStencilSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1726,7 +1839,7 @@ final class VkPhysicalDeviceLimits
 
     public function setFramebufferStencilSampleCounts(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->framebufferStencilSampleCounts = $cValue;
     }
@@ -1736,7 +1849,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getFramebufferNoAttachmentsSampleCounts(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->framebufferNoAttachmentsSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1744,7 +1857,7 @@ final class VkPhysicalDeviceLimits
 
     public function setFramebufferNoAttachmentsSampleCounts(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->framebufferNoAttachmentsSampleCounts = $cValue;
     }
@@ -1754,7 +1867,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxColorAttachments(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxColorAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -1762,7 +1875,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxColorAttachments(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxColorAttachments = $cValue;
     }
@@ -1772,7 +1885,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getSampledImageColorSampleCounts(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampledImageColorSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1780,7 +1893,7 @@ final class VkPhysicalDeviceLimits
 
     public function setSampledImageColorSampleCounts(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampledImageColorSampleCounts = $cValue;
     }
@@ -1790,7 +1903,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getSampledImageIntegerSampleCounts(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampledImageIntegerSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1798,7 +1911,7 @@ final class VkPhysicalDeviceLimits
 
     public function setSampledImageIntegerSampleCounts(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampledImageIntegerSampleCounts = $cValue;
     }
@@ -1808,7 +1921,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getSampledImageDepthSampleCounts(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampledImageDepthSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1816,7 +1929,7 @@ final class VkPhysicalDeviceLimits
 
     public function setSampledImageDepthSampleCounts(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampledImageDepthSampleCounts = $cValue;
     }
@@ -1826,7 +1939,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getSampledImageStencilSampleCounts(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampledImageStencilSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1834,7 +1947,7 @@ final class VkPhysicalDeviceLimits
 
     public function setSampledImageStencilSampleCounts(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampledImageStencilSampleCounts = $cValue;
     }
@@ -1844,7 +1957,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getStorageImageSampleCounts(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageImageSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1852,7 +1965,7 @@ final class VkPhysicalDeviceLimits
 
     public function setStorageImageSampleCounts(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->storageImageSampleCounts = $cValue;
     }
@@ -1862,7 +1975,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxSampleMaskWords(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSampleMaskWords;
         $phpValue = $cValue;
         return $phpValue;
@@ -1870,7 +1983,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxSampleMaskWords(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSampleMaskWords = $cValue;
     }
@@ -1880,7 +1993,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getTimestampComputeAndGraphics(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->timestampComputeAndGraphics;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1888,7 +2001,7 @@ final class VkPhysicalDeviceLimits
 
     public function setTimestampComputeAndGraphics(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->timestampComputeAndGraphics = $cValue;
     }
@@ -1898,7 +2011,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getTimestampPeriod(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->timestampPeriod;
         $phpValue = $cValue;
         return $phpValue;
@@ -1906,7 +2019,7 @@ final class VkPhysicalDeviceLimits
 
     public function setTimestampPeriod(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->timestampPeriod = $cValue;
     }
@@ -1916,7 +2029,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxClipDistances(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxClipDistances;
         $phpValue = $cValue;
         return $phpValue;
@@ -1924,7 +2037,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxClipDistances(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxClipDistances = $cValue;
     }
@@ -1934,7 +2047,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxCullDistances(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxCullDistances;
         $phpValue = $cValue;
         return $phpValue;
@@ -1942,7 +2055,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxCullDistances(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxCullDistances = $cValue;
     }
@@ -1952,7 +2065,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getMaxCombinedClipAndCullDistances(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxCombinedClipAndCullDistances;
         $phpValue = $cValue;
         return $phpValue;
@@ -1960,7 +2073,7 @@ final class VkPhysicalDeviceLimits
 
     public function setMaxCombinedClipAndCullDistances(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxCombinedClipAndCullDistances = $cValue;
     }
@@ -1970,7 +2083,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getDiscreteQueuePriorities(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->discreteQueuePriorities;
         $phpValue = $cValue;
         return $phpValue;
@@ -1978,7 +2091,7 @@ final class VkPhysicalDeviceLimits
 
     public function setDiscreteQueuePriorities(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->discreteQueuePriorities = $cValue;
     }
@@ -1988,7 +2101,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getPointSizeRange(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pointSizeRange;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -1996,7 +2109,7 @@ final class VkPhysicalDeviceLimits
 
     public function setPointSizeRange(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->pointSizeRange = $cValue;
     }
@@ -2006,7 +2119,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getLineWidthRange(): mixed
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->lineWidthRange;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -2014,7 +2127,7 @@ final class VkPhysicalDeviceLimits
 
     public function setLineWidthRange(mixed $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->lineWidthRange = $cValue;
     }
@@ -2024,7 +2137,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getPointSizeGranularity(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pointSizeGranularity;
         $phpValue = $cValue;
         return $phpValue;
@@ -2032,7 +2145,7 @@ final class VkPhysicalDeviceLimits
 
     public function setPointSizeGranularity(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pointSizeGranularity = $cValue;
     }
@@ -2042,7 +2155,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getLineWidthGranularity(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->lineWidthGranularity;
         $phpValue = $cValue;
         return $phpValue;
@@ -2050,7 +2163,7 @@ final class VkPhysicalDeviceLimits
 
     public function setLineWidthGranularity(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->lineWidthGranularity = $cValue;
     }
@@ -2060,7 +2173,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getStrictLines(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->strictLines;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -2068,7 +2181,7 @@ final class VkPhysicalDeviceLimits
 
     public function setStrictLines(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->strictLines = $cValue;
     }
@@ -2078,7 +2191,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getStandardSampleLocations(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->standardSampleLocations;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -2086,7 +2199,7 @@ final class VkPhysicalDeviceLimits
 
     public function setStandardSampleLocations(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->standardSampleLocations = $cValue;
     }
@@ -2096,7 +2209,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getOptimalBufferCopyOffsetAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->optimalBufferCopyOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -2104,7 +2217,7 @@ final class VkPhysicalDeviceLimits
 
     public function setOptimalBufferCopyOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->optimalBufferCopyOffsetAlignment = $cValue;
     }
@@ -2114,7 +2227,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getOptimalBufferCopyRowPitchAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->optimalBufferCopyRowPitchAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -2122,7 +2235,7 @@ final class VkPhysicalDeviceLimits
 
     public function setOptimalBufferCopyRowPitchAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->optimalBufferCopyRowPitchAlignment = $cValue;
     }
@@ -2132,7 +2245,7 @@ final class VkPhysicalDeviceLimits
      */
     public function getNonCoherentAtomSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->nonCoherentAtomSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -2140,7 +2253,7 @@ final class VkPhysicalDeviceLimits
 
     public function setNonCoherentAtomSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->nonCoherentAtomSize = $cValue;
     }

@@ -4,8 +4,64 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceVulkan12Features
+final class VkPhysicalDeviceVulkan12Features implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "samplerMirrorClampToEdge" => $this->getSamplerMirrorClampToEdge(),
+          "drawIndirectCount" => $this->getDrawIndirectCount(),
+          "storageBuffer8BitAccess" => $this->getStorageBuffer8BitAccess(),
+          "uniformAndStorageBuffer8BitAccess" => $this->getUniformAndStorageBuffer8BitAccess(),
+          "storagePushConstant8" => $this->getStoragePushConstant8(),
+          "shaderBufferInt64Atomics" => $this->getShaderBufferInt64Atomics(),
+          "shaderSharedInt64Atomics" => $this->getShaderSharedInt64Atomics(),
+          "shaderFloat16" => $this->getShaderFloat16(),
+          "shaderInt8" => $this->getShaderInt8(),
+          "descriptorIndexing" => $this->getDescriptorIndexing(),
+          "shaderInputAttachmentArrayDynamicIndexing" => $this->getShaderInputAttachmentArrayDynamicIndexing(),
+          "shaderUniformTexelBufferArrayDynamicIndexing" => $this->getShaderUniformTexelBufferArrayDynamicIndexing(),
+          "shaderStorageTexelBufferArrayDynamicIndexing" => $this->getShaderStorageTexelBufferArrayDynamicIndexing(),
+          "shaderUniformBufferArrayNonUniformIndexing" => $this->getShaderUniformBufferArrayNonUniformIndexing(),
+          "shaderSampledImageArrayNonUniformIndexing" => $this->getShaderSampledImageArrayNonUniformIndexing(),
+          "shaderStorageBufferArrayNonUniformIndexing" => $this->getShaderStorageBufferArrayNonUniformIndexing(),
+          "shaderStorageImageArrayNonUniformIndexing" => $this->getShaderStorageImageArrayNonUniformIndexing(),
+          "shaderInputAttachmentArrayNonUniformIndexing" => $this->getShaderInputAttachmentArrayNonUniformIndexing(),
+          "shaderUniformTexelBufferArrayNonUniformIndexing" => $this->getShaderUniformTexelBufferArrayNonUniformIndexing(),
+          "shaderStorageTexelBufferArrayNonUniformIndexing" => $this->getShaderStorageTexelBufferArrayNonUniformIndexing(),
+          "descriptorBindingUniformBufferUpdateAfterBind" => $this->getDescriptorBindingUniformBufferUpdateAfterBind(),
+          "descriptorBindingSampledImageUpdateAfterBind" => $this->getDescriptorBindingSampledImageUpdateAfterBind(),
+          "descriptorBindingStorageImageUpdateAfterBind" => $this->getDescriptorBindingStorageImageUpdateAfterBind(),
+          "descriptorBindingStorageBufferUpdateAfterBind" => $this->getDescriptorBindingStorageBufferUpdateAfterBind(),
+          "descriptorBindingUniformTexelBufferUpdateAfterBind" => $this->getDescriptorBindingUniformTexelBufferUpdateAfterBind(),
+          "descriptorBindingStorageTexelBufferUpdateAfterBind" => $this->getDescriptorBindingStorageTexelBufferUpdateAfterBind(),
+          "descriptorBindingUpdateUnusedWhilePending" => $this->getDescriptorBindingUpdateUnusedWhilePending(),
+          "descriptorBindingPartiallyBound" => $this->getDescriptorBindingPartiallyBound(),
+          "descriptorBindingVariableDescriptorCount" => $this->getDescriptorBindingVariableDescriptorCount(),
+          "runtimeDescriptorArray" => $this->getRuntimeDescriptorArray(),
+          "samplerFilterMinmax" => $this->getSamplerFilterMinmax(),
+          "scalarBlockLayout" => $this->getScalarBlockLayout(),
+          "imagelessFramebuffer" => $this->getImagelessFramebuffer(),
+          "uniformBufferStandardLayout" => $this->getUniformBufferStandardLayout(),
+          "shaderSubgroupExtendedTypes" => $this->getShaderSubgroupExtendedTypes(),
+          "separateDepthStencilLayouts" => $this->getSeparateDepthStencilLayouts(),
+          "hostQueryReset" => $this->getHostQueryReset(),
+          "timelineSemaphore" => $this->getTimelineSemaphore(),
+          "bufferDeviceAddress" => $this->getBufferDeviceAddress(),
+          "bufferDeviceAddressCaptureReplay" => $this->getBufferDeviceAddressCaptureReplay(),
+          "bufferDeviceAddressMultiDevice" => $this->getBufferDeviceAddressMultiDevice(),
+          "vulkanMemoryModel" => $this->getVulkanMemoryModel(),
+          "vulkanMemoryModelDeviceScope" => $this->getVulkanMemoryModelDeviceScope(),
+          "vulkanMemoryModelAvailabilityVisibilityChains" => $this->getVulkanMemoryModelAvailabilityVisibilityChains(),
+          "shaderOutputViewportIndex" => $this->getShaderOutputViewportIndex(),
+          "shaderOutputLayer" => $this->getShaderOutputLayer(),
+          "subgroupBroadcastDynamicId" => $this->getSubgroupBroadcastDynamicId(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +69,7 @@ final class VkPhysicalDeviceVulkan12Features
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -70,7 +126,7 @@ final class VkPhysicalDeviceVulkan12Features
         null|bool $subgroupBroadcastDynamicId = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkan12Features', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkan12Features', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($samplerMirrorClampToEdge)) $self->setSamplerMirrorClampToEdge($samplerMirrorClampToEdge);
@@ -128,7 +184,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -136,7 +192,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -146,15 +202,15 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -164,7 +220,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getSamplerMirrorClampToEdge(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samplerMirrorClampToEdge;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -172,7 +228,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setSamplerMirrorClampToEdge(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->samplerMirrorClampToEdge = $cValue;
     }
@@ -182,7 +238,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getDrawIndirectCount(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->drawIndirectCount;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -190,7 +246,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setDrawIndirectCount(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->drawIndirectCount = $cValue;
     }
@@ -200,7 +256,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getStorageBuffer8BitAccess(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageBuffer8BitAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -208,7 +264,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setStorageBuffer8BitAccess(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->storageBuffer8BitAccess = $cValue;
     }
@@ -218,7 +274,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getUniformAndStorageBuffer8BitAccess(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->uniformAndStorageBuffer8BitAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -226,7 +282,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setUniformAndStorageBuffer8BitAccess(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->uniformAndStorageBuffer8BitAccess = $cValue;
     }
@@ -236,7 +292,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getStoragePushConstant8(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storagePushConstant8;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -244,7 +300,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setStoragePushConstant8(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->storagePushConstant8 = $cValue;
     }
@@ -254,7 +310,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderBufferInt64Atomics(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderBufferInt64Atomics;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -262,7 +318,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderBufferInt64Atomics(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderBufferInt64Atomics = $cValue;
     }
@@ -272,7 +328,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderSharedInt64Atomics(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSharedInt64Atomics;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -280,7 +336,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderSharedInt64Atomics(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSharedInt64Atomics = $cValue;
     }
@@ -290,7 +346,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderFloat16(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -298,7 +354,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderFloat16(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderFloat16 = $cValue;
     }
@@ -308,7 +364,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderInt8(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderInt8;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -316,7 +372,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderInt8(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderInt8 = $cValue;
     }
@@ -326,7 +382,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getDescriptorIndexing(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -334,7 +390,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setDescriptorIndexing(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorIndexing = $cValue;
     }
@@ -344,7 +400,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderInputAttachmentArrayDynamicIndexing(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderInputAttachmentArrayDynamicIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -352,7 +408,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderInputAttachmentArrayDynamicIndexing(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderInputAttachmentArrayDynamicIndexing = $cValue;
     }
@@ -362,7 +418,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderUniformTexelBufferArrayDynamicIndexing(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderUniformTexelBufferArrayDynamicIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -370,7 +426,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderUniformTexelBufferArrayDynamicIndexing(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderUniformTexelBufferArrayDynamicIndexing = $cValue;
     }
@@ -380,7 +436,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderStorageTexelBufferArrayDynamicIndexing(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageTexelBufferArrayDynamicIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -388,7 +444,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderStorageTexelBufferArrayDynamicIndexing(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageTexelBufferArrayDynamicIndexing = $cValue;
     }
@@ -398,7 +454,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderUniformBufferArrayNonUniformIndexing(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderUniformBufferArrayNonUniformIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -406,7 +462,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderUniformBufferArrayNonUniformIndexing(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderUniformBufferArrayNonUniformIndexing = $cValue;
     }
@@ -416,7 +472,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderSampledImageArrayNonUniformIndexing(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSampledImageArrayNonUniformIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -424,7 +480,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderSampledImageArrayNonUniformIndexing(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSampledImageArrayNonUniformIndexing = $cValue;
     }
@@ -434,7 +490,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderStorageBufferArrayNonUniformIndexing(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageBufferArrayNonUniformIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -442,7 +498,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderStorageBufferArrayNonUniformIndexing(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageBufferArrayNonUniformIndexing = $cValue;
     }
@@ -452,7 +508,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderStorageImageArrayNonUniformIndexing(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageImageArrayNonUniformIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -460,7 +516,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderStorageImageArrayNonUniformIndexing(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageImageArrayNonUniformIndexing = $cValue;
     }
@@ -470,7 +526,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderInputAttachmentArrayNonUniformIndexing(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderInputAttachmentArrayNonUniformIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -478,7 +534,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderInputAttachmentArrayNonUniformIndexing(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderInputAttachmentArrayNonUniformIndexing = $cValue;
     }
@@ -488,7 +544,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderUniformTexelBufferArrayNonUniformIndexing(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderUniformTexelBufferArrayNonUniformIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -496,7 +552,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderUniformTexelBufferArrayNonUniformIndexing(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderUniformTexelBufferArrayNonUniformIndexing = $cValue;
     }
@@ -506,7 +562,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderStorageTexelBufferArrayNonUniformIndexing(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageTexelBufferArrayNonUniformIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -514,7 +570,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderStorageTexelBufferArrayNonUniformIndexing(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageTexelBufferArrayNonUniformIndexing = $cValue;
     }
@@ -524,7 +580,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getDescriptorBindingUniformBufferUpdateAfterBind(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingUniformBufferUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -532,7 +588,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setDescriptorBindingUniformBufferUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingUniformBufferUpdateAfterBind = $cValue;
     }
@@ -542,7 +598,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getDescriptorBindingSampledImageUpdateAfterBind(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingSampledImageUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -550,7 +606,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setDescriptorBindingSampledImageUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingSampledImageUpdateAfterBind = $cValue;
     }
@@ -560,7 +616,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getDescriptorBindingStorageImageUpdateAfterBind(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingStorageImageUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -568,7 +624,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setDescriptorBindingStorageImageUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingStorageImageUpdateAfterBind = $cValue;
     }
@@ -578,7 +634,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getDescriptorBindingStorageBufferUpdateAfterBind(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingStorageBufferUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -586,7 +642,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setDescriptorBindingStorageBufferUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingStorageBufferUpdateAfterBind = $cValue;
     }
@@ -596,7 +652,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getDescriptorBindingUniformTexelBufferUpdateAfterBind(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingUniformTexelBufferUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -604,7 +660,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setDescriptorBindingUniformTexelBufferUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingUniformTexelBufferUpdateAfterBind = $cValue;
     }
@@ -614,7 +670,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getDescriptorBindingStorageTexelBufferUpdateAfterBind(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingStorageTexelBufferUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -622,7 +678,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setDescriptorBindingStorageTexelBufferUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingStorageTexelBufferUpdateAfterBind = $cValue;
     }
@@ -632,7 +688,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getDescriptorBindingUpdateUnusedWhilePending(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingUpdateUnusedWhilePending;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -640,7 +696,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setDescriptorBindingUpdateUnusedWhilePending(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingUpdateUnusedWhilePending = $cValue;
     }
@@ -650,7 +706,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getDescriptorBindingPartiallyBound(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingPartiallyBound;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -658,7 +714,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setDescriptorBindingPartiallyBound(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingPartiallyBound = $cValue;
     }
@@ -668,7 +724,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getDescriptorBindingVariableDescriptorCount(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingVariableDescriptorCount;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -676,7 +732,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setDescriptorBindingVariableDescriptorCount(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingVariableDescriptorCount = $cValue;
     }
@@ -686,7 +742,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getRuntimeDescriptorArray(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->runtimeDescriptorArray;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -694,7 +750,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setRuntimeDescriptorArray(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->runtimeDescriptorArray = $cValue;
     }
@@ -704,7 +760,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getSamplerFilterMinmax(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samplerFilterMinmax;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -712,7 +768,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setSamplerFilterMinmax(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->samplerFilterMinmax = $cValue;
     }
@@ -722,7 +778,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getScalarBlockLayout(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->scalarBlockLayout;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -730,7 +786,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setScalarBlockLayout(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->scalarBlockLayout = $cValue;
     }
@@ -740,7 +796,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getImagelessFramebuffer(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imagelessFramebuffer;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -748,7 +804,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setImagelessFramebuffer(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->imagelessFramebuffer = $cValue;
     }
@@ -758,7 +814,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getUniformBufferStandardLayout(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->uniformBufferStandardLayout;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -766,7 +822,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setUniformBufferStandardLayout(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->uniformBufferStandardLayout = $cValue;
     }
@@ -776,7 +832,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderSubgroupExtendedTypes(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSubgroupExtendedTypes;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -784,7 +840,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderSubgroupExtendedTypes(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSubgroupExtendedTypes = $cValue;
     }
@@ -794,7 +850,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getSeparateDepthStencilLayouts(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->separateDepthStencilLayouts;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -802,7 +858,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setSeparateDepthStencilLayouts(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->separateDepthStencilLayouts = $cValue;
     }
@@ -812,7 +868,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getHostQueryReset(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->hostQueryReset;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -820,7 +876,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setHostQueryReset(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->hostQueryReset = $cValue;
     }
@@ -830,7 +886,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getTimelineSemaphore(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->timelineSemaphore;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -838,7 +894,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setTimelineSemaphore(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->timelineSemaphore = $cValue;
     }
@@ -848,7 +904,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getBufferDeviceAddress(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferDeviceAddress;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -856,7 +912,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setBufferDeviceAddress(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->bufferDeviceAddress = $cValue;
     }
@@ -866,7 +922,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getBufferDeviceAddressCaptureReplay(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferDeviceAddressCaptureReplay;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -874,7 +930,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setBufferDeviceAddressCaptureReplay(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->bufferDeviceAddressCaptureReplay = $cValue;
     }
@@ -884,7 +940,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getBufferDeviceAddressMultiDevice(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferDeviceAddressMultiDevice;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -892,7 +948,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setBufferDeviceAddressMultiDevice(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->bufferDeviceAddressMultiDevice = $cValue;
     }
@@ -902,7 +958,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getVulkanMemoryModel(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vulkanMemoryModel;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -910,7 +966,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setVulkanMemoryModel(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->vulkanMemoryModel = $cValue;
     }
@@ -920,7 +976,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getVulkanMemoryModelDeviceScope(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vulkanMemoryModelDeviceScope;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -928,7 +984,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setVulkanMemoryModelDeviceScope(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->vulkanMemoryModelDeviceScope = $cValue;
     }
@@ -938,7 +994,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getVulkanMemoryModelAvailabilityVisibilityChains(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vulkanMemoryModelAvailabilityVisibilityChains;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -946,7 +1002,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setVulkanMemoryModelAvailabilityVisibilityChains(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->vulkanMemoryModelAvailabilityVisibilityChains = $cValue;
     }
@@ -956,7 +1012,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderOutputViewportIndex(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderOutputViewportIndex;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -964,7 +1020,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderOutputViewportIndex(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderOutputViewportIndex = $cValue;
     }
@@ -974,7 +1030,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getShaderOutputLayer(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderOutputLayer;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -982,7 +1038,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setShaderOutputLayer(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderOutputLayer = $cValue;
     }
@@ -992,7 +1048,7 @@ final class VkPhysicalDeviceVulkan12Features
      */
     public function getSubgroupBroadcastDynamicId(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subgroupBroadcastDynamicId;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1000,7 +1056,7 @@ final class VkPhysicalDeviceVulkan12Features
 
     public function setSubgroupBroadcastDynamicId(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->subgroupBroadcastDynamicId = $cValue;
     }

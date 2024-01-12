@@ -8,7 +8,6 @@ readonly final class FlagsTransformer extends Transformer
     public function __construct(public string $ctype)
     {
         $this->bitsClass = "iggyvolz\\vulkan\\enum\\" . str_replace("Flags", "FlagBits", $this->ctype);
-
     }
 
     public function phpType(): string
@@ -18,7 +17,7 @@ readonly final class FlagsTransformer extends Transformer
 
     public function phpDocType(): string
     {
-        return "list<$this->bitsClass>";
+        return "list<\\$this->bitsClass>";
     }
 
     public function cTypePrefix(): string

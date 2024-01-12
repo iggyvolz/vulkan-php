@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceMultiviewFeatures
+final class VkPhysicalDeviceMultiviewFeatures implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "multiview" => $this->getMultiview(),
+          "multiviewGeometryShader" => $this->getMultiviewGeometryShader(),
+          "multiviewTessellationShader" => $this->getMultiviewTessellationShader(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkPhysicalDeviceMultiviewFeatures
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkPhysicalDeviceMultiviewFeatures
         null|bool $multiviewTessellationShader = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMultiviewFeatures', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMultiviewFeatures', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($multiview)) $self->setMultiview($multiview);
@@ -40,7 +52,7 @@ final class VkPhysicalDeviceMultiviewFeatures
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkPhysicalDeviceMultiviewFeatures
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkPhysicalDeviceMultiviewFeatures
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkPhysicalDeviceMultiviewFeatures
      */
     public function getMultiview(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->multiview;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkPhysicalDeviceMultiviewFeatures
 
     public function setMultiview(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->multiview = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkPhysicalDeviceMultiviewFeatures
      */
     public function getMultiviewGeometryShader(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->multiviewGeometryShader;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkPhysicalDeviceMultiviewFeatures
 
     public function setMultiviewGeometryShader(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->multiviewGeometryShader = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkPhysicalDeviceMultiviewFeatures
      */
     public function getMultiviewTessellationShader(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->multiviewTessellationShader;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkPhysicalDeviceMultiviewFeatures
 
     public function setMultiviewTessellationShader(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->multiviewTessellationShader = $cValue;
     }

@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkScreenBufferPropertiesQNX
+final class VkScreenBufferPropertiesQNX implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "allocationSize" => $this->getAllocationSize(),
+          "memoryTypeBits" => $this->getMemoryTypeBits(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +24,7 @@ final class VkScreenBufferPropertiesQNX
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -25,7 +36,7 @@ final class VkScreenBufferPropertiesQNX
         null|int $memoryTypeBits = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkScreenBufferPropertiesQNX', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkScreenBufferPropertiesQNX', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($allocationSize)) $self->setAllocationSize($allocationSize);
@@ -38,7 +49,7 @@ final class VkScreenBufferPropertiesQNX
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -46,7 +57,7 @@ final class VkScreenBufferPropertiesQNX
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -56,15 +67,15 @@ final class VkScreenBufferPropertiesQNX
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -74,7 +85,7 @@ final class VkScreenBufferPropertiesQNX
      */
     public function getAllocationSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->allocationSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -82,7 +93,7 @@ final class VkScreenBufferPropertiesQNX
 
     public function setAllocationSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->allocationSize = $cValue;
     }
@@ -92,7 +103,7 @@ final class VkScreenBufferPropertiesQNX
      */
     public function getMemoryTypeBits(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryTypeBits;
         $phpValue = $cValue;
         return $phpValue;
@@ -100,7 +111,7 @@ final class VkScreenBufferPropertiesQNX
 
     public function setMemoryTypeBits(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->memoryTypeBits = $cValue;
     }

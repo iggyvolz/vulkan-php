@@ -4,8 +4,69 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceVulkan12Properties
+final class VkPhysicalDeviceVulkan12Properties implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "driverID" => $this->getDriverID(),
+          "driverName" => $this->getDriverName(),
+          "driverInfo" => $this->getDriverInfo(),
+          "conformanceVersion" => $this->getConformanceVersion(),
+          "denormBehaviorIndependence" => $this->getDenormBehaviorIndependence(),
+          "roundingModeIndependence" => $this->getRoundingModeIndependence(),
+          "shaderSignedZeroInfNanPreserveFloat16" => $this->getShaderSignedZeroInfNanPreserveFloat16(),
+          "shaderSignedZeroInfNanPreserveFloat32" => $this->getShaderSignedZeroInfNanPreserveFloat32(),
+          "shaderSignedZeroInfNanPreserveFloat64" => $this->getShaderSignedZeroInfNanPreserveFloat64(),
+          "shaderDenormPreserveFloat16" => $this->getShaderDenormPreserveFloat16(),
+          "shaderDenormPreserveFloat32" => $this->getShaderDenormPreserveFloat32(),
+          "shaderDenormPreserveFloat64" => $this->getShaderDenormPreserveFloat64(),
+          "shaderDenormFlushToZeroFloat16" => $this->getShaderDenormFlushToZeroFloat16(),
+          "shaderDenormFlushToZeroFloat32" => $this->getShaderDenormFlushToZeroFloat32(),
+          "shaderDenormFlushToZeroFloat64" => $this->getShaderDenormFlushToZeroFloat64(),
+          "shaderRoundingModeRTEFloat16" => $this->getShaderRoundingModeRTEFloat16(),
+          "shaderRoundingModeRTEFloat32" => $this->getShaderRoundingModeRTEFloat32(),
+          "shaderRoundingModeRTEFloat64" => $this->getShaderRoundingModeRTEFloat64(),
+          "shaderRoundingModeRTZFloat16" => $this->getShaderRoundingModeRTZFloat16(),
+          "shaderRoundingModeRTZFloat32" => $this->getShaderRoundingModeRTZFloat32(),
+          "shaderRoundingModeRTZFloat64" => $this->getShaderRoundingModeRTZFloat64(),
+          "maxUpdateAfterBindDescriptorsInAllPools" => $this->getMaxUpdateAfterBindDescriptorsInAllPools(),
+          "shaderUniformBufferArrayNonUniformIndexingNative" => $this->getShaderUniformBufferArrayNonUniformIndexingNative(),
+          "shaderSampledImageArrayNonUniformIndexingNative" => $this->getShaderSampledImageArrayNonUniformIndexingNative(),
+          "shaderStorageBufferArrayNonUniformIndexingNative" => $this->getShaderStorageBufferArrayNonUniformIndexingNative(),
+          "shaderStorageImageArrayNonUniformIndexingNative" => $this->getShaderStorageImageArrayNonUniformIndexingNative(),
+          "shaderInputAttachmentArrayNonUniformIndexingNative" => $this->getShaderInputAttachmentArrayNonUniformIndexingNative(),
+          "robustBufferAccessUpdateAfterBind" => $this->getRobustBufferAccessUpdateAfterBind(),
+          "quadDivergentImplicitLod" => $this->getQuadDivergentImplicitLod(),
+          "maxPerStageDescriptorUpdateAfterBindSamplers" => $this->getMaxPerStageDescriptorUpdateAfterBindSamplers(),
+          "maxPerStageDescriptorUpdateAfterBindUniformBuffers" => $this->getMaxPerStageDescriptorUpdateAfterBindUniformBuffers(),
+          "maxPerStageDescriptorUpdateAfterBindStorageBuffers" => $this->getMaxPerStageDescriptorUpdateAfterBindStorageBuffers(),
+          "maxPerStageDescriptorUpdateAfterBindSampledImages" => $this->getMaxPerStageDescriptorUpdateAfterBindSampledImages(),
+          "maxPerStageDescriptorUpdateAfterBindStorageImages" => $this->getMaxPerStageDescriptorUpdateAfterBindStorageImages(),
+          "maxPerStageDescriptorUpdateAfterBindInputAttachments" => $this->getMaxPerStageDescriptorUpdateAfterBindInputAttachments(),
+          "maxPerStageUpdateAfterBindResources" => $this->getMaxPerStageUpdateAfterBindResources(),
+          "maxDescriptorSetUpdateAfterBindSamplers" => $this->getMaxDescriptorSetUpdateAfterBindSamplers(),
+          "maxDescriptorSetUpdateAfterBindUniformBuffers" => $this->getMaxDescriptorSetUpdateAfterBindUniformBuffers(),
+          "maxDescriptorSetUpdateAfterBindUniformBuffersDynamic" => $this->getMaxDescriptorSetUpdateAfterBindUniformBuffersDynamic(),
+          "maxDescriptorSetUpdateAfterBindStorageBuffers" => $this->getMaxDescriptorSetUpdateAfterBindStorageBuffers(),
+          "maxDescriptorSetUpdateAfterBindStorageBuffersDynamic" => $this->getMaxDescriptorSetUpdateAfterBindStorageBuffersDynamic(),
+          "maxDescriptorSetUpdateAfterBindSampledImages" => $this->getMaxDescriptorSetUpdateAfterBindSampledImages(),
+          "maxDescriptorSetUpdateAfterBindStorageImages" => $this->getMaxDescriptorSetUpdateAfterBindStorageImages(),
+          "maxDescriptorSetUpdateAfterBindInputAttachments" => $this->getMaxDescriptorSetUpdateAfterBindInputAttachments(),
+          "supportedDepthResolveModes" => $this->getSupportedDepthResolveModes(),
+          "supportedStencilResolveModes" => $this->getSupportedStencilResolveModes(),
+          "independentResolveNone" => $this->getIndependentResolveNone(),
+          "independentResolve" => $this->getIndependentResolve(),
+          "filterMinmaxSingleComponentFormats" => $this->getFilterMinmaxSingleComponentFormats(),
+          "filterMinmaxImageComponentMapping" => $this->getFilterMinmaxImageComponentMapping(),
+          "maxTimelineSemaphoreValueDifference" => $this->getMaxTimelineSemaphoreValueDifference(),
+          "framebufferIntegerColorSampleCounts" => $this->getFramebufferIntegerColorSampleCounts(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +74,7 @@ final class VkPhysicalDeviceVulkan12Properties
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -75,7 +136,7 @@ final class VkPhysicalDeviceVulkan12Properties
         null|array $framebufferIntegerColorSampleCounts = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkan12Properties', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkan12Properties', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($driverID)) $self->setDriverID($driverID);
@@ -138,7 +199,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -146,7 +207,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -156,15 +217,15 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -174,7 +235,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getDriverID(): \iggyvolz\vulkan\enum\VkDriverId
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->driverID;
         $phpValue = \iggyvolz\vulkan\enum\VkDriverId::from($cValue);
         return $phpValue;
@@ -182,7 +243,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setDriverID(\iggyvolz\vulkan\enum\VkDriverId $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->driverID = $cValue;
     }
@@ -192,7 +253,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getDriverName(): string
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->driverName;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -200,7 +261,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setDriverName(string $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->driverName = $cValue;
     }
@@ -210,7 +271,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getDriverInfo(): string
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->driverInfo;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -218,7 +279,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setDriverInfo(string $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->driverInfo = $cValue;
     }
@@ -228,7 +289,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getConformanceVersion(): VkConformanceVersion
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->conformanceVersion;
         $phpValue = new \iggyvolz\vulkan\struct\VkConformanceVersion($cValue, $ffi);
         return $phpValue;
@@ -236,7 +297,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setConformanceVersion(VkConformanceVersion $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->conformanceVersion = $cValue;
     }
@@ -246,7 +307,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getDenormBehaviorIndependence(): \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->denormBehaviorIndependence;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence::from($cValue);
         return $phpValue;
@@ -256,7 +317,7 @@ final class VkPhysicalDeviceVulkan12Properties
         \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence $phpValue,
     ): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->denormBehaviorIndependence = $cValue;
     }
@@ -266,7 +327,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getRoundingModeIndependence(): \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->roundingModeIndependence;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence::from($cValue);
         return $phpValue;
@@ -276,7 +337,7 @@ final class VkPhysicalDeviceVulkan12Properties
         \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence $phpValue,
     ): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->roundingModeIndependence = $cValue;
     }
@@ -286,7 +347,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderSignedZeroInfNanPreserveFloat16(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSignedZeroInfNanPreserveFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -294,7 +355,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderSignedZeroInfNanPreserveFloat16(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSignedZeroInfNanPreserveFloat16 = $cValue;
     }
@@ -304,7 +365,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderSignedZeroInfNanPreserveFloat32(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSignedZeroInfNanPreserveFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -312,7 +373,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderSignedZeroInfNanPreserveFloat32(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSignedZeroInfNanPreserveFloat32 = $cValue;
     }
@@ -322,7 +383,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderSignedZeroInfNanPreserveFloat64(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSignedZeroInfNanPreserveFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -330,7 +391,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderSignedZeroInfNanPreserveFloat64(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSignedZeroInfNanPreserveFloat64 = $cValue;
     }
@@ -340,7 +401,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderDenormPreserveFloat16(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormPreserveFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -348,7 +409,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderDenormPreserveFloat16(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormPreserveFloat16 = $cValue;
     }
@@ -358,7 +419,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderDenormPreserveFloat32(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormPreserveFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -366,7 +427,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderDenormPreserveFloat32(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormPreserveFloat32 = $cValue;
     }
@@ -376,7 +437,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderDenormPreserveFloat64(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormPreserveFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -384,7 +445,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderDenormPreserveFloat64(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormPreserveFloat64 = $cValue;
     }
@@ -394,7 +455,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderDenormFlushToZeroFloat16(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormFlushToZeroFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -402,7 +463,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderDenormFlushToZeroFloat16(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormFlushToZeroFloat16 = $cValue;
     }
@@ -412,7 +473,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderDenormFlushToZeroFloat32(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormFlushToZeroFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -420,7 +481,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderDenormFlushToZeroFloat32(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormFlushToZeroFloat32 = $cValue;
     }
@@ -430,7 +491,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderDenormFlushToZeroFloat64(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormFlushToZeroFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -438,7 +499,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderDenormFlushToZeroFloat64(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormFlushToZeroFloat64 = $cValue;
     }
@@ -448,7 +509,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderRoundingModeRTEFloat16(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTEFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -456,7 +517,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderRoundingModeRTEFloat16(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTEFloat16 = $cValue;
     }
@@ -466,7 +527,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderRoundingModeRTEFloat32(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTEFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -474,7 +535,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderRoundingModeRTEFloat32(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTEFloat32 = $cValue;
     }
@@ -484,7 +545,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderRoundingModeRTEFloat64(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTEFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -492,7 +553,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderRoundingModeRTEFloat64(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTEFloat64 = $cValue;
     }
@@ -502,7 +563,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderRoundingModeRTZFloat16(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTZFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -510,7 +571,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderRoundingModeRTZFloat16(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTZFloat16 = $cValue;
     }
@@ -520,7 +581,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderRoundingModeRTZFloat32(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTZFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -528,7 +589,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderRoundingModeRTZFloat32(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTZFloat32 = $cValue;
     }
@@ -538,7 +599,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderRoundingModeRTZFloat64(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTZFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -546,7 +607,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderRoundingModeRTZFloat64(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTZFloat64 = $cValue;
     }
@@ -556,7 +617,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxUpdateAfterBindDescriptorsInAllPools(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxUpdateAfterBindDescriptorsInAllPools;
         $phpValue = $cValue;
         return $phpValue;
@@ -564,7 +625,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxUpdateAfterBindDescriptorsInAllPools(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxUpdateAfterBindDescriptorsInAllPools = $cValue;
     }
@@ -574,7 +635,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderUniformBufferArrayNonUniformIndexingNative(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderUniformBufferArrayNonUniformIndexingNative;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -582,7 +643,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderUniformBufferArrayNonUniformIndexingNative(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderUniformBufferArrayNonUniformIndexingNative = $cValue;
     }
@@ -592,7 +653,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderSampledImageArrayNonUniformIndexingNative(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSampledImageArrayNonUniformIndexingNative;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -600,7 +661,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderSampledImageArrayNonUniformIndexingNative(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSampledImageArrayNonUniformIndexingNative = $cValue;
     }
@@ -610,7 +671,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderStorageBufferArrayNonUniformIndexingNative(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageBufferArrayNonUniformIndexingNative;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -618,7 +679,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderStorageBufferArrayNonUniformIndexingNative(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageBufferArrayNonUniformIndexingNative = $cValue;
     }
@@ -628,7 +689,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderStorageImageArrayNonUniformIndexingNative(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageImageArrayNonUniformIndexingNative;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -636,7 +697,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderStorageImageArrayNonUniformIndexingNative(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageImageArrayNonUniformIndexingNative = $cValue;
     }
@@ -646,7 +707,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getShaderInputAttachmentArrayNonUniformIndexingNative(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderInputAttachmentArrayNonUniformIndexingNative;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -654,7 +715,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setShaderInputAttachmentArrayNonUniformIndexingNative(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderInputAttachmentArrayNonUniformIndexingNative = $cValue;
     }
@@ -664,7 +725,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getRobustBufferAccessUpdateAfterBind(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->robustBufferAccessUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -672,7 +733,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setRobustBufferAccessUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->robustBufferAccessUpdateAfterBind = $cValue;
     }
@@ -682,7 +743,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getQuadDivergentImplicitLod(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->quadDivergentImplicitLod;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -690,7 +751,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setQuadDivergentImplicitLod(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->quadDivergentImplicitLod = $cValue;
     }
@@ -700,7 +761,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxPerStageDescriptorUpdateAfterBindSamplers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindSamplers;
         $phpValue = $cValue;
         return $phpValue;
@@ -708,7 +769,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxPerStageDescriptorUpdateAfterBindSamplers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindSamplers = $cValue;
     }
@@ -718,7 +779,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxPerStageDescriptorUpdateAfterBindUniformBuffers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindUniformBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -726,7 +787,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxPerStageDescriptorUpdateAfterBindUniformBuffers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindUniformBuffers = $cValue;
     }
@@ -736,7 +797,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxPerStageDescriptorUpdateAfterBindStorageBuffers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindStorageBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -744,7 +805,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxPerStageDescriptorUpdateAfterBindStorageBuffers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindStorageBuffers = $cValue;
     }
@@ -754,7 +815,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxPerStageDescriptorUpdateAfterBindSampledImages(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindSampledImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -762,7 +823,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxPerStageDescriptorUpdateAfterBindSampledImages(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindSampledImages = $cValue;
     }
@@ -772,7 +833,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxPerStageDescriptorUpdateAfterBindStorageImages(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindStorageImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -780,7 +841,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxPerStageDescriptorUpdateAfterBindStorageImages(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindStorageImages = $cValue;
     }
@@ -790,7 +851,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxPerStageDescriptorUpdateAfterBindInputAttachments(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindInputAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -798,7 +859,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxPerStageDescriptorUpdateAfterBindInputAttachments(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindInputAttachments = $cValue;
     }
@@ -808,7 +869,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxPerStageUpdateAfterBindResources(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageUpdateAfterBindResources;
         $phpValue = $cValue;
         return $phpValue;
@@ -816,7 +877,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxPerStageUpdateAfterBindResources(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageUpdateAfterBindResources = $cValue;
     }
@@ -826,7 +887,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxDescriptorSetUpdateAfterBindSamplers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindSamplers;
         $phpValue = $cValue;
         return $phpValue;
@@ -834,7 +895,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxDescriptorSetUpdateAfterBindSamplers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindSamplers = $cValue;
     }
@@ -844,7 +905,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxDescriptorSetUpdateAfterBindUniformBuffers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindUniformBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -852,7 +913,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxDescriptorSetUpdateAfterBindUniformBuffers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindUniformBuffers = $cValue;
     }
@@ -862,7 +923,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxDescriptorSetUpdateAfterBindUniformBuffersDynamic(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
         $phpValue = $cValue;
         return $phpValue;
@@ -870,7 +931,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxDescriptorSetUpdateAfterBindUniformBuffersDynamic(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindUniformBuffersDynamic = $cValue;
     }
@@ -880,7 +941,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxDescriptorSetUpdateAfterBindStorageBuffers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindStorageBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -888,7 +949,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxDescriptorSetUpdateAfterBindStorageBuffers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindStorageBuffers = $cValue;
     }
@@ -898,7 +959,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxDescriptorSetUpdateAfterBindStorageBuffersDynamic(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
         $phpValue = $cValue;
         return $phpValue;
@@ -906,7 +967,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxDescriptorSetUpdateAfterBindStorageBuffersDynamic(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindStorageBuffersDynamic = $cValue;
     }
@@ -916,7 +977,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxDescriptorSetUpdateAfterBindSampledImages(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindSampledImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -924,7 +985,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxDescriptorSetUpdateAfterBindSampledImages(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindSampledImages = $cValue;
     }
@@ -934,7 +995,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxDescriptorSetUpdateAfterBindStorageImages(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindStorageImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -942,7 +1003,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxDescriptorSetUpdateAfterBindStorageImages(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindStorageImages = $cValue;
     }
@@ -952,7 +1013,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxDescriptorSetUpdateAfterBindInputAttachments(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindInputAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -960,7 +1021,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxDescriptorSetUpdateAfterBindInputAttachments(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindInputAttachments = $cValue;
     }
@@ -970,7 +1031,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getSupportedDepthResolveModes(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedDepthResolveModes;
         $phpValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::fromInt($cValue);
         return $phpValue;
@@ -978,7 +1039,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setSupportedDepthResolveModes(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::toInt(...$phpValue);
         $this->cdata->supportedDepthResolveModes = $cValue;
     }
@@ -988,7 +1049,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getSupportedStencilResolveModes(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedStencilResolveModes;
         $phpValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::fromInt($cValue);
         return $phpValue;
@@ -996,7 +1057,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setSupportedStencilResolveModes(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::toInt(...$phpValue);
         $this->cdata->supportedStencilResolveModes = $cValue;
     }
@@ -1006,7 +1067,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getIndependentResolveNone(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->independentResolveNone;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1014,7 +1075,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setIndependentResolveNone(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->independentResolveNone = $cValue;
     }
@@ -1024,7 +1085,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getIndependentResolve(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->independentResolve;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1032,7 +1093,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setIndependentResolve(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->independentResolve = $cValue;
     }
@@ -1042,7 +1103,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getFilterMinmaxSingleComponentFormats(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->filterMinmaxSingleComponentFormats;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1050,7 +1111,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setFilterMinmaxSingleComponentFormats(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->filterMinmaxSingleComponentFormats = $cValue;
     }
@@ -1060,7 +1121,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getFilterMinmaxImageComponentMapping(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->filterMinmaxImageComponentMapping;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1068,7 +1129,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setFilterMinmaxImageComponentMapping(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->filterMinmaxImageComponentMapping = $cValue;
     }
@@ -1078,7 +1139,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getMaxTimelineSemaphoreValueDifference(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTimelineSemaphoreValueDifference;
         $phpValue = $cValue;
         return $phpValue;
@@ -1086,7 +1147,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setMaxTimelineSemaphoreValueDifference(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTimelineSemaphoreValueDifference = $cValue;
     }
@@ -1096,7 +1157,7 @@ final class VkPhysicalDeviceVulkan12Properties
      */
     public function getFramebufferIntegerColorSampleCounts(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->framebufferIntegerColorSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1104,7 +1165,7 @@ final class VkPhysicalDeviceVulkan12Properties
 
     public function setFramebufferIntegerColorSampleCounts(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->framebufferIntegerColorSampleCounts = $cValue;
     }

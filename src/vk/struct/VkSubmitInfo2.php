@@ -4,8 +4,24 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSubmitInfo2
+final class VkSubmitInfo2 implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "waitSemaphoreInfoCount" => $this->getWaitSemaphoreInfoCount(),
+          "pWaitSemaphoreInfos" => $this->getPWaitSemaphoreInfos(),
+          "commandBufferInfoCount" => $this->getCommandBufferInfoCount(),
+          "pCommandBufferInfos" => $this->getPCommandBufferInfos(),
+          "signalSemaphoreInfoCount" => $this->getSignalSemaphoreInfoCount(),
+          "pSignalSemaphoreInfos" => $this->getPSignalSemaphoreInfos(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +29,7 @@ final class VkSubmitInfo2
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -30,7 +46,7 @@ final class VkSubmitInfo2
         null|\iggyvolz\vulkan\util\ObjectPointer $pSignalSemaphoreInfos = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSubmitInfo2', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSubmitInfo2', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -48,7 +64,7 @@ final class VkSubmitInfo2
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -56,7 +72,7 @@ final class VkSubmitInfo2
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -66,15 +82,15 @@ final class VkSubmitInfo2
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -84,7 +100,7 @@ final class VkSubmitInfo2
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkSubmitFlagBits::fromInt($cValue);
         return $phpValue;
@@ -92,7 +108,7 @@ final class VkSubmitInfo2
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSubmitFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -102,7 +118,7 @@ final class VkSubmitInfo2
      */
     public function getWaitSemaphoreInfoCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->waitSemaphoreInfoCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -110,7 +126,7 @@ final class VkSubmitInfo2
 
     public function setWaitSemaphoreInfoCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->waitSemaphoreInfoCount = $cValue;
     }
@@ -120,15 +136,15 @@ final class VkSubmitInfo2
      */
     public function getPWaitSemaphoreInfos(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pWaitSemaphoreInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSemaphoreSubmitInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSemaphoreSubmitInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPWaitSemaphoreInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pWaitSemaphoreInfos = $cValue;
     }
@@ -138,7 +154,7 @@ final class VkSubmitInfo2
      */
     public function getCommandBufferInfoCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->commandBufferInfoCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -146,7 +162,7 @@ final class VkSubmitInfo2
 
     public function setCommandBufferInfoCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->commandBufferInfoCount = $cValue;
     }
@@ -156,15 +172,15 @@ final class VkSubmitInfo2
      */
     public function getPCommandBufferInfos(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pCommandBufferInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkCommandBufferSubmitInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkCommandBufferSubmitInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPCommandBufferInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pCommandBufferInfos = $cValue;
     }
@@ -174,7 +190,7 @@ final class VkSubmitInfo2
      */
     public function getSignalSemaphoreInfoCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->signalSemaphoreInfoCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -182,7 +198,7 @@ final class VkSubmitInfo2
 
     public function setSignalSemaphoreInfoCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->signalSemaphoreInfoCount = $cValue;
     }
@@ -192,15 +208,15 @@ final class VkSubmitInfo2
      */
     public function getPSignalSemaphoreInfos(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pSignalSemaphoreInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSemaphoreSubmitInfo', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSemaphoreSubmitInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPSignalSemaphoreInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pSignalSemaphoreInfos = $cValue;
     }

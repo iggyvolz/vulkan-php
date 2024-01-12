@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkDisplayPresentInfoKHR
+final class VkDisplayPresentInfoKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "srcRect" => $this->getSrcRect(),
+          "dstRect" => $this->getDstRect(),
+          "persistent" => $this->getPersistent(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkDisplayPresentInfoKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkDisplayPresentInfoKHR
         null|bool $persistent = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDisplayPresentInfoKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkDisplayPresentInfoKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($srcRect)) $self->setSrcRect($srcRect);
@@ -40,7 +52,7 @@ final class VkDisplayPresentInfoKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkDisplayPresentInfoKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -58,15 +70,15 @@ final class VkDisplayPresentInfoKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkDisplayPresentInfoKHR
      */
     public function getSrcRect(): VkRect2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcRect;
         $phpValue = new \iggyvolz\vulkan\struct\VkRect2D($cValue, $ffi);
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkDisplayPresentInfoKHR
 
     public function setSrcRect(VkRect2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->srcRect = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkDisplayPresentInfoKHR
      */
     public function getDstRect(): VkRect2D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstRect;
         $phpValue = new \iggyvolz\vulkan\struct\VkRect2D($cValue, $ffi);
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkDisplayPresentInfoKHR
 
     public function setDstRect(VkRect2D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->dstRect = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkDisplayPresentInfoKHR
      */
     public function getPersistent(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->persistent;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkDisplayPresentInfoKHR
 
     public function setPersistent(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->persistent = $cValue;
     }

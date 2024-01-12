@@ -4,8 +4,24 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkRenderPassCreateInfo
+final class VkRenderPassCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "attachmentCount" => $this->getAttachmentCount(),
+          "pAttachments" => $this->getPAttachments(),
+          "subpassCount" => $this->getSubpassCount(),
+          "pSubpasses" => $this->getPSubpasses(),
+          "dependencyCount" => $this->getDependencyCount(),
+          "pDependencies" => $this->getPDependencies(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +29,7 @@ final class VkRenderPassCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -30,7 +46,7 @@ final class VkRenderPassCreateInfo
         null|\iggyvolz\vulkan\util\ObjectPointer $pDependencies = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkRenderPassCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkRenderPassCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -48,7 +64,7 @@ final class VkRenderPassCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -56,7 +72,7 @@ final class VkRenderPassCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -66,15 +82,15 @@ final class VkRenderPassCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -84,7 +100,7 @@ final class VkRenderPassCreateInfo
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkRenderPassCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -92,7 +108,7 @@ final class VkRenderPassCreateInfo
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkRenderPassCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -102,7 +118,7 @@ final class VkRenderPassCreateInfo
      */
     public function getAttachmentCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->attachmentCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -110,7 +126,7 @@ final class VkRenderPassCreateInfo
 
     public function setAttachmentCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->attachmentCount = $cValue;
     }
@@ -120,15 +136,15 @@ final class VkRenderPassCreateInfo
      */
     public function getPAttachments(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pAttachments;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentDescription', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentDescription', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPAttachments(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pAttachments = $cValue;
     }
@@ -138,7 +154,7 @@ final class VkRenderPassCreateInfo
      */
     public function getSubpassCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subpassCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -146,7 +162,7 @@ final class VkRenderPassCreateInfo
 
     public function setSubpassCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subpassCount = $cValue;
     }
@@ -156,15 +172,15 @@ final class VkRenderPassCreateInfo
      */
     public function getPSubpasses(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pSubpasses;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSubpassDescription', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSubpassDescription', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPSubpasses(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pSubpasses = $cValue;
     }
@@ -174,7 +190,7 @@ final class VkRenderPassCreateInfo
      */
     public function getDependencyCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dependencyCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -182,7 +198,7 @@ final class VkRenderPassCreateInfo
 
     public function setDependencyCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dependencyCount = $cValue;
     }
@@ -192,15 +208,15 @@ final class VkRenderPassCreateInfo
      */
     public function getPDependencies(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDependencies;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSubpassDependency', $cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSubpassDependency', $cValue, $ffi); /** PTRANS */
         return $phpValue;
     }
 
     public function setPDependencies(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDependencies = $cValue;
     }

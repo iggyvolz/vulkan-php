@@ -4,8 +4,50 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
+final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "combinedImageSamplerDescriptorSingleArray" => $this->getCombinedImageSamplerDescriptorSingleArray(),
+          "bufferlessPushDescriptors" => $this->getBufferlessPushDescriptors(),
+          "allowSamplerImageViewPostSubmitCreation" => $this->getAllowSamplerImageViewPostSubmitCreation(),
+          "descriptorBufferOffsetAlignment" => $this->getDescriptorBufferOffsetAlignment(),
+          "maxDescriptorBufferBindings" => $this->getMaxDescriptorBufferBindings(),
+          "maxResourceDescriptorBufferBindings" => $this->getMaxResourceDescriptorBufferBindings(),
+          "maxSamplerDescriptorBufferBindings" => $this->getMaxSamplerDescriptorBufferBindings(),
+          "maxEmbeddedImmutableSamplerBindings" => $this->getMaxEmbeddedImmutableSamplerBindings(),
+          "maxEmbeddedImmutableSamplers" => $this->getMaxEmbeddedImmutableSamplers(),
+          "bufferCaptureReplayDescriptorDataSize" => $this->getBufferCaptureReplayDescriptorDataSize(),
+          "imageCaptureReplayDescriptorDataSize" => $this->getImageCaptureReplayDescriptorDataSize(),
+          "imageViewCaptureReplayDescriptorDataSize" => $this->getImageViewCaptureReplayDescriptorDataSize(),
+          "samplerCaptureReplayDescriptorDataSize" => $this->getSamplerCaptureReplayDescriptorDataSize(),
+          "accelerationStructureCaptureReplayDescriptorDataSize" => $this->getAccelerationStructureCaptureReplayDescriptorDataSize(),
+          "samplerDescriptorSize" => $this->getSamplerDescriptorSize(),
+          "combinedImageSamplerDescriptorSize" => $this->getCombinedImageSamplerDescriptorSize(),
+          "sampledImageDescriptorSize" => $this->getSampledImageDescriptorSize(),
+          "storageImageDescriptorSize" => $this->getStorageImageDescriptorSize(),
+          "uniformTexelBufferDescriptorSize" => $this->getUniformTexelBufferDescriptorSize(),
+          "robustUniformTexelBufferDescriptorSize" => $this->getRobustUniformTexelBufferDescriptorSize(),
+          "storageTexelBufferDescriptorSize" => $this->getStorageTexelBufferDescriptorSize(),
+          "robustStorageTexelBufferDescriptorSize" => $this->getRobustStorageTexelBufferDescriptorSize(),
+          "uniformBufferDescriptorSize" => $this->getUniformBufferDescriptorSize(),
+          "robustUniformBufferDescriptorSize" => $this->getRobustUniformBufferDescriptorSize(),
+          "storageBufferDescriptorSize" => $this->getStorageBufferDescriptorSize(),
+          "robustStorageBufferDescriptorSize" => $this->getRobustStorageBufferDescriptorSize(),
+          "inputAttachmentDescriptorSize" => $this->getInputAttachmentDescriptorSize(),
+          "accelerationStructureDescriptorSize" => $this->getAccelerationStructureDescriptorSize(),
+          "maxSamplerDescriptorBufferRange" => $this->getMaxSamplerDescriptorBufferRange(),
+          "maxResourceDescriptorBufferRange" => $this->getMaxResourceDescriptorBufferRange(),
+          "samplerDescriptorBufferAddressSpaceSize" => $this->getSamplerDescriptorBufferAddressSpaceSize(),
+          "resourceDescriptorBufferAddressSpaceSize" => $this->getResourceDescriptorBufferAddressSpaceSize(),
+          "descriptorBufferAddressSpaceSize" => $this->getDescriptorBufferAddressSpaceSize(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +55,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -56,7 +98,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
         null|int $descriptorBufferAddressSpaceSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDescriptorBufferPropertiesEXT', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDescriptorBufferPropertiesEXT', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($combinedImageSamplerDescriptorSingleArray)) $self->setCombinedImageSamplerDescriptorSingleArray($combinedImageSamplerDescriptorSingleArray);
@@ -100,7 +142,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -108,7 +150,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -118,15 +160,15 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -136,7 +178,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getCombinedImageSamplerDescriptorSingleArray(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->combinedImageSamplerDescriptorSingleArray;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -144,7 +186,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setCombinedImageSamplerDescriptorSingleArray(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->combinedImageSamplerDescriptorSingleArray = $cValue;
     }
@@ -154,7 +196,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getBufferlessPushDescriptors(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferlessPushDescriptors;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -162,7 +204,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setBufferlessPushDescriptors(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->bufferlessPushDescriptors = $cValue;
     }
@@ -172,7 +214,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getAllowSamplerImageViewPostSubmitCreation(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->allowSamplerImageViewPostSubmitCreation;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -180,7 +222,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setAllowSamplerImageViewPostSubmitCreation(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->allowSamplerImageViewPostSubmitCreation = $cValue;
     }
@@ -190,7 +232,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getDescriptorBufferOffsetAlignment(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBufferOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -198,7 +240,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setDescriptorBufferOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorBufferOffsetAlignment = $cValue;
     }
@@ -208,7 +250,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getMaxDescriptorBufferBindings(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorBufferBindings;
         $phpValue = $cValue;
         return $phpValue;
@@ -216,7 +258,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setMaxDescriptorBufferBindings(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorBufferBindings = $cValue;
     }
@@ -226,7 +268,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getMaxResourceDescriptorBufferBindings(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxResourceDescriptorBufferBindings;
         $phpValue = $cValue;
         return $phpValue;
@@ -234,7 +276,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setMaxResourceDescriptorBufferBindings(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxResourceDescriptorBufferBindings = $cValue;
     }
@@ -244,7 +286,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getMaxSamplerDescriptorBufferBindings(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSamplerDescriptorBufferBindings;
         $phpValue = $cValue;
         return $phpValue;
@@ -252,7 +294,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setMaxSamplerDescriptorBufferBindings(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSamplerDescriptorBufferBindings = $cValue;
     }
@@ -262,7 +304,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getMaxEmbeddedImmutableSamplerBindings(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxEmbeddedImmutableSamplerBindings;
         $phpValue = $cValue;
         return $phpValue;
@@ -270,7 +312,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setMaxEmbeddedImmutableSamplerBindings(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxEmbeddedImmutableSamplerBindings = $cValue;
     }
@@ -280,7 +322,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getMaxEmbeddedImmutableSamplers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxEmbeddedImmutableSamplers;
         $phpValue = $cValue;
         return $phpValue;
@@ -288,7 +330,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setMaxEmbeddedImmutableSamplers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxEmbeddedImmutableSamplers = $cValue;
     }
@@ -298,7 +340,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getBufferCaptureReplayDescriptorDataSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferCaptureReplayDescriptorDataSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -306,7 +348,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setBufferCaptureReplayDescriptorDataSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferCaptureReplayDescriptorDataSize = $cValue;
     }
@@ -316,7 +358,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getImageCaptureReplayDescriptorDataSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageCaptureReplayDescriptorDataSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -324,7 +366,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setImageCaptureReplayDescriptorDataSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageCaptureReplayDescriptorDataSize = $cValue;
     }
@@ -334,7 +376,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getImageViewCaptureReplayDescriptorDataSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageViewCaptureReplayDescriptorDataSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -342,7 +384,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setImageViewCaptureReplayDescriptorDataSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageViewCaptureReplayDescriptorDataSize = $cValue;
     }
@@ -352,7 +394,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getSamplerCaptureReplayDescriptorDataSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samplerCaptureReplayDescriptorDataSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -360,7 +402,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setSamplerCaptureReplayDescriptorDataSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->samplerCaptureReplayDescriptorDataSize = $cValue;
     }
@@ -370,7 +412,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getAccelerationStructureCaptureReplayDescriptorDataSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->accelerationStructureCaptureReplayDescriptorDataSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -378,7 +420,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setAccelerationStructureCaptureReplayDescriptorDataSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->accelerationStructureCaptureReplayDescriptorDataSize = $cValue;
     }
@@ -388,7 +430,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getSamplerDescriptorSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samplerDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -396,7 +438,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setSamplerDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->samplerDescriptorSize = $cValue;
     }
@@ -406,7 +448,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getCombinedImageSamplerDescriptorSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->combinedImageSamplerDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -414,7 +456,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setCombinedImageSamplerDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->combinedImageSamplerDescriptorSize = $cValue;
     }
@@ -424,7 +466,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getSampledImageDescriptorSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampledImageDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -432,7 +474,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setSampledImageDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sampledImageDescriptorSize = $cValue;
     }
@@ -442,7 +484,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getStorageImageDescriptorSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageImageDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -450,7 +492,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setStorageImageDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->storageImageDescriptorSize = $cValue;
     }
@@ -460,7 +502,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getUniformTexelBufferDescriptorSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->uniformTexelBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -468,7 +510,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setUniformTexelBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->uniformTexelBufferDescriptorSize = $cValue;
     }
@@ -478,7 +520,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getRobustUniformTexelBufferDescriptorSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->robustUniformTexelBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -486,7 +528,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setRobustUniformTexelBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->robustUniformTexelBufferDescriptorSize = $cValue;
     }
@@ -496,7 +538,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getStorageTexelBufferDescriptorSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageTexelBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -504,7 +546,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setStorageTexelBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->storageTexelBufferDescriptorSize = $cValue;
     }
@@ -514,7 +556,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getRobustStorageTexelBufferDescriptorSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->robustStorageTexelBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -522,7 +564,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setRobustStorageTexelBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->robustStorageTexelBufferDescriptorSize = $cValue;
     }
@@ -532,7 +574,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getUniformBufferDescriptorSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->uniformBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -540,7 +582,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setUniformBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->uniformBufferDescriptorSize = $cValue;
     }
@@ -550,7 +592,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getRobustUniformBufferDescriptorSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->robustUniformBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -558,7 +600,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setRobustUniformBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->robustUniformBufferDescriptorSize = $cValue;
     }
@@ -568,7 +610,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getStorageBufferDescriptorSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -576,7 +618,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setStorageBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->storageBufferDescriptorSize = $cValue;
     }
@@ -586,7 +628,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getRobustStorageBufferDescriptorSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->robustStorageBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -594,7 +636,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setRobustStorageBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->robustStorageBufferDescriptorSize = $cValue;
     }
@@ -604,7 +646,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getInputAttachmentDescriptorSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->inputAttachmentDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -612,7 +654,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setInputAttachmentDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->inputAttachmentDescriptorSize = $cValue;
     }
@@ -622,7 +664,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getAccelerationStructureDescriptorSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->accelerationStructureDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -630,7 +672,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setAccelerationStructureDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->accelerationStructureDescriptorSize = $cValue;
     }
@@ -640,7 +682,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getMaxSamplerDescriptorBufferRange(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSamplerDescriptorBufferRange;
         $phpValue = $cValue;
         return $phpValue;
@@ -648,7 +690,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setMaxSamplerDescriptorBufferRange(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSamplerDescriptorBufferRange = $cValue;
     }
@@ -658,7 +700,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getMaxResourceDescriptorBufferRange(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxResourceDescriptorBufferRange;
         $phpValue = $cValue;
         return $phpValue;
@@ -666,7 +708,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setMaxResourceDescriptorBufferRange(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxResourceDescriptorBufferRange = $cValue;
     }
@@ -676,7 +718,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getSamplerDescriptorBufferAddressSpaceSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samplerDescriptorBufferAddressSpaceSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -684,7 +726,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setSamplerDescriptorBufferAddressSpaceSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->samplerDescriptorBufferAddressSpaceSize = $cValue;
     }
@@ -694,7 +736,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getResourceDescriptorBufferAddressSpaceSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->resourceDescriptorBufferAddressSpaceSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -702,7 +744,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setResourceDescriptorBufferAddressSpaceSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->resourceDescriptorBufferAddressSpaceSize = $cValue;
     }
@@ -712,7 +754,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
      */
     public function getDescriptorBufferAddressSpaceSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBufferAddressSpaceSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -720,7 +762,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT
 
     public function setDescriptorBufferAddressSpaceSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorBufferAddressSpaceSize = $cValue;
     }

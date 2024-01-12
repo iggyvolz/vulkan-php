@@ -4,8 +4,33 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkSamplerCreateInfo
+final class VkSamplerCreateInfo implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "flags" => $this->getFlags(),
+          "magFilter" => $this->getMagFilter(),
+          "minFilter" => $this->getMinFilter(),
+          "mipmapMode" => $this->getMipmapMode(),
+          "addressModeU" => $this->getAddressModeU(),
+          "addressModeV" => $this->getAddressModeV(),
+          "addressModeW" => $this->getAddressModeW(),
+          "mipLodBias" => $this->getMipLodBias(),
+          "anisotropyEnable" => $this->getAnisotropyEnable(),
+          "maxAnisotropy" => $this->getMaxAnisotropy(),
+          "compareEnable" => $this->getCompareEnable(),
+          "compareOp" => $this->getCompareOp(),
+          "minLod" => $this->getMinLod(),
+          "maxLod" => $this->getMaxLod(),
+          "borderColor" => $this->getBorderColor(),
+          "unnormalizedCoordinates" => $this->getUnnormalizedCoordinates(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +38,7 @@ final class VkSamplerCreateInfo
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -39,7 +64,7 @@ final class VkSamplerCreateInfo
         null|bool $unnormalizedCoordinates = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSamplerCreateInfo', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkSamplerCreateInfo', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -66,7 +91,7 @@ final class VkSamplerCreateInfo
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -74,7 +99,7 @@ final class VkSamplerCreateInfo
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -84,15 +109,15 @@ final class VkSamplerCreateInfo
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -102,7 +127,7 @@ final class VkSamplerCreateInfo
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -110,7 +135,7 @@ final class VkSamplerCreateInfo
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSamplerCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -120,7 +145,7 @@ final class VkSamplerCreateInfo
      */
     public function getMagFilter(): \iggyvolz\vulkan\enum\VkFilter
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->magFilter;
         $phpValue = \iggyvolz\vulkan\enum\VkFilter::from($cValue);
         return $phpValue;
@@ -128,7 +153,7 @@ final class VkSamplerCreateInfo
 
     public function setMagFilter(\iggyvolz\vulkan\enum\VkFilter $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->magFilter = $cValue;
     }
@@ -138,7 +163,7 @@ final class VkSamplerCreateInfo
      */
     public function getMinFilter(): \iggyvolz\vulkan\enum\VkFilter
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minFilter;
         $phpValue = \iggyvolz\vulkan\enum\VkFilter::from($cValue);
         return $phpValue;
@@ -146,7 +171,7 @@ final class VkSamplerCreateInfo
 
     public function setMinFilter(\iggyvolz\vulkan\enum\VkFilter $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->minFilter = $cValue;
     }
@@ -156,7 +181,7 @@ final class VkSamplerCreateInfo
      */
     public function getMipmapMode(): \iggyvolz\vulkan\enum\VkSamplerMipmapMode
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mipmapMode;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerMipmapMode::from($cValue);
         return $phpValue;
@@ -164,7 +189,7 @@ final class VkSamplerCreateInfo
 
     public function setMipmapMode(\iggyvolz\vulkan\enum\VkSamplerMipmapMode $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->mipmapMode = $cValue;
     }
@@ -174,7 +199,7 @@ final class VkSamplerCreateInfo
      */
     public function getAddressModeU(): \iggyvolz\vulkan\enum\VkSamplerAddressMode
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->addressModeU;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerAddressMode::from($cValue);
         return $phpValue;
@@ -182,7 +207,7 @@ final class VkSamplerCreateInfo
 
     public function setAddressModeU(\iggyvolz\vulkan\enum\VkSamplerAddressMode $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->addressModeU = $cValue;
     }
@@ -192,7 +217,7 @@ final class VkSamplerCreateInfo
      */
     public function getAddressModeV(): \iggyvolz\vulkan\enum\VkSamplerAddressMode
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->addressModeV;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerAddressMode::from($cValue);
         return $phpValue;
@@ -200,7 +225,7 @@ final class VkSamplerCreateInfo
 
     public function setAddressModeV(\iggyvolz\vulkan\enum\VkSamplerAddressMode $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->addressModeV = $cValue;
     }
@@ -210,7 +235,7 @@ final class VkSamplerCreateInfo
      */
     public function getAddressModeW(): \iggyvolz\vulkan\enum\VkSamplerAddressMode
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->addressModeW;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerAddressMode::from($cValue);
         return $phpValue;
@@ -218,7 +243,7 @@ final class VkSamplerCreateInfo
 
     public function setAddressModeW(\iggyvolz\vulkan\enum\VkSamplerAddressMode $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->addressModeW = $cValue;
     }
@@ -228,7 +253,7 @@ final class VkSamplerCreateInfo
      */
     public function getMipLodBias(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mipLodBias;
         $phpValue = $cValue;
         return $phpValue;
@@ -236,7 +261,7 @@ final class VkSamplerCreateInfo
 
     public function setMipLodBias(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->mipLodBias = $cValue;
     }
@@ -246,7 +271,7 @@ final class VkSamplerCreateInfo
      */
     public function getAnisotropyEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->anisotropyEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -254,7 +279,7 @@ final class VkSamplerCreateInfo
 
     public function setAnisotropyEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->anisotropyEnable = $cValue;
     }
@@ -264,7 +289,7 @@ final class VkSamplerCreateInfo
      */
     public function getMaxAnisotropy(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxAnisotropy;
         $phpValue = $cValue;
         return $phpValue;
@@ -272,7 +297,7 @@ final class VkSamplerCreateInfo
 
     public function setMaxAnisotropy(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxAnisotropy = $cValue;
     }
@@ -282,7 +307,7 @@ final class VkSamplerCreateInfo
      */
     public function getCompareEnable(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->compareEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -290,7 +315,7 @@ final class VkSamplerCreateInfo
 
     public function setCompareEnable(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->compareEnable = $cValue;
     }
@@ -300,7 +325,7 @@ final class VkSamplerCreateInfo
      */
     public function getCompareOp(): \iggyvolz\vulkan\enum\VkCompareOp
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->compareOp;
         $phpValue = \iggyvolz\vulkan\enum\VkCompareOp::from($cValue);
         return $phpValue;
@@ -308,7 +333,7 @@ final class VkSamplerCreateInfo
 
     public function setCompareOp(\iggyvolz\vulkan\enum\VkCompareOp $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->compareOp = $cValue;
     }
@@ -318,7 +343,7 @@ final class VkSamplerCreateInfo
      */
     public function getMinLod(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minLod;
         $phpValue = $cValue;
         return $phpValue;
@@ -326,7 +351,7 @@ final class VkSamplerCreateInfo
 
     public function setMinLod(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minLod = $cValue;
     }
@@ -336,7 +361,7 @@ final class VkSamplerCreateInfo
      */
     public function getMaxLod(): float
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxLod;
         $phpValue = $cValue;
         return $phpValue;
@@ -344,7 +369,7 @@ final class VkSamplerCreateInfo
 
     public function setMaxLod(float $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxLod = $cValue;
     }
@@ -354,7 +379,7 @@ final class VkSamplerCreateInfo
      */
     public function getBorderColor(): \iggyvolz\vulkan\enum\VkBorderColor
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->borderColor;
         $phpValue = \iggyvolz\vulkan\enum\VkBorderColor::from($cValue);
         return $phpValue;
@@ -362,7 +387,7 @@ final class VkSamplerCreateInfo
 
     public function setBorderColor(\iggyvolz\vulkan\enum\VkBorderColor $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->borderColor = $cValue;
     }
@@ -372,7 +397,7 @@ final class VkSamplerCreateInfo
      */
     public function getUnnormalizedCoordinates(): bool
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->unnormalizedCoordinates;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -380,7 +405,7 @@ final class VkSamplerCreateInfo
 
     public function setUnnormalizedCoordinates(bool $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->unnormalizedCoordinates = $cValue;
     }

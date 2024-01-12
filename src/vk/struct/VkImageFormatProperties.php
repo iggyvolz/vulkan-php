@@ -4,8 +4,20 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkImageFormatProperties
+final class VkImageFormatProperties implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "maxExtent" => $this->getMaxExtent(),
+          "maxMipLevels" => $this->getMaxMipLevels(),
+          "maxArrayLayers" => $this->getMaxArrayLayers(),
+          "sampleCounts" => $this->getSampleCounts(),
+          "maxResourceSize" => $this->getMaxResourceSize(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +25,7 @@ final class VkImageFormatProperties
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -26,7 +38,7 @@ final class VkImageFormatProperties
         null|int $maxResourceSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageFormatProperties', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkImageFormatProperties', false), $vulkan);
         if(!is_null($maxExtent)) $self->setMaxExtent($maxExtent);
         if(!is_null($maxMipLevels)) $self->setMaxMipLevels($maxMipLevels);
         if(!is_null($maxArrayLayers)) $self->setMaxArrayLayers($maxArrayLayers);
@@ -40,7 +52,7 @@ final class VkImageFormatProperties
      */
     public function getMaxExtent(): VkExtent3D
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent3D($cValue, $ffi);
         return $phpValue;
@@ -48,7 +60,7 @@ final class VkImageFormatProperties
 
     public function setMaxExtent(VkExtent3D $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxExtent = $cValue;
     }
@@ -58,7 +70,7 @@ final class VkImageFormatProperties
      */
     public function getMaxMipLevels(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMipLevels;
         $phpValue = $cValue;
         return $phpValue;
@@ -66,7 +78,7 @@ final class VkImageFormatProperties
 
     public function setMaxMipLevels(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMipLevels = $cValue;
     }
@@ -76,7 +88,7 @@ final class VkImageFormatProperties
      */
     public function getMaxArrayLayers(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxArrayLayers;
         $phpValue = $cValue;
         return $phpValue;
@@ -84,7 +96,7 @@ final class VkImageFormatProperties
 
     public function setMaxArrayLayers(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxArrayLayers = $cValue;
     }
@@ -94,7 +106,7 @@ final class VkImageFormatProperties
      */
     public function getSampleCounts(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -102,7 +114,7 @@ final class VkImageFormatProperties
 
     public function setSampleCounts(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampleCounts = $cValue;
     }
@@ -112,7 +124,7 @@ final class VkImageFormatProperties
      */
     public function getMaxResourceSize(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxResourceSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +132,7 @@ final class VkImageFormatProperties
 
     public function setMaxResourceSize(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxResourceSize = $cValue;
     }

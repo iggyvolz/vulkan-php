@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkPresentRegionKHR
+final class VkPresentRegionKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "rectangleCount" => $this->getRectangleCount(),
+          "pRectangles" => $this->getPRectangles(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +22,7 @@ final class VkPresentRegionKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -23,7 +32,7 @@ final class VkPresentRegionKHR
         null|\iggyvolz\vulkan\util\Pointer $pRectangles = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPresentRegionKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkPresentRegionKHR', false), $vulkan);
         if(!is_null($rectangleCount)) $self->setRectangleCount($rectangleCount);
         if(!is_null($pRectangles)) $self->setPRectangles($pRectangles);
         return $self;
@@ -34,7 +43,7 @@ final class VkPresentRegionKHR
      */
     public function getRectangleCount(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->rectangleCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -42,7 +51,7 @@ final class VkPresentRegionKHR
 
     public function setRectangleCount(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->rectangleCount = $cValue;
     }
@@ -52,15 +61,15 @@ final class VkPresentRegionKHR
      */
     public function getPRectangles(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pRectangles;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPRectangles(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pRectangles = $cValue;
     }

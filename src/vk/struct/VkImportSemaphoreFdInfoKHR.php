@@ -4,8 +4,21 @@ declare(strict_types=1);
 
 namespace iggyvolz\vulkan\struct;
 
-final class VkImportSemaphoreFdInfoKHR
+final class VkImportSemaphoreFdInfoKHR implements \JsonSerializable
 {
+    public function jsonSerialize(): array
+    {
+        return [
+          '_type' => static::class,
+          "sType" => $this->getSType(),
+          "pNext" => $this->getPNext(),
+          "semaphore" => $this->getSemaphore(),
+          "flags" => $this->getFlags(),
+          "handleType" => $this->getHandleType(),
+          "fd" => $this->getFd(),
+        ];
+    }
+
     /**
      * @internal
      */
@@ -13,7 +26,7 @@ final class VkImportSemaphoreFdInfoKHR
         /** @internal */
         public \FFI\CData $cdata,
         /** @internal */
-        public \FFI $ffi,
+        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -27,7 +40,7 @@ final class VkImportSemaphoreFdInfoKHR
         null|int $fd = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkImportSemaphoreFdInfoKHR', false), $vulkan->ffi);
+        $self = new self( $vulkan->ffi->new('VkImportSemaphoreFdInfoKHR', false), $vulkan);
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($semaphore)) $self->setSemaphore($semaphore);
@@ -42,7 +55,7 @@ final class VkImportSemaphoreFdInfoKHR
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -50,7 +63,7 @@ final class VkImportSemaphoreFdInfoKHR
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -60,15 +73,15 @@ final class VkImportSemaphoreFdInfoKHR
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
-        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $ffi);
+        $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
     }
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -78,7 +91,7 @@ final class VkImportSemaphoreFdInfoKHR
      */
     public function getSemaphore(): VkSemaphore
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->semaphore;
         $phpValue = new \iggyvolz\vulkan\struct\VkSemaphore($cValue, $ffi);
         return $phpValue;
@@ -86,7 +99,7 @@ final class VkImportSemaphoreFdInfoKHR
 
     public function setSemaphore(VkSemaphore $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->semaphore = $cValue;
     }
@@ -96,7 +109,7 @@ final class VkImportSemaphoreFdInfoKHR
      */
     public function getFlags(): array
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkSemaphoreImportFlagBits::fromInt($cValue);
         return $phpValue;
@@ -104,7 +117,7 @@ final class VkImportSemaphoreFdInfoKHR
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSemaphoreImportFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -114,7 +127,7 @@ final class VkImportSemaphoreFdInfoKHR
      */
     public function getHandleType(): \iggyvolz\vulkan\enum\VkExternalSemaphoreHandleTypeFlagBits
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->handleType;
         $phpValue = \iggyvolz\vulkan\enum\VkExternalSemaphoreHandleTypeFlagBits::from($cValue);
         return $phpValue;
@@ -122,7 +135,7 @@ final class VkImportSemaphoreFdInfoKHR
 
     public function setHandleType(\iggyvolz\vulkan\enum\VkExternalSemaphoreHandleTypeFlagBits $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->handleType = $cValue;
     }
@@ -132,7 +145,7 @@ final class VkImportSemaphoreFdInfoKHR
      */
     public function getFd(): int
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fd;
         $phpValue = $cValue;
         return $phpValue;
@@ -140,7 +153,7 @@ final class VkImportSemaphoreFdInfoKHR
 
     public function setFd(int $phpValue): void
     {
-        $ffi = $this->ffi;
+        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->fd = $cValue;
     }
