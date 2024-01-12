@@ -8,7 +8,7 @@ trait BitmapEnum
     {
         $i=0;
         foreach(array_unique($items, SORT_REGULAR) as $item) {
-            $i |= $item->value;
+            $i |= (1 << $item->value);
         }
         return $i;
     }
@@ -20,7 +20,7 @@ trait BitmapEnum
     {
         $array = [];
         foreach(self::cases() as $case) {
-            if($n|$case->value) {
+            if($n&(1 << $case->value)) {
                 $array[]=$case;
             }
         }
