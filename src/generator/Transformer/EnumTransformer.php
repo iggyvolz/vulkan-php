@@ -11,7 +11,7 @@ readonly final class EnumTransformer extends Transformer
 
     public function phpType(): string
     {
-        return "\\iggyvolz\\vulkan\\enum\\$this->type";
+        return "iggyvolz\\vulkan\\enum\\$this->type";
     }
 
     public function cTypePrefix(): string
@@ -38,6 +38,6 @@ readonly final class EnumTransformer extends Transformer
      */
     public function fromC(): string
     {
-        return '$phpValue = ' . $this->phpType() . '::from($cValue);';
+        return '$phpValue = \\' . $this->phpType() . '::from($cValue);';
     }
 }

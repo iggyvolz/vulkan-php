@@ -39,7 +39,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyInstance(struct\VkInstance $instance, util\ObjectPointer $pAllocator): void
@@ -57,7 +57,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\IntPointer $pPhysicalDeviceCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDevice> $pPhysicalDevices VkPhysicalDevice*
      * returns VkResult
@@ -87,7 +87,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param ?string $pName const char*
      * returns PFN_vkVoidFunction
      */
@@ -108,7 +108,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param ?string $pName const char*
      * returns PFN_vkVoidFunction
      */
@@ -129,7 +129,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceProperties> $pProperties VkPhysicalDeviceProperties*
      */
     public function vkGetPhysicalDeviceProperties(
@@ -150,7 +150,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pQueueFamilyPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkQueueFamilyProperties> $pQueueFamilyProperties VkQueueFamilyProperties*
      */
@@ -177,7 +177,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceMemoryProperties> $pMemoryProperties VkPhysicalDeviceMemoryProperties*
      */
     public function vkGetPhysicalDeviceMemoryProperties(
@@ -198,7 +198,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\Pointer $pFeatures VkPhysicalDeviceFeatures*
      */
     public function vkGetPhysicalDeviceFeatures(
@@ -219,8 +219,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\enum\VkFormat $format VkFormat
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFormatProperties> $pFormatProperties VkFormatProperties*
      */
     public function vkGetPhysicalDeviceFormatProperties(
@@ -246,10 +246,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
-     * @param \\iggyvolz\vulkan\enum\VkImageType $type VkImageType
-     * @param \\iggyvolz\vulkan\enum\VkImageTiling $tiling VkImageTiling
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\enum\VkFormat $format VkFormat
+     * @param \iggyvolz\vulkan\enum\VkImageType $type VkImageType
+     * @param \iggyvolz\vulkan\enum\VkImageTiling $tiling VkImageTiling
      * @param list<iggyvolz\vulkan\enum\VkImageUsageFlagBits> $usage VkImageUsageFlags
      * @param list<iggyvolz\vulkan\enum\VkImageCreateFlagBits> $flags VkImageCreateFlags
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageFormatProperties> $pImageFormatProperties VkImageFormatProperties*
@@ -300,7 +300,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDeviceCreateInfo> $pCreateInfo const VkDeviceCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDevice> $pDevice VkDevice*
@@ -336,7 +336,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyDevice(struct\VkDevice $device, util\ObjectPointer $pAllocator): void
@@ -424,7 +424,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkLayerProperties> $pProperties VkLayerProperties*
      * returns VkResult
@@ -454,7 +454,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param ?string $pLayerName const char*
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkExtensionProperties> $pProperties VkExtensionProperties*
@@ -490,7 +490,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $queueFamilyIndex uint32_t
      * @param int $queueIndex uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkQueue> $pQueue VkQueue*
@@ -523,10 +523,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkQueue $queue VkQueue
+     * @param \iggyvolz\vulkan\struct\VkQueue $queue VkQueue
      * @param int $submitCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSubmitInfo> $pSubmits const VkSubmitInfo*
-     * @param \\iggyvolz\vulkan\struct\VkFence $fence VkFence
+     * @param \iggyvolz\vulkan\struct\VkFence $fence VkFence
      * returns VkResult
      */
     public function vkQueueSubmit(
@@ -559,7 +559,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkQueue $queue VkQueue
+     * @param \iggyvolz\vulkan\struct\VkQueue $queue VkQueue
      * returns VkResult
      */
     public function vkQueueWaitIdle(struct\VkQueue $queue): enum\VkResult
@@ -575,7 +575,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * returns VkResult
      */
     public function vkDeviceWaitIdle(struct\VkDevice $device): enum\VkResult
@@ -591,7 +591,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryAllocateInfo> $pAllocateInfo const VkMemoryAllocateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDeviceMemory> $pMemory VkDeviceMemory*
@@ -627,8 +627,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkFreeMemory(
@@ -654,8 +654,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
      * @param int $offset VkDeviceSize
      * @param int $size VkDeviceSize
      * @param list<void> $flags VkMemoryMapFlags
@@ -702,8 +702,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
      */
     public function vkUnmapMemory(struct\VkDevice $device, struct\VkDeviceMemory $memory): void
     {
@@ -720,7 +720,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $memoryRangeCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMappedMemoryRange> $pMemoryRanges const VkMappedMemoryRange*
      * returns VkResult
@@ -750,7 +750,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $memoryRangeCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMappedMemoryRange> $pMemoryRanges const VkMappedMemoryRange*
      * returns VkResult
@@ -780,8 +780,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
      * @param \iggyvolz\vulkan\util\Pointer $pCommittedMemoryInBytes VkDeviceSize*
      */
     public function vkGetDeviceMemoryCommitment(
@@ -807,8 +807,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryRequirements> $pMemoryRequirements VkMemoryRequirements*
      */
     public function vkGetBufferMemoryRequirements(
@@ -834,9 +834,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
-     * @param \\iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
      * @param int $memoryOffset VkDeviceSize
      * returns VkResult
      */
@@ -870,8 +870,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkImage $image VkImage
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkImage $image VkImage
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryRequirements> $pMemoryRequirements VkMemoryRequirements*
      */
     public function vkGetImageMemoryRequirements(
@@ -897,9 +897,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkImage $image VkImage
-     * @param \\iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkImage $image VkImage
+     * @param \iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
      * @param int $memoryOffset VkDeviceSize
      * returns VkResult
      */
@@ -933,8 +933,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkImage $image VkImage
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkImage $image VkImage
      * @param \iggyvolz\vulkan\util\IntPointer $pSparseMemoryRequirementCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSparseImageMemoryRequirements> $pSparseMemoryRequirements VkSparseImageMemoryRequirements*
      */
@@ -966,12 +966,12 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
-     * @param \\iggyvolz\vulkan\enum\VkImageType $type VkImageType
-     * @param \\iggyvolz\vulkan\enum\VkSampleCountFlagBits $samples VkSampleCountFlagBits
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\enum\VkFormat $format VkFormat
+     * @param \iggyvolz\vulkan\enum\VkImageType $type VkImageType
+     * @param \iggyvolz\vulkan\enum\VkSampleCountFlagBits $samples VkSampleCountFlagBits
      * @param list<iggyvolz\vulkan\enum\VkImageUsageFlagBits> $usage VkImageUsageFlags
-     * @param \\iggyvolz\vulkan\enum\VkImageTiling $tiling VkImageTiling
+     * @param \iggyvolz\vulkan\enum\VkImageTiling $tiling VkImageTiling
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSparseImageFormatProperties> $pProperties VkSparseImageFormatProperties*
      */
@@ -1023,10 +1023,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkQueue $queue VkQueue
+     * @param \iggyvolz\vulkan\struct\VkQueue $queue VkQueue
      * @param int $bindInfoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBindSparseInfo> $pBindInfo const VkBindSparseInfo*
-     * @param \\iggyvolz\vulkan\struct\VkFence $fence VkFence
+     * @param \iggyvolz\vulkan\struct\VkFence $fence VkFence
      * returns VkResult
      */
     public function vkQueueBindSparse(
@@ -1059,7 +1059,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFenceCreateInfo> $pCreateInfo const VkFenceCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFence> $pFence VkFence*
@@ -1095,8 +1095,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkFence $fence VkFence
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkFence $fence VkFence
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyFence(
@@ -1122,7 +1122,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $fenceCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFence> $pFences const VkFence*
      * returns VkResult
@@ -1152,8 +1152,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkFence $fence VkFence
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkFence $fence VkFence
      * returns VkResult
      */
     public function vkGetFenceStatus(struct\VkDevice $device, struct\VkFence $fence): enum\VkResult
@@ -1173,7 +1173,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $fenceCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFence> $pFences const VkFence*
      * @param bool $waitAll VkBool32
@@ -1215,7 +1215,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphoreCreateInfo> $pCreateInfo const VkSemaphoreCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphore> $pSemaphore VkSemaphore*
@@ -1251,8 +1251,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSemaphore $semaphore VkSemaphore
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSemaphore $semaphore VkSemaphore
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroySemaphore(
@@ -1278,7 +1278,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkEventCreateInfo> $pCreateInfo const VkEventCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkEvent> $pEvent VkEvent*
@@ -1314,8 +1314,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkEvent $event VkEvent
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkEvent $event VkEvent
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyEvent(
@@ -1341,8 +1341,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkEvent $event VkEvent
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkEvent $event VkEvent
      * returns VkResult
      */
     public function vkGetEventStatus(struct\VkDevice $device, struct\VkEvent $event): enum\VkResult
@@ -1362,8 +1362,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkEvent $event VkEvent
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkEvent $event VkEvent
      * returns VkResult
      */
     public function vkSetEvent(struct\VkDevice $device, struct\VkEvent $event): enum\VkResult
@@ -1383,8 +1383,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkEvent $event VkEvent
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkEvent $event VkEvent
      * returns VkResult
      */
     public function vkResetEvent(struct\VkDevice $device, struct\VkEvent $event): enum\VkResult
@@ -1404,7 +1404,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkQueryPoolCreateInfo> $pCreateInfo const VkQueryPoolCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkQueryPool> $pQueryPool VkQueryPool*
@@ -1440,8 +1440,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyQueryPool(
@@ -1467,8 +1467,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $firstQuery uint32_t
      * @param int $queryCount uint32_t
      * @param int $dataSize size_t
@@ -1527,8 +1527,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $firstQuery uint32_t
      * @param int $queryCount uint32_t
      */
@@ -1560,7 +1560,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferCreateInfo> $pCreateInfo const VkBufferCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBuffer> $pBuffer VkBuffer*
@@ -1596,8 +1596,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyBuffer(
@@ -1623,7 +1623,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferViewCreateInfo> $pCreateInfo const VkBufferViewCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferView> $pView VkBufferView*
@@ -1659,8 +1659,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkBufferView $bufferView VkBufferView
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkBufferView $bufferView VkBufferView
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyBufferView(
@@ -1686,7 +1686,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageCreateInfo> $pCreateInfo const VkImageCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImage> $pImage VkImage*
@@ -1722,8 +1722,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkImage $image VkImage
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkImage $image VkImage
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyImage(
@@ -1749,8 +1749,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkImage $image VkImage
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkImage $image VkImage
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageSubresource> $pSubresource const VkImageSubresource*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSubresourceLayout> $pLayout VkSubresourceLayout*
      */
@@ -1782,7 +1782,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageViewCreateInfo> $pCreateInfo const VkImageViewCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageView> $pView VkImageView*
@@ -1818,8 +1818,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkImageView $imageView VkImageView
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkImageView $imageView VkImageView
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyImageView(
@@ -1845,7 +1845,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkShaderModuleCreateInfo> $pCreateInfo const VkShaderModuleCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkShaderModule> $pShaderModule VkShaderModule*
@@ -1881,8 +1881,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkShaderModule $shaderModule VkShaderModule
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkShaderModule $shaderModule VkShaderModule
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyShaderModule(
@@ -1908,7 +1908,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPipelineCacheCreateInfo> $pCreateInfo const VkPipelineCacheCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPipelineCache> $pPipelineCache VkPipelineCache*
@@ -1944,8 +1944,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyPipelineCache(
@@ -1971,8 +1971,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
      * @param \iggyvolz\vulkan\util\IntPointer $pDataSize size_t*
      * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
@@ -2007,8 +2007,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipelineCache $dstCache VkPipelineCache
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipelineCache $dstCache VkPipelineCache
      * @param int $srcCacheCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPipelineCache> $pSrcCaches const VkPipelineCache*
      * returns VkResult
@@ -2043,8 +2043,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
      * @param int $createInfoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkGraphicsPipelineCreateInfo> $pCreateInfos const VkGraphicsPipelineCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
@@ -2091,8 +2091,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
      * @param int $createInfoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkComputePipelineCreateInfo> $pCreateInfos const VkComputePipelineCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
@@ -2139,8 +2139,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkRenderPass $renderpass VkRenderPass
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkRenderPass $renderpass VkRenderPass
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkExtent2D> $pMaxWorkgroupSize VkExtent2D*
      * returns VkResult
      */
@@ -2169,8 +2169,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyPipeline(
@@ -2196,7 +2196,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPipelineLayoutCreateInfo> $pCreateInfo const VkPipelineLayoutCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPipelineLayout> $pPipelineLayout VkPipelineLayout*
@@ -2232,8 +2232,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipelineLayout $pipelineLayout VkPipelineLayout
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipelineLayout $pipelineLayout VkPipelineLayout
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyPipelineLayout(
@@ -2259,7 +2259,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSamplerCreateInfo> $pCreateInfo const VkSamplerCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSampler> $pSampler VkSampler*
@@ -2295,8 +2295,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSampler $sampler VkSampler
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSampler $sampler VkSampler
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroySampler(
@@ -2322,7 +2322,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorSetLayoutCreateInfo> $pCreateInfo const VkDescriptorSetLayoutCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorSetLayout> $pSetLayout VkDescriptorSetLayout*
@@ -2358,8 +2358,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDescriptorSetLayout $descriptorSetLayout VkDescriptorSetLayout
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDescriptorSetLayout $descriptorSetLayout VkDescriptorSetLayout
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyDescriptorSetLayout(
@@ -2385,7 +2385,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorPoolCreateInfo> $pCreateInfo const VkDescriptorPoolCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorPool> $pDescriptorPool VkDescriptorPool*
@@ -2421,8 +2421,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDescriptorPool $descriptorPool VkDescriptorPool
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDescriptorPool $descriptorPool VkDescriptorPool
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyDescriptorPool(
@@ -2448,8 +2448,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDescriptorPool $descriptorPool VkDescriptorPool
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDescriptorPool $descriptorPool VkDescriptorPool
      * @param list<void> $flags VkDescriptorPoolResetFlags
      * returns VkResult
      */
@@ -2478,7 +2478,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorSetAllocateInfo> $pAllocateInfo const VkDescriptorSetAllocateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorSet> $pDescriptorSets VkDescriptorSet*
      * returns VkResult
@@ -2508,8 +2508,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDescriptorPool $descriptorPool VkDescriptorPool
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDescriptorPool $descriptorPool VkDescriptorPool
      * @param int $descriptorSetCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorSet> $pDescriptorSets const VkDescriptorSet*
      * returns VkResult
@@ -2544,7 +2544,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $descriptorWriteCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkWriteDescriptorSet> $pDescriptorWrites const VkWriteDescriptorSet*
      * @param int $descriptorCopyCount uint32_t
@@ -2583,7 +2583,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFramebufferCreateInfo> $pCreateInfo const VkFramebufferCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFramebuffer> $pFramebuffer VkFramebuffer*
@@ -2619,8 +2619,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkFramebuffer $framebuffer VkFramebuffer
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkFramebuffer $framebuffer VkFramebuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyFramebuffer(
@@ -2646,7 +2646,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRenderPassCreateInfo> $pCreateInfo const VkRenderPassCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRenderPass> $pRenderPass VkRenderPass*
@@ -2682,8 +2682,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkRenderPass $renderPass VkRenderPass
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkRenderPass $renderPass VkRenderPass
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyRenderPass(
@@ -2709,8 +2709,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkRenderPass $renderPass VkRenderPass
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkRenderPass $renderPass VkRenderPass
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkExtent2D> $pGranularity VkExtent2D*
      */
     public function vkGetRenderAreaGranularity(
@@ -2736,7 +2736,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRenderingAreaInfoKHR> $pRenderingAreaInfo const VkRenderingAreaInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkExtent2D> $pGranularity VkExtent2D*
      */
@@ -2763,7 +2763,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCommandPoolCreateInfo> $pCreateInfo const VkCommandPoolCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCommandPool> $pCommandPool VkCommandPool*
@@ -2799,8 +2799,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkCommandPool $commandPool VkCommandPool
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkCommandPool $commandPool VkCommandPool
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyCommandPool(
@@ -2826,8 +2826,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkCommandPool $commandPool VkCommandPool
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkCommandPool $commandPool VkCommandPool
      * @param list<iggyvolz\vulkan\enum\VkCommandPoolResetFlagBits> $flags VkCommandPoolResetFlags
      * returns VkResult
      */
@@ -2856,7 +2856,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCommandBufferAllocateInfo> $pAllocateInfo const VkCommandBufferAllocateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCommandBuffer> $pCommandBuffers VkCommandBuffer*
      * returns VkResult
@@ -2886,8 +2886,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkCommandPool $commandPool VkCommandPool
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkCommandPool $commandPool VkCommandPool
      * @param int $commandBufferCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCommandBuffer> $pCommandBuffers const VkCommandBuffer*
      */
@@ -2919,7 +2919,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCommandBufferBeginInfo> $pBeginInfo const VkCommandBufferBeginInfo*
      * returns VkResult
      */
@@ -2943,7 +2943,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * returns VkResult
      */
     public function vkEndCommandBuffer(struct\VkCommandBuffer $commandBuffer): enum\VkResult
@@ -2959,7 +2959,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param list<iggyvolz\vulkan\enum\VkCommandBufferResetFlagBits> $flags VkCommandBufferResetFlags
      * returns VkResult
      */
@@ -2980,9 +2980,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint VkPipelineBindPoint
-     * @param \\iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint VkPipelineBindPoint
+     * @param \iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
      */
     public function vkCmdBindPipeline(
         struct\VkCommandBuffer $commandBuffer,
@@ -3007,7 +3007,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param list<iggyvolz\vulkan\enum\VkImageAspectFlagBits> $aspectMask VkImageAspectFlags
      */
     public function vkCmdSetAttachmentFeedbackLoopEnableEXT(
@@ -3028,7 +3028,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstViewport uint32_t
      * @param int $viewportCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkViewport> $pViewports const VkViewport*
@@ -3061,7 +3061,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstScissor uint32_t
      * @param int $scissorCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRect2D> $pScissors const VkRect2D*
@@ -3094,7 +3094,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param float $lineWidth float
      */
     public function vkCmdSetLineWidth(struct\VkCommandBuffer $commandBuffer, float $lineWidth): void
@@ -3112,7 +3112,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param float $depthBiasConstantFactor float
      * @param float $depthBiasClamp float
      * @param float $depthBiasSlopeFactor float
@@ -3145,7 +3145,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param mixed $blendConstants const float [4]
      */
     public function vkCmdSetBlendConstants(struct\VkCommandBuffer $commandBuffer, mixed $blendConstants): void
@@ -3163,7 +3163,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param float $minDepthBounds float
      * @param float $maxDepthBounds float
      */
@@ -3190,7 +3190,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param list<iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
      * @param int $compareMask uint32_t
      */
@@ -3217,7 +3217,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param list<iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
      * @param int $writeMask uint32_t
      */
@@ -3244,7 +3244,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param list<iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
      * @param int $reference uint32_t
      */
@@ -3271,9 +3271,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint VkPipelineBindPoint
-     * @param \\iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint VkPipelineBindPoint
+     * @param \iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
      * @param int $firstSet uint32_t
      * @param int $descriptorSetCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorSet> $pDescriptorSets const VkDescriptorSet*
@@ -3328,10 +3328,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
      * @param int $offset VkDeviceSize
-     * @param \\iggyvolz\vulkan\enum\VkIndexType $indexType VkIndexType
+     * @param \iggyvolz\vulkan\enum\VkIndexType $indexType VkIndexType
      */
     public function vkCmdBindIndexBuffer(
         struct\VkCommandBuffer $commandBuffer,
@@ -3361,7 +3361,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstBinding uint32_t
      * @param int $bindingCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBuffer> $pBuffers const VkBuffer*
@@ -3400,7 +3400,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $vertexCount uint32_t
      * @param int $instanceCount uint32_t
      * @param int $firstVertex uint32_t
@@ -3439,7 +3439,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $indexCount uint32_t
      * @param int $instanceCount uint32_t
      * @param int $firstIndex uint32_t
@@ -3484,7 +3484,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $drawCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMultiDrawInfoEXT> $pVertexInfo const VkMultiDrawInfoEXT*
      * @param int $instanceCount uint32_t
@@ -3529,7 +3529,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $drawCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMultiDrawIndexedInfoEXT> $pIndexInfo const VkMultiDrawIndexedInfoEXT*
      * @param int $instanceCount uint32_t
@@ -3580,8 +3580,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
      * @param int $offset VkDeviceSize
      * @param int $drawCount uint32_t
      * @param int $stride uint32_t
@@ -3619,8 +3619,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
      * @param int $offset VkDeviceSize
      * @param int $drawCount uint32_t
      * @param int $stride uint32_t
@@ -3658,7 +3658,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $groupCountX uint32_t
      * @param int $groupCountY uint32_t
      * @param int $groupCountZ uint32_t
@@ -3691,8 +3691,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
      * @param int $offset VkDeviceSize
      */
     public function vkCmdDispatchIndirect(
@@ -3718,7 +3718,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      */
     public function vkCmdSubpassShadingHUAWEI(struct\VkCommandBuffer $commandBuffer): void
     {
@@ -3731,7 +3731,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $groupCountX uint32_t
      * @param int $groupCountY uint32_t
      * @param int $groupCountZ uint32_t
@@ -3764,8 +3764,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
      * @param int $offset VkDeviceSize
      */
     public function vkCmdDrawClusterIndirectHUAWEI(
@@ -3791,9 +3791,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint VkPipelineBindPoint
-     * @param \\iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint VkPipelineBindPoint
+     * @param \iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
      */
     public function vkCmdUpdatePipelineIndirectBufferNV(
         struct\VkCommandBuffer $commandBuffer,
@@ -3818,9 +3818,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $srcBuffer VkBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $srcBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
      * @param int $regionCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferCopy> $pRegions const VkBufferCopy*
      */
@@ -3857,11 +3857,11 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkImage $srcImage VkImage
-     * @param \\iggyvolz\vulkan\enum\VkImageLayout $srcImageLayout VkImageLayout
-     * @param \\iggyvolz\vulkan\struct\VkImage $dstImage VkImage
-     * @param \\iggyvolz\vulkan\enum\VkImageLayout $dstImageLayout VkImageLayout
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkImage $srcImage VkImage
+     * @param \iggyvolz\vulkan\enum\VkImageLayout $srcImageLayout VkImageLayout
+     * @param \iggyvolz\vulkan\struct\VkImage $dstImage VkImage
+     * @param \iggyvolz\vulkan\enum\VkImageLayout $dstImageLayout VkImageLayout
      * @param int $regionCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageCopy> $pRegions const VkImageCopy*
      */
@@ -3908,14 +3908,14 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkImage $srcImage VkImage
-     * @param \\iggyvolz\vulkan\enum\VkImageLayout $srcImageLayout VkImageLayout
-     * @param \\iggyvolz\vulkan\struct\VkImage $dstImage VkImage
-     * @param \\iggyvolz\vulkan\enum\VkImageLayout $dstImageLayout VkImageLayout
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkImage $srcImage VkImage
+     * @param \iggyvolz\vulkan\enum\VkImageLayout $srcImageLayout VkImageLayout
+     * @param \iggyvolz\vulkan\struct\VkImage $dstImage VkImage
+     * @param \iggyvolz\vulkan\enum\VkImageLayout $dstImageLayout VkImageLayout
      * @param int $regionCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageBlit> $pRegions const VkImageBlit*
-     * @param \\iggyvolz\vulkan\enum\VkFilter $filter VkFilter
+     * @param \iggyvolz\vulkan\enum\VkFilter $filter VkFilter
      */
     public function vkCmdBlitImage(
         struct\VkCommandBuffer $commandBuffer,
@@ -3965,10 +3965,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $srcBuffer VkBuffer
-     * @param \\iggyvolz\vulkan\struct\VkImage $dstImage VkImage
-     * @param \\iggyvolz\vulkan\enum\VkImageLayout $dstImageLayout VkImageLayout
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $srcBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkImage $dstImage VkImage
+     * @param \iggyvolz\vulkan\enum\VkImageLayout $dstImageLayout VkImageLayout
      * @param int $regionCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferImageCopy> $pRegions const VkBufferImageCopy*
      */
@@ -4010,10 +4010,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkImage $srcImage VkImage
-     * @param \\iggyvolz\vulkan\enum\VkImageLayout $srcImageLayout VkImageLayout
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkImage $srcImage VkImage
+     * @param \iggyvolz\vulkan\enum\VkImageLayout $srcImageLayout VkImageLayout
+     * @param \iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
      * @param int $regionCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferImageCopy> $pRegions const VkBufferImageCopy*
      */
@@ -4055,7 +4055,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $copyBufferAddress VkDeviceAddress
      * @param int $copyCount uint32_t
      * @param int $stride uint32_t
@@ -4088,12 +4088,12 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $copyBufferAddress VkDeviceAddress
      * @param int $copyCount uint32_t
      * @param int $stride uint32_t
-     * @param \\iggyvolz\vulkan\struct\VkImage $dstImage VkImage
-     * @param \\iggyvolz\vulkan\enum\VkImageLayout $dstImageLayout VkImageLayout
+     * @param \iggyvolz\vulkan\struct\VkImage $dstImage VkImage
+     * @param \iggyvolz\vulkan\enum\VkImageLayout $dstImageLayout VkImageLayout
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageSubresourceLayers> $pImageSubresources const VkImageSubresourceLayers*
      */
     public function vkCmdCopyMemoryToImageIndirectNV(
@@ -4139,8 +4139,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
      * @param int $dstOffset VkDeviceSize
      * @param int $dataSize VkDeviceSize
      * @param \iggyvolz\vulkan\util\Pointer $pData const void*
@@ -4178,8 +4178,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
      * @param int $dstOffset VkDeviceSize
      * @param int $size VkDeviceSize
      * @param int $data uint32_t
@@ -4217,9 +4217,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkImage $image VkImage
-     * @param \\iggyvolz\vulkan\enum\VkImageLayout $imageLayout VkImageLayout
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkImage $image VkImage
+     * @param \iggyvolz\vulkan\enum\VkImageLayout $imageLayout VkImageLayout
      * @param \iggyvolz\vulkan\util\Pointer $pColor const VkClearColorValue*
      * @param int $rangeCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageSubresourceRange> $pRanges const VkImageSubresourceRange*
@@ -4262,9 +4262,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkImage $image VkImage
-     * @param \\iggyvolz\vulkan\enum\VkImageLayout $imageLayout VkImageLayout
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkImage $image VkImage
+     * @param \iggyvolz\vulkan\enum\VkImageLayout $imageLayout VkImageLayout
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkClearDepthStencilValue> $pDepthStencil const VkClearDepthStencilValue*
      * @param int $rangeCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageSubresourceRange> $pRanges const VkImageSubresourceRange*
@@ -4307,7 +4307,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $attachmentCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkClearAttachment> $pAttachments const VkClearAttachment*
      * @param int $rectCount uint32_t
@@ -4346,11 +4346,11 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkImage $srcImage VkImage
-     * @param \\iggyvolz\vulkan\enum\VkImageLayout $srcImageLayout VkImageLayout
-     * @param \\iggyvolz\vulkan\struct\VkImage $dstImage VkImage
-     * @param \\iggyvolz\vulkan\enum\VkImageLayout $dstImageLayout VkImageLayout
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkImage $srcImage VkImage
+     * @param \iggyvolz\vulkan\enum\VkImageLayout $srcImageLayout VkImageLayout
+     * @param \iggyvolz\vulkan\struct\VkImage $dstImage VkImage
+     * @param \iggyvolz\vulkan\enum\VkImageLayout $dstImageLayout VkImageLayout
      * @param int $regionCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageResolve> $pRegions const VkImageResolve*
      */
@@ -4397,8 +4397,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkEvent $event VkEvent
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkEvent $event VkEvent
      * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $stageMask VkPipelineStageFlags
      */
     public function vkCmdSetEvent(
@@ -4424,8 +4424,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkEvent $event VkEvent
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkEvent $event VkEvent
      * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $stageMask VkPipelineStageFlags
      */
     public function vkCmdResetEvent(
@@ -4451,7 +4451,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $eventCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkEvent> $pEvents const VkEvent*
      * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $srcStageMask VkPipelineStageFlags
@@ -4526,7 +4526,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $srcStageMask VkPipelineStageFlags
      * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits> $dstStageMask VkPipelineStageFlags
      * @param list<iggyvolz\vulkan\enum\VkDependencyFlagBits> $dependencyFlags VkDependencyFlags
@@ -4595,8 +4595,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $query uint32_t
      * @param list<iggyvolz\vulkan\enum\VkQueryControlFlagBits> $flags VkQueryControlFlags
      */
@@ -4628,8 +4628,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $query uint32_t
      */
     public function vkCmdEndQuery(
@@ -4655,7 +4655,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkConditionalRenderingBeginInfoEXT> $pConditionalRenderingBegin const VkConditionalRenderingBeginInfoEXT*
      */
     public function vkCmdBeginConditionalRenderingEXT(
@@ -4676,7 +4676,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      */
     public function vkCmdEndConditionalRenderingEXT(struct\VkCommandBuffer $commandBuffer): void
     {
@@ -4689,8 +4689,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $firstQuery uint32_t
      * @param int $queryCount uint32_t
      */
@@ -4722,9 +4722,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkPipelineStageFlagBits $pipelineStage VkPipelineStageFlagBits
-     * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkPipelineStageFlagBits $pipelineStage VkPipelineStageFlagBits
+     * @param \iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $query uint32_t
      */
     public function vkCmdWriteTimestamp(
@@ -4755,11 +4755,11 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $firstQuery uint32_t
      * @param int $queryCount uint32_t
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
      * @param int $dstOffset VkDeviceSize
      * @param int $stride VkDeviceSize
      * @param list<iggyvolz\vulkan\enum\VkQueryResultFlagBits> $flags VkQueryResultFlags
@@ -4812,8 +4812,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
      * @param list<iggyvolz\vulkan\enum\VkShaderStageFlagBits> $stageFlags VkShaderStageFlags
      * @param int $offset uint32_t
      * @param int $size uint32_t
@@ -4857,9 +4857,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRenderPassBeginInfo> $pRenderPassBegin const VkRenderPassBeginInfo*
-     * @param \\iggyvolz\vulkan\enum\VkSubpassContents $contents VkSubpassContents
+     * @param \iggyvolz\vulkan\enum\VkSubpassContents $contents VkSubpassContents
      */
     public function vkCmdBeginRenderPass(
         struct\VkCommandBuffer $commandBuffer,
@@ -4884,8 +4884,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkSubpassContents $contents VkSubpassContents
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkSubpassContents $contents VkSubpassContents
      */
     public function vkCmdNextSubpass(struct\VkCommandBuffer $commandBuffer, enum\VkSubpassContents $contents): void
     {
@@ -4902,7 +4902,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      */
     public function vkCmdEndRenderPass(struct\VkCommandBuffer $commandBuffer): void
     {
@@ -4915,7 +4915,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $commandBufferCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCommandBuffer> $pCommandBuffers const VkCommandBuffer*
      */
@@ -4942,7 +4942,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAndroidSurfaceCreateInfoKHR> $pCreateInfo const VkAndroidSurfaceCreateInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -4978,7 +4978,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayPropertiesKHR> $pProperties VkDisplayPropertiesKHR*
      * returns VkResult
@@ -5008,7 +5008,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayPlanePropertiesKHR> $pProperties VkDisplayPlanePropertiesKHR*
      * returns VkResult
@@ -5038,7 +5038,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $planeIndex uint32_t
      * @param \iggyvolz\vulkan\util\IntPointer $pDisplayCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayKHR> $pDisplays VkDisplayKHR*
@@ -5074,8 +5074,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayModePropertiesKHR> $pProperties VkDisplayModePropertiesKHR*
      * returns VkResult
@@ -5110,8 +5110,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayModeCreateInfoKHR> $pCreateInfo const VkDisplayModeCreateInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayModeKHR> $pMode VkDisplayModeKHR*
@@ -5152,8 +5152,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\struct\VkDisplayModeKHR $mode VkDisplayModeKHR
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkDisplayModeKHR $mode VkDisplayModeKHR
      * @param int $planeIndex uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayPlaneCapabilitiesKHR> $pCapabilities VkDisplayPlaneCapabilitiesKHR*
      * returns VkResult
@@ -5188,7 +5188,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplaySurfaceCreateInfoKHR> $pCreateInfo const VkDisplaySurfaceCreateInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -5224,7 +5224,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $swapchainCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSwapchainCreateInfoKHR> $pCreateInfos const VkSwapchainCreateInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
@@ -5266,8 +5266,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
-     * @param \\iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroySurfaceKHR(
@@ -5293,9 +5293,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
-     * @param \\iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
+     * @param \iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
      * @param \iggyvolz\vulkan\util\Pointer $pSupported VkBool32*
      * returns VkResult
      */
@@ -5329,8 +5329,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceCapabilitiesKHR> $pSurfaceCapabilities VkSurfaceCapabilitiesKHR*
      * returns VkResult
      */
@@ -5359,8 +5359,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
      * @param \iggyvolz\vulkan\util\IntPointer $pSurfaceFormatCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceFormatKHR> $pSurfaceFormats VkSurfaceFormatKHR*
      * returns VkResult
@@ -5395,8 +5395,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
      * @param \iggyvolz\vulkan\util\IntPointer $pPresentModeCount uint32_t*
      * @param \iggyvolz\vulkan\util\Pointer $pPresentModes VkPresentModeKHR*
      * returns VkResult
@@ -5431,7 +5431,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSwapchainCreateInfoKHR> $pCreateInfo const VkSwapchainCreateInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSwapchainKHR> $pSwapchain VkSwapchainKHR*
@@ -5467,8 +5467,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroySwapchainKHR(
@@ -5494,8 +5494,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
      * @param \iggyvolz\vulkan\util\IntPointer $pSwapchainImageCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImage> $pSwapchainImages VkImage*
      * returns VkResult
@@ -5530,11 +5530,11 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
      * @param int $timeout uint64_t
-     * @param \\iggyvolz\vulkan\struct\VkSemaphore $semaphore VkSemaphore
-     * @param \\iggyvolz\vulkan\struct\VkFence $fence VkFence
+     * @param \iggyvolz\vulkan\struct\VkSemaphore $semaphore VkSemaphore
+     * @param \iggyvolz\vulkan\struct\VkFence $fence VkFence
      * @param \iggyvolz\vulkan\util\IntPointer $pImageIndex uint32_t*
      * returns VkResult
      */
@@ -5578,7 +5578,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkQueue $queue VkQueue
+     * @param \iggyvolz\vulkan\struct\VkQueue $queue VkQueue
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPresentInfoKHR> $pPresentInfo const VkPresentInfoKHR*
      * returns VkResult
      */
@@ -5599,7 +5599,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkViSurfaceCreateInfoNN> $pCreateInfo const VkViSurfaceCreateInfoNN*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -5635,7 +5635,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkWaylandSurfaceCreateInfoKHR> $pCreateInfo const VkWaylandSurfaceCreateInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -5671,7 +5671,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
      * @param \iggyvolz\vulkan\util\Pointer $display struct wl_display*
      * returns VkBool32
@@ -5701,7 +5701,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkWin32SurfaceCreateInfoKHR> $pCreateInfo const VkWin32SurfaceCreateInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -5737,7 +5737,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
      * returns VkBool32
      */
@@ -5761,7 +5761,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkXlibSurfaceCreateInfoKHR> $pCreateInfo const VkXlibSurfaceCreateInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -5797,7 +5797,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
      * @param \iggyvolz\vulkan\util\Pointer $dpy Display*
      * @param int $visualID VisualID
@@ -5833,7 +5833,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkXcbSurfaceCreateInfoKHR> $pCreateInfo const VkXcbSurfaceCreateInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -5869,7 +5869,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
      * @param \iggyvolz\vulkan\util\Pointer $connection xcb_connection_t*
      * @param mixed $visual_id xcb_visualid_t
@@ -5905,7 +5905,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDirectFBSurfaceCreateInfoEXT> $pCreateInfo const VkDirectFBSurfaceCreateInfoEXT*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -5941,7 +5941,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
      * @param \iggyvolz\vulkan\util\Pointer $dfb IDirectFB*
      * returns VkBool32
@@ -5971,7 +5971,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImagePipeSurfaceCreateInfoFUCHSIA> $pCreateInfo const VkImagePipeSurfaceCreateInfoFUCHSIA*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -6007,7 +6007,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkStreamDescriptorSurfaceCreateInfoGGP> $pCreateInfo const VkStreamDescriptorSurfaceCreateInfoGGP*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -6043,7 +6043,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkScreenSurfaceCreateInfoQNX> $pCreateInfo const VkScreenSurfaceCreateInfoQNX*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -6079,7 +6079,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
      * @param \iggyvolz\vulkan\util\Pointer $window struct _screen_window*
      * returns VkBool32
@@ -6109,7 +6109,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugReportCallbackCreateInfoEXT> $pCreateInfo const VkDebugReportCallbackCreateInfoEXT*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugReportCallbackEXT> $pCallback VkDebugReportCallbackEXT*
@@ -6145,8 +6145,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
-     * @param \\iggyvolz\vulkan\struct\VkDebugReportCallbackEXT $callback VkDebugReportCallbackEXT
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkDebugReportCallbackEXT $callback VkDebugReportCallbackEXT
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyDebugReportCallbackEXT(
@@ -6172,9 +6172,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param list<iggyvolz\vulkan\enum\VkDebugReportFlagBitsEXT> $flags VkDebugReportFlagsEXT
-     * @param \\iggyvolz\vulkan\enum\VkDebugReportObjectTypeEXT $objectType VkDebugReportObjectTypeEXT
+     * @param \iggyvolz\vulkan\enum\VkDebugReportObjectTypeEXT $objectType VkDebugReportObjectTypeEXT
      * @param int $object uint64_t
      * @param int $location size_t
      * @param int $messageCode int32_t
@@ -6229,7 +6229,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugMarkerObjectNameInfoEXT> $pNameInfo const VkDebugMarkerObjectNameInfoEXT*
      * returns VkResult
      */
@@ -6253,7 +6253,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugMarkerObjectTagInfoEXT> $pTagInfo const VkDebugMarkerObjectTagInfoEXT*
      * returns VkResult
      */
@@ -6274,7 +6274,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugMarkerMarkerInfoEXT> $pMarkerInfo const VkDebugMarkerMarkerInfoEXT*
      */
     public function vkCmdDebugMarkerBeginEXT(
@@ -6295,7 +6295,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      */
     public function vkCmdDebugMarkerEndEXT(struct\VkCommandBuffer $commandBuffer): void
     {
@@ -6308,7 +6308,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugMarkerMarkerInfoEXT> $pMarkerInfo const VkDebugMarkerMarkerInfoEXT*
      */
     public function vkCmdDebugMarkerInsertEXT(
@@ -6329,10 +6329,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
-     * @param \\iggyvolz\vulkan\enum\VkImageType $type VkImageType
-     * @param \\iggyvolz\vulkan\enum\VkImageTiling $tiling VkImageTiling
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\enum\VkFormat $format VkFormat
+     * @param \iggyvolz\vulkan\enum\VkImageType $type VkImageType
+     * @param \iggyvolz\vulkan\enum\VkImageTiling $tiling VkImageTiling
      * @param list<iggyvolz\vulkan\enum\VkImageUsageFlagBits> $usage VkImageUsageFlags
      * @param list<iggyvolz\vulkan\enum\VkImageCreateFlagBits> $flags VkImageCreateFlags
      * @param list<iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV> $externalHandleType VkExternalMemoryHandleTypeFlagsNV
@@ -6389,8 +6389,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
      * @param list<iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV> $handleType VkExternalMemoryHandleTypeFlagsNV
      * @param \iggyvolz\vulkan\util\Pointer $pHandle HANDLE*
      * returns VkResult
@@ -6425,7 +6425,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $isPreprocessed VkBool32
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkGeneratedCommandsInfoNV> $pGeneratedCommandsInfo const VkGeneratedCommandsInfoNV*
      */
@@ -6452,7 +6452,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkGeneratedCommandsInfoNV> $pGeneratedCommandsInfo const VkGeneratedCommandsInfoNV*
      */
     public function vkCmdPreprocessGeneratedCommandsNV(
@@ -6473,9 +6473,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint VkPipelineBindPoint
-     * @param \\iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint VkPipelineBindPoint
+     * @param \iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
      * @param int $groupIndex uint32_t
      */
     public function vkCmdBindPipelineShaderGroupNV(
@@ -6506,7 +6506,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkGeneratedCommandsMemoryRequirementsInfoNV> $pInfo const VkGeneratedCommandsMemoryRequirementsInfoNV*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryRequirements2> $pMemoryRequirements VkMemoryRequirements2*
      */
@@ -6533,7 +6533,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkIndirectCommandsLayoutCreateInfoNV> $pCreateInfo const VkIndirectCommandsLayoutCreateInfoNV*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkIndirectCommandsLayoutNV> $pIndirectCommandsLayout VkIndirectCommandsLayoutNV*
@@ -6569,8 +6569,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkIndirectCommandsLayoutNV $indirectCommandsLayout VkIndirectCommandsLayoutNV
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkIndirectCommandsLayoutNV $indirectCommandsLayout VkIndirectCommandsLayoutNV
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyIndirectCommandsLayoutNV(
@@ -6596,7 +6596,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceFeatures2> $pFeatures VkPhysicalDeviceFeatures2*
      */
     public function vkGetPhysicalDeviceFeatures2(
@@ -6617,7 +6617,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceProperties2> $pProperties VkPhysicalDeviceProperties2*
      */
     public function vkGetPhysicalDeviceProperties2(
@@ -6638,8 +6638,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\enum\VkFormat $format VkFormat
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFormatProperties2> $pFormatProperties VkFormatProperties2*
      */
     public function vkGetPhysicalDeviceFormatProperties2(
@@ -6665,7 +6665,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceImageFormatInfo2> $pImageFormatInfo const VkPhysicalDeviceImageFormatInfo2*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageFormatProperties2> $pImageFormatProperties VkImageFormatProperties2*
      * returns VkResult
@@ -6695,7 +6695,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pQueueFamilyPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkQueueFamilyProperties2> $pQueueFamilyProperties VkQueueFamilyProperties2*
      */
@@ -6722,7 +6722,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceMemoryProperties2> $pMemoryProperties VkPhysicalDeviceMemoryProperties2*
      */
     public function vkGetPhysicalDeviceMemoryProperties2(
@@ -6743,7 +6743,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceSparseImageFormatInfo2> $pFormatInfo const VkPhysicalDeviceSparseImageFormatInfo2*
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSparseImageFormatProperties2> $pProperties VkSparseImageFormatProperties2*
@@ -6776,9 +6776,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint VkPipelineBindPoint
-     * @param \\iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint VkPipelineBindPoint
+     * @param \iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
      * @param int $set uint32_t
      * @param int $descriptorWriteCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkWriteDescriptorSet> $pDescriptorWrites const VkWriteDescriptorSet*
@@ -6821,8 +6821,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkCommandPool $commandPool VkCommandPool
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkCommandPool $commandPool VkCommandPool
      * @param list<void> $flags VkCommandPoolTrimFlags
      */
     public function vkTrimCommandPool(struct\VkDevice $device, struct\VkCommandPool $commandPool, array $flags): void
@@ -6844,7 +6844,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceExternalBufferInfo> $pExternalBufferInfo const VkPhysicalDeviceExternalBufferInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkExternalBufferProperties> $pExternalBufferProperties VkExternalBufferProperties*
      */
@@ -6871,7 +6871,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryGetWin32HandleInfoKHR> $pGetWin32HandleInfo const VkMemoryGetWin32HandleInfoKHR*
      * @param \iggyvolz\vulkan\util\Pointer $pHandle HANDLE*
      * returns VkResult
@@ -6901,8 +6901,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits $handleType VkExternalMemoryHandleTypeFlagBits
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits $handleType VkExternalMemoryHandleTypeFlagBits
      * @param \iggyvolz\vulkan\util\Pointer $handle HANDLE
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryWin32HandlePropertiesKHR> $pMemoryWin32HandleProperties VkMemoryWin32HandlePropertiesKHR*
      * returns VkResult
@@ -6937,7 +6937,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryGetFdInfoKHR> $pGetFdInfo const VkMemoryGetFdInfoKHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pFd int*
      * returns VkResult
@@ -6967,8 +6967,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits $handleType VkExternalMemoryHandleTypeFlagBits
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits $handleType VkExternalMemoryHandleTypeFlagBits
      * @param int $fd int
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryFdPropertiesKHR> $pMemoryFdProperties VkMemoryFdPropertiesKHR*
      * returns VkResult
@@ -7003,7 +7003,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryGetZirconHandleInfoFUCHSIA> $pGetZirconHandleInfo const VkMemoryGetZirconHandleInfoFUCHSIA*
      * @param \iggyvolz\vulkan\util\Pointer $pZirconHandle zx_handle_t*
      * returns VkResult
@@ -7033,8 +7033,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits $handleType VkExternalMemoryHandleTypeFlagBits
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits $handleType VkExternalMemoryHandleTypeFlagBits
      * @param int $zirconHandle zx_handle_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryZirconHandlePropertiesFUCHSIA> $pMemoryZirconHandleProperties VkMemoryZirconHandlePropertiesFUCHSIA*
      * returns VkResult
@@ -7069,7 +7069,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryGetRemoteAddressInfoNV> $pMemoryGetRemoteAddressInfo const VkMemoryGetRemoteAddressInfoNV*
      * @param \iggyvolz\vulkan\util\Pointer $pAddress VkRemoteAddressNV*
      * returns VkResult
@@ -7099,7 +7099,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryGetSciBufInfoNV> $pGetSciBufInfo const VkMemoryGetSciBufInfoNV*
      * @param \iggyvolz\vulkan\util\Pointer $pHandle NvSciBufObj*
      * returns VkResult
@@ -7129,8 +7129,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits $handleType VkExternalMemoryHandleTypeFlagBits
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits $handleType VkExternalMemoryHandleTypeFlagBits
      * @param mixed $handle NvSciBufObj
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemorySciBufPropertiesNV> $pMemorySciBufProperties VkMemorySciBufPropertiesNV*
      * returns VkResult
@@ -7165,7 +7165,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param mixed $pAttributes NvSciBufAttrList
      * returns VkResult
      */
@@ -7189,7 +7189,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceExternalSemaphoreInfo> $pExternalSemaphoreInfo const VkPhysicalDeviceExternalSemaphoreInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkExternalSemaphoreProperties> $pExternalSemaphoreProperties VkExternalSemaphoreProperties*
      */
@@ -7216,7 +7216,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphoreGetWin32HandleInfoKHR> $pGetWin32HandleInfo const VkSemaphoreGetWin32HandleInfoKHR*
      * @param \iggyvolz\vulkan\util\Pointer $pHandle HANDLE*
      * returns VkResult
@@ -7246,7 +7246,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImportSemaphoreWin32HandleInfoKHR> $pImportSemaphoreWin32HandleInfo const VkImportSemaphoreWin32HandleInfoKHR*
      * returns VkResult
      */
@@ -7270,7 +7270,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphoreGetFdInfoKHR> $pGetFdInfo const VkSemaphoreGetFdInfoKHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pFd int*
      * returns VkResult
@@ -7300,7 +7300,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImportSemaphoreFdInfoKHR> $pImportSemaphoreFdInfo const VkImportSemaphoreFdInfoKHR*
      * returns VkResult
      */
@@ -7324,7 +7324,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphoreGetZirconHandleInfoFUCHSIA> $pGetZirconHandleInfo const VkSemaphoreGetZirconHandleInfoFUCHSIA*
      * @param \iggyvolz\vulkan\util\Pointer $pZirconHandle zx_handle_t*
      * returns VkResult
@@ -7354,7 +7354,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImportSemaphoreZirconHandleInfoFUCHSIA> $pImportSemaphoreZirconHandleInfo const VkImportSemaphoreZirconHandleInfoFUCHSIA*
      * returns VkResult
      */
@@ -7378,7 +7378,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceExternalFenceInfo> $pExternalFenceInfo const VkPhysicalDeviceExternalFenceInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkExternalFenceProperties> $pExternalFenceProperties VkExternalFenceProperties*
      */
@@ -7405,7 +7405,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFenceGetWin32HandleInfoKHR> $pGetWin32HandleInfo const VkFenceGetWin32HandleInfoKHR*
      * @param \iggyvolz\vulkan\util\Pointer $pHandle HANDLE*
      * returns VkResult
@@ -7435,7 +7435,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImportFenceWin32HandleInfoKHR> $pImportFenceWin32HandleInfo const VkImportFenceWin32HandleInfoKHR*
      * returns VkResult
      */
@@ -7459,7 +7459,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFenceGetFdInfoKHR> $pGetFdInfo const VkFenceGetFdInfoKHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pFd int*
      * returns VkResult
@@ -7489,7 +7489,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImportFenceFdInfoKHR> $pImportFenceFdInfo const VkImportFenceFdInfoKHR*
      * returns VkResult
      */
@@ -7510,7 +7510,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFenceGetSciSyncInfoNV> $pGetSciSyncHandleInfo const VkFenceGetSciSyncInfoNV*
      * @param \iggyvolz\vulkan\util\Pointer $pHandle void*
      * returns VkResult
@@ -7540,7 +7540,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFenceGetSciSyncInfoNV> $pGetSciSyncHandleInfo const VkFenceGetSciSyncInfoNV*
      * @param \iggyvolz\vulkan\util\Pointer $pHandle void*
      * returns VkResult
@@ -7570,7 +7570,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImportFenceSciSyncInfoNV> $pImportFenceSciSyncInfo const VkImportFenceSciSyncInfoNV*
      * returns VkResult
      */
@@ -7594,7 +7594,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImportFenceSciSyncInfoNV> $pImportFenceSciSyncInfo const VkImportFenceSciSyncInfoNV*
      * returns VkResult
      */
@@ -7618,7 +7618,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphoreGetSciSyncInfoNV> $pGetSciSyncInfo const VkSemaphoreGetSciSyncInfoNV*
      * @param \iggyvolz\vulkan\util\Pointer $pHandle void*
      * returns VkResult
@@ -7648,7 +7648,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImportSemaphoreSciSyncInfoNV> $pImportSemaphoreSciSyncInfo const VkImportSemaphoreSciSyncInfoNV*
      * returns VkResult
      */
@@ -7672,7 +7672,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSciSyncAttributesInfoNV> $pSciSyncAttributesInfo const VkSciSyncAttributesInfoNV*
      * @param mixed $pAttributes NvSciSyncAttrList
      * returns VkResult
@@ -7702,7 +7702,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphoreSciSyncPoolCreateInfoNV> $pCreateInfo const VkSemaphoreSciSyncPoolCreateInfoNV*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphoreSciSyncPoolNV> $pSemaphorePool VkSemaphoreSciSyncPoolNV*
@@ -7738,8 +7738,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSemaphoreSciSyncPoolNV $semaphorePool VkSemaphoreSciSyncPoolNV
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSemaphoreSciSyncPoolNV $semaphorePool VkSemaphoreSciSyncPoolNV
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroySemaphoreSciSyncPoolNV(
@@ -7765,8 +7765,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
      * returns VkResult
      */
     public function vkReleaseDisplayEXT(
@@ -7789,9 +7789,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\Pointer $dpy Display*
-     * @param \\iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
+     * @param \iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
      * returns VkResult
      */
     public function vkAcquireXlibDisplayEXT(
@@ -7819,7 +7819,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\Pointer $dpy Display*
      * @param mixed $rrOutput RROutput
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayKHR> $pDisplay VkDisplayKHR*
@@ -7855,8 +7855,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
      * returns VkResult
      */
     public function vkAcquireWinrtDisplayNV(
@@ -7879,7 +7879,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $deviceRelativeId uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayKHR> $pDisplay VkDisplayKHR*
      * returns VkResult
@@ -7909,8 +7909,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayPowerInfoEXT> $pDisplayPowerInfo const VkDisplayPowerInfoEXT*
      * returns VkResult
      */
@@ -7939,7 +7939,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDeviceEventInfoEXT> $pDeviceEventInfo const VkDeviceEventInfoEXT*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFence> $pFence VkFence*
@@ -7975,8 +7975,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayEventInfoEXT> $pDisplayEventInfo const VkDisplayEventInfoEXT*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFence> $pFence VkFence*
@@ -8017,9 +8017,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
-     * @param \\iggyvolz\vulkan\enum\VkSurfaceCounterFlagBitsEXT $counter VkSurfaceCounterFlagBitsEXT
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\enum\VkSurfaceCounterFlagBitsEXT $counter VkSurfaceCounterFlagBitsEXT
      * @param \iggyvolz\vulkan\util\IntPointer $pCounterValue uint64_t*
      * returns VkResult
      */
@@ -8053,8 +8053,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceCapabilities2EXT> $pSurfaceCapabilities VkSurfaceCapabilities2EXT*
      * returns VkResult
      */
@@ -8083,7 +8083,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\IntPointer $pPhysicalDeviceGroupCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceGroupProperties> $pPhysicalDeviceGroupProperties VkPhysicalDeviceGroupProperties*
      * returns VkResult
@@ -8113,7 +8113,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $heapIndex uint32_t
      * @param int $localDeviceIndex uint32_t
      * @param int $remoteDeviceIndex uint32_t
@@ -8152,7 +8152,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $bindInfoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBindBufferMemoryInfo> $pBindInfos const VkBindBufferMemoryInfo*
      * returns VkResult
@@ -8182,7 +8182,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $bindInfoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBindImageMemoryInfo> $pBindInfos const VkBindImageMemoryInfo*
      * returns VkResult
@@ -8212,7 +8212,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $deviceMask uint32_t
      */
     public function vkCmdSetDeviceMask(struct\VkCommandBuffer $commandBuffer, int $deviceMask): void
@@ -8230,7 +8230,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDeviceGroupPresentCapabilitiesKHR> $pDeviceGroupPresentCapabilities VkDeviceGroupPresentCapabilitiesKHR*
      * returns VkResult
      */
@@ -8254,8 +8254,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
      * @param \iggyvolz\vulkan\util\Pointer $pModes VkDeviceGroupPresentModeFlagsKHR*
      * returns VkResult
      */
@@ -8284,7 +8284,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAcquireNextImageInfoKHR> $pAcquireInfo const VkAcquireNextImageInfoKHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pImageIndex uint32_t*
      * returns VkResult
@@ -8314,7 +8314,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $baseGroupX uint32_t
      * @param int $baseGroupY uint32_t
      * @param int $baseGroupZ uint32_t
@@ -8365,8 +8365,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkSurfaceKHR $surface VkSurfaceKHR
      * @param \iggyvolz\vulkan\util\IntPointer $pRectCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRect2D> $pRects VkRect2D*
      * returns VkResult
@@ -8401,7 +8401,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorUpdateTemplateCreateInfo> $pCreateInfo const VkDescriptorUpdateTemplateCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorUpdateTemplate> $pDescriptorUpdateTemplate VkDescriptorUpdateTemplate*
@@ -8437,8 +8437,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDescriptorUpdateTemplate $descriptorUpdateTemplate VkDescriptorUpdateTemplate
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDescriptorUpdateTemplate $descriptorUpdateTemplate VkDescriptorUpdateTemplate
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyDescriptorUpdateTemplate(
@@ -8464,9 +8464,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDescriptorSet $descriptorSet VkDescriptorSet
-     * @param \\iggyvolz\vulkan\struct\VkDescriptorUpdateTemplate $descriptorUpdateTemplate VkDescriptorUpdateTemplate
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDescriptorSet $descriptorSet VkDescriptorSet
+     * @param \iggyvolz\vulkan\struct\VkDescriptorUpdateTemplate $descriptorUpdateTemplate VkDescriptorUpdateTemplate
      * @param \iggyvolz\vulkan\util\Pointer $pData const void*
      */
     public function vkUpdateDescriptorSetWithTemplate(
@@ -8497,9 +8497,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkDescriptorUpdateTemplate $descriptorUpdateTemplate VkDescriptorUpdateTemplate
-     * @param \\iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkDescriptorUpdateTemplate $descriptorUpdateTemplate VkDescriptorUpdateTemplate
+     * @param \iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
      * @param int $set uint32_t
      * @param \iggyvolz\vulkan\util\Pointer $pData const void*
      */
@@ -8536,7 +8536,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $swapchainCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSwapchainKHR> $pSwapchains const VkSwapchainKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkHdrMetadataEXT> $pMetadata const VkHdrMetadataEXT*
@@ -8569,8 +8569,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
      * returns VkResult
      */
     public function vkGetSwapchainStatusKHR(struct\VkDevice $device, struct\VkSwapchainKHR $swapchain): enum\VkResult
@@ -8590,8 +8590,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRefreshCycleDurationGOOGLE> $pDisplayTimingProperties VkRefreshCycleDurationGOOGLE*
      * returns VkResult
      */
@@ -8620,8 +8620,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
      * @param \iggyvolz\vulkan\util\IntPointer $pPresentationTimingCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPastPresentationTimingGOOGLE> $pPresentationTimings VkPastPresentationTimingGOOGLE*
      * returns VkResult
@@ -8656,7 +8656,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkIOSSurfaceCreateInfoMVK> $pCreateInfo const VkIOSSurfaceCreateInfoMVK*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -8692,7 +8692,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMacOSSurfaceCreateInfoMVK> $pCreateInfo const VkMacOSSurfaceCreateInfoMVK*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -8728,7 +8728,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMetalSurfaceCreateInfoEXT> $pCreateInfo const VkMetalSurfaceCreateInfoEXT*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -8764,7 +8764,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstViewport uint32_t
      * @param int $viewportCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkViewportWScalingNV> $pViewportWScalings const VkViewportWScalingNV*
@@ -8797,7 +8797,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstDiscardRectangle uint32_t
      * @param int $discardRectangleCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRect2D> $pDiscardRectangles const VkRect2D*
@@ -8830,7 +8830,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $discardRectangleEnable VkBool32
      */
     public function vkCmdSetDiscardRectangleEnableEXT(
@@ -8851,8 +8851,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkDiscardRectangleModeEXT $discardRectangleMode VkDiscardRectangleModeEXT
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkDiscardRectangleModeEXT $discardRectangleMode VkDiscardRectangleModeEXT
      */
     public function vkCmdSetDiscardRectangleModeEXT(
         struct\VkCommandBuffer $commandBuffer,
@@ -8872,7 +8872,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSampleLocationsInfoEXT> $pSampleLocationsInfo const VkSampleLocationsInfoEXT*
      */
     public function vkCmdSetSampleLocationsEXT(
@@ -8893,8 +8893,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\enum\VkSampleCountFlagBits $samples VkSampleCountFlagBits
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\enum\VkSampleCountFlagBits $samples VkSampleCountFlagBits
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMultisamplePropertiesEXT> $pMultisampleProperties VkMultisamplePropertiesEXT*
      */
     public function vkGetPhysicalDeviceMultisamplePropertiesEXT(
@@ -8920,7 +8920,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceSurfaceInfo2KHR> $pSurfaceInfo const VkPhysicalDeviceSurfaceInfo2KHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceCapabilities2KHR> $pSurfaceCapabilities VkSurfaceCapabilities2KHR*
      * returns VkResult
@@ -8950,7 +8950,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceSurfaceInfo2KHR> $pSurfaceInfo const VkPhysicalDeviceSurfaceInfo2KHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pSurfaceFormatCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceFormat2KHR> $pSurfaceFormats VkSurfaceFormat2KHR*
@@ -8986,7 +8986,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayProperties2KHR> $pProperties VkDisplayProperties2KHR*
      * returns VkResult
@@ -9016,7 +9016,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayPlaneProperties2KHR> $pProperties VkDisplayPlaneProperties2KHR*
      * returns VkResult
@@ -9046,8 +9046,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
-     * @param \\iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayModeProperties2KHR> $pProperties VkDisplayModeProperties2KHR*
      * returns VkResult
@@ -9082,7 +9082,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayPlaneInfo2KHR> $pDisplayPlaneInfo const VkDisplayPlaneInfo2KHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayPlaneCapabilities2KHR> $pCapabilities VkDisplayPlaneCapabilities2KHR*
      * returns VkResult
@@ -9112,7 +9112,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferMemoryRequirementsInfo2> $pInfo const VkBufferMemoryRequirementsInfo2*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryRequirements2> $pMemoryRequirements VkMemoryRequirements2*
      */
@@ -9139,7 +9139,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageMemoryRequirementsInfo2> $pInfo const VkImageMemoryRequirementsInfo2*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryRequirements2> $pMemoryRequirements VkMemoryRequirements2*
      */
@@ -9166,7 +9166,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageSparseMemoryRequirementsInfo2> $pInfo const VkImageSparseMemoryRequirementsInfo2*
      * @param \iggyvolz\vulkan\util\IntPointer $pSparseMemoryRequirementCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSparseImageMemoryRequirements2> $pSparseMemoryRequirements VkSparseImageMemoryRequirements2*
@@ -9199,7 +9199,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDeviceBufferMemoryRequirements> $pInfo const VkDeviceBufferMemoryRequirements*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryRequirements2> $pMemoryRequirements VkMemoryRequirements2*
      */
@@ -9226,7 +9226,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDeviceImageMemoryRequirements> $pInfo const VkDeviceImageMemoryRequirements*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryRequirements2> $pMemoryRequirements VkMemoryRequirements2*
      */
@@ -9253,7 +9253,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDeviceImageMemoryRequirements> $pInfo const VkDeviceImageMemoryRequirements*
      * @param \iggyvolz\vulkan\util\IntPointer $pSparseMemoryRequirementCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSparseImageMemoryRequirements2> $pSparseMemoryRequirements VkSparseImageMemoryRequirements2*
@@ -9286,7 +9286,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSamplerYcbcrConversionCreateInfo> $pCreateInfo const VkSamplerYcbcrConversionCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSamplerYcbcrConversion> $pYcbcrConversion VkSamplerYcbcrConversion*
@@ -9322,8 +9322,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSamplerYcbcrConversion $ycbcrConversion VkSamplerYcbcrConversion
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSamplerYcbcrConversion $ycbcrConversion VkSamplerYcbcrConversion
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroySamplerYcbcrConversion(
@@ -9349,7 +9349,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDeviceQueueInfo2> $pQueueInfo const VkDeviceQueueInfo2*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkQueue> $pQueue VkQueue*
      */
@@ -9376,7 +9376,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkValidationCacheCreateInfoEXT> $pCreateInfo const VkValidationCacheCreateInfoEXT*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkValidationCacheEXT> $pValidationCache VkValidationCacheEXT*
@@ -9412,8 +9412,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkValidationCacheEXT $validationCache VkValidationCacheEXT
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkValidationCacheEXT $validationCache VkValidationCacheEXT
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyValidationCacheEXT(
@@ -9439,8 +9439,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkValidationCacheEXT $validationCache VkValidationCacheEXT
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkValidationCacheEXT $validationCache VkValidationCacheEXT
      * @param \iggyvolz\vulkan\util\IntPointer $pDataSize size_t*
      * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
@@ -9475,8 +9475,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkValidationCacheEXT $dstCache VkValidationCacheEXT
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkValidationCacheEXT $dstCache VkValidationCacheEXT
      * @param int $srcCacheCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkValidationCacheEXT> $pSrcCaches const VkValidationCacheEXT*
      * returns VkResult
@@ -9511,7 +9511,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorSetLayoutCreateInfo> $pCreateInfo const VkDescriptorSetLayoutCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorSetLayoutSupport> $pSupport VkDescriptorSetLayoutSupport*
      */
@@ -9538,8 +9538,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\enum\VkFormat $format VkFormat
      * @param list<iggyvolz\vulkan\enum\VkImageUsageFlagBits> $imageUsage VkImageUsageFlags
      * @param \iggyvolz\vulkan\util\IntPointer $grallocUsage int*
      * returns VkResult
@@ -9574,8 +9574,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\enum\VkFormat $format VkFormat
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\enum\VkFormat $format VkFormat
      * @param list<iggyvolz\vulkan\enum\VkImageUsageFlagBits> $imageUsage VkImageUsageFlags
      * @param list<iggyvolz\vulkan\enum\VkSwapchainImageUsageFlagBitsANDROID> $swapchainImageUsage VkSwapchainImageUsageFlagsANDROID
      * @param \iggyvolz\vulkan\util\IntPointer $grallocConsumerUsage uint64_t*
@@ -9622,11 +9622,11 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkImage $image VkImage
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkImage $image VkImage
      * @param int $nativeFenceFd int
-     * @param \\iggyvolz\vulkan\struct\VkSemaphore $semaphore VkSemaphore
-     * @param \\iggyvolz\vulkan\struct\VkFence $fence VkFence
+     * @param \iggyvolz\vulkan\struct\VkSemaphore $semaphore VkSemaphore
+     * @param \iggyvolz\vulkan\struct\VkFence $fence VkFence
      * returns VkResult
      */
     public function vkAcquireImageANDROID(
@@ -9664,10 +9664,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkQueue $queue VkQueue
+     * @param \iggyvolz\vulkan\struct\VkQueue $queue VkQueue
      * @param int $waitSemaphoreCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphore> $pWaitSemaphores const VkSemaphore*
-     * @param \\iggyvolz\vulkan\struct\VkImage $image VkImage
+     * @param \iggyvolz\vulkan\struct\VkImage $image VkImage
      * @param \iggyvolz\vulkan\util\IntPointer $pNativeFenceFd int*
      * returns VkResult
      */
@@ -9706,10 +9706,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
-     * @param \\iggyvolz\vulkan\enum\VkShaderStageFlagBits $shaderStage VkShaderStageFlagBits
-     * @param \\iggyvolz\vulkan\enum\VkShaderInfoTypeAMD $infoType VkShaderInfoTypeAMD
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
+     * @param \iggyvolz\vulkan\enum\VkShaderStageFlagBits $shaderStage VkShaderStageFlagBits
+     * @param \iggyvolz\vulkan\enum\VkShaderInfoTypeAMD $infoType VkShaderInfoTypeAMD
      * @param \iggyvolz\vulkan\util\IntPointer $pInfoSize size_t*
      * @param \iggyvolz\vulkan\util\Pointer $pInfo void*
      * returns VkResult
@@ -9754,8 +9754,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapChain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapChain VkSwapchainKHR
      * @param bool $localDimmingEnable VkBool32
      */
     public function vkSetLocalDimmingAMD(
@@ -9781,7 +9781,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pTimeDomainCount uint32_t*
      * @param \iggyvolz\vulkan\util\Pointer $pTimeDomains VkTimeDomainKHR*
      * returns VkResult
@@ -9811,7 +9811,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $timestampCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCalibratedTimestampInfoKHR> $pTimestampInfos const VkCalibratedTimestampInfoKHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pTimestamps uint64_t*
@@ -9853,7 +9853,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugUtilsObjectNameInfoEXT> $pNameInfo const VkDebugUtilsObjectNameInfoEXT*
      * returns VkResult
      */
@@ -9877,7 +9877,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugUtilsObjectTagInfoEXT> $pTagInfo const VkDebugUtilsObjectTagInfoEXT*
      * returns VkResult
      */
@@ -9898,7 +9898,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkQueue $queue VkQueue
+     * @param \iggyvolz\vulkan\struct\VkQueue $queue VkQueue
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugUtilsLabelEXT> $pLabelInfo const VkDebugUtilsLabelEXT*
      */
     public function vkQueueBeginDebugUtilsLabelEXT(struct\VkQueue $queue, util\ObjectPointer $pLabelInfo): void
@@ -9916,7 +9916,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkQueue $queue VkQueue
+     * @param \iggyvolz\vulkan\struct\VkQueue $queue VkQueue
      */
     public function vkQueueEndDebugUtilsLabelEXT(struct\VkQueue $queue): void
     {
@@ -9929,7 +9929,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkQueue $queue VkQueue
+     * @param \iggyvolz\vulkan\struct\VkQueue $queue VkQueue
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugUtilsLabelEXT> $pLabelInfo const VkDebugUtilsLabelEXT*
      */
     public function vkQueueInsertDebugUtilsLabelEXT(struct\VkQueue $queue, util\ObjectPointer $pLabelInfo): void
@@ -9947,7 +9947,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugUtilsLabelEXT> $pLabelInfo const VkDebugUtilsLabelEXT*
      */
     public function vkCmdBeginDebugUtilsLabelEXT(
@@ -9968,7 +9968,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      */
     public function vkCmdEndDebugUtilsLabelEXT(struct\VkCommandBuffer $commandBuffer): void
     {
@@ -9981,7 +9981,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugUtilsLabelEXT> $pLabelInfo const VkDebugUtilsLabelEXT*
      */
     public function vkCmdInsertDebugUtilsLabelEXT(
@@ -10002,7 +10002,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugUtilsMessengerCreateInfoEXT> $pCreateInfo const VkDebugUtilsMessengerCreateInfoEXT*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugUtilsMessengerEXT> $pMessenger VkDebugUtilsMessengerEXT*
@@ -10038,8 +10038,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
-     * @param \\iggyvolz\vulkan\struct\VkDebugUtilsMessengerEXT $messenger VkDebugUtilsMessengerEXT
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkDebugUtilsMessengerEXT $messenger VkDebugUtilsMessengerEXT
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyDebugUtilsMessengerEXT(
@@ -10065,8 +10065,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
-     * @param \\iggyvolz\vulkan\enum\VkDebugUtilsMessageSeverityFlagBitsEXT $messageSeverity VkDebugUtilsMessageSeverityFlagBitsEXT
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\enum\VkDebugUtilsMessageSeverityFlagBitsEXT $messageSeverity VkDebugUtilsMessageSeverityFlagBitsEXT
      * @param list<iggyvolz\vulkan\enum\VkDebugUtilsMessageTypeFlagBitsEXT> $messageTypes VkDebugUtilsMessageTypeFlagsEXT
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDebugUtilsMessengerCallbackDataEXT> $pCallbackData const VkDebugUtilsMessengerCallbackDataEXT*
      */
@@ -10098,8 +10098,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits $handleType VkExternalMemoryHandleTypeFlagBits
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits $handleType VkExternalMemoryHandleTypeFlagBits
      * @param \iggyvolz\vulkan\util\Pointer $pHostPointer const void*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryHostPointerPropertiesEXT> $pMemoryHostPointerProperties VkMemoryHostPointerPropertiesEXT*
      * returns VkResult
@@ -10134,9 +10134,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkPipelineStageFlagBits $pipelineStage VkPipelineStageFlagBits
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkPipelineStageFlagBits $pipelineStage VkPipelineStageFlagBits
+     * @param \iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
      * @param int $dstOffset VkDeviceSize
      * @param int $marker uint32_t
      */
@@ -10173,7 +10173,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRenderPassCreateInfo2> $pCreateInfo const VkRenderPassCreateInfo2*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRenderPass> $pRenderPass VkRenderPass*
@@ -10209,7 +10209,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRenderPassBeginInfo> $pRenderPassBegin const VkRenderPassBeginInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSubpassBeginInfo> $pSubpassBeginInfo const VkSubpassBeginInfo*
      */
@@ -10236,7 +10236,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSubpassBeginInfo> $pSubpassBeginInfo const VkSubpassBeginInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSubpassEndInfo> $pSubpassEndInfo const VkSubpassEndInfo*
      */
@@ -10263,7 +10263,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSubpassEndInfo> $pSubpassEndInfo const VkSubpassEndInfo*
      */
     public function vkCmdEndRenderPass2(
@@ -10284,8 +10284,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSemaphore $semaphore VkSemaphore
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSemaphore $semaphore VkSemaphore
      * @param \iggyvolz\vulkan\util\IntPointer $pValue uint64_t*
      * returns VkResult
      */
@@ -10314,7 +10314,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphoreWaitInfo> $pWaitInfo const VkSemaphoreWaitInfo*
      * @param int $timeout uint64_t
      * returns VkResult
@@ -10344,7 +10344,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSemaphoreSignalInfo> $pSignalInfo const VkSemaphoreSignalInfo*
      * returns VkResult
      */
@@ -10365,7 +10365,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\Pointer $buffer const struct AHardwareBuffer*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAndroidHardwareBufferPropertiesANDROID> $pProperties VkAndroidHardwareBufferPropertiesANDROID*
      * returns VkResult
@@ -10395,7 +10395,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryGetAndroidHardwareBufferInfoANDROID> $pInfo const VkMemoryGetAndroidHardwareBufferInfoANDROID*
      * @param \iggyvolz\vulkan\util\Pointer $pBuffer struct AHardwareBuffer**
      * returns VkResult
@@ -10425,10 +10425,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
      * @param int $offset VkDeviceSize
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $countBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $countBuffer VkBuffer
      * @param int $countBufferOffset VkDeviceSize
      * @param int $maxDrawCount uint32_t
      * @param int $stride uint32_t
@@ -10476,10 +10476,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
      * @param int $offset VkDeviceSize
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $countBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $countBuffer VkBuffer
      * @param int $countBufferOffset VkDeviceSize
      * @param int $maxDrawCount uint32_t
      * @param int $stride uint32_t
@@ -10527,7 +10527,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\Pointer $pCheckpointMarker const void*
      */
     public function vkCmdSetCheckpointNV(struct\VkCommandBuffer $commandBuffer, util\Pointer $pCheckpointMarker): void
@@ -10545,7 +10545,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkQueue $queue VkQueue
+     * @param \iggyvolz\vulkan\struct\VkQueue $queue VkQueue
      * @param \iggyvolz\vulkan\util\IntPointer $pCheckpointDataCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCheckpointDataNV> $pCheckpointData VkCheckpointDataNV*
      */
@@ -10572,7 +10572,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstBinding uint32_t
      * @param int $bindingCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBuffer> $pBuffers const VkBuffer*
@@ -10617,7 +10617,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstCounterBuffer uint32_t
      * @param int $counterBufferCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBuffer> $pCounterBuffers const VkBuffer*
@@ -10656,7 +10656,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstCounterBuffer uint32_t
      * @param int $counterBufferCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBuffer> $pCounterBuffers const VkBuffer*
@@ -10695,8 +10695,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $query uint32_t
      * @param list<iggyvolz\vulkan\enum\VkQueryControlFlagBits> $flags VkQueryControlFlags
      * @param int $index uint32_t
@@ -10734,8 +10734,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $query uint32_t
      * @param int $index uint32_t
      */
@@ -10767,10 +10767,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $instanceCount uint32_t
      * @param int $firstInstance uint32_t
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $counterBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $counterBuffer VkBuffer
      * @param int $counterBufferOffset VkDeviceSize
      * @param int $counterOffset uint32_t
      * @param int $vertexStride uint32_t
@@ -10818,7 +10818,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstExclusiveScissor uint32_t
      * @param int $exclusiveScissorCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRect2D> $pExclusiveScissors const VkRect2D*
@@ -10851,7 +10851,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstExclusiveScissor uint32_t
      * @param int $exclusiveScissorCount uint32_t
      * @param \iggyvolz\vulkan\util\Pointer $pExclusiveScissorEnables const VkBool32*
@@ -10884,9 +10884,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkImageView $imageView VkImageView
-     * @param \\iggyvolz\vulkan\enum\VkImageLayout $imageLayout VkImageLayout
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkImageView $imageView VkImageView
+     * @param \iggyvolz\vulkan\enum\VkImageLayout $imageLayout VkImageLayout
      */
     public function vkCmdBindShadingRateImageNV(
         struct\VkCommandBuffer $commandBuffer,
@@ -10911,7 +10911,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstViewport uint32_t
      * @param int $viewportCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkShadingRatePaletteNV> $pShadingRatePalettes const VkShadingRatePaletteNV*
@@ -10944,8 +10944,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkCoarseSampleOrderTypeNV $sampleOrderType VkCoarseSampleOrderTypeNV
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkCoarseSampleOrderTypeNV $sampleOrderType VkCoarseSampleOrderTypeNV
      * @param int $customSampleOrderCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCoarseSampleOrderCustomNV> $pCustomSampleOrders const VkCoarseSampleOrderCustomNV*
      */
@@ -10977,7 +10977,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $taskCount uint32_t
      * @param int $firstTask uint32_t
      */
@@ -11000,8 +11000,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
      * @param int $offset VkDeviceSize
      * @param int $drawCount uint32_t
      * @param int $stride uint32_t
@@ -11039,10 +11039,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
      * @param int $offset VkDeviceSize
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $countBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $countBuffer VkBuffer
      * @param int $countBufferOffset VkDeviceSize
      * @param int $maxDrawCount uint32_t
      * @param int $stride uint32_t
@@ -11090,7 +11090,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $groupCountX uint32_t
      * @param int $groupCountY uint32_t
      * @param int $groupCountZ uint32_t
@@ -11123,8 +11123,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
      * @param int $offset VkDeviceSize
      * @param int $drawCount uint32_t
      * @param int $stride uint32_t
@@ -11162,10 +11162,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
      * @param int $offset VkDeviceSize
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $countBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $countBuffer VkBuffer
      * @param int $countBufferOffset VkDeviceSize
      * @param int $maxDrawCount uint32_t
      * @param int $stride uint32_t
@@ -11213,8 +11213,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
      * @param int $shader uint32_t
      * returns VkResult
      */
@@ -11243,7 +11243,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureCreateInfoNV> $pCreateInfo const VkAccelerationStructureCreateInfoNV*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureNV> $pAccelerationStructure VkAccelerationStructureNV*
@@ -11279,9 +11279,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkImageView $imageView VkImageView
-     * @param \\iggyvolz\vulkan\enum\VkImageLayout $imageLayout VkImageLayout
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkImageView $imageView VkImageView
+     * @param \iggyvolz\vulkan\enum\VkImageLayout $imageLayout VkImageLayout
      */
     public function vkCmdBindInvocationMaskHUAWEI(
         struct\VkCommandBuffer $commandBuffer,
@@ -11306,8 +11306,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkAccelerationStructureKHR $accelerationStructure VkAccelerationStructureKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkAccelerationStructureKHR $accelerationStructure VkAccelerationStructureKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyAccelerationStructureKHR(
@@ -11333,8 +11333,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkAccelerationStructureNV $accelerationStructure VkAccelerationStructureNV
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkAccelerationStructureNV $accelerationStructure VkAccelerationStructureNV
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyAccelerationStructureNV(
@@ -11360,7 +11360,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureMemoryRequirementsInfoNV> $pInfo const VkAccelerationStructureMemoryRequirementsInfoNV*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryRequirements2KHR> $pMemoryRequirements VkMemoryRequirements2KHR*
      */
@@ -11387,7 +11387,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $bindInfoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBindAccelerationStructureMemoryInfoNV> $pBindInfos const VkBindAccelerationStructureMemoryInfoNV*
      * returns VkResult
@@ -11417,10 +11417,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkAccelerationStructureNV $dst VkAccelerationStructureNV
-     * @param \\iggyvolz\vulkan\struct\VkAccelerationStructureNV $src VkAccelerationStructureNV
-     * @param \\iggyvolz\vulkan\enum\VkCopyAccelerationStructureModeKHR $mode VkCopyAccelerationStructureModeKHR
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkAccelerationStructureNV $dst VkAccelerationStructureNV
+     * @param \iggyvolz\vulkan\struct\VkAccelerationStructureNV $src VkAccelerationStructureNV
+     * @param \iggyvolz\vulkan\enum\VkCopyAccelerationStructureModeKHR $mode VkCopyAccelerationStructureModeKHR
      */
     public function vkCmdCopyAccelerationStructureNV(
         struct\VkCommandBuffer $commandBuffer,
@@ -11450,7 +11450,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyAccelerationStructureInfoKHR> $pInfo const VkCopyAccelerationStructureInfoKHR*
      */
     public function vkCmdCopyAccelerationStructureKHR(
@@ -11471,8 +11471,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyAccelerationStructureInfoKHR> $pInfo const VkCopyAccelerationStructureInfoKHR*
      * returns VkResult
      */
@@ -11501,7 +11501,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyAccelerationStructureToMemoryInfoKHR> $pInfo const VkCopyAccelerationStructureToMemoryInfoKHR*
      */
     public function vkCmdCopyAccelerationStructureToMemoryKHR(
@@ -11522,8 +11522,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyAccelerationStructureToMemoryInfoKHR> $pInfo const VkCopyAccelerationStructureToMemoryInfoKHR*
      * returns VkResult
      */
@@ -11552,7 +11552,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyMemoryToAccelerationStructureInfoKHR> $pInfo const VkCopyMemoryToAccelerationStructureInfoKHR*
      */
     public function vkCmdCopyMemoryToAccelerationStructureKHR(
@@ -11573,8 +11573,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyMemoryToAccelerationStructureInfoKHR> $pInfo const VkCopyMemoryToAccelerationStructureInfoKHR*
      * returns VkResult
      */
@@ -11603,11 +11603,11 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $accelerationStructureCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureKHR> $pAccelerationStructures const VkAccelerationStructureKHR*
-     * @param \\iggyvolz\vulkan\enum\VkQueryType $queryType VkQueryType
-     * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
+     * @param \iggyvolz\vulkan\enum\VkQueryType $queryType VkQueryType
+     * @param \iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $firstQuery uint32_t
      */
     public function vkCmdWriteAccelerationStructuresPropertiesKHR(
@@ -11648,11 +11648,11 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $accelerationStructureCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureNV> $pAccelerationStructures const VkAccelerationStructureNV*
-     * @param \\iggyvolz\vulkan\enum\VkQueryType $queryType VkQueryType
-     * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
+     * @param \iggyvolz\vulkan\enum\VkQueryType $queryType VkQueryType
+     * @param \iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $firstQuery uint32_t
      */
     public function vkCmdWriteAccelerationStructuresPropertiesNV(
@@ -11693,14 +11693,14 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureInfoNV> $pInfo const VkAccelerationStructureInfoNV*
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $instanceData VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $instanceData VkBuffer
      * @param int $instanceOffset VkDeviceSize
      * @param bool $update VkBool32
-     * @param \\iggyvolz\vulkan\struct\VkAccelerationStructureNV $dst VkAccelerationStructureNV
-     * @param \\iggyvolz\vulkan\struct\VkAccelerationStructureNV $src VkAccelerationStructureNV
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $scratch VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkAccelerationStructureNV $dst VkAccelerationStructureNV
+     * @param \iggyvolz\vulkan\struct\VkAccelerationStructureNV $src VkAccelerationStructureNV
+     * @param \iggyvolz\vulkan\struct\VkBuffer $scratch VkBuffer
      * @param int $scratchOffset VkDeviceSize
      */
     public function vkCmdBuildAccelerationStructureNV(
@@ -11756,10 +11756,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $accelerationStructureCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureKHR> $pAccelerationStructures const VkAccelerationStructureKHR*
-     * @param \\iggyvolz\vulkan\enum\VkQueryType $queryType VkQueryType
+     * @param \iggyvolz\vulkan\enum\VkQueryType $queryType VkQueryType
      * @param int $dataSize size_t
      * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * @param int $stride size_t
@@ -11810,7 +11810,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkStridedDeviceAddressRegionKHR> $pRaygenShaderBindingTable const VkStridedDeviceAddressRegionKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkStridedDeviceAddressRegionKHR> $pMissShaderBindingTable const VkStridedDeviceAddressRegionKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkStridedDeviceAddressRegionKHR> $pHitShaderBindingTable const VkStridedDeviceAddressRegionKHR*
@@ -11867,16 +11867,16 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $raygenShaderBindingTableBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $raygenShaderBindingTableBuffer VkBuffer
      * @param int $raygenShaderBindingOffset VkDeviceSize
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $missShaderBindingTableBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $missShaderBindingTableBuffer VkBuffer
      * @param int $missShaderBindingOffset VkDeviceSize
      * @param int $missShaderBindingStride VkDeviceSize
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $hitShaderBindingTableBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $hitShaderBindingTableBuffer VkBuffer
      * @param int $hitShaderBindingOffset VkDeviceSize
      * @param int $hitShaderBindingStride VkDeviceSize
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $callableShaderBindingTableBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $callableShaderBindingTableBuffer VkBuffer
      * @param int $callableShaderBindingOffset VkDeviceSize
      * @param int $callableShaderBindingStride VkDeviceSize
      * @param int $width uint32_t
@@ -11966,8 +11966,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
      * @param int $firstGroup uint32_t
      * @param int $groupCount uint32_t
      * @param int $dataSize size_t
@@ -12014,8 +12014,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
      * @param int $firstGroup uint32_t
      * @param int $groupCount uint32_t
      * @param int $dataSize size_t
@@ -12062,8 +12062,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkAccelerationStructureNV $accelerationStructure VkAccelerationStructureNV
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkAccelerationStructureNV $accelerationStructure VkAccelerationStructureNV
      * @param int $dataSize size_t
      * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
@@ -12098,8 +12098,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
      * @param int $createInfoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRayTracingPipelineCreateInfoNV> $pCreateInfos const VkRayTracingPipelineCreateInfoNV*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
@@ -12146,9 +12146,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
-     * @param \\iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
+     * @param \iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
      * @param int $createInfoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRayTracingPipelineCreateInfoKHR> $pCreateInfos const VkRayTracingPipelineCreateInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
@@ -12200,7 +12200,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCooperativeMatrixPropertiesNV> $pProperties VkCooperativeMatrixPropertiesNV*
      * returns VkResult
@@ -12230,7 +12230,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkStridedDeviceAddressRegionKHR> $pRaygenShaderBindingTable const VkStridedDeviceAddressRegionKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkStridedDeviceAddressRegionKHR> $pMissShaderBindingTable const VkStridedDeviceAddressRegionKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkStridedDeviceAddressRegionKHR> $pHitShaderBindingTable const VkStridedDeviceAddressRegionKHR*
@@ -12275,7 +12275,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $indirectDeviceAddress VkDeviceAddress
      */
     public function vkCmdTraceRaysIndirect2KHR(
@@ -12296,7 +12296,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureVersionInfoKHR> $pVersionInfo const VkAccelerationStructureVersionInfoKHR*
      * @param \iggyvolz\vulkan\util\Pointer $pCompatibility VkAccelerationStructureCompatibilityKHR*
      */
@@ -12323,10 +12323,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipeline $pipeline VkPipeline
      * @param int $group uint32_t
-     * @param \\iggyvolz\vulkan\enum\VkShaderGroupShaderKHR $groupShader VkShaderGroupShaderKHR
+     * @param \iggyvolz\vulkan\enum\VkShaderGroupShaderKHR $groupShader VkShaderGroupShaderKHR
      * returns VkDeviceSize
      */
     public function vkGetRayTracingShaderGroupStackSizeKHR(
@@ -12359,7 +12359,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $pipelineStackSize uint32_t
      */
     public function vkCmdSetRayTracingPipelineStackSizeKHR(
@@ -12380,7 +12380,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageViewHandleInfoNVX> $pInfo const VkImageViewHandleInfoNVX*
      * returns uint32_t
      */
@@ -12401,8 +12401,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkImageView $imageView VkImageView
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkImageView $imageView VkImageView
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageViewAddressPropertiesNVX> $pProperties VkImageViewAddressPropertiesNVX*
      * returns VkResult
      */
@@ -12431,7 +12431,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceSurfaceInfo2KHR> $pSurfaceInfo const VkPhysicalDeviceSurfaceInfo2KHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pPresentModeCount uint32_t*
      * @param \iggyvolz\vulkan\util\Pointer $pPresentModes VkPresentModeKHR*
@@ -12467,7 +12467,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceSurfaceInfo2KHR> $pSurfaceInfo const VkPhysicalDeviceSurfaceInfo2KHR*
      * @param \iggyvolz\vulkan\util\Pointer $pModes VkDeviceGroupPresentModeFlagsKHR*
      * returns VkResult
@@ -12497,8 +12497,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
      * returns VkResult
      */
     public function vkAcquireFullScreenExclusiveModeEXT(
@@ -12521,8 +12521,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
      * returns VkResult
      */
     public function vkReleaseFullScreenExclusiveModeEXT(
@@ -12545,7 +12545,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $queueFamilyIndex uint32_t
      * @param \iggyvolz\vulkan\util\IntPointer $pCounterCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPerformanceCounterKHR> $pCounters VkPerformanceCounterKHR*
@@ -12587,7 +12587,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkQueryPoolPerformanceCreateInfoKHR> $pPerformanceQueryCreateInfo const VkQueryPoolPerformanceCreateInfoKHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pNumPasses uint32_t*
      */
@@ -12614,7 +12614,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAcquireProfilingLockInfoKHR> $pInfo const VkAcquireProfilingLockInfoKHR*
      * returns VkResult
      */
@@ -12635,7 +12635,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      */
     public function vkReleaseProfilingLockKHR(struct\VkDevice $device): void
     {
@@ -12648,8 +12648,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkImage $image VkImage
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkImage $image VkImage
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageDrmFormatModifierPropertiesEXT> $pProperties VkImageDrmFormatModifierPropertiesEXT*
      * returns VkResult
      */
@@ -12678,7 +12678,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferDeviceAddressInfo> $pInfo const VkBufferDeviceAddressInfo*
      * returns uint64_t
      */
@@ -12699,7 +12699,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferDeviceAddressInfo> $pInfo const VkBufferDeviceAddressInfo*
      * returns VkDeviceAddress
      */
@@ -12720,7 +12720,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkInstance $instance VkInstance
+     * @param \iggyvolz\vulkan\struct\VkInstance $instance VkInstance
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkHeadlessSurfaceCreateInfoEXT> $pCreateInfo const VkHeadlessSurfaceCreateInfoEXT*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSurfaceKHR> $pSurface VkSurfaceKHR*
@@ -12756,7 +12756,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pCombinationCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFramebufferMixedSamplesCombinationNV> $pCombinations VkFramebufferMixedSamplesCombinationNV*
      * returns VkResult
@@ -12786,7 +12786,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkInitializePerformanceApiInfoINTEL> $pInitializeInfo const VkInitializePerformanceApiInfoINTEL*
      * returns VkResult
      */
@@ -12810,7 +12810,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      */
     public function vkUninitializePerformanceApiINTEL(struct\VkDevice $device): void
     {
@@ -12823,7 +12823,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPerformanceMarkerInfoINTEL> $pMarkerInfo const VkPerformanceMarkerInfoINTEL*
      * returns VkResult
      */
@@ -12847,7 +12847,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPerformanceStreamMarkerInfoINTEL> $pMarkerInfo const VkPerformanceStreamMarkerInfoINTEL*
      * returns VkResult
      */
@@ -12871,7 +12871,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPerformanceOverrideInfoINTEL> $pOverrideInfo const VkPerformanceOverrideInfoINTEL*
      * returns VkResult
      */
@@ -12895,7 +12895,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPerformanceConfigurationAcquireInfoINTEL> $pAcquireInfo const VkPerformanceConfigurationAcquireInfoINTEL*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPerformanceConfigurationINTEL> $pConfiguration VkPerformanceConfigurationINTEL*
      * returns VkResult
@@ -12925,8 +12925,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPerformanceConfigurationINTEL $configuration VkPerformanceConfigurationINTEL
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPerformanceConfigurationINTEL $configuration VkPerformanceConfigurationINTEL
      * returns VkResult
      */
     public function vkReleasePerformanceConfigurationINTEL(
@@ -12949,8 +12949,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkQueue $queue VkQueue
-     * @param \\iggyvolz\vulkan\struct\VkPerformanceConfigurationINTEL $configuration VkPerformanceConfigurationINTEL
+     * @param \iggyvolz\vulkan\struct\VkQueue $queue VkQueue
+     * @param \iggyvolz\vulkan\struct\VkPerformanceConfigurationINTEL $configuration VkPerformanceConfigurationINTEL
      * returns VkResult
      */
     public function vkQueueSetPerformanceConfigurationINTEL(
@@ -12973,8 +12973,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\enum\VkPerformanceParameterTypeINTEL $parameter VkPerformanceParameterTypeINTEL
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\enum\VkPerformanceParameterTypeINTEL $parameter VkPerformanceParameterTypeINTEL
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPerformanceValueINTEL> $pValue VkPerformanceValueINTEL*
      * returns VkResult
      */
@@ -13003,7 +13003,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDeviceMemoryOpaqueCaptureAddressInfo> $pInfo const VkDeviceMemoryOpaqueCaptureAddressInfo*
      * returns uint64_t
      */
@@ -13024,7 +13024,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPipelineInfoKHR> $pPipelineInfo const VkPipelineInfoKHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pExecutableCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPipelineExecutablePropertiesKHR> $pProperties VkPipelineExecutablePropertiesKHR*
@@ -13060,7 +13060,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPipelineExecutableInfoKHR> $pExecutableInfo const VkPipelineExecutableInfoKHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pStatisticCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPipelineExecutableStatisticKHR> $pStatistics VkPipelineExecutableStatisticKHR*
@@ -13096,7 +13096,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPipelineExecutableInfoKHR> $pExecutableInfo const VkPipelineExecutableInfoKHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pInternalRepresentationCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPipelineExecutableInternalRepresentationKHR> $pInternalRepresentations VkPipelineExecutableInternalRepresentationKHR*
@@ -13132,7 +13132,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $lineStippleFactor uint32_t
      * @param int $lineStipplePattern uint16_t
      */
@@ -13159,8 +13159,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\enum\VkFaultQueryBehavior $faultQueryBehavior VkFaultQueryBehavior
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\enum\VkFaultQueryBehavior $faultQueryBehavior VkFaultQueryBehavior
      * @param \iggyvolz\vulkan\util\Pointer $pUnrecordedFaults VkBool32*
      * @param \iggyvolz\vulkan\util\IntPointer $pFaultCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkFaultData> $pFaults VkFaultData*
@@ -13201,7 +13201,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pToolCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceToolProperties> $pToolProperties VkPhysicalDeviceToolProperties*
      * returns VkResult
@@ -13231,7 +13231,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureCreateInfoKHR> $pCreateInfo const VkAccelerationStructureCreateInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureKHR> $pAccelerationStructure VkAccelerationStructureKHR*
@@ -13267,7 +13267,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $infoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureBuildGeometryInfoKHR> $pInfos const VkAccelerationStructureBuildGeometryInfoKHR*
      * @param \iggyvolz\vulkan\util\Pointer $ppBuildRangeInfos const VkAccelerationStructureBuildRangeInfoKHR* const*
@@ -13300,7 +13300,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $infoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureBuildGeometryInfoKHR> $pInfos const VkAccelerationStructureBuildGeometryInfoKHR*
      * @param \iggyvolz\vulkan\util\Pointer $pIndirectDeviceAddresses const VkDeviceAddress*
@@ -13345,8 +13345,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
      * @param int $infoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureBuildGeometryInfoKHR> $pInfos const VkAccelerationStructureBuildGeometryInfoKHR*
      * @param \iggyvolz\vulkan\util\Pointer $ppBuildRangeInfos const VkAccelerationStructureBuildRangeInfoKHR* const*
@@ -13387,7 +13387,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureDeviceAddressInfoKHR> $pInfo const VkAccelerationStructureDeviceAddressInfoKHR*
      * returns VkDeviceAddress
      */
@@ -13411,7 +13411,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDeferredOperationKHR> $pDeferredOperation VkDeferredOperationKHR*
      * returns VkResult
@@ -13441,8 +13441,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeferredOperationKHR $operation VkDeferredOperationKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeferredOperationKHR $operation VkDeferredOperationKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyDeferredOperationKHR(
@@ -13468,8 +13468,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeferredOperationKHR $operation VkDeferredOperationKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeferredOperationKHR $operation VkDeferredOperationKHR
      * returns uint32_t
      */
     public function vkGetDeferredOperationMaxConcurrencyKHR(
@@ -13492,8 +13492,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeferredOperationKHR $operation VkDeferredOperationKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeferredOperationKHR $operation VkDeferredOperationKHR
      * returns VkResult
      */
     public function vkGetDeferredOperationResultKHR(
@@ -13516,8 +13516,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeferredOperationKHR $operation VkDeferredOperationKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeferredOperationKHR $operation VkDeferredOperationKHR
      * returns VkResult
      */
     public function vkDeferredOperationJoinKHR(
@@ -13540,7 +13540,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkComputePipelineCreateInfo> $pCreateInfo const VkComputePipelineCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryRequirements2> $pMemoryRequirements VkMemoryRequirements2*
      */
@@ -13567,7 +13567,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPipelineIndirectDeviceAddressInfoNV> $pInfo const VkPipelineIndirectDeviceAddressInfoNV*
      * returns VkDeviceAddress
      */
@@ -13588,7 +13588,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param list<iggyvolz\vulkan\enum\VkCullModeFlagBits> $cullMode VkCullModeFlags
      */
     public function vkCmdSetCullMode(struct\VkCommandBuffer $commandBuffer, array $cullMode): void
@@ -13606,8 +13606,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkFrontFace $frontFace VkFrontFace
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkFrontFace $frontFace VkFrontFace
      */
     public function vkCmdSetFrontFace(struct\VkCommandBuffer $commandBuffer, enum\VkFrontFace $frontFace): void
     {
@@ -13624,8 +13624,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkPrimitiveTopology $primitiveTopology VkPrimitiveTopology
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkPrimitiveTopology $primitiveTopology VkPrimitiveTopology
      */
     public function vkCmdSetPrimitiveTopology(
         struct\VkCommandBuffer $commandBuffer,
@@ -13645,7 +13645,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $viewportCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkViewport> $pViewports const VkViewport*
      */
@@ -13672,7 +13672,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $scissorCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRect2D> $pScissors const VkRect2D*
      */
@@ -13699,11 +13699,11 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $buffer VkBuffer
      * @param int $offset VkDeviceSize
      * @param int $size VkDeviceSize
-     * @param \\iggyvolz\vulkan\enum\VkIndexType $indexType VkIndexType
+     * @param \iggyvolz\vulkan\enum\VkIndexType $indexType VkIndexType
      */
     public function vkCmdBindIndexBuffer2KHR(
         struct\VkCommandBuffer $commandBuffer,
@@ -13738,7 +13738,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstBinding uint32_t
      * @param int $bindingCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBuffer> $pBuffers const VkBuffer*
@@ -13789,7 +13789,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $depthTestEnable VkBool32
      */
     public function vkCmdSetDepthTestEnable(struct\VkCommandBuffer $commandBuffer, bool $depthTestEnable): void
@@ -13807,7 +13807,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $depthWriteEnable VkBool32
      */
     public function vkCmdSetDepthWriteEnable(struct\VkCommandBuffer $commandBuffer, bool $depthWriteEnable): void
@@ -13825,8 +13825,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkCompareOp $depthCompareOp VkCompareOp
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkCompareOp $depthCompareOp VkCompareOp
      */
     public function vkCmdSetDepthCompareOp(
         struct\VkCommandBuffer $commandBuffer,
@@ -13846,7 +13846,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $depthBoundsTestEnable VkBool32
      */
     public function vkCmdSetDepthBoundsTestEnable(
@@ -13867,7 +13867,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $stencilTestEnable VkBool32
      */
     public function vkCmdSetStencilTestEnable(struct\VkCommandBuffer $commandBuffer, bool $stencilTestEnable): void
@@ -13885,12 +13885,12 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param list<iggyvolz\vulkan\enum\VkStencilFaceFlagBits> $faceMask VkStencilFaceFlags
-     * @param \\iggyvolz\vulkan\enum\VkStencilOp $failOp VkStencilOp
-     * @param \\iggyvolz\vulkan\enum\VkStencilOp $passOp VkStencilOp
-     * @param \\iggyvolz\vulkan\enum\VkStencilOp $depthFailOp VkStencilOp
-     * @param \\iggyvolz\vulkan\enum\VkCompareOp $compareOp VkCompareOp
+     * @param \iggyvolz\vulkan\enum\VkStencilOp $failOp VkStencilOp
+     * @param \iggyvolz\vulkan\enum\VkStencilOp $passOp VkStencilOp
+     * @param \iggyvolz\vulkan\enum\VkStencilOp $depthFailOp VkStencilOp
+     * @param \iggyvolz\vulkan\enum\VkCompareOp $compareOp VkCompareOp
      */
     public function vkCmdSetStencilOp(
         struct\VkCommandBuffer $commandBuffer,
@@ -13930,7 +13930,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $patchControlPoints uint32_t
      */
     public function vkCmdSetPatchControlPointsEXT(
@@ -13951,7 +13951,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $rasterizerDiscardEnable VkBool32
      */
     public function vkCmdSetRasterizerDiscardEnable(
@@ -13972,7 +13972,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $depthBiasEnable VkBool32
      */
     public function vkCmdSetDepthBiasEnable(struct\VkCommandBuffer $commandBuffer, bool $depthBiasEnable): void
@@ -13990,8 +13990,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkLogicOp $logicOp VkLogicOp
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkLogicOp $logicOp VkLogicOp
      */
     public function vkCmdSetLogicOpEXT(struct\VkCommandBuffer $commandBuffer, enum\VkLogicOp $logicOp): void
     {
@@ -14008,7 +14008,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $primitiveRestartEnable VkBool32
      */
     public function vkCmdSetPrimitiveRestartEnable(
@@ -14029,8 +14029,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkTessellationDomainOrigin $domainOrigin VkTessellationDomainOrigin
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkTessellationDomainOrigin $domainOrigin VkTessellationDomainOrigin
      */
     public function vkCmdSetTessellationDomainOriginEXT(
         struct\VkCommandBuffer $commandBuffer,
@@ -14050,7 +14050,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $depthClampEnable VkBool32
      */
     public function vkCmdSetDepthClampEnableEXT(struct\VkCommandBuffer $commandBuffer, bool $depthClampEnable): void
@@ -14068,8 +14068,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkPolygonMode $polygonMode VkPolygonMode
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkPolygonMode $polygonMode VkPolygonMode
      */
     public function vkCmdSetPolygonModeEXT(
         struct\VkCommandBuffer $commandBuffer,
@@ -14089,8 +14089,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkSampleCountFlagBits $rasterizationSamples VkSampleCountFlagBits
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkSampleCountFlagBits $rasterizationSamples VkSampleCountFlagBits
      */
     public function vkCmdSetRasterizationSamplesEXT(
         struct\VkCommandBuffer $commandBuffer,
@@ -14110,8 +14110,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkSampleCountFlagBits $samples VkSampleCountFlagBits
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkSampleCountFlagBits $samples VkSampleCountFlagBits
      * @param \iggyvolz\vulkan\util\Pointer $pSampleMask const VkSampleMask*
      */
     public function vkCmdSetSampleMaskEXT(
@@ -14137,7 +14137,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $alphaToCoverageEnable VkBool32
      */
     public function vkCmdSetAlphaToCoverageEnableEXT(
@@ -14158,7 +14158,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $alphaToOneEnable VkBool32
      */
     public function vkCmdSetAlphaToOneEnableEXT(struct\VkCommandBuffer $commandBuffer, bool $alphaToOneEnable): void
@@ -14176,7 +14176,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $logicOpEnable VkBool32
      */
     public function vkCmdSetLogicOpEnableEXT(struct\VkCommandBuffer $commandBuffer, bool $logicOpEnable): void
@@ -14194,7 +14194,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstAttachment uint32_t
      * @param int $attachmentCount uint32_t
      * @param \iggyvolz\vulkan\util\Pointer $pColorBlendEnables const VkBool32*
@@ -14227,7 +14227,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstAttachment uint32_t
      * @param int $attachmentCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkColorBlendEquationEXT> $pColorBlendEquations const VkColorBlendEquationEXT*
@@ -14260,7 +14260,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstAttachment uint32_t
      * @param int $attachmentCount uint32_t
      * @param \iggyvolz\vulkan\util\Pointer $pColorWriteMasks const VkColorComponentFlags*
@@ -14293,7 +14293,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $rasterizationStream uint32_t
      */
     public function vkCmdSetRasterizationStreamEXT(
@@ -14314,8 +14314,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkConservativeRasterizationModeEXT $conservativeRasterizationMode VkConservativeRasterizationModeEXT
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkConservativeRasterizationModeEXT $conservativeRasterizationMode VkConservativeRasterizationModeEXT
      */
     public function vkCmdSetConservativeRasterizationModeEXT(
         struct\VkCommandBuffer $commandBuffer,
@@ -14335,7 +14335,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param float $extraPrimitiveOverestimationSize float
      */
     public function vkCmdSetExtraPrimitiveOverestimationSizeEXT(
@@ -14356,7 +14356,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $depthClipEnable VkBool32
      */
     public function vkCmdSetDepthClipEnableEXT(struct\VkCommandBuffer $commandBuffer, bool $depthClipEnable): void
@@ -14374,7 +14374,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $sampleLocationsEnable VkBool32
      */
     public function vkCmdSetSampleLocationsEnableEXT(
@@ -14395,7 +14395,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstAttachment uint32_t
      * @param int $attachmentCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkColorBlendAdvancedEXT> $pColorBlendAdvanced const VkColorBlendAdvancedEXT*
@@ -14428,8 +14428,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkProvokingVertexModeEXT $provokingVertexMode VkProvokingVertexModeEXT
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkProvokingVertexModeEXT $provokingVertexMode VkProvokingVertexModeEXT
      */
     public function vkCmdSetProvokingVertexModeEXT(
         struct\VkCommandBuffer $commandBuffer,
@@ -14449,8 +14449,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkLineRasterizationModeEXT $lineRasterizationMode VkLineRasterizationModeEXT
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkLineRasterizationModeEXT $lineRasterizationMode VkLineRasterizationModeEXT
      */
     public function vkCmdSetLineRasterizationModeEXT(
         struct\VkCommandBuffer $commandBuffer,
@@ -14470,7 +14470,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $stippledLineEnable VkBool32
      */
     public function vkCmdSetLineStippleEnableEXT(
@@ -14491,7 +14491,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $negativeOneToOne VkBool32
      */
     public function vkCmdSetDepthClipNegativeOneToOneEXT(
@@ -14512,7 +14512,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $viewportWScalingEnable VkBool32
      */
     public function vkCmdSetViewportWScalingEnableNV(
@@ -14533,7 +14533,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $firstViewport uint32_t
      * @param int $viewportCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkViewportSwizzleNV> $pViewportSwizzles const VkViewportSwizzleNV*
@@ -14566,7 +14566,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $coverageToColorEnable VkBool32
      */
     public function vkCmdSetCoverageToColorEnableNV(
@@ -14587,7 +14587,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $coverageToColorLocation uint32_t
      */
     public function vkCmdSetCoverageToColorLocationNV(
@@ -14608,8 +14608,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkCoverageModulationModeNV $coverageModulationMode VkCoverageModulationModeNV
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkCoverageModulationModeNV $coverageModulationMode VkCoverageModulationModeNV
      */
     public function vkCmdSetCoverageModulationModeNV(
         struct\VkCommandBuffer $commandBuffer,
@@ -14629,7 +14629,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $coverageModulationTableEnable VkBool32
      */
     public function vkCmdSetCoverageModulationTableEnableNV(
@@ -14650,7 +14650,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $coverageModulationTableCount uint32_t
      * @param \iggyvolz\vulkan\util\Pointer $pCoverageModulationTable const float*
      */
@@ -14677,7 +14677,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $shadingRateImageEnable VkBool32
      */
     public function vkCmdSetShadingRateImageEnableNV(
@@ -14698,8 +14698,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkCoverageReductionModeNV $coverageReductionMode VkCoverageReductionModeNV
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkCoverageReductionModeNV $coverageReductionMode VkCoverageReductionModeNV
      */
     public function vkCmdSetCoverageReductionModeNV(
         struct\VkCommandBuffer $commandBuffer,
@@ -14719,7 +14719,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param bool $representativeFragmentTestEnable VkBool32
      */
     public function vkCmdSetRepresentativeFragmentTestEnableNV(
@@ -14740,7 +14740,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPrivateDataSlotCreateInfo> $pCreateInfo const VkPrivateDataSlotCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPrivateDataSlot> $pPrivateDataSlot VkPrivateDataSlot*
@@ -14776,8 +14776,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPrivateDataSlot $privateDataSlot VkPrivateDataSlot
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPrivateDataSlot $privateDataSlot VkPrivateDataSlot
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyPrivateDataSlot(
@@ -14803,10 +14803,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\enum\VkObjectType $objectType VkObjectType
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\enum\VkObjectType $objectType VkObjectType
      * @param int $objectHandle uint64_t
-     * @param \\iggyvolz\vulkan\struct\VkPrivateDataSlot $privateDataSlot VkPrivateDataSlot
+     * @param \iggyvolz\vulkan\struct\VkPrivateDataSlot $privateDataSlot VkPrivateDataSlot
      * @param int $data uint64_t
      * returns VkResult
      */
@@ -14845,10 +14845,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\enum\VkObjectType $objectType VkObjectType
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\enum\VkObjectType $objectType VkObjectType
      * @param int $objectHandle uint64_t
-     * @param \\iggyvolz\vulkan\struct\VkPrivateDataSlot $privateDataSlot VkPrivateDataSlot
+     * @param \iggyvolz\vulkan\struct\VkPrivateDataSlot $privateDataSlot VkPrivateDataSlot
      * @param \iggyvolz\vulkan\util\IntPointer $pData uint64_t*
      */
     public function vkGetPrivateData(
@@ -14884,7 +14884,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyBufferInfo2> $pCopyBufferInfo const VkCopyBufferInfo2*
      */
     public function vkCmdCopyBuffer2(struct\VkCommandBuffer $commandBuffer, util\ObjectPointer $pCopyBufferInfo): void
@@ -14902,7 +14902,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyImageInfo2> $pCopyImageInfo const VkCopyImageInfo2*
      */
     public function vkCmdCopyImage2(struct\VkCommandBuffer $commandBuffer, util\ObjectPointer $pCopyImageInfo): void
@@ -14920,7 +14920,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBlitImageInfo2> $pBlitImageInfo const VkBlitImageInfo2*
      */
     public function vkCmdBlitImage2(struct\VkCommandBuffer $commandBuffer, util\ObjectPointer $pBlitImageInfo): void
@@ -14938,7 +14938,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyBufferToImageInfo2> $pCopyBufferToImageInfo const VkCopyBufferToImageInfo2*
      */
     public function vkCmdCopyBufferToImage2(
@@ -14959,7 +14959,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyImageToBufferInfo2> $pCopyImageToBufferInfo const VkCopyImageToBufferInfo2*
      */
     public function vkCmdCopyImageToBuffer2(
@@ -14980,7 +14980,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkResolveImageInfo2> $pResolveImageInfo const VkResolveImageInfo2*
      */
     public function vkCmdResolveImage2(
@@ -15001,7 +15001,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRefreshObjectListKHR> $pRefreshObjects const VkRefreshObjectListKHR*
      */
     public function vkCmdRefreshObjectsKHR(
@@ -15022,7 +15022,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pRefreshableObjectTypeCount uint32_t*
      * @param \iggyvolz\vulkan\util\Pointer $pRefreshableObjectTypes VkObjectType*
      * returns VkResult
@@ -15052,7 +15052,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkExtent2D> $pFragmentSize const VkExtent2D*
      * @param mixed $combinerOps const VkFragmentShadingRateCombinerOpKHR    [2]
      */
@@ -15079,7 +15079,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pFragmentShadingRateCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceFragmentShadingRateKHR> $pFragmentShadingRates VkPhysicalDeviceFragmentShadingRateKHR*
      * returns VkResult
@@ -15109,8 +15109,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkFragmentShadingRateNV $shadingRate VkFragmentShadingRateNV
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkFragmentShadingRateNV $shadingRate VkFragmentShadingRateNV
      * @param mixed $combinerOps const VkFragmentShadingRateCombinerOpKHR    [2]
      */
     public function vkCmdSetFragmentShadingRateEnumNV(
@@ -15136,8 +15136,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\enum\VkAccelerationStructureBuildTypeKHR $buildType VkAccelerationStructureBuildTypeKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\enum\VkAccelerationStructureBuildTypeKHR $buildType VkAccelerationStructureBuildTypeKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureBuildGeometryInfoKHR> $pBuildInfo const VkAccelerationStructureBuildGeometryInfoKHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pMaxPrimitiveCounts const uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureBuildSizesInfoKHR> $pSizeInfo VkAccelerationStructureBuildSizesInfoKHR*
@@ -15175,7 +15175,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $vertexBindingDescriptionCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVertexInputBindingDescription2EXT> $pVertexBindingDescriptions const VkVertexInputBindingDescription2EXT*
      * @param int $vertexAttributeDescriptionCount uint32_t
@@ -15214,7 +15214,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $attachmentCount uint32_t
      * @param \iggyvolz\vulkan\util\Pointer $pColorWriteEnables const VkBool32*
      */
@@ -15241,8 +15241,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkEvent $event VkEvent
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkEvent $event VkEvent
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDependencyInfo> $pDependencyInfo const VkDependencyInfo*
      */
     public function vkCmdSetEvent2(
@@ -15268,8 +15268,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkEvent $event VkEvent
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkEvent $event VkEvent
      * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits2> $stageMask VkPipelineStageFlags2
      */
     public function vkCmdResetEvent2(
@@ -15295,7 +15295,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $eventCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkEvent> $pEvents const VkEvent*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDependencyInfo> $pDependencyInfos const VkDependencyInfo*
@@ -15328,7 +15328,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDependencyInfo> $pDependencyInfo const VkDependencyInfo*
      */
     public function vkCmdPipelineBarrier2(
@@ -15349,10 +15349,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkQueue $queue VkQueue
+     * @param \iggyvolz\vulkan\struct\VkQueue $queue VkQueue
      * @param int $submitCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSubmitInfo2> $pSubmits const VkSubmitInfo2*
-     * @param \\iggyvolz\vulkan\struct\VkFence $fence VkFence
+     * @param \iggyvolz\vulkan\struct\VkFence $fence VkFence
      * returns VkResult
      */
     public function vkQueueSubmit2(
@@ -15385,9 +15385,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits2> $stage VkPipelineStageFlags2
-     * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
+     * @param \iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $query uint32_t
      */
     public function vkCmdWriteTimestamp2(
@@ -15418,9 +15418,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param list<iggyvolz\vulkan\enum\VkPipelineStageFlagBits2> $stage VkPipelineStageFlags2
-     * @param \\iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
+     * @param \iggyvolz\vulkan\struct\VkBuffer $dstBuffer VkBuffer
      * @param int $dstOffset VkDeviceSize
      * @param int $marker uint32_t
      */
@@ -15457,7 +15457,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkQueue $queue VkQueue
+     * @param \iggyvolz\vulkan\struct\VkQueue $queue VkQueue
      * @param \iggyvolz\vulkan\util\IntPointer $pCheckpointDataCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCheckpointData2NV> $pCheckpointData VkCheckpointData2NV*
      */
@@ -15484,7 +15484,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyMemoryToImageInfoEXT> $pCopyMemoryToImageInfo const VkCopyMemoryToImageInfoEXT*
      * returns VkResult
      */
@@ -15508,7 +15508,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyImageToMemoryInfoEXT> $pCopyImageToMemoryInfo const VkCopyImageToMemoryInfoEXT*
      * returns VkResult
      */
@@ -15532,7 +15532,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyImageToImageInfoEXT> $pCopyImageToImageInfo const VkCopyImageToImageInfoEXT*
      * returns VkResult
      */
@@ -15556,7 +15556,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $transitionCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkHostImageLayoutTransitionInfoEXT> $pTransitions const VkHostImageLayoutTransitionInfoEXT*
      * returns VkResult
@@ -15586,9 +15586,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkCommandPool $commandPool VkCommandPool
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkCommandPool $commandPool VkCommandPool
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCommandPoolMemoryConsumption> $pConsumption VkCommandPoolMemoryConsumption*
      */
     public function vkGetCommandPoolMemoryConsumption(
@@ -15619,7 +15619,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\Pointer $pVideoProfile const VkVideoProfileInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoCapabilitiesKHR> $pCapabilities VkVideoCapabilitiesKHR*
      * returns VkResult
@@ -15649,7 +15649,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceVideoFormatInfoKHR> $pVideoFormatInfo const VkPhysicalDeviceVideoFormatInfoKHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pVideoFormatPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoFormatPropertiesKHR> $pVideoFormatProperties VkVideoFormatPropertiesKHR*
@@ -15685,7 +15685,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR> $pQualityLevelInfo const VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoEncodeQualityLevelPropertiesKHR> $pQualityLevelProperties VkVideoEncodeQualityLevelPropertiesKHR*
      * returns VkResult
@@ -15715,7 +15715,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoSessionCreateInfoKHR> $pCreateInfo const VkVideoSessionCreateInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoSessionKHR> $pVideoSession VkVideoSessionKHR*
@@ -15751,8 +15751,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkVideoSessionKHR $videoSession VkVideoSessionKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkVideoSessionKHR $videoSession VkVideoSessionKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyVideoSessionKHR(
@@ -15778,7 +15778,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoSessionParametersCreateInfoKHR> $pCreateInfo const VkVideoSessionParametersCreateInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoSessionParametersKHR> $pVideoSessionParameters VkVideoSessionParametersKHR*
@@ -15814,8 +15814,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkVideoSessionParametersKHR $videoSessionParameters VkVideoSessionParametersKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkVideoSessionParametersKHR $videoSessionParameters VkVideoSessionParametersKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoSessionParametersUpdateInfoKHR> $pUpdateInfo const VkVideoSessionParametersUpdateInfoKHR*
      * returns VkResult
      */
@@ -15844,7 +15844,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoEncodeSessionParametersGetInfoKHR> $pVideoSessionParametersInfo const VkVideoEncodeSessionParametersGetInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoEncodeSessionParametersFeedbackInfoKHR> $pFeedbackInfo VkVideoEncodeSessionParametersFeedbackInfoKHR*
      * @param \iggyvolz\vulkan\util\IntPointer $pDataSize size_t*
@@ -15886,8 +15886,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkVideoSessionParametersKHR $videoSessionParameters VkVideoSessionParametersKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkVideoSessionParametersKHR $videoSessionParameters VkVideoSessionParametersKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyVideoSessionParametersKHR(
@@ -15913,8 +15913,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkVideoSessionKHR $videoSession VkVideoSessionKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkVideoSessionKHR $videoSession VkVideoSessionKHR
      * @param \iggyvolz\vulkan\util\IntPointer $pMemoryRequirementsCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoSessionMemoryRequirementsKHR> $pMemoryRequirements VkVideoSessionMemoryRequirementsKHR*
      * returns VkResult
@@ -15949,8 +15949,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkVideoSessionKHR $videoSession VkVideoSessionKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkVideoSessionKHR $videoSession VkVideoSessionKHR
      * @param int $bindSessionMemoryInfoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBindVideoSessionMemoryInfoKHR> $pBindSessionMemoryInfos const VkBindVideoSessionMemoryInfoKHR*
      * returns VkResult
@@ -15985,7 +15985,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoDecodeInfoKHR> $pDecodeInfo const VkVideoDecodeInfoKHR*
      */
     public function vkCmdDecodeVideoKHR(struct\VkCommandBuffer $commandBuffer, util\ObjectPointer $pDecodeInfo): void
@@ -16003,7 +16003,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoBeginCodingInfoKHR> $pBeginInfo const VkVideoBeginCodingInfoKHR*
      */
     public function vkCmdBeginVideoCodingKHR(
@@ -16024,7 +16024,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoCodingControlInfoKHR> $pCodingControlInfo const VkVideoCodingControlInfoKHR*
      */
     public function vkCmdControlVideoCodingKHR(
@@ -16045,7 +16045,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoEndCodingInfoKHR> $pEndCodingInfo const VkVideoEndCodingInfoKHR*
      */
     public function vkCmdEndVideoCodingKHR(
@@ -16066,7 +16066,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkVideoEncodeInfoKHR> $pEncodeInfo const VkVideoEncodeInfoKHR*
      */
     public function vkCmdEncodeVideoKHR(struct\VkCommandBuffer $commandBuffer, util\ObjectPointer $pEncodeInfo): void
@@ -16084,7 +16084,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $decompressRegionCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDecompressMemoryRegionNV> $pDecompressMemoryRegions const VkDecompressMemoryRegionNV*
      */
@@ -16111,7 +16111,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $indirectCommandsAddress VkDeviceAddress
      * @param int $indirectCommandsCountAddress VkDeviceAddress
      * @param int $stride uint32_t
@@ -16144,7 +16144,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCuModuleCreateInfoNVX> $pCreateInfo const VkCuModuleCreateInfoNVX*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCuModuleNVX> $pModule VkCuModuleNVX*
@@ -16180,7 +16180,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCuFunctionCreateInfoNVX> $pCreateInfo const VkCuFunctionCreateInfoNVX*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCuFunctionNVX> $pFunction VkCuFunctionNVX*
@@ -16216,8 +16216,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkCuModuleNVX $module VkCuModuleNVX
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkCuModuleNVX $module VkCuModuleNVX
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyCuModuleNVX(
@@ -16243,8 +16243,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkCuFunctionNVX $function VkCuFunctionNVX
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkCuFunctionNVX $function VkCuFunctionNVX
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyCuFunctionNVX(
@@ -16270,7 +16270,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCuLaunchInfoNVX> $pLaunchInfo const VkCuLaunchInfoNVX*
      */
     public function vkCmdCuLaunchKernelNVX(
@@ -16291,8 +16291,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDescriptorSetLayout $layout VkDescriptorSetLayout
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDescriptorSetLayout $layout VkDescriptorSetLayout
      * @param \iggyvolz\vulkan\util\Pointer $pLayoutSizeInBytes VkDeviceSize*
      */
     public function vkGetDescriptorSetLayoutSizeEXT(
@@ -16318,8 +16318,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDescriptorSetLayout $layout VkDescriptorSetLayout
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDescriptorSetLayout $layout VkDescriptorSetLayout
      * @param int $binding uint32_t
      * @param \iggyvolz\vulkan\util\Pointer $pOffset VkDeviceSize*
      */
@@ -16351,7 +16351,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorGetInfoEXT> $pDescriptorInfo const VkDescriptorGetInfoEXT*
      * @param int $dataSize size_t
      * @param \iggyvolz\vulkan\util\Pointer $pDescriptor void*
@@ -16384,7 +16384,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $bufferCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorBufferBindingInfoEXT> $pBindingInfos const VkDescriptorBufferBindingInfoEXT*
      */
@@ -16411,9 +16411,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint VkPipelineBindPoint
-     * @param \\iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint VkPipelineBindPoint
+     * @param \iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
      * @param int $firstSet uint32_t
      * @param int $setCount uint32_t
      * @param \iggyvolz\vulkan\util\IntPointer $pBufferIndices const uint32_t*
@@ -16462,9 +16462,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint VkPipelineBindPoint
-     * @param \\iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint VkPipelineBindPoint
+     * @param \iggyvolz\vulkan\struct\VkPipelineLayout $layout VkPipelineLayout
      * @param int $set uint32_t
      */
     public function vkCmdBindDescriptorBufferEmbeddedSamplersEXT(
@@ -16495,7 +16495,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferCaptureDescriptorDataInfoEXT> $pInfo const VkBufferCaptureDescriptorDataInfoEXT*
      * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
@@ -16525,7 +16525,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageCaptureDescriptorDataInfoEXT> $pInfo const VkImageCaptureDescriptorDataInfoEXT*
      * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
@@ -16555,7 +16555,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageViewCaptureDescriptorDataInfoEXT> $pInfo const VkImageViewCaptureDescriptorDataInfoEXT*
      * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
@@ -16585,7 +16585,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSamplerCaptureDescriptorDataInfoEXT> $pInfo const VkSamplerCaptureDescriptorDataInfoEXT*
      * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
@@ -16615,7 +16615,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAccelerationStructureCaptureDescriptorDataInfoEXT> $pInfo const VkAccelerationStructureCaptureDescriptorDataInfoEXT*
      * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
@@ -16645,8 +16645,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeviceMemory $memory VkDeviceMemory
      * @param float $priority float
      */
     public function vkSetDeviceMemoryPriorityEXT(
@@ -16672,9 +16672,9 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $drmFd int32_t
-     * @param \\iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
+     * @param \iggyvolz\vulkan\struct\VkDisplayKHR $display VkDisplayKHR
      * returns VkResult
      */
     public function vkAcquireDrmDisplayEXT(
@@ -16702,7 +16702,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param int $drmFd int32_t
      * @param int $connectorId uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDisplayKHR> $display VkDisplayKHR*
@@ -16738,8 +16738,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
      * @param int $presentId uint64_t
      * @param int $timeout uint64_t
      * returns VkResult
@@ -16774,7 +16774,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferCollectionCreateInfoFUCHSIA> $pCreateInfo const VkBufferCollectionCreateInfoFUCHSIA*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferCollectionFUCHSIA> $pCollection VkBufferCollectionFUCHSIA*
@@ -16810,8 +16810,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkBufferCollectionFUCHSIA $collection VkBufferCollectionFUCHSIA
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkBufferCollectionFUCHSIA $collection VkBufferCollectionFUCHSIA
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferConstraintsInfoFUCHSIA> $pBufferConstraintsInfo const VkBufferConstraintsInfoFUCHSIA*
      * returns VkResult
      */
@@ -16840,8 +16840,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkBufferCollectionFUCHSIA $collection VkBufferCollectionFUCHSIA
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkBufferCollectionFUCHSIA $collection VkBufferCollectionFUCHSIA
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageConstraintsInfoFUCHSIA> $pImageConstraintsInfo const VkImageConstraintsInfoFUCHSIA*
      * returns VkResult
      */
@@ -16870,8 +16870,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkBufferCollectionFUCHSIA $collection VkBufferCollectionFUCHSIA
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkBufferCollectionFUCHSIA $collection VkBufferCollectionFUCHSIA
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyBufferCollectionFUCHSIA(
@@ -16897,8 +16897,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkBufferCollectionFUCHSIA $collection VkBufferCollectionFUCHSIA
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkBufferCollectionFUCHSIA $collection VkBufferCollectionFUCHSIA
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBufferCollectionPropertiesFUCHSIA> $pProperties VkBufferCollectionPropertiesFUCHSIA*
      * returns VkResult
      */
@@ -16927,7 +16927,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCudaModuleCreateInfoNV> $pCreateInfo const VkCudaModuleCreateInfoNV*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCudaModuleNV> $pModule VkCudaModuleNV*
@@ -16963,8 +16963,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkCudaModuleNV $module VkCudaModuleNV
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkCudaModuleNV $module VkCudaModuleNV
      * @param \iggyvolz\vulkan\util\IntPointer $pCacheSize size_t*
      * @param \iggyvolz\vulkan\util\Pointer $pCacheData void*
      * returns VkResult
@@ -16999,7 +16999,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCudaFunctionCreateInfoNV> $pCreateInfo const VkCudaFunctionCreateInfoNV*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCudaFunctionNV> $pFunction VkCudaFunctionNV*
@@ -17035,8 +17035,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkCudaModuleNV $module VkCudaModuleNV
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkCudaModuleNV $module VkCudaModuleNV
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyCudaModuleNV(
@@ -17062,8 +17062,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkCudaFunctionNV $function VkCudaFunctionNV
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkCudaFunctionNV $function VkCudaFunctionNV
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyCudaFunctionNV(
@@ -17089,7 +17089,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCudaLaunchInfoNV> $pLaunchInfo const VkCudaLaunchInfoNV*
      */
     public function vkCmdCudaLaunchKernelNV(
@@ -17110,7 +17110,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRenderingInfo> $pRenderingInfo const VkRenderingInfo*
      */
     public function vkCmdBeginRendering(
@@ -17131,7 +17131,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      */
     public function vkCmdEndRendering(struct\VkCommandBuffer $commandBuffer): void
     {
@@ -17144,7 +17144,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorSetBindingReferenceVALVE> $pBindingReference const VkDescriptorSetBindingReferenceVALVE*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDescriptorSetLayoutHostMappingInfoVALVE> $pHostMapping VkDescriptorSetLayoutHostMappingInfoVALVE*
      */
@@ -17171,8 +17171,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDescriptorSet $descriptorSet VkDescriptorSet
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDescriptorSet $descriptorSet VkDescriptorSet
      * @param \iggyvolz\vulkan\util\Pointer $ppData void**
      */
     public function vkGetDescriptorSetHostMappingVALVE(
@@ -17198,7 +17198,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMicromapCreateInfoEXT> $pCreateInfo const VkMicromapCreateInfoEXT*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMicromapEXT> $pMicromap VkMicromapEXT*
@@ -17234,7 +17234,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $infoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMicromapBuildInfoEXT> $pInfos const VkMicromapBuildInfoEXT*
      */
@@ -17261,8 +17261,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
      * @param int $infoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMicromapBuildInfoEXT> $pInfos const VkMicromapBuildInfoEXT*
      * returns VkResult
@@ -17297,8 +17297,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkMicromapEXT $micromap VkMicromapEXT
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkMicromapEXT $micromap VkMicromapEXT
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyMicromapEXT(
@@ -17324,7 +17324,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyMicromapInfoEXT> $pInfo const VkCopyMicromapInfoEXT*
      */
     public function vkCmdCopyMicromapEXT(struct\VkCommandBuffer $commandBuffer, util\ObjectPointer $pInfo): void
@@ -17342,8 +17342,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyMicromapInfoEXT> $pInfo const VkCopyMicromapInfoEXT*
      * returns VkResult
      */
@@ -17372,7 +17372,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyMicromapToMemoryInfoEXT> $pInfo const VkCopyMicromapToMemoryInfoEXT*
      */
     public function vkCmdCopyMicromapToMemoryEXT(
@@ -17393,8 +17393,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyMicromapToMemoryInfoEXT> $pInfo const VkCopyMicromapToMemoryInfoEXT*
      * returns VkResult
      */
@@ -17423,7 +17423,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyMemoryToMicromapInfoEXT> $pInfo const VkCopyMemoryToMicromapInfoEXT*
      */
     public function vkCmdCopyMemoryToMicromapEXT(
@@ -17444,8 +17444,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDeferredOperationKHR $deferredOperation VkDeferredOperationKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCopyMemoryToMicromapInfoEXT> $pInfo const VkCopyMemoryToMicromapInfoEXT*
      * returns VkResult
      */
@@ -17474,11 +17474,11 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $micromapCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMicromapEXT> $pMicromaps const VkMicromapEXT*
-     * @param \\iggyvolz\vulkan\enum\VkQueryType $queryType VkQueryType
-     * @param \\iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
+     * @param \iggyvolz\vulkan\enum\VkQueryType $queryType VkQueryType
+     * @param \iggyvolz\vulkan\struct\VkQueryPool $queryPool VkQueryPool
      * @param int $firstQuery uint32_t
      */
     public function vkCmdWriteMicromapsPropertiesEXT(
@@ -17519,10 +17519,10 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $micromapCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMicromapEXT> $pMicromaps const VkMicromapEXT*
-     * @param \\iggyvolz\vulkan\enum\VkQueryType $queryType VkQueryType
+     * @param \iggyvolz\vulkan\enum\VkQueryType $queryType VkQueryType
      * @param int $dataSize size_t
      * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * @param int $stride size_t
@@ -17573,7 +17573,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMicromapVersionInfoEXT> $pVersionInfo const VkMicromapVersionInfoEXT*
      * @param \iggyvolz\vulkan\util\Pointer $pCompatibility VkAccelerationStructureCompatibilityKHR*
      */
@@ -17600,8 +17600,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\enum\VkAccelerationStructureBuildTypeKHR $buildType VkAccelerationStructureBuildTypeKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\enum\VkAccelerationStructureBuildTypeKHR $buildType VkAccelerationStructureBuildTypeKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMicromapBuildInfoEXT> $pBuildInfo const VkMicromapBuildInfoEXT*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMicromapBuildSizesInfoEXT> $pSizeInfo VkMicromapBuildSizesInfoEXT*
      */
@@ -17633,8 +17633,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkShaderModule $shaderModule VkShaderModule
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkShaderModule $shaderModule VkShaderModule
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkShaderModuleIdentifierEXT> $pIdentifier VkShaderModuleIdentifierEXT*
      */
     public function vkGetShaderModuleIdentifierEXT(
@@ -17660,7 +17660,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkShaderModuleCreateInfo> $pCreateInfo const VkShaderModuleCreateInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkShaderModuleIdentifierEXT> $pIdentifier VkShaderModuleIdentifierEXT*
      */
@@ -17687,8 +17687,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkImage $image VkImage
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkImage $image VkImage
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkImageSubresource2KHR> $pSubresource const VkImageSubresource2KHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSubresourceLayout2KHR> $pLayout VkSubresourceLayout2KHR*
      */
@@ -17720,7 +17720,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPipelineInfoEXT> $pPipelineInfo const VkPipelineInfoEXT*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBaseOutStructure> $pPipelineProperties VkBaseOutStructure*
      * returns VkResult
@@ -17750,7 +17750,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkExportMetalObjectsInfoEXT> $pMetalObjectsInfo VkExportMetalObjectsInfoEXT*
      */
     public function vkExportMetalObjectsEXT(struct\VkDevice $device, util\ObjectPointer $pMetalObjectsInfo): void
@@ -17768,8 +17768,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkFramebuffer $framebuffer VkFramebuffer
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkFramebuffer $framebuffer VkFramebuffer
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertiesCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkTilePropertiesQCOM> $pProperties VkTilePropertiesQCOM*
      * returns VkResult
@@ -17804,7 +17804,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkRenderingInfo> $pRenderingInfo const VkRenderingInfo*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkTilePropertiesQCOM> $pProperties VkTilePropertiesQCOM*
      * returns VkResult
@@ -17834,7 +17834,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkOpticalFlowImageFormatInfoNV> $pOpticalFlowImageFormatInfo const VkOpticalFlowImageFormatInfoNV*
      * @param \iggyvolz\vulkan\util\IntPointer $pFormatCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkOpticalFlowImageFormatPropertiesNV> $pImageFormatProperties VkOpticalFlowImageFormatPropertiesNV*
@@ -17870,7 +17870,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkOpticalFlowSessionCreateInfoNV> $pCreateInfo const VkOpticalFlowSessionCreateInfoNV*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkOpticalFlowSessionNV> $pSession VkOpticalFlowSessionNV*
@@ -17906,8 +17906,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkOpticalFlowSessionNV $session VkOpticalFlowSessionNV
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkOpticalFlowSessionNV $session VkOpticalFlowSessionNV
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyOpticalFlowSessionNV(
@@ -17933,11 +17933,11 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkOpticalFlowSessionNV $session VkOpticalFlowSessionNV
-     * @param \\iggyvolz\vulkan\enum\VkOpticalFlowSessionBindingPointNV $bindingPoint VkOpticalFlowSessionBindingPointNV
-     * @param \\iggyvolz\vulkan\struct\VkImageView $view VkImageView
-     * @param \\iggyvolz\vulkan\enum\VkImageLayout $layout VkImageLayout
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkOpticalFlowSessionNV $session VkOpticalFlowSessionNV
+     * @param \iggyvolz\vulkan\enum\VkOpticalFlowSessionBindingPointNV $bindingPoint VkOpticalFlowSessionBindingPointNV
+     * @param \iggyvolz\vulkan\struct\VkImageView $view VkImageView
+     * @param \iggyvolz\vulkan\enum\VkImageLayout $layout VkImageLayout
      * returns VkResult
      */
     public function vkBindOpticalFlowSessionImageNV(
@@ -17975,8 +17975,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
-     * @param \\iggyvolz\vulkan\struct\VkOpticalFlowSessionNV $session VkOpticalFlowSessionNV
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkOpticalFlowSessionNV $session VkOpticalFlowSessionNV
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkOpticalFlowExecuteInfoNV> $pExecuteInfo const VkOpticalFlowExecuteInfoNV*
      */
     public function vkCmdOpticalFlowExecuteNV(
@@ -18002,7 +18002,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDeviceFaultCountsEXT> $pFaultCounts VkDeviceFaultCountsEXT*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDeviceFaultInfoEXT> $pFaultInfo VkDeviceFaultInfoEXT*
      * returns VkResult
@@ -18032,7 +18032,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDepthBiasInfoEXT> $pDepthBiasInfo const VkDepthBiasInfoEXT*
      */
     public function vkCmdSetDepthBias2EXT(
@@ -18053,7 +18053,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkReleaseSwapchainImagesInfoEXT> $pReleaseInfo const VkReleaseSwapchainImagesInfoEXT*
      * returns VkResult
      */
@@ -18077,7 +18077,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDeviceImageSubresourceInfoKHR> $pInfo const VkDeviceImageSubresourceInfoKHR*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSubresourceLayout2KHR> $pLayout VkSubresourceLayout2KHR*
      */
@@ -18104,7 +18104,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryMapInfoKHR> $pMemoryMapInfo const VkMemoryMapInfoKHR*
      * @param \iggyvolz\vulkan\util\Pointer $ppData void**
      * returns VkResult
@@ -18134,7 +18134,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkMemoryUnmapInfoKHR> $pMemoryUnmapInfo const VkMemoryUnmapInfoKHR*
      * returns VkResult
      */
@@ -18155,7 +18155,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param int $createInfoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkShaderCreateInfoEXT> $pCreateInfos const VkShaderCreateInfoEXT*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
@@ -18197,8 +18197,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkShaderEXT $shader VkShaderEXT
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkShaderEXT $shader VkShaderEXT
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
      */
     public function vkDestroyShaderEXT(
@@ -18224,8 +18224,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkShaderEXT $shader VkShaderEXT
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkShaderEXT $shader VkShaderEXT
      * @param \iggyvolz\vulkan\util\IntPointer $pDataSize size_t*
      * @param \iggyvolz\vulkan\util\Pointer $pData void*
      * returns VkResult
@@ -18260,7 +18260,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $stageCount uint32_t
      * @param \iggyvolz\vulkan\util\Pointer $pStages const VkShaderStageFlagBits*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkShaderEXT> $pShaders const VkShaderEXT*
@@ -18293,7 +18293,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
      * @param \iggyvolz\vulkan\util\Pointer $buffer const struct _screen_buffer*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkScreenBufferPropertiesQNX> $pProperties VkScreenBufferPropertiesQNX*
      * returns VkResult
@@ -18323,7 +18323,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
+     * @param \iggyvolz\vulkan\struct\VkPhysicalDevice $physicalDevice VkPhysicalDevice
      * @param \iggyvolz\vulkan\util\IntPointer $pPropertyCount uint32_t*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkCooperativeMatrixPropertiesKHR> $pProperties VkCooperativeMatrixPropertiesKHR*
      * returns VkResult
@@ -18353,8 +18353,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipeline $executionGraph VkPipeline
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipeline $executionGraph VkPipeline
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkExecutionGraphPipelineScratchSizeAMDX> $pSizeInfo VkExecutionGraphPipelineScratchSizeAMDX*
      * returns VkResult
      */
@@ -18383,8 +18383,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipeline $executionGraph VkPipeline
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipeline $executionGraph VkPipeline
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPipelineShaderStageNodeCreateInfoAMDX> $pNodeInfo const VkPipelineShaderStageNodeCreateInfoAMDX*
      * @param \iggyvolz\vulkan\util\IntPointer $pNodeIndex uint32_t*
      * returns VkResult
@@ -18419,8 +18419,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkPipelineCache $pipelineCache VkPipelineCache
      * @param int $createInfoCount uint32_t
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkExecutionGraphPipelineCreateInfoAMDX> $pCreateInfos const VkExecutionGraphPipelineCreateInfoAMDX*
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkAllocationCallbacks> $pAllocator const VkAllocationCallbacks*
@@ -18467,7 +18467,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $scratch VkDeviceAddress
      */
     public function vkCmdInitializeGraphScratchMemoryAMDX(struct\VkCommandBuffer $commandBuffer, int $scratch): void
@@ -18485,7 +18485,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $scratch VkDeviceAddress
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDispatchGraphCountInfoAMDX> $pCountInfo const VkDispatchGraphCountInfoAMDX*
      */
@@ -18512,7 +18512,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $scratch VkDeviceAddress
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkDispatchGraphCountInfoAMDX> $pCountInfo const VkDispatchGraphCountInfoAMDX*
      */
@@ -18539,7 +18539,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param int $scratch VkDeviceAddress
      * @param int $countInfo VkDeviceAddress
      */
@@ -18566,7 +18566,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBindDescriptorSetsInfoKHR> $pBindDescriptorSetsInfo const VkBindDescriptorSetsInfoKHR*
      */
     public function vkCmdBindDescriptorSets2KHR(
@@ -18587,7 +18587,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPushConstantsInfoKHR> $pPushConstantsInfo const VkPushConstantsInfoKHR*
      */
     public function vkCmdPushConstants2KHR(
@@ -18608,7 +18608,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPushDescriptorSetInfoKHR> $pPushDescriptorSetInfo const VkPushDescriptorSetInfoKHR*
      */
     public function vkCmdPushDescriptorSet2KHR(
@@ -18629,7 +18629,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkPushDescriptorSetWithTemplateInfoKHR> $pPushDescriptorSetWithTemplateInfo const VkPushDescriptorSetWithTemplateInfoKHR*
      */
     public function vkCmdPushDescriptorSetWithTemplate2KHR(
@@ -18650,7 +18650,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSetDescriptorBufferOffsetsInfoEXT> $pSetDescriptorBufferOffsetsInfo const VkSetDescriptorBufferOffsetsInfoEXT*
      */
     public function vkCmdSetDescriptorBufferOffsets2EXT(
@@ -18671,7 +18671,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
+     * @param \iggyvolz\vulkan\struct\VkCommandBuffer $commandBuffer VkCommandBuffer
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkBindDescriptorBufferEmbeddedSamplersInfoEXT> $pBindDescriptorBufferEmbeddedSamplersInfo const VkBindDescriptorBufferEmbeddedSamplersInfoEXT*
      */
     public function vkCmdBindDescriptorBufferEmbeddedSamplers2EXT(
@@ -18692,8 +18692,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkLatencySleepModeInfoNV> $pSleepModeInfo const VkLatencySleepModeInfoNV*
      * returns VkResult
      */
@@ -18722,8 +18722,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkLatencySleepInfoNV> $pSleepInfo const VkLatencySleepInfoNV*
      * returns VkResult
      */
@@ -18752,8 +18752,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkSetLatencyMarkerInfoNV> $pLatencyMarkerInfo const VkSetLatencyMarkerInfoNV*
      */
     public function vkSetLatencyMarkerNV(
@@ -18779,8 +18779,8 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkDevice $device VkDevice
-     * @param \\iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
+     * @param \iggyvolz\vulkan\struct\VkDevice $device VkDevice
+     * @param \iggyvolz\vulkan\struct\VkSwapchainKHR $swapchain VkSwapchainKHR
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkGetLatencyMarkerInfoNV> $pLatencyMarkerInfo VkGetLatencyMarkerInfoNV*
      */
     public function vkGetLatencyTimingsNV(
@@ -18806,7 +18806,7 @@ class Vulkan
     }
 
     /**
-     * @param \\iggyvolz\vulkan\struct\VkQueue $queue VkQueue
+     * @param \iggyvolz\vulkan\struct\VkQueue $queue VkQueue
      * @param \iggyvolz\vulkan\util\ObjectPointer<\iggyvolz\vulkan\struct\VkOutOfBandQueueTypeInfoNV> $pQueueTypeInfo const VkOutOfBandQueueTypeInfoNV*
      */
     public function vkQueueNotifyOutOfBandNV(struct\VkQueue $queue, util\ObjectPointer $pQueueTypeInfo): void

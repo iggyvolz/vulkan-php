@@ -108,7 +108,7 @@ abstract readonly class Transformer
      */
     public function phpDocType(): string
     {
-        return str_contains($this->phpType(), "\\") ? "\\" . $this->phpType() : $this->phpType();
+        return str_starts_with($this->phpType(), "iggyvolz\\vulkan") ? "\\" . $this->phpType() : $this->phpType();
     }
 
     /**
