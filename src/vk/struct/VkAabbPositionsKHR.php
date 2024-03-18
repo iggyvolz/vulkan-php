@@ -25,8 +25,6 @@ final class VkAabbPositionsKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkAabbPositionsKHR implements \JsonSerializable
         null|float $maxZ = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAabbPositionsKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkAabbPositionsKHR', false));
         if(!is_null($minX)) $self->setMinX($minX);
         if(!is_null($minY)) $self->setMinY($minY);
         if(!is_null($minZ)) $self->setMinZ($minZ);
@@ -55,7 +53,6 @@ final class VkAabbPositionsKHR implements \JsonSerializable
      */
     public function getMinX(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minX;
         $phpValue = $cValue;
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkAabbPositionsKHR implements \JsonSerializable
 
     public function setMinX(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minX = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkAabbPositionsKHR implements \JsonSerializable
      */
     public function getMinY(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minY;
         $phpValue = $cValue;
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkAabbPositionsKHR implements \JsonSerializable
 
     public function setMinY(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minY = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkAabbPositionsKHR implements \JsonSerializable
      */
     public function getMinZ(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minZ;
         $phpValue = $cValue;
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkAabbPositionsKHR implements \JsonSerializable
 
     public function setMinZ(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minZ = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkAabbPositionsKHR implements \JsonSerializable
      */
     public function getMaxX(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxX;
         $phpValue = $cValue;
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkAabbPositionsKHR implements \JsonSerializable
 
     public function setMaxX(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxX = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkAabbPositionsKHR implements \JsonSerializable
      */
     public function getMaxY(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxY;
         $phpValue = $cValue;
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkAabbPositionsKHR implements \JsonSerializable
 
     public function setMaxY(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxY = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkAabbPositionsKHR implements \JsonSerializable
      */
     public function getMaxZ(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxZ;
         $phpValue = $cValue;
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkAabbPositionsKHR implements \JsonSerializable
 
     public function setMaxZ(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxZ = $cValue;
     }

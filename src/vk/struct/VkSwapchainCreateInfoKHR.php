@@ -37,8 +37,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -64,7 +62,7 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
         null|VkSwapchainKHR $oldSwapchain = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSwapchainCreateInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkSwapchainCreateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -91,7 +89,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -99,7 +96,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -109,7 +105,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -117,7 +112,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -127,7 +121,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkSwapchainCreateFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -135,7 +128,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSwapchainCreateFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -145,7 +137,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getSurface(): VkSurfaceKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->surface;
         $phpValue = new \iggyvolz\vulkan\struct\VkSurfaceKHR($cValue, $ffi);
         return $phpValue;
@@ -153,7 +144,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setSurface(VkSurfaceKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->surface = $cValue;
     }
@@ -163,7 +153,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getMinImageCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minImageCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -171,7 +160,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setMinImageCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minImageCount = $cValue;
     }
@@ -181,7 +169,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getImageFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageFormat;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -189,7 +176,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setImageFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->imageFormat = $cValue;
     }
@@ -199,7 +185,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getImageColorSpace(): \iggyvolz\vulkan\enum\VkColorSpaceKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageColorSpace;
         $phpValue = \iggyvolz\vulkan\enum\VkColorSpaceKHR::from($cValue);
         return $phpValue;
@@ -207,7 +192,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setImageColorSpace(\iggyvolz\vulkan\enum\VkColorSpaceKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->imageColorSpace = $cValue;
     }
@@ -217,7 +201,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getImageExtent(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -225,7 +208,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setImageExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageExtent = $cValue;
     }
@@ -235,7 +217,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getImageArrayLayers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageArrayLayers;
         $phpValue = $cValue;
         return $phpValue;
@@ -243,7 +224,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setImageArrayLayers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageArrayLayers = $cValue;
     }
@@ -253,7 +233,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getImageUsage(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageUsage;
         $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -261,7 +240,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setImageUsage(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->imageUsage = $cValue;
     }
@@ -271,7 +249,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getImageSharingMode(): \iggyvolz\vulkan\enum\VkSharingMode
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageSharingMode;
         $phpValue = \iggyvolz\vulkan\enum\VkSharingMode::from($cValue);
         return $phpValue;
@@ -279,7 +256,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setImageSharingMode(\iggyvolz\vulkan\enum\VkSharingMode $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->imageSharingMode = $cValue;
     }
@@ -289,7 +265,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getQueueFamilyIndexCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->queueFamilyIndexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -297,7 +272,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setQueueFamilyIndexCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->queueFamilyIndexCount = $cValue;
     }
@@ -307,7 +281,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getPQueueFamilyIndices(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pQueueFamilyIndices;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -315,7 +288,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setPQueueFamilyIndices(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pQueueFamilyIndices = $cValue;
     }
@@ -325,7 +297,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getPreTransform(): \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preTransform;
         $phpValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::from($cValue);
         return $phpValue;
@@ -333,7 +304,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setPreTransform(\iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->preTransform = $cValue;
     }
@@ -343,7 +313,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getCompositeAlpha(): \iggyvolz\vulkan\enum\VkCompositeAlphaFlagBitsKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->compositeAlpha;
         $phpValue = \iggyvolz\vulkan\enum\VkCompositeAlphaFlagBitsKHR::from($cValue);
         return $phpValue;
@@ -351,7 +320,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setCompositeAlpha(\iggyvolz\vulkan\enum\VkCompositeAlphaFlagBitsKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->compositeAlpha = $cValue;
     }
@@ -361,7 +329,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getPresentMode(): \iggyvolz\vulkan\enum\VkPresentModeKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->presentMode;
         $phpValue = \iggyvolz\vulkan\enum\VkPresentModeKHR::from($cValue);
         return $phpValue;
@@ -369,7 +336,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setPresentMode(\iggyvolz\vulkan\enum\VkPresentModeKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->presentMode = $cValue;
     }
@@ -379,7 +345,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getClipped(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->clipped;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -387,7 +352,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setClipped(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->clipped = $cValue;
     }
@@ -397,7 +361,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
      */
     public function getOldSwapchain(): VkSwapchainKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->oldSwapchain;
         $phpValue = new \iggyvolz\vulkan\struct\VkSwapchainKHR($cValue, $ffi);
         return $phpValue;
@@ -405,7 +368,6 @@ final class VkSwapchainCreateInfoKHR implements \JsonSerializable
 
     public function setOldSwapchain(VkSwapchainKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->oldSwapchain = $cValue;
     }

@@ -21,8 +21,6 @@ final class VkDisplayModePropertiesKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkDisplayModePropertiesKHR implements \JsonSerializable
         null|VkDisplayModeParametersKHR $parameters = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDisplayModePropertiesKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDisplayModePropertiesKHR', false));
         if(!is_null($displayMode)) $self->setDisplayMode($displayMode);
         if(!is_null($parameters)) $self->setParameters($parameters);
         return $self;
@@ -43,7 +41,6 @@ final class VkDisplayModePropertiesKHR implements \JsonSerializable
      */
     public function getDisplayMode(): VkDisplayModeKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->displayMode;
         $phpValue = new \iggyvolz\vulkan\struct\VkDisplayModeKHR($cValue, $ffi);
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkDisplayModePropertiesKHR implements \JsonSerializable
 
     public function setDisplayMode(VkDisplayModeKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->displayMode = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkDisplayModePropertiesKHR implements \JsonSerializable
      */
     public function getParameters(): VkDisplayModeParametersKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->parameters;
         $phpValue = new \iggyvolz\vulkan\struct\VkDisplayModeParametersKHR($cValue, $ffi);
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkDisplayModePropertiesKHR implements \JsonSerializable
 
     public function setParameters(VkDisplayModeParametersKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->parameters = $cValue;
     }

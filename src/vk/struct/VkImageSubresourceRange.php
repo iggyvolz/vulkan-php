@@ -24,8 +24,6 @@ final class VkImageSubresourceRange implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkImageSubresourceRange implements \JsonSerializable
         null|int $layerCount = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageSubresourceRange', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkImageSubresourceRange', false));
         if(!is_null($aspectMask)) $self->setAspectMask($aspectMask);
         if(!is_null($baseMipLevel)) $self->setBaseMipLevel($baseMipLevel);
         if(!is_null($levelCount)) $self->setLevelCount($levelCount);
@@ -52,7 +50,6 @@ final class VkImageSubresourceRange implements \JsonSerializable
      */
     public function getAspectMask(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->aspectMask;
         $phpValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::fromInt($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkImageSubresourceRange implements \JsonSerializable
 
     public function setAspectMask(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::toInt(...$phpValue);
         $this->cdata->aspectMask = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkImageSubresourceRange implements \JsonSerializable
      */
     public function getBaseMipLevel(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->baseMipLevel;
         $phpValue = $cValue;
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkImageSubresourceRange implements \JsonSerializable
 
     public function setBaseMipLevel(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->baseMipLevel = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkImageSubresourceRange implements \JsonSerializable
      */
     public function getLevelCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->levelCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkImageSubresourceRange implements \JsonSerializable
 
     public function setLevelCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->levelCount = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkImageSubresourceRange implements \JsonSerializable
      */
     public function getBaseArrayLayer(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->baseArrayLayer;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkImageSubresourceRange implements \JsonSerializable
 
     public function setBaseArrayLayer(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->baseArrayLayer = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkImageSubresourceRange implements \JsonSerializable
      */
     public function getLayerCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layerCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkImageSubresourceRange implements \JsonSerializable
 
     public function setLayerCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->layerCount = $cValue;
     }

@@ -26,8 +26,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
         null|int $maxDescriptorSetUpdateAfterBindInlineUniformBlocks = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceInlineUniformBlockProperties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceInlineUniformBlockProperties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxInlineUniformBlockSize)) $self->setMaxInlineUniformBlockSize($maxInlineUniformBlockSize);
@@ -58,7 +56,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
      */
     public function getMaxInlineUniformBlockSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxInlineUniformBlockSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
 
     public function setMaxInlineUniformBlockSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxInlineUniformBlockSize = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
      */
     public function getMaxPerStageDescriptorInlineUniformBlocks(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorInlineUniformBlocks;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
 
     public function setMaxPerStageDescriptorInlineUniformBlocks(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorInlineUniformBlocks = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
      */
     public function getMaxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks;
         $phpValue = $cValue;
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
 
     public function setMaxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
      */
     public function getMaxDescriptorSetInlineUniformBlocks(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetInlineUniformBlocks;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
 
     public function setMaxDescriptorSetInlineUniformBlocks(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetInlineUniformBlocks = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
      */
     public function getMaxDescriptorSetUpdateAfterBindInlineUniformBlocks(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindInlineUniformBlocks;
         $phpValue = $cValue;
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkPhysicalDeviceInlineUniformBlockProperties implements \JsonSeriali
 
     public function setMaxDescriptorSetUpdateAfterBindInlineUniformBlocks(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindInlineUniformBlocks = $cValue;
     }

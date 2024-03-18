@@ -25,8 +25,6 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
         null|int $maxDescriptorSetSubsampledSamplers = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFragmentDensityMap2PropertiesEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFragmentDensityMap2PropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($subsampledLoads)) $self->setSubsampledLoads($subsampledLoads);
@@ -55,7 +53,6 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
      */
     public function getSubsampledLoads(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subsampledLoads;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
 
     public function setSubsampledLoads(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->subsampledLoads = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
      */
     public function getSubsampledCoarseReconstructionEarlyAccess(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subsampledCoarseReconstructionEarlyAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
 
     public function setSubsampledCoarseReconstructionEarlyAccess(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->subsampledCoarseReconstructionEarlyAccess = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
      */
     public function getMaxSubsampledArrayLayers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSubsampledArrayLayers;
         $phpValue = $cValue;
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
 
     public function setMaxSubsampledArrayLayers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSubsampledArrayLayers = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
      */
     public function getMaxDescriptorSetSubsampledSamplers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetSubsampledSamplers;
         $phpValue = $cValue;
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
 
     public function setMaxDescriptorSetSubsampledSamplers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetSubsampledSamplers = $cValue;
     }

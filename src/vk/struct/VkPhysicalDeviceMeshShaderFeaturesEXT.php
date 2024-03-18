@@ -26,8 +26,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
         null|bool $meshShaderQueries = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMeshShaderFeaturesEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMeshShaderFeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($taskShader)) $self->setTaskShader($taskShader);
@@ -58,7 +56,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
      */
     public function getTaskShader(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->taskShader;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
 
     public function setTaskShader(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->taskShader = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
      */
     public function getMeshShader(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->meshShader;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
 
     public function setMeshShader(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->meshShader = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
      */
     public function getMultiviewMeshShader(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->multiviewMeshShader;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
 
     public function setMultiviewMeshShader(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->multiviewMeshShader = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
      */
     public function getPrimitiveFragmentShadingRateMeshShader(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->primitiveFragmentShadingRateMeshShader;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
 
     public function setPrimitiveFragmentShadingRateMeshShader(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->primitiveFragmentShadingRateMeshShader = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
      */
     public function getMeshShaderQueries(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->meshShaderQueries;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkPhysicalDeviceMeshShaderFeaturesEXT implements \JsonSerializable
 
     public function setMeshShaderQueries(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->meshShaderQueries = $cValue;
     }

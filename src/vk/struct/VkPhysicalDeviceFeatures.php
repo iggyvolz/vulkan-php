@@ -74,8 +74,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -138,7 +136,7 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
         null|bool $inheritedQueries = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFeatures', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFeatures', false));
         if(!is_null($robustBufferAccess)) $self->setRobustBufferAccess($robustBufferAccess);
         if(!is_null($fullDrawIndexUint32)) $self->setFullDrawIndexUint32($fullDrawIndexUint32);
         if(!is_null($imageCubeArray)) $self->setImageCubeArray($imageCubeArray);
@@ -202,7 +200,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getRobustBufferAccess(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->robustBufferAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -210,7 +207,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setRobustBufferAccess(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->robustBufferAccess = $cValue;
     }
@@ -220,7 +216,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getFullDrawIndexUint32(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fullDrawIndexUint32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -228,7 +223,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setFullDrawIndexUint32(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->fullDrawIndexUint32 = $cValue;
     }
@@ -238,7 +232,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getImageCubeArray(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageCubeArray;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -246,7 +239,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setImageCubeArray(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->imageCubeArray = $cValue;
     }
@@ -256,7 +248,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getIndependentBlend(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->independentBlend;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -264,7 +255,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setIndependentBlend(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->independentBlend = $cValue;
     }
@@ -274,7 +264,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getGeometryShader(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->geometryShader;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -282,7 +271,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setGeometryShader(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->geometryShader = $cValue;
     }
@@ -292,7 +280,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getTessellationShader(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tessellationShader;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -300,7 +287,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setTessellationShader(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->tessellationShader = $cValue;
     }
@@ -310,7 +296,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getSampleRateShading(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampleRateShading;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -318,7 +303,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setSampleRateShading(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->sampleRateShading = $cValue;
     }
@@ -328,7 +312,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getDualSrcBlend(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dualSrcBlend;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -336,7 +319,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setDualSrcBlend(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->dualSrcBlend = $cValue;
     }
@@ -346,7 +328,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getLogicOp(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->logicOp;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -354,7 +335,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setLogicOp(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->logicOp = $cValue;
     }
@@ -364,7 +344,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getMultiDrawIndirect(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->multiDrawIndirect;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -372,7 +351,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setMultiDrawIndirect(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->multiDrawIndirect = $cValue;
     }
@@ -382,7 +360,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getDrawIndirectFirstInstance(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->drawIndirectFirstInstance;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -390,7 +367,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setDrawIndirectFirstInstance(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->drawIndirectFirstInstance = $cValue;
     }
@@ -400,7 +376,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getDepthClamp(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthClamp;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -408,7 +383,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setDepthClamp(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->depthClamp = $cValue;
     }
@@ -418,7 +392,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getDepthBiasClamp(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthBiasClamp;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -426,7 +399,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setDepthBiasClamp(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->depthBiasClamp = $cValue;
     }
@@ -436,7 +408,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getFillModeNonSolid(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fillModeNonSolid;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -444,7 +415,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setFillModeNonSolid(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->fillModeNonSolid = $cValue;
     }
@@ -454,7 +424,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getDepthBounds(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthBounds;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -462,7 +431,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setDepthBounds(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->depthBounds = $cValue;
     }
@@ -472,7 +440,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getWideLines(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->wideLines;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -480,7 +447,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setWideLines(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->wideLines = $cValue;
     }
@@ -490,7 +456,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getLargePoints(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->largePoints;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -498,7 +463,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setLargePoints(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->largePoints = $cValue;
     }
@@ -508,7 +472,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getAlphaToOne(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->alphaToOne;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -516,7 +479,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setAlphaToOne(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->alphaToOne = $cValue;
     }
@@ -526,7 +488,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getMultiViewport(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->multiViewport;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -534,7 +495,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setMultiViewport(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->multiViewport = $cValue;
     }
@@ -544,7 +504,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getSamplerAnisotropy(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samplerAnisotropy;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -552,7 +511,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setSamplerAnisotropy(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->samplerAnisotropy = $cValue;
     }
@@ -562,7 +520,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getTextureCompressionETC2(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->textureCompressionETC2;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -570,7 +527,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setTextureCompressionETC2(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->textureCompressionETC2 = $cValue;
     }
@@ -580,7 +536,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getTextureCompressionASTC_LDR(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->textureCompressionASTC_LDR;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -588,7 +543,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setTextureCompressionASTC_LDR(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->textureCompressionASTC_LDR = $cValue;
     }
@@ -598,7 +552,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getTextureCompressionBC(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->textureCompressionBC;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -606,7 +559,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setTextureCompressionBC(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->textureCompressionBC = $cValue;
     }
@@ -616,7 +568,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getOcclusionQueryPrecise(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->occlusionQueryPrecise;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -624,7 +575,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setOcclusionQueryPrecise(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->occlusionQueryPrecise = $cValue;
     }
@@ -634,7 +584,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getPipelineStatisticsQuery(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineStatisticsQuery;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -642,7 +591,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setPipelineStatisticsQuery(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->pipelineStatisticsQuery = $cValue;
     }
@@ -652,7 +600,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getVertexPipelineStoresAndAtomics(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexPipelineStoresAndAtomics;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -660,7 +607,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setVertexPipelineStoresAndAtomics(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->vertexPipelineStoresAndAtomics = $cValue;
     }
@@ -670,7 +616,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getFragmentStoresAndAtomics(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fragmentStoresAndAtomics;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -678,7 +623,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setFragmentStoresAndAtomics(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->fragmentStoresAndAtomics = $cValue;
     }
@@ -688,7 +632,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderTessellationAndGeometryPointSize(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderTessellationAndGeometryPointSize;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -696,7 +639,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderTessellationAndGeometryPointSize(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderTessellationAndGeometryPointSize = $cValue;
     }
@@ -706,7 +648,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderImageGatherExtended(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderImageGatherExtended;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -714,7 +655,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderImageGatherExtended(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderImageGatherExtended = $cValue;
     }
@@ -724,7 +664,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderStorageImageExtendedFormats(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageImageExtendedFormats;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -732,7 +671,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderStorageImageExtendedFormats(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageImageExtendedFormats = $cValue;
     }
@@ -742,7 +680,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderStorageImageMultisample(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageImageMultisample;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -750,7 +687,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderStorageImageMultisample(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageImageMultisample = $cValue;
     }
@@ -760,7 +696,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderStorageImageReadWithoutFormat(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageImageReadWithoutFormat;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -768,7 +703,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderStorageImageReadWithoutFormat(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageImageReadWithoutFormat = $cValue;
     }
@@ -778,7 +712,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderStorageImageWriteWithoutFormat(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageImageWriteWithoutFormat;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -786,7 +719,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderStorageImageWriteWithoutFormat(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageImageWriteWithoutFormat = $cValue;
     }
@@ -796,7 +728,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderUniformBufferArrayDynamicIndexing(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderUniformBufferArrayDynamicIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -804,7 +735,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderUniformBufferArrayDynamicIndexing(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderUniformBufferArrayDynamicIndexing = $cValue;
     }
@@ -814,7 +744,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderSampledImageArrayDynamicIndexing(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSampledImageArrayDynamicIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -822,7 +751,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderSampledImageArrayDynamicIndexing(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSampledImageArrayDynamicIndexing = $cValue;
     }
@@ -832,7 +760,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderStorageBufferArrayDynamicIndexing(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageBufferArrayDynamicIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -840,7 +767,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderStorageBufferArrayDynamicIndexing(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageBufferArrayDynamicIndexing = $cValue;
     }
@@ -850,7 +776,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderStorageImageArrayDynamicIndexing(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageImageArrayDynamicIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -858,7 +783,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderStorageImageArrayDynamicIndexing(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageImageArrayDynamicIndexing = $cValue;
     }
@@ -868,7 +792,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderClipDistance(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderClipDistance;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -876,7 +799,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderClipDistance(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderClipDistance = $cValue;
     }
@@ -886,7 +808,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderCullDistance(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderCullDistance;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -894,7 +815,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderCullDistance(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderCullDistance = $cValue;
     }
@@ -904,7 +824,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderFloat64(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -912,7 +831,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderFloat64(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderFloat64 = $cValue;
     }
@@ -922,7 +840,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderInt64(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderInt64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -930,7 +847,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderInt64(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderInt64 = $cValue;
     }
@@ -940,7 +856,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderInt16(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderInt16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -948,7 +863,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderInt16(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderInt16 = $cValue;
     }
@@ -958,7 +872,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderResourceResidency(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderResourceResidency;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -966,7 +879,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderResourceResidency(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderResourceResidency = $cValue;
     }
@@ -976,7 +888,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getShaderResourceMinLod(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderResourceMinLod;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -984,7 +895,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setShaderResourceMinLod(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderResourceMinLod = $cValue;
     }
@@ -994,7 +904,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getSparseBinding(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sparseBinding;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1002,7 +911,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setSparseBinding(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->sparseBinding = $cValue;
     }
@@ -1012,7 +920,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getSparseResidencyBuffer(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sparseResidencyBuffer;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1020,7 +927,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setSparseResidencyBuffer(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->sparseResidencyBuffer = $cValue;
     }
@@ -1030,7 +936,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getSparseResidencyImage2D(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sparseResidencyImage2D;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1038,7 +943,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setSparseResidencyImage2D(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->sparseResidencyImage2D = $cValue;
     }
@@ -1048,7 +952,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getSparseResidencyImage3D(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sparseResidencyImage3D;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1056,7 +959,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setSparseResidencyImage3D(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->sparseResidencyImage3D = $cValue;
     }
@@ -1066,7 +968,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getSparseResidency2Samples(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sparseResidency2Samples;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1074,7 +975,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setSparseResidency2Samples(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->sparseResidency2Samples = $cValue;
     }
@@ -1084,7 +984,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getSparseResidency4Samples(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sparseResidency4Samples;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1092,7 +991,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setSparseResidency4Samples(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->sparseResidency4Samples = $cValue;
     }
@@ -1102,7 +1000,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getSparseResidency8Samples(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sparseResidency8Samples;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1110,7 +1007,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setSparseResidency8Samples(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->sparseResidency8Samples = $cValue;
     }
@@ -1120,7 +1016,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getSparseResidency16Samples(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sparseResidency16Samples;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1128,7 +1023,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setSparseResidency16Samples(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->sparseResidency16Samples = $cValue;
     }
@@ -1138,7 +1032,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getSparseResidencyAliased(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sparseResidencyAliased;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1146,7 +1039,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setSparseResidencyAliased(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->sparseResidencyAliased = $cValue;
     }
@@ -1156,7 +1048,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getVariableMultisampleRate(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->variableMultisampleRate;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1164,7 +1055,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setVariableMultisampleRate(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->variableMultisampleRate = $cValue;
     }
@@ -1174,7 +1064,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
      */
     public function getInheritedQueries(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->inheritedQueries;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -1182,7 +1071,6 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
 
     public function setInheritedQueries(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->inheritedQueries = $cValue;
     }

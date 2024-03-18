@@ -24,8 +24,6 @@ final class VkPhysicalDevice8BitStorageFeatures implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkPhysicalDevice8BitStorageFeatures implements \JsonSerializable
         null|bool $storagePushConstant8 = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDevice8BitStorageFeatures', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDevice8BitStorageFeatures', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($storageBuffer8BitAccess)) $self->setStorageBuffer8BitAccess($storageBuffer8BitAccess);
@@ -52,7 +50,6 @@ final class VkPhysicalDevice8BitStorageFeatures implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkPhysicalDevice8BitStorageFeatures implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkPhysicalDevice8BitStorageFeatures implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkPhysicalDevice8BitStorageFeatures implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkPhysicalDevice8BitStorageFeatures implements \JsonSerializable
      */
     public function getStorageBuffer8BitAccess(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageBuffer8BitAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkPhysicalDevice8BitStorageFeatures implements \JsonSerializable
 
     public function setStorageBuffer8BitAccess(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->storageBuffer8BitAccess = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkPhysicalDevice8BitStorageFeatures implements \JsonSerializable
      */
     public function getUniformAndStorageBuffer8BitAccess(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->uniformAndStorageBuffer8BitAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkPhysicalDevice8BitStorageFeatures implements \JsonSerializable
 
     public function setUniformAndStorageBuffer8BitAccess(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->uniformAndStorageBuffer8BitAccess = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkPhysicalDevice8BitStorageFeatures implements \JsonSerializable
      */
     public function getStoragePushConstant8(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storagePushConstant8;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkPhysicalDevice8BitStorageFeatures implements \JsonSerializable
 
     public function setStoragePushConstant8(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->storagePushConstant8 = $cValue;
     }

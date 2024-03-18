@@ -22,8 +22,6 @@ final class VkMemoryRequirements implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkMemoryRequirements implements \JsonSerializable
         null|int $memoryTypeBits = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkMemoryRequirements', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkMemoryRequirements', false));
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($alignment)) $self->setAlignment($alignment);
         if(!is_null($memoryTypeBits)) $self->setMemoryTypeBits($memoryTypeBits);
@@ -46,7 +44,6 @@ final class VkMemoryRequirements implements \JsonSerializable
      */
     public function getSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkMemoryRequirements implements \JsonSerializable
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkMemoryRequirements implements \JsonSerializable
      */
     public function getAlignment(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->alignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkMemoryRequirements implements \JsonSerializable
 
     public function setAlignment(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->alignment = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkMemoryRequirements implements \JsonSerializable
      */
     public function getMemoryTypeBits(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryTypeBits;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkMemoryRequirements implements \JsonSerializable
 
     public function setMemoryTypeBits(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->memoryTypeBits = $cValue;
     }

@@ -29,8 +29,6 @@ final class VkRenderingInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -48,7 +46,7 @@ final class VkRenderingInfo implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pStencilAttachment = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkRenderingInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkRenderingInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -67,7 +65,6 @@ final class VkRenderingInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -75,7 +72,6 @@ final class VkRenderingInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -85,7 +81,6 @@ final class VkRenderingInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -93,7 +88,6 @@ final class VkRenderingInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -103,7 +97,6 @@ final class VkRenderingInfo implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkRenderingFlagBits::fromInt($cValue);
         return $phpValue;
@@ -111,7 +104,6 @@ final class VkRenderingInfo implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkRenderingFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -121,7 +113,6 @@ final class VkRenderingInfo implements \JsonSerializable
      */
     public function getRenderArea(): VkRect2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->renderArea;
         $phpValue = new \iggyvolz\vulkan\struct\VkRect2D($cValue, $ffi);
         return $phpValue;
@@ -129,7 +120,6 @@ final class VkRenderingInfo implements \JsonSerializable
 
     public function setRenderArea(VkRect2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->renderArea = $cValue;
     }
@@ -139,7 +129,6 @@ final class VkRenderingInfo implements \JsonSerializable
      */
     public function getLayerCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layerCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -147,7 +136,6 @@ final class VkRenderingInfo implements \JsonSerializable
 
     public function setLayerCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->layerCount = $cValue;
     }
@@ -157,7 +145,6 @@ final class VkRenderingInfo implements \JsonSerializable
      */
     public function getViewMask(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->viewMask;
         $phpValue = $cValue;
         return $phpValue;
@@ -165,7 +152,6 @@ final class VkRenderingInfo implements \JsonSerializable
 
     public function setViewMask(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->viewMask = $cValue;
     }
@@ -175,7 +161,6 @@ final class VkRenderingInfo implements \JsonSerializable
      */
     public function getColorAttachmentCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->colorAttachmentCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -183,7 +168,6 @@ final class VkRenderingInfo implements \JsonSerializable
 
     public function setColorAttachmentCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->colorAttachmentCount = $cValue;
     }
@@ -193,7 +177,6 @@ final class VkRenderingInfo implements \JsonSerializable
      */
     public function getPColorAttachments(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pColorAttachments;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -201,7 +184,6 @@ final class VkRenderingInfo implements \JsonSerializable
 
     public function setPColorAttachments(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pColorAttachments = $cValue;
     }
@@ -211,7 +193,6 @@ final class VkRenderingInfo implements \JsonSerializable
      */
     public function getPDepthAttachment(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDepthAttachment;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -219,7 +200,6 @@ final class VkRenderingInfo implements \JsonSerializable
 
     public function setPDepthAttachment(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDepthAttachment = $cValue;
     }
@@ -229,7 +209,6 @@ final class VkRenderingInfo implements \JsonSerializable
      */
     public function getPStencilAttachment(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pStencilAttachment;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -237,7 +216,6 @@ final class VkRenderingInfo implements \JsonSerializable
 
     public function setPStencilAttachment(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pStencilAttachment = $cValue;
     }

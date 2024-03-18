@@ -24,8 +24,6 @@ final class VkVideoEncodeH265SessionParametersFeedbackInfoKHR implements \JsonSe
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkVideoEncodeH265SessionParametersFeedbackInfoKHR implements \JsonSe
         null|bool $hasStdPPSOverrides = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265SessionParametersFeedbackInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265SessionParametersFeedbackInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($hasStdVPSOverrides)) $self->setHasStdVPSOverrides($hasStdVPSOverrides);
@@ -52,7 +50,6 @@ final class VkVideoEncodeH265SessionParametersFeedbackInfoKHR implements \JsonSe
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkVideoEncodeH265SessionParametersFeedbackInfoKHR implements \JsonSe
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkVideoEncodeH265SessionParametersFeedbackInfoKHR implements \JsonSe
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkVideoEncodeH265SessionParametersFeedbackInfoKHR implements \JsonSe
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkVideoEncodeH265SessionParametersFeedbackInfoKHR implements \JsonSe
      */
     public function getHasStdVPSOverrides(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->hasStdVPSOverrides;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkVideoEncodeH265SessionParametersFeedbackInfoKHR implements \JsonSe
 
     public function setHasStdVPSOverrides(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->hasStdVPSOverrides = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkVideoEncodeH265SessionParametersFeedbackInfoKHR implements \JsonSe
      */
     public function getHasStdSPSOverrides(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->hasStdSPSOverrides;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkVideoEncodeH265SessionParametersFeedbackInfoKHR implements \JsonSe
 
     public function setHasStdSPSOverrides(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->hasStdSPSOverrides = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkVideoEncodeH265SessionParametersFeedbackInfoKHR implements \JsonSe
      */
     public function getHasStdPPSOverrides(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->hasStdPPSOverrides;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkVideoEncodeH265SessionParametersFeedbackInfoKHR implements \JsonSe
 
     public function setHasStdPPSOverrides(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->hasStdPPSOverrides = $cValue;
     }

@@ -24,8 +24,6 @@ final class VkDescriptorSetLayoutBinding implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkDescriptorSetLayoutBinding implements \JsonSerializable
         null|\iggyvolz\vulkan\util\ObjectPointer $pImmutableSamplers = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorSetLayoutBinding', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDescriptorSetLayoutBinding', false));
         if(!is_null($binding)) $self->setBinding($binding);
         if(!is_null($descriptorType)) $self->setDescriptorType($descriptorType);
         if(!is_null($descriptorCount)) $self->setDescriptorCount($descriptorCount);
@@ -52,7 +50,6 @@ final class VkDescriptorSetLayoutBinding implements \JsonSerializable
      */
     public function getBinding(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->binding;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkDescriptorSetLayoutBinding implements \JsonSerializable
 
     public function setBinding(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->binding = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkDescriptorSetLayoutBinding implements \JsonSerializable
      */
     public function getDescriptorType(): \iggyvolz\vulkan\enum\VkDescriptorType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorType;
         $phpValue = \iggyvolz\vulkan\enum\VkDescriptorType::from($cValue);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkDescriptorSetLayoutBinding implements \JsonSerializable
 
     public function setDescriptorType(\iggyvolz\vulkan\enum\VkDescriptorType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->descriptorType = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkDescriptorSetLayoutBinding implements \JsonSerializable
      */
     public function getDescriptorCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkDescriptorSetLayoutBinding implements \JsonSerializable
 
     public function setDescriptorCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorCount = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkDescriptorSetLayoutBinding implements \JsonSerializable
      */
     public function getStageFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stageFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkDescriptorSetLayoutBinding implements \JsonSerializable
 
     public function setStageFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->stageFlags = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkDescriptorSetLayoutBinding implements \JsonSerializable
      */
     public function getPImmutableSamplers(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pImmutableSamplers;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSampler', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkDescriptorSetLayoutBinding implements \JsonSerializable
 
     public function setPImmutableSamplers(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pImmutableSamplers = $cValue;
     }

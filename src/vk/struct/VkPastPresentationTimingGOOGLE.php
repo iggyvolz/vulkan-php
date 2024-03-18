@@ -24,8 +24,6 @@ final class VkPastPresentationTimingGOOGLE implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkPastPresentationTimingGOOGLE implements \JsonSerializable
         null|int $presentMargin = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPastPresentationTimingGOOGLE', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPastPresentationTimingGOOGLE', false));
         if(!is_null($presentID)) $self->setPresentID($presentID);
         if(!is_null($desiredPresentTime)) $self->setDesiredPresentTime($desiredPresentTime);
         if(!is_null($actualPresentTime)) $self->setActualPresentTime($actualPresentTime);
@@ -52,7 +50,6 @@ final class VkPastPresentationTimingGOOGLE implements \JsonSerializable
      */
     public function getPresentID(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->presentID;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkPastPresentationTimingGOOGLE implements \JsonSerializable
 
     public function setPresentID(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->presentID = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkPastPresentationTimingGOOGLE implements \JsonSerializable
      */
     public function getDesiredPresentTime(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->desiredPresentTime;
         $phpValue = $cValue;
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkPastPresentationTimingGOOGLE implements \JsonSerializable
 
     public function setDesiredPresentTime(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->desiredPresentTime = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkPastPresentationTimingGOOGLE implements \JsonSerializable
      */
     public function getActualPresentTime(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->actualPresentTime;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkPastPresentationTimingGOOGLE implements \JsonSerializable
 
     public function setActualPresentTime(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->actualPresentTime = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkPastPresentationTimingGOOGLE implements \JsonSerializable
      */
     public function getEarliestPresentTime(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->earliestPresentTime;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkPastPresentationTimingGOOGLE implements \JsonSerializable
 
     public function setEarliestPresentTime(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->earliestPresentTime = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkPastPresentationTimingGOOGLE implements \JsonSerializable
      */
     public function getPresentMargin(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->presentMargin;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkPastPresentationTimingGOOGLE implements \JsonSerializable
 
     public function setPresentMargin(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->presentMargin = $cValue;
     }

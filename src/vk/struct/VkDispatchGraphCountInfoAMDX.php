@@ -22,8 +22,6 @@ final class VkDispatchGraphCountInfoAMDX implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkDispatchGraphCountInfoAMDX implements \JsonSerializable
         null|int $stride = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDispatchGraphCountInfoAMDX', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDispatchGraphCountInfoAMDX', false));
         if(!is_null($count)) $self->setCount($count);
         if(!is_null($infos)) $self->setInfos($infos);
         if(!is_null($stride)) $self->setStride($stride);
@@ -46,7 +44,6 @@ final class VkDispatchGraphCountInfoAMDX implements \JsonSerializable
      */
     public function getCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->count;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkDispatchGraphCountInfoAMDX implements \JsonSerializable
 
     public function setCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->count = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkDispatchGraphCountInfoAMDX implements \JsonSerializable
      */
     public function getInfos(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->infos;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkDispatchGraphCountInfoAMDX implements \JsonSerializable
 
     public function setInfos(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->infos = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkDispatchGraphCountInfoAMDX implements \JsonSerializable
      */
     public function getStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stride;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkDispatchGraphCountInfoAMDX implements \JsonSerializable
 
     public function setStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stride = $cValue;
     }

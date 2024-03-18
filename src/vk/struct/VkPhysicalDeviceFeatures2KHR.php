@@ -19,14 +19,12 @@ final class VkPhysicalDeviceFeatures2KHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFeatures2KHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFeatures2KHR', false));
         return $self;
     }
 }

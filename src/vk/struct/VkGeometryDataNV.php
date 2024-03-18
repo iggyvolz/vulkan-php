@@ -21,8 +21,6 @@ final class VkGeometryDataNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkGeometryDataNV implements \JsonSerializable
         null|VkGeometryAABBNV $aabbs = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkGeometryDataNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkGeometryDataNV', false));
         if(!is_null($triangles)) $self->setTriangles($triangles);
         if(!is_null($aabbs)) $self->setAabbs($aabbs);
         return $self;
@@ -43,7 +41,6 @@ final class VkGeometryDataNV implements \JsonSerializable
      */
     public function getTriangles(): VkGeometryTrianglesNV
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->triangles;
         $phpValue = new \iggyvolz\vulkan\struct\VkGeometryTrianglesNV($cValue, $ffi);
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkGeometryDataNV implements \JsonSerializable
 
     public function setTriangles(VkGeometryTrianglesNV $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->triangles = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkGeometryDataNV implements \JsonSerializable
      */
     public function getAabbs(): VkGeometryAABBNV
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->aabbs;
         $phpValue = new \iggyvolz\vulkan\struct\VkGeometryAABBNV($cValue, $ffi);
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkGeometryDataNV implements \JsonSerializable
 
     public function setAabbs(VkGeometryAABBNV $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->aabbs = $cValue;
     }

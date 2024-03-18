@@ -21,8 +21,6 @@ final class VkExtensionProperties implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkExtensionProperties implements \JsonSerializable
         null|int $specVersion = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkExtensionProperties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkExtensionProperties', false));
         if(!is_null($extensionName)) $self->setExtensionName($extensionName);
         if(!is_null($specVersion)) $self->setSpecVersion($specVersion);
         return $self;
@@ -43,7 +41,6 @@ final class VkExtensionProperties implements \JsonSerializable
      */
     public function getExtensionName(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extensionName;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkExtensionProperties implements \JsonSerializable
 
     public function setExtensionName(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->extensionName = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkExtensionProperties implements \JsonSerializable
      */
     public function getSpecVersion(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->specVersion;
         $phpValue = $cValue;
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkExtensionProperties implements \JsonSerializable
 
     public function setSpecVersion(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->specVersion = $cValue;
     }

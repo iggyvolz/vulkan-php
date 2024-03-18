@@ -21,8 +21,6 @@ final class VkDrawMeshTasksIndirectCommandNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkDrawMeshTasksIndirectCommandNV implements \JsonSerializable
         null|int $firstTask = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDrawMeshTasksIndirectCommandNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDrawMeshTasksIndirectCommandNV', false));
         if(!is_null($taskCount)) $self->setTaskCount($taskCount);
         if(!is_null($firstTask)) $self->setFirstTask($firstTask);
         return $self;
@@ -43,7 +41,6 @@ final class VkDrawMeshTasksIndirectCommandNV implements \JsonSerializable
      */
     public function getTaskCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->taskCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkDrawMeshTasksIndirectCommandNV implements \JsonSerializable
 
     public function setTaskCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->taskCount = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkDrawMeshTasksIndirectCommandNV implements \JsonSerializable
      */
     public function getFirstTask(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->firstTask;
         $phpValue = $cValue;
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkDrawMeshTasksIndirectCommandNV implements \JsonSerializable
 
     public function setFirstTask(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->firstTask = $cValue;
     }

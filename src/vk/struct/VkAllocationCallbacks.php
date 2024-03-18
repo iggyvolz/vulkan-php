@@ -25,8 +25,6 @@ final class VkAllocationCallbacks implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkAllocationCallbacks implements \JsonSerializable
         mixed $pfnInternalFree = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAllocationCallbacks', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkAllocationCallbacks', false));
         if(!is_null($pUserData)) $self->setPUserData($pUserData);
         if(!is_null($pfnAllocation)) $self->setPfnAllocation($pfnAllocation);
         if(!is_null($pfnReallocation)) $self->setPfnReallocation($pfnReallocation);
@@ -55,7 +53,6 @@ final class VkAllocationCallbacks implements \JsonSerializable
      */
     public function getPUserData(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pUserData;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkAllocationCallbacks implements \JsonSerializable
 
     public function setPUserData(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pUserData = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkAllocationCallbacks implements \JsonSerializable
      */
     public function getPfnAllocation(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pfnAllocation;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkAllocationCallbacks implements \JsonSerializable
 
     public function setPfnAllocation(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->pfnAllocation = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkAllocationCallbacks implements \JsonSerializable
      */
     public function getPfnReallocation(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pfnReallocation;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkAllocationCallbacks implements \JsonSerializable
 
     public function setPfnReallocation(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->pfnReallocation = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkAllocationCallbacks implements \JsonSerializable
      */
     public function getPfnFree(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pfnFree;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkAllocationCallbacks implements \JsonSerializable
 
     public function setPfnFree(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->pfnFree = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkAllocationCallbacks implements \JsonSerializable
      */
     public function getPfnInternalAllocation(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pfnInternalAllocation;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkAllocationCallbacks implements \JsonSerializable
 
     public function setPfnInternalAllocation(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->pfnInternalAllocation = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkAllocationCallbacks implements \JsonSerializable
      */
     public function getPfnInternalFree(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pfnInternalFree;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkAllocationCallbacks implements \JsonSerializable
 
     public function setPfnInternalFree(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->pfnInternalFree = $cValue;
     }

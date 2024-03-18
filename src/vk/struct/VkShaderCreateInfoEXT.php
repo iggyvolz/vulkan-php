@@ -33,8 +33,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -56,7 +54,7 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
         null|\iggyvolz\vulkan\util\ObjectPointer $pSpecializationInfo = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkShaderCreateInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkShaderCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -79,7 +77,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -87,7 +84,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -97,7 +93,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -105,7 +100,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -115,7 +109,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderCreateFlagBitsEXT::fromInt($cValue);
         return $phpValue;
@@ -123,7 +116,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderCreateFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -133,7 +125,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
      */
     public function getStage(): \iggyvolz\vulkan\enum\VkShaderStageFlagBits
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stage;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::from($cValue);
         return $phpValue;
@@ -141,7 +132,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
 
     public function setStage(\iggyvolz\vulkan\enum\VkShaderStageFlagBits $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->stage = $cValue;
     }
@@ -151,7 +141,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
      */
     public function getNextStage(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->nextStage;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -159,7 +148,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
 
     public function setNextStage(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->nextStage = $cValue;
     }
@@ -169,7 +157,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
      */
     public function getCodeType(): \iggyvolz\vulkan\enum\VkShaderCodeTypeEXT
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->codeType;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderCodeTypeEXT::from($cValue);
         return $phpValue;
@@ -177,7 +164,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
 
     public function setCodeType(\iggyvolz\vulkan\enum\VkShaderCodeTypeEXT $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->codeType = $cValue;
     }
@@ -187,7 +173,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
      */
     public function getCodeSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->codeSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -195,7 +180,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
 
     public function setCodeSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->codeSize = $cValue;
     }
@@ -205,7 +189,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
      */
     public function getPCode(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pCode;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -213,7 +196,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
 
     public function setPCode(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pCode = $cValue;
     }
@@ -223,7 +205,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
      */
     public function getPName(): ?string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pName;
         $phpValue = $cValue;
         return $phpValue;
@@ -231,7 +212,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
 
     public function setPName(?string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pName = $cValue;
     }
@@ -241,7 +221,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
      */
     public function getSetLayoutCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->setLayoutCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -249,7 +228,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
 
     public function setSetLayoutCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->setLayoutCount = $cValue;
     }
@@ -259,7 +237,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
      */
     public function getPSetLayouts(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pSetLayouts;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorSetLayout', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -267,7 +244,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
 
     public function setPSetLayouts(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pSetLayouts = $cValue;
     }
@@ -277,7 +253,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
      */
     public function getPushConstantRangeCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pushConstantRangeCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -285,7 +260,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
 
     public function setPushConstantRangeCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pushConstantRangeCount = $cValue;
     }
@@ -295,7 +269,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
      */
     public function getPPushConstantRanges(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pPushConstantRanges;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPushConstantRange', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -303,7 +276,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
 
     public function setPPushConstantRanges(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pPushConstantRanges = $cValue;
     }
@@ -313,7 +285,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
      */
     public function getPSpecializationInfo(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pSpecializationInfo;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSpecializationInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -321,7 +292,6 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
 
     public function setPSpecializationInfo(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pSpecializationInfo = $cValue;
     }

@@ -21,8 +21,6 @@ final class VkClearDepthStencilValue implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkClearDepthStencilValue implements \JsonSerializable
         null|int $stencil = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkClearDepthStencilValue', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkClearDepthStencilValue', false));
         if(!is_null($depth)) $self->setDepth($depth);
         if(!is_null($stencil)) $self->setStencil($stencil);
         return $self;
@@ -43,7 +41,6 @@ final class VkClearDepthStencilValue implements \JsonSerializable
      */
     public function getDepth(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depth;
         $phpValue = $cValue;
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkClearDepthStencilValue implements \JsonSerializable
 
     public function setDepth(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->depth = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkClearDepthStencilValue implements \JsonSerializable
      */
     public function getStencil(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stencil;
         $phpValue = $cValue;
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkClearDepthStencilValue implements \JsonSerializable
 
     public function setStencil(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stencil = $cValue;
     }

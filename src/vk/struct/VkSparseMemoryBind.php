@@ -24,8 +24,6 @@ final class VkSparseMemoryBind implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkSparseMemoryBind implements \JsonSerializable
         null|array $flags = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSparseMemoryBind', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkSparseMemoryBind', false));
         if(!is_null($resourceOffset)) $self->setResourceOffset($resourceOffset);
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($memory)) $self->setMemory($memory);
@@ -52,7 +50,6 @@ final class VkSparseMemoryBind implements \JsonSerializable
      */
     public function getResourceOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->resourceOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkSparseMemoryBind implements \JsonSerializable
 
     public function setResourceOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->resourceOffset = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkSparseMemoryBind implements \JsonSerializable
      */
     public function getSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkSparseMemoryBind implements \JsonSerializable
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkSparseMemoryBind implements \JsonSerializable
      */
     public function getMemory(): VkDeviceMemory
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memory;
         $phpValue = new \iggyvolz\vulkan\struct\VkDeviceMemory($cValue, $ffi);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkSparseMemoryBind implements \JsonSerializable
 
     public function setMemory(VkDeviceMemory $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->memory = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkSparseMemoryBind implements \JsonSerializable
      */
     public function getMemoryOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkSparseMemoryBind implements \JsonSerializable
 
     public function setMemoryOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->memoryOffset = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkSparseMemoryBind implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkSparseMemoryBindFlagBits::fromInt($cValue);
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkSparseMemoryBind implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSparseMemoryBindFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }

@@ -29,8 +29,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -48,7 +46,7 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
         null|VkExtent2D $imageExtent = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDisplaySurfaceCreateInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDisplaySurfaceCreateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -67,7 +65,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -75,7 +72,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -85,7 +81,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -93,7 +88,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -103,7 +97,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = [];
         return $phpValue;
@@ -111,7 +104,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = 0;
         $this->cdata->flags = $cValue;
     }
@@ -121,7 +113,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
      */
     public function getDisplayMode(): VkDisplayModeKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->displayMode;
         $phpValue = new \iggyvolz\vulkan\struct\VkDisplayModeKHR($cValue, $ffi);
         return $phpValue;
@@ -129,7 +120,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
 
     public function setDisplayMode(VkDisplayModeKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->displayMode = $cValue;
     }
@@ -139,7 +129,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
      */
     public function getPlaneIndex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->planeIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -147,7 +136,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
 
     public function setPlaneIndex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->planeIndex = $cValue;
     }
@@ -157,7 +145,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
      */
     public function getPlaneStackIndex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->planeStackIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -165,7 +152,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
 
     public function setPlaneStackIndex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->planeStackIndex = $cValue;
     }
@@ -175,7 +161,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
      */
     public function getTransform(): \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transform;
         $phpValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::from($cValue);
         return $phpValue;
@@ -183,7 +168,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
 
     public function setTransform(\iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->transform = $cValue;
     }
@@ -193,7 +177,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
      */
     public function getGlobalAlpha(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->globalAlpha;
         $phpValue = $cValue;
         return $phpValue;
@@ -201,7 +184,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
 
     public function setGlobalAlpha(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->globalAlpha = $cValue;
     }
@@ -211,7 +193,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
      */
     public function getAlphaMode(): \iggyvolz\vulkan\enum\VkDisplayPlaneAlphaFlagBitsKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->alphaMode;
         $phpValue = \iggyvolz\vulkan\enum\VkDisplayPlaneAlphaFlagBitsKHR::from($cValue);
         return $phpValue;
@@ -219,7 +200,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
 
     public function setAlphaMode(\iggyvolz\vulkan\enum\VkDisplayPlaneAlphaFlagBitsKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->alphaMode = $cValue;
     }
@@ -229,7 +209,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
      */
     public function getImageExtent(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -237,7 +216,6 @@ final class VkDisplaySurfaceCreateInfoKHR implements \JsonSerializable
 
     public function setImageExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageExtent = $cValue;
     }

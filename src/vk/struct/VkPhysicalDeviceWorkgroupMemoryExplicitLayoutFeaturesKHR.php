@@ -25,8 +25,6 @@ final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR implements 
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR implements 
         null|bool $workgroupMemoryExplicitLayout16BitAccess = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($workgroupMemoryExplicitLayout)) $self->setWorkgroupMemoryExplicitLayout($workgroupMemoryExplicitLayout);
@@ -55,7 +53,6 @@ final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR implements 
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR implements 
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR implements 
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR implements 
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR implements 
      */
     public function getWorkgroupMemoryExplicitLayout(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->workgroupMemoryExplicitLayout;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR implements 
 
     public function setWorkgroupMemoryExplicitLayout(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->workgroupMemoryExplicitLayout = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR implements 
      */
     public function getWorkgroupMemoryExplicitLayoutScalarBlockLayout(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->workgroupMemoryExplicitLayoutScalarBlockLayout;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR implements 
 
     public function setWorkgroupMemoryExplicitLayoutScalarBlockLayout(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->workgroupMemoryExplicitLayoutScalarBlockLayout = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR implements 
      */
     public function getWorkgroupMemoryExplicitLayout8BitAccess(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->workgroupMemoryExplicitLayout8BitAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR implements 
 
     public function setWorkgroupMemoryExplicitLayout8BitAccess(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->workgroupMemoryExplicitLayout8BitAccess = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR implements 
      */
     public function getWorkgroupMemoryExplicitLayout16BitAccess(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->workgroupMemoryExplicitLayout16BitAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR implements 
 
     public function setWorkgroupMemoryExplicitLayout16BitAccess(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->workgroupMemoryExplicitLayout16BitAccess = $cValue;
     }

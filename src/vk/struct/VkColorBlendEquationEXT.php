@@ -25,8 +25,6 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkBlendOp $alphaBlendOp = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkColorBlendEquationEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkColorBlendEquationEXT', false));
         if(!is_null($srcColorBlendFactor)) $self->setSrcColorBlendFactor($srcColorBlendFactor);
         if(!is_null($dstColorBlendFactor)) $self->setDstColorBlendFactor($dstColorBlendFactor);
         if(!is_null($colorBlendOp)) $self->setColorBlendOp($colorBlendOp);
@@ -55,7 +53,6 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
      */
     public function getSrcColorBlendFactor(): \iggyvolz\vulkan\enum\VkBlendFactor
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcColorBlendFactor;
         $phpValue = \iggyvolz\vulkan\enum\VkBlendFactor::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
 
     public function setSrcColorBlendFactor(\iggyvolz\vulkan\enum\VkBlendFactor $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->srcColorBlendFactor = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
      */
     public function getDstColorBlendFactor(): \iggyvolz\vulkan\enum\VkBlendFactor
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstColorBlendFactor;
         $phpValue = \iggyvolz\vulkan\enum\VkBlendFactor::from($cValue);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
 
     public function setDstColorBlendFactor(\iggyvolz\vulkan\enum\VkBlendFactor $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->dstColorBlendFactor = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
      */
     public function getColorBlendOp(): \iggyvolz\vulkan\enum\VkBlendOp
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->colorBlendOp;
         $phpValue = \iggyvolz\vulkan\enum\VkBlendOp::from($cValue);
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
 
     public function setColorBlendOp(\iggyvolz\vulkan\enum\VkBlendOp $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->colorBlendOp = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
      */
     public function getSrcAlphaBlendFactor(): \iggyvolz\vulkan\enum\VkBlendFactor
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcAlphaBlendFactor;
         $phpValue = \iggyvolz\vulkan\enum\VkBlendFactor::from($cValue);
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
 
     public function setSrcAlphaBlendFactor(\iggyvolz\vulkan\enum\VkBlendFactor $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->srcAlphaBlendFactor = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
      */
     public function getDstAlphaBlendFactor(): \iggyvolz\vulkan\enum\VkBlendFactor
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstAlphaBlendFactor;
         $phpValue = \iggyvolz\vulkan\enum\VkBlendFactor::from($cValue);
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
 
     public function setDstAlphaBlendFactor(\iggyvolz\vulkan\enum\VkBlendFactor $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->dstAlphaBlendFactor = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
      */
     public function getAlphaBlendOp(): \iggyvolz\vulkan\enum\VkBlendOp
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->alphaBlendOp;
         $phpValue = \iggyvolz\vulkan\enum\VkBlendOp::from($cValue);
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
 
     public function setAlphaBlendOp(\iggyvolz\vulkan\enum\VkBlendOp $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->alphaBlendOp = $cValue;
     }

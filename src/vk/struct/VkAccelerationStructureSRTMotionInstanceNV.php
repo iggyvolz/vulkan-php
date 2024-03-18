@@ -26,8 +26,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
         null|int $accelerationStructureReference = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureSRTMotionInstanceNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkAccelerationStructureSRTMotionInstanceNV', false));
         if(!is_null($transformT0)) $self->setTransformT0($transformT0);
         if(!is_null($transformT1)) $self->setTransformT1($transformT1);
         if(!is_null($instanceCustomIndex)) $self->setInstanceCustomIndex($instanceCustomIndex);
@@ -58,7 +56,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
      */
     public function getTransformT0(): VkSRTDataNV
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformT0;
         $phpValue = new \iggyvolz\vulkan\struct\VkSRTDataNV($cValue, $ffi);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
 
     public function setTransformT0(VkSRTDataNV $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->transformT0 = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
      */
     public function getTransformT1(): VkSRTDataNV
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformT1;
         $phpValue = new \iggyvolz\vulkan\struct\VkSRTDataNV($cValue, $ffi);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
 
     public function setTransformT1(VkSRTDataNV $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->transformT1 = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
      */
     public function getInstanceCustomIndex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->instanceCustomIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
 
     public function setInstanceCustomIndex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->instanceCustomIndex = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
      */
     public function getMask(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mask;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
 
     public function setMask(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->mask = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
      */
     public function getInstanceShaderBindingTableRecordOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->instanceShaderBindingTableRecordOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
 
     public function setInstanceShaderBindingTableRecordOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->instanceShaderBindingTableRecordOffset = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
      */
     public function getFlags(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
 
     public function setFlags(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->flags = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
      */
     public function getAccelerationStructureReference(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->accelerationStructureReference;
         $phpValue = $cValue;
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
 
     public function setAccelerationStructureReference(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->accelerationStructureReference = $cValue;
     }

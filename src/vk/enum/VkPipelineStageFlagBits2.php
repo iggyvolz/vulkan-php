@@ -50,5 +50,7 @@ enum VkPipelineStageFlagBits2: int
     case ClusterCullingShaderBitHuawei = 41;
     case Reserved43BitArm = 43;
     case OpticalFlowBitNv = 29;
+    case Reserved44BitNv = 44;
     case Reserved42BitExt = 42;
+    case Reserved45BitNv = 45;
 }

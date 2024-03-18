@@ -23,8 +23,6 @@ final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR implements \JsonSeria
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR implements \JsonSeria
         null|int $qualityLevel = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pVideoProfile)) $self->setPVideoProfile($pVideoProfile);
@@ -49,7 +47,6 @@ final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR implements \JsonSeria
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR implements \JsonSeria
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR implements \JsonSeria
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR implements \JsonSeria
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR implements \JsonSeria
      */
     public function getPVideoProfile(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pVideoProfile;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR implements \JsonSeria
 
     public function setPVideoProfile(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pVideoProfile = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR implements \JsonSeria
      */
     public function getQualityLevel(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qualityLevel;
         $phpValue = $cValue;
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR implements \JsonSeria
 
     public function setQualityLevel(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qualityLevel = $cValue;
     }

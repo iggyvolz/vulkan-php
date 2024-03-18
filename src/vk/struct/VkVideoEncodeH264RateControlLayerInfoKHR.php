@@ -27,8 +27,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -44,7 +42,7 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
         null|VkVideoEncodeH264FrameSizeKHR $maxFrameSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264RateControlLayerInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264RateControlLayerInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($useMinQp)) $self->setUseMinQp($useMinQp);
@@ -61,7 +59,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -69,7 +66,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -79,7 +75,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -87,7 +82,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -97,7 +91,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
      */
     public function getUseMinQp(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->useMinQp;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -105,7 +98,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
 
     public function setUseMinQp(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->useMinQp = $cValue;
     }
@@ -115,7 +107,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
      */
     public function getMinQp(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minQp;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -123,7 +114,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
 
     public function setMinQp(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->minQp = $cValue;
     }
@@ -133,7 +123,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
      */
     public function getUseMaxQp(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->useMaxQp;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -141,7 +130,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
 
     public function setUseMaxQp(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->useMaxQp = $cValue;
     }
@@ -151,7 +139,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
      */
     public function getMaxQp(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxQp;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -159,7 +146,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
 
     public function setMaxQp(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxQp = $cValue;
     }
@@ -169,7 +155,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
      */
     public function getUseMaxFrameSize(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->useMaxFrameSize;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -177,7 +162,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
 
     public function setUseMaxFrameSize(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->useMaxFrameSize = $cValue;
     }
@@ -187,7 +171,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
      */
     public function getMaxFrameSize(): VkVideoEncodeH264FrameSizeKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFrameSize;
         $phpValue = new \iggyvolz\vulkan\struct\VkVideoEncodeH264FrameSizeKHR($cValue, $ffi);
         return $phpValue;
@@ -195,7 +178,6 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
 
     public function setMaxFrameSize(VkVideoEncodeH264FrameSizeKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxFrameSize = $cValue;
     }

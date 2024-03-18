@@ -25,8 +25,6 @@ final class VkVideoPictureResourceInfoKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkVideoPictureResourceInfoKHR implements \JsonSerializable
         null|VkImageView $imageViewBinding = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoPictureResourceInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkVideoPictureResourceInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($codedOffset)) $self->setCodedOffset($codedOffset);
@@ -55,7 +53,6 @@ final class VkVideoPictureResourceInfoKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkVideoPictureResourceInfoKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkVideoPictureResourceInfoKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkVideoPictureResourceInfoKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkVideoPictureResourceInfoKHR implements \JsonSerializable
      */
     public function getCodedOffset(): VkOffset2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->codedOffset;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset2D($cValue, $ffi);
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkVideoPictureResourceInfoKHR implements \JsonSerializable
 
     public function setCodedOffset(VkOffset2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->codedOffset = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkVideoPictureResourceInfoKHR implements \JsonSerializable
      */
     public function getCodedExtent(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->codedExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkVideoPictureResourceInfoKHR implements \JsonSerializable
 
     public function setCodedExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->codedExtent = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkVideoPictureResourceInfoKHR implements \JsonSerializable
      */
     public function getBaseArrayLayer(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->baseArrayLayer;
         $phpValue = $cValue;
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkVideoPictureResourceInfoKHR implements \JsonSerializable
 
     public function setBaseArrayLayer(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->baseArrayLayer = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkVideoPictureResourceInfoKHR implements \JsonSerializable
      */
     public function getImageViewBinding(): VkImageView
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageViewBinding;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageView($cValue, $ffi);
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkVideoPictureResourceInfoKHR implements \JsonSerializable
 
     public function setImageViewBinding(VkImageView $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageViewBinding = $cValue;
     }

@@ -28,8 +28,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -46,7 +44,7 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
         null|int $heapIndex = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceMemoryReportCallbackDataEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDeviceMemoryReportCallbackDataEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -64,7 +62,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -72,7 +69,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -82,7 +78,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -90,7 +85,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -100,7 +94,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = [];
         return $phpValue;
@@ -108,7 +101,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = 0;
         $this->cdata->flags = $cValue;
     }
@@ -118,7 +110,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
      */
     public function getType(): \iggyvolz\vulkan\enum\VkDeviceMemoryReportEventTypeEXT
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->type;
         $phpValue = \iggyvolz\vulkan\enum\VkDeviceMemoryReportEventTypeEXT::from($cValue);
         return $phpValue;
@@ -126,7 +117,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
 
     public function setType(\iggyvolz\vulkan\enum\VkDeviceMemoryReportEventTypeEXT $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->type = $cValue;
     }
@@ -136,7 +126,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
      */
     public function getMemoryObjectId(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryObjectId;
         $phpValue = $cValue;
         return $phpValue;
@@ -144,7 +133,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
 
     public function setMemoryObjectId(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->memoryObjectId = $cValue;
     }
@@ -154,7 +142,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
      */
     public function getSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -162,7 +149,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }
@@ -172,7 +158,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
      */
     public function getObjectType(): \iggyvolz\vulkan\enum\VkObjectType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->objectType;
         $phpValue = \iggyvolz\vulkan\enum\VkObjectType::from($cValue);
         return $phpValue;
@@ -180,7 +165,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
 
     public function setObjectType(\iggyvolz\vulkan\enum\VkObjectType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->objectType = $cValue;
     }
@@ -190,7 +174,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
      */
     public function getObjectHandle(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->objectHandle;
         $phpValue = $cValue;
         return $phpValue;
@@ -198,7 +181,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
 
     public function setObjectHandle(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->objectHandle = $cValue;
     }
@@ -208,7 +190,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
      */
     public function getHeapIndex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->heapIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -216,7 +197,6 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
 
     public function setHeapIndex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->heapIndex = $cValue;
     }

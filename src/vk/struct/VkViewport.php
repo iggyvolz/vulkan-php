@@ -25,8 +25,6 @@ final class VkViewport implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkViewport implements \JsonSerializable
         null|float $maxDepth = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkViewport', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkViewport', false));
         if(!is_null($x)) $self->setX($x);
         if(!is_null($y)) $self->setY($y);
         if(!is_null($width)) $self->setWidth($width);
@@ -55,7 +53,6 @@ final class VkViewport implements \JsonSerializable
      */
     public function getX(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->x;
         $phpValue = $cValue;
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkViewport implements \JsonSerializable
 
     public function setX(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->x = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkViewport implements \JsonSerializable
      */
     public function getY(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->y;
         $phpValue = $cValue;
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkViewport implements \JsonSerializable
 
     public function setY(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->y = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkViewport implements \JsonSerializable
      */
     public function getWidth(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->width;
         $phpValue = $cValue;
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkViewport implements \JsonSerializable
 
     public function setWidth(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->width = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkViewport implements \JsonSerializable
      */
     public function getHeight(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->height;
         $phpValue = $cValue;
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkViewport implements \JsonSerializable
 
     public function setHeight(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->height = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkViewport implements \JsonSerializable
      */
     public function getMinDepth(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minDepth;
         $phpValue = $cValue;
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkViewport implements \JsonSerializable
 
     public function setMinDepth(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minDepth = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkViewport implements \JsonSerializable
      */
     public function getMaxDepth(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDepth;
         $phpValue = $cValue;
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkViewport implements \JsonSerializable
 
     public function setMaxDepth(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDepth = $cValue;
     }

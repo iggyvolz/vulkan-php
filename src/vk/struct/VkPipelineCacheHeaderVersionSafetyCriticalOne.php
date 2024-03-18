@@ -25,8 +25,6 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
         null|int $pipelineIndexOffset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineCacheHeaderVersionSafetyCriticalOne', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPipelineCacheHeaderVersionSafetyCriticalOne', false));
         if(!is_null($headerVersionOne)) $self->setHeaderVersionOne($headerVersionOne);
         if(!is_null($validationVersion)) $self->setValidationVersion($validationVersion);
         if(!is_null($implementationData)) $self->setImplementationData($implementationData);
@@ -55,7 +53,6 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
      */
     public function getHeaderVersionOne(): VkPipelineCacheHeaderVersionOne
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->headerVersionOne;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipelineCacheHeaderVersionOne($cValue, $ffi);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
 
     public function setHeaderVersionOne(VkPipelineCacheHeaderVersionOne $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->headerVersionOne = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
      */
     public function getValidationVersion(): \iggyvolz\vulkan\enum\VkPipelineCacheValidationVersion
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->validationVersion;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineCacheValidationVersion::from($cValue);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
 
     public function setValidationVersion(\iggyvolz\vulkan\enum\VkPipelineCacheValidationVersion $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->validationVersion = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
      */
     public function getImplementationData(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->implementationData;
         $phpValue = $cValue;
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
 
     public function setImplementationData(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->implementationData = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
      */
     public function getPipelineIndexCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineIndexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
 
     public function setPipelineIndexCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelineIndexCount = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
      */
     public function getPipelineIndexStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineIndexStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
 
     public function setPipelineIndexStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelineIndexStride = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
      */
     public function getPipelineIndexOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineIndexOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
 
     public function setPipelineIndexOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelineIndexOffset = $cValue;
     }

@@ -21,8 +21,6 @@ final class VkPipelineCreationFeedback implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkPipelineCreationFeedback implements \JsonSerializable
         null|int $duration = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineCreationFeedback', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPipelineCreationFeedback', false));
         if(!is_null($flags)) $self->setFlags($flags);
         if(!is_null($duration)) $self->setDuration($duration);
         return $self;
@@ -43,7 +41,6 @@ final class VkPipelineCreationFeedback implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineCreationFeedbackFlagBits::fromInt($cValue);
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkPipelineCreationFeedback implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkPipelineCreationFeedbackFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkPipelineCreationFeedback implements \JsonSerializable
      */
     public function getDuration(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->duration;
         $phpValue = $cValue;
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkPipelineCreationFeedback implements \JsonSerializable
 
     public function setDuration(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->duration = $cValue;
     }

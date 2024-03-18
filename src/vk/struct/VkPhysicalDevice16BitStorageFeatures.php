@@ -25,8 +25,6 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
         null|bool $storageInputOutput16 = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDevice16BitStorageFeatures', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDevice16BitStorageFeatures', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($storageBuffer16BitAccess)) $self->setStorageBuffer16BitAccess($storageBuffer16BitAccess);
@@ -55,7 +53,6 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
      */
     public function getStorageBuffer16BitAccess(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageBuffer16BitAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
 
     public function setStorageBuffer16BitAccess(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->storageBuffer16BitAccess = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
      */
     public function getUniformAndStorageBuffer16BitAccess(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->uniformAndStorageBuffer16BitAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
 
     public function setUniformAndStorageBuffer16BitAccess(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->uniformAndStorageBuffer16BitAccess = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
      */
     public function getStoragePushConstant16(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storagePushConstant16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
 
     public function setStoragePushConstant16(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->storagePushConstant16 = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
      */
     public function getStorageInputOutput16(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageInputOutput16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
 
     public function setStorageInputOutput16(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->storageInputOutput16 = $cValue;
     }

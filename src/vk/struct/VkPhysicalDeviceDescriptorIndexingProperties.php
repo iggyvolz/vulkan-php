@@ -44,8 +44,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -78,7 +76,7 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
         null|int $maxDescriptorSetUpdateAfterBindInputAttachments = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDescriptorIndexingProperties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDescriptorIndexingProperties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxUpdateAfterBindDescriptorsInAllPools)) $self->setMaxUpdateAfterBindDescriptorsInAllPools($maxUpdateAfterBindDescriptorsInAllPools);
@@ -112,7 +110,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -120,7 +117,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -130,7 +126,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -138,7 +133,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -148,7 +142,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxUpdateAfterBindDescriptorsInAllPools(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxUpdateAfterBindDescriptorsInAllPools;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +149,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxUpdateAfterBindDescriptorsInAllPools(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxUpdateAfterBindDescriptorsInAllPools = $cValue;
     }
@@ -166,7 +158,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getShaderUniformBufferArrayNonUniformIndexingNative(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderUniformBufferArrayNonUniformIndexingNative;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -174,7 +165,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setShaderUniformBufferArrayNonUniformIndexingNative(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderUniformBufferArrayNonUniformIndexingNative = $cValue;
     }
@@ -184,7 +174,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getShaderSampledImageArrayNonUniformIndexingNative(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSampledImageArrayNonUniformIndexingNative;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -192,7 +181,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setShaderSampledImageArrayNonUniformIndexingNative(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSampledImageArrayNonUniformIndexingNative = $cValue;
     }
@@ -202,7 +190,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getShaderStorageBufferArrayNonUniformIndexingNative(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageBufferArrayNonUniformIndexingNative;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -210,7 +197,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setShaderStorageBufferArrayNonUniformIndexingNative(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageBufferArrayNonUniformIndexingNative = $cValue;
     }
@@ -220,7 +206,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getShaderStorageImageArrayNonUniformIndexingNative(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageImageArrayNonUniformIndexingNative;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -228,7 +213,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setShaderStorageImageArrayNonUniformIndexingNative(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageImageArrayNonUniformIndexingNative = $cValue;
     }
@@ -238,7 +222,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getShaderInputAttachmentArrayNonUniformIndexingNative(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderInputAttachmentArrayNonUniformIndexingNative;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -246,7 +229,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setShaderInputAttachmentArrayNonUniformIndexingNative(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderInputAttachmentArrayNonUniformIndexingNative = $cValue;
     }
@@ -256,7 +238,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getRobustBufferAccessUpdateAfterBind(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->robustBufferAccessUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -264,7 +245,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setRobustBufferAccessUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->robustBufferAccessUpdateAfterBind = $cValue;
     }
@@ -274,7 +254,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getQuadDivergentImplicitLod(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->quadDivergentImplicitLod;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -282,7 +261,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setQuadDivergentImplicitLod(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->quadDivergentImplicitLod = $cValue;
     }
@@ -292,7 +270,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxPerStageDescriptorUpdateAfterBindSamplers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindSamplers;
         $phpValue = $cValue;
         return $phpValue;
@@ -300,7 +277,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxPerStageDescriptorUpdateAfterBindSamplers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindSamplers = $cValue;
     }
@@ -310,7 +286,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxPerStageDescriptorUpdateAfterBindUniformBuffers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindUniformBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -318,7 +293,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxPerStageDescriptorUpdateAfterBindUniformBuffers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindUniformBuffers = $cValue;
     }
@@ -328,7 +302,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxPerStageDescriptorUpdateAfterBindStorageBuffers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindStorageBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -336,7 +309,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxPerStageDescriptorUpdateAfterBindStorageBuffers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindStorageBuffers = $cValue;
     }
@@ -346,7 +318,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxPerStageDescriptorUpdateAfterBindSampledImages(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindSampledImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -354,7 +325,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxPerStageDescriptorUpdateAfterBindSampledImages(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindSampledImages = $cValue;
     }
@@ -364,7 +334,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxPerStageDescriptorUpdateAfterBindStorageImages(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindStorageImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -372,7 +341,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxPerStageDescriptorUpdateAfterBindStorageImages(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindStorageImages = $cValue;
     }
@@ -382,7 +350,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxPerStageDescriptorUpdateAfterBindInputAttachments(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindInputAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -390,7 +357,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxPerStageDescriptorUpdateAfterBindInputAttachments(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindInputAttachments = $cValue;
     }
@@ -400,7 +366,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxPerStageUpdateAfterBindResources(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageUpdateAfterBindResources;
         $phpValue = $cValue;
         return $phpValue;
@@ -408,7 +373,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxPerStageUpdateAfterBindResources(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageUpdateAfterBindResources = $cValue;
     }
@@ -418,7 +382,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxDescriptorSetUpdateAfterBindSamplers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindSamplers;
         $phpValue = $cValue;
         return $phpValue;
@@ -426,7 +389,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxDescriptorSetUpdateAfterBindSamplers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindSamplers = $cValue;
     }
@@ -436,7 +398,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxDescriptorSetUpdateAfterBindUniformBuffers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindUniformBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -444,7 +405,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxDescriptorSetUpdateAfterBindUniformBuffers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindUniformBuffers = $cValue;
     }
@@ -454,7 +414,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxDescriptorSetUpdateAfterBindUniformBuffersDynamic(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
         $phpValue = $cValue;
         return $phpValue;
@@ -462,7 +421,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxDescriptorSetUpdateAfterBindUniformBuffersDynamic(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindUniformBuffersDynamic = $cValue;
     }
@@ -472,7 +430,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxDescriptorSetUpdateAfterBindStorageBuffers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindStorageBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -480,7 +437,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxDescriptorSetUpdateAfterBindStorageBuffers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindStorageBuffers = $cValue;
     }
@@ -490,7 +446,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxDescriptorSetUpdateAfterBindStorageBuffersDynamic(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
         $phpValue = $cValue;
         return $phpValue;
@@ -498,7 +453,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxDescriptorSetUpdateAfterBindStorageBuffersDynamic(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindStorageBuffersDynamic = $cValue;
     }
@@ -508,7 +462,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxDescriptorSetUpdateAfterBindSampledImages(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindSampledImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -516,7 +469,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxDescriptorSetUpdateAfterBindSampledImages(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindSampledImages = $cValue;
     }
@@ -526,7 +478,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxDescriptorSetUpdateAfterBindStorageImages(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindStorageImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -534,7 +485,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxDescriptorSetUpdateAfterBindStorageImages(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindStorageImages = $cValue;
     }
@@ -544,7 +494,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
      */
     public function getMaxDescriptorSetUpdateAfterBindInputAttachments(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindInputAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -552,7 +501,6 @@ final class VkPhysicalDeviceDescriptorIndexingProperties implements \JsonSeriali
 
     public function setMaxDescriptorSetUpdateAfterBindInputAttachments(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindInputAttachments = $cValue;
     }

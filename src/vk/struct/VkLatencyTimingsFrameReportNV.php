@@ -35,8 +35,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -60,7 +58,7 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
         null|int $gpuRenderEndTimeUs = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkLatencyTimingsFrameReportNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkLatencyTimingsFrameReportNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($presentID)) $self->setPresentID($presentID);
@@ -85,7 +83,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -93,7 +90,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -103,7 +99,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -111,7 +106,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -121,7 +115,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getPresentID(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->presentID;
         $phpValue = $cValue;
         return $phpValue;
@@ -129,7 +122,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setPresentID(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->presentID = $cValue;
     }
@@ -139,7 +131,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getInputSampleTimeUs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->inputSampleTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -147,7 +138,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setInputSampleTimeUs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->inputSampleTimeUs = $cValue;
     }
@@ -157,7 +147,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getSimStartTimeUs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->simStartTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -165,7 +154,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setSimStartTimeUs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->simStartTimeUs = $cValue;
     }
@@ -175,7 +163,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getSimEndTimeUs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->simEndTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -183,7 +170,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setSimEndTimeUs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->simEndTimeUs = $cValue;
     }
@@ -193,7 +179,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getRenderSubmitStartTimeUs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->renderSubmitStartTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -201,7 +186,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setRenderSubmitStartTimeUs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->renderSubmitStartTimeUs = $cValue;
     }
@@ -211,7 +195,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getRenderSubmitEndTimeUs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->renderSubmitEndTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -219,7 +202,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setRenderSubmitEndTimeUs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->renderSubmitEndTimeUs = $cValue;
     }
@@ -229,7 +211,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getPresentStartTimeUs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->presentStartTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -237,7 +218,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setPresentStartTimeUs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->presentStartTimeUs = $cValue;
     }
@@ -247,7 +227,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getPresentEndTimeUs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->presentEndTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -255,7 +234,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setPresentEndTimeUs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->presentEndTimeUs = $cValue;
     }
@@ -265,7 +243,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getDriverStartTimeUs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->driverStartTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -273,7 +250,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setDriverStartTimeUs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->driverStartTimeUs = $cValue;
     }
@@ -283,7 +259,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getDriverEndTimeUs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->driverEndTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -291,7 +266,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setDriverEndTimeUs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->driverEndTimeUs = $cValue;
     }
@@ -301,7 +275,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getOsRenderQueueStartTimeUs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->osRenderQueueStartTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -309,7 +282,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setOsRenderQueueStartTimeUs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->osRenderQueueStartTimeUs = $cValue;
     }
@@ -319,7 +291,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getOsRenderQueueEndTimeUs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->osRenderQueueEndTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -327,7 +298,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setOsRenderQueueEndTimeUs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->osRenderQueueEndTimeUs = $cValue;
     }
@@ -337,7 +307,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getGpuRenderStartTimeUs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->gpuRenderStartTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -345,7 +314,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setGpuRenderStartTimeUs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->gpuRenderStartTimeUs = $cValue;
     }
@@ -355,7 +323,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
      */
     public function getGpuRenderEndTimeUs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->gpuRenderEndTimeUs;
         $phpValue = $cValue;
         return $phpValue;
@@ -363,7 +330,6 @@ final class VkLatencyTimingsFrameReportNV implements \JsonSerializable
 
     public function setGpuRenderEndTimeUs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->gpuRenderEndTimeUs = $cValue;
     }

@@ -59,4 +59,6 @@ enum VkAccessFlagBits2: int
     case OpticalFlowWriteBitNv = 43;
     case Reserved47BitExt = 47;
     case Reserved48BitExt = 48;
+    case Reserved55BitNv = 55;
+    case Reserved56BitNv = 56;
 }

@@ -25,8 +25,6 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
         null|\iggyvolz\vulkan\util\IntPointer $pSignalSemaphoreValues = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkD3D12FenceSubmitInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkD3D12FenceSubmitInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($waitSemaphoreValuesCount)) $self->setWaitSemaphoreValuesCount($waitSemaphoreValuesCount);
@@ -55,7 +53,6 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
      */
     public function getWaitSemaphoreValuesCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->waitSemaphoreValuesCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
 
     public function setWaitSemaphoreValuesCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->waitSemaphoreValuesCount = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
      */
     public function getPWaitSemaphoreValues(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pWaitSemaphoreValues;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
 
     public function setPWaitSemaphoreValues(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pWaitSemaphoreValues = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
      */
     public function getSignalSemaphoreValuesCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->signalSemaphoreValuesCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
 
     public function setSignalSemaphoreValuesCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->signalSemaphoreValuesCount = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
      */
     public function getPSignalSemaphoreValues(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pSignalSemaphoreValues;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
 
     public function setPSignalSemaphoreValues(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pSignalSemaphoreValues = $cValue;
     }

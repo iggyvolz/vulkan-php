@@ -39,8 +39,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -68,7 +66,7 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
         null|int $maxCommandBufferSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkanSC10Properties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkanSC10Properties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($deviceNoDynamicHostAllocations)) $self->setDeviceNoDynamicHostAllocations($deviceNoDynamicHostAllocations);
@@ -97,7 +95,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -105,7 +102,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -115,7 +111,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -123,7 +118,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -133,7 +127,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getDeviceNoDynamicHostAllocations(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceNoDynamicHostAllocations;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -141,7 +134,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setDeviceNoDynamicHostAllocations(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->deviceNoDynamicHostAllocations = $cValue;
     }
@@ -151,7 +143,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getDeviceDestroyFreesMemory(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceDestroyFreesMemory;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -159,7 +150,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setDeviceDestroyFreesMemory(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->deviceDestroyFreesMemory = $cValue;
     }
@@ -169,7 +159,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getCommandPoolMultipleCommandBuffersRecording(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->commandPoolMultipleCommandBuffersRecording;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -177,7 +166,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setCommandPoolMultipleCommandBuffersRecording(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->commandPoolMultipleCommandBuffersRecording = $cValue;
     }
@@ -187,7 +175,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getCommandPoolResetCommandBuffer(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->commandPoolResetCommandBuffer;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -195,7 +182,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setCommandPoolResetCommandBuffer(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->commandPoolResetCommandBuffer = $cValue;
     }
@@ -205,7 +191,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getCommandBufferSimultaneousUse(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->commandBufferSimultaneousUse;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -213,7 +198,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setCommandBufferSimultaneousUse(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->commandBufferSimultaneousUse = $cValue;
     }
@@ -223,7 +207,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getSecondaryCommandBufferNullOrImagelessFramebuffer(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->secondaryCommandBufferNullOrImagelessFramebuffer;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -231,7 +214,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setSecondaryCommandBufferNullOrImagelessFramebuffer(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->secondaryCommandBufferNullOrImagelessFramebuffer = $cValue;
     }
@@ -241,7 +223,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getRecycleDescriptorSetMemory(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->recycleDescriptorSetMemory;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -249,7 +230,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setRecycleDescriptorSetMemory(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->recycleDescriptorSetMemory = $cValue;
     }
@@ -259,7 +239,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getRecyclePipelineMemory(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->recyclePipelineMemory;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -267,7 +246,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setRecyclePipelineMemory(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->recyclePipelineMemory = $cValue;
     }
@@ -277,7 +255,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getMaxRenderPassSubpasses(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxRenderPassSubpasses;
         $phpValue = $cValue;
         return $phpValue;
@@ -285,7 +262,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setMaxRenderPassSubpasses(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxRenderPassSubpasses = $cValue;
     }
@@ -295,7 +271,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getMaxRenderPassDependencies(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxRenderPassDependencies;
         $phpValue = $cValue;
         return $phpValue;
@@ -303,7 +278,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setMaxRenderPassDependencies(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxRenderPassDependencies = $cValue;
     }
@@ -313,7 +287,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getMaxSubpassInputAttachments(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSubpassInputAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -321,7 +294,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setMaxSubpassInputAttachments(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSubpassInputAttachments = $cValue;
     }
@@ -331,7 +303,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getMaxSubpassPreserveAttachments(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSubpassPreserveAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -339,7 +310,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setMaxSubpassPreserveAttachments(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSubpassPreserveAttachments = $cValue;
     }
@@ -349,7 +319,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getMaxFramebufferAttachments(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFramebufferAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -357,7 +326,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setMaxFramebufferAttachments(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFramebufferAttachments = $cValue;
     }
@@ -367,7 +335,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getMaxDescriptorSetLayoutBindings(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetLayoutBindings;
         $phpValue = $cValue;
         return $phpValue;
@@ -375,7 +342,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setMaxDescriptorSetLayoutBindings(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetLayoutBindings = $cValue;
     }
@@ -385,7 +351,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getMaxQueryFaultCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxQueryFaultCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -393,7 +358,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setMaxQueryFaultCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxQueryFaultCount = $cValue;
     }
@@ -403,7 +367,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getMaxCallbackFaultCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxCallbackFaultCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -411,7 +374,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setMaxCallbackFaultCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxCallbackFaultCount = $cValue;
     }
@@ -421,7 +383,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getMaxCommandPoolCommandBuffers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxCommandPoolCommandBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -429,7 +390,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setMaxCommandPoolCommandBuffers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxCommandPoolCommandBuffers = $cValue;
     }
@@ -439,7 +399,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
      */
     public function getMaxCommandBufferSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxCommandBufferSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -447,7 +406,6 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
 
     public function setMaxCommandBufferSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxCommandBufferSize = $cValue;
     }

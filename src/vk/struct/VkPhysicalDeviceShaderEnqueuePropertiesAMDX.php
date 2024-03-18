@@ -26,8 +26,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
         null|int $executionGraphDispatchAddressAlignment = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderEnqueuePropertiesAMDX', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderEnqueuePropertiesAMDX', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxExecutionGraphDepth)) $self->setMaxExecutionGraphDepth($maxExecutionGraphDepth);
@@ -58,7 +56,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
      */
     public function getMaxExecutionGraphDepth(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxExecutionGraphDepth;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
 
     public function setMaxExecutionGraphDepth(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxExecutionGraphDepth = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
      */
     public function getMaxExecutionGraphShaderOutputNodes(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxExecutionGraphShaderOutputNodes;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
 
     public function setMaxExecutionGraphShaderOutputNodes(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxExecutionGraphShaderOutputNodes = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
      */
     public function getMaxExecutionGraphShaderPayloadSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxExecutionGraphShaderPayloadSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
 
     public function setMaxExecutionGraphShaderPayloadSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxExecutionGraphShaderPayloadSize = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
      */
     public function getMaxExecutionGraphShaderPayloadCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxExecutionGraphShaderPayloadCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
 
     public function setMaxExecutionGraphShaderPayloadCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxExecutionGraphShaderPayloadCount = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
      */
     public function getExecutionGraphDispatchAddressAlignment(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->executionGraphDispatchAddressAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
 
     public function setExecutionGraphDispatchAddressAlignment(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->executionGraphDispatchAddressAlignment = $cValue;
     }

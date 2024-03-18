@@ -21,8 +21,6 @@ final class VkMutableDescriptorTypeListEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkMutableDescriptorTypeListEXT implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pDescriptorTypes = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkMutableDescriptorTypeListEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkMutableDescriptorTypeListEXT', false));
         if(!is_null($descriptorTypeCount)) $self->setDescriptorTypeCount($descriptorTypeCount);
         if(!is_null($pDescriptorTypes)) $self->setPDescriptorTypes($pDescriptorTypes);
         return $self;
@@ -43,7 +41,6 @@ final class VkMutableDescriptorTypeListEXT implements \JsonSerializable
      */
     public function getDescriptorTypeCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorTypeCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkMutableDescriptorTypeListEXT implements \JsonSerializable
 
     public function setDescriptorTypeCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorTypeCount = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkMutableDescriptorTypeListEXT implements \JsonSerializable
      */
     public function getPDescriptorTypes(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDescriptorTypes;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkMutableDescriptorTypeListEXT implements \JsonSerializable
 
     public function setPDescriptorTypes(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDescriptorTypes = $cValue;
     }

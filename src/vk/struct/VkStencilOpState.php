@@ -26,8 +26,6 @@ final class VkStencilOpState implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkStencilOpState implements \JsonSerializable
         null|int $reference = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkStencilOpState', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkStencilOpState', false));
         if(!is_null($failOp)) $self->setFailOp($failOp);
         if(!is_null($passOp)) $self->setPassOp($passOp);
         if(!is_null($depthFailOp)) $self->setDepthFailOp($depthFailOp);
@@ -58,7 +56,6 @@ final class VkStencilOpState implements \JsonSerializable
      */
     public function getFailOp(): \iggyvolz\vulkan\enum\VkStencilOp
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->failOp;
         $phpValue = \iggyvolz\vulkan\enum\VkStencilOp::from($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkStencilOpState implements \JsonSerializable
 
     public function setFailOp(\iggyvolz\vulkan\enum\VkStencilOp $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->failOp = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkStencilOpState implements \JsonSerializable
      */
     public function getPassOp(): \iggyvolz\vulkan\enum\VkStencilOp
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->passOp;
         $phpValue = \iggyvolz\vulkan\enum\VkStencilOp::from($cValue);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkStencilOpState implements \JsonSerializable
 
     public function setPassOp(\iggyvolz\vulkan\enum\VkStencilOp $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->passOp = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkStencilOpState implements \JsonSerializable
      */
     public function getDepthFailOp(): \iggyvolz\vulkan\enum\VkStencilOp
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthFailOp;
         $phpValue = \iggyvolz\vulkan\enum\VkStencilOp::from($cValue);
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkStencilOpState implements \JsonSerializable
 
     public function setDepthFailOp(\iggyvolz\vulkan\enum\VkStencilOp $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->depthFailOp = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkStencilOpState implements \JsonSerializable
      */
     public function getCompareOp(): \iggyvolz\vulkan\enum\VkCompareOp
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->compareOp;
         $phpValue = \iggyvolz\vulkan\enum\VkCompareOp::from($cValue);
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkStencilOpState implements \JsonSerializable
 
     public function setCompareOp(\iggyvolz\vulkan\enum\VkCompareOp $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->compareOp = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkStencilOpState implements \JsonSerializable
      */
     public function getCompareMask(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->compareMask;
         $phpValue = $cValue;
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkStencilOpState implements \JsonSerializable
 
     public function setCompareMask(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->compareMask = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkStencilOpState implements \JsonSerializable
      */
     public function getWriteMask(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->writeMask;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkStencilOpState implements \JsonSerializable
 
     public function setWriteMask(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->writeMask = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkStencilOpState implements \JsonSerializable
      */
     public function getReference(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->reference;
         $phpValue = $cValue;
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkStencilOpState implements \JsonSerializable
 
     public function setReference(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->reference = $cValue;
     }

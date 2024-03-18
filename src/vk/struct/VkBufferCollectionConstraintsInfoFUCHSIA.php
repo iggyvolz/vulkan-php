@@ -26,8 +26,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
         null|int $minBufferCountForSharedSlack = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBufferCollectionConstraintsInfoFUCHSIA', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkBufferCollectionConstraintsInfoFUCHSIA', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($minBufferCount)) $self->setMinBufferCount($minBufferCount);
@@ -58,7 +56,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
      */
     public function getMinBufferCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minBufferCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
 
     public function setMinBufferCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minBufferCount = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
      */
     public function getMaxBufferCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxBufferCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
 
     public function setMaxBufferCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxBufferCount = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
      */
     public function getMinBufferCountForCamping(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minBufferCountForCamping;
         $phpValue = $cValue;
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
 
     public function setMinBufferCountForCamping(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minBufferCountForCamping = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
      */
     public function getMinBufferCountForDedicatedSlack(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minBufferCountForDedicatedSlack;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
 
     public function setMinBufferCountForDedicatedSlack(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minBufferCountForDedicatedSlack = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
      */
     public function getMinBufferCountForSharedSlack(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minBufferCountForSharedSlack;
         $phpValue = $cValue;
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkBufferCollectionConstraintsInfoFUCHSIA implements \JsonSerializabl
 
     public function setMinBufferCountForSharedSlack(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minBufferCountForSharedSlack = $cValue;
     }

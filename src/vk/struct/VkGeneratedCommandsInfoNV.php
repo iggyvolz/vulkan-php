@@ -34,8 +34,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -58,7 +56,7 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
         null|int $sequencesIndexOffset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkGeneratedCommandsInfoNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkGeneratedCommandsInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pipelineBindPoint)) $self->setPipelineBindPoint($pipelineBindPoint);
@@ -82,7 +80,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -90,7 +87,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -100,7 +96,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -108,7 +103,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -118,7 +112,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getPipelineBindPoint(): \iggyvolz\vulkan\enum\VkPipelineBindPoint
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineBindPoint;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineBindPoint::from($cValue);
         return $phpValue;
@@ -126,7 +119,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setPipelineBindPoint(\iggyvolz\vulkan\enum\VkPipelineBindPoint $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->pipelineBindPoint = $cValue;
     }
@@ -136,7 +128,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getPipeline(): VkPipeline
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipeline;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipeline($cValue, $ffi);
         return $phpValue;
@@ -144,7 +135,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setPipeline(VkPipeline $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pipeline = $cValue;
     }
@@ -154,7 +144,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getIndirectCommandsLayout(): VkIndirectCommandsLayoutNV
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indirectCommandsLayout;
         $phpValue = new \iggyvolz\vulkan\struct\VkIndirectCommandsLayoutNV($cValue, $ffi);
         return $phpValue;
@@ -162,7 +151,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setIndirectCommandsLayout(VkIndirectCommandsLayoutNV $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->indirectCommandsLayout = $cValue;
     }
@@ -172,7 +160,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getStreamCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->streamCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -180,7 +167,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setStreamCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->streamCount = $cValue;
     }
@@ -190,7 +176,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getPStreams(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pStreams;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkIndirectCommandsStreamNV', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -198,7 +183,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setPStreams(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pStreams = $cValue;
     }
@@ -208,7 +192,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getSequencesCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sequencesCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -216,7 +199,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setSequencesCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sequencesCount = $cValue;
     }
@@ -226,7 +208,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getPreprocessBuffer(): VkBuffer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preprocessBuffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -234,7 +215,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setPreprocessBuffer(VkBuffer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->preprocessBuffer = $cValue;
     }
@@ -244,7 +224,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getPreprocessOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preprocessOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -252,7 +231,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setPreprocessOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->preprocessOffset = $cValue;
     }
@@ -262,7 +240,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getPreprocessSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->preprocessSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -270,7 +247,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setPreprocessSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->preprocessSize = $cValue;
     }
@@ -280,7 +256,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getSequencesCountBuffer(): VkBuffer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sequencesCountBuffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -288,7 +263,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setSequencesCountBuffer(VkBuffer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->sequencesCountBuffer = $cValue;
     }
@@ -298,7 +272,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getSequencesCountOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sequencesCountOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -306,7 +279,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setSequencesCountOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sequencesCountOffset = $cValue;
     }
@@ -316,7 +288,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getSequencesIndexBuffer(): VkBuffer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sequencesIndexBuffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -324,7 +295,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setSequencesIndexBuffer(VkBuffer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->sequencesIndexBuffer = $cValue;
     }
@@ -334,7 +304,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
      */
     public function getSequencesIndexOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sequencesIndexOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -342,7 +311,6 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
 
     public function setSequencesIndexOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sequencesIndexOffset = $cValue;
     }

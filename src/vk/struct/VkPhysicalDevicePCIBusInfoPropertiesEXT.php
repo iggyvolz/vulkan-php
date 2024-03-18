@@ -25,8 +25,6 @@ final class VkPhysicalDevicePCIBusInfoPropertiesEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkPhysicalDevicePCIBusInfoPropertiesEXT implements \JsonSerializable
         null|int $pciFunction = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDevicePCIBusInfoPropertiesEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDevicePCIBusInfoPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pciDomain)) $self->setPciDomain($pciDomain);
@@ -55,7 +53,6 @@ final class VkPhysicalDevicePCIBusInfoPropertiesEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkPhysicalDevicePCIBusInfoPropertiesEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkPhysicalDevicePCIBusInfoPropertiesEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkPhysicalDevicePCIBusInfoPropertiesEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkPhysicalDevicePCIBusInfoPropertiesEXT implements \JsonSerializable
      */
     public function getPciDomain(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pciDomain;
         $phpValue = $cValue;
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkPhysicalDevicePCIBusInfoPropertiesEXT implements \JsonSerializable
 
     public function setPciDomain(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pciDomain = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkPhysicalDevicePCIBusInfoPropertiesEXT implements \JsonSerializable
      */
     public function getPciBus(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pciBus;
         $phpValue = $cValue;
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkPhysicalDevicePCIBusInfoPropertiesEXT implements \JsonSerializable
 
     public function setPciBus(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pciBus = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkPhysicalDevicePCIBusInfoPropertiesEXT implements \JsonSerializable
      */
     public function getPciDevice(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pciDevice;
         $phpValue = $cValue;
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkPhysicalDevicePCIBusInfoPropertiesEXT implements \JsonSerializable
 
     public function setPciDevice(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pciDevice = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkPhysicalDevicePCIBusInfoPropertiesEXT implements \JsonSerializable
      */
     public function getPciFunction(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pciFunction;
         $phpValue = $cValue;
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkPhysicalDevicePCIBusInfoPropertiesEXT implements \JsonSerializable
 
     public function setPciFunction(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pciFunction = $cValue;
     }

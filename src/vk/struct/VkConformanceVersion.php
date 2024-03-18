@@ -23,8 +23,6 @@ final class VkConformanceVersion implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkConformanceVersion implements \JsonSerializable
         null|int $patch = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkConformanceVersion', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkConformanceVersion', false));
         if(!is_null($major)) $self->setMajor($major);
         if(!is_null($minor)) $self->setMinor($minor);
         if(!is_null($subminor)) $self->setSubminor($subminor);
@@ -49,7 +47,6 @@ final class VkConformanceVersion implements \JsonSerializable
      */
     public function getMajor(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->major;
         $phpValue = $cValue;
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkConformanceVersion implements \JsonSerializable
 
     public function setMajor(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->major = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkConformanceVersion implements \JsonSerializable
      */
     public function getMinor(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minor;
         $phpValue = $cValue;
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkConformanceVersion implements \JsonSerializable
 
     public function setMinor(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minor = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkConformanceVersion implements \JsonSerializable
      */
     public function getSubminor(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subminor;
         $phpValue = $cValue;
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkConformanceVersion implements \JsonSerializable
 
     public function setSubminor(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subminor = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkConformanceVersion implements \JsonSerializable
      */
     public function getPatch(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->patch;
         $phpValue = $cValue;
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkConformanceVersion implements \JsonSerializable
 
     public function setPatch(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->patch = $cValue;
     }

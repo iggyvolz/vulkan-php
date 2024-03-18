@@ -21,8 +21,6 @@ final class VkViewportWScalingNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkViewportWScalingNV implements \JsonSerializable
         null|float $ycoeff = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkViewportWScalingNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkViewportWScalingNV', false));
         if(!is_null($xcoeff)) $self->setXcoeff($xcoeff);
         if(!is_null($ycoeff)) $self->setYcoeff($ycoeff);
         return $self;
@@ -43,7 +41,6 @@ final class VkViewportWScalingNV implements \JsonSerializable
      */
     public function getXcoeff(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->xcoeff;
         $phpValue = $cValue;
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkViewportWScalingNV implements \JsonSerializable
 
     public function setXcoeff(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->xcoeff = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkViewportWScalingNV implements \JsonSerializable
      */
     public function getYcoeff(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ycoeff;
         $phpValue = $cValue;
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkViewportWScalingNV implements \JsonSerializable
 
     public function setYcoeff(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->ycoeff = $cValue;
     }

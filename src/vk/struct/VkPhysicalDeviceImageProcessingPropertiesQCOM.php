@@ -25,8 +25,6 @@ final class VkPhysicalDeviceImageProcessingPropertiesQCOM implements \JsonSerial
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkPhysicalDeviceImageProcessingPropertiesQCOM implements \JsonSerial
         null|VkExtent2D $maxBoxFilterBlockSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceImageProcessingPropertiesQCOM', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceImageProcessingPropertiesQCOM', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxWeightFilterPhases)) $self->setMaxWeightFilterPhases($maxWeightFilterPhases);
@@ -55,7 +53,6 @@ final class VkPhysicalDeviceImageProcessingPropertiesQCOM implements \JsonSerial
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkPhysicalDeviceImageProcessingPropertiesQCOM implements \JsonSerial
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkPhysicalDeviceImageProcessingPropertiesQCOM implements \JsonSerial
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkPhysicalDeviceImageProcessingPropertiesQCOM implements \JsonSerial
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkPhysicalDeviceImageProcessingPropertiesQCOM implements \JsonSerial
      */
     public function getMaxWeightFilterPhases(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxWeightFilterPhases;
         $phpValue = $cValue;
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkPhysicalDeviceImageProcessingPropertiesQCOM implements \JsonSerial
 
     public function setMaxWeightFilterPhases(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxWeightFilterPhases = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkPhysicalDeviceImageProcessingPropertiesQCOM implements \JsonSerial
      */
     public function getMaxWeightFilterDimension(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxWeightFilterDimension;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkPhysicalDeviceImageProcessingPropertiesQCOM implements \JsonSerial
 
     public function setMaxWeightFilterDimension(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxWeightFilterDimension = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkPhysicalDeviceImageProcessingPropertiesQCOM implements \JsonSerial
      */
     public function getMaxBlockMatchRegion(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxBlockMatchRegion;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkPhysicalDeviceImageProcessingPropertiesQCOM implements \JsonSerial
 
     public function setMaxBlockMatchRegion(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxBlockMatchRegion = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkPhysicalDeviceImageProcessingPropertiesQCOM implements \JsonSerial
      */
     public function getMaxBoxFilterBlockSize(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxBoxFilterBlockSize;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkPhysicalDeviceImageProcessingPropertiesQCOM implements \JsonSerial
 
     public function setMaxBoxFilterBlockSize(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxBoxFilterBlockSize = $cValue;
     }

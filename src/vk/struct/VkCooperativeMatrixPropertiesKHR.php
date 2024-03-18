@@ -30,8 +30,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -50,7 +48,7 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkScopeKHR $scope = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCooperativeMatrixPropertiesKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkCooperativeMatrixPropertiesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($MSize)) $self->setMSize($MSize);
@@ -70,7 +68,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -78,7 +75,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -88,7 +84,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -96,7 +91,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -106,7 +100,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
      */
     public function getMSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->MSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +107,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
 
     public function setMSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->MSize = $cValue;
     }
@@ -124,7 +116,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
      */
     public function getNSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->NSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +123,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
 
     public function setNSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->NSize = $cValue;
     }
@@ -142,7 +132,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
      */
     public function getKSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->KSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -150,7 +139,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
 
     public function setKSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->KSize = $cValue;
     }
@@ -160,7 +148,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
      */
     public function getAType(): \iggyvolz\vulkan\enum\VkComponentTypeKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->AType;
         $phpValue = \iggyvolz\vulkan\enum\VkComponentTypeKHR::from($cValue);
         return $phpValue;
@@ -168,7 +155,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
 
     public function setAType(\iggyvolz\vulkan\enum\VkComponentTypeKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->AType = $cValue;
     }
@@ -178,7 +164,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
      */
     public function getBType(): \iggyvolz\vulkan\enum\VkComponentTypeKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->BType;
         $phpValue = \iggyvolz\vulkan\enum\VkComponentTypeKHR::from($cValue);
         return $phpValue;
@@ -186,7 +171,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
 
     public function setBType(\iggyvolz\vulkan\enum\VkComponentTypeKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->BType = $cValue;
     }
@@ -196,7 +180,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
      */
     public function getCType(): \iggyvolz\vulkan\enum\VkComponentTypeKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->CType;
         $phpValue = \iggyvolz\vulkan\enum\VkComponentTypeKHR::from($cValue);
         return $phpValue;
@@ -204,7 +187,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
 
     public function setCType(\iggyvolz\vulkan\enum\VkComponentTypeKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->CType = $cValue;
     }
@@ -214,7 +196,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
      */
     public function getResultType(): \iggyvolz\vulkan\enum\VkComponentTypeKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ResultType;
         $phpValue = \iggyvolz\vulkan\enum\VkComponentTypeKHR::from($cValue);
         return $phpValue;
@@ -222,7 +203,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
 
     public function setResultType(\iggyvolz\vulkan\enum\VkComponentTypeKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->ResultType = $cValue;
     }
@@ -232,7 +212,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
      */
     public function getSaturatingAccumulation(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->saturatingAccumulation;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -240,7 +219,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
 
     public function setSaturatingAccumulation(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->saturatingAccumulation = $cValue;
     }
@@ -250,7 +228,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
      */
     public function getScope(): \iggyvolz\vulkan\enum\VkScopeKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->scope;
         $phpValue = \iggyvolz\vulkan\enum\VkScopeKHR::from($cValue);
         return $phpValue;
@@ -258,7 +235,6 @@ final class VkCooperativeMatrixPropertiesKHR implements \JsonSerializable
 
     public function setScope(\iggyvolz\vulkan\enum\VkScopeKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->scope = $cValue;
     }

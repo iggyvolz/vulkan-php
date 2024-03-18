@@ -23,8 +23,6 @@ final class VkSpecializationInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkSpecializationInfo implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pData = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSpecializationInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkSpecializationInfo', false));
         if(!is_null($mapEntryCount)) $self->setMapEntryCount($mapEntryCount);
         if(!is_null($pMapEntries)) $self->setPMapEntries($pMapEntries);
         if(!is_null($dataSize)) $self->setDataSize($dataSize);
@@ -49,7 +47,6 @@ final class VkSpecializationInfo implements \JsonSerializable
      */
     public function getMapEntryCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mapEntryCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkSpecializationInfo implements \JsonSerializable
 
     public function setMapEntryCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->mapEntryCount = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkSpecializationInfo implements \JsonSerializable
      */
     public function getPMapEntries(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pMapEntries;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSpecializationMapEntry', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkSpecializationInfo implements \JsonSerializable
 
     public function setPMapEntries(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pMapEntries = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkSpecializationInfo implements \JsonSerializable
      */
     public function getDataSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dataSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkSpecializationInfo implements \JsonSerializable
 
     public function setDataSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dataSize = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkSpecializationInfo implements \JsonSerializable
      */
     public function getPData(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pData;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkSpecializationInfo implements \JsonSerializable
 
     public function setPData(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pData = $cValue;
     }

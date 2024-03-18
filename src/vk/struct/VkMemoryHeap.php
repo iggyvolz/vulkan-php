@@ -21,8 +21,6 @@ final class VkMemoryHeap implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkMemoryHeap implements \JsonSerializable
         null|array $flags = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkMemoryHeap', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkMemoryHeap', false));
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($flags)) $self->setFlags($flags);
         return $self;
@@ -43,7 +41,6 @@ final class VkMemoryHeap implements \JsonSerializable
      */
     public function getSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkMemoryHeap implements \JsonSerializable
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkMemoryHeap implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkMemoryHeapFlagBits::fromInt($cValue);
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkMemoryHeap implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkMemoryHeapFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }

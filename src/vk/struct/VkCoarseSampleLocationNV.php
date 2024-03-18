@@ -22,8 +22,6 @@ final class VkCoarseSampleLocationNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkCoarseSampleLocationNV implements \JsonSerializable
         null|int $sample = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCoarseSampleLocationNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkCoarseSampleLocationNV', false));
         if(!is_null($pixelX)) $self->setPixelX($pixelX);
         if(!is_null($pixelY)) $self->setPixelY($pixelY);
         if(!is_null($sample)) $self->setSample($sample);
@@ -46,7 +44,6 @@ final class VkCoarseSampleLocationNV implements \JsonSerializable
      */
     public function getPixelX(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pixelX;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkCoarseSampleLocationNV implements \JsonSerializable
 
     public function setPixelX(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pixelX = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkCoarseSampleLocationNV implements \JsonSerializable
      */
     public function getPixelY(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pixelY;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkCoarseSampleLocationNV implements \JsonSerializable
 
     public function setPixelY(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pixelY = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkCoarseSampleLocationNV implements \JsonSerializable
      */
     public function getSample(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sample;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkCoarseSampleLocationNV implements \JsonSerializable
 
     public function setSample(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sample = $cValue;
     }

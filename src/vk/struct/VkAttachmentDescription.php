@@ -28,8 +28,6 @@ final class VkAttachmentDescription implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -46,7 +44,7 @@ final class VkAttachmentDescription implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkImageLayout $finalLayout = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAttachmentDescription', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkAttachmentDescription', false));
         if(!is_null($flags)) $self->setFlags($flags);
         if(!is_null($format)) $self->setFormat($format);
         if(!is_null($samples)) $self->setSamples($samples);
@@ -64,7 +62,6 @@ final class VkAttachmentDescription implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkAttachmentDescriptionFlagBits::fromInt($cValue);
         return $phpValue;
@@ -72,7 +69,6 @@ final class VkAttachmentDescription implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkAttachmentDescriptionFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -82,7 +78,6 @@ final class VkAttachmentDescription implements \JsonSerializable
      */
     public function getFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -90,7 +85,6 @@ final class VkAttachmentDescription implements \JsonSerializable
 
     public function setFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->format = $cValue;
     }
@@ -100,7 +94,6 @@ final class VkAttachmentDescription implements \JsonSerializable
      */
     public function getSamples(): \iggyvolz\vulkan\enum\VkSampleCountFlagBits
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samples;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::from($cValue);
         return $phpValue;
@@ -108,7 +101,6 @@ final class VkAttachmentDescription implements \JsonSerializable
 
     public function setSamples(\iggyvolz\vulkan\enum\VkSampleCountFlagBits $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->samples = $cValue;
     }
@@ -118,7 +110,6 @@ final class VkAttachmentDescription implements \JsonSerializable
      */
     public function getLoadOp(): \iggyvolz\vulkan\enum\VkAttachmentLoadOp
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->loadOp;
         $phpValue = \iggyvolz\vulkan\enum\VkAttachmentLoadOp::from($cValue);
         return $phpValue;
@@ -126,7 +117,6 @@ final class VkAttachmentDescription implements \JsonSerializable
 
     public function setLoadOp(\iggyvolz\vulkan\enum\VkAttachmentLoadOp $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->loadOp = $cValue;
     }
@@ -136,7 +126,6 @@ final class VkAttachmentDescription implements \JsonSerializable
      */
     public function getStoreOp(): \iggyvolz\vulkan\enum\VkAttachmentStoreOp
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storeOp;
         $phpValue = \iggyvolz\vulkan\enum\VkAttachmentStoreOp::from($cValue);
         return $phpValue;
@@ -144,7 +133,6 @@ final class VkAttachmentDescription implements \JsonSerializable
 
     public function setStoreOp(\iggyvolz\vulkan\enum\VkAttachmentStoreOp $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->storeOp = $cValue;
     }
@@ -154,7 +142,6 @@ final class VkAttachmentDescription implements \JsonSerializable
      */
     public function getStencilLoadOp(): \iggyvolz\vulkan\enum\VkAttachmentLoadOp
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stencilLoadOp;
         $phpValue = \iggyvolz\vulkan\enum\VkAttachmentLoadOp::from($cValue);
         return $phpValue;
@@ -162,7 +149,6 @@ final class VkAttachmentDescription implements \JsonSerializable
 
     public function setStencilLoadOp(\iggyvolz\vulkan\enum\VkAttachmentLoadOp $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->stencilLoadOp = $cValue;
     }
@@ -172,7 +158,6 @@ final class VkAttachmentDescription implements \JsonSerializable
      */
     public function getStencilStoreOp(): \iggyvolz\vulkan\enum\VkAttachmentStoreOp
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stencilStoreOp;
         $phpValue = \iggyvolz\vulkan\enum\VkAttachmentStoreOp::from($cValue);
         return $phpValue;
@@ -180,7 +165,6 @@ final class VkAttachmentDescription implements \JsonSerializable
 
     public function setStencilStoreOp(\iggyvolz\vulkan\enum\VkAttachmentStoreOp $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->stencilStoreOp = $cValue;
     }
@@ -190,7 +174,6 @@ final class VkAttachmentDescription implements \JsonSerializable
      */
     public function getInitialLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->initialLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -198,7 +181,6 @@ final class VkAttachmentDescription implements \JsonSerializable
 
     public function setInitialLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->initialLayout = $cValue;
     }
@@ -208,7 +190,6 @@ final class VkAttachmentDescription implements \JsonSerializable
      */
     public function getFinalLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->finalLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -216,7 +197,6 @@ final class VkAttachmentDescription implements \JsonSerializable
 
     public function setFinalLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->finalLayout = $cValue;
     }

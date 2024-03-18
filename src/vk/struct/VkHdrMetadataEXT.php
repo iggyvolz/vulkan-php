@@ -29,8 +29,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -48,7 +46,7 @@ final class VkHdrMetadataEXT implements \JsonSerializable
         null|float $maxFrameAverageLightLevel = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkHdrMetadataEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkHdrMetadataEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($displayPrimaryRed)) $self->setDisplayPrimaryRed($displayPrimaryRed);
@@ -67,7 +65,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -75,7 +72,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -85,7 +81,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -93,7 +88,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -103,7 +97,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
      */
     public function getDisplayPrimaryRed(): VkXYColorEXT
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->displayPrimaryRed;
         $phpValue = new \iggyvolz\vulkan\struct\VkXYColorEXT($cValue, $ffi);
         return $phpValue;
@@ -111,7 +104,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
 
     public function setDisplayPrimaryRed(VkXYColorEXT $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->displayPrimaryRed = $cValue;
     }
@@ -121,7 +113,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
      */
     public function getDisplayPrimaryGreen(): VkXYColorEXT
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->displayPrimaryGreen;
         $phpValue = new \iggyvolz\vulkan\struct\VkXYColorEXT($cValue, $ffi);
         return $phpValue;
@@ -129,7 +120,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
 
     public function setDisplayPrimaryGreen(VkXYColorEXT $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->displayPrimaryGreen = $cValue;
     }
@@ -139,7 +129,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
      */
     public function getDisplayPrimaryBlue(): VkXYColorEXT
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->displayPrimaryBlue;
         $phpValue = new \iggyvolz\vulkan\struct\VkXYColorEXT($cValue, $ffi);
         return $phpValue;
@@ -147,7 +136,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
 
     public function setDisplayPrimaryBlue(VkXYColorEXT $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->displayPrimaryBlue = $cValue;
     }
@@ -157,7 +145,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
      */
     public function getWhitePoint(): VkXYColorEXT
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->whitePoint;
         $phpValue = new \iggyvolz\vulkan\struct\VkXYColorEXT($cValue, $ffi);
         return $phpValue;
@@ -165,7 +152,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
 
     public function setWhitePoint(VkXYColorEXT $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->whitePoint = $cValue;
     }
@@ -175,7 +161,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
      */
     public function getMaxLuminance(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxLuminance;
         $phpValue = $cValue;
         return $phpValue;
@@ -183,7 +168,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
 
     public function setMaxLuminance(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxLuminance = $cValue;
     }
@@ -193,7 +177,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
      */
     public function getMinLuminance(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minLuminance;
         $phpValue = $cValue;
         return $phpValue;
@@ -201,7 +184,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
 
     public function setMinLuminance(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minLuminance = $cValue;
     }
@@ -211,7 +193,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
      */
     public function getMaxContentLightLevel(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxContentLightLevel;
         $phpValue = $cValue;
         return $phpValue;
@@ -219,7 +200,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
 
     public function setMaxContentLightLevel(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxContentLightLevel = $cValue;
     }
@@ -229,7 +209,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
      */
     public function getMaxFrameAverageLightLevel(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFrameAverageLightLevel;
         $phpValue = $cValue;
         return $phpValue;
@@ -237,7 +216,6 @@ final class VkHdrMetadataEXT implements \JsonSerializable
 
     public function setMaxFrameAverageLightLevel(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFrameAverageLightLevel = $cValue;
     }

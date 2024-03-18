@@ -21,8 +21,6 @@ final class VkRect2D implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkRect2D implements \JsonSerializable
         null|VkExtent2D $extent = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkRect2D', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkRect2D', false));
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($extent)) $self->setExtent($extent);
         return $self;
@@ -43,7 +41,6 @@ final class VkRect2D implements \JsonSerializable
      */
     public function getOffset(): VkOffset2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset2D($cValue, $ffi);
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkRect2D implements \JsonSerializable
 
     public function setOffset(VkOffset2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->offset = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkRect2D implements \JsonSerializable
      */
     public function getExtent(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkRect2D implements \JsonSerializable
 
     public function setExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->extent = $cValue;
     }

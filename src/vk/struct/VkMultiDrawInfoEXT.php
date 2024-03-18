@@ -21,8 +21,6 @@ final class VkMultiDrawInfoEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkMultiDrawInfoEXT implements \JsonSerializable
         null|int $vertexCount = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkMultiDrawInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkMultiDrawInfoEXT', false));
         if(!is_null($firstVertex)) $self->setFirstVertex($firstVertex);
         if(!is_null($vertexCount)) $self->setVertexCount($vertexCount);
         return $self;
@@ -43,7 +41,6 @@ final class VkMultiDrawInfoEXT implements \JsonSerializable
      */
     public function getFirstVertex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->firstVertex;
         $phpValue = $cValue;
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkMultiDrawInfoEXT implements \JsonSerializable
 
     public function setFirstVertex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->firstVertex = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkMultiDrawInfoEXT implements \JsonSerializable
      */
     public function getVertexCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkMultiDrawInfoEXT implements \JsonSerializable
 
     public function setVertexCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexCount = $cValue;
     }

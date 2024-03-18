@@ -22,8 +22,6 @@ final class VkDescriptorSetVariableDescriptorCountLayoutSupport implements \Json
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkDescriptorSetVariableDescriptorCountLayoutSupport implements \Json
         null|int $maxVariableDescriptorCount = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorSetVariableDescriptorCountLayoutSupport', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDescriptorSetVariableDescriptorCountLayoutSupport', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxVariableDescriptorCount)) $self->setMaxVariableDescriptorCount($maxVariableDescriptorCount);
@@ -46,7 +44,6 @@ final class VkDescriptorSetVariableDescriptorCountLayoutSupport implements \Json
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkDescriptorSetVariableDescriptorCountLayoutSupport implements \Json
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkDescriptorSetVariableDescriptorCountLayoutSupport implements \Json
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkDescriptorSetVariableDescriptorCountLayoutSupport implements \Json
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkDescriptorSetVariableDescriptorCountLayoutSupport implements \Json
      */
     public function getMaxVariableDescriptorCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxVariableDescriptorCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkDescriptorSetVariableDescriptorCountLayoutSupport implements \Json
 
     public function setMaxVariableDescriptorCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxVariableDescriptorCount = $cValue;
     }

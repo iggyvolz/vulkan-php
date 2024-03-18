@@ -22,8 +22,6 @@ final class VkBindVertexBufferIndirectCommandNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkBindVertexBufferIndirectCommandNV implements \JsonSerializable
         null|int $stride = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBindVertexBufferIndirectCommandNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkBindVertexBufferIndirectCommandNV', false));
         if(!is_null($bufferAddress)) $self->setBufferAddress($bufferAddress);
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($stride)) $self->setStride($stride);
@@ -46,7 +44,6 @@ final class VkBindVertexBufferIndirectCommandNV implements \JsonSerializable
      */
     public function getBufferAddress(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkBindVertexBufferIndirectCommandNV implements \JsonSerializable
 
     public function setBufferAddress(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferAddress = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkBindVertexBufferIndirectCommandNV implements \JsonSerializable
      */
     public function getSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkBindVertexBufferIndirectCommandNV implements \JsonSerializable
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkBindVertexBufferIndirectCommandNV implements \JsonSerializable
      */
     public function getStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stride;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkBindVertexBufferIndirectCommandNV implements \JsonSerializable
 
     public function setStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stride = $cValue;
     }

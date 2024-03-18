@@ -23,8 +23,6 @@ final class VkPhysicalDeviceMemoryProperties implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkPhysicalDeviceMemoryProperties implements \JsonSerializable
         mixed $memoryHeaps = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMemoryProperties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMemoryProperties', false));
         if(!is_null($memoryTypeCount)) $self->setMemoryTypeCount($memoryTypeCount);
         if(!is_null($memoryTypes)) $self->setMemoryTypes($memoryTypes);
         if(!is_null($memoryHeapCount)) $self->setMemoryHeapCount($memoryHeapCount);
@@ -49,7 +47,6 @@ final class VkPhysicalDeviceMemoryProperties implements \JsonSerializable
      */
     public function getMemoryTypeCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryTypeCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkPhysicalDeviceMemoryProperties implements \JsonSerializable
 
     public function setMemoryTypeCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->memoryTypeCount = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkPhysicalDeviceMemoryProperties implements \JsonSerializable
      */
     public function getMemoryTypes(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryTypes;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkPhysicalDeviceMemoryProperties implements \JsonSerializable
 
     public function setMemoryTypes(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->memoryTypes = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkPhysicalDeviceMemoryProperties implements \JsonSerializable
      */
     public function getMemoryHeapCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryHeapCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkPhysicalDeviceMemoryProperties implements \JsonSerializable
 
     public function setMemoryHeapCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->memoryHeapCount = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkPhysicalDeviceMemoryProperties implements \JsonSerializable
      */
     public function getMemoryHeaps(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryHeaps;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkPhysicalDeviceMemoryProperties implements \JsonSerializable
 
     public function setMemoryHeaps(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->memoryHeaps = $cValue;
     }

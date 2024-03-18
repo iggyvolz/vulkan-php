@@ -22,8 +22,6 @@ final class VkClearAttachment implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkClearAttachment implements \JsonSerializable
         mixed $clearValue = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkClearAttachment', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkClearAttachment', false));
         if(!is_null($aspectMask)) $self->setAspectMask($aspectMask);
         if(!is_null($colorAttachment)) $self->setColorAttachment($colorAttachment);
         if(!is_null($clearValue)) $self->setClearValue($clearValue);
@@ -46,7 +44,6 @@ final class VkClearAttachment implements \JsonSerializable
      */
     public function getAspectMask(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->aspectMask;
         $phpValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::fromInt($cValue);
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkClearAttachment implements \JsonSerializable
 
     public function setAspectMask(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::toInt(...$phpValue);
         $this->cdata->aspectMask = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkClearAttachment implements \JsonSerializable
      */
     public function getColorAttachment(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->colorAttachment;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkClearAttachment implements \JsonSerializable
 
     public function setColorAttachment(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->colorAttachment = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkClearAttachment implements \JsonSerializable
      */
     public function getClearValue(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->clearValue;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkClearAttachment implements \JsonSerializable
 
     public function setClearValue(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->clearValue = $cValue;
     }

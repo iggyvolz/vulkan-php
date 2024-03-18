@@ -19,14 +19,12 @@ final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM implem
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM', false));
         return $self;
     }
 }

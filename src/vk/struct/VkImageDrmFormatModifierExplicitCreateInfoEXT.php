@@ -24,8 +24,6 @@ final class VkImageDrmFormatModifierExplicitCreateInfoEXT implements \JsonSerial
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkImageDrmFormatModifierExplicitCreateInfoEXT implements \JsonSerial
         null|\iggyvolz\vulkan\util\ObjectPointer $pPlaneLayouts = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageDrmFormatModifierExplicitCreateInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkImageDrmFormatModifierExplicitCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($drmFormatModifier)) $self->setDrmFormatModifier($drmFormatModifier);
@@ -52,7 +50,6 @@ final class VkImageDrmFormatModifierExplicitCreateInfoEXT implements \JsonSerial
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkImageDrmFormatModifierExplicitCreateInfoEXT implements \JsonSerial
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkImageDrmFormatModifierExplicitCreateInfoEXT implements \JsonSerial
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkImageDrmFormatModifierExplicitCreateInfoEXT implements \JsonSerial
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkImageDrmFormatModifierExplicitCreateInfoEXT implements \JsonSerial
      */
     public function getDrmFormatModifier(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->drmFormatModifier;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkImageDrmFormatModifierExplicitCreateInfoEXT implements \JsonSerial
 
     public function setDrmFormatModifier(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->drmFormatModifier = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkImageDrmFormatModifierExplicitCreateInfoEXT implements \JsonSerial
      */
     public function getDrmFormatModifierPlaneCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->drmFormatModifierPlaneCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkImageDrmFormatModifierExplicitCreateInfoEXT implements \JsonSerial
 
     public function setDrmFormatModifierPlaneCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->drmFormatModifierPlaneCount = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkImageDrmFormatModifierExplicitCreateInfoEXT implements \JsonSerial
      */
     public function getPPlaneLayouts(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pPlaneLayouts;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSubresourceLayout', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkImageDrmFormatModifierExplicitCreateInfoEXT implements \JsonSerial
 
     public function setPPlaneLayouts(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pPlaneLayouts = $cValue;
     }

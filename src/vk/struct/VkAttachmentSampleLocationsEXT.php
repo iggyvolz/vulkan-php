@@ -21,8 +21,6 @@ final class VkAttachmentSampleLocationsEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkAttachmentSampleLocationsEXT implements \JsonSerializable
         null|VkSampleLocationsInfoEXT $sampleLocationsInfo = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAttachmentSampleLocationsEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkAttachmentSampleLocationsEXT', false));
         if(!is_null($attachmentIndex)) $self->setAttachmentIndex($attachmentIndex);
         if(!is_null($sampleLocationsInfo)) $self->setSampleLocationsInfo($sampleLocationsInfo);
         return $self;
@@ -43,7 +41,6 @@ final class VkAttachmentSampleLocationsEXT implements \JsonSerializable
      */
     public function getAttachmentIndex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->attachmentIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkAttachmentSampleLocationsEXT implements \JsonSerializable
 
     public function setAttachmentIndex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->attachmentIndex = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkAttachmentSampleLocationsEXT implements \JsonSerializable
      */
     public function getSampleLocationsInfo(): VkSampleLocationsInfoEXT
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampleLocationsInfo;
         $phpValue = new \iggyvolz\vulkan\struct\VkSampleLocationsInfoEXT($cValue, $ffi);
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkAttachmentSampleLocationsEXT implements \JsonSerializable
 
     public function setSampleLocationsInfo(VkSampleLocationsInfoEXT $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->sampleLocationsInfo = $cValue;
     }

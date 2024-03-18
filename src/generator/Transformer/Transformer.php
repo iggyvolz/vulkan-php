@@ -45,7 +45,7 @@ abstract readonly class Transformer
             "size_t" => new PassThroughTransformer("int", "size_t"),
             "uint32_t :24" => new PassThroughTransformer("int", "uint32_t", ":24"),
             "uint32_t :8" => new PassThroughTransformer("int", "uint32_t", ":8"),
-            "uint8_t[VK_UUID_SIZE]" => new UuidTransformer(),
+            "uint8_t[VK_UUID_SIZE]" => new FixedLengthStringTransformer(16),
             "char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]",
             "char[VK_MAX_EXTENSION_NAME_SIZE]",
             "char[VK_MAX_DESCRIPTION_SIZE]",

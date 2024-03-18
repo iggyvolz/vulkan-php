@@ -22,8 +22,6 @@ final class VkImageSubresource implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkImageSubresource implements \JsonSerializable
         null|int $arrayLayer = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageSubresource', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkImageSubresource', false));
         if(!is_null($aspectMask)) $self->setAspectMask($aspectMask);
         if(!is_null($mipLevel)) $self->setMipLevel($mipLevel);
         if(!is_null($arrayLayer)) $self->setArrayLayer($arrayLayer);
@@ -46,7 +44,6 @@ final class VkImageSubresource implements \JsonSerializable
      */
     public function getAspectMask(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->aspectMask;
         $phpValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::fromInt($cValue);
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkImageSubresource implements \JsonSerializable
 
     public function setAspectMask(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::toInt(...$phpValue);
         $this->cdata->aspectMask = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkImageSubresource implements \JsonSerializable
      */
     public function getMipLevel(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mipLevel;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkImageSubresource implements \JsonSerializable
 
     public function setMipLevel(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->mipLevel = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkImageSubresource implements \JsonSerializable
      */
     public function getArrayLayer(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->arrayLayer;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkImageSubresource implements \JsonSerializable
 
     public function setArrayLayer(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->arrayLayer = $cValue;
     }

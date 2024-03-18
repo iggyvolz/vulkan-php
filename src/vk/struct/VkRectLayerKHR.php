@@ -22,8 +22,6 @@ final class VkRectLayerKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkRectLayerKHR implements \JsonSerializable
         null|int $layer = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkRectLayerKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkRectLayerKHR', false));
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($extent)) $self->setExtent($extent);
         if(!is_null($layer)) $self->setLayer($layer);
@@ -46,7 +44,6 @@ final class VkRectLayerKHR implements \JsonSerializable
      */
     public function getOffset(): VkOffset2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset2D($cValue, $ffi);
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkRectLayerKHR implements \JsonSerializable
 
     public function setOffset(VkOffset2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->offset = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkRectLayerKHR implements \JsonSerializable
      */
     public function getExtent(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkRectLayerKHR implements \JsonSerializable
 
     public function setExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->extent = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkRectLayerKHR implements \JsonSerializable
      */
     public function getLayer(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layer;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkRectLayerKHR implements \JsonSerializable
 
     public function setLayer(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->layer = $cValue;
     }

@@ -21,8 +21,6 @@ final class VkPipelineCacheStageValidationIndexEntry implements \JsonSerializabl
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkPipelineCacheStageValidationIndexEntry implements \JsonSerializabl
         null|int $codeOffset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineCacheStageValidationIndexEntry', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPipelineCacheStageValidationIndexEntry', false));
         if(!is_null($codeSize)) $self->setCodeSize($codeSize);
         if(!is_null($codeOffset)) $self->setCodeOffset($codeOffset);
         return $self;
@@ -43,7 +41,6 @@ final class VkPipelineCacheStageValidationIndexEntry implements \JsonSerializabl
      */
     public function getCodeSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->codeSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkPipelineCacheStageValidationIndexEntry implements \JsonSerializabl
 
     public function setCodeSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->codeSize = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkPipelineCacheStageValidationIndexEntry implements \JsonSerializabl
      */
     public function getCodeOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->codeOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkPipelineCacheStageValidationIndexEntry implements \JsonSerializabl
 
     public function setCodeOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->codeOffset = $cValue;
     }

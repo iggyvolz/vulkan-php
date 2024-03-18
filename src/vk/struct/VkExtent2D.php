@@ -21,8 +21,6 @@ final class VkExtent2D implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkExtent2D implements \JsonSerializable
         null|int $height = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkExtent2D', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkExtent2D', false));
         if(!is_null($width)) $self->setWidth($width);
         if(!is_null($height)) $self->setHeight($height);
         return $self;
@@ -43,7 +41,6 @@ final class VkExtent2D implements \JsonSerializable
      */
     public function getWidth(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->width;
         $phpValue = $cValue;
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkExtent2D implements \JsonSerializable
 
     public function setWidth(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->width = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkExtent2D implements \JsonSerializable
      */
     public function getHeight(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->height;
         $phpValue = $cValue;
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkExtent2D implements \JsonSerializable
 
     public function setHeight(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->height = $cValue;
     }

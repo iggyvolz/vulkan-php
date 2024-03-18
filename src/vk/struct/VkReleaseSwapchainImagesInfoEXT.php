@@ -24,8 +24,6 @@ final class VkReleaseSwapchainImagesInfoEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkReleaseSwapchainImagesInfoEXT implements \JsonSerializable
         null|\iggyvolz\vulkan\util\IntPointer $pImageIndices = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkReleaseSwapchainImagesInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkReleaseSwapchainImagesInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($swapchain)) $self->setSwapchain($swapchain);
@@ -52,7 +50,6 @@ final class VkReleaseSwapchainImagesInfoEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkReleaseSwapchainImagesInfoEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkReleaseSwapchainImagesInfoEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkReleaseSwapchainImagesInfoEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkReleaseSwapchainImagesInfoEXT implements \JsonSerializable
      */
     public function getSwapchain(): VkSwapchainKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->swapchain;
         $phpValue = new \iggyvolz\vulkan\struct\VkSwapchainKHR($cValue, $ffi);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkReleaseSwapchainImagesInfoEXT implements \JsonSerializable
 
     public function setSwapchain(VkSwapchainKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->swapchain = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkReleaseSwapchainImagesInfoEXT implements \JsonSerializable
      */
     public function getImageIndexCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageIndexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkReleaseSwapchainImagesInfoEXT implements \JsonSerializable
 
     public function setImageIndexCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageIndexCount = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkReleaseSwapchainImagesInfoEXT implements \JsonSerializable
      */
     public function getPImageIndices(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pImageIndices;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkReleaseSwapchainImagesInfoEXT implements \JsonSerializable
 
     public function setPImageIndices(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pImageIndices = $cValue;
     }

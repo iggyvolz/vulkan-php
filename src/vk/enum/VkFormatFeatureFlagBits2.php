@@ -45,6 +45,7 @@ enum VkFormatFeatureFlagBits2: int
     case HostImageTransferBitExt = 46;
     case VideoEncodeInputBitKhr = 27;
     case VideoEncodeDpbBitKhr = 28;
+    case Reserved51BitExt = 51;
     case LinearColorAttachmentBitNv = 38;
     case WeightImageBitQcom = 34;
     case WeightSampledImageBitQcom = 35;
@@ -56,4 +57,6 @@ enum VkFormatFeatureFlagBits2: int
     case OpticalFlowVectorBitNv = 41;
     case OpticalFlowCostBitNv = 42;
     case Reserved48BitExt = 48;
+    case Reserved49BitKhr = 49;
+    case Reserved50BitKhr = 50;
 }

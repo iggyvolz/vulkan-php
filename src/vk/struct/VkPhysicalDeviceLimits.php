@@ -125,8 +125,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -240,7 +238,7 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
         null|int $nonCoherentAtomSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceLimits', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceLimits', false));
         if(!is_null($maxImageDimension1D)) $self->setMaxImageDimension1D($maxImageDimension1D);
         if(!is_null($maxImageDimension2D)) $self->setMaxImageDimension2D($maxImageDimension2D);
         if(!is_null($maxImageDimension3D)) $self->setMaxImageDimension3D($maxImageDimension3D);
@@ -355,7 +353,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxImageDimension1D(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageDimension1D;
         $phpValue = $cValue;
         return $phpValue;
@@ -363,7 +360,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxImageDimension1D(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageDimension1D = $cValue;
     }
@@ -373,7 +369,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxImageDimension2D(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageDimension2D;
         $phpValue = $cValue;
         return $phpValue;
@@ -381,7 +376,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxImageDimension2D(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageDimension2D = $cValue;
     }
@@ -391,7 +385,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxImageDimension3D(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageDimension3D;
         $phpValue = $cValue;
         return $phpValue;
@@ -399,7 +392,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxImageDimension3D(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageDimension3D = $cValue;
     }
@@ -409,7 +401,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxImageDimensionCube(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageDimensionCube;
         $phpValue = $cValue;
         return $phpValue;
@@ -417,7 +408,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxImageDimensionCube(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageDimensionCube = $cValue;
     }
@@ -427,7 +417,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxImageArrayLayers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageArrayLayers;
         $phpValue = $cValue;
         return $phpValue;
@@ -435,7 +424,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxImageArrayLayers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageArrayLayers = $cValue;
     }
@@ -445,7 +433,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxTexelBufferElements(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTexelBufferElements;
         $phpValue = $cValue;
         return $phpValue;
@@ -453,7 +440,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxTexelBufferElements(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTexelBufferElements = $cValue;
     }
@@ -463,7 +449,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxUniformBufferRange(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxUniformBufferRange;
         $phpValue = $cValue;
         return $phpValue;
@@ -471,7 +456,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxUniformBufferRange(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxUniformBufferRange = $cValue;
     }
@@ -481,7 +465,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxStorageBufferRange(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxStorageBufferRange;
         $phpValue = $cValue;
         return $phpValue;
@@ -489,7 +472,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxStorageBufferRange(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxStorageBufferRange = $cValue;
     }
@@ -499,7 +481,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxPushConstantsSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPushConstantsSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -507,7 +488,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxPushConstantsSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPushConstantsSize = $cValue;
     }
@@ -517,7 +497,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxMemoryAllocationCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMemoryAllocationCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -525,7 +504,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxMemoryAllocationCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMemoryAllocationCount = $cValue;
     }
@@ -535,7 +513,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxSamplerAllocationCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSamplerAllocationCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -543,7 +520,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxSamplerAllocationCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSamplerAllocationCount = $cValue;
     }
@@ -553,7 +529,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getBufferImageGranularity(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferImageGranularity;
         $phpValue = $cValue;
         return $phpValue;
@@ -561,7 +536,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setBufferImageGranularity(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferImageGranularity = $cValue;
     }
@@ -571,7 +545,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getSparseAddressSpaceSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sparseAddressSpaceSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -579,7 +552,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setSparseAddressSpaceSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sparseAddressSpaceSize = $cValue;
     }
@@ -589,7 +561,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxBoundDescriptorSets(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxBoundDescriptorSets;
         $phpValue = $cValue;
         return $phpValue;
@@ -597,7 +568,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxBoundDescriptorSets(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxBoundDescriptorSets = $cValue;
     }
@@ -607,7 +577,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxPerStageDescriptorSamplers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorSamplers;
         $phpValue = $cValue;
         return $phpValue;
@@ -615,7 +584,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxPerStageDescriptorSamplers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorSamplers = $cValue;
     }
@@ -625,7 +593,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxPerStageDescriptorUniformBuffers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUniformBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -633,7 +600,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxPerStageDescriptorUniformBuffers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUniformBuffers = $cValue;
     }
@@ -643,7 +609,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxPerStageDescriptorStorageBuffers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorStorageBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -651,7 +616,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxPerStageDescriptorStorageBuffers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorStorageBuffers = $cValue;
     }
@@ -661,7 +625,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxPerStageDescriptorSampledImages(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorSampledImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -669,7 +632,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxPerStageDescriptorSampledImages(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorSampledImages = $cValue;
     }
@@ -679,7 +641,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxPerStageDescriptorStorageImages(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorStorageImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -687,7 +648,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxPerStageDescriptorStorageImages(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorStorageImages = $cValue;
     }
@@ -697,7 +657,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxPerStageDescriptorInputAttachments(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorInputAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -705,7 +664,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxPerStageDescriptorInputAttachments(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorInputAttachments = $cValue;
     }
@@ -715,7 +673,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxPerStageResources(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageResources;
         $phpValue = $cValue;
         return $phpValue;
@@ -723,7 +680,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxPerStageResources(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageResources = $cValue;
     }
@@ -733,7 +689,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxDescriptorSetSamplers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetSamplers;
         $phpValue = $cValue;
         return $phpValue;
@@ -741,7 +696,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxDescriptorSetSamplers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetSamplers = $cValue;
     }
@@ -751,7 +705,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxDescriptorSetUniformBuffers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUniformBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -759,7 +712,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxDescriptorSetUniformBuffers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUniformBuffers = $cValue;
     }
@@ -769,7 +721,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxDescriptorSetUniformBuffersDynamic(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUniformBuffersDynamic;
         $phpValue = $cValue;
         return $phpValue;
@@ -777,7 +728,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxDescriptorSetUniformBuffersDynamic(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUniformBuffersDynamic = $cValue;
     }
@@ -787,7 +737,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxDescriptorSetStorageBuffers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetStorageBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -795,7 +744,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxDescriptorSetStorageBuffers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetStorageBuffers = $cValue;
     }
@@ -805,7 +753,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxDescriptorSetStorageBuffersDynamic(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetStorageBuffersDynamic;
         $phpValue = $cValue;
         return $phpValue;
@@ -813,7 +760,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxDescriptorSetStorageBuffersDynamic(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetStorageBuffersDynamic = $cValue;
     }
@@ -823,7 +769,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxDescriptorSetSampledImages(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetSampledImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -831,7 +776,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxDescriptorSetSampledImages(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetSampledImages = $cValue;
     }
@@ -841,7 +785,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxDescriptorSetStorageImages(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetStorageImages;
         $phpValue = $cValue;
         return $phpValue;
@@ -849,7 +792,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxDescriptorSetStorageImages(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetStorageImages = $cValue;
     }
@@ -859,7 +801,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxDescriptorSetInputAttachments(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetInputAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -867,7 +808,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxDescriptorSetInputAttachments(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetInputAttachments = $cValue;
     }
@@ -877,7 +817,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxVertexInputAttributes(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxVertexInputAttributes;
         $phpValue = $cValue;
         return $phpValue;
@@ -885,7 +824,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxVertexInputAttributes(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxVertexInputAttributes = $cValue;
     }
@@ -895,7 +833,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxVertexInputBindings(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxVertexInputBindings;
         $phpValue = $cValue;
         return $phpValue;
@@ -903,7 +840,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxVertexInputBindings(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxVertexInputBindings = $cValue;
     }
@@ -913,7 +849,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxVertexInputAttributeOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxVertexInputAttributeOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -921,7 +856,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxVertexInputAttributeOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxVertexInputAttributeOffset = $cValue;
     }
@@ -931,7 +865,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxVertexInputBindingStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxVertexInputBindingStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -939,7 +872,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxVertexInputBindingStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxVertexInputBindingStride = $cValue;
     }
@@ -949,7 +881,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxVertexOutputComponents(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxVertexOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -957,7 +888,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxVertexOutputComponents(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxVertexOutputComponents = $cValue;
     }
@@ -967,7 +897,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxTessellationGenerationLevel(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationGenerationLevel;
         $phpValue = $cValue;
         return $phpValue;
@@ -975,7 +904,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxTessellationGenerationLevel(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationGenerationLevel = $cValue;
     }
@@ -985,7 +913,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxTessellationPatchSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationPatchSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -993,7 +920,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxTessellationPatchSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationPatchSize = $cValue;
     }
@@ -1003,7 +929,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxTessellationControlPerVertexInputComponents(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationControlPerVertexInputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -1011,7 +936,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxTessellationControlPerVertexInputComponents(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationControlPerVertexInputComponents = $cValue;
     }
@@ -1021,7 +945,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxTessellationControlPerVertexOutputComponents(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationControlPerVertexOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -1029,7 +952,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxTessellationControlPerVertexOutputComponents(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationControlPerVertexOutputComponents = $cValue;
     }
@@ -1039,7 +961,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxTessellationControlPerPatchOutputComponents(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationControlPerPatchOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -1047,7 +968,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxTessellationControlPerPatchOutputComponents(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationControlPerPatchOutputComponents = $cValue;
     }
@@ -1057,7 +977,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxTessellationControlTotalOutputComponents(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationControlTotalOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -1065,7 +984,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxTessellationControlTotalOutputComponents(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationControlTotalOutputComponents = $cValue;
     }
@@ -1075,7 +993,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxTessellationEvaluationInputComponents(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationEvaluationInputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -1083,7 +1000,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxTessellationEvaluationInputComponents(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationEvaluationInputComponents = $cValue;
     }
@@ -1093,7 +1009,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxTessellationEvaluationOutputComponents(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTessellationEvaluationOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -1101,7 +1016,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxTessellationEvaluationOutputComponents(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTessellationEvaluationOutputComponents = $cValue;
     }
@@ -1111,7 +1025,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxGeometryShaderInvocations(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxGeometryShaderInvocations;
         $phpValue = $cValue;
         return $phpValue;
@@ -1119,7 +1032,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxGeometryShaderInvocations(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxGeometryShaderInvocations = $cValue;
     }
@@ -1129,7 +1041,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxGeometryInputComponents(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxGeometryInputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -1137,7 +1048,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxGeometryInputComponents(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxGeometryInputComponents = $cValue;
     }
@@ -1147,7 +1057,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxGeometryOutputComponents(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxGeometryOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -1155,7 +1064,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxGeometryOutputComponents(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxGeometryOutputComponents = $cValue;
     }
@@ -1165,7 +1073,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxGeometryOutputVertices(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxGeometryOutputVertices;
         $phpValue = $cValue;
         return $phpValue;
@@ -1173,7 +1080,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxGeometryOutputVertices(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxGeometryOutputVertices = $cValue;
     }
@@ -1183,7 +1089,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxGeometryTotalOutputComponents(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxGeometryTotalOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -1191,7 +1096,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxGeometryTotalOutputComponents(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxGeometryTotalOutputComponents = $cValue;
     }
@@ -1201,7 +1105,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxFragmentInputComponents(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFragmentInputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -1209,7 +1112,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxFragmentInputComponents(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFragmentInputComponents = $cValue;
     }
@@ -1219,7 +1121,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxFragmentOutputAttachments(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFragmentOutputAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -1227,7 +1128,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxFragmentOutputAttachments(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFragmentOutputAttachments = $cValue;
     }
@@ -1237,7 +1137,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxFragmentDualSrcAttachments(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFragmentDualSrcAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -1245,7 +1144,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxFragmentDualSrcAttachments(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFragmentDualSrcAttachments = $cValue;
     }
@@ -1255,7 +1153,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxFragmentCombinedOutputResources(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFragmentCombinedOutputResources;
         $phpValue = $cValue;
         return $phpValue;
@@ -1263,7 +1160,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxFragmentCombinedOutputResources(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFragmentCombinedOutputResources = $cValue;
     }
@@ -1273,7 +1169,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxComputeSharedMemorySize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxComputeSharedMemorySize;
         $phpValue = $cValue;
         return $phpValue;
@@ -1281,7 +1176,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxComputeSharedMemorySize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxComputeSharedMemorySize = $cValue;
     }
@@ -1291,7 +1185,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxComputeWorkGroupCount(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxComputeWorkGroupCount;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -1299,7 +1192,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxComputeWorkGroupCount(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxComputeWorkGroupCount = $cValue;
     }
@@ -1309,7 +1201,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxComputeWorkGroupInvocations(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxComputeWorkGroupInvocations;
         $phpValue = $cValue;
         return $phpValue;
@@ -1317,7 +1208,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxComputeWorkGroupInvocations(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxComputeWorkGroupInvocations = $cValue;
     }
@@ -1327,7 +1217,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxComputeWorkGroupSize(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxComputeWorkGroupSize;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -1335,7 +1224,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxComputeWorkGroupSize(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxComputeWorkGroupSize = $cValue;
     }
@@ -1345,7 +1233,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getSubPixelPrecisionBits(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subPixelPrecisionBits;
         $phpValue = $cValue;
         return $phpValue;
@@ -1353,7 +1240,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setSubPixelPrecisionBits(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subPixelPrecisionBits = $cValue;
     }
@@ -1363,7 +1249,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getSubTexelPrecisionBits(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subTexelPrecisionBits;
         $phpValue = $cValue;
         return $phpValue;
@@ -1371,7 +1256,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setSubTexelPrecisionBits(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subTexelPrecisionBits = $cValue;
     }
@@ -1381,7 +1265,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMipmapPrecisionBits(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mipmapPrecisionBits;
         $phpValue = $cValue;
         return $phpValue;
@@ -1389,7 +1272,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMipmapPrecisionBits(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->mipmapPrecisionBits = $cValue;
     }
@@ -1399,7 +1281,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxDrawIndexedIndexValue(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDrawIndexedIndexValue;
         $phpValue = $cValue;
         return $phpValue;
@@ -1407,7 +1288,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxDrawIndexedIndexValue(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDrawIndexedIndexValue = $cValue;
     }
@@ -1417,7 +1297,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxDrawIndirectCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDrawIndirectCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -1425,7 +1304,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxDrawIndirectCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDrawIndirectCount = $cValue;
     }
@@ -1435,7 +1313,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxSamplerLodBias(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSamplerLodBias;
         $phpValue = $cValue;
         return $phpValue;
@@ -1443,7 +1320,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxSamplerLodBias(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSamplerLodBias = $cValue;
     }
@@ -1453,7 +1329,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxSamplerAnisotropy(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSamplerAnisotropy;
         $phpValue = $cValue;
         return $phpValue;
@@ -1461,7 +1336,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxSamplerAnisotropy(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSamplerAnisotropy = $cValue;
     }
@@ -1471,7 +1345,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxViewports(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxViewports;
         $phpValue = $cValue;
         return $phpValue;
@@ -1479,7 +1352,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxViewports(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxViewports = $cValue;
     }
@@ -1489,7 +1361,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxViewportDimensions(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxViewportDimensions;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -1497,7 +1368,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxViewportDimensions(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxViewportDimensions = $cValue;
     }
@@ -1507,7 +1377,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getViewportBoundsRange(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->viewportBoundsRange;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -1515,7 +1384,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setViewportBoundsRange(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->viewportBoundsRange = $cValue;
     }
@@ -1525,7 +1393,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getViewportSubPixelBits(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->viewportSubPixelBits;
         $phpValue = $cValue;
         return $phpValue;
@@ -1533,7 +1400,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setViewportSubPixelBits(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->viewportSubPixelBits = $cValue;
     }
@@ -1543,7 +1409,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMinMemoryMapAlignment(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minMemoryMapAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -1551,7 +1416,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMinMemoryMapAlignment(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minMemoryMapAlignment = $cValue;
     }
@@ -1561,7 +1425,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMinTexelBufferOffsetAlignment(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minTexelBufferOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -1569,7 +1432,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMinTexelBufferOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minTexelBufferOffsetAlignment = $cValue;
     }
@@ -1579,7 +1441,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMinUniformBufferOffsetAlignment(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minUniformBufferOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -1587,7 +1448,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMinUniformBufferOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minUniformBufferOffsetAlignment = $cValue;
     }
@@ -1597,7 +1457,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMinStorageBufferOffsetAlignment(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minStorageBufferOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -1605,7 +1464,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMinStorageBufferOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minStorageBufferOffsetAlignment = $cValue;
     }
@@ -1615,7 +1473,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMinTexelOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minTexelOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -1623,7 +1480,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMinTexelOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minTexelOffset = $cValue;
     }
@@ -1633,7 +1489,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxTexelOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTexelOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -1641,7 +1496,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxTexelOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTexelOffset = $cValue;
     }
@@ -1651,7 +1505,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMinTexelGatherOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minTexelGatherOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -1659,7 +1512,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMinTexelGatherOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minTexelGatherOffset = $cValue;
     }
@@ -1669,7 +1521,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxTexelGatherOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTexelGatherOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -1677,7 +1528,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxTexelGatherOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTexelGatherOffset = $cValue;
     }
@@ -1687,7 +1537,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMinInterpolationOffset(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minInterpolationOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -1695,7 +1544,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMinInterpolationOffset(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minInterpolationOffset = $cValue;
     }
@@ -1705,7 +1553,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxInterpolationOffset(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxInterpolationOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -1713,7 +1560,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxInterpolationOffset(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxInterpolationOffset = $cValue;
     }
@@ -1723,7 +1569,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getSubPixelInterpolationOffsetBits(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subPixelInterpolationOffsetBits;
         $phpValue = $cValue;
         return $phpValue;
@@ -1731,7 +1576,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setSubPixelInterpolationOffsetBits(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subPixelInterpolationOffsetBits = $cValue;
     }
@@ -1741,7 +1585,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxFramebufferWidth(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFramebufferWidth;
         $phpValue = $cValue;
         return $phpValue;
@@ -1749,7 +1592,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxFramebufferWidth(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFramebufferWidth = $cValue;
     }
@@ -1759,7 +1601,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxFramebufferHeight(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFramebufferHeight;
         $phpValue = $cValue;
         return $phpValue;
@@ -1767,7 +1608,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxFramebufferHeight(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFramebufferHeight = $cValue;
     }
@@ -1777,7 +1617,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxFramebufferLayers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxFramebufferLayers;
         $phpValue = $cValue;
         return $phpValue;
@@ -1785,7 +1624,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxFramebufferLayers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxFramebufferLayers = $cValue;
     }
@@ -1795,7 +1633,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getFramebufferColorSampleCounts(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->framebufferColorSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1803,7 +1640,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setFramebufferColorSampleCounts(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->framebufferColorSampleCounts = $cValue;
     }
@@ -1813,7 +1649,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getFramebufferDepthSampleCounts(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->framebufferDepthSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1821,7 +1656,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setFramebufferDepthSampleCounts(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->framebufferDepthSampleCounts = $cValue;
     }
@@ -1831,7 +1665,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getFramebufferStencilSampleCounts(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->framebufferStencilSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1839,7 +1672,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setFramebufferStencilSampleCounts(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->framebufferStencilSampleCounts = $cValue;
     }
@@ -1849,7 +1681,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getFramebufferNoAttachmentsSampleCounts(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->framebufferNoAttachmentsSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1857,7 +1688,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setFramebufferNoAttachmentsSampleCounts(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->framebufferNoAttachmentsSampleCounts = $cValue;
     }
@@ -1867,7 +1697,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxColorAttachments(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxColorAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -1875,7 +1704,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxColorAttachments(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxColorAttachments = $cValue;
     }
@@ -1885,7 +1713,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getSampledImageColorSampleCounts(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampledImageColorSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1893,7 +1720,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setSampledImageColorSampleCounts(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampledImageColorSampleCounts = $cValue;
     }
@@ -1903,7 +1729,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getSampledImageIntegerSampleCounts(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampledImageIntegerSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1911,7 +1736,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setSampledImageIntegerSampleCounts(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampledImageIntegerSampleCounts = $cValue;
     }
@@ -1921,7 +1745,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getSampledImageDepthSampleCounts(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampledImageDepthSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1929,7 +1752,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setSampledImageDepthSampleCounts(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampledImageDepthSampleCounts = $cValue;
     }
@@ -1939,7 +1761,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getSampledImageStencilSampleCounts(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampledImageStencilSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1947,7 +1768,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setSampledImageStencilSampleCounts(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampledImageStencilSampleCounts = $cValue;
     }
@@ -1957,7 +1777,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getStorageImageSampleCounts(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageImageSampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -1965,7 +1784,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setStorageImageSampleCounts(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->storageImageSampleCounts = $cValue;
     }
@@ -1975,7 +1793,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxSampleMaskWords(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSampleMaskWords;
         $phpValue = $cValue;
         return $phpValue;
@@ -1983,7 +1800,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxSampleMaskWords(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSampleMaskWords = $cValue;
     }
@@ -1993,7 +1809,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getTimestampComputeAndGraphics(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->timestampComputeAndGraphics;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -2001,7 +1816,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setTimestampComputeAndGraphics(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->timestampComputeAndGraphics = $cValue;
     }
@@ -2011,7 +1825,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getTimestampPeriod(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->timestampPeriod;
         $phpValue = $cValue;
         return $phpValue;
@@ -2019,7 +1832,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setTimestampPeriod(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->timestampPeriod = $cValue;
     }
@@ -2029,7 +1841,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxClipDistances(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxClipDistances;
         $phpValue = $cValue;
         return $phpValue;
@@ -2037,7 +1848,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxClipDistances(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxClipDistances = $cValue;
     }
@@ -2047,7 +1857,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxCullDistances(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxCullDistances;
         $phpValue = $cValue;
         return $phpValue;
@@ -2055,7 +1864,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxCullDistances(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxCullDistances = $cValue;
     }
@@ -2065,7 +1873,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getMaxCombinedClipAndCullDistances(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxCombinedClipAndCullDistances;
         $phpValue = $cValue;
         return $phpValue;
@@ -2073,7 +1880,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setMaxCombinedClipAndCullDistances(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxCombinedClipAndCullDistances = $cValue;
     }
@@ -2083,7 +1889,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getDiscreteQueuePriorities(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->discreteQueuePriorities;
         $phpValue = $cValue;
         return $phpValue;
@@ -2091,7 +1896,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setDiscreteQueuePriorities(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->discreteQueuePriorities = $cValue;
     }
@@ -2101,7 +1905,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getPointSizeRange(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pointSizeRange;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -2109,7 +1912,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setPointSizeRange(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->pointSizeRange = $cValue;
     }
@@ -2119,7 +1921,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getLineWidthRange(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->lineWidthRange;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -2127,7 +1928,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setLineWidthRange(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->lineWidthRange = $cValue;
     }
@@ -2137,7 +1937,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getPointSizeGranularity(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pointSizeGranularity;
         $phpValue = $cValue;
         return $phpValue;
@@ -2145,7 +1944,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setPointSizeGranularity(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pointSizeGranularity = $cValue;
     }
@@ -2155,7 +1953,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getLineWidthGranularity(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->lineWidthGranularity;
         $phpValue = $cValue;
         return $phpValue;
@@ -2163,7 +1960,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setLineWidthGranularity(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->lineWidthGranularity = $cValue;
     }
@@ -2173,7 +1969,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getStrictLines(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->strictLines;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -2181,7 +1976,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setStrictLines(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->strictLines = $cValue;
     }
@@ -2191,7 +1985,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getStandardSampleLocations(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->standardSampleLocations;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -2199,7 +1992,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setStandardSampleLocations(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->standardSampleLocations = $cValue;
     }
@@ -2209,7 +2001,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getOptimalBufferCopyOffsetAlignment(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->optimalBufferCopyOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -2217,7 +2008,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setOptimalBufferCopyOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->optimalBufferCopyOffsetAlignment = $cValue;
     }
@@ -2227,7 +2017,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getOptimalBufferCopyRowPitchAlignment(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->optimalBufferCopyRowPitchAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -2235,7 +2024,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setOptimalBufferCopyRowPitchAlignment(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->optimalBufferCopyRowPitchAlignment = $cValue;
     }
@@ -2245,7 +2033,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
      */
     public function getNonCoherentAtomSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->nonCoherentAtomSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -2253,7 +2040,6 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
 
     public function setNonCoherentAtomSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->nonCoherentAtomSize = $cValue;
     }

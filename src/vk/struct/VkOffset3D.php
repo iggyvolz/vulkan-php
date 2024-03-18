@@ -22,8 +22,6 @@ final class VkOffset3D implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkOffset3D implements \JsonSerializable
         null|int $z = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkOffset3D', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkOffset3D', false));
         if(!is_null($x)) $self->setX($x);
         if(!is_null($y)) $self->setY($y);
         if(!is_null($z)) $self->setZ($z);
@@ -46,7 +44,6 @@ final class VkOffset3D implements \JsonSerializable
      */
     public function getX(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->x;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkOffset3D implements \JsonSerializable
 
     public function setX(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->x = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkOffset3D implements \JsonSerializable
      */
     public function getY(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->y;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkOffset3D implements \JsonSerializable
 
     public function setY(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->y = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkOffset3D implements \JsonSerializable
      */
     public function getZ(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->z;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkOffset3D implements \JsonSerializable
 
     public function setZ(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->z = $cValue;
     }

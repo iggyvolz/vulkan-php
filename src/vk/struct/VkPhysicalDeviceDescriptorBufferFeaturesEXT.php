@@ -25,8 +25,6 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
         null|bool $descriptorBufferPushDescriptors = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDescriptorBufferFeaturesEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDescriptorBufferFeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($descriptorBuffer)) $self->setDescriptorBuffer($descriptorBuffer);
@@ -55,7 +53,6 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
      */
     public function getDescriptorBuffer(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBuffer;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
 
     public function setDescriptorBuffer(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBuffer = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
      */
     public function getDescriptorBufferCaptureReplay(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBufferCaptureReplay;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
 
     public function setDescriptorBufferCaptureReplay(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBufferCaptureReplay = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
      */
     public function getDescriptorBufferImageLayoutIgnored(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBufferImageLayoutIgnored;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
 
     public function setDescriptorBufferImageLayoutIgnored(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBufferImageLayoutIgnored = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
      */
     public function getDescriptorBufferPushDescriptors(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBufferPushDescriptors;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
 
     public function setDescriptorBufferPushDescriptors(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBufferPushDescriptors = $cValue;
     }

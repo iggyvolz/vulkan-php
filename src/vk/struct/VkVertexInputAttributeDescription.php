@@ -23,8 +23,6 @@ final class VkVertexInputAttributeDescription implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkVertexInputAttributeDescription implements \JsonSerializable
         null|int $offset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVertexInputAttributeDescription', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkVertexInputAttributeDescription', false));
         if(!is_null($location)) $self->setLocation($location);
         if(!is_null($binding)) $self->setBinding($binding);
         if(!is_null($format)) $self->setFormat($format);
@@ -49,7 +47,6 @@ final class VkVertexInputAttributeDescription implements \JsonSerializable
      */
     public function getLocation(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->location;
         $phpValue = $cValue;
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkVertexInputAttributeDescription implements \JsonSerializable
 
     public function setLocation(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->location = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkVertexInputAttributeDescription implements \JsonSerializable
      */
     public function getBinding(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->binding;
         $phpValue = $cValue;
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkVertexInputAttributeDescription implements \JsonSerializable
 
     public function setBinding(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->binding = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkVertexInputAttributeDescription implements \JsonSerializable
      */
     public function getFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkVertexInputAttributeDescription implements \JsonSerializable
 
     public function setFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->format = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkVertexInputAttributeDescription implements \JsonSerializable
      */
     public function getOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = $cValue;
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkVertexInputAttributeDescription implements \JsonSerializable
 
     public function setOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->offset = $cValue;
     }

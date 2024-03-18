@@ -41,8 +41,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -72,7 +70,7 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
         null|bool $runtimeDescriptorArray = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDescriptorIndexingFeatures', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDescriptorIndexingFeatures', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderInputAttachmentArrayDynamicIndexing)) $self->setShaderInputAttachmentArrayDynamicIndexing($shaderInputAttachmentArrayDynamicIndexing);
@@ -103,7 +101,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -111,7 +108,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -121,7 +117,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -129,7 +124,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -139,7 +133,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getShaderInputAttachmentArrayDynamicIndexing(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderInputAttachmentArrayDynamicIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -147,7 +140,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setShaderInputAttachmentArrayDynamicIndexing(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderInputAttachmentArrayDynamicIndexing = $cValue;
     }
@@ -157,7 +149,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getShaderUniformTexelBufferArrayDynamicIndexing(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderUniformTexelBufferArrayDynamicIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -165,7 +156,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setShaderUniformTexelBufferArrayDynamicIndexing(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderUniformTexelBufferArrayDynamicIndexing = $cValue;
     }
@@ -175,7 +165,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getShaderStorageTexelBufferArrayDynamicIndexing(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageTexelBufferArrayDynamicIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -183,7 +172,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setShaderStorageTexelBufferArrayDynamicIndexing(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageTexelBufferArrayDynamicIndexing = $cValue;
     }
@@ -193,7 +181,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getShaderUniformBufferArrayNonUniformIndexing(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderUniformBufferArrayNonUniformIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -201,7 +188,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setShaderUniformBufferArrayNonUniformIndexing(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderUniformBufferArrayNonUniformIndexing = $cValue;
     }
@@ -211,7 +197,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getShaderSampledImageArrayNonUniformIndexing(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSampledImageArrayNonUniformIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -219,7 +204,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setShaderSampledImageArrayNonUniformIndexing(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSampledImageArrayNonUniformIndexing = $cValue;
     }
@@ -229,7 +213,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getShaderStorageBufferArrayNonUniformIndexing(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageBufferArrayNonUniformIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -237,7 +220,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setShaderStorageBufferArrayNonUniformIndexing(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageBufferArrayNonUniformIndexing = $cValue;
     }
@@ -247,7 +229,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getShaderStorageImageArrayNonUniformIndexing(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageImageArrayNonUniformIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -255,7 +236,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setShaderStorageImageArrayNonUniformIndexing(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageImageArrayNonUniformIndexing = $cValue;
     }
@@ -265,7 +245,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getShaderInputAttachmentArrayNonUniformIndexing(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderInputAttachmentArrayNonUniformIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -273,7 +252,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setShaderInputAttachmentArrayNonUniformIndexing(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderInputAttachmentArrayNonUniformIndexing = $cValue;
     }
@@ -283,7 +261,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getShaderUniformTexelBufferArrayNonUniformIndexing(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderUniformTexelBufferArrayNonUniformIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -291,7 +268,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setShaderUniformTexelBufferArrayNonUniformIndexing(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderUniformTexelBufferArrayNonUniformIndexing = $cValue;
     }
@@ -301,7 +277,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getShaderStorageTexelBufferArrayNonUniformIndexing(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStorageTexelBufferArrayNonUniformIndexing;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -309,7 +284,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setShaderStorageTexelBufferArrayNonUniformIndexing(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderStorageTexelBufferArrayNonUniformIndexing = $cValue;
     }
@@ -319,7 +293,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getDescriptorBindingUniformBufferUpdateAfterBind(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingUniformBufferUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -327,7 +300,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setDescriptorBindingUniformBufferUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingUniformBufferUpdateAfterBind = $cValue;
     }
@@ -337,7 +309,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getDescriptorBindingSampledImageUpdateAfterBind(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingSampledImageUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -345,7 +316,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setDescriptorBindingSampledImageUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingSampledImageUpdateAfterBind = $cValue;
     }
@@ -355,7 +325,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getDescriptorBindingStorageImageUpdateAfterBind(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingStorageImageUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -363,7 +332,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setDescriptorBindingStorageImageUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingStorageImageUpdateAfterBind = $cValue;
     }
@@ -373,7 +341,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getDescriptorBindingStorageBufferUpdateAfterBind(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingStorageBufferUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -381,7 +348,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setDescriptorBindingStorageBufferUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingStorageBufferUpdateAfterBind = $cValue;
     }
@@ -391,7 +357,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getDescriptorBindingUniformTexelBufferUpdateAfterBind(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingUniformTexelBufferUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -399,7 +364,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setDescriptorBindingUniformTexelBufferUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingUniformTexelBufferUpdateAfterBind = $cValue;
     }
@@ -409,7 +373,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getDescriptorBindingStorageTexelBufferUpdateAfterBind(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingStorageTexelBufferUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -417,7 +380,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setDescriptorBindingStorageTexelBufferUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingStorageTexelBufferUpdateAfterBind = $cValue;
     }
@@ -427,7 +389,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getDescriptorBindingUpdateUnusedWhilePending(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingUpdateUnusedWhilePending;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -435,7 +396,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setDescriptorBindingUpdateUnusedWhilePending(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingUpdateUnusedWhilePending = $cValue;
     }
@@ -445,7 +405,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getDescriptorBindingPartiallyBound(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingPartiallyBound;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -453,7 +412,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setDescriptorBindingPartiallyBound(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingPartiallyBound = $cValue;
     }
@@ -463,7 +421,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getDescriptorBindingVariableDescriptorCount(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingVariableDescriptorCount;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -471,7 +428,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setDescriptorBindingVariableDescriptorCount(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingVariableDescriptorCount = $cValue;
     }
@@ -481,7 +437,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
      */
     public function getRuntimeDescriptorArray(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->runtimeDescriptorArray;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -489,7 +444,6 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
 
     public function setRuntimeDescriptorArray(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->runtimeDescriptorArray = $cValue;
     }

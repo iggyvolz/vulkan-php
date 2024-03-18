@@ -35,8 +35,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -60,7 +58,7 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
         null|int $vgprAllocationGranularity = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderCorePropertiesAMD', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderCorePropertiesAMD', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderEngineCount)) $self->setShaderEngineCount($shaderEngineCount);
@@ -85,7 +83,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -93,7 +90,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -103,7 +99,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -111,7 +106,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -121,7 +115,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getShaderEngineCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderEngineCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -129,7 +122,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setShaderEngineCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->shaderEngineCount = $cValue;
     }
@@ -139,7 +131,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getShaderArraysPerEngineCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderArraysPerEngineCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -147,7 +138,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setShaderArraysPerEngineCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->shaderArraysPerEngineCount = $cValue;
     }
@@ -157,7 +147,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getComputeUnitsPerShaderArray(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->computeUnitsPerShaderArray;
         $phpValue = $cValue;
         return $phpValue;
@@ -165,7 +154,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setComputeUnitsPerShaderArray(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->computeUnitsPerShaderArray = $cValue;
     }
@@ -175,7 +163,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getSimdPerComputeUnit(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->simdPerComputeUnit;
         $phpValue = $cValue;
         return $phpValue;
@@ -183,7 +170,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setSimdPerComputeUnit(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->simdPerComputeUnit = $cValue;
     }
@@ -193,7 +179,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getWavefrontsPerSimd(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->wavefrontsPerSimd;
         $phpValue = $cValue;
         return $phpValue;
@@ -201,7 +186,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setWavefrontsPerSimd(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->wavefrontsPerSimd = $cValue;
     }
@@ -211,7 +195,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getWavefrontSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->wavefrontSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -219,7 +202,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setWavefrontSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->wavefrontSize = $cValue;
     }
@@ -229,7 +211,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getSgprsPerSimd(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sgprsPerSimd;
         $phpValue = $cValue;
         return $phpValue;
@@ -237,7 +218,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setSgprsPerSimd(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sgprsPerSimd = $cValue;
     }
@@ -247,7 +227,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getMinSgprAllocation(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minSgprAllocation;
         $phpValue = $cValue;
         return $phpValue;
@@ -255,7 +234,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setMinSgprAllocation(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minSgprAllocation = $cValue;
     }
@@ -265,7 +243,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getMaxSgprAllocation(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSgprAllocation;
         $phpValue = $cValue;
         return $phpValue;
@@ -273,7 +250,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setMaxSgprAllocation(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSgprAllocation = $cValue;
     }
@@ -283,7 +259,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getSgprAllocationGranularity(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sgprAllocationGranularity;
         $phpValue = $cValue;
         return $phpValue;
@@ -291,7 +266,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setSgprAllocationGranularity(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sgprAllocationGranularity = $cValue;
     }
@@ -301,7 +275,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getVgprsPerSimd(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vgprsPerSimd;
         $phpValue = $cValue;
         return $phpValue;
@@ -309,7 +282,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setVgprsPerSimd(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vgprsPerSimd = $cValue;
     }
@@ -319,7 +291,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getMinVgprAllocation(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minVgprAllocation;
         $phpValue = $cValue;
         return $phpValue;
@@ -327,7 +298,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setMinVgprAllocation(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minVgprAllocation = $cValue;
     }
@@ -337,7 +307,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getMaxVgprAllocation(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxVgprAllocation;
         $phpValue = $cValue;
         return $phpValue;
@@ -345,7 +314,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setMaxVgprAllocation(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxVgprAllocation = $cValue;
     }
@@ -355,7 +323,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
      */
     public function getVgprAllocationGranularity(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vgprAllocationGranularity;
         $phpValue = $cValue;
         return $phpValue;
@@ -363,7 +330,6 @@ final class VkPhysicalDeviceShaderCorePropertiesAMD implements \JsonSerializable
 
     public function setVgprAllocationGranularity(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vgprAllocationGranularity = $cValue;
     }

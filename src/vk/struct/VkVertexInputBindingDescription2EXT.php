@@ -25,8 +25,6 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
         null|int $divisor = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVertexInputBindingDescription2EXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkVertexInputBindingDescription2EXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($binding)) $self->setBinding($binding);
@@ -55,7 +53,6 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
      */
     public function getBinding(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->binding;
         $phpValue = $cValue;
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
 
     public function setBinding(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->binding = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
      */
     public function getStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stride;
         $phpValue = $cValue;
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
 
     public function setStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stride = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
      */
     public function getInputRate(): \iggyvolz\vulkan\enum\VkVertexInputRate
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->inputRate;
         $phpValue = \iggyvolz\vulkan\enum\VkVertexInputRate::from($cValue);
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
 
     public function setInputRate(\iggyvolz\vulkan\enum\VkVertexInputRate $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->inputRate = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
      */
     public function getDivisor(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->divisor;
         $phpValue = $cValue;
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
 
     public function setDivisor(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->divisor = $cValue;
     }

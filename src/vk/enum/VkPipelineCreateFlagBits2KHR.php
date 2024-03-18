@@ -11,6 +11,7 @@ enum VkPipelineCreateFlagBits2KHR: int
     case DisableOptimization = 0;
     case AllowDerivatives = 1;
     case Derivative = 2;
+    case Reserved33Bit = 33;
     case ViewIndexFromDeviceIndex = 3;
     case DispatchBase = 4;
     case DeferCompileBitNv = 5;

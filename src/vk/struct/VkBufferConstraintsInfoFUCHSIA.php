@@ -24,8 +24,6 @@ final class VkBufferConstraintsInfoFUCHSIA implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkBufferConstraintsInfoFUCHSIA implements \JsonSerializable
         mixed $bufferCollectionConstraints = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBufferConstraintsInfoFUCHSIA', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkBufferConstraintsInfoFUCHSIA', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($createInfo)) $self->setCreateInfo($createInfo);
@@ -52,7 +50,6 @@ final class VkBufferConstraintsInfoFUCHSIA implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkBufferConstraintsInfoFUCHSIA implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkBufferConstraintsInfoFUCHSIA implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkBufferConstraintsInfoFUCHSIA implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkBufferConstraintsInfoFUCHSIA implements \JsonSerializable
      */
     public function getCreateInfo(): VkBufferCreateInfo
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->createInfo;
         $phpValue = new \iggyvolz\vulkan\struct\VkBufferCreateInfo($cValue, $ffi);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkBufferConstraintsInfoFUCHSIA implements \JsonSerializable
 
     public function setCreateInfo(VkBufferCreateInfo $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->createInfo = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkBufferConstraintsInfoFUCHSIA implements \JsonSerializable
      */
     public function getRequiredFormatFeatures(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->requiredFormatFeatures;
         $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::fromInt($cValue);
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkBufferConstraintsInfoFUCHSIA implements \JsonSerializable
 
     public function setRequiredFormatFeatures(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->requiredFormatFeatures = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkBufferConstraintsInfoFUCHSIA implements \JsonSerializable
      */
     public function getBufferCollectionConstraints(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferCollectionConstraints;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkBufferConstraintsInfoFUCHSIA implements \JsonSerializable
 
     public function setBufferCollectionConstraints(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->bufferCollectionConstraints = $cValue;
     }

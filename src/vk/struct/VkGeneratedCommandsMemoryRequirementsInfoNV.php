@@ -25,8 +25,6 @@ final class VkGeneratedCommandsMemoryRequirementsInfoNV implements \JsonSerializ
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkGeneratedCommandsMemoryRequirementsInfoNV implements \JsonSerializ
         null|int $maxSequencesCount = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkGeneratedCommandsMemoryRequirementsInfoNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkGeneratedCommandsMemoryRequirementsInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pipelineBindPoint)) $self->setPipelineBindPoint($pipelineBindPoint);
@@ -55,7 +53,6 @@ final class VkGeneratedCommandsMemoryRequirementsInfoNV implements \JsonSerializ
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkGeneratedCommandsMemoryRequirementsInfoNV implements \JsonSerializ
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkGeneratedCommandsMemoryRequirementsInfoNV implements \JsonSerializ
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkGeneratedCommandsMemoryRequirementsInfoNV implements \JsonSerializ
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkGeneratedCommandsMemoryRequirementsInfoNV implements \JsonSerializ
      */
     public function getPipelineBindPoint(): \iggyvolz\vulkan\enum\VkPipelineBindPoint
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineBindPoint;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineBindPoint::from($cValue);
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkGeneratedCommandsMemoryRequirementsInfoNV implements \JsonSerializ
 
     public function setPipelineBindPoint(\iggyvolz\vulkan\enum\VkPipelineBindPoint $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->pipelineBindPoint = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkGeneratedCommandsMemoryRequirementsInfoNV implements \JsonSerializ
      */
     public function getPipeline(): VkPipeline
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipeline;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipeline($cValue, $ffi);
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkGeneratedCommandsMemoryRequirementsInfoNV implements \JsonSerializ
 
     public function setPipeline(VkPipeline $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pipeline = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkGeneratedCommandsMemoryRequirementsInfoNV implements \JsonSerializ
      */
     public function getIndirectCommandsLayout(): VkIndirectCommandsLayoutNV
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indirectCommandsLayout;
         $phpValue = new \iggyvolz\vulkan\struct\VkIndirectCommandsLayoutNV($cValue, $ffi);
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkGeneratedCommandsMemoryRequirementsInfoNV implements \JsonSerializ
 
     public function setIndirectCommandsLayout(VkIndirectCommandsLayoutNV $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->indirectCommandsLayout = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkGeneratedCommandsMemoryRequirementsInfoNV implements \JsonSerializ
      */
     public function getMaxSequencesCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSequencesCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkGeneratedCommandsMemoryRequirementsInfoNV implements \JsonSerializ
 
     public function setMaxSequencesCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSequencesCount = $cValue;
     }

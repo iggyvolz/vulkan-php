@@ -26,8 +26,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
         null|string $layer = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceToolProperties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceToolProperties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($name)) $self->setName($name);
@@ -58,7 +56,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
      */
     public function getName(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->name;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
 
     public function setName(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->name = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
      */
     public function getVersion(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->version;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
 
     public function setVersion(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->version = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
      */
     public function getPurposes(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->purposes;
         $phpValue = \iggyvolz\vulkan\enum\VkToolPurposeFlagBits::fromInt($cValue);
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
 
     public function setPurposes(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkToolPurposeFlagBits::toInt(...$phpValue);
         $this->cdata->purposes = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
      */
     public function getDescription(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->description;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
 
     public function setDescription(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->description = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
      */
     public function getLayer(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layer;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkPhysicalDeviceToolProperties implements \JsonSerializable
 
     public function setLayer(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->layer = $cValue;
     }

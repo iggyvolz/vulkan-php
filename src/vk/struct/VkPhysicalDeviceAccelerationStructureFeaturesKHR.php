@@ -26,8 +26,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
         null|bool $descriptorBindingAccelerationStructureUpdateAfterBind = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceAccelerationStructureFeaturesKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceAccelerationStructureFeaturesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($accelerationStructure)) $self->setAccelerationStructure($accelerationStructure);
@@ -58,7 +56,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
      */
     public function getAccelerationStructure(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->accelerationStructure;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
 
     public function setAccelerationStructure(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->accelerationStructure = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
      */
     public function getAccelerationStructureCaptureReplay(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->accelerationStructureCaptureReplay;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
 
     public function setAccelerationStructureCaptureReplay(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->accelerationStructureCaptureReplay = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
      */
     public function getAccelerationStructureIndirectBuild(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->accelerationStructureIndirectBuild;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
 
     public function setAccelerationStructureIndirectBuild(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->accelerationStructureIndirectBuild = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
      */
     public function getAccelerationStructureHostCommands(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->accelerationStructureHostCommands;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
 
     public function setAccelerationStructureHostCommands(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->accelerationStructureHostCommands = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
      */
     public function getDescriptorBindingAccelerationStructureUpdateAfterBind(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBindingAccelerationStructureUpdateAfterBind;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
 
     public function setDescriptorBindingAccelerationStructureUpdateAfterBind(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->descriptorBindingAccelerationStructureUpdateAfterBind = $cValue;
     }

@@ -22,8 +22,6 @@ final class VkFormatProperties implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkFormatProperties implements \JsonSerializable
         null|array $bufferFeatures = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkFormatProperties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkFormatProperties', false));
         if(!is_null($linearTilingFeatures)) $self->setLinearTilingFeatures($linearTilingFeatures);
         if(!is_null($optimalTilingFeatures)) $self->setOptimalTilingFeatures($optimalTilingFeatures);
         if(!is_null($bufferFeatures)) $self->setBufferFeatures($bufferFeatures);
@@ -46,7 +44,6 @@ final class VkFormatProperties implements \JsonSerializable
      */
     public function getLinearTilingFeatures(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->linearTilingFeatures;
         $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::fromInt($cValue);
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkFormatProperties implements \JsonSerializable
 
     public function setLinearTilingFeatures(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->linearTilingFeatures = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkFormatProperties implements \JsonSerializable
      */
     public function getOptimalTilingFeatures(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->optimalTilingFeatures;
         $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::fromInt($cValue);
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkFormatProperties implements \JsonSerializable
 
     public function setOptimalTilingFeatures(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->optimalTilingFeatures = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkFormatProperties implements \JsonSerializable
      */
     public function getBufferFeatures(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferFeatures;
         $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::fromInt($cValue);
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkFormatProperties implements \JsonSerializable
 
     public function setBufferFeatures(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->bufferFeatures = $cValue;
     }

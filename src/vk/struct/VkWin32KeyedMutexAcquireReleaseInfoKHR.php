@@ -28,8 +28,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -46,7 +44,7 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
         null|\iggyvolz\vulkan\util\IntPointer $pReleaseKeys = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkWin32KeyedMutexAcquireReleaseInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkWin32KeyedMutexAcquireReleaseInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($acquireCount)) $self->setAcquireCount($acquireCount);
@@ -64,7 +62,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -72,7 +69,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -82,7 +78,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -90,7 +85,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -100,7 +94,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
      */
     public function getAcquireCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->acquireCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -108,7 +101,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
 
     public function setAcquireCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->acquireCount = $cValue;
     }
@@ -118,7 +110,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
      */
     public function getPAcquireSyncs(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pAcquireSyncs;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDeviceMemory', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -126,7 +117,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
 
     public function setPAcquireSyncs(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pAcquireSyncs = $cValue;
     }
@@ -136,7 +126,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
      */
     public function getPAcquireKeys(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pAcquireKeys;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -144,7 +133,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
 
     public function setPAcquireKeys(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pAcquireKeys = $cValue;
     }
@@ -154,7 +142,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
      */
     public function getPAcquireTimeouts(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pAcquireTimeouts;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -162,7 +149,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
 
     public function setPAcquireTimeouts(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pAcquireTimeouts = $cValue;
     }
@@ -172,7 +158,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
      */
     public function getReleaseCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->releaseCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -180,7 +165,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
 
     public function setReleaseCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->releaseCount = $cValue;
     }
@@ -190,7 +174,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
      */
     public function getPReleaseSyncs(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pReleaseSyncs;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDeviceMemory', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -198,7 +181,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
 
     public function setPReleaseSyncs(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pReleaseSyncs = $cValue;
     }
@@ -208,7 +190,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
      */
     public function getPReleaseKeys(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pReleaseKeys;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -216,7 +197,6 @@ final class VkWin32KeyedMutexAcquireReleaseInfoKHR implements \JsonSerializable
 
     public function setPReleaseKeys(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pReleaseKeys = $cValue;
     }

@@ -25,8 +25,6 @@ final class VkCopyMemoryToImageIndirectCommandNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkCopyMemoryToImageIndirectCommandNV implements \JsonSerializable
         null|VkExtent3D $imageExtent = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCopyMemoryToImageIndirectCommandNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkCopyMemoryToImageIndirectCommandNV', false));
         if(!is_null($srcAddress)) $self->setSrcAddress($srcAddress);
         if(!is_null($bufferRowLength)) $self->setBufferRowLength($bufferRowLength);
         if(!is_null($bufferImageHeight)) $self->setBufferImageHeight($bufferImageHeight);
@@ -55,7 +53,6 @@ final class VkCopyMemoryToImageIndirectCommandNV implements \JsonSerializable
      */
     public function getSrcAddress(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkCopyMemoryToImageIndirectCommandNV implements \JsonSerializable
 
     public function setSrcAddress(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->srcAddress = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkCopyMemoryToImageIndirectCommandNV implements \JsonSerializable
      */
     public function getBufferRowLength(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferRowLength;
         $phpValue = $cValue;
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkCopyMemoryToImageIndirectCommandNV implements \JsonSerializable
 
     public function setBufferRowLength(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferRowLength = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkCopyMemoryToImageIndirectCommandNV implements \JsonSerializable
      */
     public function getBufferImageHeight(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferImageHeight;
         $phpValue = $cValue;
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkCopyMemoryToImageIndirectCommandNV implements \JsonSerializable
 
     public function setBufferImageHeight(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferImageHeight = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkCopyMemoryToImageIndirectCommandNV implements \JsonSerializable
      */
     public function getImageSubresource(): VkImageSubresourceLayers
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageSubresource;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageSubresourceLayers($cValue, $ffi);
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkCopyMemoryToImageIndirectCommandNV implements \JsonSerializable
 
     public function setImageSubresource(VkImageSubresourceLayers $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageSubresource = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkCopyMemoryToImageIndirectCommandNV implements \JsonSerializable
      */
     public function getImageOffset(): VkOffset3D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageOffset;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset3D($cValue, $ffi);
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkCopyMemoryToImageIndirectCommandNV implements \JsonSerializable
 
     public function setImageOffset(VkOffset3D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageOffset = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkCopyMemoryToImageIndirectCommandNV implements \JsonSerializable
      */
     public function getImageExtent(): VkExtent3D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent3D($cValue, $ffi);
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkCopyMemoryToImageIndirectCommandNV implements \JsonSerializable
 
     public function setImageExtent(VkExtent3D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageExtent = $cValue;
     }

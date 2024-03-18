@@ -23,8 +23,6 @@ final class VkAccelerationStructureGeometryAabbsDataKHR implements \JsonSerializ
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkAccelerationStructureGeometryAabbsDataKHR implements \JsonSerializ
         null|int $stride = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureGeometryAabbsDataKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkAccelerationStructureGeometryAabbsDataKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($data)) $self->setData($data);
@@ -49,7 +47,6 @@ final class VkAccelerationStructureGeometryAabbsDataKHR implements \JsonSerializ
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkAccelerationStructureGeometryAabbsDataKHR implements \JsonSerializ
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkAccelerationStructureGeometryAabbsDataKHR implements \JsonSerializ
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkAccelerationStructureGeometryAabbsDataKHR implements \JsonSerializ
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkAccelerationStructureGeometryAabbsDataKHR implements \JsonSerializ
      */
     public function getData(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->data;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkAccelerationStructureGeometryAabbsDataKHR implements \JsonSerializ
 
     public function setData(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->data = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkAccelerationStructureGeometryAabbsDataKHR implements \JsonSerializ
      */
     public function getStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stride;
         $phpValue = $cValue;
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkAccelerationStructureGeometryAabbsDataKHR implements \JsonSerializ
 
     public function setStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stride = $cValue;
     }

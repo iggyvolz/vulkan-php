@@ -23,8 +23,6 @@ final class VkQueueFamilyGlobalPriorityPropertiesKHR implements \JsonSerializabl
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkQueueFamilyGlobalPriorityPropertiesKHR implements \JsonSerializabl
         mixed $priorities = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkQueueFamilyGlobalPriorityPropertiesKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkQueueFamilyGlobalPriorityPropertiesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($priorityCount)) $self->setPriorityCount($priorityCount);
@@ -49,7 +47,6 @@ final class VkQueueFamilyGlobalPriorityPropertiesKHR implements \JsonSerializabl
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkQueueFamilyGlobalPriorityPropertiesKHR implements \JsonSerializabl
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkQueueFamilyGlobalPriorityPropertiesKHR implements \JsonSerializabl
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkQueueFamilyGlobalPriorityPropertiesKHR implements \JsonSerializabl
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkQueueFamilyGlobalPriorityPropertiesKHR implements \JsonSerializabl
      */
     public function getPriorityCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->priorityCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkQueueFamilyGlobalPriorityPropertiesKHR implements \JsonSerializabl
 
     public function setPriorityCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->priorityCount = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkQueueFamilyGlobalPriorityPropertiesKHR implements \JsonSerializabl
      */
     public function getPriorities(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->priorities;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkQueueFamilyGlobalPriorityPropertiesKHR implements \JsonSerializabl
 
     public function setPriorities(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->priorities = $cValue;
     }

@@ -22,8 +22,6 @@ final class VkDeviceFaultVendorInfoEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkDeviceFaultVendorInfoEXT implements \JsonSerializable
         null|int $vendorFaultData = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceFaultVendorInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDeviceFaultVendorInfoEXT', false));
         if(!is_null($description)) $self->setDescription($description);
         if(!is_null($vendorFaultCode)) $self->setVendorFaultCode($vendorFaultCode);
         if(!is_null($vendorFaultData)) $self->setVendorFaultData($vendorFaultData);
@@ -46,7 +44,6 @@ final class VkDeviceFaultVendorInfoEXT implements \JsonSerializable
      */
     public function getDescription(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->description;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkDeviceFaultVendorInfoEXT implements \JsonSerializable
 
     public function setDescription(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->description = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkDeviceFaultVendorInfoEXT implements \JsonSerializable
      */
     public function getVendorFaultCode(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vendorFaultCode;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkDeviceFaultVendorInfoEXT implements \JsonSerializable
 
     public function setVendorFaultCode(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vendorFaultCode = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkDeviceFaultVendorInfoEXT implements \JsonSerializable
      */
     public function getVendorFaultData(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vendorFaultData;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkDeviceFaultVendorInfoEXT implements \JsonSerializable
 
     public function setVendorFaultData(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vendorFaultData = $cValue;
     }

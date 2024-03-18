@@ -21,8 +21,6 @@ final class VkMemoryType implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkMemoryType implements \JsonSerializable
         null|int $heapIndex = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkMemoryType', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkMemoryType', false));
         if(!is_null($propertyFlags)) $self->setPropertyFlags($propertyFlags);
         if(!is_null($heapIndex)) $self->setHeapIndex($heapIndex);
         return $self;
@@ -43,7 +41,6 @@ final class VkMemoryType implements \JsonSerializable
      */
     public function getPropertyFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->propertyFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkMemoryPropertyFlagBits::fromInt($cValue);
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkMemoryType implements \JsonSerializable
 
     public function setPropertyFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkMemoryPropertyFlagBits::toInt(...$phpValue);
         $this->cdata->propertyFlags = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkMemoryType implements \JsonSerializable
      */
     public function getHeapIndex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->heapIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkMemoryType implements \JsonSerializable
 
     public function setHeapIndex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->heapIndex = $cValue;
     }

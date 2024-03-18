@@ -24,8 +24,6 @@ final class VkDecompressMemoryRegionNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkDecompressMemoryRegionNV implements \JsonSerializable
         null|array $decompressionMethod = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDecompressMemoryRegionNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDecompressMemoryRegionNV', false));
         if(!is_null($srcAddress)) $self->setSrcAddress($srcAddress);
         if(!is_null($dstAddress)) $self->setDstAddress($dstAddress);
         if(!is_null($compressedSize)) $self->setCompressedSize($compressedSize);
@@ -52,7 +50,6 @@ final class VkDecompressMemoryRegionNV implements \JsonSerializable
      */
     public function getSrcAddress(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkDecompressMemoryRegionNV implements \JsonSerializable
 
     public function setSrcAddress(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->srcAddress = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkDecompressMemoryRegionNV implements \JsonSerializable
      */
     public function getDstAddress(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkDecompressMemoryRegionNV implements \JsonSerializable
 
     public function setDstAddress(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstAddress = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkDecompressMemoryRegionNV implements \JsonSerializable
      */
     public function getCompressedSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->compressedSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkDecompressMemoryRegionNV implements \JsonSerializable
 
     public function setCompressedSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->compressedSize = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkDecompressMemoryRegionNV implements \JsonSerializable
      */
     public function getDecompressedSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->decompressedSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkDecompressMemoryRegionNV implements \JsonSerializable
 
     public function setDecompressedSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->decompressedSize = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkDecompressMemoryRegionNV implements \JsonSerializable
      */
     public function getDecompressionMethod(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->decompressionMethod;
         $phpValue = \iggyvolz\vulkan\enum\VkMemoryDecompressionMethodFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkDecompressMemoryRegionNV implements \JsonSerializable
 
     public function setDecompressionMethod(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkMemoryDecompressionMethodFlagBitsNV::toInt(...$phpValue);
         $this->cdata->decompressionMethod = $cValue;
     }

@@ -26,8 +26,6 @@ final class VkSubpassDependency implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkSubpassDependency implements \JsonSerializable
         null|array $dependencyFlags = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSubpassDependency', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkSubpassDependency', false));
         if(!is_null($srcSubpass)) $self->setSrcSubpass($srcSubpass);
         if(!is_null($dstSubpass)) $self->setDstSubpass($dstSubpass);
         if(!is_null($srcStageMask)) $self->setSrcStageMask($srcStageMask);
@@ -58,7 +56,6 @@ final class VkSubpassDependency implements \JsonSerializable
      */
     public function getSrcSubpass(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcSubpass;
         $phpValue = $cValue;
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkSubpassDependency implements \JsonSerializable
 
     public function setSrcSubpass(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->srcSubpass = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkSubpassDependency implements \JsonSerializable
      */
     public function getDstSubpass(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstSubpass;
         $phpValue = $cValue;
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkSubpassDependency implements \JsonSerializable
 
     public function setDstSubpass(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstSubpass = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkSubpassDependency implements \JsonSerializable
      */
     public function getSrcStageMask(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcStageMask;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkSubpassDependency implements \JsonSerializable
 
     public function setSrcStageMask(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::toInt(...$phpValue);
         $this->cdata->srcStageMask = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkSubpassDependency implements \JsonSerializable
      */
     public function getDstStageMask(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstStageMask;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkSubpassDependency implements \JsonSerializable
 
     public function setDstStageMask(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkPipelineStageFlagBits::toInt(...$phpValue);
         $this->cdata->dstStageMask = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkSubpassDependency implements \JsonSerializable
      */
     public function getSrcAccessMask(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcAccessMask;
         $phpValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::fromInt($cValue);
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkSubpassDependency implements \JsonSerializable
 
     public function setSrcAccessMask(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::toInt(...$phpValue);
         $this->cdata->srcAccessMask = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkSubpassDependency implements \JsonSerializable
      */
     public function getDstAccessMask(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstAccessMask;
         $phpValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::fromInt($cValue);
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkSubpassDependency implements \JsonSerializable
 
     public function setDstAccessMask(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkAccessFlagBits::toInt(...$phpValue);
         $this->cdata->dstAccessMask = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkSubpassDependency implements \JsonSerializable
      */
     public function getDependencyFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dependencyFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkDependencyFlagBits::fromInt($cValue);
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkSubpassDependency implements \JsonSerializable
 
     public function setDependencyFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkDependencyFlagBits::toInt(...$phpValue);
         $this->cdata->dependencyFlags = $cValue;
     }

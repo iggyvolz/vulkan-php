@@ -25,8 +25,6 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
         null|array $chromaBitDepth = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoProfileInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkVideoProfileInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($videoCodecOperation)) $self->setVideoCodecOperation($videoCodecOperation);
@@ -55,7 +53,6 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
      */
     public function getVideoCodecOperation(): \iggyvolz\vulkan\enum\VkVideoCodecOperationFlagBitsKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->videoCodecOperation;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoCodecOperationFlagBitsKHR::from($cValue);
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
 
     public function setVideoCodecOperation(\iggyvolz\vulkan\enum\VkVideoCodecOperationFlagBitsKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->videoCodecOperation = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
      */
     public function getChromaSubsampling(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->chromaSubsampling;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoChromaSubsamplingFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
 
     public function setChromaSubsampling(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkVideoChromaSubsamplingFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->chromaSubsampling = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
      */
     public function getLumaBitDepth(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->lumaBitDepth;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoComponentBitDepthFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
 
     public function setLumaBitDepth(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkVideoComponentBitDepthFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->lumaBitDepth = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
      */
     public function getChromaBitDepth(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->chromaBitDepth;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoComponentBitDepthFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
 
     public function setChromaBitDepth(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkVideoComponentBitDepthFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->chromaBitDepth = $cValue;
     }

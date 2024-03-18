@@ -22,8 +22,6 @@ final class VkClearRect implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkClearRect implements \JsonSerializable
         null|int $layerCount = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkClearRect', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkClearRect', false));
         if(!is_null($rect)) $self->setRect($rect);
         if(!is_null($baseArrayLayer)) $self->setBaseArrayLayer($baseArrayLayer);
         if(!is_null($layerCount)) $self->setLayerCount($layerCount);
@@ -46,7 +44,6 @@ final class VkClearRect implements \JsonSerializable
      */
     public function getRect(): VkRect2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->rect;
         $phpValue = new \iggyvolz\vulkan\struct\VkRect2D($cValue, $ffi);
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkClearRect implements \JsonSerializable
 
     public function setRect(VkRect2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->rect = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkClearRect implements \JsonSerializable
      */
     public function getBaseArrayLayer(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->baseArrayLayer;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkClearRect implements \JsonSerializable
 
     public function setBaseArrayLayer(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->baseArrayLayer = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkClearRect implements \JsonSerializable
      */
     public function getLayerCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layerCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkClearRect implements \JsonSerializable
 
     public function setLayerCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->layerCount = $cValue;
     }

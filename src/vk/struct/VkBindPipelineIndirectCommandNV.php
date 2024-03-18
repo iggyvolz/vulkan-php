@@ -20,14 +20,12 @@ final class VkBindPipelineIndirectCommandNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan, null|int $pipelineAddress = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkBindPipelineIndirectCommandNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkBindPipelineIndirectCommandNV', false));
         if(!is_null($pipelineAddress)) $self->setPipelineAddress($pipelineAddress);
         return $self;
     }
@@ -37,7 +35,6 @@ final class VkBindPipelineIndirectCommandNV implements \JsonSerializable
      */
     public function getPipelineAddress(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -45,7 +42,6 @@ final class VkBindPipelineIndirectCommandNV implements \JsonSerializable
 
     public function setPipelineAddress(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelineAddress = $cValue;
     }

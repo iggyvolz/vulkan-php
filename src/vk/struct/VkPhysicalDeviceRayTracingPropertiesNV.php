@@ -29,8 +29,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -48,7 +46,7 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
         null|int $maxDescriptorSetAccelerationStructures = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceRayTracingPropertiesNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceRayTracingPropertiesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderGroupHandleSize)) $self->setShaderGroupHandleSize($shaderGroupHandleSize);
@@ -67,7 +65,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -75,7 +72,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -85,7 +81,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -93,7 +88,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -103,7 +97,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
      */
     public function getShaderGroupHandleSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderGroupHandleSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -111,7 +104,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
 
     public function setShaderGroupHandleSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->shaderGroupHandleSize = $cValue;
     }
@@ -121,7 +113,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
      */
     public function getMaxRecursionDepth(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxRecursionDepth;
         $phpValue = $cValue;
         return $phpValue;
@@ -129,7 +120,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
 
     public function setMaxRecursionDepth(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxRecursionDepth = $cValue;
     }
@@ -139,7 +129,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
      */
     public function getMaxShaderGroupStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxShaderGroupStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -147,7 +136,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
 
     public function setMaxShaderGroupStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxShaderGroupStride = $cValue;
     }
@@ -157,7 +145,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
      */
     public function getShaderGroupBaseAlignment(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderGroupBaseAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -165,7 +152,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
 
     public function setShaderGroupBaseAlignment(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->shaderGroupBaseAlignment = $cValue;
     }
@@ -175,7 +161,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
      */
     public function getMaxGeometryCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxGeometryCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -183,7 +168,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
 
     public function setMaxGeometryCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxGeometryCount = $cValue;
     }
@@ -193,7 +177,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
      */
     public function getMaxInstanceCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxInstanceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -201,7 +184,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
 
     public function setMaxInstanceCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxInstanceCount = $cValue;
     }
@@ -211,7 +193,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
      */
     public function getMaxTriangleCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTriangleCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -219,7 +200,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
 
     public function setMaxTriangleCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTriangleCount = $cValue;
     }
@@ -229,7 +209,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
      */
     public function getMaxDescriptorSetAccelerationStructures(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetAccelerationStructures;
         $phpValue = $cValue;
         return $phpValue;
@@ -237,7 +216,6 @@ final class VkPhysicalDeviceRayTracingPropertiesNV implements \JsonSerializable
 
     public function setMaxDescriptorSetAccelerationStructures(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetAccelerationStructures = $cValue;
     }

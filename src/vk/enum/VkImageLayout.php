@@ -30,6 +30,7 @@ enum VkImageLayout: int
     case SharedPresentKhr = 1000111000;
     case FragmentDensityMapOptimalExt = 1000218000;
     case FragmentShadingRateAttachmentOptimalKhr = 1000164003;
+    case RenderingLocalReadKhr = 1000232000;
     case VideoEncodeDstKhr = 1000299000;
     case VideoEncodeSrcKhr = 1000299001;
     case VideoEncodeDpbKhr = 1000299002;

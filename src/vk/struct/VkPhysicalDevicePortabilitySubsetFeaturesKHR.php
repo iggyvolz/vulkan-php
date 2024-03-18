@@ -36,8 +36,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -62,7 +60,7 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
         null|bool $vertexAttributeAccessBeyondStride = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDevicePortabilitySubsetFeaturesKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDevicePortabilitySubsetFeaturesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($constantAlphaColorBlendFactors)) $self->setConstantAlphaColorBlendFactors($constantAlphaColorBlendFactors);
@@ -88,7 +86,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -96,7 +93,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -106,7 +102,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -114,7 +109,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -124,7 +118,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getConstantAlphaColorBlendFactors(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->constantAlphaColorBlendFactors;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -132,7 +125,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setConstantAlphaColorBlendFactors(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->constantAlphaColorBlendFactors = $cValue;
     }
@@ -142,7 +134,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getEvents(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->events;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -150,7 +141,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setEvents(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->events = $cValue;
     }
@@ -160,7 +150,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getImageViewFormatReinterpretation(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageViewFormatReinterpretation;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -168,7 +157,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setImageViewFormatReinterpretation(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->imageViewFormatReinterpretation = $cValue;
     }
@@ -178,7 +166,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getImageViewFormatSwizzle(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageViewFormatSwizzle;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -186,7 +173,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setImageViewFormatSwizzle(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->imageViewFormatSwizzle = $cValue;
     }
@@ -196,7 +182,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getImageView2DOn3DImage(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageView2DOn3DImage;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -204,7 +189,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setImageView2DOn3DImage(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->imageView2DOn3DImage = $cValue;
     }
@@ -214,7 +198,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getMultisampleArrayImage(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->multisampleArrayImage;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -222,7 +205,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setMultisampleArrayImage(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->multisampleArrayImage = $cValue;
     }
@@ -232,7 +214,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getMutableComparisonSamplers(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mutableComparisonSamplers;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -240,7 +221,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setMutableComparisonSamplers(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->mutableComparisonSamplers = $cValue;
     }
@@ -250,7 +230,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getPointPolygons(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pointPolygons;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -258,7 +237,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setPointPolygons(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->pointPolygons = $cValue;
     }
@@ -268,7 +246,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getSamplerMipLodBias(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samplerMipLodBias;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -276,7 +253,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setSamplerMipLodBias(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->samplerMipLodBias = $cValue;
     }
@@ -286,7 +262,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getSeparateStencilMaskRef(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->separateStencilMaskRef;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -294,7 +269,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setSeparateStencilMaskRef(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->separateStencilMaskRef = $cValue;
     }
@@ -304,7 +278,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getShaderSampleRateInterpolationFunctions(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSampleRateInterpolationFunctions;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -312,7 +285,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setShaderSampleRateInterpolationFunctions(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSampleRateInterpolationFunctions = $cValue;
     }
@@ -322,7 +294,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getTessellationIsolines(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tessellationIsolines;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -330,7 +301,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setTessellationIsolines(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->tessellationIsolines = $cValue;
     }
@@ -340,7 +310,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getTessellationPointMode(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tessellationPointMode;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -348,7 +317,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setTessellationPointMode(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->tessellationPointMode = $cValue;
     }
@@ -358,7 +326,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getTriangleFans(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->triangleFans;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -366,7 +333,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setTriangleFans(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->triangleFans = $cValue;
     }
@@ -376,7 +342,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
      */
     public function getVertexAttributeAccessBeyondStride(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexAttributeAccessBeyondStride;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -384,7 +349,6 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
 
     public function setVertexAttributeAccessBeyondStride(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->vertexAttributeAccessBeyondStride = $cValue;
     }

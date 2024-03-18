@@ -19,14 +19,12 @@ final class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR implements \JsonSeriali
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderAtomicInt64FeaturesKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderAtomicInt64FeaturesKHR', false));
         return $self;
     }
 }

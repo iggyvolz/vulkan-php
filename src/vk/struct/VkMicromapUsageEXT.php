@@ -22,8 +22,6 @@ final class VkMicromapUsageEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkMicromapUsageEXT implements \JsonSerializable
         null|int $format = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkMicromapUsageEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkMicromapUsageEXT', false));
         if(!is_null($count)) $self->setCount($count);
         if(!is_null($subdivisionLevel)) $self->setSubdivisionLevel($subdivisionLevel);
         if(!is_null($format)) $self->setFormat($format);
@@ -46,7 +44,6 @@ final class VkMicromapUsageEXT implements \JsonSerializable
      */
     public function getCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->count;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkMicromapUsageEXT implements \JsonSerializable
 
     public function setCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->count = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkMicromapUsageEXT implements \JsonSerializable
      */
     public function getSubdivisionLevel(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subdivisionLevel;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkMicromapUsageEXT implements \JsonSerializable
 
     public function setSubdivisionLevel(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subdivisionLevel = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkMicromapUsageEXT implements \JsonSerializable
      */
     public function getFormat(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkMicromapUsageEXT implements \JsonSerializable
 
     public function setFormat(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->format = $cValue;
     }

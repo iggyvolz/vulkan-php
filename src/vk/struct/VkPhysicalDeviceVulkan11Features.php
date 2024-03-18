@@ -33,8 +33,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -56,7 +54,7 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
         null|bool $shaderDrawParameters = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkan11Features', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkan11Features', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($storageBuffer16BitAccess)) $self->setStorageBuffer16BitAccess($storageBuffer16BitAccess);
@@ -79,7 +77,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -87,7 +84,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -97,7 +93,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -105,7 +100,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -115,7 +109,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
      */
     public function getStorageBuffer16BitAccess(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageBuffer16BitAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -123,7 +116,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
 
     public function setStorageBuffer16BitAccess(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->storageBuffer16BitAccess = $cValue;
     }
@@ -133,7 +125,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
      */
     public function getUniformAndStorageBuffer16BitAccess(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->uniformAndStorageBuffer16BitAccess;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -141,7 +132,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
 
     public function setUniformAndStorageBuffer16BitAccess(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->uniformAndStorageBuffer16BitAccess = $cValue;
     }
@@ -151,7 +141,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
      */
     public function getStoragePushConstant16(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storagePushConstant16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -159,7 +148,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
 
     public function setStoragePushConstant16(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->storagePushConstant16 = $cValue;
     }
@@ -169,7 +157,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
      */
     public function getStorageInputOutput16(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageInputOutput16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -177,7 +164,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
 
     public function setStorageInputOutput16(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->storageInputOutput16 = $cValue;
     }
@@ -187,7 +173,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
      */
     public function getMultiview(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->multiview;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -195,7 +180,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
 
     public function setMultiview(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->multiview = $cValue;
     }
@@ -205,7 +189,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
      */
     public function getMultiviewGeometryShader(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->multiviewGeometryShader;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -213,7 +196,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
 
     public function setMultiviewGeometryShader(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->multiviewGeometryShader = $cValue;
     }
@@ -223,7 +205,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
      */
     public function getMultiviewTessellationShader(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->multiviewTessellationShader;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -231,7 +212,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
 
     public function setMultiviewTessellationShader(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->multiviewTessellationShader = $cValue;
     }
@@ -241,7 +221,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
      */
     public function getVariablePointersStorageBuffer(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->variablePointersStorageBuffer;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -249,7 +228,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
 
     public function setVariablePointersStorageBuffer(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->variablePointersStorageBuffer = $cValue;
     }
@@ -259,7 +237,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
      */
     public function getVariablePointers(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->variablePointers;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -267,7 +244,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
 
     public function setVariablePointers(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->variablePointers = $cValue;
     }
@@ -277,7 +253,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
      */
     public function getProtectedMemory(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->protectedMemory;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -285,7 +260,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
 
     public function setProtectedMemory(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->protectedMemory = $cValue;
     }
@@ -295,7 +269,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
      */
     public function getSamplerYcbcrConversion(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samplerYcbcrConversion;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -303,7 +276,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
 
     public function setSamplerYcbcrConversion(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->samplerYcbcrConversion = $cValue;
     }
@@ -313,7 +285,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
      */
     public function getShaderDrawParameters(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDrawParameters;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -321,7 +292,6 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
 
     public function setShaderDrawParameters(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDrawParameters = $cValue;
     }

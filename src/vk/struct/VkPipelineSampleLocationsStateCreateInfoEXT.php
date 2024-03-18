@@ -23,8 +23,6 @@ final class VkPipelineSampleLocationsStateCreateInfoEXT implements \JsonSerializ
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkPipelineSampleLocationsStateCreateInfoEXT implements \JsonSerializ
         null|VkSampleLocationsInfoEXT $sampleLocationsInfo = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineSampleLocationsStateCreateInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPipelineSampleLocationsStateCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($sampleLocationsEnable)) $self->setSampleLocationsEnable($sampleLocationsEnable);
@@ -49,7 +47,6 @@ final class VkPipelineSampleLocationsStateCreateInfoEXT implements \JsonSerializ
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkPipelineSampleLocationsStateCreateInfoEXT implements \JsonSerializ
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkPipelineSampleLocationsStateCreateInfoEXT implements \JsonSerializ
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkPipelineSampleLocationsStateCreateInfoEXT implements \JsonSerializ
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkPipelineSampleLocationsStateCreateInfoEXT implements \JsonSerializ
      */
     public function getSampleLocationsEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampleLocationsEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkPipelineSampleLocationsStateCreateInfoEXT implements \JsonSerializ
 
     public function setSampleLocationsEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->sampleLocationsEnable = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkPipelineSampleLocationsStateCreateInfoEXT implements \JsonSerializ
      */
     public function getSampleLocationsInfo(): VkSampleLocationsInfoEXT
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampleLocationsInfo;
         $phpValue = new \iggyvolz\vulkan\struct\VkSampleLocationsInfoEXT($cValue, $ffi);
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkPipelineSampleLocationsStateCreateInfoEXT implements \JsonSerializ
 
     public function setSampleLocationsInfo(VkSampleLocationsInfoEXT $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->sampleLocationsInfo = $cValue;
     }

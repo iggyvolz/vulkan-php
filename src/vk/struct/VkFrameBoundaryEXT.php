@@ -30,8 +30,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -50,7 +48,7 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pTag = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkFrameBoundaryEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkFrameBoundaryEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -70,7 +68,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -78,7 +75,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -88,7 +84,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -96,7 +91,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -106,7 +100,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkFrameBoundaryFlagBitsEXT::fromInt($cValue);
         return $phpValue;
@@ -114,7 +107,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkFrameBoundaryFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -124,7 +116,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
      */
     public function getFrameID(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->frameID;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +123,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
 
     public function setFrameID(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->frameID = $cValue;
     }
@@ -142,7 +132,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
      */
     public function getImageCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -150,7 +139,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
 
     public function setImageCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageCount = $cValue;
     }
@@ -160,7 +148,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
      */
     public function getPImages(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pImages;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImage', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -168,7 +155,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
 
     public function setPImages(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pImages = $cValue;
     }
@@ -178,7 +164,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
      */
     public function getBufferCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -186,7 +171,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
 
     public function setBufferCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferCount = $cValue;
     }
@@ -196,7 +180,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
      */
     public function getPBuffers(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pBuffers;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkBuffer', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -204,7 +187,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
 
     public function setPBuffers(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pBuffers = $cValue;
     }
@@ -214,7 +196,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
      */
     public function getTagName(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tagName;
         $phpValue = $cValue;
         return $phpValue;
@@ -222,7 +203,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
 
     public function setTagName(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->tagName = $cValue;
     }
@@ -232,7 +212,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
      */
     public function getTagSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tagSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -240,7 +219,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
 
     public function setTagSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->tagSize = $cValue;
     }
@@ -250,7 +228,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
      */
     public function getPTag(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pTag;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -258,7 +235,6 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
 
     public function setPTag(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pTag = $cValue;
     }

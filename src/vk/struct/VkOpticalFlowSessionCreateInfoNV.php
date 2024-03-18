@@ -30,8 +30,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -50,7 +48,7 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
         null|array $flags = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkOpticalFlowSessionCreateInfoNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkOpticalFlowSessionCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($width)) $self->setWidth($width);
@@ -70,7 +68,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -78,7 +75,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -88,7 +84,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -96,7 +91,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -106,7 +100,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
      */
     public function getWidth(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->width;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +107,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
 
     public function setWidth(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->width = $cValue;
     }
@@ -124,7 +116,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
      */
     public function getHeight(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->height;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +123,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
 
     public function setHeight(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->height = $cValue;
     }
@@ -142,7 +132,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
      */
     public function getImageFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageFormat;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -150,7 +139,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
 
     public function setImageFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->imageFormat = $cValue;
     }
@@ -160,7 +148,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
      */
     public function getFlowVectorFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flowVectorFormat;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -168,7 +155,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
 
     public function setFlowVectorFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->flowVectorFormat = $cValue;
     }
@@ -178,7 +164,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
      */
     public function getCostFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->costFormat;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -186,7 +171,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
 
     public function setCostFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->costFormat = $cValue;
     }
@@ -196,7 +180,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
      */
     public function getOutputGridSize(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->outputGridSize;
         $phpValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -204,7 +187,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
 
     public function setOutputGridSize(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->outputGridSize = $cValue;
     }
@@ -214,7 +196,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
      */
     public function getHintGridSize(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->hintGridSize;
         $phpValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -222,7 +203,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
 
     public function setHintGridSize(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->hintGridSize = $cValue;
     }
@@ -232,7 +212,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
      */
     public function getPerformanceLevel(): \iggyvolz\vulkan\enum\VkOpticalFlowPerformanceLevelNV
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->performanceLevel;
         $phpValue = \iggyvolz\vulkan\enum\VkOpticalFlowPerformanceLevelNV::from($cValue);
         return $phpValue;
@@ -240,7 +219,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
 
     public function setPerformanceLevel(\iggyvolz\vulkan\enum\VkOpticalFlowPerformanceLevelNV $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->performanceLevel = $cValue;
     }
@@ -250,7 +228,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkOpticalFlowSessionCreateFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -258,7 +235,6 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkOpticalFlowSessionCreateFlagBitsNV::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }

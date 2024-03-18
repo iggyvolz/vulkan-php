@@ -25,8 +25,6 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
         null|int $accelerationStructureReference = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureInstanceKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkAccelerationStructureInstanceKHR', false));
         if(!is_null($transform)) $self->setTransform($transform);
         if(!is_null($instanceCustomIndex)) $self->setInstanceCustomIndex($instanceCustomIndex);
         if(!is_null($mask)) $self->setMask($mask);
@@ -55,7 +53,6 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
      */
     public function getTransform(): VkTransformMatrixKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transform;
         $phpValue = new \iggyvolz\vulkan\struct\VkTransformMatrixKHR($cValue, $ffi);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
 
     public function setTransform(VkTransformMatrixKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->transform = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
      */
     public function getInstanceCustomIndex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->instanceCustomIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
 
     public function setInstanceCustomIndex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->instanceCustomIndex = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
      */
     public function getMask(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mask;
         $phpValue = $cValue;
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
 
     public function setMask(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->mask = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
      */
     public function getInstanceShaderBindingTableRecordOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->instanceShaderBindingTableRecordOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
 
     public function setInstanceShaderBindingTableRecordOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->instanceShaderBindingTableRecordOffset = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
      */
     public function getFlags(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
 
     public function setFlags(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->flags = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
      */
     public function getAccelerationStructureReference(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->accelerationStructureReference;
         $phpValue = $cValue;
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
 
     public function setAccelerationStructureReference(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->accelerationStructureReference = $cValue;
     }

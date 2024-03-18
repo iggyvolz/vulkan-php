@@ -27,8 +27,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -44,7 +42,7 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
         null|array $blendConstants = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineColorBlendStateCreateInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPipelineColorBlendStateCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -61,7 +59,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -69,7 +66,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -79,7 +75,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -87,7 +82,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -97,7 +91,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineColorBlendStateCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -105,7 +98,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkPipelineColorBlendStateCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -115,7 +107,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
      */
     public function getLogicOpEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->logicOpEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -123,7 +114,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
 
     public function setLogicOpEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->logicOpEnable = $cValue;
     }
@@ -133,7 +123,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
      */
     public function getLogicOp(): \iggyvolz\vulkan\enum\VkLogicOp
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->logicOp;
         $phpValue = \iggyvolz\vulkan\enum\VkLogicOp::from($cValue);
         return $phpValue;
@@ -141,7 +130,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
 
     public function setLogicOp(\iggyvolz\vulkan\enum\VkLogicOp $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->logicOp = $cValue;
     }
@@ -151,7 +139,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
      */
     public function getAttachmentCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->attachmentCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -159,7 +146,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
 
     public function setAttachmentCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->attachmentCount = $cValue;
     }
@@ -169,7 +155,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
      */
     public function getPAttachments(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pAttachments;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineColorBlendAttachmentState', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -177,7 +162,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
 
     public function setPAttachments(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pAttachments = $cValue;
     }
@@ -187,7 +171,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
      */
     public function getBlendConstants(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->blendConstants;
         $phpValue = [$cValue[0],$cValue[1],$cValue[2],$cValue[3],$cValue[4]];
         return $phpValue;
@@ -195,7 +178,6 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
 
     public function setBlendConstants(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue[0] = $phpValue[0];
         $cValue[1] = $phpValue[1];
         $cValue[2] = $phpValue[2];

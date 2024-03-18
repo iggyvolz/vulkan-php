@@ -24,8 +24,6 @@ final class VkRenderingFragmentShadingRateAttachmentInfoKHR implements \JsonSeri
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkRenderingFragmentShadingRateAttachmentInfoKHR implements \JsonSeri
         null|VkExtent2D $shadingRateAttachmentTexelSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkRenderingFragmentShadingRateAttachmentInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkRenderingFragmentShadingRateAttachmentInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($imageView)) $self->setImageView($imageView);
@@ -52,7 +50,6 @@ final class VkRenderingFragmentShadingRateAttachmentInfoKHR implements \JsonSeri
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkRenderingFragmentShadingRateAttachmentInfoKHR implements \JsonSeri
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkRenderingFragmentShadingRateAttachmentInfoKHR implements \JsonSeri
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkRenderingFragmentShadingRateAttachmentInfoKHR implements \JsonSeri
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkRenderingFragmentShadingRateAttachmentInfoKHR implements \JsonSeri
      */
     public function getImageView(): VkImageView
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageView;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageView($cValue, $ffi);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkRenderingFragmentShadingRateAttachmentInfoKHR implements \JsonSeri
 
     public function setImageView(VkImageView $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageView = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkRenderingFragmentShadingRateAttachmentInfoKHR implements \JsonSeri
      */
     public function getImageLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkRenderingFragmentShadingRateAttachmentInfoKHR implements \JsonSeri
 
     public function setImageLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->imageLayout = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkRenderingFragmentShadingRateAttachmentInfoKHR implements \JsonSeri
      */
     public function getShadingRateAttachmentTexelSize(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shadingRateAttachmentTexelSize;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkRenderingFragmentShadingRateAttachmentInfoKHR implements \JsonSeri
 
     public function setShadingRateAttachmentTexelSize(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->shadingRateAttachmentTexelSize = $cValue;
     }

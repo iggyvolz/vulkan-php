@@ -33,8 +33,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -56,7 +54,7 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
         null|int $depth = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkTraceRaysIndirectCommand2KHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkTraceRaysIndirectCommand2KHR', false));
         if(!is_null($raygenShaderRecordAddress)) $self->setRaygenShaderRecordAddress($raygenShaderRecordAddress);
         if(!is_null($raygenShaderRecordSize)) $self->setRaygenShaderRecordSize($raygenShaderRecordSize);
         if(!is_null($missShaderBindingTableAddress)) $self->setMissShaderBindingTableAddress($missShaderBindingTableAddress);
@@ -79,7 +77,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
      */
     public function getRaygenShaderRecordAddress(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->raygenShaderRecordAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -87,7 +84,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 
     public function setRaygenShaderRecordAddress(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->raygenShaderRecordAddress = $cValue;
     }
@@ -97,7 +93,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
      */
     public function getRaygenShaderRecordSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->raygenShaderRecordSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -105,7 +100,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 
     public function setRaygenShaderRecordSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->raygenShaderRecordSize = $cValue;
     }
@@ -115,7 +109,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
      */
     public function getMissShaderBindingTableAddress(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->missShaderBindingTableAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -123,7 +116,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 
     public function setMissShaderBindingTableAddress(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->missShaderBindingTableAddress = $cValue;
     }
@@ -133,7 +125,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
      */
     public function getMissShaderBindingTableSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->missShaderBindingTableSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -141,7 +132,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 
     public function setMissShaderBindingTableSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->missShaderBindingTableSize = $cValue;
     }
@@ -151,7 +141,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
      */
     public function getMissShaderBindingTableStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->missShaderBindingTableStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -159,7 +148,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 
     public function setMissShaderBindingTableStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->missShaderBindingTableStride = $cValue;
     }
@@ -169,7 +157,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
      */
     public function getHitShaderBindingTableAddress(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->hitShaderBindingTableAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -177,7 +164,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 
     public function setHitShaderBindingTableAddress(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->hitShaderBindingTableAddress = $cValue;
     }
@@ -187,7 +173,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
      */
     public function getHitShaderBindingTableSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->hitShaderBindingTableSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -195,7 +180,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 
     public function setHitShaderBindingTableSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->hitShaderBindingTableSize = $cValue;
     }
@@ -205,7 +189,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
      */
     public function getHitShaderBindingTableStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->hitShaderBindingTableStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -213,7 +196,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 
     public function setHitShaderBindingTableStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->hitShaderBindingTableStride = $cValue;
     }
@@ -223,7 +205,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
      */
     public function getCallableShaderBindingTableAddress(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->callableShaderBindingTableAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -231,7 +212,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 
     public function setCallableShaderBindingTableAddress(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->callableShaderBindingTableAddress = $cValue;
     }
@@ -241,7 +221,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
      */
     public function getCallableShaderBindingTableSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->callableShaderBindingTableSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -249,7 +228,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 
     public function setCallableShaderBindingTableSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->callableShaderBindingTableSize = $cValue;
     }
@@ -259,7 +237,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
      */
     public function getCallableShaderBindingTableStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->callableShaderBindingTableStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -267,7 +244,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 
     public function setCallableShaderBindingTableStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->callableShaderBindingTableStride = $cValue;
     }
@@ -277,7 +253,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
      */
     public function getWidth(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->width;
         $phpValue = $cValue;
         return $phpValue;
@@ -285,7 +260,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 
     public function setWidth(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->width = $cValue;
     }
@@ -295,7 +269,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
      */
     public function getHeight(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->height;
         $phpValue = $cValue;
         return $phpValue;
@@ -303,7 +276,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 
     public function setHeight(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->height = $cValue;
     }
@@ -313,7 +285,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
      */
     public function getDepth(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depth;
         $phpValue = $cValue;
         return $phpValue;
@@ -321,7 +292,6 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
 
     public function setDepth(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->depth = $cValue;
     }

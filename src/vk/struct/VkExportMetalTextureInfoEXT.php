@@ -26,8 +26,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
         mixed $mtlTexture = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkExportMetalTextureInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkExportMetalTextureInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($image)) $self->setImage($image);
@@ -58,7 +56,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
      */
     public function getImage(): VkImage
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->image;
         $phpValue = new \iggyvolz\vulkan\struct\VkImage($cValue, $ffi);
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
 
     public function setImage(VkImage $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->image = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
      */
     public function getImageView(): VkImageView
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageView;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageView($cValue, $ffi);
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
 
     public function setImageView(VkImageView $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageView = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
      */
     public function getBufferView(): VkBufferView
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferView;
         $phpValue = new \iggyvolz\vulkan\struct\VkBufferView($cValue, $ffi);
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
 
     public function setBufferView(VkBufferView $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->bufferView = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
      */
     public function getPlane(): \iggyvolz\vulkan\enum\VkImageAspectFlagBits
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->plane;
         $phpValue = \iggyvolz\vulkan\enum\VkImageAspectFlagBits::from($cValue);
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
 
     public function setPlane(\iggyvolz\vulkan\enum\VkImageAspectFlagBits $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->plane = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
      */
     public function getMtlTexture(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mtlTexture;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkExportMetalTextureInfoEXT implements \JsonSerializable
 
     public function setMtlTexture(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->mtlTexture = $cValue;
     }

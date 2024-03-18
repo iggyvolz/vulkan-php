@@ -61,6 +61,9 @@ mkdir($targetDirectory);
 mkdir("$targetDirectory/enum");
 mkdir("$targetDirectory/struct");
 mkdir("$targetDirectory/event");
+mkdir("$targetDirectory/ext");
+$extensionClasses = [];
+$extensionFiles = [];
 $registry = Registry::get(cacheDirectory: __DIR__ . "/cache");
 file_put_contents(__DIR__ . "/registry.json", json_encode($registry, flags: JSON_PRETTY_PRINT));
 ob_start();
@@ -144,10 +147,9 @@ foreach($registry->getTypes(Struct::class) as $struct) {
     $constructor = $class->addMethod("__construct");
     $constructor->addComment("@internal");
     $constructor->addPromotedParameter("cdata")->addComment("@internal")->setPublic()->setType(CData::class);
-    $constructor->addPromotedParameter("vulkan")->addComment("@internal")->setPublic()->setType(Vulkan::class);
     $create = $class->addMethod("create")->setPublic()->setStatic()->setReturnType("self");
     $create->addParameter("vulkan")->setType(Vulkan::class);
-    $create->addBody('$self = new self( $vulkan->ffi->new(' . var_export($struct->name, true) . ', false), $vulkan);');
+    $create->addBody('$self = new self( $vulkan->ffi->new(' . var_export($struct->name, true) . ', false));');
     $cdef = "typedef struct {";
     foreach($struct->members as $member) {
         $memberType = Transformer::get($member->type);
@@ -159,14 +161,14 @@ foreach($registry->getTypes(Struct::class) as $struct) {
         }
         $totalStructMembers++;
         $getter = $class->addMethod("get" . ucfirst($member->name));
-        $getter->addBody('$ffi = $this->vulkan->ffi;');
+//        $getter->addBody('$ffi = $this->vulkan->ffi;');
         $getter->addBody('$cValue = $this->cdata->' . $member->name . ';');
         $getter->addBody($memberType->fromC());
         $getter->addBody('return $phpValue;');
         $getter->setReturnType($memberType->phpType());
         $setter = $class->addMethod("set" . ucfirst($member->name))->setReturnType('void');
         $setter->addParameter("phpValue")->setType($memberType->phpType());
-        $setter->addBody('$ffi = $this->vulkan->ffi;');
+//        $setter->addBody('$ffi = $this->vulkan->ffi;');
         $setter->addBody($memberType->toC());
         $setter->addBody('$this->cdata->' . $member->name . ' = $cValue;');
         $create->addParameter($member->name)->setType(nullable($memberType->phpType()))->setDefaultValue(null);
@@ -192,14 +194,36 @@ $vulkanClass->addTrait(VulkanBase::class);
 $totalMethods = 0;
 $okayMethods = 0;
 $notOkayMethods=[];
+function desnake(string $name): string
+{
+    $expl = explode("_", $name);
+    $expl = array_map(strtolower(...), $expl);
+    $expl = array_map(ucfirst(...), $expl);
+    return implode("", $expl);
+}
 foreach ($registry->commands as $command) {
-    $isOkay = true;
+    foreach($command->availableIn as $ext) {
+        $cls = desnake($ext);
+        if(!array_key_exists($cls, $extensionClasses)) {
+            $extensionClasses[$cls] = ($extensionFiles[__DIR__ . "/src/vk/ext/$cls.php"] = new PhpFile())->addNamespace("iggyvolz\\vulkan\\ext")->addClass($cls);
+        }
+        $extensionClass = $extensionClasses[$cls];
+        if($extensionClass->hasMethod($command->name)) continue;
+        $method = $extensionClass->addMethod($command->name);
+    }
     $returnTypeTransformer = Transformer::get($command->type);
     if($returnTypeTransformer instanceof DummyTransformer) {
         $isOkay = false;
         registerNotOkayType($command->type);
     }
-    $cdef = "typedef " . $returnTypeTransformer->cTypePrefix() . " (*PFN_PHP_" . $command->name . ")(";
+    $cdefs[] = "typedef " . $returnTypeTransformer->cTypePrefix() . " (*PFN_PHP_" . $command->name . ")(" . implode(",", array_map(fn(Transformer $t, Parameter $p): string => $t->cTypePrefix() . " " . $p->name . $t->cTypeSuffix(), array_map(fn(Parameter $p) => Transformer::get($p->type), $command->parameters), $command->parameters)) . ");";
+
+    continue;
+    if(count($command->availableIn) === 3) {
+        echo $command->name . PHP_EOL;
+    }
+    continue;
+    $isOkay = true;
     $methodName = lcfirst(substr($command->name, 2));
     $phpParameters = $command->parameters; // Parameters that will be used by PHP (skips the first if $this is used as context)
     if(in_array($command->parameters[0]->type, ["VkCommandBuffer", "VkDevice", "VkPhysicalDevice", "VkInstance", "VkQueue"])) {
@@ -244,7 +268,6 @@ foreach ($registry->commands as $command) {
         $getMethod->addComment("@return list<" . $entryTransformer->phpDocType() . ">");
         skip:
     }
-    $cdef .= implode(",", array_map(fn(Transformer $t, Parameter $p): string => $t->cTypePrefix() . " " . $p->name . $t->cTypeSuffix(), array_map(fn(Parameter $p) => Transformer::get($p->type), $command->parameters), $command->parameters));
     foreach($phpParameters as $parameter) {
         $paramType = Transformer::get($parameter->type);
         if($paramType instanceof DummyTransformer)
@@ -272,8 +295,6 @@ foreach ($registry->commands as $command) {
         $method->addBody($returnTypeTransformer->fromC());
         $method->addBody('return $phpValue;');
     }
-    $cdef .= ");";
-    $cdefs[] = $cdef;
     $totalMethods++;
     if($isOkay) $okayMethods++; else $notOkayMethods[] = $method->getName();
 }
@@ -333,7 +354,7 @@ function tag(string $key): string {
 
 if(REPORT) {
 // Some reporting - usually hack around this or dump it into the README
-    $pctMethods = round(100 * ($okayMethods / $totalMethods), 2);
+    $pctMethods = 0;//round(100 * ($okayMethods / $totalMethods), 2);
     echo "- $okayStructs/$totalStructs ($pctStructs%) structs are complete\n";
     echo "- $okayStructMembers/$totalStructMembers ($pctMembers%) struct members are complete\n";
     echo "- $okayMethods/$totalMethods ($pctMethods%) methods are callable\n";
@@ -372,6 +393,9 @@ $cdefs[] = "void* vkGetDeviceProcAddr(VkDevice, const char*);";
 
 foreach($structFiles as $fileName => $structFile) {
     file_put_contents($fileName, $printer->printFile($structFile));
+}
+foreach($extensionFiles as $fileName => $extensionFile) {
+    file_put_contents($fileName, $printer->printFile($extensionFile));
 }
 file_put_contents($targetDirectory . "/Vulkan.php", $printer->printFile($vulkanFile));
 file_put_contents($targetDirectory . "/vulkan.h", implode("\n", $cdefs));

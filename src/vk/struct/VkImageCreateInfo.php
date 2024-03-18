@@ -34,8 +34,6 @@ final class VkImageCreateInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -58,7 +56,7 @@ final class VkImageCreateInfo implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkImageLayout $initialLayout = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageCreateInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkImageCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -82,7 +80,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -90,7 +87,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -100,7 +96,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -108,7 +103,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -118,7 +112,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkImageCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -126,7 +119,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -136,7 +128,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getImageType(): \iggyvolz\vulkan\enum\VkImageType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageType;
         $phpValue = \iggyvolz\vulkan\enum\VkImageType::from($cValue);
         return $phpValue;
@@ -144,7 +135,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setImageType(\iggyvolz\vulkan\enum\VkImageType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->imageType = $cValue;
     }
@@ -154,7 +144,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -162,7 +151,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->format = $cValue;
     }
@@ -172,7 +160,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getExtent(): VkExtent3D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent3D($cValue, $ffi);
         return $phpValue;
@@ -180,7 +167,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setExtent(VkExtent3D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->extent = $cValue;
     }
@@ -190,7 +176,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getMipLevels(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mipLevels;
         $phpValue = $cValue;
         return $phpValue;
@@ -198,7 +183,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setMipLevels(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->mipLevels = $cValue;
     }
@@ -208,7 +192,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getArrayLayers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->arrayLayers;
         $phpValue = $cValue;
         return $phpValue;
@@ -216,7 +199,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setArrayLayers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->arrayLayers = $cValue;
     }
@@ -226,7 +208,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getSamples(): \iggyvolz\vulkan\enum\VkSampleCountFlagBits
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samples;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::from($cValue);
         return $phpValue;
@@ -234,7 +215,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setSamples(\iggyvolz\vulkan\enum\VkSampleCountFlagBits $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->samples = $cValue;
     }
@@ -244,7 +224,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getTiling(): \iggyvolz\vulkan\enum\VkImageTiling
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tiling;
         $phpValue = \iggyvolz\vulkan\enum\VkImageTiling::from($cValue);
         return $phpValue;
@@ -252,7 +231,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setTiling(\iggyvolz\vulkan\enum\VkImageTiling $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->tiling = $cValue;
     }
@@ -262,7 +240,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getUsage(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->usage;
         $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -270,7 +247,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setUsage(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->usage = $cValue;
     }
@@ -280,7 +256,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getSharingMode(): \iggyvolz\vulkan\enum\VkSharingMode
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sharingMode;
         $phpValue = \iggyvolz\vulkan\enum\VkSharingMode::from($cValue);
         return $phpValue;
@@ -288,7 +263,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setSharingMode(\iggyvolz\vulkan\enum\VkSharingMode $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sharingMode = $cValue;
     }
@@ -298,7 +272,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getQueueFamilyIndexCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->queueFamilyIndexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -306,7 +279,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setQueueFamilyIndexCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->queueFamilyIndexCount = $cValue;
     }
@@ -316,7 +288,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getPQueueFamilyIndices(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pQueueFamilyIndices;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -324,7 +295,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setPQueueFamilyIndices(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pQueueFamilyIndices = $cValue;
     }
@@ -334,7 +304,6 @@ final class VkImageCreateInfo implements \JsonSerializable
      */
     public function getInitialLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->initialLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -342,7 +311,6 @@ final class VkImageCreateInfo implements \JsonSerializable
 
     public function setInitialLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->initialLayout = $cValue;
     }

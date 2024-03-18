@@ -27,8 +27,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -44,7 +42,7 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
         null|int $initialVirtualBufferSizeInMs = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeRateControlInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkVideoEncodeRateControlInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -61,7 +59,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -69,7 +66,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -79,7 +75,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -87,7 +82,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -97,7 +91,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = [];
         return $phpValue;
@@ -105,7 +98,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = 0;
         $this->cdata->flags = $cValue;
     }
@@ -115,7 +107,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
      */
     public function getRateControlMode(): \iggyvolz\vulkan\enum\VkVideoEncodeRateControlModeFlagBitsKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->rateControlMode;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeRateControlModeFlagBitsKHR::from($cValue);
         return $phpValue;
@@ -123,7 +114,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
 
     public function setRateControlMode(\iggyvolz\vulkan\enum\VkVideoEncodeRateControlModeFlagBitsKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->rateControlMode = $cValue;
     }
@@ -133,7 +123,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
      */
     public function getLayerCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layerCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -141,7 +130,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
 
     public function setLayerCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->layerCount = $cValue;
     }
@@ -151,7 +139,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
      */
     public function getPLayers(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pLayers;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -159,7 +146,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
 
     public function setPLayers(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pLayers = $cValue;
     }
@@ -169,7 +155,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
      */
     public function getVirtualBufferSizeInMs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->virtualBufferSizeInMs;
         $phpValue = $cValue;
         return $phpValue;
@@ -177,7 +162,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
 
     public function setVirtualBufferSizeInMs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->virtualBufferSizeInMs = $cValue;
     }
@@ -187,7 +171,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
      */
     public function getInitialVirtualBufferSizeInMs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->initialVirtualBufferSizeInMs;
         $phpValue = $cValue;
         return $phpValue;
@@ -195,7 +178,6 @@ final class VkVideoEncodeRateControlInfoKHR implements \JsonSerializable
 
     public function setInitialVirtualBufferSizeInMs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->initialVirtualBufferSizeInMs = $cValue;
     }

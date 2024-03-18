@@ -21,14 +21,12 @@ final class VkOffset2D implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan, null|int $x = null, null|int $y = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkOffset2D', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkOffset2D', false));
         if(!is_null($x)) $self->setX($x);
         if(!is_null($y)) $self->setY($y);
         return $self;
@@ -39,7 +37,6 @@ final class VkOffset2D implements \JsonSerializable
      */
     public function getX(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->x;
         $phpValue = $cValue;
         return $phpValue;
@@ -47,7 +44,6 @@ final class VkOffset2D implements \JsonSerializable
 
     public function setX(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->x = $cValue;
     }
@@ -57,7 +53,6 @@ final class VkOffset2D implements \JsonSerializable
      */
     public function getY(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->y;
         $phpValue = $cValue;
         return $phpValue;
@@ -65,7 +60,6 @@ final class VkOffset2D implements \JsonSerializable
 
     public function setY(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->y = $cValue;
     }

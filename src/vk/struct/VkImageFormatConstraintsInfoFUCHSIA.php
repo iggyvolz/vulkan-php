@@ -27,8 +27,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -44,7 +42,7 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pColorSpaces = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageFormatConstraintsInfoFUCHSIA', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkImageFormatConstraintsInfoFUCHSIA', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($imageCreateInfo)) $self->setImageCreateInfo($imageCreateInfo);
@@ -61,7 +59,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -69,7 +66,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -79,7 +75,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -87,7 +82,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -97,7 +91,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
      */
     public function getImageCreateInfo(): VkImageCreateInfo
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageCreateInfo;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageCreateInfo($cValue, $ffi);
         return $phpValue;
@@ -105,7 +98,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
 
     public function setImageCreateInfo(VkImageCreateInfo $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageCreateInfo = $cValue;
     }
@@ -115,7 +107,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
      */
     public function getRequiredFormatFeatures(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->requiredFormatFeatures;
         $phpValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::fromInt($cValue);
         return $phpValue;
@@ -123,7 +114,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
 
     public function setRequiredFormatFeatures(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkFormatFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->requiredFormatFeatures = $cValue;
     }
@@ -133,7 +123,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkImageFormatConstraintsFlagBitsFUCHSIA::fromInt($cValue);
         return $phpValue;
@@ -141,7 +130,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageFormatConstraintsFlagBitsFUCHSIA::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -151,7 +139,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
      */
     public function getSysmemPixelFormat(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sysmemPixelFormat;
         $phpValue = $cValue;
         return $phpValue;
@@ -159,7 +146,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
 
     public function setSysmemPixelFormat(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sysmemPixelFormat = $cValue;
     }
@@ -169,7 +155,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
      */
     public function getColorSpaceCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->colorSpaceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -177,7 +162,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
 
     public function setColorSpaceCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->colorSpaceCount = $cValue;
     }
@@ -187,7 +171,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
      */
     public function getPColorSpaces(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pColorSpaces;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -195,7 +178,6 @@ final class VkImageFormatConstraintsInfoFUCHSIA implements \JsonSerializable
 
     public function setPColorSpaces(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pColorSpaces = $cValue;
     }

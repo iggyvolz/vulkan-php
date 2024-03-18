@@ -23,8 +23,6 @@ final class VkLayerProperties implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkLayerProperties implements \JsonSerializable
         null|string $description = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkLayerProperties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkLayerProperties', false));
         if(!is_null($layerName)) $self->setLayerName($layerName);
         if(!is_null($specVersion)) $self->setSpecVersion($specVersion);
         if(!is_null($implementationVersion)) $self->setImplementationVersion($implementationVersion);
@@ -49,7 +47,6 @@ final class VkLayerProperties implements \JsonSerializable
      */
     public function getLayerName(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layerName;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkLayerProperties implements \JsonSerializable
 
     public function setLayerName(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->layerName = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkLayerProperties implements \JsonSerializable
      */
     public function getSpecVersion(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->specVersion;
         $phpValue = $cValue;
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkLayerProperties implements \JsonSerializable
 
     public function setSpecVersion(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->specVersion = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkLayerProperties implements \JsonSerializable
      */
     public function getImplementationVersion(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->implementationVersion;
         $phpValue = $cValue;
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkLayerProperties implements \JsonSerializable
 
     public function setImplementationVersion(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->implementationVersion = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkLayerProperties implements \JsonSerializable
      */
     public function getDescription(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->description;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkLayerProperties implements \JsonSerializable
 
     public function setDescription(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->description = $cValue;
     }

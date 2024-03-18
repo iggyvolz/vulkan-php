@@ -28,8 +28,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -41,12 +39,12 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
         null|int $deviceID = null,
         null|\iggyvolz\vulkan\enum\VkPhysicalDeviceType $deviceType = null,
         null|string $deviceName = null,
-        null|\Ramsey\Uuid\UuidInterface $pipelineCacheUUID = null,
+        null|string $pipelineCacheUUID = null,
         mixed $limits = null,
         mixed $sparseProperties = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceProperties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceProperties', false));
         if(!is_null($apiVersion)) $self->setApiVersion($apiVersion);
         if(!is_null($driverVersion)) $self->setDriverVersion($driverVersion);
         if(!is_null($vendorID)) $self->setVendorID($vendorID);
@@ -64,7 +62,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
      */
     public function getApiVersion(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->apiVersion;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +69,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
 
     public function setApiVersion(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->apiVersion = $cValue;
     }
@@ -82,7 +78,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
      */
     public function getDriverVersion(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->driverVersion;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +85,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
 
     public function setDriverVersion(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->driverVersion = $cValue;
     }
@@ -100,7 +94,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
      */
     public function getVendorID(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vendorID;
         $phpValue = $cValue;
         return $phpValue;
@@ -108,7 +101,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
 
     public function setVendorID(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vendorID = $cValue;
     }
@@ -118,7 +110,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
      */
     public function getDeviceID(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceID;
         $phpValue = $cValue;
         return $phpValue;
@@ -126,7 +117,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
 
     public function setDeviceID(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->deviceID = $cValue;
     }
@@ -136,7 +126,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
      */
     public function getDeviceType(): \iggyvolz\vulkan\enum\VkPhysicalDeviceType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceType;
         $phpValue = \iggyvolz\vulkan\enum\VkPhysicalDeviceType::from($cValue);
         return $phpValue;
@@ -144,7 +133,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
 
     public function setDeviceType(\iggyvolz\vulkan\enum\VkPhysicalDeviceType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->deviceType = $cValue;
     }
@@ -154,7 +142,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
      */
     public function getDeviceName(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceName;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -162,26 +149,23 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
 
     public function setDeviceName(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->deviceName = $cValue;
     }
 
     /**
-     * uint8_t/[16]
+     * char/[16]
      */
-    public function getPipelineCacheUUID(): \Ramsey\Uuid\UuidInterface
+    public function getPipelineCacheUUID(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineCacheUUID;
-        $phpValue = \Ramsey\Uuid\Uuid::fromBytes(\FFI::string($cValue, 16));
+        $tempString = \FFI::string($cValue, 16); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
     }
 
-    public function setPipelineCacheUUID(\Ramsey\Uuid\UuidInterface $phpValue): void
+    public function setPipelineCacheUUID(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
-        $cValue = $ffi->new("uint8_t[16]"); $ffi->memcpy($cValue, $phpValue->getBytes(), 16);
+        \FFI::memcpy($cValue, $phpValue, 16);
         $this->cdata->pipelineCacheUUID = $cValue;
     }
 
@@ -190,7 +174,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
      */
     public function getLimits(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->limits;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -198,7 +181,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
 
     public function setLimits(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->limits = $cValue;
     }
@@ -208,7 +190,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
      */
     public function getSparseProperties(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sparseProperties;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -216,7 +197,6 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
 
     public function setSparseProperties(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->sparseProperties = $cValue;
     }

@@ -21,8 +21,6 @@ final class VkPresentRegionKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkPresentRegionKHR implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pRectangles = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPresentRegionKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPresentRegionKHR', false));
         if(!is_null($rectangleCount)) $self->setRectangleCount($rectangleCount);
         if(!is_null($pRectangles)) $self->setPRectangles($pRectangles);
         return $self;
@@ -43,7 +41,6 @@ final class VkPresentRegionKHR implements \JsonSerializable
      */
     public function getRectangleCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->rectangleCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkPresentRegionKHR implements \JsonSerializable
 
     public function setRectangleCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->rectangleCount = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkPresentRegionKHR implements \JsonSerializable
      */
     public function getPRectangles(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pRectangles;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkPresentRegionKHR implements \JsonSerializable
 
     public function setPRectangles(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pRectangles = $cValue;
     }

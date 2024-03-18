@@ -24,8 +24,6 @@ final class VkVideoDecodeH264PictureInfoKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkVideoDecodeH264PictureInfoKHR implements \JsonSerializable
         null|\iggyvolz\vulkan\util\IntPointer $pSliceOffsets = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoDecodeH264PictureInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkVideoDecodeH264PictureInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pStdPictureInfo)) $self->setPStdPictureInfo($pStdPictureInfo);
@@ -52,7 +50,6 @@ final class VkVideoDecodeH264PictureInfoKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkVideoDecodeH264PictureInfoKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkVideoDecodeH264PictureInfoKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkVideoDecodeH264PictureInfoKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkVideoDecodeH264PictureInfoKHR implements \JsonSerializable
      */
     public function getPStdPictureInfo(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pStdPictureInfo;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkVideoDecodeH264PictureInfoKHR implements \JsonSerializable
 
     public function setPStdPictureInfo(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pStdPictureInfo = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkVideoDecodeH264PictureInfoKHR implements \JsonSerializable
      */
     public function getSliceCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sliceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkVideoDecodeH264PictureInfoKHR implements \JsonSerializable
 
     public function setSliceCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sliceCount = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkVideoDecodeH264PictureInfoKHR implements \JsonSerializable
      */
     public function getPSliceOffsets(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pSliceOffsets;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkVideoDecodeH264PictureInfoKHR implements \JsonSerializable
 
     public function setPSliceOffsets(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pSliceOffsets = $cValue;
     }

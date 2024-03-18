@@ -24,8 +24,6 @@ final class VkPipelineCacheHeaderVersionOne implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -35,10 +33,10 @@ final class VkPipelineCacheHeaderVersionOne implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkPipelineCacheHeaderVersion $headerVersion = null,
         null|int $vendorID = null,
         null|int $deviceID = null,
-        null|\Ramsey\Uuid\UuidInterface $pipelineCacheUUID = null,
+        null|string $pipelineCacheUUID = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineCacheHeaderVersionOne', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPipelineCacheHeaderVersionOne', false));
         if(!is_null($headerSize)) $self->setHeaderSize($headerSize);
         if(!is_null($headerVersion)) $self->setHeaderVersion($headerVersion);
         if(!is_null($vendorID)) $self->setVendorID($vendorID);
@@ -52,7 +50,6 @@ final class VkPipelineCacheHeaderVersionOne implements \JsonSerializable
      */
     public function getHeaderSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->headerSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkPipelineCacheHeaderVersionOne implements \JsonSerializable
 
     public function setHeaderSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->headerSize = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkPipelineCacheHeaderVersionOne implements \JsonSerializable
      */
     public function getHeaderVersion(): \iggyvolz\vulkan\enum\VkPipelineCacheHeaderVersion
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->headerVersion;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineCacheHeaderVersion::from($cValue);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkPipelineCacheHeaderVersionOne implements \JsonSerializable
 
     public function setHeaderVersion(\iggyvolz\vulkan\enum\VkPipelineCacheHeaderVersion $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->headerVersion = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkPipelineCacheHeaderVersionOne implements \JsonSerializable
      */
     public function getVendorID(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vendorID;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkPipelineCacheHeaderVersionOne implements \JsonSerializable
 
     public function setVendorID(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vendorID = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkPipelineCacheHeaderVersionOne implements \JsonSerializable
      */
     public function getDeviceID(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceID;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,26 +105,23 @@ final class VkPipelineCacheHeaderVersionOne implements \JsonSerializable
 
     public function setDeviceID(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->deviceID = $cValue;
     }
 
     /**
-     * uint8_t/[16]
+     * char/[16]
      */
-    public function getPipelineCacheUUID(): \Ramsey\Uuid\UuidInterface
+    public function getPipelineCacheUUID(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineCacheUUID;
-        $phpValue = \Ramsey\Uuid\Uuid::fromBytes(\FFI::string($cValue, 16));
+        $tempString = \FFI::string($cValue, 16); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
     }
 
-    public function setPipelineCacheUUID(\Ramsey\Uuid\UuidInterface $phpValue): void
+    public function setPipelineCacheUUID(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
-        $cValue = $ffi->new("uint8_t[16]"); $ffi->memcpy($cValue, $phpValue->getBytes(), 16);
+        \FFI::memcpy($cValue, $phpValue, 16);
         $this->cdata->pipelineCacheUUID = $cValue;
     }
 }

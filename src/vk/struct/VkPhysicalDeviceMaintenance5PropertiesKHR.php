@@ -27,8 +27,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -44,7 +42,7 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
         null|bool $nonStrictWideLinesUseParallelogram = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMaintenance5PropertiesKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMaintenance5PropertiesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($earlyFragmentMultisampleCoverageAfterSampleCounting)) $self->setEarlyFragmentMultisampleCoverageAfterSampleCounting($earlyFragmentMultisampleCoverageAfterSampleCounting);
@@ -61,7 +59,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -69,7 +66,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -79,7 +75,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -87,7 +82,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -97,7 +91,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
      */
     public function getEarlyFragmentMultisampleCoverageAfterSampleCounting(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->earlyFragmentMultisampleCoverageAfterSampleCounting;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -105,7 +98,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
 
     public function setEarlyFragmentMultisampleCoverageAfterSampleCounting(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->earlyFragmentMultisampleCoverageAfterSampleCounting = $cValue;
     }
@@ -115,7 +107,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
      */
     public function getEarlyFragmentSampleMaskTestBeforeSampleCounting(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->earlyFragmentSampleMaskTestBeforeSampleCounting;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -123,7 +114,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
 
     public function setEarlyFragmentSampleMaskTestBeforeSampleCounting(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->earlyFragmentSampleMaskTestBeforeSampleCounting = $cValue;
     }
@@ -133,7 +123,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
      */
     public function getDepthStencilSwizzleOneSupport(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthStencilSwizzleOneSupport;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -141,7 +130,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
 
     public function setDepthStencilSwizzleOneSupport(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->depthStencilSwizzleOneSupport = $cValue;
     }
@@ -151,7 +139,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
      */
     public function getPolygonModePointSize(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->polygonModePointSize;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -159,7 +146,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
 
     public function setPolygonModePointSize(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->polygonModePointSize = $cValue;
     }
@@ -169,7 +155,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
      */
     public function getNonStrictSinglePixelWideLinesUseParallelogram(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->nonStrictSinglePixelWideLinesUseParallelogram;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -177,7 +162,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
 
     public function setNonStrictSinglePixelWideLinesUseParallelogram(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->nonStrictSinglePixelWideLinesUseParallelogram = $cValue;
     }
@@ -187,7 +171,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
      */
     public function getNonStrictWideLinesUseParallelogram(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->nonStrictWideLinesUseParallelogram;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -195,7 +178,6 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
 
     public function setNonStrictWideLinesUseParallelogram(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->nonStrictWideLinesUseParallelogram = $cValue;
     }

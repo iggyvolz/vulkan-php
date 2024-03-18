@@ -24,8 +24,6 @@ final class VkAttachmentSampleCountInfoAMD implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkAttachmentSampleCountInfoAMD implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkSampleCountFlagBits $depthStencilAttachmentSamples = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAttachmentSampleCountInfoAMD', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkAttachmentSampleCountInfoAMD', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($colorAttachmentCount)) $self->setColorAttachmentCount($colorAttachmentCount);
@@ -52,7 +50,6 @@ final class VkAttachmentSampleCountInfoAMD implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkAttachmentSampleCountInfoAMD implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkAttachmentSampleCountInfoAMD implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkAttachmentSampleCountInfoAMD implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkAttachmentSampleCountInfoAMD implements \JsonSerializable
      */
     public function getColorAttachmentCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->colorAttachmentCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkAttachmentSampleCountInfoAMD implements \JsonSerializable
 
     public function setColorAttachmentCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->colorAttachmentCount = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkAttachmentSampleCountInfoAMD implements \JsonSerializable
      */
     public function getPColorAttachmentSamples(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pColorAttachmentSamples;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkAttachmentSampleCountInfoAMD implements \JsonSerializable
 
     public function setPColorAttachmentSamples(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pColorAttachmentSamples = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkAttachmentSampleCountInfoAMD implements \JsonSerializable
      */
     public function getDepthStencilAttachmentSamples(): \iggyvolz\vulkan\enum\VkSampleCountFlagBits
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthStencilAttachmentSamples;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::from($cValue);
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkAttachmentSampleCountInfoAMD implements \JsonSerializable
 
     public function setDepthStencilAttachmentSamples(\iggyvolz\vulkan\enum\VkSampleCountFlagBits $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->depthStencilAttachmentSamples = $cValue;
     }

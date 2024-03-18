@@ -66,8 +66,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -122,7 +120,7 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
         null|int $maxBufferSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkan13Properties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkan13Properties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($minSubgroupSize)) $self->setMinSubgroupSize($minSubgroupSize);
@@ -178,7 +176,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -186,7 +183,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -196,7 +192,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -204,7 +199,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -214,7 +208,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getMinSubgroupSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minSubgroupSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -222,7 +215,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setMinSubgroupSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minSubgroupSize = $cValue;
     }
@@ -232,7 +224,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getMaxSubgroupSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSubgroupSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -240,7 +231,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setMaxSubgroupSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSubgroupSize = $cValue;
     }
@@ -250,7 +240,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getMaxComputeWorkgroupSubgroups(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxComputeWorkgroupSubgroups;
         $phpValue = $cValue;
         return $phpValue;
@@ -258,7 +247,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setMaxComputeWorkgroupSubgroups(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxComputeWorkgroupSubgroups = $cValue;
     }
@@ -268,7 +256,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getRequiredSubgroupSizeStages(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->requiredSubgroupSizeStages;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -276,7 +263,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setRequiredSubgroupSizeStages(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->requiredSubgroupSizeStages = $cValue;
     }
@@ -286,7 +272,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getMaxInlineUniformBlockSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxInlineUniformBlockSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -294,7 +279,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setMaxInlineUniformBlockSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxInlineUniformBlockSize = $cValue;
     }
@@ -304,7 +288,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getMaxPerStageDescriptorInlineUniformBlocks(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorInlineUniformBlocks;
         $phpValue = $cValue;
         return $phpValue;
@@ -312,7 +295,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setMaxPerStageDescriptorInlineUniformBlocks(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorInlineUniformBlocks = $cValue;
     }
@@ -322,7 +304,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getMaxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks;
         $phpValue = $cValue;
         return $phpValue;
@@ -330,7 +311,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setMaxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = $cValue;
     }
@@ -340,7 +320,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getMaxDescriptorSetInlineUniformBlocks(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetInlineUniformBlocks;
         $phpValue = $cValue;
         return $phpValue;
@@ -348,7 +327,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setMaxDescriptorSetInlineUniformBlocks(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetInlineUniformBlocks = $cValue;
     }
@@ -358,7 +336,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getMaxDescriptorSetUpdateAfterBindInlineUniformBlocks(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindInlineUniformBlocks;
         $phpValue = $cValue;
         return $phpValue;
@@ -366,7 +343,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setMaxDescriptorSetUpdateAfterBindInlineUniformBlocks(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindInlineUniformBlocks = $cValue;
     }
@@ -376,7 +352,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getMaxInlineUniformTotalSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxInlineUniformTotalSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -384,7 +359,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setMaxInlineUniformTotalSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxInlineUniformTotalSize = $cValue;
     }
@@ -394,7 +368,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct8BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct8BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -402,7 +375,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct8BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct8BitUnsignedAccelerated = $cValue;
     }
@@ -412,7 +384,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct8BitSignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct8BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -420,7 +391,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct8BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct8BitSignedAccelerated = $cValue;
     }
@@ -430,7 +400,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct8BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct8BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -438,7 +407,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct8BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct8BitMixedSignednessAccelerated = $cValue;
     }
@@ -448,7 +416,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct4x8BitPackedUnsignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct4x8BitPackedUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -456,7 +423,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct4x8BitPackedUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct4x8BitPackedUnsignedAccelerated = $cValue;
     }
@@ -466,7 +432,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct4x8BitPackedSignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct4x8BitPackedSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -474,7 +439,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct4x8BitPackedSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct4x8BitPackedSignedAccelerated = $cValue;
     }
@@ -484,7 +448,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct4x8BitPackedMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct4x8BitPackedMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -492,7 +455,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct4x8BitPackedMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct4x8BitPackedMixedSignednessAccelerated = $cValue;
     }
@@ -502,7 +464,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct16BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct16BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -510,7 +471,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct16BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct16BitUnsignedAccelerated = $cValue;
     }
@@ -520,7 +480,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct16BitSignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct16BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -528,7 +487,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct16BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct16BitSignedAccelerated = $cValue;
     }
@@ -538,7 +496,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct16BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct16BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -546,7 +503,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct16BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct16BitMixedSignednessAccelerated = $cValue;
     }
@@ -556,7 +512,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct32BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct32BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -564,7 +519,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct32BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct32BitUnsignedAccelerated = $cValue;
     }
@@ -574,7 +528,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct32BitSignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct32BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -582,7 +535,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct32BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct32BitSignedAccelerated = $cValue;
     }
@@ -592,7 +544,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct32BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct32BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -600,7 +551,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct32BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct32BitMixedSignednessAccelerated = $cValue;
     }
@@ -610,7 +560,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct64BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct64BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -618,7 +567,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct64BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct64BitUnsignedAccelerated = $cValue;
     }
@@ -628,7 +576,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct64BitSignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct64BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -636,7 +583,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct64BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct64BitSignedAccelerated = $cValue;
     }
@@ -646,7 +592,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProduct64BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProduct64BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -654,7 +599,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProduct64BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProduct64BitMixedSignednessAccelerated = $cValue;
     }
@@ -664,7 +608,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating8BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating8BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -672,7 +615,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating8BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating8BitUnsignedAccelerated = $cValue;
     }
@@ -682,7 +624,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating8BitSignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating8BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -690,7 +631,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating8BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating8BitSignedAccelerated = $cValue;
     }
@@ -700,7 +640,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -708,7 +647,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated = $cValue;
     }
@@ -718,7 +656,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -726,7 +663,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated = $cValue;
     }
@@ -736,7 +672,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -744,7 +679,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated = $cValue;
     }
@@ -754,7 +688,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -764,7 +697,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
         bool $phpValue,
     ): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = $cValue;
     }
@@ -774,7 +706,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating16BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating16BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -782,7 +713,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating16BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating16BitUnsignedAccelerated = $cValue;
     }
@@ -792,7 +722,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating16BitSignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating16BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -800,7 +729,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating16BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating16BitSignedAccelerated = $cValue;
     }
@@ -810,7 +738,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -818,7 +745,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated = $cValue;
     }
@@ -828,7 +754,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating32BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating32BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -836,7 +761,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating32BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating32BitUnsignedAccelerated = $cValue;
     }
@@ -846,7 +770,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating32BitSignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating32BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -854,7 +777,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating32BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating32BitSignedAccelerated = $cValue;
     }
@@ -864,7 +786,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -872,7 +793,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated = $cValue;
     }
@@ -882,7 +802,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating64BitUnsignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating64BitUnsignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -890,7 +809,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating64BitUnsignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating64BitUnsignedAccelerated = $cValue;
     }
@@ -900,7 +818,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating64BitSignedAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating64BitSignedAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -908,7 +825,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating64BitSignedAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating64BitSignedAccelerated = $cValue;
     }
@@ -918,7 +834,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getIntegerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -926,7 +841,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = $cValue;
     }
@@ -936,7 +850,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getStorageTexelBufferOffsetAlignmentBytes(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageTexelBufferOffsetAlignmentBytes;
         $phpValue = $cValue;
         return $phpValue;
@@ -944,7 +857,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setStorageTexelBufferOffsetAlignmentBytes(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->storageTexelBufferOffsetAlignmentBytes = $cValue;
     }
@@ -954,7 +866,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getStorageTexelBufferOffsetSingleTexelAlignment(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageTexelBufferOffsetSingleTexelAlignment;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -962,7 +873,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setStorageTexelBufferOffsetSingleTexelAlignment(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->storageTexelBufferOffsetSingleTexelAlignment = $cValue;
     }
@@ -972,7 +882,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getUniformTexelBufferOffsetAlignmentBytes(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->uniformTexelBufferOffsetAlignmentBytes;
         $phpValue = $cValue;
         return $phpValue;
@@ -980,7 +889,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setUniformTexelBufferOffsetAlignmentBytes(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->uniformTexelBufferOffsetAlignmentBytes = $cValue;
     }
@@ -990,7 +898,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getUniformTexelBufferOffsetSingleTexelAlignment(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->uniformTexelBufferOffsetSingleTexelAlignment;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -998,7 +905,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setUniformTexelBufferOffsetSingleTexelAlignment(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->uniformTexelBufferOffsetSingleTexelAlignment = $cValue;
     }
@@ -1008,7 +914,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
      */
     public function getMaxBufferSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxBufferSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -1016,7 +921,6 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setMaxBufferSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxBufferSize = $cValue;
     }

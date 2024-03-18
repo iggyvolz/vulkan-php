@@ -22,8 +22,6 @@ final class VkBindIndexBufferIndirectCommandNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkBindIndexBufferIndirectCommandNV implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkIndexType $indexType = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBindIndexBufferIndirectCommandNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkBindIndexBufferIndirectCommandNV', false));
         if(!is_null($bufferAddress)) $self->setBufferAddress($bufferAddress);
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($indexType)) $self->setIndexType($indexType);
@@ -46,7 +44,6 @@ final class VkBindIndexBufferIndirectCommandNV implements \JsonSerializable
      */
     public function getBufferAddress(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkBindIndexBufferIndirectCommandNV implements \JsonSerializable
 
     public function setBufferAddress(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferAddress = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkBindIndexBufferIndirectCommandNV implements \JsonSerializable
      */
     public function getSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkBindIndexBufferIndirectCommandNV implements \JsonSerializable
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkBindIndexBufferIndirectCommandNV implements \JsonSerializable
      */
     public function getIndexType(): \iggyvolz\vulkan\enum\VkIndexType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexType;
         $phpValue = \iggyvolz\vulkan\enum\VkIndexType::from($cValue);
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkBindIndexBufferIndirectCommandNV implements \JsonSerializable
 
     public function setIndexType(\iggyvolz\vulkan\enum\VkIndexType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->indexType = $cValue;
     }
