@@ -23,8 +23,6 @@ final class VkExternalImageFormatPropertiesNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkExternalImageFormatPropertiesNV implements \JsonSerializable
         null|array $compatibleHandleTypes = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkExternalImageFormatPropertiesNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkExternalImageFormatPropertiesNV', false));
         if(!is_null($imageFormatProperties)) $self->setImageFormatProperties($imageFormatProperties);
         if(!is_null($externalMemoryFeatures)) $self->setExternalMemoryFeatures($externalMemoryFeatures);
         if(!is_null($exportFromImportedHandleTypes)) $self->setExportFromImportedHandleTypes($exportFromImportedHandleTypes);
@@ -49,7 +47,6 @@ final class VkExternalImageFormatPropertiesNV implements \JsonSerializable
      */
     public function getImageFormatProperties(): VkImageFormatProperties
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageFormatProperties;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageFormatProperties($cValue, $ffi);
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkExternalImageFormatPropertiesNV implements \JsonSerializable
 
     public function setImageFormatProperties(VkImageFormatProperties $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->imageFormatProperties = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkExternalImageFormatPropertiesNV implements \JsonSerializable
      */
     public function getExternalMemoryFeatures(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->externalMemoryFeatures;
         $phpValue = \iggyvolz\vulkan\enum\VkExternalMemoryFeatureFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkExternalImageFormatPropertiesNV implements \JsonSerializable
 
     public function setExternalMemoryFeatures(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkExternalMemoryFeatureFlagBitsNV::toInt(...$phpValue);
         $this->cdata->externalMemoryFeatures = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkExternalImageFormatPropertiesNV implements \JsonSerializable
      */
     public function getExportFromImportedHandleTypes(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->exportFromImportedHandleTypes;
         $phpValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkExternalImageFormatPropertiesNV implements \JsonSerializable
 
     public function setExportFromImportedHandleTypes(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->exportFromImportedHandleTypes = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkExternalImageFormatPropertiesNV implements \JsonSerializable
      */
     public function getCompatibleHandleTypes(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->compatibleHandleTypes;
         $phpValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkExternalImageFormatPropertiesNV implements \JsonSerializable
 
     public function setCompatibleHandleTypes(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->compatibleHandleTypes = $cValue;
     }

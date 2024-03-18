@@ -29,8 +29,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -48,7 +46,7 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
         null|int $set = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorUpdateTemplateCreateInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDescriptorUpdateTemplateCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -67,7 +65,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -75,7 +72,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -85,7 +81,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -93,7 +88,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -103,7 +97,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = [];
         return $phpValue;
@@ -111,7 +104,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = 0;
         $this->cdata->flags = $cValue;
     }
@@ -121,7 +113,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
      */
     public function getDescriptorUpdateEntryCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorUpdateEntryCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -129,7 +120,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
 
     public function setDescriptorUpdateEntryCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorUpdateEntryCount = $cValue;
     }
@@ -139,7 +129,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
      */
     public function getPDescriptorUpdateEntries(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDescriptorUpdateEntries;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorUpdateTemplateEntry', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -147,7 +136,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
 
     public function setPDescriptorUpdateEntries(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDescriptorUpdateEntries = $cValue;
     }
@@ -157,7 +145,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
      */
     public function getTemplateType(): \iggyvolz\vulkan\enum\VkDescriptorUpdateTemplateType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->templateType;
         $phpValue = \iggyvolz\vulkan\enum\VkDescriptorUpdateTemplateType::from($cValue);
         return $phpValue;
@@ -165,7 +152,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
 
     public function setTemplateType(\iggyvolz\vulkan\enum\VkDescriptorUpdateTemplateType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->templateType = $cValue;
     }
@@ -175,7 +161,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
      */
     public function getDescriptorSetLayout(): VkDescriptorSetLayout
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorSetLayout;
         $phpValue = new \iggyvolz\vulkan\struct\VkDescriptorSetLayout($cValue, $ffi);
         return $phpValue;
@@ -183,7 +168,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
 
     public function setDescriptorSetLayout(VkDescriptorSetLayout $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->descriptorSetLayout = $cValue;
     }
@@ -193,7 +177,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
      */
     public function getPipelineBindPoint(): \iggyvolz\vulkan\enum\VkPipelineBindPoint
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineBindPoint;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineBindPoint::from($cValue);
         return $phpValue;
@@ -201,7 +184,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
 
     public function setPipelineBindPoint(\iggyvolz\vulkan\enum\VkPipelineBindPoint $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->pipelineBindPoint = $cValue;
     }
@@ -211,7 +193,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
      */
     public function getPipelineLayout(): VkPipelineLayout
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineLayout;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipelineLayout($cValue, $ffi);
         return $phpValue;
@@ -219,7 +200,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
 
     public function setPipelineLayout(VkPipelineLayout $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pipelineLayout = $cValue;
     }
@@ -229,7 +209,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
      */
     public function getSet(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->set;
         $phpValue = $cValue;
         return $phpValue;
@@ -237,7 +216,6 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
 
     public function setSet(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->set = $cValue;
     }

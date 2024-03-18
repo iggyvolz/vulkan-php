@@ -21,8 +21,6 @@ final class VkSurfaceFormatKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkSurfaceFormatKHR implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkColorSpaceKHR $colorSpace = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSurfaceFormatKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkSurfaceFormatKHR', false));
         if(!is_null($format)) $self->setFormat($format);
         if(!is_null($colorSpace)) $self->setColorSpace($colorSpace);
         return $self;
@@ -43,7 +41,6 @@ final class VkSurfaceFormatKHR implements \JsonSerializable
      */
     public function getFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkSurfaceFormatKHR implements \JsonSerializable
 
     public function setFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->format = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkSurfaceFormatKHR implements \JsonSerializable
      */
     public function getColorSpace(): \iggyvolz\vulkan\enum\VkColorSpaceKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->colorSpace;
         $phpValue = \iggyvolz\vulkan\enum\VkColorSpaceKHR::from($cValue);
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkSurfaceFormatKHR implements \JsonSerializable
 
     public function setColorSpace(\iggyvolz\vulkan\enum\VkColorSpaceKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->colorSpace = $cValue;
     }

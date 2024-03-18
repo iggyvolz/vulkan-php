@@ -28,8 +28,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -46,7 +44,7 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
         null|VkExtent2D $maxDstExtent = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDisplayPlaneCapabilitiesKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDisplayPlaneCapabilitiesKHR', false));
         if(!is_null($supportedAlpha)) $self->setSupportedAlpha($supportedAlpha);
         if(!is_null($minSrcPosition)) $self->setMinSrcPosition($minSrcPosition);
         if(!is_null($maxSrcPosition)) $self->setMaxSrcPosition($maxSrcPosition);
@@ -64,7 +62,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
      */
     public function getSupportedAlpha(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedAlpha;
         $phpValue = \iggyvolz\vulkan\enum\VkDisplayPlaneAlphaFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -72,7 +69,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
 
     public function setSupportedAlpha(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkDisplayPlaneAlphaFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->supportedAlpha = $cValue;
     }
@@ -82,7 +78,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
      */
     public function getMinSrcPosition(): VkOffset2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minSrcPosition;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset2D($cValue, $ffi);
         return $phpValue;
@@ -90,7 +85,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
 
     public function setMinSrcPosition(VkOffset2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->minSrcPosition = $cValue;
     }
@@ -100,7 +94,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
      */
     public function getMaxSrcPosition(): VkOffset2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSrcPosition;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset2D($cValue, $ffi);
         return $phpValue;
@@ -108,7 +101,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
 
     public function setMaxSrcPosition(VkOffset2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxSrcPosition = $cValue;
     }
@@ -118,7 +110,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
      */
     public function getMinSrcExtent(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minSrcExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -126,7 +117,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
 
     public function setMinSrcExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->minSrcExtent = $cValue;
     }
@@ -136,7 +126,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
      */
     public function getMaxSrcExtent(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSrcExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -144,7 +133,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
 
     public function setMaxSrcExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxSrcExtent = $cValue;
     }
@@ -154,7 +142,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
      */
     public function getMinDstPosition(): VkOffset2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minDstPosition;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset2D($cValue, $ffi);
         return $phpValue;
@@ -162,7 +149,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
 
     public function setMinDstPosition(VkOffset2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->minDstPosition = $cValue;
     }
@@ -172,7 +158,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
      */
     public function getMaxDstPosition(): VkOffset2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDstPosition;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset2D($cValue, $ffi);
         return $phpValue;
@@ -180,7 +165,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
 
     public function setMaxDstPosition(VkOffset2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxDstPosition = $cValue;
     }
@@ -190,7 +174,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
      */
     public function getMinDstExtent(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minDstExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -198,7 +181,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
 
     public function setMinDstExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->minDstExtent = $cValue;
     }
@@ -208,7 +190,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
      */
     public function getMaxDstExtent(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDstExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -216,7 +197,6 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
 
     public function setMaxDstExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxDstExtent = $cValue;
     }

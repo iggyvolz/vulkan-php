@@ -28,8 +28,6 @@ final class VkDependencyInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -46,7 +44,7 @@ final class VkDependencyInfo implements \JsonSerializable
         null|\iggyvolz\vulkan\util\ObjectPointer $pImageMemoryBarriers = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDependencyInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDependencyInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($dependencyFlags)) $self->setDependencyFlags($dependencyFlags);
@@ -64,7 +62,6 @@ final class VkDependencyInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -72,7 +69,6 @@ final class VkDependencyInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -82,7 +78,6 @@ final class VkDependencyInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -90,7 +85,6 @@ final class VkDependencyInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -100,7 +94,6 @@ final class VkDependencyInfo implements \JsonSerializable
      */
     public function getDependencyFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dependencyFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkDependencyFlagBits::fromInt($cValue);
         return $phpValue;
@@ -108,7 +101,6 @@ final class VkDependencyInfo implements \JsonSerializable
 
     public function setDependencyFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkDependencyFlagBits::toInt(...$phpValue);
         $this->cdata->dependencyFlags = $cValue;
     }
@@ -118,7 +110,6 @@ final class VkDependencyInfo implements \JsonSerializable
      */
     public function getMemoryBarrierCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->memoryBarrierCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -126,7 +117,6 @@ final class VkDependencyInfo implements \JsonSerializable
 
     public function setMemoryBarrierCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->memoryBarrierCount = $cValue;
     }
@@ -136,7 +126,6 @@ final class VkDependencyInfo implements \JsonSerializable
      */
     public function getPMemoryBarriers(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pMemoryBarriers;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkMemoryBarrier2', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -144,7 +133,6 @@ final class VkDependencyInfo implements \JsonSerializable
 
     public function setPMemoryBarriers(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pMemoryBarriers = $cValue;
     }
@@ -154,7 +142,6 @@ final class VkDependencyInfo implements \JsonSerializable
      */
     public function getBufferMemoryBarrierCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferMemoryBarrierCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -162,7 +149,6 @@ final class VkDependencyInfo implements \JsonSerializable
 
     public function setBufferMemoryBarrierCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferMemoryBarrierCount = $cValue;
     }
@@ -172,7 +158,6 @@ final class VkDependencyInfo implements \JsonSerializable
      */
     public function getPBufferMemoryBarriers(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pBufferMemoryBarriers;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkBufferMemoryBarrier2', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -180,7 +165,6 @@ final class VkDependencyInfo implements \JsonSerializable
 
     public function setPBufferMemoryBarriers(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pBufferMemoryBarriers = $cValue;
     }
@@ -190,7 +174,6 @@ final class VkDependencyInfo implements \JsonSerializable
      */
     public function getImageMemoryBarrierCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageMemoryBarrierCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -198,7 +181,6 @@ final class VkDependencyInfo implements \JsonSerializable
 
     public function setImageMemoryBarrierCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageMemoryBarrierCount = $cValue;
     }
@@ -208,7 +190,6 @@ final class VkDependencyInfo implements \JsonSerializable
      */
     public function getPImageMemoryBarriers(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pImageMemoryBarriers;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImageMemoryBarrier2', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -216,7 +197,6 @@ final class VkDependencyInfo implements \JsonSerializable
 
     public function setPImageMemoryBarriers(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pImageMemoryBarriers = $cValue;
     }

@@ -22,8 +22,6 @@ final class VkDrawMeshTasksIndirectCommandEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkDrawMeshTasksIndirectCommandEXT implements \JsonSerializable
         null|int $groupCountZ = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDrawMeshTasksIndirectCommandEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDrawMeshTasksIndirectCommandEXT', false));
         if(!is_null($groupCountX)) $self->setGroupCountX($groupCountX);
         if(!is_null($groupCountY)) $self->setGroupCountY($groupCountY);
         if(!is_null($groupCountZ)) $self->setGroupCountZ($groupCountZ);
@@ -46,7 +44,6 @@ final class VkDrawMeshTasksIndirectCommandEXT implements \JsonSerializable
      */
     public function getGroupCountX(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->groupCountX;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkDrawMeshTasksIndirectCommandEXT implements \JsonSerializable
 
     public function setGroupCountX(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->groupCountX = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkDrawMeshTasksIndirectCommandEXT implements \JsonSerializable
      */
     public function getGroupCountY(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->groupCountY;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkDrawMeshTasksIndirectCommandEXT implements \JsonSerializable
 
     public function setGroupCountY(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->groupCountY = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkDrawMeshTasksIndirectCommandEXT implements \JsonSerializable
      */
     public function getGroupCountZ(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->groupCountZ;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkDrawMeshTasksIndirectCommandEXT implements \JsonSerializable
 
     public function setGroupCountZ(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->groupCountZ = $cValue;
     }

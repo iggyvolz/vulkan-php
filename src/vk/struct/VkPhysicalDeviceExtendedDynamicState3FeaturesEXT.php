@@ -52,8 +52,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -94,7 +92,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
         null|bool $extendedDynamicState3ShadingRateImageEnable = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceExtendedDynamicState3FeaturesEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceExtendedDynamicState3FeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($extendedDynamicState3TessellationDomainOrigin)) $self->setExtendedDynamicState3TessellationDomainOrigin($extendedDynamicState3TessellationDomainOrigin);
@@ -136,7 +134,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -144,7 +141,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -154,7 +150,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -162,7 +157,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -172,7 +166,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3TessellationDomainOrigin(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3TessellationDomainOrigin;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -180,7 +173,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3TessellationDomainOrigin(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3TessellationDomainOrigin = $cValue;
     }
@@ -190,7 +182,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3DepthClampEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3DepthClampEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -198,7 +189,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3DepthClampEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3DepthClampEnable = $cValue;
     }
@@ -208,7 +198,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3PolygonMode(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3PolygonMode;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -216,7 +205,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3PolygonMode(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3PolygonMode = $cValue;
     }
@@ -226,7 +214,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3RasterizationSamples(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3RasterizationSamples;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -234,7 +221,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3RasterizationSamples(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3RasterizationSamples = $cValue;
     }
@@ -244,7 +230,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3SampleMask(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3SampleMask;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -252,7 +237,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3SampleMask(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3SampleMask = $cValue;
     }
@@ -262,7 +246,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3AlphaToCoverageEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3AlphaToCoverageEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -270,7 +253,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3AlphaToCoverageEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3AlphaToCoverageEnable = $cValue;
     }
@@ -280,7 +262,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3AlphaToOneEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3AlphaToOneEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -288,7 +269,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3AlphaToOneEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3AlphaToOneEnable = $cValue;
     }
@@ -298,7 +278,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3LogicOpEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3LogicOpEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -306,7 +285,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3LogicOpEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3LogicOpEnable = $cValue;
     }
@@ -316,7 +294,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3ColorBlendEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ColorBlendEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -324,7 +301,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3ColorBlendEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ColorBlendEnable = $cValue;
     }
@@ -334,7 +310,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3ColorBlendEquation(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ColorBlendEquation;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -342,7 +317,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3ColorBlendEquation(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ColorBlendEquation = $cValue;
     }
@@ -352,7 +326,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3ColorWriteMask(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ColorWriteMask;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -360,7 +333,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3ColorWriteMask(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ColorWriteMask = $cValue;
     }
@@ -370,7 +342,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3RasterizationStream(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3RasterizationStream;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -378,7 +349,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3RasterizationStream(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3RasterizationStream = $cValue;
     }
@@ -388,7 +358,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3ConservativeRasterizationMode(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ConservativeRasterizationMode;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -396,7 +365,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3ConservativeRasterizationMode(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ConservativeRasterizationMode = $cValue;
     }
@@ -406,7 +374,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3ExtraPrimitiveOverestimationSize(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ExtraPrimitiveOverestimationSize;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -414,7 +381,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3ExtraPrimitiveOverestimationSize(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ExtraPrimitiveOverestimationSize = $cValue;
     }
@@ -424,7 +390,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3DepthClipEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3DepthClipEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -432,7 +397,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3DepthClipEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3DepthClipEnable = $cValue;
     }
@@ -442,7 +406,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3SampleLocationsEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3SampleLocationsEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -450,7 +413,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3SampleLocationsEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3SampleLocationsEnable = $cValue;
     }
@@ -460,7 +422,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3ColorBlendAdvanced(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ColorBlendAdvanced;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -468,7 +429,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3ColorBlendAdvanced(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ColorBlendAdvanced = $cValue;
     }
@@ -478,7 +438,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3ProvokingVertexMode(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ProvokingVertexMode;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -486,7 +445,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3ProvokingVertexMode(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ProvokingVertexMode = $cValue;
     }
@@ -496,7 +454,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3LineRasterizationMode(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3LineRasterizationMode;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -504,7 +461,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3LineRasterizationMode(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3LineRasterizationMode = $cValue;
     }
@@ -514,7 +470,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3LineStippleEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3LineStippleEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -522,7 +477,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3LineStippleEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3LineStippleEnable = $cValue;
     }
@@ -532,7 +486,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3DepthClipNegativeOneToOne(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3DepthClipNegativeOneToOne;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -540,7 +493,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3DepthClipNegativeOneToOne(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3DepthClipNegativeOneToOne = $cValue;
     }
@@ -550,7 +502,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3ViewportWScalingEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ViewportWScalingEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -558,7 +509,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3ViewportWScalingEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ViewportWScalingEnable = $cValue;
     }
@@ -568,7 +518,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3ViewportSwizzle(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ViewportSwizzle;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -576,7 +525,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3ViewportSwizzle(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ViewportSwizzle = $cValue;
     }
@@ -586,7 +534,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3CoverageToColorEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3CoverageToColorEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -594,7 +541,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3CoverageToColorEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3CoverageToColorEnable = $cValue;
     }
@@ -604,7 +550,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3CoverageToColorLocation(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3CoverageToColorLocation;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -612,7 +557,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3CoverageToColorLocation(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3CoverageToColorLocation = $cValue;
     }
@@ -622,7 +566,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3CoverageModulationMode(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3CoverageModulationMode;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -630,7 +573,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3CoverageModulationMode(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3CoverageModulationMode = $cValue;
     }
@@ -640,7 +582,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3CoverageModulationTableEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3CoverageModulationTableEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -648,7 +589,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3CoverageModulationTableEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3CoverageModulationTableEnable = $cValue;
     }
@@ -658,7 +598,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3CoverageModulationTable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3CoverageModulationTable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -666,7 +605,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3CoverageModulationTable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3CoverageModulationTable = $cValue;
     }
@@ -676,7 +614,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3CoverageReductionMode(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3CoverageReductionMode;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -684,7 +621,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3CoverageReductionMode(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3CoverageReductionMode = $cValue;
     }
@@ -694,7 +630,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3RepresentativeFragmentTestEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3RepresentativeFragmentTestEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -702,7 +637,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3RepresentativeFragmentTestEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3RepresentativeFragmentTestEnable = $cValue;
     }
@@ -712,7 +646,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
      */
     public function getExtendedDynamicState3ShadingRateImageEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extendedDynamicState3ShadingRateImageEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -720,7 +653,6 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
 
     public function setExtendedDynamicState3ShadingRateImageEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->extendedDynamicState3ShadingRateImageEnable = $cValue;
     }

@@ -25,8 +25,6 @@ final class VkDeviceAddressBindingCallbackDataEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkDeviceAddressBindingCallbackDataEXT implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkDeviceAddressBindingTypeEXT $bindingType = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceAddressBindingCallbackDataEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDeviceAddressBindingCallbackDataEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -55,7 +53,6 @@ final class VkDeviceAddressBindingCallbackDataEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkDeviceAddressBindingCallbackDataEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkDeviceAddressBindingCallbackDataEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkDeviceAddressBindingCallbackDataEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkDeviceAddressBindingCallbackDataEXT implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkDeviceAddressBindingFlagBitsEXT::fromInt($cValue);
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkDeviceAddressBindingCallbackDataEXT implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkDeviceAddressBindingFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkDeviceAddressBindingCallbackDataEXT implements \JsonSerializable
      */
     public function getBaseAddress(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->baseAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkDeviceAddressBindingCallbackDataEXT implements \JsonSerializable
 
     public function setBaseAddress(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->baseAddress = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkDeviceAddressBindingCallbackDataEXT implements \JsonSerializable
      */
     public function getSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkDeviceAddressBindingCallbackDataEXT implements \JsonSerializable
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkDeviceAddressBindingCallbackDataEXT implements \JsonSerializable
      */
     public function getBindingType(): \iggyvolz\vulkan\enum\VkDeviceAddressBindingTypeEXT
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bindingType;
         $phpValue = \iggyvolz\vulkan\enum\VkDeviceAddressBindingTypeEXT::from($cValue);
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkDeviceAddressBindingCallbackDataEXT implements \JsonSerializable
 
     public function setBindingType(\iggyvolz\vulkan\enum\VkDeviceAddressBindingTypeEXT $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->bindingType = $cValue;
     }

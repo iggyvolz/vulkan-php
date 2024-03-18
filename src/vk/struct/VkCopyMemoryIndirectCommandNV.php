@@ -22,8 +22,6 @@ final class VkCopyMemoryIndirectCommandNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkCopyMemoryIndirectCommandNV implements \JsonSerializable
         null|int $size = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCopyMemoryIndirectCommandNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkCopyMemoryIndirectCommandNV', false));
         if(!is_null($srcAddress)) $self->setSrcAddress($srcAddress);
         if(!is_null($dstAddress)) $self->setDstAddress($dstAddress);
         if(!is_null($size)) $self->setSize($size);
@@ -46,7 +44,6 @@ final class VkCopyMemoryIndirectCommandNV implements \JsonSerializable
      */
     public function getSrcAddress(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkCopyMemoryIndirectCommandNV implements \JsonSerializable
 
     public function setSrcAddress(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->srcAddress = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkCopyMemoryIndirectCommandNV implements \JsonSerializable
      */
     public function getDstAddress(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstAddress;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkCopyMemoryIndirectCommandNV implements \JsonSerializable
 
     public function setDstAddress(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstAddress = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkCopyMemoryIndirectCommandNV implements \JsonSerializable
      */
     public function getSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkCopyMemoryIndirectCommandNV implements \JsonSerializable
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }

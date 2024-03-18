@@ -24,8 +24,6 @@ final class VkVideoEncodeUsageInfoKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkVideoEncodeUsageInfoKHR implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkVideoEncodeTuningModeKHR $tuningMode = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeUsageInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkVideoEncodeUsageInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($videoUsageHints)) $self->setVideoUsageHints($videoUsageHints);
@@ -52,7 +50,6 @@ final class VkVideoEncodeUsageInfoKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkVideoEncodeUsageInfoKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkVideoEncodeUsageInfoKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkVideoEncodeUsageInfoKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkVideoEncodeUsageInfoKHR implements \JsonSerializable
      */
     public function getVideoUsageHints(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->videoUsageHints;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeUsageFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkVideoEncodeUsageInfoKHR implements \JsonSerializable
 
     public function setVideoUsageHints(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeUsageFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->videoUsageHints = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkVideoEncodeUsageInfoKHR implements \JsonSerializable
      */
     public function getVideoContentHints(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->videoContentHints;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeContentFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkVideoEncodeUsageInfoKHR implements \JsonSerializable
 
     public function setVideoContentHints(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeContentFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->videoContentHints = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkVideoEncodeUsageInfoKHR implements \JsonSerializable
      */
     public function getTuningMode(): \iggyvolz\vulkan\enum\VkVideoEncodeTuningModeKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tuningMode;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeTuningModeKHR::from($cValue);
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkVideoEncodeUsageInfoKHR implements \JsonSerializable
 
     public function setTuningMode(\iggyvolz\vulkan\enum\VkVideoEncodeTuningModeKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->tuningMode = $cValue;
     }

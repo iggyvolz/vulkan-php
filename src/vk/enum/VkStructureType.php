@@ -517,7 +517,11 @@ enum VkStructureType: int
     case PhysicalDeviceFragmentShadingRateKhr = 1000226004;
     case PhysicalDeviceShaderCoreProperties2Amd = 1000227000;
     case PhysicalDeviceCoherentMemoryFeaturesAmd = 1000229000;
+    case PhysicalDeviceDynamicRenderingLocalReadFeaturesKhr = 1000232000;
+    case RenderingAttachmentLocationInfoKhr = 1000232001;
+    case RenderingInputAttachmentIndexInfoKhr = 1000232002;
     case PhysicalDeviceShaderImageAtomicInt64FeaturesExt = 1000234000;
+    case PhysicalDeviceShaderQuadControlFeaturesKhr = 1000235000;
     case PhysicalDeviceMemoryBudgetPropertiesExt = 1000237000;
     case PhysicalDeviceMemoryPriorityFeaturesExt = 1000238000;
     case MemoryPriorityAllocateInfoExt = 1000238001;
@@ -542,11 +546,7 @@ enum VkStructureType: int
     case SurfaceCapabilitiesFullScreenExclusiveExt = 1000255002;
     case SurfaceFullScreenExclusiveWin32InfoExt = 1000255001;
     case HeadlessSurfaceCreateInfoExt = 1000256000;
-    case PhysicalDeviceLineRasterizationFeaturesExt = 1000259000;
-    case PipelineRasterizationLineStateCreateInfoExt = 1000259001;
-    case PhysicalDeviceLineRasterizationPropertiesExt = 1000259002;
     case PhysicalDeviceShaderAtomicFloatFeaturesExt = 1000260000;
-    case PhysicalDeviceIndexTypeUint8FeaturesExt = 1000265000;
     case PhysicalDeviceExtendedDynamicStateFeaturesExt = 1000267000;
     case PhysicalDevicePipelineExecutablePropertiesFeaturesKhr = 1000269000;
     case PipelineInfoKhr = 1000269001;
@@ -566,6 +566,9 @@ enum VkStructureType: int
     case HostImageCopyDevicePerformanceQueryExt = 1000270009;
     case MemoryMapInfoKhr = 1000271000;
     case MemoryUnmapInfoKhr = 1000271001;
+    case PhysicalDeviceMapMemoryPlacedFeaturesExt = 1000272000;
+    case PhysicalDeviceMapMemoryPlacedPropertiesExt = 1000272001;
+    case MemoryMapPlacedInfoExt = 1000272002;
     case PhysicalDeviceShaderAtomicFloat2FeaturesExt = 1000273000;
     case SurfacePresentModeExt = 1000274000;
     case SurfacePresentScalingCapabilitiesExt = 1000274001;
@@ -766,6 +769,7 @@ enum VkStructureType: int
     case SamplerBorderColorComponentMappingCreateInfoExt = 1000411001;
     case PhysicalDevicePageableDeviceLocalMemoryFeaturesExt = 1000412000;
     case PhysicalDeviceShaderCorePropertiesArm = 1000415000;
+    case PhysicalDeviceShaderSubgroupRotateFeaturesKhr = 1000416000;
     case DeviceQueueShaderCoreControlCreateInfoArm = 1000417000;
     case PhysicalDeviceSchedulingControlsFeaturesArm = 1000417001;
     case PhysicalDeviceSchedulingControlsPropertiesArm = 1000417002;
@@ -792,6 +796,7 @@ enum VkStructureType: int
     case ComputePipelineIndirectBufferInfoNv = 1000428001;
     case PipelineIndirectDeviceAddressInfoNv = 1000428002;
     case PhysicalDeviceLinearColorAttachmentFeaturesNv = 1000430000;
+    case PhysicalDeviceShaderMaximalReconvergenceFeaturesKhr = 1000434000;
     case ApplicationParametersExt = 1000435000;
     case PhysicalDeviceImageCompressionControlSwapchainFeaturesExt = 1000437000;
     case PhysicalDeviceImageProcessingFeaturesQcom = 1000440000;
@@ -870,6 +875,11 @@ enum VkStructureType: int
     case PhysicalDeviceCooperativeMatrixPropertiesKhr = 1000506002;
     case PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQcom = 1000510000;
     case MultiviewPerViewRenderAreasRenderPassBeginInfoQcom = 1000510001;
+    case VideoDecodeAv1CapabilitiesKhr = 1000512000;
+    case VideoDecodeAv1PictureInfoKhr = 1000512001;
+    case VideoDecodeAv1ProfileInfoKhr = 1000512003;
+    case VideoDecodeAv1SessionParametersCreateInfoKhr = 1000512004;
+    case VideoDecodeAv1DpbSlotInfoKhr = 1000512005;
     case PhysicalDeviceVideoMaintenance1FeaturesKhr = 1000515000;
     case VideoInlineQueryInfoKhr = 1000515001;
     case PhysicalDevicePerStageDescriptorSetFeaturesNv = 1000516000;
@@ -886,13 +896,19 @@ enum VkStructureType: int
     case PhysicalDeviceVertexAttributeDivisorPropertiesKhr = 1000525000;
     case PipelineVertexInputDivisorStateCreateInfoKhr = 1000190001;
     case PhysicalDeviceVertexAttributeDivisorFeaturesKhr = 1000190002;
+    case PhysicalDeviceShaderFloatControls2FeaturesKhr = 1000528000;
     case ScreenBufferPropertiesQnx = 1000529000;
     case ScreenBufferFormatPropertiesQnx = 1000529001;
     case ImportScreenBufferInfoQnx = 1000529002;
     case ExternalFormatQnx = 1000529003;
     case PhysicalDeviceExternalMemoryScreenBufferFeaturesQnx = 1000529004;
     case PhysicalDeviceLayeredDriverPropertiesMsft = 1000530000;
+    case PhysicalDeviceIndexTypeUint8FeaturesKhr = 1000265000;
+    case PhysicalDeviceLineRasterizationFeaturesKhr = 1000259000;
+    case PipelineRasterizationLineStateCreateInfoKhr = 1000259001;
+    case PhysicalDeviceLineRasterizationPropertiesKhr = 1000259002;
     case CalibratedTimestampInfoKhr = 1000184000;
+    case PhysicalDeviceShaderExpectAssumeFeaturesKhr = 1000544000;
     case PhysicalDeviceMaintenance6FeaturesKhr = 1000545000;
     case PhysicalDeviceMaintenance6PropertiesKhr = 1000545001;
     case BindMemoryStatusKhr = 1000545002;
@@ -903,4 +919,7 @@ enum VkStructureType: int
     case SetDescriptorBufferOffsetsInfoExt = 1000545007;
     case BindDescriptorBufferEmbeddedSamplersInfoExt = 1000545008;
     case PhysicalDeviceDescriptorPoolOverallocationFeaturesNv = 1000546000;
+    case PhysicalDeviceRawAccessChainsFeaturesNv = 1000555000;
+    case PhysicalDeviceShaderAtomicFloat16VectorFeaturesNv = 1000563000;
+    case PhysicalDeviceRayTracingValidationFeaturesNv = 1000568000;
 }

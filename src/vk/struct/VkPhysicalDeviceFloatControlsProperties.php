@@ -38,8 +38,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -66,7 +64,7 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
         null|bool $shaderRoundingModeRTZFloat64 = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFloatControlsProperties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFloatControlsProperties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($denormBehaviorIndependence)) $self->setDenormBehaviorIndependence($denormBehaviorIndependence);
@@ -94,7 +92,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -102,7 +99,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -112,7 +108,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -120,7 +115,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -130,7 +124,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getDenormBehaviorIndependence(): \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->denormBehaviorIndependence;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence::from($cValue);
         return $phpValue;
@@ -140,7 +133,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
         \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence $phpValue,
     ): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->denormBehaviorIndependence = $cValue;
     }
@@ -150,7 +142,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getRoundingModeIndependence(): \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->roundingModeIndependence;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence::from($cValue);
         return $phpValue;
@@ -160,7 +151,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
         \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence $phpValue,
     ): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->roundingModeIndependence = $cValue;
     }
@@ -170,7 +160,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderSignedZeroInfNanPreserveFloat16(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSignedZeroInfNanPreserveFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -178,7 +167,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderSignedZeroInfNanPreserveFloat16(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSignedZeroInfNanPreserveFloat16 = $cValue;
     }
@@ -188,7 +176,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderSignedZeroInfNanPreserveFloat32(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSignedZeroInfNanPreserveFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -196,7 +183,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderSignedZeroInfNanPreserveFloat32(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSignedZeroInfNanPreserveFloat32 = $cValue;
     }
@@ -206,7 +192,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderSignedZeroInfNanPreserveFloat64(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderSignedZeroInfNanPreserveFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -214,7 +199,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderSignedZeroInfNanPreserveFloat64(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderSignedZeroInfNanPreserveFloat64 = $cValue;
     }
@@ -224,7 +208,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderDenormPreserveFloat16(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormPreserveFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -232,7 +215,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderDenormPreserveFloat16(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormPreserveFloat16 = $cValue;
     }
@@ -242,7 +224,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderDenormPreserveFloat32(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormPreserveFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -250,7 +231,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderDenormPreserveFloat32(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormPreserveFloat32 = $cValue;
     }
@@ -260,7 +240,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderDenormPreserveFloat64(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormPreserveFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -268,7 +247,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderDenormPreserveFloat64(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormPreserveFloat64 = $cValue;
     }
@@ -278,7 +256,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderDenormFlushToZeroFloat16(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormFlushToZeroFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -286,7 +263,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderDenormFlushToZeroFloat16(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormFlushToZeroFloat16 = $cValue;
     }
@@ -296,7 +272,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderDenormFlushToZeroFloat32(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormFlushToZeroFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -304,7 +279,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderDenormFlushToZeroFloat32(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormFlushToZeroFloat32 = $cValue;
     }
@@ -314,7 +288,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderDenormFlushToZeroFloat64(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderDenormFlushToZeroFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -322,7 +295,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderDenormFlushToZeroFloat64(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderDenormFlushToZeroFloat64 = $cValue;
     }
@@ -332,7 +304,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderRoundingModeRTEFloat16(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTEFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -340,7 +311,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderRoundingModeRTEFloat16(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTEFloat16 = $cValue;
     }
@@ -350,7 +320,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderRoundingModeRTEFloat32(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTEFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -358,7 +327,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderRoundingModeRTEFloat32(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTEFloat32 = $cValue;
     }
@@ -368,7 +336,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderRoundingModeRTEFloat64(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTEFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -376,7 +343,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderRoundingModeRTEFloat64(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTEFloat64 = $cValue;
     }
@@ -386,7 +352,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderRoundingModeRTZFloat16(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTZFloat16;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -394,7 +359,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderRoundingModeRTZFloat16(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTZFloat16 = $cValue;
     }
@@ -404,7 +368,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderRoundingModeRTZFloat32(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTZFloat32;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -412,7 +375,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderRoundingModeRTZFloat32(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTZFloat32 = $cValue;
     }
@@ -422,7 +384,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
      */
     public function getShaderRoundingModeRTZFloat64(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderRoundingModeRTZFloat64;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -430,7 +391,6 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setShaderRoundingModeRTZFloat64(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shaderRoundingModeRTZFloat64 = $cValue;
     }

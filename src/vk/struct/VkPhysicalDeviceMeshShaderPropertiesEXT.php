@@ -49,8 +49,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -88,7 +86,7 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
         null|bool $prefersCompactPrimitiveOutput = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMeshShaderPropertiesEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMeshShaderPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxTaskWorkGroupTotalCount)) $self->setMaxTaskWorkGroupTotalCount($maxTaskWorkGroupTotalCount);
@@ -127,7 +125,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -135,7 +132,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -145,7 +141,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -153,7 +148,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -163,7 +157,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxTaskWorkGroupTotalCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTaskWorkGroupTotalCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -171,7 +164,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxTaskWorkGroupTotalCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTaskWorkGroupTotalCount = $cValue;
     }
@@ -181,7 +173,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxTaskWorkGroupCount(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTaskWorkGroupCount;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -189,7 +180,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxTaskWorkGroupCount(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxTaskWorkGroupCount = $cValue;
     }
@@ -199,7 +189,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxTaskWorkGroupInvocations(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTaskWorkGroupInvocations;
         $phpValue = $cValue;
         return $phpValue;
@@ -207,7 +196,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxTaskWorkGroupInvocations(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTaskWorkGroupInvocations = $cValue;
     }
@@ -217,7 +205,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxTaskWorkGroupSize(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTaskWorkGroupSize;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -225,7 +212,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxTaskWorkGroupSize(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxTaskWorkGroupSize = $cValue;
     }
@@ -235,7 +221,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxTaskPayloadSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTaskPayloadSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -243,7 +228,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxTaskPayloadSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTaskPayloadSize = $cValue;
     }
@@ -253,7 +237,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxTaskSharedMemorySize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTaskSharedMemorySize;
         $phpValue = $cValue;
         return $phpValue;
@@ -261,7 +244,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxTaskSharedMemorySize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTaskSharedMemorySize = $cValue;
     }
@@ -271,7 +253,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxTaskPayloadAndSharedMemorySize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTaskPayloadAndSharedMemorySize;
         $phpValue = $cValue;
         return $phpValue;
@@ -279,7 +260,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxTaskPayloadAndSharedMemorySize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTaskPayloadAndSharedMemorySize = $cValue;
     }
@@ -289,7 +269,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxMeshWorkGroupTotalCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMeshWorkGroupTotalCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -297,7 +276,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxMeshWorkGroupTotalCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMeshWorkGroupTotalCount = $cValue;
     }
@@ -307,7 +285,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxMeshWorkGroupCount(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMeshWorkGroupCount;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -315,7 +292,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxMeshWorkGroupCount(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxMeshWorkGroupCount = $cValue;
     }
@@ -325,7 +301,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxMeshWorkGroupInvocations(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMeshWorkGroupInvocations;
         $phpValue = $cValue;
         return $phpValue;
@@ -333,7 +308,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxMeshWorkGroupInvocations(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMeshWorkGroupInvocations = $cValue;
     }
@@ -343,7 +317,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxMeshWorkGroupSize(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMeshWorkGroupSize;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -351,7 +324,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxMeshWorkGroupSize(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxMeshWorkGroupSize = $cValue;
     }
@@ -361,7 +333,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxMeshSharedMemorySize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMeshSharedMemorySize;
         $phpValue = $cValue;
         return $phpValue;
@@ -369,7 +340,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxMeshSharedMemorySize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMeshSharedMemorySize = $cValue;
     }
@@ -379,7 +349,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxMeshPayloadAndSharedMemorySize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMeshPayloadAndSharedMemorySize;
         $phpValue = $cValue;
         return $phpValue;
@@ -387,7 +356,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxMeshPayloadAndSharedMemorySize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMeshPayloadAndSharedMemorySize = $cValue;
     }
@@ -397,7 +365,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxMeshOutputMemorySize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMeshOutputMemorySize;
         $phpValue = $cValue;
         return $phpValue;
@@ -405,7 +372,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxMeshOutputMemorySize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMeshOutputMemorySize = $cValue;
     }
@@ -415,7 +381,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxMeshPayloadAndOutputMemorySize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMeshPayloadAndOutputMemorySize;
         $phpValue = $cValue;
         return $phpValue;
@@ -423,7 +388,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxMeshPayloadAndOutputMemorySize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMeshPayloadAndOutputMemorySize = $cValue;
     }
@@ -433,7 +397,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxMeshOutputComponents(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMeshOutputComponents;
         $phpValue = $cValue;
         return $phpValue;
@@ -441,7 +404,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxMeshOutputComponents(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMeshOutputComponents = $cValue;
     }
@@ -451,7 +413,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxMeshOutputVertices(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMeshOutputVertices;
         $phpValue = $cValue;
         return $phpValue;
@@ -459,7 +420,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxMeshOutputVertices(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMeshOutputVertices = $cValue;
     }
@@ -469,7 +429,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxMeshOutputPrimitives(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMeshOutputPrimitives;
         $phpValue = $cValue;
         return $phpValue;
@@ -477,7 +436,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxMeshOutputPrimitives(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMeshOutputPrimitives = $cValue;
     }
@@ -487,7 +445,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxMeshOutputLayers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMeshOutputLayers;
         $phpValue = $cValue;
         return $phpValue;
@@ -495,7 +452,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxMeshOutputLayers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMeshOutputLayers = $cValue;
     }
@@ -505,7 +461,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxMeshMultiviewViewCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMeshMultiviewViewCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -513,7 +468,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxMeshMultiviewViewCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMeshMultiviewViewCount = $cValue;
     }
@@ -523,7 +477,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMeshOutputPerVertexGranularity(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->meshOutputPerVertexGranularity;
         $phpValue = $cValue;
         return $phpValue;
@@ -531,7 +484,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMeshOutputPerVertexGranularity(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->meshOutputPerVertexGranularity = $cValue;
     }
@@ -541,7 +493,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMeshOutputPerPrimitiveGranularity(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->meshOutputPerPrimitiveGranularity;
         $phpValue = $cValue;
         return $phpValue;
@@ -549,7 +500,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMeshOutputPerPrimitiveGranularity(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->meshOutputPerPrimitiveGranularity = $cValue;
     }
@@ -559,7 +509,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxPreferredTaskWorkGroupInvocations(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPreferredTaskWorkGroupInvocations;
         $phpValue = $cValue;
         return $phpValue;
@@ -567,7 +516,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxPreferredTaskWorkGroupInvocations(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPreferredTaskWorkGroupInvocations = $cValue;
     }
@@ -577,7 +525,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getMaxPreferredMeshWorkGroupInvocations(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPreferredMeshWorkGroupInvocations;
         $phpValue = $cValue;
         return $phpValue;
@@ -585,7 +532,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setMaxPreferredMeshWorkGroupInvocations(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPreferredMeshWorkGroupInvocations = $cValue;
     }
@@ -595,7 +541,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getPrefersLocalInvocationVertexOutput(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->prefersLocalInvocationVertexOutput;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -603,7 +548,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setPrefersLocalInvocationVertexOutput(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->prefersLocalInvocationVertexOutput = $cValue;
     }
@@ -613,7 +557,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getPrefersLocalInvocationPrimitiveOutput(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->prefersLocalInvocationPrimitiveOutput;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -621,7 +564,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setPrefersLocalInvocationPrimitiveOutput(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->prefersLocalInvocationPrimitiveOutput = $cValue;
     }
@@ -631,7 +573,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getPrefersCompactVertexOutput(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->prefersCompactVertexOutput;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -639,7 +580,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setPrefersCompactVertexOutput(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->prefersCompactVertexOutput = $cValue;
     }
@@ -649,7 +589,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
      */
     public function getPrefersCompactPrimitiveOutput(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->prefersCompactPrimitiveOutput;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -657,7 +596,6 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
 
     public function setPrefersCompactPrimitiveOutput(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->prefersCompactPrimitiveOutput = $cValue;
     }

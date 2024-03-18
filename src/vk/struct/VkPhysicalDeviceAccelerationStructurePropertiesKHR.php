@@ -29,8 +29,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -48,7 +46,7 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
         null|int $minAccelerationStructureScratchOffsetAlignment = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceAccelerationStructurePropertiesKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceAccelerationStructurePropertiesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxGeometryCount)) $self->setMaxGeometryCount($maxGeometryCount);
@@ -67,7 +65,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -75,7 +72,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -85,7 +81,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -93,7 +88,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -103,7 +97,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
      */
     public function getMaxGeometryCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxGeometryCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -111,7 +104,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
 
     public function setMaxGeometryCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxGeometryCount = $cValue;
     }
@@ -121,7 +113,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
      */
     public function getMaxInstanceCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxInstanceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -129,7 +120,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
 
     public function setMaxInstanceCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxInstanceCount = $cValue;
     }
@@ -139,7 +129,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
      */
     public function getMaxPrimitiveCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPrimitiveCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -147,7 +136,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
 
     public function setMaxPrimitiveCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPrimitiveCount = $cValue;
     }
@@ -157,7 +145,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
      */
     public function getMaxPerStageDescriptorAccelerationStructures(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorAccelerationStructures;
         $phpValue = $cValue;
         return $phpValue;
@@ -165,7 +152,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
 
     public function setMaxPerStageDescriptorAccelerationStructures(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorAccelerationStructures = $cValue;
     }
@@ -175,7 +161,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
      */
     public function getMaxPerStageDescriptorUpdateAfterBindAccelerationStructures(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerStageDescriptorUpdateAfterBindAccelerationStructures;
         $phpValue = $cValue;
         return $phpValue;
@@ -183,7 +168,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
 
     public function setMaxPerStageDescriptorUpdateAfterBindAccelerationStructures(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerStageDescriptorUpdateAfterBindAccelerationStructures = $cValue;
     }
@@ -193,7 +177,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
      */
     public function getMaxDescriptorSetAccelerationStructures(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetAccelerationStructures;
         $phpValue = $cValue;
         return $phpValue;
@@ -201,7 +184,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
 
     public function setMaxDescriptorSetAccelerationStructures(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetAccelerationStructures = $cValue;
     }
@@ -211,7 +193,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
      */
     public function getMaxDescriptorSetUpdateAfterBindAccelerationStructures(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorSetUpdateAfterBindAccelerationStructures;
         $phpValue = $cValue;
         return $phpValue;
@@ -219,7 +200,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
 
     public function setMaxDescriptorSetUpdateAfterBindAccelerationStructures(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorSetUpdateAfterBindAccelerationStructures = $cValue;
     }
@@ -229,7 +209,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
      */
     public function getMinAccelerationStructureScratchOffsetAlignment(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minAccelerationStructureScratchOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -237,7 +216,6 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
 
     public function setMinAccelerationStructureScratchOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minAccelerationStructureScratchOffsetAlignment = $cValue;
     }

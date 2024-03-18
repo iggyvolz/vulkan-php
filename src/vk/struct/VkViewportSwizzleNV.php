@@ -23,8 +23,6 @@ final class VkViewportSwizzleNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkViewportSwizzleNV implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV $w = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkViewportSwizzleNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkViewportSwizzleNV', false));
         if(!is_null($x)) $self->setX($x);
         if(!is_null($y)) $self->setY($y);
         if(!is_null($z)) $self->setZ($z);
@@ -49,7 +47,6 @@ final class VkViewportSwizzleNV implements \JsonSerializable
      */
     public function getX(): \iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->x;
         $phpValue = \iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV::from($cValue);
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkViewportSwizzleNV implements \JsonSerializable
 
     public function setX(\iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->x = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkViewportSwizzleNV implements \JsonSerializable
      */
     public function getY(): \iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->y;
         $phpValue = \iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV::from($cValue);
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkViewportSwizzleNV implements \JsonSerializable
 
     public function setY(\iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->y = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkViewportSwizzleNV implements \JsonSerializable
      */
     public function getZ(): \iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->z;
         $phpValue = \iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV::from($cValue);
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkViewportSwizzleNV implements \JsonSerializable
 
     public function setZ(\iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->z = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkViewportSwizzleNV implements \JsonSerializable
      */
     public function getW(): \iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->w;
         $phpValue = \iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV::from($cValue);
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkViewportSwizzleNV implements \JsonSerializable
 
     public function setW(\iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->w = $cValue;
     }

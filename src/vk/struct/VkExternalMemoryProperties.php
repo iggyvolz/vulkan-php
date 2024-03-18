@@ -22,8 +22,6 @@ final class VkExternalMemoryProperties implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkExternalMemoryProperties implements \JsonSerializable
         null|array $compatibleHandleTypes = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkExternalMemoryProperties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkExternalMemoryProperties', false));
         if(!is_null($externalMemoryFeatures)) $self->setExternalMemoryFeatures($externalMemoryFeatures);
         if(!is_null($exportFromImportedHandleTypes)) $self->setExportFromImportedHandleTypes($exportFromImportedHandleTypes);
         if(!is_null($compatibleHandleTypes)) $self->setCompatibleHandleTypes($compatibleHandleTypes);
@@ -46,7 +44,6 @@ final class VkExternalMemoryProperties implements \JsonSerializable
      */
     public function getExternalMemoryFeatures(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->externalMemoryFeatures;
         $phpValue = \iggyvolz\vulkan\enum\VkExternalMemoryFeatureFlagBits::fromInt($cValue);
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkExternalMemoryProperties implements \JsonSerializable
 
     public function setExternalMemoryFeatures(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkExternalMemoryFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->externalMemoryFeatures = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkExternalMemoryProperties implements \JsonSerializable
      */
     public function getExportFromImportedHandleTypes(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->exportFromImportedHandleTypes;
         $phpValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits::fromInt($cValue);
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkExternalMemoryProperties implements \JsonSerializable
 
     public function setExportFromImportedHandleTypes(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits::toInt(...$phpValue);
         $this->cdata->exportFromImportedHandleTypes = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkExternalMemoryProperties implements \JsonSerializable
      */
     public function getCompatibleHandleTypes(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->compatibleHandleTypes;
         $phpValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits::fromInt($cValue);
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkExternalMemoryProperties implements \JsonSerializable
 
     public function setCompatibleHandleTypes(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkExternalMemoryHandleTypeFlagBits::toInt(...$phpValue);
         $this->cdata->compatibleHandleTypes = $cValue;
     }

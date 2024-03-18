@@ -27,8 +27,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -44,7 +42,7 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
         null|\iggyvolz\vulkan\util\IntPointer $pSignalSemaphoreDeviceIndices = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceGroupSubmitInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDeviceGroupSubmitInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($waitSemaphoreCount)) $self->setWaitSemaphoreCount($waitSemaphoreCount);
@@ -61,7 +59,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -69,7 +66,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -79,7 +75,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -87,7 +82,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -97,7 +91,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
      */
     public function getWaitSemaphoreCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->waitSemaphoreCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -105,7 +98,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
 
     public function setWaitSemaphoreCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->waitSemaphoreCount = $cValue;
     }
@@ -115,7 +107,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
      */
     public function getPWaitSemaphoreDeviceIndices(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pWaitSemaphoreDeviceIndices;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -123,7 +114,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
 
     public function setPWaitSemaphoreDeviceIndices(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pWaitSemaphoreDeviceIndices = $cValue;
     }
@@ -133,7 +123,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
      */
     public function getCommandBufferCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->commandBufferCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -141,7 +130,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
 
     public function setCommandBufferCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->commandBufferCount = $cValue;
     }
@@ -151,7 +139,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
      */
     public function getPCommandBufferDeviceMasks(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pCommandBufferDeviceMasks;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -159,7 +146,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
 
     public function setPCommandBufferDeviceMasks(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pCommandBufferDeviceMasks = $cValue;
     }
@@ -169,7 +155,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
      */
     public function getSignalSemaphoreCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->signalSemaphoreCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -177,7 +162,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
 
     public function setSignalSemaphoreCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->signalSemaphoreCount = $cValue;
     }
@@ -187,7 +171,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
      */
     public function getPSignalSemaphoreDeviceIndices(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pSignalSemaphoreDeviceIndices;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -195,7 +178,6 @@ final class VkDeviceGroupSubmitInfo implements \JsonSerializable
 
     public function setPSignalSemaphoreDeviceIndices(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pSignalSemaphoreDeviceIndices = $cValue;
     }

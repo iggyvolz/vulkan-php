@@ -20,14 +20,12 @@ final class VkRefreshCycleDurationGOOGLE implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan, null|int $refreshDuration = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkRefreshCycleDurationGOOGLE', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkRefreshCycleDurationGOOGLE', false));
         if(!is_null($refreshDuration)) $self->setRefreshDuration($refreshDuration);
         return $self;
     }
@@ -37,7 +35,6 @@ final class VkRefreshCycleDurationGOOGLE implements \JsonSerializable
      */
     public function getRefreshDuration(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->refreshDuration;
         $phpValue = $cValue;
         return $phpValue;
@@ -45,7 +42,6 @@ final class VkRefreshCycleDurationGOOGLE implements \JsonSerializable
 
     public function setRefreshDuration(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->refreshDuration = $cValue;
     }

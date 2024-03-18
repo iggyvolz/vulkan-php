@@ -22,8 +22,6 @@ final class VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR implements \JsonS
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR implements \JsonS
         null|bool $rayTracingPositionFetch = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($rayTracingPositionFetch)) $self->setRayTracingPositionFetch($rayTracingPositionFetch);
@@ -46,7 +44,6 @@ final class VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR implements \JsonS
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR implements \JsonS
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR implements \JsonS
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR implements \JsonS
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR implements \JsonS
      */
     public function getRayTracingPositionFetch(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->rayTracingPositionFetch;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR implements \JsonS
 
     public function setRayTracingPositionFetch(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->rayTracingPositionFetch = $cValue;
     }

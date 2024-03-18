@@ -27,8 +27,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -44,7 +42,7 @@ final class VkCopyImageInfo2 implements \JsonSerializable
         null|\iggyvolz\vulkan\util\ObjectPointer $pRegions = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCopyImageInfo2', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkCopyImageInfo2', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($srcImage)) $self->setSrcImage($srcImage);
@@ -61,7 +59,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -69,7 +66,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -79,7 +75,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -87,7 +82,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -97,7 +91,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
      */
     public function getSrcImage(): VkImage
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcImage;
         $phpValue = new \iggyvolz\vulkan\struct\VkImage($cValue, $ffi);
         return $phpValue;
@@ -105,7 +98,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
 
     public function setSrcImage(VkImage $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->srcImage = $cValue;
     }
@@ -115,7 +107,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
      */
     public function getSrcImageLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcImageLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -123,7 +114,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
 
     public function setSrcImageLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->srcImageLayout = $cValue;
     }
@@ -133,7 +123,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
      */
     public function getDstImage(): VkImage
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstImage;
         $phpValue = new \iggyvolz\vulkan\struct\VkImage($cValue, $ffi);
         return $phpValue;
@@ -141,7 +130,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
 
     public function setDstImage(VkImage $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->dstImage = $cValue;
     }
@@ -151,7 +139,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
      */
     public function getDstImageLayout(): \iggyvolz\vulkan\enum\VkImageLayout
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstImageLayout;
         $phpValue = \iggyvolz\vulkan\enum\VkImageLayout::from($cValue);
         return $phpValue;
@@ -159,7 +146,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
 
     public function setDstImageLayout(\iggyvolz\vulkan\enum\VkImageLayout $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->dstImageLayout = $cValue;
     }
@@ -169,7 +155,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
      */
     public function getRegionCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->regionCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -177,7 +162,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
 
     public function setRegionCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->regionCount = $cValue;
     }
@@ -187,7 +171,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
      */
     public function getPRegions(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pRegions;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImageCopy2', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -195,7 +178,6 @@ final class VkCopyImageInfo2 implements \JsonSerializable
 
     public function setPRegions(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pRegions = $cValue;
     }

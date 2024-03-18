@@ -9,5 +9,5 @@ enum VkIndexType: int
     case Uint16 = 0;
     case Uint32 = 1;
     case NoneKhr = 1000165000;
-    case Uint8Ext = 1000265000;
+    case Uint8Khr = 1000265000;
 }

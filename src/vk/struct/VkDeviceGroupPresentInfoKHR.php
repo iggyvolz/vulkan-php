@@ -24,8 +24,6 @@ final class VkDeviceGroupPresentInfoKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkDeviceGroupPresentInfoKHR implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkDeviceGroupPresentModeFlagBitsKHR $mode = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceGroupPresentInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDeviceGroupPresentInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($swapchainCount)) $self->setSwapchainCount($swapchainCount);
@@ -52,7 +50,6 @@ final class VkDeviceGroupPresentInfoKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkDeviceGroupPresentInfoKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkDeviceGroupPresentInfoKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkDeviceGroupPresentInfoKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkDeviceGroupPresentInfoKHR implements \JsonSerializable
      */
     public function getSwapchainCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->swapchainCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkDeviceGroupPresentInfoKHR implements \JsonSerializable
 
     public function setSwapchainCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->swapchainCount = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkDeviceGroupPresentInfoKHR implements \JsonSerializable
      */
     public function getPDeviceMasks(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDeviceMasks;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkDeviceGroupPresentInfoKHR implements \JsonSerializable
 
     public function setPDeviceMasks(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDeviceMasks = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkDeviceGroupPresentInfoKHR implements \JsonSerializable
      */
     public function getMode(): \iggyvolz\vulkan\enum\VkDeviceGroupPresentModeFlagBitsKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mode;
         $phpValue = \iggyvolz\vulkan\enum\VkDeviceGroupPresentModeFlagBitsKHR::from($cValue);
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkDeviceGroupPresentInfoKHR implements \JsonSerializable
 
     public function setMode(\iggyvolz\vulkan\enum\VkDeviceGroupPresentModeFlagBitsKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->mode = $cValue;
     }

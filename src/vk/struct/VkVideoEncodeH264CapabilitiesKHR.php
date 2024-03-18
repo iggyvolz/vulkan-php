@@ -34,8 +34,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -58,7 +56,7 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
         null|array $stdSyntaxFlags = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264CapabilitiesKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264CapabilitiesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -82,7 +80,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -90,7 +87,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -100,7 +96,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -108,7 +103,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -118,7 +112,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeH264CapabilityFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -126,7 +119,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeH264CapabilityFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -136,7 +128,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getMaxLevelIdc(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxLevelIdc;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -144,7 +135,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setMaxLevelIdc(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxLevelIdc = $cValue;
     }
@@ -154,7 +144,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getMaxSliceCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSliceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -162,7 +151,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setMaxSliceCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSliceCount = $cValue;
     }
@@ -172,7 +160,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getMaxPPictureL0ReferenceCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPPictureL0ReferenceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -180,7 +167,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setMaxPPictureL0ReferenceCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPPictureL0ReferenceCount = $cValue;
     }
@@ -190,7 +176,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getMaxBPictureL0ReferenceCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxBPictureL0ReferenceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -198,7 +183,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setMaxBPictureL0ReferenceCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxBPictureL0ReferenceCount = $cValue;
     }
@@ -208,7 +192,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getMaxL1ReferenceCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxL1ReferenceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -216,7 +199,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setMaxL1ReferenceCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxL1ReferenceCount = $cValue;
     }
@@ -226,7 +208,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getMaxTemporalLayerCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTemporalLayerCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -234,7 +215,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setMaxTemporalLayerCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTemporalLayerCount = $cValue;
     }
@@ -244,7 +224,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getExpectDyadicTemporalLayerPattern(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->expectDyadicTemporalLayerPattern;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -252,7 +231,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setExpectDyadicTemporalLayerPattern(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->expectDyadicTemporalLayerPattern = $cValue;
     }
@@ -262,7 +240,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getMinQp(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minQp;
         $phpValue = $cValue;
         return $phpValue;
@@ -270,7 +247,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setMinQp(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minQp = $cValue;
     }
@@ -280,7 +256,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getMaxQp(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxQp;
         $phpValue = $cValue;
         return $phpValue;
@@ -288,7 +263,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setMaxQp(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxQp = $cValue;
     }
@@ -298,7 +272,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getPrefersGopRemainingFrames(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->prefersGopRemainingFrames;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -306,7 +279,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setPrefersGopRemainingFrames(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->prefersGopRemainingFrames = $cValue;
     }
@@ -316,7 +288,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getRequiresGopRemainingFrames(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->requiresGopRemainingFrames;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -324,7 +295,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setRequiresGopRemainingFrames(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->requiresGopRemainingFrames = $cValue;
     }
@@ -334,7 +304,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
      */
     public function getStdSyntaxFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stdSyntaxFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkVideoEncodeH264StdFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -342,7 +311,6 @@ final class VkVideoEncodeH264CapabilitiesKHR implements \JsonSerializable
 
     public function setStdSyntaxFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkVideoEncodeH264StdFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->stdSyntaxFlags = $cValue;
     }

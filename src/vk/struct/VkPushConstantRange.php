@@ -22,8 +22,6 @@ final class VkPushConstantRange implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkPushConstantRange implements \JsonSerializable
         null|int $size = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPushConstantRange', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPushConstantRange', false));
         if(!is_null($stageFlags)) $self->setStageFlags($stageFlags);
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($size)) $self->setSize($size);
@@ -46,7 +44,6 @@ final class VkPushConstantRange implements \JsonSerializable
      */
     public function getStageFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stageFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkPushConstantRange implements \JsonSerializable
 
     public function setStageFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->stageFlags = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkPushConstantRange implements \JsonSerializable
      */
     public function getOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkPushConstantRange implements \JsonSerializable
 
     public function setOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->offset = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkPushConstantRange implements \JsonSerializable
      */
     public function getSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkPushConstantRange implements \JsonSerializable
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }

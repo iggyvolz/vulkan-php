@@ -21,8 +21,6 @@ final class VkPerformanceValueINTEL implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkPerformanceValueINTEL implements \JsonSerializable
         mixed $data = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPerformanceValueINTEL', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPerformanceValueINTEL', false));
         if(!is_null($type)) $self->setType($type);
         if(!is_null($data)) $self->setData($data);
         return $self;
@@ -43,7 +41,6 @@ final class VkPerformanceValueINTEL implements \JsonSerializable
      */
     public function getType(): \iggyvolz\vulkan\enum\VkPerformanceValueTypeINTEL
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->type;
         $phpValue = \iggyvolz\vulkan\enum\VkPerformanceValueTypeINTEL::from($cValue);
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkPerformanceValueINTEL implements \JsonSerializable
 
     public function setType(\iggyvolz\vulkan\enum\VkPerformanceValueTypeINTEL $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->type = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkPerformanceValueINTEL implements \JsonSerializable
      */
     public function getData(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->data;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkPerformanceValueINTEL implements \JsonSerializable
 
     public function setData(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->data = $cValue;
     }

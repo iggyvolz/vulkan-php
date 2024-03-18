@@ -35,8 +35,6 @@ final class VkSRTDataNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -60,7 +58,7 @@ final class VkSRTDataNV implements \JsonSerializable
         null|float $tz = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSRTDataNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkSRTDataNV', false));
         if(!is_null($sx)) $self->setSx($sx);
         if(!is_null($a)) $self->setA($a);
         if(!is_null($b)) $self->setB($b);
@@ -85,7 +83,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getSx(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sx;
         $phpValue = $cValue;
         return $phpValue;
@@ -93,7 +90,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setSx(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sx = $cValue;
     }
@@ -103,7 +99,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getA(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->a;
         $phpValue = $cValue;
         return $phpValue;
@@ -111,7 +106,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setA(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->a = $cValue;
     }
@@ -121,7 +115,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getB(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->b;
         $phpValue = $cValue;
         return $phpValue;
@@ -129,7 +122,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setB(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->b = $cValue;
     }
@@ -139,7 +131,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getPvx(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pvx;
         $phpValue = $cValue;
         return $phpValue;
@@ -147,7 +138,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setPvx(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pvx = $cValue;
     }
@@ -157,7 +147,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getSy(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sy;
         $phpValue = $cValue;
         return $phpValue;
@@ -165,7 +154,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setSy(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sy = $cValue;
     }
@@ -175,7 +163,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getC(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->c;
         $phpValue = $cValue;
         return $phpValue;
@@ -183,7 +170,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setC(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->c = $cValue;
     }
@@ -193,7 +179,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getPvy(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pvy;
         $phpValue = $cValue;
         return $phpValue;
@@ -201,7 +186,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setPvy(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pvy = $cValue;
     }
@@ -211,7 +195,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getSz(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sz;
         $phpValue = $cValue;
         return $phpValue;
@@ -219,7 +202,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setSz(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sz = $cValue;
     }
@@ -229,7 +211,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getPvz(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pvz;
         $phpValue = $cValue;
         return $phpValue;
@@ -237,7 +218,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setPvz(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pvz = $cValue;
     }
@@ -247,7 +227,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getQx(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qx;
         $phpValue = $cValue;
         return $phpValue;
@@ -255,7 +234,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setQx(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qx = $cValue;
     }
@@ -265,7 +243,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getQy(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qy;
         $phpValue = $cValue;
         return $phpValue;
@@ -273,7 +250,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setQy(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qy = $cValue;
     }
@@ -283,7 +259,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getQz(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qz;
         $phpValue = $cValue;
         return $phpValue;
@@ -291,7 +266,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setQz(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qz = $cValue;
     }
@@ -301,7 +275,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getQw(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qw;
         $phpValue = $cValue;
         return $phpValue;
@@ -309,7 +282,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setQw(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qw = $cValue;
     }
@@ -319,7 +291,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getTx(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tx;
         $phpValue = $cValue;
         return $phpValue;
@@ -327,7 +298,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setTx(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->tx = $cValue;
     }
@@ -337,7 +307,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getTy(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ty;
         $phpValue = $cValue;
         return $phpValue;
@@ -345,7 +314,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setTy(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->ty = $cValue;
     }
@@ -355,7 +323,6 @@ final class VkSRTDataNV implements \JsonSerializable
      */
     public function getTz(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tz;
         $phpValue = $cValue;
         return $phpValue;
@@ -363,7 +330,6 @@ final class VkSRTDataNV implements \JsonSerializable
 
     public function setTz(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->tz = $cValue;
     }

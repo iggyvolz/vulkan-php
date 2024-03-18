@@ -27,8 +27,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -44,7 +42,7 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
         null|array $pipelineStatistics = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCommandBufferInheritanceInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkCommandBufferInheritanceInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($renderPass)) $self->setRenderPass($renderPass);
@@ -61,7 +59,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -69,7 +66,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -79,7 +75,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -87,7 +82,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -97,7 +91,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
      */
     public function getRenderPass(): VkRenderPass
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->renderPass;
         $phpValue = new \iggyvolz\vulkan\struct\VkRenderPass($cValue, $ffi);
         return $phpValue;
@@ -105,7 +98,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
 
     public function setRenderPass(VkRenderPass $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->renderPass = $cValue;
     }
@@ -115,7 +107,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
      */
     public function getSubpass(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subpass;
         $phpValue = $cValue;
         return $phpValue;
@@ -123,7 +114,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
 
     public function setSubpass(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subpass = $cValue;
     }
@@ -133,7 +123,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
      */
     public function getFramebuffer(): VkFramebuffer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->framebuffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkFramebuffer($cValue, $ffi);
         return $phpValue;
@@ -141,7 +130,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
 
     public function setFramebuffer(VkFramebuffer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->framebuffer = $cValue;
     }
@@ -151,7 +139,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
      */
     public function getOcclusionQueryEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->occlusionQueryEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -159,7 +146,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
 
     public function setOcclusionQueryEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->occlusionQueryEnable = $cValue;
     }
@@ -169,7 +155,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
      */
     public function getQueryFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->queryFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkQueryControlFlagBits::fromInt($cValue);
         return $phpValue;
@@ -177,7 +162,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
 
     public function setQueryFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkQueryControlFlagBits::toInt(...$phpValue);
         $this->cdata->queryFlags = $cValue;
     }
@@ -187,7 +171,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
      */
     public function getPipelineStatistics(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineStatistics;
         $phpValue = \iggyvolz\vulkan\enum\VkQueryPipelineStatisticFlagBits::fromInt($cValue);
         return $phpValue;
@@ -195,7 +178,6 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
 
     public function setPipelineStatistics(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkQueryPipelineStatisticFlagBits::toInt(...$phpValue);
         $this->cdata->pipelineStatistics = $cValue;
     }

@@ -24,8 +24,6 @@ final class VkLayerSettingEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkLayerSettingEXT implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pValues = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkLayerSettingEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkLayerSettingEXT', false));
         if(!is_null($pLayerName)) $self->setPLayerName($pLayerName);
         if(!is_null($pSettingName)) $self->setPSettingName($pSettingName);
         if(!is_null($type)) $self->setType($type);
@@ -52,7 +50,6 @@ final class VkLayerSettingEXT implements \JsonSerializable
      */
     public function getPLayerName(): ?string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pLayerName;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkLayerSettingEXT implements \JsonSerializable
 
     public function setPLayerName(?string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pLayerName = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkLayerSettingEXT implements \JsonSerializable
      */
     public function getPSettingName(): ?string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pSettingName;
         $phpValue = $cValue;
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkLayerSettingEXT implements \JsonSerializable
 
     public function setPSettingName(?string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pSettingName = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkLayerSettingEXT implements \JsonSerializable
      */
     public function getType(): \iggyvolz\vulkan\enum\VkLayerSettingTypeEXT
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->type;
         $phpValue = \iggyvolz\vulkan\enum\VkLayerSettingTypeEXT::from($cValue);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkLayerSettingEXT implements \JsonSerializable
 
     public function setType(\iggyvolz\vulkan\enum\VkLayerSettingTypeEXT $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->type = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkLayerSettingEXT implements \JsonSerializable
      */
     public function getValueCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->valueCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkLayerSettingEXT implements \JsonSerializable
 
     public function setValueCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->valueCount = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkLayerSettingEXT implements \JsonSerializable
      */
     public function getPValues(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pValues;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkLayerSettingEXT implements \JsonSerializable
 
     public function setPValues(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pValues = $cValue;
     }

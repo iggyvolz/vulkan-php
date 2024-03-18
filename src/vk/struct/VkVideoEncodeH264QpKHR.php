@@ -22,8 +22,6 @@ final class VkVideoEncodeH264QpKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkVideoEncodeH264QpKHR implements \JsonSerializable
         null|int $qpB = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264QpKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264QpKHR', false));
         if(!is_null($qpI)) $self->setQpI($qpI);
         if(!is_null($qpP)) $self->setQpP($qpP);
         if(!is_null($qpB)) $self->setQpB($qpB);
@@ -46,7 +44,6 @@ final class VkVideoEncodeH264QpKHR implements \JsonSerializable
      */
     public function getQpI(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qpI;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkVideoEncodeH264QpKHR implements \JsonSerializable
 
     public function setQpI(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qpI = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkVideoEncodeH264QpKHR implements \JsonSerializable
      */
     public function getQpP(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qpP;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkVideoEncodeH264QpKHR implements \JsonSerializable
 
     public function setQpP(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qpP = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkVideoEncodeH264QpKHR implements \JsonSerializable
      */
     public function getQpB(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->qpB;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkVideoEncodeH264QpKHR implements \JsonSerializable
 
     public function setQpB(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->qpB = $cValue;
     }

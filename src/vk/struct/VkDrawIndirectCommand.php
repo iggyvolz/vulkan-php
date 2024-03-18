@@ -23,8 +23,6 @@ final class VkDrawIndirectCommand implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkDrawIndirectCommand implements \JsonSerializable
         null|int $firstInstance = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDrawIndirectCommand', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDrawIndirectCommand', false));
         if(!is_null($vertexCount)) $self->setVertexCount($vertexCount);
         if(!is_null($instanceCount)) $self->setInstanceCount($instanceCount);
         if(!is_null($firstVertex)) $self->setFirstVertex($firstVertex);
@@ -49,7 +47,6 @@ final class VkDrawIndirectCommand implements \JsonSerializable
      */
     public function getVertexCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkDrawIndirectCommand implements \JsonSerializable
 
     public function setVertexCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexCount = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkDrawIndirectCommand implements \JsonSerializable
      */
     public function getInstanceCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->instanceCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkDrawIndirectCommand implements \JsonSerializable
 
     public function setInstanceCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->instanceCount = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkDrawIndirectCommand implements \JsonSerializable
      */
     public function getFirstVertex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->firstVertex;
         $phpValue = $cValue;
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkDrawIndirectCommand implements \JsonSerializable
 
     public function setFirstVertex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->firstVertex = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkDrawIndirectCommand implements \JsonSerializable
      */
     public function getFirstInstance(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->firstInstance;
         $phpValue = $cValue;
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkDrawIndirectCommand implements \JsonSerializable
 
     public function setFirstInstance(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->firstInstance = $cValue;
     }

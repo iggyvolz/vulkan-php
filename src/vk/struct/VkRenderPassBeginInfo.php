@@ -26,8 +26,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pClearValues = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkRenderPassBeginInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkRenderPassBeginInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($renderPass)) $self->setRenderPass($renderPass);
@@ -58,7 +56,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
      */
     public function getRenderPass(): VkRenderPass
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->renderPass;
         $phpValue = new \iggyvolz\vulkan\struct\VkRenderPass($cValue, $ffi);
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
 
     public function setRenderPass(VkRenderPass $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->renderPass = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
      */
     public function getFramebuffer(): VkFramebuffer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->framebuffer;
         $phpValue = new \iggyvolz\vulkan\struct\VkFramebuffer($cValue, $ffi);
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
 
     public function setFramebuffer(VkFramebuffer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->framebuffer = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
      */
     public function getRenderArea(): VkRect2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->renderArea;
         $phpValue = new \iggyvolz\vulkan\struct\VkRect2D($cValue, $ffi);
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
 
     public function setRenderArea(VkRect2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->renderArea = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
      */
     public function getClearValueCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->clearValueCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
 
     public function setClearValueCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->clearValueCount = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
      */
     public function getPClearValues(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pClearValues;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
 
     public function setPClearValues(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pClearValues = $cValue;
     }

@@ -33,8 +33,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -56,7 +54,7 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
         null|int $basePipelineIndex = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkRayTracingPipelineCreateInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkRayTracingPipelineCreateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -79,7 +77,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -87,7 +84,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -97,7 +93,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -105,7 +100,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -115,7 +109,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -123,7 +116,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkPipelineCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -133,7 +125,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
      */
     public function getStageCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stageCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -141,7 +132,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 
     public function setStageCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stageCount = $cValue;
     }
@@ -151,7 +141,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
      */
     public function getPStages(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pStages;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineShaderStageCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -159,7 +148,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 
     public function setPStages(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pStages = $cValue;
     }
@@ -169,7 +157,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
      */
     public function getGroupCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->groupCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -177,7 +164,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 
     public function setGroupCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->groupCount = $cValue;
     }
@@ -187,7 +173,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
      */
     public function getPGroups(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pGroups;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRayTracingShaderGroupCreateInfoKHR', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -195,7 +180,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 
     public function setPGroups(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pGroups = $cValue;
     }
@@ -205,7 +189,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
      */
     public function getMaxPipelineRayRecursionDepth(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPipelineRayRecursionDepth;
         $phpValue = $cValue;
         return $phpValue;
@@ -213,7 +196,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 
     public function setMaxPipelineRayRecursionDepth(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPipelineRayRecursionDepth = $cValue;
     }
@@ -223,7 +205,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
      */
     public function getPLibraryInfo(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pLibraryInfo;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -231,7 +212,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 
     public function setPLibraryInfo(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pLibraryInfo = $cValue;
     }
@@ -241,7 +221,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
      */
     public function getPLibraryInterface(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pLibraryInterface;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -249,7 +228,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 
     public function setPLibraryInterface(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pLibraryInterface = $cValue;
     }
@@ -259,7 +237,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
      */
     public function getPDynamicState(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pDynamicState;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineDynamicStateCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -267,7 +244,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 
     public function setPDynamicState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pDynamicState = $cValue;
     }
@@ -277,7 +253,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
      */
     public function getLayout(): VkPipelineLayout
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layout;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipelineLayout($cValue, $ffi);
         return $phpValue;
@@ -285,7 +260,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 
     public function setLayout(VkPipelineLayout $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->layout = $cValue;
     }
@@ -295,7 +269,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
      */
     public function getBasePipelineHandle(): VkPipeline
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->basePipelineHandle;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipeline($cValue, $ffi);
         return $phpValue;
@@ -303,7 +276,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 
     public function setBasePipelineHandle(VkPipeline $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->basePipelineHandle = $cValue;
     }
@@ -313,7 +285,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
      */
     public function getBasePipelineIndex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->basePipelineIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -321,7 +292,6 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
 
     public function setBasePipelineIndex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->basePipelineIndex = $cValue;
     }

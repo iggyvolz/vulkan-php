@@ -21,8 +21,6 @@ final class VkShadingRatePaletteNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkShadingRatePaletteNV implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pShadingRatePaletteEntries = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkShadingRatePaletteNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkShadingRatePaletteNV', false));
         if(!is_null($shadingRatePaletteEntryCount)) $self->setShadingRatePaletteEntryCount($shadingRatePaletteEntryCount);
         if(!is_null($pShadingRatePaletteEntries)) $self->setPShadingRatePaletteEntries($pShadingRatePaletteEntries);
         return $self;
@@ -43,7 +41,6 @@ final class VkShadingRatePaletteNV implements \JsonSerializable
      */
     public function getShadingRatePaletteEntryCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shadingRatePaletteEntryCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkShadingRatePaletteNV implements \JsonSerializable
 
     public function setShadingRatePaletteEntryCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->shadingRatePaletteEntryCount = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkShadingRatePaletteNV implements \JsonSerializable
      */
     public function getPShadingRatePaletteEntries(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pShadingRatePaletteEntries;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkShadingRatePaletteNV implements \JsonSerializable
 
     public function setPShadingRatePaletteEntries(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pShadingRatePaletteEntries = $cValue;
     }

@@ -21,8 +21,6 @@ final class VkPresentTimeGOOGLE implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkPresentTimeGOOGLE implements \JsonSerializable
         null|int $desiredPresentTime = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPresentTimeGOOGLE', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPresentTimeGOOGLE', false));
         if(!is_null($presentID)) $self->setPresentID($presentID);
         if(!is_null($desiredPresentTime)) $self->setDesiredPresentTime($desiredPresentTime);
         return $self;
@@ -43,7 +41,6 @@ final class VkPresentTimeGOOGLE implements \JsonSerializable
      */
     public function getPresentID(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->presentID;
         $phpValue = $cValue;
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkPresentTimeGOOGLE implements \JsonSerializable
 
     public function setPresentID(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->presentID = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkPresentTimeGOOGLE implements \JsonSerializable
      */
     public function getDesiredPresentTime(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->desiredPresentTime;
         $phpValue = $cValue;
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkPresentTimeGOOGLE implements \JsonSerializable
 
     public function setDesiredPresentTime(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->desiredPresentTime = $cValue;
     }

@@ -22,8 +22,6 @@ final class VkSpecializationMapEntry implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkSpecializationMapEntry implements \JsonSerializable
         null|int $size = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSpecializationMapEntry', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkSpecializationMapEntry', false));
         if(!is_null($constantID)) $self->setConstantID($constantID);
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($size)) $self->setSize($size);
@@ -46,7 +44,6 @@ final class VkSpecializationMapEntry implements \JsonSerializable
      */
     public function getConstantID(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->constantID;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkSpecializationMapEntry implements \JsonSerializable
 
     public function setConstantID(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->constantID = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkSpecializationMapEntry implements \JsonSerializable
      */
     public function getOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkSpecializationMapEntry implements \JsonSerializable
 
     public function setOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->offset = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkSpecializationMapEntry implements \JsonSerializable
      */
     public function getSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkSpecializationMapEntry implements \JsonSerializable
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }

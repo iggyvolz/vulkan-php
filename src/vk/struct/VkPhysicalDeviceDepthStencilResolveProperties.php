@@ -25,8 +25,6 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
         null|bool $independentResolve = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDepthStencilResolveProperties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDepthStencilResolveProperties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($supportedDepthResolveModes)) $self->setSupportedDepthResolveModes($supportedDepthResolveModes);
@@ -55,7 +53,6 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
      */
     public function getSupportedDepthResolveModes(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedDepthResolveModes;
         $phpValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::fromInt($cValue);
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
 
     public function setSupportedDepthResolveModes(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::toInt(...$phpValue);
         $this->cdata->supportedDepthResolveModes = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
      */
     public function getSupportedStencilResolveModes(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedStencilResolveModes;
         $phpValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::fromInt($cValue);
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
 
     public function setSupportedStencilResolveModes(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkResolveModeFlagBits::toInt(...$phpValue);
         $this->cdata->supportedStencilResolveModes = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
      */
     public function getIndependentResolveNone(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->independentResolveNone;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
 
     public function setIndependentResolveNone(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->independentResolveNone = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
      */
     public function getIndependentResolve(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->independentResolve;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
 
     public function setIndependentResolve(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->independentResolve = $cValue;
     }

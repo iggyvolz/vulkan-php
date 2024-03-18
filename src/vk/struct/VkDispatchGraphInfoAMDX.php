@@ -23,8 +23,6 @@ final class VkDispatchGraphInfoAMDX implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkDispatchGraphInfoAMDX implements \JsonSerializable
         null|int $payloadStride = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDispatchGraphInfoAMDX', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDispatchGraphInfoAMDX', false));
         if(!is_null($nodeIndex)) $self->setNodeIndex($nodeIndex);
         if(!is_null($payloadCount)) $self->setPayloadCount($payloadCount);
         if(!is_null($payloads)) $self->setPayloads($payloads);
@@ -49,7 +47,6 @@ final class VkDispatchGraphInfoAMDX implements \JsonSerializable
      */
     public function getNodeIndex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->nodeIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkDispatchGraphInfoAMDX implements \JsonSerializable
 
     public function setNodeIndex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->nodeIndex = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkDispatchGraphInfoAMDX implements \JsonSerializable
      */
     public function getPayloadCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->payloadCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkDispatchGraphInfoAMDX implements \JsonSerializable
 
     public function setPayloadCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->payloadCount = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkDispatchGraphInfoAMDX implements \JsonSerializable
      */
     public function getPayloads(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->payloads;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkDispatchGraphInfoAMDX implements \JsonSerializable
 
     public function setPayloads(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->payloads = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkDispatchGraphInfoAMDX implements \JsonSerializable
      */
     public function getPayloadStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->payloadStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkDispatchGraphInfoAMDX implements \JsonSerializable
 
     public function setPayloadStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->payloadStride = $cValue;
     }

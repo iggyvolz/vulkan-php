@@ -41,12 +41,10 @@ enum VkDynamicState: int
     case ExclusiveScissorEnableNv = 1000205000;
     case ExclusiveScissorNv = 1000205001;
     case FragmentShadingRateKhr = 1000226000;
-    case LineStippleExt = 1000259000;
     case VertexInputExt = 1000352000;
     case PatchControlPointsExt = 1000377000;
     case LogicOpExt = 1000377003;
     case ColorWriteEnableExt = 1000381000;
-    case TessellationDomainOriginExt = 1000455002;
     case DepthClampEnableExt = 1000455003;
     case PolygonModeExt = 1000455004;
     case RasterizationSamplesExt = 1000455005;
@@ -57,6 +55,7 @@ enum VkDynamicState: int
     case ColorBlendEnableExt = 1000455010;
     case ColorBlendEquationExt = 1000455011;
     case ColorWriteMaskExt = 1000455012;
+    case TessellationDomainOriginExt = 1000455002;
     case RasterizationStreamExt = 1000455013;
     case ConservativeRasterizationModeExt = 1000455014;
     case ExtraPrimitiveOverestimationSizeExt = 1000455015;
@@ -78,4 +77,5 @@ enum VkDynamicState: int
     case RepresentativeFragmentTestEnableNv = 1000455031;
     case CoverageReductionModeNv = 1000455032;
     case AttachmentFeedbackLoopEnableExt = 1000524000;
+    case LineStippleKhr = 1000259000;
 }

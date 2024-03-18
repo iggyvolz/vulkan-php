@@ -24,8 +24,6 @@ final class VkPipelineViewportShadingRateImageStateCreateInfoNV implements \Json
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkPipelineViewportShadingRateImageStateCreateInfoNV implements \Json
         null|\iggyvolz\vulkan\util\ObjectPointer $pShadingRatePalettes = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineViewportShadingRateImageStateCreateInfoNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPipelineViewportShadingRateImageStateCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shadingRateImageEnable)) $self->setShadingRateImageEnable($shadingRateImageEnable);
@@ -52,7 +50,6 @@ final class VkPipelineViewportShadingRateImageStateCreateInfoNV implements \Json
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkPipelineViewportShadingRateImageStateCreateInfoNV implements \Json
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkPipelineViewportShadingRateImageStateCreateInfoNV implements \Json
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkPipelineViewportShadingRateImageStateCreateInfoNV implements \Json
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkPipelineViewportShadingRateImageStateCreateInfoNV implements \Json
      */
     public function getShadingRateImageEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shadingRateImageEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkPipelineViewportShadingRateImageStateCreateInfoNV implements \Json
 
     public function setShadingRateImageEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->shadingRateImageEnable = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkPipelineViewportShadingRateImageStateCreateInfoNV implements \Json
      */
     public function getViewportCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->viewportCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkPipelineViewportShadingRateImageStateCreateInfoNV implements \Json
 
     public function setViewportCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->viewportCount = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkPipelineViewportShadingRateImageStateCreateInfoNV implements \Json
      */
     public function getPShadingRatePalettes(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pShadingRatePalettes;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkShadingRatePaletteNV', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkPipelineViewportShadingRateImageStateCreateInfoNV implements \Json
 
     public function setPShadingRatePalettes(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pShadingRatePalettes = $cValue;
     }

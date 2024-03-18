@@ -26,8 +26,6 @@ final class VkApplicationInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkApplicationInfo implements \JsonSerializable
         null|int $apiVersion = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkApplicationInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkApplicationInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pApplicationName)) $self->setPApplicationName($pApplicationName);
@@ -58,7 +56,6 @@ final class VkApplicationInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkApplicationInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkApplicationInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkApplicationInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkApplicationInfo implements \JsonSerializable
      */
     public function getPApplicationName(): ?string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pApplicationName;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkApplicationInfo implements \JsonSerializable
 
     public function setPApplicationName(?string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pApplicationName = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkApplicationInfo implements \JsonSerializable
      */
     public function getApplicationVersion(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->applicationVersion;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkApplicationInfo implements \JsonSerializable
 
     public function setApplicationVersion(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->applicationVersion = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkApplicationInfo implements \JsonSerializable
      */
     public function getPEngineName(): ?string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pEngineName;
         $phpValue = $cValue;
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkApplicationInfo implements \JsonSerializable
 
     public function setPEngineName(?string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pEngineName = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkApplicationInfo implements \JsonSerializable
      */
     public function getEngineVersion(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->engineVersion;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkApplicationInfo implements \JsonSerializable
 
     public function setEngineVersion(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->engineVersion = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkApplicationInfo implements \JsonSerializable
      */
     public function getApiVersion(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->apiVersion;
         $phpValue = $cValue;
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkApplicationInfo implements \JsonSerializable
 
     public function setApiVersion(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->apiVersion = $cValue;
     }

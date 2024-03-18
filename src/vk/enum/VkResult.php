@@ -54,5 +54,5 @@ enum VkResult: int
     case OperationNotDeferredKhr = 1000268003;
     case ErrorInvalidVideoStdParametersKhr = -1000299000;
     case ErrorCompressionExhaustedExt = -1000338000;
-    case ErrorIncompatibleShaderBinaryExt = 1000482000;
+    case IncompatibleShaderBinaryExt = 1000482000;
 }

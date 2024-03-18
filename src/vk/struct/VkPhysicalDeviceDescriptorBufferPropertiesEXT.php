@@ -54,8 +54,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -98,7 +96,7 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
         null|int $descriptorBufferAddressSpaceSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDescriptorBufferPropertiesEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDescriptorBufferPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($combinedImageSamplerDescriptorSingleArray)) $self->setCombinedImageSamplerDescriptorSingleArray($combinedImageSamplerDescriptorSingleArray);
@@ -142,7 +140,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -150,7 +147,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -160,7 +156,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -168,7 +163,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -178,7 +172,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getCombinedImageSamplerDescriptorSingleArray(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->combinedImageSamplerDescriptorSingleArray;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -186,7 +179,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setCombinedImageSamplerDescriptorSingleArray(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->combinedImageSamplerDescriptorSingleArray = $cValue;
     }
@@ -196,7 +188,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getBufferlessPushDescriptors(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferlessPushDescriptors;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -204,7 +195,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setBufferlessPushDescriptors(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->bufferlessPushDescriptors = $cValue;
     }
@@ -214,7 +204,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getAllowSamplerImageViewPostSubmitCreation(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->allowSamplerImageViewPostSubmitCreation;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -222,7 +211,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setAllowSamplerImageViewPostSubmitCreation(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->allowSamplerImageViewPostSubmitCreation = $cValue;
     }
@@ -232,7 +220,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getDescriptorBufferOffsetAlignment(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBufferOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -240,7 +227,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setDescriptorBufferOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorBufferOffsetAlignment = $cValue;
     }
@@ -250,7 +236,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getMaxDescriptorBufferBindings(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDescriptorBufferBindings;
         $phpValue = $cValue;
         return $phpValue;
@@ -258,7 +243,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setMaxDescriptorBufferBindings(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDescriptorBufferBindings = $cValue;
     }
@@ -268,7 +252,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getMaxResourceDescriptorBufferBindings(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxResourceDescriptorBufferBindings;
         $phpValue = $cValue;
         return $phpValue;
@@ -276,7 +259,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setMaxResourceDescriptorBufferBindings(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxResourceDescriptorBufferBindings = $cValue;
     }
@@ -286,7 +268,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getMaxSamplerDescriptorBufferBindings(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSamplerDescriptorBufferBindings;
         $phpValue = $cValue;
         return $phpValue;
@@ -294,7 +275,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setMaxSamplerDescriptorBufferBindings(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSamplerDescriptorBufferBindings = $cValue;
     }
@@ -304,7 +284,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getMaxEmbeddedImmutableSamplerBindings(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxEmbeddedImmutableSamplerBindings;
         $phpValue = $cValue;
         return $phpValue;
@@ -312,7 +291,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setMaxEmbeddedImmutableSamplerBindings(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxEmbeddedImmutableSamplerBindings = $cValue;
     }
@@ -322,7 +300,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getMaxEmbeddedImmutableSamplers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxEmbeddedImmutableSamplers;
         $phpValue = $cValue;
         return $phpValue;
@@ -330,7 +307,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setMaxEmbeddedImmutableSamplers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxEmbeddedImmutableSamplers = $cValue;
     }
@@ -340,7 +316,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getBufferCaptureReplayDescriptorDataSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bufferCaptureReplayDescriptorDataSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -348,7 +323,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setBufferCaptureReplayDescriptorDataSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->bufferCaptureReplayDescriptorDataSize = $cValue;
     }
@@ -358,7 +332,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getImageCaptureReplayDescriptorDataSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageCaptureReplayDescriptorDataSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -366,7 +339,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setImageCaptureReplayDescriptorDataSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageCaptureReplayDescriptorDataSize = $cValue;
     }
@@ -376,7 +348,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getImageViewCaptureReplayDescriptorDataSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageViewCaptureReplayDescriptorDataSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -384,7 +355,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setImageViewCaptureReplayDescriptorDataSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageViewCaptureReplayDescriptorDataSize = $cValue;
     }
@@ -394,7 +364,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getSamplerCaptureReplayDescriptorDataSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samplerCaptureReplayDescriptorDataSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -402,7 +371,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setSamplerCaptureReplayDescriptorDataSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->samplerCaptureReplayDescriptorDataSize = $cValue;
     }
@@ -412,7 +380,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getAccelerationStructureCaptureReplayDescriptorDataSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->accelerationStructureCaptureReplayDescriptorDataSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -420,7 +387,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setAccelerationStructureCaptureReplayDescriptorDataSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->accelerationStructureCaptureReplayDescriptorDataSize = $cValue;
     }
@@ -430,7 +396,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getSamplerDescriptorSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samplerDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -438,7 +403,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setSamplerDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->samplerDescriptorSize = $cValue;
     }
@@ -448,7 +412,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getCombinedImageSamplerDescriptorSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->combinedImageSamplerDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -456,7 +419,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setCombinedImageSamplerDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->combinedImageSamplerDescriptorSize = $cValue;
     }
@@ -466,7 +428,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getSampledImageDescriptorSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampledImageDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -474,7 +435,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setSampledImageDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sampledImageDescriptorSize = $cValue;
     }
@@ -484,7 +444,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getStorageImageDescriptorSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageImageDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -492,7 +451,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setStorageImageDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->storageImageDescriptorSize = $cValue;
     }
@@ -502,7 +460,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getUniformTexelBufferDescriptorSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->uniformTexelBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -510,7 +467,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setUniformTexelBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->uniformTexelBufferDescriptorSize = $cValue;
     }
@@ -520,7 +476,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getRobustUniformTexelBufferDescriptorSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->robustUniformTexelBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -528,7 +483,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setRobustUniformTexelBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->robustUniformTexelBufferDescriptorSize = $cValue;
     }
@@ -538,7 +492,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getStorageTexelBufferDescriptorSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageTexelBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -546,7 +499,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setStorageTexelBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->storageTexelBufferDescriptorSize = $cValue;
     }
@@ -556,7 +508,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getRobustStorageTexelBufferDescriptorSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->robustStorageTexelBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -564,7 +515,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setRobustStorageTexelBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->robustStorageTexelBufferDescriptorSize = $cValue;
     }
@@ -574,7 +524,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getUniformBufferDescriptorSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->uniformBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -582,7 +531,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setUniformBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->uniformBufferDescriptorSize = $cValue;
     }
@@ -592,7 +540,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getRobustUniformBufferDescriptorSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->robustUniformBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -600,7 +547,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setRobustUniformBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->robustUniformBufferDescriptorSize = $cValue;
     }
@@ -610,7 +556,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getStorageBufferDescriptorSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storageBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -618,7 +563,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setStorageBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->storageBufferDescriptorSize = $cValue;
     }
@@ -628,7 +572,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getRobustStorageBufferDescriptorSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->robustStorageBufferDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -636,7 +579,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setRobustStorageBufferDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->robustStorageBufferDescriptorSize = $cValue;
     }
@@ -646,7 +588,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getInputAttachmentDescriptorSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->inputAttachmentDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -654,7 +595,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setInputAttachmentDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->inputAttachmentDescriptorSize = $cValue;
     }
@@ -664,7 +604,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getAccelerationStructureDescriptorSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->accelerationStructureDescriptorSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -672,7 +611,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setAccelerationStructureDescriptorSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->accelerationStructureDescriptorSize = $cValue;
     }
@@ -682,7 +620,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getMaxSamplerDescriptorBufferRange(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSamplerDescriptorBufferRange;
         $phpValue = $cValue;
         return $phpValue;
@@ -690,7 +627,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setMaxSamplerDescriptorBufferRange(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSamplerDescriptorBufferRange = $cValue;
     }
@@ -700,7 +636,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getMaxResourceDescriptorBufferRange(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxResourceDescriptorBufferRange;
         $phpValue = $cValue;
         return $phpValue;
@@ -708,7 +643,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setMaxResourceDescriptorBufferRange(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxResourceDescriptorBufferRange = $cValue;
     }
@@ -718,7 +652,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getSamplerDescriptorBufferAddressSpaceSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->samplerDescriptorBufferAddressSpaceSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -726,7 +659,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setSamplerDescriptorBufferAddressSpaceSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->samplerDescriptorBufferAddressSpaceSize = $cValue;
     }
@@ -736,7 +668,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getResourceDescriptorBufferAddressSpaceSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->resourceDescriptorBufferAddressSpaceSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -744,7 +675,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setResourceDescriptorBufferAddressSpaceSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->resourceDescriptorBufferAddressSpaceSize = $cValue;
     }
@@ -754,7 +684,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
      */
     public function getDescriptorBufferAddressSpaceSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorBufferAddressSpaceSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -762,7 +691,6 @@ final class VkPhysicalDeviceDescriptorBufferPropertiesEXT implements \JsonSerial
 
     public function setDescriptorBufferAddressSpaceSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorBufferAddressSpaceSize = $cValue;
     }

@@ -24,8 +24,6 @@ final class VkImageResolve implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkImageResolve implements \JsonSerializable
         null|VkExtent3D $extent = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageResolve', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkImageResolve', false));
         if(!is_null($srcSubresource)) $self->setSrcSubresource($srcSubresource);
         if(!is_null($srcOffset)) $self->setSrcOffset($srcOffset);
         if(!is_null($dstSubresource)) $self->setDstSubresource($dstSubresource);
@@ -52,7 +50,6 @@ final class VkImageResolve implements \JsonSerializable
      */
     public function getSrcSubresource(): VkImageSubresourceLayers
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcSubresource;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageSubresourceLayers($cValue, $ffi);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkImageResolve implements \JsonSerializable
 
     public function setSrcSubresource(VkImageSubresourceLayers $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->srcSubresource = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkImageResolve implements \JsonSerializable
      */
     public function getSrcOffset(): VkOffset3D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcOffset;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset3D($cValue, $ffi);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkImageResolve implements \JsonSerializable
 
     public function setSrcOffset(VkOffset3D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->srcOffset = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkImageResolve implements \JsonSerializable
      */
     public function getDstSubresource(): VkImageSubresourceLayers
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstSubresource;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageSubresourceLayers($cValue, $ffi);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkImageResolve implements \JsonSerializable
 
     public function setDstSubresource(VkImageSubresourceLayers $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->dstSubresource = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkImageResolve implements \JsonSerializable
      */
     public function getDstOffset(): VkOffset3D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstOffset;
         $phpValue = new \iggyvolz\vulkan\struct\VkOffset3D($cValue, $ffi);
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkImageResolve implements \JsonSerializable
 
     public function setDstOffset(VkOffset3D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->dstOffset = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkImageResolve implements \JsonSerializable
      */
     public function getExtent(): VkExtent3D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent3D($cValue, $ffi);
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkImageResolve implements \JsonSerializable
 
     public function setExtent(VkExtent3D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->extent = $cValue;
     }

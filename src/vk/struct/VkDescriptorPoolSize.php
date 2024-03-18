@@ -21,8 +21,6 @@ final class VkDescriptorPoolSize implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkDescriptorPoolSize implements \JsonSerializable
         null|int $descriptorCount = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorPoolSize', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDescriptorPoolSize', false));
         if(!is_null($type)) $self->setType($type);
         if(!is_null($descriptorCount)) $self->setDescriptorCount($descriptorCount);
         return $self;
@@ -43,7 +41,6 @@ final class VkDescriptorPoolSize implements \JsonSerializable
      */
     public function getType(): \iggyvolz\vulkan\enum\VkDescriptorType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->type;
         $phpValue = \iggyvolz\vulkan\enum\VkDescriptorType::from($cValue);
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkDescriptorPoolSize implements \JsonSerializable
 
     public function setType(\iggyvolz\vulkan\enum\VkDescriptorType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->type = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkDescriptorPoolSize implements \JsonSerializable
      */
     public function getDescriptorCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkDescriptorPoolSize implements \JsonSerializable
 
     public function setDescriptorCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorCount = $cValue;
     }

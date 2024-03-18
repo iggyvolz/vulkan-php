@@ -22,8 +22,6 @@ final class VkMultiDrawIndexedInfoEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkMultiDrawIndexedInfoEXT implements \JsonSerializable
         null|int $vertexOffset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkMultiDrawIndexedInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkMultiDrawIndexedInfoEXT', false));
         if(!is_null($firstIndex)) $self->setFirstIndex($firstIndex);
         if(!is_null($indexCount)) $self->setIndexCount($indexCount);
         if(!is_null($vertexOffset)) $self->setVertexOffset($vertexOffset);
@@ -46,7 +44,6 @@ final class VkMultiDrawIndexedInfoEXT implements \JsonSerializable
      */
     public function getFirstIndex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->firstIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkMultiDrawIndexedInfoEXT implements \JsonSerializable
 
     public function setFirstIndex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->firstIndex = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkMultiDrawIndexedInfoEXT implements \JsonSerializable
      */
     public function getIndexCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkMultiDrawIndexedInfoEXT implements \JsonSerializable
 
     public function setIndexCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->indexCount = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkMultiDrawIndexedInfoEXT implements \JsonSerializable
      */
     public function getVertexOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkMultiDrawIndexedInfoEXT implements \JsonSerializable
 
     public function setVertexOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexOffset = $cValue;
     }

@@ -25,8 +25,6 @@ final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT implements \JsonSerial
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT implements \JsonSerial
         null|\iggyvolz\vulkan\util\IntPointer $pQueueFamilyIndices = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceImageDrmFormatModifierInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceImageDrmFormatModifierInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($drmFormatModifier)) $self->setDrmFormatModifier($drmFormatModifier);
@@ -55,7 +53,6 @@ final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT implements \JsonSerial
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT implements \JsonSerial
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT implements \JsonSerial
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT implements \JsonSerial
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT implements \JsonSerial
      */
     public function getDrmFormatModifier(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->drmFormatModifier;
         $phpValue = $cValue;
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT implements \JsonSerial
 
     public function setDrmFormatModifier(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->drmFormatModifier = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT implements \JsonSerial
      */
     public function getSharingMode(): \iggyvolz\vulkan\enum\VkSharingMode
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sharingMode;
         $phpValue = \iggyvolz\vulkan\enum\VkSharingMode::from($cValue);
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT implements \JsonSerial
 
     public function setSharingMode(\iggyvolz\vulkan\enum\VkSharingMode $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sharingMode = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT implements \JsonSerial
      */
     public function getQueueFamilyIndexCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->queueFamilyIndexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT implements \JsonSerial
 
     public function setQueueFamilyIndexCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->queueFamilyIndexCount = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT implements \JsonSerial
      */
     public function getPQueueFamilyIndices(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pQueueFamilyIndices;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT implements \JsonSerial
 
     public function setPQueueFamilyIndices(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pQueueFamilyIndices = $cValue;
     }

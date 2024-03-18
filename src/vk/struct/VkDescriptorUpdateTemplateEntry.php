@@ -25,8 +25,6 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
         null|int $stride = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorUpdateTemplateEntry', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDescriptorUpdateTemplateEntry', false));
         if(!is_null($dstBinding)) $self->setDstBinding($dstBinding);
         if(!is_null($dstArrayElement)) $self->setDstArrayElement($dstArrayElement);
         if(!is_null($descriptorCount)) $self->setDescriptorCount($descriptorCount);
@@ -55,7 +53,6 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
      */
     public function getDstBinding(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstBinding;
         $phpValue = $cValue;
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
 
     public function setDstBinding(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstBinding = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
      */
     public function getDstArrayElement(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstArrayElement;
         $phpValue = $cValue;
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
 
     public function setDstArrayElement(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstArrayElement = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
      */
     public function getDescriptorCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
 
     public function setDescriptorCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorCount = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
      */
     public function getDescriptorType(): \iggyvolz\vulkan\enum\VkDescriptorType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorType;
         $phpValue = \iggyvolz\vulkan\enum\VkDescriptorType::from($cValue);
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
 
     public function setDescriptorType(\iggyvolz\vulkan\enum\VkDescriptorType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->descriptorType = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
      */
     public function getOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = $cValue;
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
 
     public function setOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->offset = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
      */
     public function getStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stride;
         $phpValue = $cValue;
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
 
     public function setStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stride = $cValue;
     }

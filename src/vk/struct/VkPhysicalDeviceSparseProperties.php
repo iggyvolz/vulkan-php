@@ -24,8 +24,6 @@ final class VkPhysicalDeviceSparseProperties implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkPhysicalDeviceSparseProperties implements \JsonSerializable
         null|bool $residencyNonResidentStrict = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSparseProperties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSparseProperties', false));
         if(!is_null($residencyStandard2DBlockShape)) $self->setResidencyStandard2DBlockShape($residencyStandard2DBlockShape);
         if(!is_null($residencyStandard2DMultisampleBlockShape)) $self->setResidencyStandard2DMultisampleBlockShape($residencyStandard2DMultisampleBlockShape);
         if(!is_null($residencyStandard3DBlockShape)) $self->setResidencyStandard3DBlockShape($residencyStandard3DBlockShape);
@@ -52,7 +50,6 @@ final class VkPhysicalDeviceSparseProperties implements \JsonSerializable
      */
     public function getResidencyStandard2DBlockShape(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->residencyStandard2DBlockShape;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkPhysicalDeviceSparseProperties implements \JsonSerializable
 
     public function setResidencyStandard2DBlockShape(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->residencyStandard2DBlockShape = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkPhysicalDeviceSparseProperties implements \JsonSerializable
      */
     public function getResidencyStandard2DMultisampleBlockShape(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->residencyStandard2DMultisampleBlockShape;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkPhysicalDeviceSparseProperties implements \JsonSerializable
 
     public function setResidencyStandard2DMultisampleBlockShape(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->residencyStandard2DMultisampleBlockShape = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkPhysicalDeviceSparseProperties implements \JsonSerializable
      */
     public function getResidencyStandard3DBlockShape(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->residencyStandard3DBlockShape;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkPhysicalDeviceSparseProperties implements \JsonSerializable
 
     public function setResidencyStandard3DBlockShape(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->residencyStandard3DBlockShape = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkPhysicalDeviceSparseProperties implements \JsonSerializable
      */
     public function getResidencyAlignedMipSize(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->residencyAlignedMipSize;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkPhysicalDeviceSparseProperties implements \JsonSerializable
 
     public function setResidencyAlignedMipSize(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->residencyAlignedMipSize = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkPhysicalDeviceSparseProperties implements \JsonSerializable
      */
     public function getResidencyNonResidentStrict(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->residencyNonResidentStrict;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkPhysicalDeviceSparseProperties implements \JsonSerializable
 
     public function setResidencyNonResidentStrict(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->residencyNonResidentStrict = $cValue;
     }

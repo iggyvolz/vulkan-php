@@ -25,8 +25,6 @@ final class VkPipelineExecutableStatisticKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkPipelineExecutableStatisticKHR implements \JsonSerializable
         mixed $value = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineExecutableStatisticKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPipelineExecutableStatisticKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($name)) $self->setName($name);
@@ -55,7 +53,6 @@ final class VkPipelineExecutableStatisticKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkPipelineExecutableStatisticKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkPipelineExecutableStatisticKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkPipelineExecutableStatisticKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkPipelineExecutableStatisticKHR implements \JsonSerializable
      */
     public function getName(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->name;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkPipelineExecutableStatisticKHR implements \JsonSerializable
 
     public function setName(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->name = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkPipelineExecutableStatisticKHR implements \JsonSerializable
      */
     public function getDescription(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->description;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkPipelineExecutableStatisticKHR implements \JsonSerializable
 
     public function setDescription(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->description = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkPipelineExecutableStatisticKHR implements \JsonSerializable
      */
     public function getFormat(): \iggyvolz\vulkan\enum\VkPipelineExecutableStatisticFormatKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineExecutableStatisticFormatKHR::from($cValue);
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkPipelineExecutableStatisticKHR implements \JsonSerializable
 
     public function setFormat(\iggyvolz\vulkan\enum\VkPipelineExecutableStatisticFormatKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->format = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkPipelineExecutableStatisticKHR implements \JsonSerializable
      */
     public function getValue(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->value;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkPipelineExecutableStatisticKHR implements \JsonSerializable
 
     public function setValue(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->value = $cValue;
     }

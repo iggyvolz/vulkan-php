@@ -23,8 +23,6 @@ final class VkDebugMarkerMarkerInfoEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkDebugMarkerMarkerInfoEXT implements \JsonSerializable
         null|array $color = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDebugMarkerMarkerInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDebugMarkerMarkerInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pMarkerName)) $self->setPMarkerName($pMarkerName);
@@ -49,7 +47,6 @@ final class VkDebugMarkerMarkerInfoEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkDebugMarkerMarkerInfoEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkDebugMarkerMarkerInfoEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkDebugMarkerMarkerInfoEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkDebugMarkerMarkerInfoEXT implements \JsonSerializable
      */
     public function getPMarkerName(): ?string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pMarkerName;
         $phpValue = $cValue;
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkDebugMarkerMarkerInfoEXT implements \JsonSerializable
 
     public function setPMarkerName(?string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pMarkerName = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkDebugMarkerMarkerInfoEXT implements \JsonSerializable
      */
     public function getColor(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->color;
         $phpValue = [$cValue[0],$cValue[1],$cValue[2],$cValue[3],$cValue[4]];
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkDebugMarkerMarkerInfoEXT implements \JsonSerializable
 
     public function setColor(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue[0] = $phpValue[0];
         $cValue[1] = $phpValue[1];
         $cValue[2] = $phpValue[2];

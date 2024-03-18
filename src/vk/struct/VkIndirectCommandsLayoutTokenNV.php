@@ -34,8 +34,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -58,7 +56,7 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
         null|\iggyvolz\vulkan\util\IntPointer $pIndexTypeValues = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkIndirectCommandsLayoutTokenNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkIndirectCommandsLayoutTokenNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($tokenType)) $self->setTokenType($tokenType);
@@ -82,7 +80,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -90,7 +87,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -100,7 +96,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -108,7 +103,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -118,7 +112,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getTokenType(): \iggyvolz\vulkan\enum\VkIndirectCommandsTokenTypeNV
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tokenType;
         $phpValue = \iggyvolz\vulkan\enum\VkIndirectCommandsTokenTypeNV::from($cValue);
         return $phpValue;
@@ -126,7 +119,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setTokenType(\iggyvolz\vulkan\enum\VkIndirectCommandsTokenTypeNV $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->tokenType = $cValue;
     }
@@ -136,7 +128,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getStream(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stream;
         $phpValue = $cValue;
         return $phpValue;
@@ -144,7 +135,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setStream(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stream = $cValue;
     }
@@ -154,7 +144,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = $cValue;
         return $phpValue;
@@ -162,7 +151,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->offset = $cValue;
     }
@@ -172,7 +160,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getVertexBindingUnit(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexBindingUnit;
         $phpValue = $cValue;
         return $phpValue;
@@ -180,7 +167,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setVertexBindingUnit(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexBindingUnit = $cValue;
     }
@@ -190,7 +176,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getVertexDynamicStride(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexDynamicStride;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -198,7 +183,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setVertexDynamicStride(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->vertexDynamicStride = $cValue;
     }
@@ -208,7 +192,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getPushconstantPipelineLayout(): VkPipelineLayout
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pushconstantPipelineLayout;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipelineLayout($cValue, $ffi);
         return $phpValue;
@@ -216,7 +199,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setPushconstantPipelineLayout(VkPipelineLayout $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pushconstantPipelineLayout = $cValue;
     }
@@ -226,7 +208,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getPushconstantShaderStageFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pushconstantShaderStageFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -234,7 +215,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setPushconstantShaderStageFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->pushconstantShaderStageFlags = $cValue;
     }
@@ -244,7 +224,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getPushconstantOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pushconstantOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -252,7 +231,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setPushconstantOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pushconstantOffset = $cValue;
     }
@@ -262,7 +240,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getPushconstantSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pushconstantSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -270,7 +247,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setPushconstantSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pushconstantSize = $cValue;
     }
@@ -280,7 +256,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getIndirectStateFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indirectStateFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkIndirectStateFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -288,7 +263,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setIndirectStateFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkIndirectStateFlagBitsNV::toInt(...$phpValue);
         $this->cdata->indirectStateFlags = $cValue;
     }
@@ -298,7 +272,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getIndexTypeCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexTypeCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -306,7 +279,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setIndexTypeCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->indexTypeCount = $cValue;
     }
@@ -316,7 +288,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getPIndexTypes(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pIndexTypes;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -324,7 +295,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setPIndexTypes(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pIndexTypes = $cValue;
     }
@@ -334,7 +304,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
      */
     public function getPIndexTypeValues(): \iggyvolz\vulkan\util\IntPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pIndexTypeValues;
         $phpValue = $cValue->get();
         return $phpValue;
@@ -342,7 +311,6 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
 
     public function setPIndexTypeValues(\iggyvolz\vulkan\util\IntPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pIndexTypeValues = $cValue;
     }

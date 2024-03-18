@@ -24,8 +24,6 @@ final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV implements \Jso
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV implements \Jso
         null|\iggyvolz\vulkan\util\ObjectPointer $pCustomSampleOrders = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineViewportCoarseSampleOrderStateCreateInfoNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPipelineViewportCoarseSampleOrderStateCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($sampleOrderType)) $self->setSampleOrderType($sampleOrderType);
@@ -52,7 +50,6 @@ final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV implements \Jso
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV implements \Jso
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV implements \Jso
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV implements \Jso
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV implements \Jso
      */
     public function getSampleOrderType(): \iggyvolz\vulkan\enum\VkCoarseSampleOrderTypeNV
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampleOrderType;
         $phpValue = \iggyvolz\vulkan\enum\VkCoarseSampleOrderTypeNV::from($cValue);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV implements \Jso
 
     public function setSampleOrderType(\iggyvolz\vulkan\enum\VkCoarseSampleOrderTypeNV $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sampleOrderType = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV implements \Jso
      */
     public function getCustomSampleOrderCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->customSampleOrderCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV implements \Jso
 
     public function setCustomSampleOrderCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->customSampleOrderCount = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV implements \Jso
      */
     public function getPCustomSampleOrders(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pCustomSampleOrders;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkCoarseSampleOrderCustomNV', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV implements \Jso
 
     public function setPCustomSampleOrders(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pCustomSampleOrders = $cValue;
     }

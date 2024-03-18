@@ -29,8 +29,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -48,7 +46,7 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
         mixed $scope = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCooperativeMatrixPropertiesNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkCooperativeMatrixPropertiesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($MSize)) $self->setMSize($MSize);
@@ -67,7 +65,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -75,7 +72,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -85,7 +81,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -93,7 +88,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -103,7 +97,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
      */
     public function getMSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->MSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -111,7 +104,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
 
     public function setMSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->MSize = $cValue;
     }
@@ -121,7 +113,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
      */
     public function getNSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->NSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -129,7 +120,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
 
     public function setNSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->NSize = $cValue;
     }
@@ -139,7 +129,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
      */
     public function getKSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->KSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -147,7 +136,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
 
     public function setKSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->KSize = $cValue;
     }
@@ -157,7 +145,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
      */
     public function getAType(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->AType;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -165,7 +152,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
 
     public function setAType(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->AType = $cValue;
     }
@@ -175,7 +161,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
      */
     public function getBType(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->BType;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -183,7 +168,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
 
     public function setBType(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->BType = $cValue;
     }
@@ -193,7 +177,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
      */
     public function getCType(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->CType;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -201,7 +184,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
 
     public function setCType(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->CType = $cValue;
     }
@@ -211,7 +193,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
      */
     public function getDType(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->DType;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -219,7 +200,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
 
     public function setDType(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->DType = $cValue;
     }
@@ -229,7 +209,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
      */
     public function getScope(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->scope;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -237,7 +216,6 @@ final class VkCooperativeMatrixPropertiesNV implements \JsonSerializable
 
     public function setScope(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->scope = $cValue;
     }

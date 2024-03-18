@@ -17,7 +17,8 @@
     "iggyvolz/simple-attribute-reflection": "^1.0",
     "php-64bit": "^8.2",
     "ext-ffi": "*",
-    "ramsey/uuid": "^4.7"
+    "ramsey/uuid": "^4.7",
+    "psr/container": "^2.0"
   },
   "require-dev": {
     "iggyvolz/x11": "dev-main",

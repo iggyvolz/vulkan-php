@@ -24,8 +24,6 @@ final class VkDescriptorAddressInfoEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkDescriptorAddressInfoEXT implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkFormat $format = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorAddressInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDescriptorAddressInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($address)) $self->setAddress($address);
@@ -52,7 +50,6 @@ final class VkDescriptorAddressInfoEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkDescriptorAddressInfoEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkDescriptorAddressInfoEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkDescriptorAddressInfoEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkDescriptorAddressInfoEXT implements \JsonSerializable
      */
     public function getAddress(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->address;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkDescriptorAddressInfoEXT implements \JsonSerializable
 
     public function setAddress(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->address = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkDescriptorAddressInfoEXT implements \JsonSerializable
      */
     public function getRange(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->range;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkDescriptorAddressInfoEXT implements \JsonSerializable
 
     public function setRange(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->range = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkDescriptorAddressInfoEXT implements \JsonSerializable
      */
     public function getFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkDescriptorAddressInfoEXT implements \JsonSerializable
 
     public function setFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->format = $cValue;
     }

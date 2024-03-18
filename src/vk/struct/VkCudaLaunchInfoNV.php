@@ -33,8 +33,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -56,7 +54,7 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pExtras = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCudaLaunchInfoNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkCudaLaunchInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($function)) $self->setFunction($function);
@@ -79,7 +77,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -87,7 +84,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -97,7 +93,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -105,7 +100,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -115,7 +109,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
      */
     public function getFunction(): VkCudaFunctionNV
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->function;
         $phpValue = new \iggyvolz\vulkan\struct\VkCudaFunctionNV($cValue, $ffi);
         return $phpValue;
@@ -123,7 +116,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
 
     public function setFunction(VkCudaFunctionNV $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->function = $cValue;
     }
@@ -133,7 +125,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
      */
     public function getGridDimX(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->gridDimX;
         $phpValue = $cValue;
         return $phpValue;
@@ -141,7 +132,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
 
     public function setGridDimX(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->gridDimX = $cValue;
     }
@@ -151,7 +141,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
      */
     public function getGridDimY(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->gridDimY;
         $phpValue = $cValue;
         return $phpValue;
@@ -159,7 +148,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
 
     public function setGridDimY(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->gridDimY = $cValue;
     }
@@ -169,7 +157,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
      */
     public function getGridDimZ(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->gridDimZ;
         $phpValue = $cValue;
         return $phpValue;
@@ -177,7 +164,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
 
     public function setGridDimZ(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->gridDimZ = $cValue;
     }
@@ -187,7 +173,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
      */
     public function getBlockDimX(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->blockDimX;
         $phpValue = $cValue;
         return $phpValue;
@@ -195,7 +180,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
 
     public function setBlockDimX(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->blockDimX = $cValue;
     }
@@ -205,7 +189,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
      */
     public function getBlockDimY(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->blockDimY;
         $phpValue = $cValue;
         return $phpValue;
@@ -213,7 +196,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
 
     public function setBlockDimY(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->blockDimY = $cValue;
     }
@@ -223,7 +205,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
      */
     public function getBlockDimZ(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->blockDimZ;
         $phpValue = $cValue;
         return $phpValue;
@@ -231,7 +212,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
 
     public function setBlockDimZ(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->blockDimZ = $cValue;
     }
@@ -241,7 +221,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
      */
     public function getSharedMemBytes(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sharedMemBytes;
         $phpValue = $cValue;
         return $phpValue;
@@ -249,7 +228,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
 
     public function setSharedMemBytes(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->sharedMemBytes = $cValue;
     }
@@ -259,7 +237,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
      */
     public function getParamCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->paramCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -267,7 +244,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
 
     public function setParamCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->paramCount = $cValue;
     }
@@ -277,7 +253,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
      */
     public function getPParams(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pParams;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -285,7 +260,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
 
     public function setPParams(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pParams = $cValue;
     }
@@ -295,7 +269,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
      */
     public function getExtraCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->extraCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -303,7 +276,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
 
     public function setExtraCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->extraCount = $cValue;
     }
@@ -313,7 +285,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
      */
     public function getPExtras(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pExtras;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -321,7 +292,6 @@ final class VkCudaLaunchInfoNV implements \JsonSerializable
 
     public function setPExtras(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pExtras = $cValue;
     }

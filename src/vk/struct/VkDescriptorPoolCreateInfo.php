@@ -25,8 +25,6 @@ final class VkDescriptorPoolCreateInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkDescriptorPoolCreateInfo implements \JsonSerializable
         null|\iggyvolz\vulkan\util\ObjectPointer $pPoolSizes = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorPoolCreateInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDescriptorPoolCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -55,7 +53,6 @@ final class VkDescriptorPoolCreateInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkDescriptorPoolCreateInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkDescriptorPoolCreateInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkDescriptorPoolCreateInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkDescriptorPoolCreateInfo implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkDescriptorPoolCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkDescriptorPoolCreateInfo implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkDescriptorPoolCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkDescriptorPoolCreateInfo implements \JsonSerializable
      */
     public function getMaxSets(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxSets;
         $phpValue = $cValue;
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkDescriptorPoolCreateInfo implements \JsonSerializable
 
     public function setMaxSets(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxSets = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkDescriptorPoolCreateInfo implements \JsonSerializable
      */
     public function getPoolSizeCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->poolSizeCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkDescriptorPoolCreateInfo implements \JsonSerializable
 
     public function setPoolSizeCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->poolSizeCount = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkDescriptorPoolCreateInfo implements \JsonSerializable
      */
     public function getPPoolSizes(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pPoolSizes;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorPoolSize', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkDescriptorPoolCreateInfo implements \JsonSerializable
 
     public function setPPoolSizes(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pPoolSizes = $cValue;
     }

@@ -32,8 +32,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -54,7 +52,7 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
         null|int $transformOffset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkGeometryTrianglesNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkGeometryTrianglesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($vertexData)) $self->setVertexData($vertexData);
@@ -76,7 +74,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -84,7 +81,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -94,7 +90,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -102,7 +97,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -112,7 +106,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
      */
     public function getVertexData(): VkBuffer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexData;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -120,7 +113,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
 
     public function setVertexData(VkBuffer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->vertexData = $cValue;
     }
@@ -130,7 +122,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
      */
     public function getVertexOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -138,7 +129,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
 
     public function setVertexOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexOffset = $cValue;
     }
@@ -148,7 +138,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
      */
     public function getVertexCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +145,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
 
     public function setVertexCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexCount = $cValue;
     }
@@ -166,7 +154,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
      */
     public function getVertexStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -174,7 +161,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
 
     public function setVertexStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->vertexStride = $cValue;
     }
@@ -184,7 +170,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
      */
     public function getVertexFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->vertexFormat;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -192,7 +177,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
 
     public function setVertexFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->vertexFormat = $cValue;
     }
@@ -202,7 +186,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
      */
     public function getIndexData(): VkBuffer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexData;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -210,7 +193,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
 
     public function setIndexData(VkBuffer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->indexData = $cValue;
     }
@@ -220,7 +202,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
      */
     public function getIndexOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -228,7 +209,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
 
     public function setIndexOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->indexOffset = $cValue;
     }
@@ -238,7 +218,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
      */
     public function getIndexCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -246,7 +225,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
 
     public function setIndexCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->indexCount = $cValue;
     }
@@ -256,7 +234,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
      */
     public function getIndexType(): \iggyvolz\vulkan\enum\VkIndexType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indexType;
         $phpValue = \iggyvolz\vulkan\enum\VkIndexType::from($cValue);
         return $phpValue;
@@ -264,7 +241,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
 
     public function setIndexType(\iggyvolz\vulkan\enum\VkIndexType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->indexType = $cValue;
     }
@@ -274,7 +250,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
      */
     public function getTransformData(): VkBuffer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformData;
         $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue, $ffi);
         return $phpValue;
@@ -282,7 +257,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
 
     public function setTransformData(VkBuffer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->transformData = $cValue;
     }
@@ -292,7 +266,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
      */
     public function getTransformOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -300,7 +273,6 @@ final class VkGeometryTrianglesNV implements \JsonSerializable
 
     public function setTransformOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->transformOffset = $cValue;
     }

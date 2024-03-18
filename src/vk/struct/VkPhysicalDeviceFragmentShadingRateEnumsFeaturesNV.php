@@ -24,8 +24,6 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV implements \JsonS
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV implements \JsonS
         null|bool $noInvocationFragmentShadingRates = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($fragmentShadingRateEnums)) $self->setFragmentShadingRateEnums($fragmentShadingRateEnums);
@@ -52,7 +50,6 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV implements \JsonS
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV implements \JsonS
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV implements \JsonS
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV implements \JsonS
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV implements \JsonS
      */
     public function getFragmentShadingRateEnums(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fragmentShadingRateEnums;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV implements \JsonS
 
     public function setFragmentShadingRateEnums(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->fragmentShadingRateEnums = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV implements \JsonS
      */
     public function getSupersampleFragmentShadingRates(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supersampleFragmentShadingRates;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV implements \JsonS
 
     public function setSupersampleFragmentShadingRates(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->supersampleFragmentShadingRates = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV implements \JsonS
      */
     public function getNoInvocationFragmentShadingRates(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->noInvocationFragmentShadingRates;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV implements \JsonS
 
     public function setNoInvocationFragmentShadingRates(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->noInvocationFragmentShadingRates = $cValue;
     }

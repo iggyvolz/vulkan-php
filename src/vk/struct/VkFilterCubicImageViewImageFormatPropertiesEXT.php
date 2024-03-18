@@ -23,8 +23,6 @@ final class VkFilterCubicImageViewImageFormatPropertiesEXT implements \JsonSeria
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkFilterCubicImageViewImageFormatPropertiesEXT implements \JsonSeria
         null|bool $filterCubicMinmax = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkFilterCubicImageViewImageFormatPropertiesEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkFilterCubicImageViewImageFormatPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($filterCubic)) $self->setFilterCubic($filterCubic);
@@ -49,7 +47,6 @@ final class VkFilterCubicImageViewImageFormatPropertiesEXT implements \JsonSeria
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkFilterCubicImageViewImageFormatPropertiesEXT implements \JsonSeria
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkFilterCubicImageViewImageFormatPropertiesEXT implements \JsonSeria
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkFilterCubicImageViewImageFormatPropertiesEXT implements \JsonSeria
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkFilterCubicImageViewImageFormatPropertiesEXT implements \JsonSeria
      */
     public function getFilterCubic(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->filterCubic;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkFilterCubicImageViewImageFormatPropertiesEXT implements \JsonSeria
 
     public function setFilterCubic(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->filterCubic = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkFilterCubicImageViewImageFormatPropertiesEXT implements \JsonSeria
      */
     public function getFilterCubicMinmax(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->filterCubicMinmax;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkFilterCubicImageViewImageFormatPropertiesEXT implements \JsonSeria
 
     public function setFilterCubicMinmax(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->filterCubicMinmax = $cValue;
     }

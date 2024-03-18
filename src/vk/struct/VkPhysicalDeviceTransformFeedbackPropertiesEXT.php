@@ -31,8 +31,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -52,7 +50,7 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
         null|bool $transformFeedbackDraw = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceTransformFeedbackPropertiesEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceTransformFeedbackPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxTransformFeedbackStreams)) $self->setMaxTransformFeedbackStreams($maxTransformFeedbackStreams);
@@ -73,7 +71,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -81,7 +78,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -91,7 +87,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -99,7 +94,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -109,7 +103,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
      */
     public function getMaxTransformFeedbackStreams(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTransformFeedbackStreams;
         $phpValue = $cValue;
         return $phpValue;
@@ -117,7 +110,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
 
     public function setMaxTransformFeedbackStreams(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTransformFeedbackStreams = $cValue;
     }
@@ -127,7 +119,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
      */
     public function getMaxTransformFeedbackBuffers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTransformFeedbackBuffers;
         $phpValue = $cValue;
         return $phpValue;
@@ -135,7 +126,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
 
     public function setMaxTransformFeedbackBuffers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTransformFeedbackBuffers = $cValue;
     }
@@ -145,7 +135,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
      */
     public function getMaxTransformFeedbackBufferSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTransformFeedbackBufferSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -153,7 +142,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
 
     public function setMaxTransformFeedbackBufferSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTransformFeedbackBufferSize = $cValue;
     }
@@ -163,7 +151,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
      */
     public function getMaxTransformFeedbackStreamDataSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTransformFeedbackStreamDataSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -171,7 +158,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
 
     public function setMaxTransformFeedbackStreamDataSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTransformFeedbackStreamDataSize = $cValue;
     }
@@ -181,7 +167,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
      */
     public function getMaxTransformFeedbackBufferDataSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTransformFeedbackBufferDataSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -189,7 +174,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
 
     public function setMaxTransformFeedbackBufferDataSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTransformFeedbackBufferDataSize = $cValue;
     }
@@ -199,7 +183,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
      */
     public function getMaxTransformFeedbackBufferDataStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxTransformFeedbackBufferDataStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -207,7 +190,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
 
     public function setMaxTransformFeedbackBufferDataStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxTransformFeedbackBufferDataStride = $cValue;
     }
@@ -217,7 +199,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
      */
     public function getTransformFeedbackQueries(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformFeedbackQueries;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -225,7 +206,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
 
     public function setTransformFeedbackQueries(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->transformFeedbackQueries = $cValue;
     }
@@ -235,7 +215,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
      */
     public function getTransformFeedbackStreamsLinesTriangles(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformFeedbackStreamsLinesTriangles;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -243,7 +222,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
 
     public function setTransformFeedbackStreamsLinesTriangles(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->transformFeedbackStreamsLinesTriangles = $cValue;
     }
@@ -253,7 +231,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
      */
     public function getTransformFeedbackRasterizationStreamSelect(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformFeedbackRasterizationStreamSelect;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -261,7 +238,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
 
     public function setTransformFeedbackRasterizationStreamSelect(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->transformFeedbackRasterizationStreamSelect = $cValue;
     }
@@ -271,7 +247,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
      */
     public function getTransformFeedbackDraw(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformFeedbackDraw;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -279,7 +254,6 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
 
     public function setTransformFeedbackDraw(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->transformFeedbackDraw = $cValue;
     }

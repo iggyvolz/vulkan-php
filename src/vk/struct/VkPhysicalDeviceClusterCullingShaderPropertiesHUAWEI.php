@@ -25,8 +25,6 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -40,7 +38,7 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
         null|int $indirectBufferOffsetAlignment = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxWorkGroupCount)) $self->setMaxWorkGroupCount($maxWorkGroupCount);
@@ -55,7 +53,6 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
      */
     public function getMaxWorkGroupCount(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxWorkGroupCount;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
 
     public function setMaxWorkGroupCount(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxWorkGroupCount = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
      */
     public function getMaxWorkGroupSize(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxWorkGroupSize;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
 
     public function setMaxWorkGroupSize(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->maxWorkGroupSize = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
      */
     public function getMaxOutputClusterCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxOutputClusterCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -135,7 +124,6 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
 
     public function setMaxOutputClusterCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxOutputClusterCount = $cValue;
     }
@@ -145,7 +133,6 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
      */
     public function getIndirectBufferOffsetAlignment(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->indirectBufferOffsetAlignment;
         $phpValue = $cValue;
         return $phpValue;
@@ -153,7 +140,6 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
 
     public function setIndirectBufferOffsetAlignment(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->indirectBufferOffsetAlignment = $cValue;
     }

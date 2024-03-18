@@ -22,8 +22,6 @@ final class VkExtent3D implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkExtent3D implements \JsonSerializable
         null|int $depth = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkExtent3D', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkExtent3D', false));
         if(!is_null($width)) $self->setWidth($width);
         if(!is_null($height)) $self->setHeight($height);
         if(!is_null($depth)) $self->setDepth($depth);
@@ -46,7 +44,6 @@ final class VkExtent3D implements \JsonSerializable
      */
     public function getWidth(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->width;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkExtent3D implements \JsonSerializable
 
     public function setWidth(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->width = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkExtent3D implements \JsonSerializable
      */
     public function getHeight(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->height;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkExtent3D implements \JsonSerializable
 
     public function setHeight(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->height = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkExtent3D implements \JsonSerializable
      */
     public function getDepth(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depth;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkExtent3D implements \JsonSerializable
 
     public function setDepth(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->depth = $cValue;
     }

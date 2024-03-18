@@ -15,4 +15,5 @@ enum VkShaderCreateFlagBitsEXT: int
     case DispatchBase = 4;
     case FragmentShadingRateAttachment = 5;
     case FragmentDensityMapAttachment = 6;
+    case Extension573Bit = 7;
 }

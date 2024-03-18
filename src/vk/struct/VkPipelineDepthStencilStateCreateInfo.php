@@ -31,8 +31,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -52,7 +50,7 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
         null|float $maxDepthBounds = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineDepthStencilStateCreateInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPipelineDepthStencilStateCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -73,7 +71,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -81,7 +78,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -91,7 +87,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -99,7 +94,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -109,7 +103,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkPipelineDepthStencilStateCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -117,7 +110,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkPipelineDepthStencilStateCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -127,7 +119,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
      */
     public function getDepthTestEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthTestEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -135,7 +126,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
 
     public function setDepthTestEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->depthTestEnable = $cValue;
     }
@@ -145,7 +135,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
      */
     public function getDepthWriteEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthWriteEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -153,7 +142,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
 
     public function setDepthWriteEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->depthWriteEnable = $cValue;
     }
@@ -163,7 +151,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
      */
     public function getDepthCompareOp(): \iggyvolz\vulkan\enum\VkCompareOp
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthCompareOp;
         $phpValue = \iggyvolz\vulkan\enum\VkCompareOp::from($cValue);
         return $phpValue;
@@ -171,7 +158,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
 
     public function setDepthCompareOp(\iggyvolz\vulkan\enum\VkCompareOp $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->depthCompareOp = $cValue;
     }
@@ -181,7 +167,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
      */
     public function getDepthBoundsTestEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthBoundsTestEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -189,7 +174,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
 
     public function setDepthBoundsTestEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->depthBoundsTestEnable = $cValue;
     }
@@ -199,7 +183,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
      */
     public function getStencilTestEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stencilTestEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -207,7 +190,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
 
     public function setStencilTestEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->stencilTestEnable = $cValue;
     }
@@ -217,7 +199,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
      */
     public function getFront(): VkStencilOpState
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->front;
         $phpValue = new \iggyvolz\vulkan\struct\VkStencilOpState($cValue, $ffi);
         return $phpValue;
@@ -225,7 +206,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
 
     public function setFront(VkStencilOpState $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->front = $cValue;
     }
@@ -235,7 +215,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
      */
     public function getBack(): VkStencilOpState
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->back;
         $phpValue = new \iggyvolz\vulkan\struct\VkStencilOpState($cValue, $ffi);
         return $phpValue;
@@ -243,7 +222,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
 
     public function setBack(VkStencilOpState $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->back = $cValue;
     }
@@ -253,7 +231,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
      */
     public function getMinDepthBounds(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minDepthBounds;
         $phpValue = $cValue;
         return $phpValue;
@@ -261,7 +238,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
 
     public function setMinDepthBounds(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minDepthBounds = $cValue;
     }
@@ -271,7 +247,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
      */
     public function getMaxDepthBounds(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxDepthBounds;
         $phpValue = $cValue;
         return $phpValue;
@@ -279,7 +254,6 @@ final class VkPipelineDepthStencilStateCreateInfo implements \JsonSerializable
 
     public function setMaxDepthBounds(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxDepthBounds = $cValue;
     }

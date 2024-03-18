@@ -8,6 +8,6 @@ final readonly class IncompatibleShaderBinaryExtEvent extends \iggyvolz\vulkan\u
 {
     public function __construct()
     {
-        parent::__construct(\iggyvolz\vulkan\enum\VkResult::ErrorIncompatibleShaderBinaryExt);
+        parent::__construct(\iggyvolz\vulkan\enum\VkResult::IncompatibleShaderBinaryExt);
     }
 }

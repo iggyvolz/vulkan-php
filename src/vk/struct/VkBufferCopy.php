@@ -22,8 +22,6 @@ final class VkBufferCopy implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkBufferCopy implements \JsonSerializable
         null|int $size = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBufferCopy', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkBufferCopy', false));
         if(!is_null($srcOffset)) $self->setSrcOffset($srcOffset);
         if(!is_null($dstOffset)) $self->setDstOffset($dstOffset);
         if(!is_null($size)) $self->setSize($size);
@@ -46,7 +44,6 @@ final class VkBufferCopy implements \JsonSerializable
      */
     public function getSrcOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkBufferCopy implements \JsonSerializable
 
     public function setSrcOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->srcOffset = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkBufferCopy implements \JsonSerializable
      */
     public function getDstOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkBufferCopy implements \JsonSerializable
 
     public function setDstOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstOffset = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkBufferCopy implements \JsonSerializable
      */
     public function getSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkBufferCopy implements \JsonSerializable
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }

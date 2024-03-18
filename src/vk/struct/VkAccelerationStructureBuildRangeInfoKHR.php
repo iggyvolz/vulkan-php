@@ -23,8 +23,6 @@ final class VkAccelerationStructureBuildRangeInfoKHR implements \JsonSerializabl
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkAccelerationStructureBuildRangeInfoKHR implements \JsonSerializabl
         null|int $transformOffset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureBuildRangeInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkAccelerationStructureBuildRangeInfoKHR', false));
         if(!is_null($primitiveCount)) $self->setPrimitiveCount($primitiveCount);
         if(!is_null($primitiveOffset)) $self->setPrimitiveOffset($primitiveOffset);
         if(!is_null($firstVertex)) $self->setFirstVertex($firstVertex);
@@ -49,7 +47,6 @@ final class VkAccelerationStructureBuildRangeInfoKHR implements \JsonSerializabl
      */
     public function getPrimitiveCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->primitiveCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkAccelerationStructureBuildRangeInfoKHR implements \JsonSerializabl
 
     public function setPrimitiveCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->primitiveCount = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkAccelerationStructureBuildRangeInfoKHR implements \JsonSerializabl
      */
     public function getPrimitiveOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->primitiveOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkAccelerationStructureBuildRangeInfoKHR implements \JsonSerializabl
 
     public function setPrimitiveOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->primitiveOffset = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkAccelerationStructureBuildRangeInfoKHR implements \JsonSerializabl
      */
     public function getFirstVertex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->firstVertex;
         $phpValue = $cValue;
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkAccelerationStructureBuildRangeInfoKHR implements \JsonSerializabl
 
     public function setFirstVertex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->firstVertex = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkAccelerationStructureBuildRangeInfoKHR implements \JsonSerializabl
      */
     public function getTransformOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->transformOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkAccelerationStructureBuildRangeInfoKHR implements \JsonSerializabl
 
     public function setTransformOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->transformOffset = $cValue;
     }

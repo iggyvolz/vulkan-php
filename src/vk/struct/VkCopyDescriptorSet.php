@@ -28,8 +28,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -46,7 +44,7 @@ final class VkCopyDescriptorSet implements \JsonSerializable
         null|int $descriptorCount = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkCopyDescriptorSet', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkCopyDescriptorSet', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($srcSet)) $self->setSrcSet($srcSet);
@@ -64,7 +62,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -72,7 +69,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -82,7 +78,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -90,7 +85,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -100,7 +94,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
      */
     public function getSrcSet(): VkDescriptorSet
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcSet;
         $phpValue = new \iggyvolz\vulkan\struct\VkDescriptorSet($cValue, $ffi);
         return $phpValue;
@@ -108,7 +101,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
 
     public function setSrcSet(VkDescriptorSet $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->srcSet = $cValue;
     }
@@ -118,7 +110,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
      */
     public function getSrcBinding(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcBinding;
         $phpValue = $cValue;
         return $phpValue;
@@ -126,7 +117,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
 
     public function setSrcBinding(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->srcBinding = $cValue;
     }
@@ -136,7 +126,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
      */
     public function getSrcArrayElement(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcArrayElement;
         $phpValue = $cValue;
         return $phpValue;
@@ -144,7 +133,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
 
     public function setSrcArrayElement(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->srcArrayElement = $cValue;
     }
@@ -154,7 +142,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
      */
     public function getDstSet(): VkDescriptorSet
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstSet;
         $phpValue = new \iggyvolz\vulkan\struct\VkDescriptorSet($cValue, $ffi);
         return $phpValue;
@@ -162,7 +149,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
 
     public function setDstSet(VkDescriptorSet $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->dstSet = $cValue;
     }
@@ -172,7 +158,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
      */
     public function getDstBinding(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstBinding;
         $phpValue = $cValue;
         return $phpValue;
@@ -180,7 +165,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
 
     public function setDstBinding(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstBinding = $cValue;
     }
@@ -190,7 +174,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
      */
     public function getDstArrayElement(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstArrayElement;
         $phpValue = $cValue;
         return $phpValue;
@@ -198,7 +181,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
 
     public function setDstArrayElement(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dstArrayElement = $cValue;
     }
@@ -208,7 +190,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
      */
     public function getDescriptorCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->descriptorCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -216,7 +197,6 @@ final class VkCopyDescriptorSet implements \JsonSerializable
 
     public function setDescriptorCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->descriptorCount = $cValue;
     }

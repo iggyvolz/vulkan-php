@@ -29,8 +29,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -48,7 +46,7 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
         null|array $supportedUsageFlags = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSurfaceCapabilitiesKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkSurfaceCapabilitiesKHR', false));
         if(!is_null($minImageCount)) $self->setMinImageCount($minImageCount);
         if(!is_null($maxImageCount)) $self->setMaxImageCount($maxImageCount);
         if(!is_null($currentExtent)) $self->setCurrentExtent($currentExtent);
@@ -67,7 +65,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
      */
     public function getMinImageCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minImageCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -75,7 +72,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
 
     public function setMinImageCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minImageCount = $cValue;
     }
@@ -85,7 +81,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
      */
     public function getMaxImageCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -93,7 +88,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
 
     public function setMaxImageCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageCount = $cValue;
     }
@@ -103,7 +97,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
      */
     public function getCurrentExtent(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->currentExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -111,7 +104,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
 
     public function setCurrentExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->currentExtent = $cValue;
     }
@@ -121,7 +113,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
      */
     public function getMinImageExtent(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minImageExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -129,7 +120,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
 
     public function setMinImageExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->minImageExtent = $cValue;
     }
@@ -139,7 +129,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
      */
     public function getMaxImageExtent(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -147,7 +136,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
 
     public function setMaxImageExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxImageExtent = $cValue;
     }
@@ -157,7 +145,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
      */
     public function getMaxImageArrayLayers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxImageArrayLayers;
         $phpValue = $cValue;
         return $phpValue;
@@ -165,7 +152,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
 
     public function setMaxImageArrayLayers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxImageArrayLayers = $cValue;
     }
@@ -175,7 +161,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
      */
     public function getSupportedTransforms(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedTransforms;
         $phpValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -183,7 +168,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
 
     public function setSupportedTransforms(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->supportedTransforms = $cValue;
     }
@@ -193,7 +177,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
      */
     public function getCurrentTransform(): \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->currentTransform;
         $phpValue = \iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR::from($cValue);
         return $phpValue;
@@ -201,7 +184,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
 
     public function setCurrentTransform(\iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->currentTransform = $cValue;
     }
@@ -211,7 +193,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
      */
     public function getSupportedCompositeAlpha(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedCompositeAlpha;
         $phpValue = \iggyvolz\vulkan\enum\VkCompositeAlphaFlagBitsKHR::fromInt($cValue);
         return $phpValue;
@@ -219,7 +200,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
 
     public function setSupportedCompositeAlpha(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkCompositeAlphaFlagBitsKHR::toInt(...$phpValue);
         $this->cdata->supportedCompositeAlpha = $cValue;
     }
@@ -229,7 +209,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
      */
     public function getSupportedUsageFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedUsageFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -237,7 +216,6 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
 
     public function setSupportedUsageFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkImageUsageFlagBits::toInt(...$phpValue);
         $this->cdata->supportedUsageFlags = $cValue;
     }

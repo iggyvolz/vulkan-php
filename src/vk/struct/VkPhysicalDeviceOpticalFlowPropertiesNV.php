@@ -32,8 +32,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -54,7 +52,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
         null|int $maxNumRegionsOfInterest = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceOpticalFlowPropertiesNV', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceOpticalFlowPropertiesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($supportedOutputGridSizes)) $self->setSupportedOutputGridSizes($supportedOutputGridSizes);
@@ -76,7 +74,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -84,7 +81,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -94,7 +90,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -102,7 +97,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -112,7 +106,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
      */
     public function getSupportedOutputGridSizes(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedOutputGridSizes;
         $phpValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -120,7 +113,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
 
     public function setSupportedOutputGridSizes(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->supportedOutputGridSizes = $cValue;
     }
@@ -130,7 +122,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
      */
     public function getSupportedHintGridSizes(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedHintGridSizes;
         $phpValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::fromInt($cValue);
         return $phpValue;
@@ -138,7 +129,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
 
     public function setSupportedHintGridSizes(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkOpticalFlowGridSizeFlagBitsNV::toInt(...$phpValue);
         $this->cdata->supportedHintGridSizes = $cValue;
     }
@@ -148,7 +138,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
      */
     public function getHintSupported(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->hintSupported;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -156,7 +145,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
 
     public function setHintSupported(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->hintSupported = $cValue;
     }
@@ -166,7 +154,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
      */
     public function getCostSupported(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->costSupported;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -174,7 +161,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
 
     public function setCostSupported(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->costSupported = $cValue;
     }
@@ -184,7 +170,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
      */
     public function getBidirectionalFlowSupported(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->bidirectionalFlowSupported;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -192,7 +177,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
 
     public function setBidirectionalFlowSupported(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->bidirectionalFlowSupported = $cValue;
     }
@@ -202,7 +186,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
      */
     public function getGlobalFlowSupported(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->globalFlowSupported;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -210,7 +193,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
 
     public function setGlobalFlowSupported(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->globalFlowSupported = $cValue;
     }
@@ -220,7 +202,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
      */
     public function getMinWidth(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minWidth;
         $phpValue = $cValue;
         return $phpValue;
@@ -228,7 +209,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
 
     public function setMinWidth(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minWidth = $cValue;
     }
@@ -238,7 +218,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
      */
     public function getMinHeight(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minHeight;
         $phpValue = $cValue;
         return $phpValue;
@@ -246,7 +225,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
 
     public function setMinHeight(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minHeight = $cValue;
     }
@@ -256,7 +234,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
      */
     public function getMaxWidth(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxWidth;
         $phpValue = $cValue;
         return $phpValue;
@@ -264,7 +241,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
 
     public function setMaxWidth(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxWidth = $cValue;
     }
@@ -274,7 +250,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
      */
     public function getMaxHeight(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxHeight;
         $phpValue = $cValue;
         return $phpValue;
@@ -282,7 +257,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
 
     public function setMaxHeight(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxHeight = $cValue;
     }
@@ -292,7 +266,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
      */
     public function getMaxNumRegionsOfInterest(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxNumRegionsOfInterest;
         $phpValue = $cValue;
         return $phpValue;
@@ -300,7 +273,6 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
 
     public function setMaxNumRegionsOfInterest(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxNumRegionsOfInterest = $cValue;
     }

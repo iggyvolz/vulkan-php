@@ -26,8 +26,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
         null|\iggyvolz\vulkan\util\ObjectPointer $pReferenceSlots = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoBeginCodingInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkVideoBeginCodingInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -58,7 +56,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = [];
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = 0;
         $this->cdata->flags = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
      */
     public function getVideoSession(): VkVideoSessionKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->videoSession;
         $phpValue = new \iggyvolz\vulkan\struct\VkVideoSessionKHR($cValue, $ffi);
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
 
     public function setVideoSession(VkVideoSessionKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->videoSession = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
      */
     public function getVideoSessionParameters(): VkVideoSessionParametersKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->videoSessionParameters;
         $phpValue = new \iggyvolz\vulkan\struct\VkVideoSessionParametersKHR($cValue, $ffi);
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
 
     public function setVideoSessionParameters(VkVideoSessionParametersKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->videoSessionParameters = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
      */
     public function getReferenceSlotCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->referenceSlotCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
 
     public function setReferenceSlotCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->referenceSlotCount = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
      */
     public function getPReferenceSlots(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pReferenceSlots;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkVideoReferenceSlotInfoKHR', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
 
     public function setPReferenceSlots(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pReferenceSlots = $cValue;
     }

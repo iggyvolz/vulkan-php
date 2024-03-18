@@ -27,8 +27,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -44,7 +42,7 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
         null|bool $advancedBlendAllOperations = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($advancedBlendMaxColorAttachments)) $self->setAdvancedBlendMaxColorAttachments($advancedBlendMaxColorAttachments);
@@ -61,7 +59,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -69,7 +66,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -79,7 +75,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -87,7 +82,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -97,7 +91,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
      */
     public function getAdvancedBlendMaxColorAttachments(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->advancedBlendMaxColorAttachments;
         $phpValue = $cValue;
         return $phpValue;
@@ -105,7 +98,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
 
     public function setAdvancedBlendMaxColorAttachments(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->advancedBlendMaxColorAttachments = $cValue;
     }
@@ -115,7 +107,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
      */
     public function getAdvancedBlendIndependentBlend(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->advancedBlendIndependentBlend;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -123,7 +114,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
 
     public function setAdvancedBlendIndependentBlend(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->advancedBlendIndependentBlend = $cValue;
     }
@@ -133,7 +123,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
      */
     public function getAdvancedBlendNonPremultipliedSrcColor(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->advancedBlendNonPremultipliedSrcColor;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -141,7 +130,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
 
     public function setAdvancedBlendNonPremultipliedSrcColor(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->advancedBlendNonPremultipliedSrcColor = $cValue;
     }
@@ -151,7 +139,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
      */
     public function getAdvancedBlendNonPremultipliedDstColor(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->advancedBlendNonPremultipliedDstColor;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -159,7 +146,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
 
     public function setAdvancedBlendNonPremultipliedDstColor(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->advancedBlendNonPremultipliedDstColor = $cValue;
     }
@@ -169,7 +155,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
      */
     public function getAdvancedBlendCorrelatedOverlap(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->advancedBlendCorrelatedOverlap;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -177,7 +162,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
 
     public function setAdvancedBlendCorrelatedOverlap(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->advancedBlendCorrelatedOverlap = $cValue;
     }
@@ -187,7 +171,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
      */
     public function getAdvancedBlendAllOperations(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->advancedBlendAllOperations;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -195,7 +178,6 @@ final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT implements \Json
 
     public function setAdvancedBlendAllOperations(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->advancedBlendAllOperations = $cValue;
     }

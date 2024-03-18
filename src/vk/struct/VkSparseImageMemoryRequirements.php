@@ -24,8 +24,6 @@ final class VkSparseImageMemoryRequirements implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkSparseImageMemoryRequirements implements \JsonSerializable
         null|int $imageMipTailStride = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSparseImageMemoryRequirements', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkSparseImageMemoryRequirements', false));
         if(!is_null($formatProperties)) $self->setFormatProperties($formatProperties);
         if(!is_null($imageMipTailFirstLod)) $self->setImageMipTailFirstLod($imageMipTailFirstLod);
         if(!is_null($imageMipTailSize)) $self->setImageMipTailSize($imageMipTailSize);
@@ -52,7 +50,6 @@ final class VkSparseImageMemoryRequirements implements \JsonSerializable
      */
     public function getFormatProperties(): VkSparseImageFormatProperties
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->formatProperties;
         $phpValue = new \iggyvolz\vulkan\struct\VkSparseImageFormatProperties($cValue, $ffi);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkSparseImageMemoryRequirements implements \JsonSerializable
 
     public function setFormatProperties(VkSparseImageFormatProperties $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->formatProperties = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkSparseImageMemoryRequirements implements \JsonSerializable
      */
     public function getImageMipTailFirstLod(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageMipTailFirstLod;
         $phpValue = $cValue;
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkSparseImageMemoryRequirements implements \JsonSerializable
 
     public function setImageMipTailFirstLod(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageMipTailFirstLod = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkSparseImageMemoryRequirements implements \JsonSerializable
      */
     public function getImageMipTailSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageMipTailSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkSparseImageMemoryRequirements implements \JsonSerializable
 
     public function setImageMipTailSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageMipTailSize = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkSparseImageMemoryRequirements implements \JsonSerializable
      */
     public function getImageMipTailOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageMipTailOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkSparseImageMemoryRequirements implements \JsonSerializable
 
     public function setImageMipTailOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageMipTailOffset = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkSparseImageMemoryRequirements implements \JsonSerializable
      */
     public function getImageMipTailStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->imageMipTailStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkSparseImageMemoryRequirements implements \JsonSerializable
 
     public function setImageMipTailStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->imageMipTailStride = $cValue;
     }

@@ -21,14 +21,12 @@ final class VkXYColorEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan, null|float $x = null, null|float $y = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkXYColorEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkXYColorEXT', false));
         if(!is_null($x)) $self->setX($x);
         if(!is_null($y)) $self->setY($y);
         return $self;
@@ -39,7 +37,6 @@ final class VkXYColorEXT implements \JsonSerializable
      */
     public function getX(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->x;
         $phpValue = $cValue;
         return $phpValue;
@@ -47,7 +44,6 @@ final class VkXYColorEXT implements \JsonSerializable
 
     public function setX(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->x = $cValue;
     }
@@ -57,7 +53,6 @@ final class VkXYColorEXT implements \JsonSerializable
      */
     public function getY(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->y;
         $phpValue = $cValue;
         return $phpValue;
@@ -65,7 +60,6 @@ final class VkXYColorEXT implements \JsonSerializable
 
     public function setY(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->y = $cValue;
     }

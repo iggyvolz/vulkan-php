@@ -21,8 +21,6 @@ final class VkVertexInputBindingDivisorDescriptionKHR implements \JsonSerializab
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkVertexInputBindingDivisorDescriptionKHR implements \JsonSerializab
         null|int $divisor = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkVertexInputBindingDivisorDescriptionKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkVertexInputBindingDivisorDescriptionKHR', false));
         if(!is_null($binding)) $self->setBinding($binding);
         if(!is_null($divisor)) $self->setDivisor($divisor);
         return $self;
@@ -43,7 +41,6 @@ final class VkVertexInputBindingDivisorDescriptionKHR implements \JsonSerializab
      */
     public function getBinding(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->binding;
         $phpValue = $cValue;
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkVertexInputBindingDivisorDescriptionKHR implements \JsonSerializab
 
     public function setBinding(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->binding = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkVertexInputBindingDivisorDescriptionKHR implements \JsonSerializab
      */
     public function getDivisor(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->divisor;
         $phpValue = $cValue;
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkVertexInputBindingDivisorDescriptionKHR implements \JsonSerializab
 
     public function setDivisor(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->divisor = $cValue;
     }

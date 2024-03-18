@@ -12,4 +12,5 @@ enum VkVideoCodecOperationFlagBitsKHR: int
     case EncodeH265 = 17;
     case DecodeH264 = 0;
     case DecodeH265 = 1;
+    case DecodeAv1 = 2;
 }

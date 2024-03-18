@@ -36,8 +36,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -45,8 +43,8 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
-        null|\Ramsey\Uuid\UuidInterface $deviceUUID = null,
-        null|\Ramsey\Uuid\UuidInterface $driverUUID = null,
+        null|string $deviceUUID = null,
+        null|string $driverUUID = null,
         mixed $deviceLUID = null,
         null|int $deviceNodeMask = null,
         null|bool $deviceLUIDValid = null,
@@ -62,7 +60,7 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
         null|int $maxMemoryAllocationSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkan11Properties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkan11Properties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($deviceUUID)) $self->setDeviceUUID($deviceUUID);
@@ -88,7 +86,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -96,7 +93,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -106,7 +102,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -114,44 +109,39 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
 
     /**
-     * uint8_t/[16]
+     * char/[16]
      */
-    public function getDeviceUUID(): \Ramsey\Uuid\UuidInterface
+    public function getDeviceUUID(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceUUID;
-        $phpValue = \Ramsey\Uuid\Uuid::fromBytes(\FFI::string($cValue, 16));
+        $tempString = \FFI::string($cValue, 16); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
     }
 
-    public function setDeviceUUID(\Ramsey\Uuid\UuidInterface $phpValue): void
+    public function setDeviceUUID(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
-        $cValue = $ffi->new("uint8_t[16]"); $ffi->memcpy($cValue, $phpValue->getBytes(), 16);
+        \FFI::memcpy($cValue, $phpValue, 16);
         $this->cdata->deviceUUID = $cValue;
     }
 
     /**
-     * uint8_t/[16]
+     * char/[16]
      */
-    public function getDriverUUID(): \Ramsey\Uuid\UuidInterface
+    public function getDriverUUID(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->driverUUID;
-        $phpValue = \Ramsey\Uuid\Uuid::fromBytes(\FFI::string($cValue, 16));
+        $tempString = \FFI::string($cValue, 16); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
     }
 
-    public function setDriverUUID(\Ramsey\Uuid\UuidInterface $phpValue): void
+    public function setDriverUUID(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
-        $cValue = $ffi->new("uint8_t[16]"); $ffi->memcpy($cValue, $phpValue->getBytes(), 16);
+        \FFI::memcpy($cValue, $phpValue, 16);
         $this->cdata->driverUUID = $cValue;
     }
 
@@ -160,7 +150,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getDeviceLUID(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceLUID;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -168,7 +157,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setDeviceLUID(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->deviceLUID = $cValue;
     }
@@ -178,7 +166,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getDeviceNodeMask(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceNodeMask;
         $phpValue = $cValue;
         return $phpValue;
@@ -186,7 +173,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setDeviceNodeMask(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->deviceNodeMask = $cValue;
     }
@@ -196,7 +182,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getDeviceLUIDValid(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->deviceLUIDValid;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -204,7 +189,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setDeviceLUIDValid(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->deviceLUIDValid = $cValue;
     }
@@ -214,7 +198,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getSubgroupSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subgroupSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -222,7 +205,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setSubgroupSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subgroupSize = $cValue;
     }
@@ -232,7 +214,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getSubgroupSupportedStages(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subgroupSupportedStages;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -240,7 +221,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setSubgroupSupportedStages(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->subgroupSupportedStages = $cValue;
     }
@@ -250,7 +230,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getSubgroupSupportedOperations(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subgroupSupportedOperations;
         $phpValue = \iggyvolz\vulkan\enum\VkSubgroupFeatureFlagBits::fromInt($cValue);
         return $phpValue;
@@ -258,7 +237,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setSubgroupSupportedOperations(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSubgroupFeatureFlagBits::toInt(...$phpValue);
         $this->cdata->subgroupSupportedOperations = $cValue;
     }
@@ -268,7 +246,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getSubgroupQuadOperationsInAllStages(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subgroupQuadOperationsInAllStages;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -276,7 +253,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setSubgroupQuadOperationsInAllStages(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->subgroupQuadOperationsInAllStages = $cValue;
     }
@@ -286,7 +262,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getPointClippingBehavior(): \iggyvolz\vulkan\enum\VkPointClippingBehavior
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pointClippingBehavior;
         $phpValue = \iggyvolz\vulkan\enum\VkPointClippingBehavior::from($cValue);
         return $phpValue;
@@ -294,7 +269,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setPointClippingBehavior(\iggyvolz\vulkan\enum\VkPointClippingBehavior $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->pointClippingBehavior = $cValue;
     }
@@ -304,7 +278,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getMaxMultiviewViewCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMultiviewViewCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -312,7 +285,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setMaxMultiviewViewCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMultiviewViewCount = $cValue;
     }
@@ -322,7 +294,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getMaxMultiviewInstanceIndex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMultiviewInstanceIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -330,7 +301,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setMaxMultiviewInstanceIndex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMultiviewInstanceIndex = $cValue;
     }
@@ -340,7 +310,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getProtectedNoFault(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->protectedNoFault;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -348,7 +317,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setProtectedNoFault(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->protectedNoFault = $cValue;
     }
@@ -358,7 +326,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getMaxPerSetDescriptors(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxPerSetDescriptors;
         $phpValue = $cValue;
         return $phpValue;
@@ -366,7 +333,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setMaxPerSetDescriptors(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxPerSetDescriptors = $cValue;
     }
@@ -376,7 +342,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
      */
     public function getMaxMemoryAllocationSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMemoryAllocationSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -384,7 +349,6 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
 
     public function setMaxMemoryAllocationSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMemoryAllocationSize = $cValue;
     }

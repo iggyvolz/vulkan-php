@@ -26,14 +26,12 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(
         \iggyvolz\vulkan\Vulkan $vulkan,
-        null|\Ramsey\Uuid\UuidInterface $pipelineIdentifier = null,
+        null|string $pipelineIdentifier = null,
         null|int $pipelineMemorySize = null,
         null|int $jsonSize = null,
         null|int $jsonOffset = null,
@@ -42,7 +40,7 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
         null|int $stageIndexOffset = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineCacheSafetyCriticalIndexEntry', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPipelineCacheSafetyCriticalIndexEntry', false));
         if(!is_null($pipelineIdentifier)) $self->setPipelineIdentifier($pipelineIdentifier);
         if(!is_null($pipelineMemorySize)) $self->setPipelineMemorySize($pipelineMemorySize);
         if(!is_null($jsonSize)) $self->setJsonSize($jsonSize);
@@ -54,20 +52,18 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
     }
 
     /**
-     * uint8_t/[16]
+     * char/[16]
      */
-    public function getPipelineIdentifier(): \Ramsey\Uuid\UuidInterface
+    public function getPipelineIdentifier(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineIdentifier;
-        $phpValue = \Ramsey\Uuid\Uuid::fromBytes(\FFI::string($cValue, 16));
+        $tempString = \FFI::string($cValue, 16); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
     }
 
-    public function setPipelineIdentifier(\Ramsey\Uuid\UuidInterface $phpValue): void
+    public function setPipelineIdentifier(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
-        $cValue = $ffi->new("uint8_t[16]"); $ffi->memcpy($cValue, $phpValue->getBytes(), 16);
+        \FFI::memcpy($cValue, $phpValue, 16);
         $this->cdata->pipelineIdentifier = $cValue;
     }
 
@@ -76,7 +72,6 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
      */
     public function getPipelineMemorySize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineMemorySize;
         $phpValue = $cValue;
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
 
     public function setPipelineMemorySize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pipelineMemorySize = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
      */
     public function getJsonSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->jsonSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
 
     public function setJsonSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->jsonSize = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
      */
     public function getJsonOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->jsonOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
 
     public function setJsonOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->jsonOffset = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
      */
     public function getStageIndexCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stageIndexCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
 
     public function setStageIndexCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stageIndexCount = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
      */
     public function getStageIndexStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stageIndexStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
 
     public function setStageIndexStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stageIndexStride = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
      */
     public function getStageIndexOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stageIndexOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
 
     public function setStageIndexOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->stageIndexOffset = $cValue;
     }

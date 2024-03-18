@@ -22,8 +22,6 @@ final class VkSubpassBeginInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkSubpassBeginInfo implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkSubpassContents $contents = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSubpassBeginInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkSubpassBeginInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($contents)) $self->setContents($contents);
@@ -46,7 +44,6 @@ final class VkSubpassBeginInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkSubpassBeginInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkSubpassBeginInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkSubpassBeginInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkSubpassBeginInfo implements \JsonSerializable
      */
     public function getContents(): \iggyvolz\vulkan\enum\VkSubpassContents
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->contents;
         $phpValue = \iggyvolz\vulkan\enum\VkSubpassContents::from($cValue);
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkSubpassBeginInfo implements \JsonSerializable
 
     public function setContents(\iggyvolz\vulkan\enum\VkSubpassContents $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->contents = $cValue;
     }

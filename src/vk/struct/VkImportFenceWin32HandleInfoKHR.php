@@ -26,8 +26,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $name = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkImportFenceWin32HandleInfoKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkImportFenceWin32HandleInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($fence)) $self->setFence($fence);
@@ -58,7 +56,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
      */
     public function getFence(): VkFence
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->fence;
         $phpValue = new \iggyvolz\vulkan\struct\VkFence($cValue, $ffi);
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
 
     public function setFence(VkFence $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->fence = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkFenceImportFlagBits::fromInt($cValue);
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkFenceImportFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
      */
     public function getHandleType(): \iggyvolz\vulkan\enum\VkExternalFenceHandleTypeFlagBits
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->handleType;
         $phpValue = \iggyvolz\vulkan\enum\VkExternalFenceHandleTypeFlagBits::from($cValue);
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
 
     public function setHandleType(\iggyvolz\vulkan\enum\VkExternalFenceHandleTypeFlagBits $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->handleType = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
      */
     public function getHandle(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->handle;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
 
     public function setHandle(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->handle = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
      */
     public function getName(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->name;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkImportFenceWin32HandleInfoKHR implements \JsonSerializable
 
     public function setName(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->name = $cValue;
     }

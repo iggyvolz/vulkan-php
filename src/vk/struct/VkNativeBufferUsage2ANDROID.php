@@ -21,8 +21,6 @@ final class VkNativeBufferUsage2ANDROID implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkNativeBufferUsage2ANDROID implements \JsonSerializable
         null|int $producer = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkNativeBufferUsage2ANDROID', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkNativeBufferUsage2ANDROID', false));
         if(!is_null($consumer)) $self->setConsumer($consumer);
         if(!is_null($producer)) $self->setProducer($producer);
         return $self;
@@ -43,7 +41,6 @@ final class VkNativeBufferUsage2ANDROID implements \JsonSerializable
      */
     public function getConsumer(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->consumer;
         $phpValue = $cValue;
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkNativeBufferUsage2ANDROID implements \JsonSerializable
 
     public function setConsumer(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->consumer = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkNativeBufferUsage2ANDROID implements \JsonSerializable
      */
     public function getProducer(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->producer;
         $phpValue = $cValue;
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkNativeBufferUsage2ANDROID implements \JsonSerializable
 
     public function setProducer(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->producer = $cValue;
     }

@@ -29,8 +29,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -48,7 +46,7 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
         null|bool $forceExplicitReconstruction = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSamplerYcbcrConversionCreateInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkSamplerYcbcrConversionCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($format)) $self->setFormat($format);
@@ -67,7 +65,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -75,7 +72,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -85,7 +81,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -93,7 +88,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -103,7 +97,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
      */
     public function getFormat(): \iggyvolz\vulkan\enum\VkFormat
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = \iggyvolz\vulkan\enum\VkFormat::from($cValue);
         return $phpValue;
@@ -111,7 +104,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
 
     public function setFormat(\iggyvolz\vulkan\enum\VkFormat $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->format = $cValue;
     }
@@ -121,7 +113,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
      */
     public function getYcbcrModel(): \iggyvolz\vulkan\enum\VkSamplerYcbcrModelConversion
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ycbcrModel;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerYcbcrModelConversion::from($cValue);
         return $phpValue;
@@ -129,7 +120,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
 
     public function setYcbcrModel(\iggyvolz\vulkan\enum\VkSamplerYcbcrModelConversion $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->ycbcrModel = $cValue;
     }
@@ -139,7 +129,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
      */
     public function getYcbcrRange(): \iggyvolz\vulkan\enum\VkSamplerYcbcrRange
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ycbcrRange;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerYcbcrRange::from($cValue);
         return $phpValue;
@@ -147,7 +136,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
 
     public function setYcbcrRange(\iggyvolz\vulkan\enum\VkSamplerYcbcrRange $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->ycbcrRange = $cValue;
     }
@@ -157,7 +145,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
      */
     public function getComponents(): VkComponentMapping
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->components;
         $phpValue = new \iggyvolz\vulkan\struct\VkComponentMapping($cValue, $ffi);
         return $phpValue;
@@ -165,7 +152,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
 
     public function setComponents(VkComponentMapping $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->components = $cValue;
     }
@@ -175,7 +161,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
      */
     public function getXChromaOffset(): \iggyvolz\vulkan\enum\VkChromaLocation
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->xChromaOffset;
         $phpValue = \iggyvolz\vulkan\enum\VkChromaLocation::from($cValue);
         return $phpValue;
@@ -183,7 +168,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
 
     public function setXChromaOffset(\iggyvolz\vulkan\enum\VkChromaLocation $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->xChromaOffset = $cValue;
     }
@@ -193,7 +177,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
      */
     public function getYChromaOffset(): \iggyvolz\vulkan\enum\VkChromaLocation
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->yChromaOffset;
         $phpValue = \iggyvolz\vulkan\enum\VkChromaLocation::from($cValue);
         return $phpValue;
@@ -201,7 +184,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
 
     public function setYChromaOffset(\iggyvolz\vulkan\enum\VkChromaLocation $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->yChromaOffset = $cValue;
     }
@@ -211,7 +193,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
      */
     public function getChromaFilter(): \iggyvolz\vulkan\enum\VkFilter
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->chromaFilter;
         $phpValue = \iggyvolz\vulkan\enum\VkFilter::from($cValue);
         return $phpValue;
@@ -219,7 +200,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
 
     public function setChromaFilter(\iggyvolz\vulkan\enum\VkFilter $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->chromaFilter = $cValue;
     }
@@ -229,7 +209,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
      */
     public function getForceExplicitReconstruction(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->forceExplicitReconstruction;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -237,7 +216,6 @@ final class VkSamplerYcbcrConversionCreateInfo implements \JsonSerializable
 
     public function setForceExplicitReconstruction(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->forceExplicitReconstruction = $cValue;
     }

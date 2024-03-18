@@ -21,8 +21,6 @@ final class VkDisplayPlanePropertiesKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -32,7 +30,7 @@ final class VkDisplayPlanePropertiesKHR implements \JsonSerializable
         null|int $currentStackIndex = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDisplayPlanePropertiesKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDisplayPlanePropertiesKHR', false));
         if(!is_null($currentDisplay)) $self->setCurrentDisplay($currentDisplay);
         if(!is_null($currentStackIndex)) $self->setCurrentStackIndex($currentStackIndex);
         return $self;
@@ -43,7 +41,6 @@ final class VkDisplayPlanePropertiesKHR implements \JsonSerializable
      */
     public function getCurrentDisplay(): VkDisplayKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->currentDisplay;
         $phpValue = new \iggyvolz\vulkan\struct\VkDisplayKHR($cValue, $ffi);
         return $phpValue;
@@ -51,7 +48,6 @@ final class VkDisplayPlanePropertiesKHR implements \JsonSerializable
 
     public function setCurrentDisplay(VkDisplayKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->currentDisplay = $cValue;
     }
@@ -61,7 +57,6 @@ final class VkDisplayPlanePropertiesKHR implements \JsonSerializable
      */
     public function getCurrentStackIndex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->currentStackIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -69,7 +64,6 @@ final class VkDisplayPlanePropertiesKHR implements \JsonSerializable
 
     public function setCurrentStackIndex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->currentStackIndex = $cValue;
     }

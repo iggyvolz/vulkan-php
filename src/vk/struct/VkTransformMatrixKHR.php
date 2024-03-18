@@ -20,14 +20,12 @@ final class VkTransformMatrixKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
     public static function create(\iggyvolz\vulkan\Vulkan $vulkan, mixed $matrix = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkTransformMatrixKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkTransformMatrixKHR', false));
         if(!is_null($matrix)) $self->setMatrix($matrix);
         return $self;
     }
@@ -37,7 +35,6 @@ final class VkTransformMatrixKHR implements \JsonSerializable
      */
     public function getMatrix(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->matrix;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -45,7 +42,6 @@ final class VkTransformMatrixKHR implements \JsonSerializable
 
     public function setMatrix(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->matrix = $cValue;
     }

@@ -24,8 +24,6 @@ final class VkDeviceDeviceMemoryReportCreateInfoEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkDeviceDeviceMemoryReportCreateInfoEXT implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pUserData = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceDeviceMemoryReportCreateInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDeviceDeviceMemoryReportCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -52,7 +50,6 @@ final class VkDeviceDeviceMemoryReportCreateInfoEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkDeviceDeviceMemoryReportCreateInfoEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkDeviceDeviceMemoryReportCreateInfoEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkDeviceDeviceMemoryReportCreateInfoEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkDeviceDeviceMemoryReportCreateInfoEXT implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = [];
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkDeviceDeviceMemoryReportCreateInfoEXT implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = 0;
         $this->cdata->flags = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkDeviceDeviceMemoryReportCreateInfoEXT implements \JsonSerializable
      */
     public function getPfnUserCallback(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pfnUserCallback;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkDeviceDeviceMemoryReportCreateInfoEXT implements \JsonSerializable
 
     public function setPfnUserCallback(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->pfnUserCallback = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkDeviceDeviceMemoryReportCreateInfoEXT implements \JsonSerializable
      */
     public function getPUserData(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pUserData;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkDeviceDeviceMemoryReportCreateInfoEXT implements \JsonSerializable
 
     public function setPUserData(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pUserData = $cValue;
     }

@@ -24,8 +24,6 @@ final class VkSubresourceLayout implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkSubresourceLayout implements \JsonSerializable
         null|int $depthPitch = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSubresourceLayout', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkSubresourceLayout', false));
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($rowPitch)) $self->setRowPitch($rowPitch);
@@ -52,7 +50,6 @@ final class VkSubresourceLayout implements \JsonSerializable
      */
     public function getOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->offset;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkSubresourceLayout implements \JsonSerializable
 
     public function setOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->offset = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkSubresourceLayout implements \JsonSerializable
      */
     public function getSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->size;
         $phpValue = $cValue;
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkSubresourceLayout implements \JsonSerializable
 
     public function setSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->size = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkSubresourceLayout implements \JsonSerializable
      */
     public function getRowPitch(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->rowPitch;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkSubresourceLayout implements \JsonSerializable
 
     public function setRowPitch(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->rowPitch = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkSubresourceLayout implements \JsonSerializable
      */
     public function getArrayPitch(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->arrayPitch;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkSubresourceLayout implements \JsonSerializable
 
     public function setArrayPitch(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->arrayPitch = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkSubresourceLayout implements \JsonSerializable
      */
     public function getDepthPitch(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthPitch;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkSubresourceLayout implements \JsonSerializable
 
     public function setDepthPitch(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->depthPitch = $cValue;
     }

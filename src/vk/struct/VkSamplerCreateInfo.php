@@ -37,8 +37,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -64,7 +62,7 @@ final class VkSamplerCreateInfo implements \JsonSerializable
         null|bool $unnormalizedCoordinates = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSamplerCreateInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkSamplerCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -91,7 +89,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -99,7 +96,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -109,7 +105,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -117,7 +112,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -127,7 +121,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -135,7 +128,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSamplerCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -145,7 +137,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getMagFilter(): \iggyvolz\vulkan\enum\VkFilter
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->magFilter;
         $phpValue = \iggyvolz\vulkan\enum\VkFilter::from($cValue);
         return $phpValue;
@@ -153,7 +144,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setMagFilter(\iggyvolz\vulkan\enum\VkFilter $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->magFilter = $cValue;
     }
@@ -163,7 +153,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getMinFilter(): \iggyvolz\vulkan\enum\VkFilter
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minFilter;
         $phpValue = \iggyvolz\vulkan\enum\VkFilter::from($cValue);
         return $phpValue;
@@ -171,7 +160,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setMinFilter(\iggyvolz\vulkan\enum\VkFilter $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->minFilter = $cValue;
     }
@@ -181,7 +169,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getMipmapMode(): \iggyvolz\vulkan\enum\VkSamplerMipmapMode
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mipmapMode;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerMipmapMode::from($cValue);
         return $phpValue;
@@ -189,7 +176,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setMipmapMode(\iggyvolz\vulkan\enum\VkSamplerMipmapMode $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->mipmapMode = $cValue;
     }
@@ -199,7 +185,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getAddressModeU(): \iggyvolz\vulkan\enum\VkSamplerAddressMode
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->addressModeU;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerAddressMode::from($cValue);
         return $phpValue;
@@ -207,7 +192,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setAddressModeU(\iggyvolz\vulkan\enum\VkSamplerAddressMode $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->addressModeU = $cValue;
     }
@@ -217,7 +201,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getAddressModeV(): \iggyvolz\vulkan\enum\VkSamplerAddressMode
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->addressModeV;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerAddressMode::from($cValue);
         return $phpValue;
@@ -225,7 +208,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setAddressModeV(\iggyvolz\vulkan\enum\VkSamplerAddressMode $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->addressModeV = $cValue;
     }
@@ -235,7 +217,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getAddressModeW(): \iggyvolz\vulkan\enum\VkSamplerAddressMode
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->addressModeW;
         $phpValue = \iggyvolz\vulkan\enum\VkSamplerAddressMode::from($cValue);
         return $phpValue;
@@ -243,7 +224,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setAddressModeW(\iggyvolz\vulkan\enum\VkSamplerAddressMode $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->addressModeW = $cValue;
     }
@@ -253,7 +233,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getMipLodBias(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mipLodBias;
         $phpValue = $cValue;
         return $phpValue;
@@ -261,7 +240,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setMipLodBias(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->mipLodBias = $cValue;
     }
@@ -271,7 +249,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getAnisotropyEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->anisotropyEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -279,7 +256,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setAnisotropyEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->anisotropyEnable = $cValue;
     }
@@ -289,7 +265,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getMaxAnisotropy(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxAnisotropy;
         $phpValue = $cValue;
         return $phpValue;
@@ -297,7 +272,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setMaxAnisotropy(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxAnisotropy = $cValue;
     }
@@ -307,7 +281,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getCompareEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->compareEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -315,7 +288,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setCompareEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->compareEnable = $cValue;
     }
@@ -325,7 +297,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getCompareOp(): \iggyvolz\vulkan\enum\VkCompareOp
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->compareOp;
         $phpValue = \iggyvolz\vulkan\enum\VkCompareOp::from($cValue);
         return $phpValue;
@@ -333,7 +304,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setCompareOp(\iggyvolz\vulkan\enum\VkCompareOp $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->compareOp = $cValue;
     }
@@ -343,7 +313,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getMinLod(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minLod;
         $phpValue = $cValue;
         return $phpValue;
@@ -351,7 +320,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setMinLod(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->minLod = $cValue;
     }
@@ -361,7 +329,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getMaxLod(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxLod;
         $phpValue = $cValue;
         return $phpValue;
@@ -369,7 +336,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setMaxLod(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxLod = $cValue;
     }
@@ -379,7 +345,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getBorderColor(): \iggyvolz\vulkan\enum\VkBorderColor
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->borderColor;
         $phpValue = \iggyvolz\vulkan\enum\VkBorderColor::from($cValue);
         return $phpValue;
@@ -387,7 +352,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setBorderColor(\iggyvolz\vulkan\enum\VkBorderColor $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->borderColor = $cValue;
     }
@@ -397,7 +361,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
      */
     public function getUnnormalizedCoordinates(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->unnormalizedCoordinates;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -405,7 +368,6 @@ final class VkSamplerCreateInfo implements \JsonSerializable
 
     public function setUnnormalizedCoordinates(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->unnormalizedCoordinates = $cValue;
     }

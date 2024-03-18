@@ -23,8 +23,6 @@ final class VkComponentMapping implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkComponentMapping implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkComponentSwizzle $a = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkComponentMapping', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkComponentMapping', false));
         if(!is_null($r)) $self->setR($r);
         if(!is_null($g)) $self->setG($g);
         if(!is_null($b)) $self->setB($b);
@@ -49,7 +47,6 @@ final class VkComponentMapping implements \JsonSerializable
      */
     public function getR(): \iggyvolz\vulkan\enum\VkComponentSwizzle
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->r;
         $phpValue = \iggyvolz\vulkan\enum\VkComponentSwizzle::from($cValue);
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkComponentMapping implements \JsonSerializable
 
     public function setR(\iggyvolz\vulkan\enum\VkComponentSwizzle $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->r = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkComponentMapping implements \JsonSerializable
      */
     public function getG(): \iggyvolz\vulkan\enum\VkComponentSwizzle
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->g;
         $phpValue = \iggyvolz\vulkan\enum\VkComponentSwizzle::from($cValue);
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkComponentMapping implements \JsonSerializable
 
     public function setG(\iggyvolz\vulkan\enum\VkComponentSwizzle $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->g = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkComponentMapping implements \JsonSerializable
      */
     public function getB(): \iggyvolz\vulkan\enum\VkComponentSwizzle
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->b;
         $phpValue = \iggyvolz\vulkan\enum\VkComponentSwizzle::from($cValue);
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkComponentMapping implements \JsonSerializable
 
     public function setB(\iggyvolz\vulkan\enum\VkComponentSwizzle $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->b = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkComponentMapping implements \JsonSerializable
      */
     public function getA(): \iggyvolz\vulkan\enum\VkComponentSwizzle
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->a;
         $phpValue = \iggyvolz\vulkan\enum\VkComponentSwizzle::from($cValue);
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkComponentMapping implements \JsonSerializable
 
     public function setA(\iggyvolz\vulkan\enum\VkComponentSwizzle $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->a = $cValue;
     }

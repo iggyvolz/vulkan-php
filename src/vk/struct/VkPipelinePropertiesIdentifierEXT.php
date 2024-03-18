@@ -22,8 +22,6 @@ final class VkPipelinePropertiesIdentifierEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -31,10 +29,10 @@ final class VkPipelinePropertiesIdentifierEXT implements \JsonSerializable
         \iggyvolz\vulkan\Vulkan $vulkan,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
-        null|\Ramsey\Uuid\UuidInterface $pipelineIdentifier = null,
+        null|string $pipelineIdentifier = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelinePropertiesIdentifierEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPipelinePropertiesIdentifierEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pipelineIdentifier)) $self->setPipelineIdentifier($pipelineIdentifier);
@@ -46,7 +44,6 @@ final class VkPipelinePropertiesIdentifierEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkPipelinePropertiesIdentifierEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkPipelinePropertiesIdentifierEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -72,26 +67,23 @@ final class VkPipelinePropertiesIdentifierEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
 
     /**
-     * uint8_t/[16]
+     * char/[16]
      */
-    public function getPipelineIdentifier(): \Ramsey\Uuid\UuidInterface
+    public function getPipelineIdentifier(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pipelineIdentifier;
-        $phpValue = \Ramsey\Uuid\Uuid::fromBytes(\FFI::string($cValue, 16));
+        $tempString = \FFI::string($cValue, 16); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
     }
 
-    public function setPipelineIdentifier(\Ramsey\Uuid\UuidInterface $phpValue): void
+    public function setPipelineIdentifier(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
-        $cValue = $ffi->new("uint8_t[16]"); $ffi->memcpy($cValue, $phpValue->getBytes(), 16);
+        \FFI::memcpy($cValue, $phpValue, 16);
         $this->cdata->pipelineIdentifier = $cValue;
     }
 }

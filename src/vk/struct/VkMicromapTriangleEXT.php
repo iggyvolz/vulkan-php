@@ -22,8 +22,6 @@ final class VkMicromapTriangleEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkMicromapTriangleEXT implements \JsonSerializable
         null|int $format = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkMicromapTriangleEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkMicromapTriangleEXT', false));
         if(!is_null($dataOffset)) $self->setDataOffset($dataOffset);
         if(!is_null($subdivisionLevel)) $self->setSubdivisionLevel($subdivisionLevel);
         if(!is_null($format)) $self->setFormat($format);
@@ -46,7 +44,6 @@ final class VkMicromapTriangleEXT implements \JsonSerializable
      */
     public function getDataOffset(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dataOffset;
         $phpValue = $cValue;
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkMicromapTriangleEXT implements \JsonSerializable
 
     public function setDataOffset(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->dataOffset = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkMicromapTriangleEXT implements \JsonSerializable
      */
     public function getSubdivisionLevel(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subdivisionLevel;
         $phpValue = $cValue;
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkMicromapTriangleEXT implements \JsonSerializable
 
     public function setSubdivisionLevel(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->subdivisionLevel = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkMicromapTriangleEXT implements \JsonSerializable
      */
     public function getFormat(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->format;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkMicromapTriangleEXT implements \JsonSerializable
 
     public function setFormat(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->format = $cValue;
     }

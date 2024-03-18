@@ -31,4 +31,6 @@ enum VkImageUsageFlagBits: int
     case SampleBlockMatchBitQcom = 21;
     case Reserved24BitCoreavi = 24;
     case Reserved23BitExt = 23;
+    case Reserved25BitKhr = 25;
+    case Reserved26BitKhr = 26;
 }

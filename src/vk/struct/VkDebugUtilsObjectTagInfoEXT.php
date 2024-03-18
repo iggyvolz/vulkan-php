@@ -26,8 +26,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pTag = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDebugUtilsObjectTagInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDebugUtilsObjectTagInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($objectType)) $self->setObjectType($objectType);
@@ -58,7 +56,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
      */
     public function getObjectType(): \iggyvolz\vulkan\enum\VkObjectType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->objectType;
         $phpValue = \iggyvolz\vulkan\enum\VkObjectType::from($cValue);
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
 
     public function setObjectType(\iggyvolz\vulkan\enum\VkObjectType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->objectType = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
      */
     public function getObjectHandle(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->objectHandle;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
 
     public function setObjectHandle(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->objectHandle = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
      */
     public function getTagName(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tagName;
         $phpValue = $cValue;
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
 
     public function setTagName(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->tagName = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
      */
     public function getTagSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->tagSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
 
     public function setTagSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->tagSize = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
      */
     public function getPTag(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pTag;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkDebugUtilsObjectTagInfoEXT implements \JsonSerializable
 
     public function setPTag(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pTag = $cValue;
     }

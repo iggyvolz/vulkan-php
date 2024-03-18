@@ -22,8 +22,6 @@ final class VkRenderPassSubpassFeedbackInfoEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkRenderPassSubpassFeedbackInfoEXT implements \JsonSerializable
         null|int $postMergeIndex = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkRenderPassSubpassFeedbackInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkRenderPassSubpassFeedbackInfoEXT', false));
         if(!is_null($subpassMergeStatus)) $self->setSubpassMergeStatus($subpassMergeStatus);
         if(!is_null($description)) $self->setDescription($description);
         if(!is_null($postMergeIndex)) $self->setPostMergeIndex($postMergeIndex);
@@ -46,7 +44,6 @@ final class VkRenderPassSubpassFeedbackInfoEXT implements \JsonSerializable
      */
     public function getSubpassMergeStatus(): \iggyvolz\vulkan\enum\VkSubpassMergeStatusEXT
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->subpassMergeStatus;
         $phpValue = \iggyvolz\vulkan\enum\VkSubpassMergeStatusEXT::from($cValue);
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkRenderPassSubpassFeedbackInfoEXT implements \JsonSerializable
 
     public function setSubpassMergeStatus(\iggyvolz\vulkan\enum\VkSubpassMergeStatusEXT $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->subpassMergeStatus = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkRenderPassSubpassFeedbackInfoEXT implements \JsonSerializable
      */
     public function getDescription(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->description;
         $tempString = \FFI::string($cValue, 256); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkRenderPassSubpassFeedbackInfoEXT implements \JsonSerializable
 
     public function setDescription(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         \FFI::memcpy($cValue, $phpValue, 256);
         $this->cdata->description = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkRenderPassSubpassFeedbackInfoEXT implements \JsonSerializable
      */
     public function getPostMergeIndex(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->postMergeIndex;
         $phpValue = $cValue;
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkRenderPassSubpassFeedbackInfoEXT implements \JsonSerializable
 
     public function setPostMergeIndex(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->postMergeIndex = $cValue;
     }

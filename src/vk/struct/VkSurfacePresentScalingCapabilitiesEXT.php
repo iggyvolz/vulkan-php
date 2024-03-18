@@ -26,8 +26,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
         null|VkExtent2D $maxScaledImageExtent = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkSurfacePresentScalingCapabilitiesEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkSurfacePresentScalingCapabilitiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($supportedPresentScaling)) $self->setSupportedPresentScaling($supportedPresentScaling);
@@ -58,7 +56,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
      */
     public function getSupportedPresentScaling(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedPresentScaling;
         $phpValue = \iggyvolz\vulkan\enum\VkPresentScalingFlagBitsEXT::fromInt($cValue);
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
 
     public function setSupportedPresentScaling(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkPresentScalingFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->supportedPresentScaling = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
      */
     public function getSupportedPresentGravityX(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedPresentGravityX;
         $phpValue = \iggyvolz\vulkan\enum\VkPresentGravityFlagBitsEXT::fromInt($cValue);
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
 
     public function setSupportedPresentGravityX(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkPresentGravityFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->supportedPresentGravityX = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
      */
     public function getSupportedPresentGravityY(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->supportedPresentGravityY;
         $phpValue = \iggyvolz\vulkan\enum\VkPresentGravityFlagBitsEXT::fromInt($cValue);
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
 
     public function setSupportedPresentGravityY(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkPresentGravityFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->supportedPresentGravityY = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
      */
     public function getMinScaledImageExtent(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->minScaledImageExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
 
     public function setMinScaledImageExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->minScaledImageExtent = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
      */
     public function getMaxScaledImageExtent(): VkExtent2D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxScaledImageExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent2D($cValue, $ffi);
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
 
     public function setMaxScaledImageExtent(VkExtent2D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxScaledImageExtent = $cValue;
     }

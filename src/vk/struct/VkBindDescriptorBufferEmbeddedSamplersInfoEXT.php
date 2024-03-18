@@ -24,8 +24,6 @@ final class VkBindDescriptorBufferEmbeddedSamplersInfoEXT implements \JsonSerial
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkBindDescriptorBufferEmbeddedSamplersInfoEXT implements \JsonSerial
         null|int $set = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkBindDescriptorBufferEmbeddedSamplersInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkBindDescriptorBufferEmbeddedSamplersInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($stageFlags)) $self->setStageFlags($stageFlags);
@@ -52,7 +50,6 @@ final class VkBindDescriptorBufferEmbeddedSamplersInfoEXT implements \JsonSerial
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkBindDescriptorBufferEmbeddedSamplersInfoEXT implements \JsonSerial
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkBindDescriptorBufferEmbeddedSamplersInfoEXT implements \JsonSerial
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkBindDescriptorBufferEmbeddedSamplersInfoEXT implements \JsonSerial
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkBindDescriptorBufferEmbeddedSamplersInfoEXT implements \JsonSerial
      */
     public function getStageFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->stageFlags;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkBindDescriptorBufferEmbeddedSamplersInfoEXT implements \JsonSerial
 
     public function setStageFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->stageFlags = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkBindDescriptorBufferEmbeddedSamplersInfoEXT implements \JsonSerial
      */
     public function getLayout(): VkPipelineLayout
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->layout;
         $phpValue = new \iggyvolz\vulkan\struct\VkPipelineLayout($cValue, $ffi);
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkBindDescriptorBufferEmbeddedSamplersInfoEXT implements \JsonSerial
 
     public function setLayout(VkPipelineLayout $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->layout = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkBindDescriptorBufferEmbeddedSamplersInfoEXT implements \JsonSerial
      */
     public function getSet(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->set;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkBindDescriptorBufferEmbeddedSamplersInfoEXT implements \JsonSerial
 
     public function setSet(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->set = $cValue;
     }

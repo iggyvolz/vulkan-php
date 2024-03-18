@@ -32,8 +32,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -54,7 +52,7 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
         null|float $lineWidth = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineRasterizationStateCreateInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPipelineRasterizationStateCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -76,7 +74,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -84,7 +81,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -94,7 +90,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -102,7 +97,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -112,7 +106,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = [];
         return $phpValue;
@@ -120,7 +113,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = 0;
         $this->cdata->flags = $cValue;
     }
@@ -130,7 +122,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
      */
     public function getDepthClampEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthClampEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -138,7 +129,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
 
     public function setDepthClampEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->depthClampEnable = $cValue;
     }
@@ -148,7 +138,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
      */
     public function getRasterizerDiscardEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->rasterizerDiscardEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -156,7 +145,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
 
     public function setRasterizerDiscardEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->rasterizerDiscardEnable = $cValue;
     }
@@ -166,7 +154,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
      */
     public function getPolygonMode(): \iggyvolz\vulkan\enum\VkPolygonMode
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->polygonMode;
         $phpValue = \iggyvolz\vulkan\enum\VkPolygonMode::from($cValue);
         return $phpValue;
@@ -174,7 +161,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
 
     public function setPolygonMode(\iggyvolz\vulkan\enum\VkPolygonMode $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->polygonMode = $cValue;
     }
@@ -184,7 +170,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
      */
     public function getCullMode(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->cullMode;
         $phpValue = \iggyvolz\vulkan\enum\VkCullModeFlagBits::fromInt($cValue);
         return $phpValue;
@@ -192,7 +177,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
 
     public function setCullMode(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkCullModeFlagBits::toInt(...$phpValue);
         $this->cdata->cullMode = $cValue;
     }
@@ -202,7 +186,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
      */
     public function getFrontFace(): \iggyvolz\vulkan\enum\VkFrontFace
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->frontFace;
         $phpValue = \iggyvolz\vulkan\enum\VkFrontFace::from($cValue);
         return $phpValue;
@@ -210,7 +193,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
 
     public function setFrontFace(\iggyvolz\vulkan\enum\VkFrontFace $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->frontFace = $cValue;
     }
@@ -220,7 +202,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
      */
     public function getDepthBiasEnable(): bool
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthBiasEnable;
         $phpValue = ($cValue === 1);
         return $phpValue;
@@ -228,7 +209,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
 
     public function setDepthBiasEnable(bool $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->depthBiasEnable = $cValue;
     }
@@ -238,7 +218,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
      */
     public function getDepthBiasConstantFactor(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthBiasConstantFactor;
         $phpValue = $cValue;
         return $phpValue;
@@ -246,7 +225,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
 
     public function setDepthBiasConstantFactor(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->depthBiasConstantFactor = $cValue;
     }
@@ -256,7 +234,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
      */
     public function getDepthBiasClamp(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthBiasClamp;
         $phpValue = $cValue;
         return $phpValue;
@@ -264,7 +241,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
 
     public function setDepthBiasClamp(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->depthBiasClamp = $cValue;
     }
@@ -274,7 +250,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
      */
     public function getDepthBiasSlopeFactor(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->depthBiasSlopeFactor;
         $phpValue = $cValue;
         return $phpValue;
@@ -282,7 +257,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
 
     public function setDepthBiasSlopeFactor(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->depthBiasSlopeFactor = $cValue;
     }
@@ -292,7 +266,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
      */
     public function getLineWidth(): float
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->lineWidth;
         $phpValue = $cValue;
         return $phpValue;
@@ -300,7 +273,6 @@ final class VkPipelineRasterizationStateCreateInfo implements \JsonSerializable
 
     public function setLineWidth(float $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->lineWidth = $cValue;
     }

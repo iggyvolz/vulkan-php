@@ -31,8 +31,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -52,7 +50,7 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
         null|\iggyvolz\vulkan\util\ObjectPointer $pObjects = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDebugUtilsMessengerCallbackDataEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDebugUtilsMessengerCallbackDataEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -73,7 +71,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -81,7 +78,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -91,7 +87,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -99,7 +94,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -109,7 +103,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = [];
         return $phpValue;
@@ -117,7 +110,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = 0;
         $this->cdata->flags = $cValue;
     }
@@ -127,7 +119,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
      */
     public function getPMessageIdName(): ?string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pMessageIdName;
         $phpValue = $cValue;
         return $phpValue;
@@ -135,7 +126,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
 
     public function setPMessageIdName(?string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pMessageIdName = $cValue;
     }
@@ -145,7 +135,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
      */
     public function getMessageIdNumber(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->messageIdNumber;
         $phpValue = $cValue;
         return $phpValue;
@@ -153,7 +142,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
 
     public function setMessageIdNumber(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->messageIdNumber = $cValue;
     }
@@ -163,7 +151,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
      */
     public function getPMessage(): ?string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pMessage;
         $phpValue = $cValue;
         return $phpValue;
@@ -171,7 +158,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
 
     public function setPMessage(?string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->pMessage = $cValue;
     }
@@ -181,7 +167,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
      */
     public function getQueueLabelCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->queueLabelCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -189,7 +174,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
 
     public function setQueueLabelCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->queueLabelCount = $cValue;
     }
@@ -199,7 +183,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
      */
     public function getPQueueLabels(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pQueueLabels;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDebugUtilsLabelEXT', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -207,7 +190,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
 
     public function setPQueueLabels(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pQueueLabels = $cValue;
     }
@@ -217,7 +199,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
      */
     public function getCmdBufLabelCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->cmdBufLabelCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -225,7 +206,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
 
     public function setCmdBufLabelCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->cmdBufLabelCount = $cValue;
     }
@@ -235,7 +215,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
      */
     public function getPCmdBufLabels(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pCmdBufLabels;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDebugUtilsLabelEXT', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -243,7 +222,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
 
     public function setPCmdBufLabels(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pCmdBufLabels = $cValue;
     }
@@ -253,7 +231,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
      */
     public function getObjectCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->objectCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -261,7 +238,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
 
     public function setObjectCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->objectCount = $cValue;
     }
@@ -271,7 +247,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
      */
     public function getPObjects(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pObjects;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDebugUtilsObjectNameInfoEXT', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -279,7 +254,6 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
 
     public function setPObjects(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pObjects = $cValue;
     }

@@ -24,8 +24,6 @@ final class VkShaderResourceUsageAMD implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkShaderResourceUsageAMD implements \JsonSerializable
         null|int $scratchMemUsageInBytes = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkShaderResourceUsageAMD', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkShaderResourceUsageAMD', false));
         if(!is_null($numUsedVgprs)) $self->setNumUsedVgprs($numUsedVgprs);
         if(!is_null($numUsedSgprs)) $self->setNumUsedSgprs($numUsedSgprs);
         if(!is_null($ldsSizePerLocalWorkGroup)) $self->setLdsSizePerLocalWorkGroup($ldsSizePerLocalWorkGroup);
@@ -52,7 +50,6 @@ final class VkShaderResourceUsageAMD implements \JsonSerializable
      */
     public function getNumUsedVgprs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->numUsedVgprs;
         $phpValue = $cValue;
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkShaderResourceUsageAMD implements \JsonSerializable
 
     public function setNumUsedVgprs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->numUsedVgprs = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkShaderResourceUsageAMD implements \JsonSerializable
      */
     public function getNumUsedSgprs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->numUsedSgprs;
         $phpValue = $cValue;
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkShaderResourceUsageAMD implements \JsonSerializable
 
     public function setNumUsedSgprs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->numUsedSgprs = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkShaderResourceUsageAMD implements \JsonSerializable
      */
     public function getLdsSizePerLocalWorkGroup(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ldsSizePerLocalWorkGroup;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkShaderResourceUsageAMD implements \JsonSerializable
 
     public function setLdsSizePerLocalWorkGroup(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->ldsSizePerLocalWorkGroup = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkShaderResourceUsageAMD implements \JsonSerializable
      */
     public function getLdsUsageSizeInBytes(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ldsUsageSizeInBytes;
         $phpValue = $cValue;
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkShaderResourceUsageAMD implements \JsonSerializable
 
     public function setLdsUsageSizeInBytes(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->ldsUsageSizeInBytes = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkShaderResourceUsageAMD implements \JsonSerializable
      */
     public function getScratchMemUsageInBytes(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->scratchMemUsageInBytes;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkShaderResourceUsageAMD implements \JsonSerializable
 
     public function setScratchMemUsageInBytes(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->scratchMemUsageInBytes = $cValue;
     }

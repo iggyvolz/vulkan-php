@@ -24,8 +24,6 @@ final class VkImageFormatProperties implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -38,7 +36,7 @@ final class VkImageFormatProperties implements \JsonSerializable
         null|int $maxResourceSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageFormatProperties', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkImageFormatProperties', false));
         if(!is_null($maxExtent)) $self->setMaxExtent($maxExtent);
         if(!is_null($maxMipLevels)) $self->setMaxMipLevels($maxMipLevels);
         if(!is_null($maxArrayLayers)) $self->setMaxArrayLayers($maxArrayLayers);
@@ -52,7 +50,6 @@ final class VkImageFormatProperties implements \JsonSerializable
      */
     public function getMaxExtent(): VkExtent3D
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxExtent;
         $phpValue = new \iggyvolz\vulkan\struct\VkExtent3D($cValue, $ffi);
         return $phpValue;
@@ -60,7 +57,6 @@ final class VkImageFormatProperties implements \JsonSerializable
 
     public function setMaxExtent(VkExtent3D $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->maxExtent = $cValue;
     }
@@ -70,7 +66,6 @@ final class VkImageFormatProperties implements \JsonSerializable
      */
     public function getMaxMipLevels(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxMipLevels;
         $phpValue = $cValue;
         return $phpValue;
@@ -78,7 +73,6 @@ final class VkImageFormatProperties implements \JsonSerializable
 
     public function setMaxMipLevels(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxMipLevels = $cValue;
     }
@@ -88,7 +82,6 @@ final class VkImageFormatProperties implements \JsonSerializable
      */
     public function getMaxArrayLayers(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxArrayLayers;
         $phpValue = $cValue;
         return $phpValue;
@@ -96,7 +89,6 @@ final class VkImageFormatProperties implements \JsonSerializable
 
     public function setMaxArrayLayers(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxArrayLayers = $cValue;
     }
@@ -106,7 +98,6 @@ final class VkImageFormatProperties implements \JsonSerializable
      */
     public function getSampleCounts(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sampleCounts;
         $phpValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::fromInt($cValue);
         return $phpValue;
@@ -114,7 +105,6 @@ final class VkImageFormatProperties implements \JsonSerializable
 
     public function setSampleCounts(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkSampleCountFlagBits::toInt(...$phpValue);
         $this->cdata->sampleCounts = $cValue;
     }
@@ -124,7 +114,6 @@ final class VkImageFormatProperties implements \JsonSerializable
      */
     public function getMaxResourceSize(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->maxResourceSize;
         $phpValue = $cValue;
         return $phpValue;
@@ -132,7 +121,6 @@ final class VkImageFormatProperties implements \JsonSerializable
 
     public function setMaxResourceSize(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->maxResourceSize = $cValue;
     }

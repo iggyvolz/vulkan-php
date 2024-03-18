@@ -32,8 +32,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -54,7 +52,7 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
         null|int $triangleArrayStride = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkMicromapBuildInfoEXT', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkMicromapBuildInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($type)) $self->setType($type);
@@ -76,7 +74,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -84,7 +81,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -94,7 +90,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -102,7 +97,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -112,7 +106,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
      */
     public function getType(): \iggyvolz\vulkan\enum\VkMicromapTypeEXT
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->type;
         $phpValue = \iggyvolz\vulkan\enum\VkMicromapTypeEXT::from($cValue);
         return $phpValue;
@@ -120,7 +113,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
 
     public function setType(\iggyvolz\vulkan\enum\VkMicromapTypeEXT $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->type = $cValue;
     }
@@ -130,7 +122,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkBuildMicromapFlagBitsEXT::fromInt($cValue);
         return $phpValue;
@@ -138,7 +129,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkBuildMicromapFlagBitsEXT::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -148,7 +138,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
      */
     public function getMode(): \iggyvolz\vulkan\enum\VkBuildMicromapModeEXT
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->mode;
         $phpValue = \iggyvolz\vulkan\enum\VkBuildMicromapModeEXT::from($cValue);
         return $phpValue;
@@ -156,7 +145,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
 
     public function setMode(\iggyvolz\vulkan\enum\VkBuildMicromapModeEXT $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->mode = $cValue;
     }
@@ -166,7 +154,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
      */
     public function getDstMicromap(): VkMicromapEXT
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstMicromap;
         $phpValue = new \iggyvolz\vulkan\struct\VkMicromapEXT($cValue, $ffi);
         return $phpValue;
@@ -174,7 +161,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
 
     public function setDstMicromap(VkMicromapEXT $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->dstMicromap = $cValue;
     }
@@ -184,7 +170,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
      */
     public function getUsageCountsCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->usageCountsCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -192,7 +177,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
 
     public function setUsageCountsCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->usageCountsCount = $cValue;
     }
@@ -202,7 +186,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
      */
     public function getPUsageCounts(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pUsageCounts;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -210,7 +193,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
 
     public function setPUsageCounts(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pUsageCounts = $cValue;
     }
@@ -220,7 +202,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
      */
     public function getPpUsageCounts(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ppUsageCounts;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -228,7 +209,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
 
     public function setPpUsageCounts(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->ppUsageCounts = $cValue;
     }
@@ -238,7 +218,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
      */
     public function getData(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->data;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -246,7 +225,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
 
     public function setData(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->data = $cValue;
     }
@@ -256,7 +234,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
      */
     public function getScratchData(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->scratchData;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -264,7 +241,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
 
     public function setScratchData(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->scratchData = $cValue;
     }
@@ -274,7 +250,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
      */
     public function getTriangleArray(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->triangleArray;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -282,7 +257,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
 
     public function setTriangleArray(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->triangleArray = $cValue;
     }
@@ -292,7 +266,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
      */
     public function getTriangleArrayStride(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->triangleArrayStride;
         $phpValue = $cValue;
         return $phpValue;
@@ -300,7 +273,6 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
 
     public function setTriangleArrayStride(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->triangleArrayStride = $cValue;
     }

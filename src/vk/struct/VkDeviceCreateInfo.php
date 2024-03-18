@@ -29,8 +29,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -48,7 +46,7 @@ final class VkDeviceCreateInfo implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pEnabledFeatures = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceCreateInfo', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDeviceCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -67,7 +65,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -75,7 +72,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -85,7 +81,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -93,7 +88,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -103,7 +97,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
      */
     public function getFlags(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->flags;
         $phpValue = \iggyvolz\vulkan\enum\VkDeviceCreateFlagBits::fromInt($cValue);
         return $phpValue;
@@ -111,7 +104,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
 
     public function setFlags(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkDeviceCreateFlagBits::toInt(...$phpValue);
         $this->cdata->flags = $cValue;
     }
@@ -121,7 +113,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
      */
     public function getQueueCreateInfoCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->queueCreateInfoCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -129,7 +120,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
 
     public function setQueueCreateInfoCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->queueCreateInfoCount = $cValue;
     }
@@ -139,7 +129,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
      */
     public function getPQueueCreateInfos(): \iggyvolz\vulkan\util\ObjectPointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pQueueCreateInfos;
         $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDeviceQueueCreateInfo', $cValue, $ffi); /** PTRANS */
         return $phpValue;
@@ -147,7 +136,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
 
     public function setPQueueCreateInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pQueueCreateInfos = $cValue;
     }
@@ -157,7 +145,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
      */
     public function getEnabledLayerCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->enabledLayerCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -165,7 +152,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
 
     public function setEnabledLayerCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->enabledLayerCount = $cValue;
     }
@@ -175,7 +161,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
      */
     public function getPpEnabledLayerNames(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ppEnabledLayerNames;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -183,7 +168,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
 
     public function setPpEnabledLayerNames(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->ppEnabledLayerNames = $cValue;
     }
@@ -193,7 +177,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
      */
     public function getEnabledExtensionCount(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->enabledExtensionCount;
         $phpValue = $cValue;
         return $phpValue;
@@ -201,7 +184,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
 
     public function setEnabledExtensionCount(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->enabledExtensionCount = $cValue;
     }
@@ -211,7 +193,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
      */
     public function getPpEnabledExtensionNames(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->ppEnabledExtensionNames;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -219,7 +200,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
 
     public function setPpEnabledExtensionNames(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->ppEnabledExtensionNames = $cValue;
     }
@@ -229,7 +209,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
      */
     public function getPEnabledFeatures(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pEnabledFeatures;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -237,7 +216,6 @@ final class VkDeviceCreateInfo implements \JsonSerializable
 
     public function setPEnabledFeatures(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pEnabledFeatures = $cValue;
     }

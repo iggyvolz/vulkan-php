@@ -26,8 +26,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -42,7 +40,7 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
         mixed $computeWorkGroupSize = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkShaderStatisticsInfoAMD', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkShaderStatisticsInfoAMD', false));
         if(!is_null($shaderStageMask)) $self->setShaderStageMask($shaderStageMask);
         if(!is_null($resourceUsage)) $self->setResourceUsage($resourceUsage);
         if(!is_null($numPhysicalVgprs)) $self->setNumPhysicalVgprs($numPhysicalVgprs);
@@ -58,7 +56,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
      */
     public function getShaderStageMask(): array
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->shaderStageMask;
         $phpValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::fromInt($cValue);
         return $phpValue;
@@ -66,7 +63,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
 
     public function setShaderStageMask(array $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = \iggyvolz\vulkan\enum\VkShaderStageFlagBits::toInt(...$phpValue);
         $this->cdata->shaderStageMask = $cValue;
     }
@@ -76,7 +72,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
      */
     public function getResourceUsage(): VkShaderResourceUsageAMD
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->resourceUsage;
         $phpValue = new \iggyvolz\vulkan\struct\VkShaderResourceUsageAMD($cValue, $ffi);
         return $phpValue;
@@ -84,7 +79,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
 
     public function setResourceUsage(VkShaderResourceUsageAMD $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->resourceUsage = $cValue;
     }
@@ -94,7 +88,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
      */
     public function getNumPhysicalVgprs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->numPhysicalVgprs;
         $phpValue = $cValue;
         return $phpValue;
@@ -102,7 +95,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
 
     public function setNumPhysicalVgprs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->numPhysicalVgprs = $cValue;
     }
@@ -112,7 +104,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
      */
     public function getNumPhysicalSgprs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->numPhysicalSgprs;
         $phpValue = $cValue;
         return $phpValue;
@@ -120,7 +111,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
 
     public function setNumPhysicalSgprs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->numPhysicalSgprs = $cValue;
     }
@@ -130,7 +120,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
      */
     public function getNumAvailableVgprs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->numAvailableVgprs;
         $phpValue = $cValue;
         return $phpValue;
@@ -138,7 +127,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
 
     public function setNumAvailableVgprs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->numAvailableVgprs = $cValue;
     }
@@ -148,7 +136,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
      */
     public function getNumAvailableSgprs(): int
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->numAvailableSgprs;
         $phpValue = $cValue;
         return $phpValue;
@@ -156,7 +143,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
 
     public function setNumAvailableSgprs(int $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue;
         $this->cdata->numAvailableSgprs = $cValue;
     }
@@ -166,7 +152,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
      */
     public function getComputeWorkGroupSize(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->computeWorkGroupSize;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -174,7 +159,6 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
 
     public function setComputeWorkGroupSize(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->computeWorkGroupSize = $cValue;
     }

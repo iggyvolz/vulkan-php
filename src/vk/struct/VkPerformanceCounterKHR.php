@@ -25,8 +25,6 @@ final class VkPerformanceCounterKHR implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -37,10 +35,10 @@ final class VkPerformanceCounterKHR implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkPerformanceCounterUnitKHR $unit = null,
         null|\iggyvolz\vulkan\enum\VkPerformanceCounterScopeKHR $scope = null,
         null|\iggyvolz\vulkan\enum\VkPerformanceCounterStorageKHR $storage = null,
-        null|\Ramsey\Uuid\UuidInterface $uuid = null,
+        null|string $uuid = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkPerformanceCounterKHR', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkPerformanceCounterKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($unit)) $self->setUnit($unit);
@@ -55,7 +53,6 @@ final class VkPerformanceCounterKHR implements \JsonSerializable
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -63,7 +60,6 @@ final class VkPerformanceCounterKHR implements \JsonSerializable
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -73,7 +69,6 @@ final class VkPerformanceCounterKHR implements \JsonSerializable
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -81,7 +76,6 @@ final class VkPerformanceCounterKHR implements \JsonSerializable
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -91,7 +85,6 @@ final class VkPerformanceCounterKHR implements \JsonSerializable
      */
     public function getUnit(): \iggyvolz\vulkan\enum\VkPerformanceCounterUnitKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->unit;
         $phpValue = \iggyvolz\vulkan\enum\VkPerformanceCounterUnitKHR::from($cValue);
         return $phpValue;
@@ -99,7 +92,6 @@ final class VkPerformanceCounterKHR implements \JsonSerializable
 
     public function setUnit(\iggyvolz\vulkan\enum\VkPerformanceCounterUnitKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->unit = $cValue;
     }
@@ -109,7 +101,6 @@ final class VkPerformanceCounterKHR implements \JsonSerializable
      */
     public function getScope(): \iggyvolz\vulkan\enum\VkPerformanceCounterScopeKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->scope;
         $phpValue = \iggyvolz\vulkan\enum\VkPerformanceCounterScopeKHR::from($cValue);
         return $phpValue;
@@ -117,7 +108,6 @@ final class VkPerformanceCounterKHR implements \JsonSerializable
 
     public function setScope(\iggyvolz\vulkan\enum\VkPerformanceCounterScopeKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->scope = $cValue;
     }
@@ -127,7 +117,6 @@ final class VkPerformanceCounterKHR implements \JsonSerializable
      */
     public function getStorage(): \iggyvolz\vulkan\enum\VkPerformanceCounterStorageKHR
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->storage;
         $phpValue = \iggyvolz\vulkan\enum\VkPerformanceCounterStorageKHR::from($cValue);
         return $phpValue;
@@ -135,26 +124,23 @@ final class VkPerformanceCounterKHR implements \JsonSerializable
 
     public function setStorage(\iggyvolz\vulkan\enum\VkPerformanceCounterStorageKHR $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->storage = $cValue;
     }
 
     /**
-     * uint8_t/[16]
+     * char/[16]
      */
-    public function getUuid(): \Ramsey\Uuid\UuidInterface
+    public function getUuid(): string
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->uuid;
-        $phpValue = \Ramsey\Uuid\Uuid::fromBytes(\FFI::string($cValue, 16));
+        $tempString = \FFI::string($cValue, 16); $phpValue = \substr($tempString, 0, \strpos($tempString, "\0"));
         return $phpValue;
     }
 
-    public function setUuid(\Ramsey\Uuid\UuidInterface $phpValue): void
+    public function setUuid(string $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
-        $cValue = $ffi->new("uint8_t[16]"); $ffi->memcpy($cValue, $phpValue->getBytes(), 16);
+        \FFI::memcpy($cValue, $phpValue, 16);
         $this->cdata->uuid = $cValue;
     }
 }

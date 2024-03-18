@@ -22,8 +22,6 @@ final class VkDeviceMemoryOverallocationCreateInfoAMD implements \JsonSerializab
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -34,7 +32,7 @@ final class VkDeviceMemoryOverallocationCreateInfoAMD implements \JsonSerializab
         null|\iggyvolz\vulkan\enum\VkMemoryOverallocationBehaviorAMD $overallocationBehavior = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceMemoryOverallocationCreateInfoAMD', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkDeviceMemoryOverallocationCreateInfoAMD', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($overallocationBehavior)) $self->setOverallocationBehavior($overallocationBehavior);
@@ -46,7 +44,6 @@ final class VkDeviceMemoryOverallocationCreateInfoAMD implements \JsonSerializab
      */
     public function getSType(): \iggyvolz\vulkan\enum\VkStructureType
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->sType;
         $phpValue = \iggyvolz\vulkan\enum\VkStructureType::from($cValue);
         return $phpValue;
@@ -54,7 +51,6 @@ final class VkDeviceMemoryOverallocationCreateInfoAMD implements \JsonSerializab
 
     public function setSType(\iggyvolz\vulkan\enum\VkStructureType $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->sType = $cValue;
     }
@@ -64,7 +60,6 @@ final class VkDeviceMemoryOverallocationCreateInfoAMD implements \JsonSerializab
      */
     public function getPNext(): \iggyvolz\vulkan\util\Pointer
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->pNext;
         $phpValue = new \iggyvolz\vulkan\util\OpaquePointer($cValue, $this->vulkan);
         return $phpValue;
@@ -72,7 +67,6 @@ final class VkDeviceMemoryOverallocationCreateInfoAMD implements \JsonSerializab
 
     public function setPNext(\iggyvolz\vulkan\util\Pointer $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->pNext = $cValue;
     }
@@ -82,7 +76,6 @@ final class VkDeviceMemoryOverallocationCreateInfoAMD implements \JsonSerializab
      */
     public function getOverallocationBehavior(): \iggyvolz\vulkan\enum\VkMemoryOverallocationBehaviorAMD
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->overallocationBehavior;
         $phpValue = \iggyvolz\vulkan\enum\VkMemoryOverallocationBehaviorAMD::from($cValue);
         return $phpValue;
@@ -90,7 +83,6 @@ final class VkDeviceMemoryOverallocationCreateInfoAMD implements \JsonSerializab
 
     public function setOverallocationBehavior(\iggyvolz\vulkan\enum\VkMemoryOverallocationBehaviorAMD $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->value;
         $this->cdata->overallocationBehavior = $cValue;
     }

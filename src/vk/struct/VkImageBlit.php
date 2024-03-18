@@ -23,8 +23,6 @@ final class VkImageBlit implements \JsonSerializable
     public function __construct(
         /** @internal */
         public \FFI\CData $cdata,
-        /** @internal */
-        public \iggyvolz\vulkan\Vulkan $vulkan,
     ) {
     }
 
@@ -36,7 +34,7 @@ final class VkImageBlit implements \JsonSerializable
         mixed $dstOffsets = null,
     ): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageBlit', false), $vulkan);
+        $self = new self( $vulkan->ffi->new('VkImageBlit', false));
         if(!is_null($srcSubresource)) $self->setSrcSubresource($srcSubresource);
         if(!is_null($srcOffsets)) $self->setSrcOffsets($srcOffsets);
         if(!is_null($dstSubresource)) $self->setDstSubresource($dstSubresource);
@@ -49,7 +47,6 @@ final class VkImageBlit implements \JsonSerializable
      */
     public function getSrcSubresource(): VkImageSubresourceLayers
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcSubresource;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageSubresourceLayers($cValue, $ffi);
         return $phpValue;
@@ -57,7 +54,6 @@ final class VkImageBlit implements \JsonSerializable
 
     public function setSrcSubresource(VkImageSubresourceLayers $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->srcSubresource = $cValue;
     }
@@ -67,7 +63,6 @@ final class VkImageBlit implements \JsonSerializable
      */
     public function getSrcOffsets(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->srcOffsets;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -75,7 +70,6 @@ final class VkImageBlit implements \JsonSerializable
 
     public function setSrcOffsets(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->srcOffsets = $cValue;
     }
@@ -85,7 +79,6 @@ final class VkImageBlit implements \JsonSerializable
      */
     public function getDstSubresource(): VkImageSubresourceLayers
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstSubresource;
         $phpValue = new \iggyvolz\vulkan\struct\VkImageSubresourceLayers($cValue, $ffi);
         return $phpValue;
@@ -93,7 +86,6 @@ final class VkImageBlit implements \JsonSerializable
 
     public function setDstSubresource(VkImageSubresourceLayers $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $phpValue->cdata;
         $this->cdata->dstSubresource = $cValue;
     }
@@ -103,7 +95,6 @@ final class VkImageBlit implements \JsonSerializable
      */
     public function getDstOffsets(): mixed
     {
-        $ffi = $this->vulkan->ffi;
         $cValue = $this->cdata->dstOffsets;
         throw new \LogicException("Dummy transformer!");
         return $phpValue;
@@ -111,7 +102,6 @@ final class VkImageBlit implements \JsonSerializable
 
     public function setDstOffsets(mixed $phpValue): void
     {
-        $ffi = $this->vulkan->ffi;
         throw new \LogicException("Dummy transformer!");
         $this->cdata->dstOffsets = $cValue;
     }
