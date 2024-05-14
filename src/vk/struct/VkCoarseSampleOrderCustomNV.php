@@ -27,14 +27,13 @@ final class VkCoarseSampleOrderCustomNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkShadingRatePaletteEntryNV $shadingRate = null,
         null|int $sampleCount = null,
         null|int $sampleLocationCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pSampleLocations = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkCoarseSampleOrderCustomNV', false));
+        null|VkCoarseSampleLocationNV $pSampleLocations = null,
+    ): self {
+        $self = new self( $ffi->new('VkCoarseSampleOrderCustomNV', false));
         if(!is_null($shadingRate)) $self->setShadingRate($shadingRate);
         if(!is_null($sampleCount)) $self->setSampleCount($sampleCount);
         if(!is_null($sampleLocationCount)) $self->setSampleLocationCount($sampleLocationCount);
@@ -93,14 +92,14 @@ final class VkCoarseSampleOrderCustomNV implements \JsonSerializable
     /**
      * VkCoarseSampleLocationNV* /
      */
-    public function getPSampleLocations(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPSampleLocations(): VkCoarseSampleLocationNV
     {
         $cValue = $this->cdata->pSampleLocations;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkCoarseSampleLocationNV', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkCoarseSampleLocationNV($cValue);
         return $phpValue;
     }
 
-    public function setPSampleLocations(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPSampleLocations(VkCoarseSampleLocationNV $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pSampleLocations = $cValue;

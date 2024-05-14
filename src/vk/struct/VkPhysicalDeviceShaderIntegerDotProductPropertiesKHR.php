@@ -22,9 +22,9 @@ final class VkPhysicalDeviceShaderIntegerDotProductPropertiesKHR implements \Jso
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderIntegerDotProductPropertiesKHR', false));
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderIntegerDotProductPropertiesKHR', false));
         return $self;
     }
 }

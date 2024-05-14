@@ -22,9 +22,9 @@ final class VkDescriptorUpdateTemplateCreateInfoKHR implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorUpdateTemplateCreateInfoKHR', false));
+        $self = new self( $ffi->new('VkDescriptorUpdateTemplateCreateInfoKHR', false));
         return $self;
     }
 }

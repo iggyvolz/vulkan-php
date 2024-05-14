@@ -29,16 +29,15 @@ final class VkViewport implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|float $x = null,
         null|float $y = null,
         null|float $width = null,
         null|float $height = null,
         null|float $minDepth = null,
         null|float $maxDepth = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkViewport', false));
+    ): self {
+        $self = new self( $ffi->new('VkViewport', false));
         if(!is_null($x)) $self->setX($x);
         if(!is_null($y)) $self->setY($y);
         if(!is_null($width)) $self->setWidth($width);

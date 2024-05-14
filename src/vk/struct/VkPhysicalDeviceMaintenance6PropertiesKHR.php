@@ -28,15 +28,14 @@ final class VkPhysicalDeviceMaintenance6PropertiesKHR implements \JsonSerializab
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $blockTexelViewCompatibleMultipleLayers = null,
         null|int $maxCombinedImageSamplerDescriptorCount = null,
         null|bool $fragmentShadingRateClampCombinerInputs = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMaintenance6PropertiesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceMaintenance6PropertiesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($blockTexelViewCompatibleMultipleLayers)) $self->setBlockTexelViewCompatibleMultipleLayers($blockTexelViewCompatibleMultipleLayers);

@@ -26,13 +26,12 @@ final class VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT implements \Json
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|string $shaderModuleIdentifierAlgorithmUUID = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderModuleIdentifierAlgorithmUUID)) $self->setShaderModuleIdentifierAlgorithmUUID($shaderModuleIdentifierAlgorithmUUID);

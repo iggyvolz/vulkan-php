@@ -26,13 +26,12 @@ final class VkFormatProperties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|array $linearTilingFeatures = null,
         null|array $optimalTilingFeatures = null,
         null|array $bufferFeatures = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkFormatProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkFormatProperties', false));
         if(!is_null($linearTilingFeatures)) $self->setLinearTilingFeatures($linearTilingFeatures);
         if(!is_null($optimalTilingFeatures)) $self->setOptimalTilingFeatures($optimalTilingFeatures);
         if(!is_null($bufferFeatures)) $self->setBufferFeatures($bufferFeatures);

@@ -29,16 +29,15 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkTransformMatrixKHR $transform = null,
         null|int $instanceCustomIndex = null,
         null|int $mask = null,
         null|int $instanceShaderBindingTableRecordOffset = null,
         mixed $flags = null,
         null|int $accelerationStructureReference = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureInstanceKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkAccelerationStructureInstanceKHR', false));
         if(!is_null($transform)) $self->setTransform($transform);
         if(!is_null($instanceCustomIndex)) $self->setInstanceCustomIndex($instanceCustomIndex);
         if(!is_null($mask)) $self->setMask($mask);
@@ -118,13 +117,13 @@ final class VkAccelerationStructureInstanceKHR implements \JsonSerializable
     public function getFlags(): mixed
     {
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkGeometryInstanceFlagsKHR :8!");
         return $phpValue;
     }
 
     public function setFlags(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkGeometryInstanceFlagsKHR :8!");
         $this->cdata->flags = $cValue;
     }
 

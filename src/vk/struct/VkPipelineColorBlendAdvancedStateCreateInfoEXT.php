@@ -28,15 +28,14 @@ final class VkPipelineColorBlendAdvancedStateCreateInfoEXT implements \JsonSeria
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $srcPremultiplied = null,
         null|bool $dstPremultiplied = null,
         null|\iggyvolz\vulkan\enum\VkBlendOverlapEXT $blendOverlap = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineColorBlendAdvancedStateCreateInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPipelineColorBlendAdvancedStateCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($srcPremultiplied)) $self->setSrcPremultiplied($srcPremultiplied);

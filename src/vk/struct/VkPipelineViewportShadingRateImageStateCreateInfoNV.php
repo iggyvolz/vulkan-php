@@ -28,15 +28,14 @@ final class VkPipelineViewportShadingRateImageStateCreateInfoNV implements \Json
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $shadingRateImageEnable = null,
         null|int $viewportCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pShadingRatePalettes = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineViewportShadingRateImageStateCreateInfoNV', false));
+        null|VkShadingRatePaletteNV $pShadingRatePalettes = null,
+    ): self {
+        $self = new self( $ffi->new('VkPipelineViewportShadingRateImageStateCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shadingRateImageEnable)) $self->setShadingRateImageEnable($shadingRateImageEnable);
@@ -112,14 +111,14 @@ final class VkPipelineViewportShadingRateImageStateCreateInfoNV implements \Json
     /**
      * VkShadingRatePaletteNV* /
      */
-    public function getPShadingRatePalettes(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPShadingRatePalettes(): VkShadingRatePaletteNV
     {
         $cValue = $this->cdata->pShadingRatePalettes;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkShadingRatePaletteNV', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkShadingRatePaletteNV($cValue);
         return $phpValue;
     }
 
-    public function setPShadingRatePalettes(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPShadingRatePalettes(VkShadingRatePaletteNV $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pShadingRatePalettes = $cValue;

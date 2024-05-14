@@ -30,7 +30,7 @@ final class VkStencilOpState implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStencilOp $failOp = null,
         null|\iggyvolz\vulkan\enum\VkStencilOp $passOp = null,
         null|\iggyvolz\vulkan\enum\VkStencilOp $depthFailOp = null,
@@ -38,9 +38,8 @@ final class VkStencilOpState implements \JsonSerializable
         null|int $compareMask = null,
         null|int $writeMask = null,
         null|int $reference = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkStencilOpState', false));
+    ): self {
+        $self = new self( $ffi->new('VkStencilOpState', false));
         if(!is_null($failOp)) $self->setFailOp($failOp);
         if(!is_null($passOp)) $self->setPassOp($passOp);
         if(!is_null($depthFailOp)) $self->setDepthFailOp($depthFailOp);

@@ -26,13 +26,12 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV implements \Jso
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkSampleCountFlagBits $maxFragmentShadingRateInvocationCount = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxFragmentShadingRateInvocationCount)) $self->setMaxFragmentShadingRateInvocationCount($maxFragmentShadingRateInvocationCount);
@@ -83,8 +82,7 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV implements \Jso
 
     public function setMaxFragmentShadingRateInvocationCount(
         \iggyvolz\vulkan\enum\VkSampleCountFlagBits $phpValue,
-    ): void
-    {
+    ): void {
         $cValue = $phpValue->value;
         $this->cdata->maxFragmentShadingRateInvocationCount = $cValue;
     }

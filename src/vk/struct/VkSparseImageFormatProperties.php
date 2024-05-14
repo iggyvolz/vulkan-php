@@ -26,13 +26,12 @@ final class VkSparseImageFormatProperties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|array $aspectMask = null,
         null|VkExtent3D $imageGranularity = null,
         null|array $flags = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSparseImageFormatProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkSparseImageFormatProperties', false));
         if(!is_null($aspectMask)) $self->setAspectMask($aspectMask);
         if(!is_null($imageGranularity)) $self->setImageGranularity($imageGranularity);
         if(!is_null($flags)) $self->setFlags($flags);

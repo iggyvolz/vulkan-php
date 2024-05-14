@@ -22,9 +22,9 @@ final class VkDeviceQueueGlobalPriorityCreateInfoEXT implements \JsonSerializabl
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceQueueGlobalPriorityCreateInfoEXT', false));
+        $self = new self( $ffi->new('VkDeviceQueueGlobalPriorityCreateInfoEXT', false));
         return $self;
     }
 }

@@ -29,16 +29,15 @@ final class VkPerformanceCounterKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkPerformanceCounterUnitKHR $unit = null,
         null|\iggyvolz\vulkan\enum\VkPerformanceCounterScopeKHR $scope = null,
         null|\iggyvolz\vulkan\enum\VkPerformanceCounterStorageKHR $storage = null,
         null|string $uuid = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPerformanceCounterKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPerformanceCounterKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($unit)) $self->setUnit($unit);

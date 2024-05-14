@@ -24,13 +24,9 @@ final class VkViewportWScalingNV implements \JsonSerializable
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|float $xcoeff = null,
-        null|float $ycoeff = null,
-    ): self
+    public static function create(\FFI $ffi, null|float $xcoeff = null, null|float $ycoeff = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkViewportWScalingNV', false));
+        $self = new self( $ffi->new('VkViewportWScalingNV', false));
         if(!is_null($xcoeff)) $self->setXcoeff($xcoeff);
         if(!is_null($ycoeff)) $self->setYcoeff($ycoeff);
         return $self;

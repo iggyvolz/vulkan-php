@@ -29,16 +29,15 @@ final class VkPhysicalDevice16BitStorageFeatures implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $storageBuffer16BitAccess = null,
         null|bool $uniformAndStorageBuffer16BitAccess = null,
         null|bool $storagePushConstant16 = null,
         null|bool $storageInputOutput16 = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDevice16BitStorageFeatures', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDevice16BitStorageFeatures', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($storageBuffer16BitAccess)) $self->setStorageBuffer16BitAccess($storageBuffer16BitAccess);

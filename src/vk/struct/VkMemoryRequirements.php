@@ -26,13 +26,12 @@ final class VkMemoryRequirements implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $size = null,
         null|int $alignment = null,
         null|int $memoryTypeBits = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkMemoryRequirements', false));
+    ): self {
+        $self = new self( $ffi->new('VkMemoryRequirements', false));
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($alignment)) $self->setAlignment($alignment);
         if(!is_null($memoryTypeBits)) $self->setMemoryTypeBits($memoryTypeBits);

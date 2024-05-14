@@ -22,9 +22,9 @@ final class VkAttachmentReferenceStencilLayoutKHR implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkAttachmentReferenceStencilLayoutKHR', false));
+        $self = new self( $ffi->new('VkAttachmentReferenceStencilLayoutKHR', false));
         return $self;
     }
 }

@@ -28,15 +28,14 @@ final class VkPipelineCreationFeedbackCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pPipelineCreationFeedback = null,
+        mixed $pPipelineCreationFeedback = null,
         null|int $pipelineStageCreationFeedbackCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pPipelineStageCreationFeedbacks = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineCreationFeedbackCreateInfo', false));
+        mixed $pPipelineStageCreationFeedbacks = null,
+    ): self {
+        $self = new self( $ffi->new('VkPipelineCreationFeedbackCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pPipelineCreationFeedback)) $self->setPPipelineCreationFeedback($pPipelineCreationFeedback);
@@ -78,18 +77,18 @@ final class VkPipelineCreationFeedbackCreateInfo implements \JsonSerializable
     }
 
     /**
-     * VkPipelineCreationFeedback* /
+     * void* /
      */
-    public function getPPipelineCreationFeedback(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPPipelineCreationFeedback(): mixed
     {
         $cValue = $this->cdata->pPipelineCreationFeedback;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineCreationFeedback', $cValue, $ffi); /** PTRANS */
+        throw new \LogicException("Dummy transformer - VkPipelineCreationFeedback*!");
         return $phpValue;
     }
 
-    public function setPPipelineCreationFeedback(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPPipelineCreationFeedback(mixed $phpValue): void
     {
-        $cValue = $phpValue->cdata;
+        throw new \LogicException("Dummy transformer - VkPipelineCreationFeedback*!");
         $this->cdata->pPipelineCreationFeedback = $cValue;
     }
 
@@ -110,18 +109,18 @@ final class VkPipelineCreationFeedbackCreateInfo implements \JsonSerializable
     }
 
     /**
-     * VkPipelineCreationFeedback* /
+     * void* /
      */
-    public function getPPipelineStageCreationFeedbacks(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPPipelineStageCreationFeedbacks(): mixed
     {
         $cValue = $this->cdata->pPipelineStageCreationFeedbacks;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineCreationFeedback', $cValue, $ffi); /** PTRANS */
+        throw new \LogicException("Dummy transformer - VkPipelineCreationFeedback*!");
         return $phpValue;
     }
 
-    public function setPPipelineStageCreationFeedbacks(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPPipelineStageCreationFeedbacks(mixed $phpValue): void
     {
-        $cValue = $phpValue->cdata;
+        throw new \LogicException("Dummy transformer - VkPipelineCreationFeedback*!");
         $this->cdata->pPipelineStageCreationFeedbacks = $cValue;
     }
 }

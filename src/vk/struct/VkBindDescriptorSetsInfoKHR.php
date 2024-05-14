@@ -32,19 +32,18 @@ final class VkBindDescriptorSetsInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $stageFlags = null,
         null|VkPipelineLayout $layout = null,
         null|int $firstSet = null,
         null|int $descriptorSetCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pDescriptorSets = null,
+        null|VkDescriptorSet $pDescriptorSets = null,
         null|int $dynamicOffsetCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pDynamicOffsets = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkBindDescriptorSetsInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkBindDescriptorSetsInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($stageFlags)) $self->setStageFlags($stageFlags);
@@ -156,14 +155,14 @@ final class VkBindDescriptorSetsInfoKHR implements \JsonSerializable
     /**
      * VkDescriptorSet* /
      */
-    public function getPDescriptorSets(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPDescriptorSets(): VkDescriptorSet
     {
         $cValue = $this->cdata->pDescriptorSets;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorSet', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDescriptorSet($cValue);
         return $phpValue;
     }
 
-    public function setPDescriptorSets(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPDescriptorSets(VkDescriptorSet $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pDescriptorSets = $cValue;

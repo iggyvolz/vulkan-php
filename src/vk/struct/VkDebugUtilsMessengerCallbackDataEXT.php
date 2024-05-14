@@ -35,7 +35,7 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
@@ -43,14 +43,13 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
         null|int $messageIdNumber = null,
         ?string $pMessage = null,
         null|int $queueLabelCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pQueueLabels = null,
+        null|VkDebugUtilsLabelEXT $pQueueLabels = null,
         null|int $cmdBufLabelCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pCmdBufLabels = null,
+        null|VkDebugUtilsLabelEXT $pCmdBufLabels = null,
         null|int $objectCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pObjects = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDebugUtilsMessengerCallbackDataEXT', false));
+        null|VkDebugUtilsObjectNameInfoEXT $pObjects = null,
+    ): self {
+        $self = new self( $ffi->new('VkDebugUtilsMessengerCallbackDataEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -181,14 +180,14 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
     /**
      * VkDebugUtilsLabelEXT* /
      */
-    public function getPQueueLabels(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPQueueLabels(): VkDebugUtilsLabelEXT
     {
         $cValue = $this->cdata->pQueueLabels;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDebugUtilsLabelEXT', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDebugUtilsLabelEXT($cValue);
         return $phpValue;
     }
 
-    public function setPQueueLabels(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPQueueLabels(VkDebugUtilsLabelEXT $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pQueueLabels = $cValue;
@@ -213,14 +212,14 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
     /**
      * VkDebugUtilsLabelEXT* /
      */
-    public function getPCmdBufLabels(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPCmdBufLabels(): VkDebugUtilsLabelEXT
     {
         $cValue = $this->cdata->pCmdBufLabels;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDebugUtilsLabelEXT', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDebugUtilsLabelEXT($cValue);
         return $phpValue;
     }
 
-    public function setPCmdBufLabels(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPCmdBufLabels(VkDebugUtilsLabelEXT $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pCmdBufLabels = $cValue;
@@ -245,14 +244,14 @@ final class VkDebugUtilsMessengerCallbackDataEXT implements \JsonSerializable
     /**
      * VkDebugUtilsObjectNameInfoEXT* /
      */
-    public function getPObjects(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPObjects(): VkDebugUtilsObjectNameInfoEXT
     {
         $cValue = $this->cdata->pObjects;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDebugUtilsObjectNameInfoEXT', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDebugUtilsObjectNameInfoEXT($cValue);
         return $phpValue;
     }
 
-    public function setPObjects(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPObjects(VkDebugUtilsObjectNameInfoEXT $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pObjects = $cValue;

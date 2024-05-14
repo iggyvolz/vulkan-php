@@ -38,14 +38,14 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint = null,
         null|VkPipeline $pipeline = null,
         null|VkIndirectCommandsLayoutNV $indirectCommandsLayout = null,
         null|int $streamCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pStreams = null,
+        null|VkIndirectCommandsStreamNV $pStreams = null,
         null|int $sequencesCount = null,
         null|VkBuffer $preprocessBuffer = null,
         null|int $preprocessOffset = null,
@@ -54,9 +54,8 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
         null|int $sequencesCountOffset = null,
         null|VkBuffer $sequencesIndexBuffer = null,
         null|int $sequencesIndexOffset = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkGeneratedCommandsInfoNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkGeneratedCommandsInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pipelineBindPoint)) $self->setPipelineBindPoint($pipelineBindPoint);
@@ -174,14 +173,14 @@ final class VkGeneratedCommandsInfoNV implements \JsonSerializable
     /**
      * VkIndirectCommandsStreamNV* /
      */
-    public function getPStreams(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPStreams(): VkIndirectCommandsStreamNV
     {
         $cValue = $this->cdata->pStreams;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkIndirectCommandsStreamNV', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkIndirectCommandsStreamNV($cValue);
         return $phpValue;
     }
 
-    public function setPStreams(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPStreams(VkIndirectCommandsStreamNV $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pStreams = $cValue;

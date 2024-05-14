@@ -28,15 +28,14 @@ final class VkBufferConstraintsInfoFUCHSIA implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkBufferCreateInfo $createInfo = null,
         null|array $requiredFormatFeatures = null,
         mixed $bufferCollectionConstraints = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkBufferConstraintsInfoFUCHSIA', false));
+    ): self {
+        $self = new self( $ffi->new('VkBufferConstraintsInfoFUCHSIA', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($createInfo)) $self->setCreateInfo($createInfo);
@@ -115,13 +114,13 @@ final class VkBufferConstraintsInfoFUCHSIA implements \JsonSerializable
     public function getBufferCollectionConstraints(): mixed
     {
         $cValue = $this->cdata->bufferCollectionConstraints;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkBufferCollectionConstraintsInfoFUCHSIA!");
         return $phpValue;
     }
 
     public function setBufferCollectionConstraints(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkBufferCollectionConstraintsInfoFUCHSIA!");
         $this->cdata->bufferCollectionConstraints = $cValue;
     }
 }

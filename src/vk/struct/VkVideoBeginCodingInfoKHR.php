@@ -30,17 +30,16 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|VkVideoSessionKHR $videoSession = null,
         null|VkVideoSessionParametersKHR $videoSessionParameters = null,
         null|int $referenceSlotCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pReferenceSlots = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoBeginCodingInfoKHR', false));
+        null|VkVideoReferenceSlotInfoKHR $pReferenceSlots = null,
+    ): self {
+        $self = new self( $ffi->new('VkVideoBeginCodingInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -150,14 +149,14 @@ final class VkVideoBeginCodingInfoKHR implements \JsonSerializable
     /**
      * VkVideoReferenceSlotInfoKHR* /
      */
-    public function getPReferenceSlots(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPReferenceSlots(): VkVideoReferenceSlotInfoKHR
     {
         $cValue = $this->cdata->pReferenceSlots;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkVideoReferenceSlotInfoKHR', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkVideoReferenceSlotInfoKHR($cValue);
         return $phpValue;
     }
 
-    public function setPReferenceSlots(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPReferenceSlots(VkVideoReferenceSlotInfoKHR $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pReferenceSlots = $cValue;

@@ -28,15 +28,14 @@ final class VkDescriptorSetAllocateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkDescriptorPool $descriptorPool = null,
         null|int $descriptorSetCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pSetLayouts = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDescriptorSetAllocateInfo', false));
+        null|VkDescriptorSetLayout $pSetLayouts = null,
+    ): self {
+        $self = new self( $ffi->new('VkDescriptorSetAllocateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($descriptorPool)) $self->setDescriptorPool($descriptorPool);
@@ -112,14 +111,14 @@ final class VkDescriptorSetAllocateInfo implements \JsonSerializable
     /**
      * VkDescriptorSetLayout* /
      */
-    public function getPSetLayouts(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPSetLayouts(): VkDescriptorSetLayout
     {
         $cValue = $this->cdata->pSetLayouts;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorSetLayout', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDescriptorSetLayout($cValue);
         return $phpValue;
     }
 
-    public function setPSetLayouts(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPSetLayouts(VkDescriptorSetLayout $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pSetLayouts = $cValue;

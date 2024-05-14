@@ -34,7 +34,7 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV implements \Json
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $maxGraphicsShaderGroupCount = null,
@@ -46,9 +46,8 @@ final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV implements \Json
         null|int $minSequencesCountBufferOffsetAlignment = null,
         null|int $minSequencesIndexBufferOffsetAlignment = null,
         null|int $minIndirectCommandsBufferOffsetAlignment = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxGraphicsShaderGroupCount)) $self->setMaxGraphicsShaderGroupCount($maxGraphicsShaderGroupCount);

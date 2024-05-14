@@ -28,15 +28,14 @@ final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV implements \J
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $extendedSparseAddressSpaceSize = null,
         null|array $extendedSparseImageUsageFlags = null,
         null|array $extendedSparseBufferUsageFlags = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($extendedSparseAddressSpaceSize)) $self->setExtendedSparseAddressSpaceSize($extendedSparseAddressSpaceSize);

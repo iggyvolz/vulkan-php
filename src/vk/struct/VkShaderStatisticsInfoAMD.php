@@ -30,7 +30,7 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|array $shaderStageMask = null,
         null|VkShaderResourceUsageAMD $resourceUsage = null,
         null|int $numPhysicalVgprs = null,
@@ -38,9 +38,8 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
         null|int $numAvailableVgprs = null,
         null|int $numAvailableSgprs = null,
         mixed $computeWorkGroupSize = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkShaderStatisticsInfoAMD', false));
+    ): self {
+        $self = new self( $ffi->new('VkShaderStatisticsInfoAMD', false));
         if(!is_null($shaderStageMask)) $self->setShaderStageMask($shaderStageMask);
         if(!is_null($resourceUsage)) $self->setResourceUsage($resourceUsage);
         if(!is_null($numPhysicalVgprs)) $self->setNumPhysicalVgprs($numPhysicalVgprs);
@@ -153,13 +152,13 @@ final class VkShaderStatisticsInfoAMD implements \JsonSerializable
     public function getComputeWorkGroupSize(): mixed
     {
         $cValue = $this->cdata->computeWorkGroupSize;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         return $phpValue;
     }
 
     public function setComputeWorkGroupSize(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         $this->cdata->computeWorkGroupSize = $cValue;
     }
 }

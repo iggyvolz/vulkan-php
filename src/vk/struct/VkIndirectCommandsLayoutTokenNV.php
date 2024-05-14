@@ -38,7 +38,7 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkIndirectCommandsTokenTypeNV $tokenType = null,
@@ -54,9 +54,8 @@ final class VkIndirectCommandsLayoutTokenNV implements \JsonSerializable
         null|int $indexTypeCount = null,
         null|\iggyvolz\vulkan\util\Pointer $pIndexTypes = null,
         null|\iggyvolz\vulkan\util\IntPointer $pIndexTypeValues = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkIndirectCommandsLayoutTokenNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkIndirectCommandsLayoutTokenNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($tokenType)) $self->setTokenType($tokenType);

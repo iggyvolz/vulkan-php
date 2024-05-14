@@ -33,7 +33,7 @@ final class VkAndroidHardwareBufferFormatProperties2ANDROID implements \JsonSeri
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkFormat $format = null,
@@ -44,9 +44,8 @@ final class VkAndroidHardwareBufferFormatProperties2ANDROID implements \JsonSeri
         null|\iggyvolz\vulkan\enum\VkSamplerYcbcrRange $suggestedYcbcrRange = null,
         null|\iggyvolz\vulkan\enum\VkChromaLocation $suggestedXChromaOffset = null,
         null|\iggyvolz\vulkan\enum\VkChromaLocation $suggestedYChromaOffset = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAndroidHardwareBufferFormatProperties2ANDROID', false));
+    ): self {
+        $self = new self( $ffi->new('VkAndroidHardwareBufferFormatProperties2ANDROID', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($format)) $self->setFormat($format);

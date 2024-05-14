@@ -29,16 +29,15 @@ final class VkRenderPassSampleLocationsBeginInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $attachmentInitialSampleLocationsCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pAttachmentInitialSampleLocations = null,
+        null|VkAttachmentSampleLocationsEXT $pAttachmentInitialSampleLocations = null,
         null|int $postSubpassSampleLocationsCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pPostSubpassSampleLocations = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRenderPassSampleLocationsBeginInfoEXT', false));
+        null|VkSubpassSampleLocationsEXT $pPostSubpassSampleLocations = null,
+    ): self {
+        $self = new self( $ffi->new('VkRenderPassSampleLocationsBeginInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($attachmentInitialSampleLocationsCount)) $self->setAttachmentInitialSampleLocationsCount($attachmentInitialSampleLocationsCount);
@@ -99,14 +98,14 @@ final class VkRenderPassSampleLocationsBeginInfoEXT implements \JsonSerializable
     /**
      * VkAttachmentSampleLocationsEXT* /
      */
-    public function getPAttachmentInitialSampleLocations(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPAttachmentInitialSampleLocations(): VkAttachmentSampleLocationsEXT
     {
         $cValue = $this->cdata->pAttachmentInitialSampleLocations;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentSampleLocationsEXT', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkAttachmentSampleLocationsEXT($cValue);
         return $phpValue;
     }
 
-    public function setPAttachmentInitialSampleLocations(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPAttachmentInitialSampleLocations(VkAttachmentSampleLocationsEXT $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pAttachmentInitialSampleLocations = $cValue;
@@ -131,14 +130,14 @@ final class VkRenderPassSampleLocationsBeginInfoEXT implements \JsonSerializable
     /**
      * VkSubpassSampleLocationsEXT* /
      */
-    public function getPPostSubpassSampleLocations(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPPostSubpassSampleLocations(): VkSubpassSampleLocationsEXT
     {
         $cValue = $this->cdata->pPostSubpassSampleLocations;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSubpassSampleLocationsEXT', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSubpassSampleLocationsEXT($cValue);
         return $phpValue;
     }
 
-    public function setPPostSubpassSampleLocations(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPPostSubpassSampleLocations(VkSubpassSampleLocationsEXT $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pPostSubpassSampleLocations = $cValue;

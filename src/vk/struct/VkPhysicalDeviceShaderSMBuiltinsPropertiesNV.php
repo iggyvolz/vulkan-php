@@ -27,14 +27,13 @@ final class VkPhysicalDeviceShaderSMBuiltinsPropertiesNV implements \JsonSeriali
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $shaderSMCount = null,
         null|int $shaderWarpsPerSM = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderSMBuiltinsPropertiesNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderSMBuiltinsPropertiesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderSMCount)) $self->setShaderSMCount($shaderSMCount);

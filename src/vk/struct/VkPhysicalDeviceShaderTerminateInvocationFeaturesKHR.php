@@ -22,9 +22,9 @@ final class VkPhysicalDeviceShaderTerminateInvocationFeaturesKHR implements \Jso
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderTerminateInvocationFeaturesKHR', false));
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderTerminateInvocationFeaturesKHR', false));
         return $self;
     }
 }

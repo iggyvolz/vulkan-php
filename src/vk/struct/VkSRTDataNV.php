@@ -39,7 +39,7 @@ final class VkSRTDataNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|float $sx = null,
         null|float $a = null,
         null|float $b = null,
@@ -56,9 +56,8 @@ final class VkSRTDataNV implements \JsonSerializable
         null|float $tx = null,
         null|float $ty = null,
         null|float $tz = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSRTDataNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkSRTDataNV', false));
         if(!is_null($sx)) $self->setSx($sx);
         if(!is_null($a)) $self->setA($a);
         if(!is_null($b)) $self->setB($b);

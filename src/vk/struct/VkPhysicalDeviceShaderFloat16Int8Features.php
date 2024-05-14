@@ -27,14 +27,13 @@ final class VkPhysicalDeviceShaderFloat16Int8Features implements \JsonSerializab
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $shaderFloat16 = null,
         null|bool $shaderInt8 = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderFloat16Int8Features', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderFloat16Int8Features', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderFloat16)) $self->setShaderFloat16($shaderFloat16);

@@ -27,14 +27,13 @@ final class VkAccelerationStructureBuildRangeInfoKHR implements \JsonSerializabl
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $primitiveCount = null,
         null|int $primitiveOffset = null,
         null|int $firstVertex = null,
         null|int $transformOffset = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureBuildRangeInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkAccelerationStructureBuildRangeInfoKHR', false));
         if(!is_null($primitiveCount)) $self->setPrimitiveCount($primitiveCount);
         if(!is_null($primitiveOffset)) $self->setPrimitiveOffset($primitiveOffset);
         if(!is_null($firstVertex)) $self->setFirstVertex($firstVertex);

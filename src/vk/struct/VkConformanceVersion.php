@@ -27,14 +27,13 @@ final class VkConformanceVersion implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $major = null,
         null|int $minor = null,
         null|int $subminor = null,
         null|int $patch = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkConformanceVersion', false));
+    ): self {
+        $self = new self( $ffi->new('VkConformanceVersion', false));
         if(!is_null($major)) $self->setMajor($major);
         if(!is_null($minor)) $self->setMinor($minor);
         if(!is_null($subminor)) $self->setSubminor($subminor);

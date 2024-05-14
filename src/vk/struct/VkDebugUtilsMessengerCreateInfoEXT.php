@@ -30,7 +30,7 @@ final class VkDebugUtilsMessengerCreateInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
@@ -38,9 +38,8 @@ final class VkDebugUtilsMessengerCreateInfoEXT implements \JsonSerializable
         null|array $messageType = null,
         mixed $pfnUserCallback = null,
         null|\iggyvolz\vulkan\util\Pointer $pUserData = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDebugUtilsMessengerCreateInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkDebugUtilsMessengerCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -137,13 +136,13 @@ final class VkDebugUtilsMessengerCreateInfoEXT implements \JsonSerializable
     public function getPfnUserCallback(): mixed
     {
         $cValue = $this->cdata->pfnUserCallback;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - PFN_vkDebugUtilsMessengerCallbackEXT!");
         return $phpValue;
     }
 
     public function setPfnUserCallback(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - PFN_vkDebugUtilsMessengerCallbackEXT!");
         $this->cdata->pfnUserCallback = $cValue;
     }
 

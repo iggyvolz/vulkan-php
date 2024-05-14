@@ -29,16 +29,15 @@ final class VkCopyBufferInfo2 implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkBuffer $srcBuffer = null,
         null|VkBuffer $dstBuffer = null,
         null|int $regionCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pRegions = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkCopyBufferInfo2', false));
+        null|VkBufferCopy2 $pRegions = null,
+    ): self {
+        $self = new self( $ffi->new('VkCopyBufferInfo2', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($srcBuffer)) $self->setSrcBuffer($srcBuffer);
@@ -131,14 +130,14 @@ final class VkCopyBufferInfo2 implements \JsonSerializable
     /**
      * VkBufferCopy2* /
      */
-    public function getPRegions(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPRegions(): VkBufferCopy2
     {
         $cValue = $this->cdata->pRegions;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkBufferCopy2', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkBufferCopy2($cValue);
         return $phpValue;
     }
 
-    public function setPRegions(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPRegions(VkBufferCopy2 $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pRegions = $cValue;

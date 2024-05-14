@@ -36,7 +36,7 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkMicromapTypeEXT $type = null,
@@ -50,9 +50,8 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
         mixed $scratchData = null,
         mixed $triangleArray = null,
         null|int $triangleArrayStride = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkMicromapBuildInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkMicromapBuildInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($type)) $self->setType($type);
@@ -219,13 +218,13 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
     public function getData(): mixed
     {
         $cValue = $this->cdata->data;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         return $phpValue;
     }
 
     public function setData(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         $this->cdata->data = $cValue;
     }
 
@@ -235,13 +234,13 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
     public function getScratchData(): mixed
     {
         $cValue = $this->cdata->scratchData;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressKHR!");
         return $phpValue;
     }
 
     public function setScratchData(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressKHR!");
         $this->cdata->scratchData = $cValue;
     }
 
@@ -251,13 +250,13 @@ final class VkMicromapBuildInfoEXT implements \JsonSerializable
     public function getTriangleArray(): mixed
     {
         $cValue = $this->cdata->triangleArray;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         return $phpValue;
     }
 
     public function setTriangleArray(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         $this->cdata->triangleArray = $cValue;
     }
 

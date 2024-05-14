@@ -30,7 +30,7 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|string $pipelineIdentifier = null,
         null|int $pipelineMemorySize = null,
         null|int $jsonSize = null,
@@ -38,9 +38,8 @@ final class VkPipelineCacheSafetyCriticalIndexEntry implements \JsonSerializable
         null|int $stageIndexCount = null,
         null|int $stageIndexStride = null,
         null|int $stageIndexOffset = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineCacheSafetyCriticalIndexEntry', false));
+    ): self {
+        $self = new self( $ffi->new('VkPipelineCacheSafetyCriticalIndexEntry', false));
         if(!is_null($pipelineIdentifier)) $self->setPipelineIdentifier($pipelineIdentifier);
         if(!is_null($pipelineMemorySize)) $self->setPipelineMemorySize($pipelineMemorySize);
         if(!is_null($jsonSize)) $self->setJsonSize($jsonSize);

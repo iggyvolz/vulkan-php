@@ -28,15 +28,14 @@ final class VkPhysicalDeviceSparseProperties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|bool $residencyStandard2DBlockShape = null,
         null|bool $residencyStandard2DMultisampleBlockShape = null,
         null|bool $residencyStandard3DBlockShape = null,
         null|bool $residencyAlignedMipSize = null,
         null|bool $residencyNonResidentStrict = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSparseProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceSparseProperties', false));
         if(!is_null($residencyStandard2DBlockShape)) $self->setResidencyStandard2DBlockShape($residencyStandard2DBlockShape);
         if(!is_null($residencyStandard2DMultisampleBlockShape)) $self->setResidencyStandard2DMultisampleBlockShape($residencyStandard2DMultisampleBlockShape);
         if(!is_null($residencyStandard3DBlockShape)) $self->setResidencyStandard3DBlockShape($residencyStandard3DBlockShape);

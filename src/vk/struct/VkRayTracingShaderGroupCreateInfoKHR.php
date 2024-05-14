@@ -31,7 +31,7 @@ final class VkRayTracingShaderGroupCreateInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkRayTracingShaderGroupTypeKHR $type = null,
@@ -40,9 +40,8 @@ final class VkRayTracingShaderGroupCreateInfoKHR implements \JsonSerializable
         null|int $anyHitShader = null,
         null|int $intersectionShader = null,
         null|\iggyvolz\vulkan\util\Pointer $pShaderGroupCaptureReplayHandle = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRayTracingShaderGroupCreateInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkRayTracingShaderGroupCreateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($type)) $self->setType($type);

@@ -25,12 +25,11 @@ final class VkMutableDescriptorTypeListEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $descriptorTypeCount = null,
         null|\iggyvolz\vulkan\util\Pointer $pDescriptorTypes = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkMutableDescriptorTypeListEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkMutableDescriptorTypeListEXT', false));
         if(!is_null($descriptorTypeCount)) $self->setDescriptorTypeCount($descriptorTypeCount);
         if(!is_null($pDescriptorTypes)) $self->setPDescriptorTypes($pDescriptorTypes);
         return $self;

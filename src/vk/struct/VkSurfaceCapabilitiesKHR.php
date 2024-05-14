@@ -33,7 +33,7 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $minImageCount = null,
         null|int $maxImageCount = null,
         null|VkExtent2D $currentExtent = null,
@@ -44,9 +44,8 @@ final class VkSurfaceCapabilitiesKHR implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkSurfaceTransformFlagBitsKHR $currentTransform = null,
         null|array $supportedCompositeAlpha = null,
         null|array $supportedUsageFlags = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSurfaceCapabilitiesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkSurfaceCapabilitiesKHR', false));
         if(!is_null($minImageCount)) $self->setMinImageCount($minImageCount);
         if(!is_null($maxImageCount)) $self->setMaxImageCount($maxImageCount);
         if(!is_null($currentExtent)) $self->setCurrentExtent($currentExtent);

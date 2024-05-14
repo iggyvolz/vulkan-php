@@ -34,7 +34,7 @@ final class VkAttachmentDescription2 implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
@@ -46,9 +46,8 @@ final class VkAttachmentDescription2 implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkAttachmentStoreOp $stencilStoreOp = null,
         null|\iggyvolz\vulkan\enum\VkImageLayout $initialLayout = null,
         null|\iggyvolz\vulkan\enum\VkImageLayout $finalLayout = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAttachmentDescription2', false));
+    ): self {
+        $self = new self( $ffi->new('VkAttachmentDescription2', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);

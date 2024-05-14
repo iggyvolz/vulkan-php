@@ -26,13 +26,12 @@ final class VkVertexInputBindingDescription implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $binding = null,
         null|int $stride = null,
         null|\iggyvolz\vulkan\enum\VkVertexInputRate $inputRate = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVertexInputBindingDescription', false));
+    ): self {
+        $self = new self( $ffi->new('VkVertexInputBindingDescription', false));
         if(!is_null($binding)) $self->setBinding($binding);
         if(!is_null($stride)) $self->setStride($stride);
         if(!is_null($inputRate)) $self->setInputRate($inputRate);

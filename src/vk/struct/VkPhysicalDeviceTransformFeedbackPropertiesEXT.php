@@ -35,7 +35,7 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $maxTransformFeedbackStreams = null,
@@ -48,9 +48,8 @@ final class VkPhysicalDeviceTransformFeedbackPropertiesEXT implements \JsonSeria
         null|bool $transformFeedbackStreamsLinesTriangles = null,
         null|bool $transformFeedbackRasterizationStreamSelect = null,
         null|bool $transformFeedbackDraw = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceTransformFeedbackPropertiesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceTransformFeedbackPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxTransformFeedbackStreams)) $self->setMaxTransformFeedbackStreams($maxTransformFeedbackStreams);

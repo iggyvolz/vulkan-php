@@ -27,14 +27,13 @@ final class VkVideoReferenceSlotInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $slotIndex = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pPictureResource = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoReferenceSlotInfoKHR', false));
+        null|VkVideoPictureResourceInfoKHR $pPictureResource = null,
+    ): self {
+        $self = new self( $ffi->new('VkVideoReferenceSlotInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($slotIndex)) $self->setSlotIndex($slotIndex);
@@ -93,14 +92,14 @@ final class VkVideoReferenceSlotInfoKHR implements \JsonSerializable
     /**
      * VkVideoPictureResourceInfoKHR* /
      */
-    public function getPPictureResource(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPPictureResource(): VkVideoPictureResourceInfoKHR
     {
         $cValue = $this->cdata->pPictureResource;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkVideoPictureResourceInfoKHR', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkVideoPictureResourceInfoKHR($cValue);
         return $phpValue;
     }
 
-    public function setPPictureResource(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPPictureResource(VkVideoPictureResourceInfoKHR $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pPictureResource = $cValue;

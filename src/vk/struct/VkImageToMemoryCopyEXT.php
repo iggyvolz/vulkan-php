@@ -31,7 +31,7 @@ final class VkImageToMemoryCopyEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\util\Pointer $pHostPointer = null,
@@ -40,9 +40,8 @@ final class VkImageToMemoryCopyEXT implements \JsonSerializable
         null|VkImageSubresourceLayers $imageSubresource = null,
         null|VkOffset3D $imageOffset = null,
         null|VkExtent3D $imageExtent = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImageToMemoryCopyEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkImageToMemoryCopyEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pHostPointer)) $self->setPHostPointer($pHostPointer);

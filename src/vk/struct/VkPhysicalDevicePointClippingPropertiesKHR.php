@@ -22,9 +22,9 @@ final class VkPhysicalDevicePointClippingPropertiesKHR implements \JsonSerializa
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDevicePointClippingPropertiesKHR', false));
+        $self = new self( $ffi->new('VkPhysicalDevicePointClippingPropertiesKHR', false));
         return $self;
     }
 }

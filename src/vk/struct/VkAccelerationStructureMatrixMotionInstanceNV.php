@@ -30,7 +30,7 @@ final class VkAccelerationStructureMatrixMotionInstanceNV implements \JsonSerial
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkTransformMatrixKHR $transformT0 = null,
         null|VkTransformMatrixKHR $transformT1 = null,
         null|int $instanceCustomIndex = null,
@@ -38,9 +38,8 @@ final class VkAccelerationStructureMatrixMotionInstanceNV implements \JsonSerial
         null|int $instanceShaderBindingTableRecordOffset = null,
         mixed $flags = null,
         null|int $accelerationStructureReference = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureMatrixMotionInstanceNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkAccelerationStructureMatrixMotionInstanceNV', false));
         if(!is_null($transformT0)) $self->setTransformT0($transformT0);
         if(!is_null($transformT1)) $self->setTransformT1($transformT1);
         if(!is_null($instanceCustomIndex)) $self->setInstanceCustomIndex($instanceCustomIndex);
@@ -137,13 +136,13 @@ final class VkAccelerationStructureMatrixMotionInstanceNV implements \JsonSerial
     public function getFlags(): mixed
     {
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkGeometryInstanceFlagsKHR :8!");
         return $phpValue;
     }
 
     public function setFlags(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkGeometryInstanceFlagsKHR :8!");
         $this->cdata->flags = $cValue;
     }
 

@@ -26,13 +26,12 @@ final class VkDrawMeshTasksIndirectCommandEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $groupCountX = null,
         null|int $groupCountY = null,
         null|int $groupCountZ = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDrawMeshTasksIndirectCommandEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkDrawMeshTasksIndirectCommandEXT', false));
         if(!is_null($groupCountX)) $self->setGroupCountX($groupCountX);
         if(!is_null($groupCountY)) $self->setGroupCountY($groupCountY);
         if(!is_null($groupCountZ)) $self->setGroupCountZ($groupCountZ);

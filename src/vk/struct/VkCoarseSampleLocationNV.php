@@ -26,13 +26,12 @@ final class VkCoarseSampleLocationNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $pixelX = null,
         null|int $pixelY = null,
         null|int $sample = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkCoarseSampleLocationNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkCoarseSampleLocationNV', false));
         if(!is_null($pixelX)) $self->setPixelX($pixelX);
         if(!is_null($pixelY)) $self->setPixelY($pixelY);
         if(!is_null($sample)) $self->setSample($sample);

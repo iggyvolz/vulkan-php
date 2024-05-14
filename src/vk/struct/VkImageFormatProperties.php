@@ -28,15 +28,14 @@ final class VkImageFormatProperties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkExtent3D $maxExtent = null,
         null|int $maxMipLevels = null,
         null|int $maxArrayLayers = null,
         null|array $sampleCounts = null,
         null|int $maxResourceSize = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImageFormatProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkImageFormatProperties', false));
         if(!is_null($maxExtent)) $self->setMaxExtent($maxExtent);
         if(!is_null($maxMipLevels)) $self->setMaxMipLevels($maxMipLevels);
         if(!is_null($maxArrayLayers)) $self->setMaxArrayLayers($maxArrayLayers);

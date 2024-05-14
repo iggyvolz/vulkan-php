@@ -26,13 +26,12 @@ final class VkAccelerationStructureMotionInstanceNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkAccelerationStructureMotionInstanceTypeNV $type = null,
         null|array $flags = null,
         mixed $data = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureMotionInstanceNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkAccelerationStructureMotionInstanceNV', false));
         if(!is_null($type)) $self->setType($type);
         if(!is_null($flags)) $self->setFlags($flags);
         if(!is_null($data)) $self->setData($data);
@@ -77,13 +76,13 @@ final class VkAccelerationStructureMotionInstanceNV implements \JsonSerializable
     public function getData(): mixed
     {
         $cValue = $this->cdata->data;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkAccelerationStructureMotionInstanceDataNV!");
         return $phpValue;
     }
 
     public function setData(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkAccelerationStructureMotionInstanceDataNV!");
         $this->cdata->data = $cValue;
     }
 }

@@ -42,29 +42,28 @@ final class VkGraphicsPipelineCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $stageCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pStages = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pVertexInputState = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pInputAssemblyState = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pTessellationState = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pViewportState = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pRasterizationState = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pMultisampleState = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pDepthStencilState = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pColorBlendState = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pDynamicState = null,
+        null|VkPipelineShaderStageCreateInfo $pStages = null,
+        null|VkPipelineVertexInputStateCreateInfo $pVertexInputState = null,
+        null|VkPipelineInputAssemblyStateCreateInfo $pInputAssemblyState = null,
+        null|VkPipelineTessellationStateCreateInfo $pTessellationState = null,
+        null|VkPipelineViewportStateCreateInfo $pViewportState = null,
+        null|VkPipelineRasterizationStateCreateInfo $pRasterizationState = null,
+        null|VkPipelineMultisampleStateCreateInfo $pMultisampleState = null,
+        null|VkPipelineDepthStencilStateCreateInfo $pDepthStencilState = null,
+        null|VkPipelineColorBlendStateCreateInfo $pColorBlendState = null,
+        null|VkPipelineDynamicStateCreateInfo $pDynamicState = null,
         null|VkPipelineLayout $layout = null,
         null|VkRenderPass $renderPass = null,
         null|int $subpass = null,
         null|VkPipeline $basePipelineHandle = null,
         null|int $basePipelineIndex = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkGraphicsPipelineCreateInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkGraphicsPipelineCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -154,14 +153,14 @@ final class VkGraphicsPipelineCreateInfo implements \JsonSerializable
     /**
      * VkPipelineShaderStageCreateInfo* /
      */
-    public function getPStages(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPStages(): VkPipelineShaderStageCreateInfo
     {
         $cValue = $this->cdata->pStages;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineShaderStageCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineShaderStageCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPStages(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPStages(VkPipelineShaderStageCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pStages = $cValue;
@@ -170,14 +169,14 @@ final class VkGraphicsPipelineCreateInfo implements \JsonSerializable
     /**
      * VkPipelineVertexInputStateCreateInfo* /
      */
-    public function getPVertexInputState(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPVertexInputState(): VkPipelineVertexInputStateCreateInfo
     {
         $cValue = $this->cdata->pVertexInputState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineVertexInputStateCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineVertexInputStateCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPVertexInputState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPVertexInputState(VkPipelineVertexInputStateCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pVertexInputState = $cValue;
@@ -186,14 +185,14 @@ final class VkGraphicsPipelineCreateInfo implements \JsonSerializable
     /**
      * VkPipelineInputAssemblyStateCreateInfo* /
      */
-    public function getPInputAssemblyState(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPInputAssemblyState(): VkPipelineInputAssemblyStateCreateInfo
     {
         $cValue = $this->cdata->pInputAssemblyState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineInputAssemblyStateCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineInputAssemblyStateCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPInputAssemblyState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPInputAssemblyState(VkPipelineInputAssemblyStateCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pInputAssemblyState = $cValue;
@@ -202,14 +201,14 @@ final class VkGraphicsPipelineCreateInfo implements \JsonSerializable
     /**
      * VkPipelineTessellationStateCreateInfo* /
      */
-    public function getPTessellationState(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPTessellationState(): VkPipelineTessellationStateCreateInfo
     {
         $cValue = $this->cdata->pTessellationState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineTessellationStateCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineTessellationStateCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPTessellationState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPTessellationState(VkPipelineTessellationStateCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pTessellationState = $cValue;
@@ -218,14 +217,14 @@ final class VkGraphicsPipelineCreateInfo implements \JsonSerializable
     /**
      * VkPipelineViewportStateCreateInfo* /
      */
-    public function getPViewportState(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPViewportState(): VkPipelineViewportStateCreateInfo
     {
         $cValue = $this->cdata->pViewportState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineViewportStateCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineViewportStateCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPViewportState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPViewportState(VkPipelineViewportStateCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pViewportState = $cValue;
@@ -234,14 +233,14 @@ final class VkGraphicsPipelineCreateInfo implements \JsonSerializable
     /**
      * VkPipelineRasterizationStateCreateInfo* /
      */
-    public function getPRasterizationState(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPRasterizationState(): VkPipelineRasterizationStateCreateInfo
     {
         $cValue = $this->cdata->pRasterizationState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineRasterizationStateCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineRasterizationStateCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPRasterizationState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPRasterizationState(VkPipelineRasterizationStateCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pRasterizationState = $cValue;
@@ -250,14 +249,14 @@ final class VkGraphicsPipelineCreateInfo implements \JsonSerializable
     /**
      * VkPipelineMultisampleStateCreateInfo* /
      */
-    public function getPMultisampleState(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPMultisampleState(): VkPipelineMultisampleStateCreateInfo
     {
         $cValue = $this->cdata->pMultisampleState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineMultisampleStateCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineMultisampleStateCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPMultisampleState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPMultisampleState(VkPipelineMultisampleStateCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pMultisampleState = $cValue;
@@ -266,14 +265,14 @@ final class VkGraphicsPipelineCreateInfo implements \JsonSerializable
     /**
      * VkPipelineDepthStencilStateCreateInfo* /
      */
-    public function getPDepthStencilState(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPDepthStencilState(): VkPipelineDepthStencilStateCreateInfo
     {
         $cValue = $this->cdata->pDepthStencilState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineDepthStencilStateCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineDepthStencilStateCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPDepthStencilState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPDepthStencilState(VkPipelineDepthStencilStateCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pDepthStencilState = $cValue;
@@ -282,14 +281,14 @@ final class VkGraphicsPipelineCreateInfo implements \JsonSerializable
     /**
      * VkPipelineColorBlendStateCreateInfo* /
      */
-    public function getPColorBlendState(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPColorBlendState(): VkPipelineColorBlendStateCreateInfo
     {
         $cValue = $this->cdata->pColorBlendState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineColorBlendStateCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineColorBlendStateCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPColorBlendState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPColorBlendState(VkPipelineColorBlendStateCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pColorBlendState = $cValue;
@@ -298,14 +297,14 @@ final class VkGraphicsPipelineCreateInfo implements \JsonSerializable
     /**
      * VkPipelineDynamicStateCreateInfo* /
      */
-    public function getPDynamicState(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPDynamicState(): VkPipelineDynamicStateCreateInfo
     {
         $cValue = $this->cdata->pDynamicState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineDynamicStateCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineDynamicStateCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPDynamicState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPDynamicState(VkPipelineDynamicStateCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pDynamicState = $cValue;

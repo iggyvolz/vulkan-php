@@ -22,9 +22,9 @@ final class VkPhysicalDeviceMutableDescriptorTypeFeaturesVALVE implements \JsonS
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMutableDescriptorTypeFeaturesVALVE', false));
+        $self = new self( $ffi->new('VkPhysicalDeviceMutableDescriptorTypeFeaturesVALVE', false));
         return $self;
     }
 }

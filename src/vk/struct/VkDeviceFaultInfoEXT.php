@@ -29,16 +29,15 @@ final class VkDeviceFaultInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|string $description = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pAddressInfos = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pVendorInfos = null,
+        mixed $pAddressInfos = null,
+        mixed $pVendorInfos = null,
         null|\iggyvolz\vulkan\util\Pointer $pVendorBinaryData = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDeviceFaultInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkDeviceFaultInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($description)) $self->setDescription($description);
@@ -97,34 +96,34 @@ final class VkDeviceFaultInfoEXT implements \JsonSerializable
     }
 
     /**
-     * VkDeviceFaultAddressInfoEXT* /
+     * void* /
      */
-    public function getPAddressInfos(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPAddressInfos(): mixed
     {
         $cValue = $this->cdata->pAddressInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDeviceFaultAddressInfoEXT', $cValue, $ffi); /** PTRANS */
+        throw new \LogicException("Dummy transformer - VkDeviceFaultAddressInfoEXT*!");
         return $phpValue;
     }
 
-    public function setPAddressInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPAddressInfos(mixed $phpValue): void
     {
-        $cValue = $phpValue->cdata;
+        throw new \LogicException("Dummy transformer - VkDeviceFaultAddressInfoEXT*!");
         $this->cdata->pAddressInfos = $cValue;
     }
 
     /**
-     * VkDeviceFaultVendorInfoEXT* /
+     * void* /
      */
-    public function getPVendorInfos(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPVendorInfos(): mixed
     {
         $cValue = $this->cdata->pVendorInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDeviceFaultVendorInfoEXT', $cValue, $ffi); /** PTRANS */
+        throw new \LogicException("Dummy transformer - VkDeviceFaultVendorInfoEXT*!");
         return $phpValue;
     }
 
-    public function setPVendorInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPVendorInfos(mixed $phpValue): void
     {
-        $cValue = $phpValue->cdata;
+        throw new \LogicException("Dummy transformer - VkDeviceFaultVendorInfoEXT*!");
         $this->cdata->pVendorInfos = $cValue;
     }
 

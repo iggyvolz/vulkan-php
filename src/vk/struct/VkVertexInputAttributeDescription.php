@@ -27,14 +27,13 @@ final class VkVertexInputAttributeDescription implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $location = null,
         null|int $binding = null,
         null|\iggyvolz\vulkan\enum\VkFormat $format = null,
         null|int $offset = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVertexInputAttributeDescription', false));
+    ): self {
+        $self = new self( $ffi->new('VkVertexInputAttributeDescription', false));
         if(!is_null($location)) $self->setLocation($location);
         if(!is_null($binding)) $self->setBinding($binding);
         if(!is_null($format)) $self->setFormat($format);

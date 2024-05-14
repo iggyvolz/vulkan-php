@@ -22,9 +22,9 @@ final class VkBufferOpaqueCaptureAddressCreateInfoKHR implements \JsonSerializab
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkBufferOpaqueCaptureAddressCreateInfoKHR', false));
+        $self = new self( $ffi->new('VkBufferOpaqueCaptureAddressCreateInfoKHR', false));
         return $self;
     }
 }

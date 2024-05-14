@@ -26,13 +26,12 @@ final class VkMultiDrawIndexedInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $firstIndex = null,
         null|int $indexCount = null,
         null|int $vertexOffset = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkMultiDrawIndexedInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkMultiDrawIndexedInfoEXT', false));
         if(!is_null($firstIndex)) $self->setFirstIndex($firstIndex);
         if(!is_null($indexCount)) $self->setIndexCount($indexCount);
         if(!is_null($vertexOffset)) $self->setVertexOffset($vertexOffset);

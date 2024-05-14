@@ -29,16 +29,15 @@ final class VkAabbPositionsKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|float $minX = null,
         null|float $minY = null,
         null|float $minZ = null,
         null|float $maxX = null,
         null|float $maxY = null,
         null|float $maxZ = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAabbPositionsKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkAabbPositionsKHR', false));
         if(!is_null($minX)) $self->setMinX($minX);
         if(!is_null($minY)) $self->setMinY($minY);
         if(!is_null($minZ)) $self->setMinZ($minZ);

@@ -29,16 +29,15 @@ final class VkDescriptorUpdateTemplateEntry implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $dstBinding = null,
         null|int $dstArrayElement = null,
         null|int $descriptorCount = null,
         null|\iggyvolz\vulkan\enum\VkDescriptorType $descriptorType = null,
         null|int $offset = null,
         null|int $stride = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDescriptorUpdateTemplateEntry', false));
+    ): self {
+        $self = new self( $ffi->new('VkDescriptorUpdateTemplateEntry', false));
         if(!is_null($dstBinding)) $self->setDstBinding($dstBinding);
         if(!is_null($dstArrayElement)) $self->setDstArrayElement($dstArrayElement);
         if(!is_null($descriptorCount)) $self->setDescriptorCount($descriptorCount);

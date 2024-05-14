@@ -27,14 +27,13 @@ final class VkSwapchainPresentFenceInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $swapchainCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pFences = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSwapchainPresentFenceInfoEXT', false));
+        null|VkFence $pFences = null,
+    ): self {
+        $self = new self( $ffi->new('VkSwapchainPresentFenceInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($swapchainCount)) $self->setSwapchainCount($swapchainCount);
@@ -93,14 +92,14 @@ final class VkSwapchainPresentFenceInfoEXT implements \JsonSerializable
     /**
      * VkFence* /
      */
-    public function getPFences(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPFences(): VkFence
     {
         $cValue = $this->cdata->pFences;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkFence', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkFence($cValue);
         return $phpValue;
     }
 
-    public function setPFences(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPFences(VkFence $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pFences = $cValue;

@@ -23,9 +23,9 @@ final class VkSetStateFlagsIndirectCommandNV implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan, null|int $data = null): self
+    public static function create(\FFI $ffi, null|int $data = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkSetStateFlagsIndirectCommandNV', false));
+        $self = new self( $ffi->new('VkSetStateFlagsIndirectCommandNV', false));
         if(!is_null($data)) $self->setData($data);
         return $self;
     }

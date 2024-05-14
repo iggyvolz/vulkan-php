@@ -27,14 +27,13 @@ final class VkPhysicalDevice4444FormatsFeaturesEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $formatA4R4G4B4 = null,
         null|bool $formatA4B4G4R4 = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDevice4444FormatsFeaturesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDevice4444FormatsFeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($formatA4R4G4B4)) $self->setFormatA4R4G4B4($formatA4R4G4B4);

@@ -26,13 +26,12 @@ final class VkClearRect implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkRect2D $rect = null,
         null|int $baseArrayLayer = null,
         null|int $layerCount = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkClearRect', false));
+    ): self {
+        $self = new self( $ffi->new('VkClearRect', false));
         if(!is_null($rect)) $self->setRect($rect);
         if(!is_null($baseArrayLayer)) $self->setBaseArrayLayer($baseArrayLayer);
         if(!is_null($layerCount)) $self->setLayerCount($layerCount);

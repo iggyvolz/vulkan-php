@@ -45,7 +45,7 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $shaderInputAttachmentArrayDynamicIndexing = null,
@@ -68,9 +68,8 @@ final class VkPhysicalDeviceDescriptorIndexingFeatures implements \JsonSerializa
         null|bool $descriptorBindingPartiallyBound = null,
         null|bool $descriptorBindingVariableDescriptorCount = null,
         null|bool $runtimeDescriptorArray = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDescriptorIndexingFeatures', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceDescriptorIndexingFeatures', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderInputAttachmentArrayDynamicIndexing)) $self->setShaderInputAttachmentArrayDynamicIndexing($shaderInputAttachmentArrayDynamicIndexing);

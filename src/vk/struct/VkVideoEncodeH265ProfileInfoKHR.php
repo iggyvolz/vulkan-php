@@ -26,13 +26,12 @@ final class VkVideoEncodeH265ProfileInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         mixed $stdProfileIdc = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265ProfileInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkVideoEncodeH265ProfileInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($stdProfileIdc)) $self->setStdProfileIdc($stdProfileIdc);
@@ -77,13 +76,13 @@ final class VkVideoEncodeH265ProfileInfoKHR implements \JsonSerializable
     public function getStdProfileIdc(): mixed
     {
         $cValue = $this->cdata->stdProfileIdc;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - StdVideoH265ProfileIdc!");
         return $phpValue;
     }
 
     public function setStdProfileIdc(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - StdVideoH265ProfileIdc!");
         $this->cdata->stdProfileIdc = $cValue;
     }
 }

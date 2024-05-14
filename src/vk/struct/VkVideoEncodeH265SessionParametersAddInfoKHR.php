@@ -31,7 +31,7 @@ final class VkVideoEncodeH265SessionParametersAddInfoKHR implements \JsonSeriali
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $stdVPSCount = null,
@@ -40,9 +40,8 @@ final class VkVideoEncodeH265SessionParametersAddInfoKHR implements \JsonSeriali
         null|\iggyvolz\vulkan\util\Pointer $pStdSPSs = null,
         null|int $stdPPSCount = null,
         null|\iggyvolz\vulkan\util\Pointer $pStdPPSs = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265SessionParametersAddInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkVideoEncodeH265SessionParametersAddInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($stdVPSCount)) $self->setStdVPSCount($stdVPSCount);

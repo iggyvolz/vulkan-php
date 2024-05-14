@@ -24,9 +24,9 @@ final class VkXYColorEXT implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan, null|float $x = null, null|float $y = null): self
+    public static function create(\FFI $ffi, null|float $x = null, null|float $y = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkXYColorEXT', false));
+        $self = new self( $ffi->new('VkXYColorEXT', false));
         if(!is_null($x)) $self->setX($x);
         if(!is_null($y)) $self->setY($y);
         return $self;

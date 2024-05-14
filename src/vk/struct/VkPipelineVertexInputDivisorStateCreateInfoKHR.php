@@ -27,14 +27,13 @@ final class VkPipelineVertexInputDivisorStateCreateInfoKHR implements \JsonSeria
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $vertexBindingDivisorCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pVertexBindingDivisors = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineVertexInputDivisorStateCreateInfoKHR', false));
+        null|VkVertexInputBindingDivisorDescriptionKHR $pVertexBindingDivisors = null,
+    ): self {
+        $self = new self( $ffi->new('VkPipelineVertexInputDivisorStateCreateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($vertexBindingDivisorCount)) $self->setVertexBindingDivisorCount($vertexBindingDivisorCount);
@@ -93,14 +92,14 @@ final class VkPipelineVertexInputDivisorStateCreateInfoKHR implements \JsonSeria
     /**
      * VkVertexInputBindingDivisorDescriptionKHR* /
      */
-    public function getPVertexBindingDivisors(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPVertexBindingDivisors(): VkVertexInputBindingDivisorDescriptionKHR
     {
         $cValue = $this->cdata->pVertexBindingDivisors;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkVertexInputBindingDivisorDescriptionKHR', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkVertexInputBindingDivisorDescriptionKHR($cValue);
         return $phpValue;
     }
 
-    public function setPVertexBindingDivisors(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPVertexBindingDivisors(VkVertexInputBindingDivisorDescriptionKHR $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pVertexBindingDivisors = $cValue;

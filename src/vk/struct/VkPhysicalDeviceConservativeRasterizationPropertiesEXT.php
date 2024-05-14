@@ -34,7 +34,7 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT implements \J
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|float $primitiveOverestimationSize = null,
@@ -46,9 +46,8 @@ final class VkPhysicalDeviceConservativeRasterizationPropertiesEXT implements \J
         null|bool $degenerateLinesRasterized = null,
         null|bool $fullyCoveredFragmentShaderInputVariable = null,
         null|bool $conservativeRasterizationPostDepthCoverage = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceConservativeRasterizationPropertiesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceConservativeRasterizationPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($primitiveOverestimationSize)) $self->setPrimitiveOverestimationSize($primitiveOverestimationSize);

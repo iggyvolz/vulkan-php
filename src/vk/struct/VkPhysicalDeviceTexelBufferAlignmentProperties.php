@@ -29,16 +29,15 @@ final class VkPhysicalDeviceTexelBufferAlignmentProperties implements \JsonSeria
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $storageTexelBufferOffsetAlignmentBytes = null,
         null|bool $storageTexelBufferOffsetSingleTexelAlignment = null,
         null|int $uniformTexelBufferOffsetAlignmentBytes = null,
         null|bool $uniformTexelBufferOffsetSingleTexelAlignment = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceTexelBufferAlignmentProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceTexelBufferAlignmentProperties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($storageTexelBufferOffsetAlignmentBytes)) $self->setStorageTexelBufferOffsetAlignmentBytes($storageTexelBufferOffsetAlignmentBytes);

@@ -32,19 +32,18 @@ final class VkSubmitInfo2 implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $waitSemaphoreInfoCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pWaitSemaphoreInfos = null,
+        null|VkSemaphoreSubmitInfo $pWaitSemaphoreInfos = null,
         null|int $commandBufferInfoCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pCommandBufferInfos = null,
+        null|VkCommandBufferSubmitInfo $pCommandBufferInfos = null,
         null|int $signalSemaphoreInfoCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pSignalSemaphoreInfos = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSubmitInfo2', false));
+        null|VkSemaphoreSubmitInfo $pSignalSemaphoreInfos = null,
+    ): self {
+        $self = new self( $ffi->new('VkSubmitInfo2', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -124,14 +123,14 @@ final class VkSubmitInfo2 implements \JsonSerializable
     /**
      * VkSemaphoreSubmitInfo* /
      */
-    public function getPWaitSemaphoreInfos(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPWaitSemaphoreInfos(): VkSemaphoreSubmitInfo
     {
         $cValue = $this->cdata->pWaitSemaphoreInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSemaphoreSubmitInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSemaphoreSubmitInfo($cValue);
         return $phpValue;
     }
 
-    public function setPWaitSemaphoreInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPWaitSemaphoreInfos(VkSemaphoreSubmitInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pWaitSemaphoreInfos = $cValue;
@@ -156,14 +155,14 @@ final class VkSubmitInfo2 implements \JsonSerializable
     /**
      * VkCommandBufferSubmitInfo* /
      */
-    public function getPCommandBufferInfos(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPCommandBufferInfos(): VkCommandBufferSubmitInfo
     {
         $cValue = $this->cdata->pCommandBufferInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkCommandBufferSubmitInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkCommandBufferSubmitInfo($cValue);
         return $phpValue;
     }
 
-    public function setPCommandBufferInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPCommandBufferInfos(VkCommandBufferSubmitInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pCommandBufferInfos = $cValue;
@@ -188,14 +187,14 @@ final class VkSubmitInfo2 implements \JsonSerializable
     /**
      * VkSemaphoreSubmitInfo* /
      */
-    public function getPSignalSemaphoreInfos(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPSignalSemaphoreInfos(): VkSemaphoreSubmitInfo
     {
         $cValue = $this->cdata->pSignalSemaphoreInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSemaphoreSubmitInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSemaphoreSubmitInfo($cValue);
         return $phpValue;
     }
 
-    public function setPSignalSemaphoreInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPSignalSemaphoreInfos(VkSemaphoreSubmitInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pSignalSemaphoreInfos = $cValue;

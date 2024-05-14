@@ -28,15 +28,14 @@ final class VkSubpassDescriptionDepthStencilResolve implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkResolveModeFlagBits $depthResolveMode = null,
         null|\iggyvolz\vulkan\enum\VkResolveModeFlagBits $stencilResolveMode = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pDepthStencilResolveAttachment = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSubpassDescriptionDepthStencilResolve', false));
+        null|VkAttachmentReference2 $pDepthStencilResolveAttachment = null,
+    ): self {
+        $self = new self( $ffi->new('VkSubpassDescriptionDepthStencilResolve', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($depthResolveMode)) $self->setDepthResolveMode($depthResolveMode);
@@ -112,14 +111,14 @@ final class VkSubpassDescriptionDepthStencilResolve implements \JsonSerializable
     /**
      * VkAttachmentReference2* /
      */
-    public function getPDepthStencilResolveAttachment(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPDepthStencilResolveAttachment(): VkAttachmentReference2
     {
         $cValue = $this->cdata->pDepthStencilResolveAttachment;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentReference2', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkAttachmentReference2($cValue);
         return $phpValue;
     }
 
-    public function setPDepthStencilResolveAttachment(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPDepthStencilResolveAttachment(VkAttachmentReference2 $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pDepthStencilResolveAttachment = $cValue;

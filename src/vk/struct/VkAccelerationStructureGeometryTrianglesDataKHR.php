@@ -32,7 +32,7 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR implements \JsonSeri
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkFormat $vertexFormat = null,
@@ -42,9 +42,8 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR implements \JsonSeri
         null|\iggyvolz\vulkan\enum\VkIndexType $indexType = null,
         mixed $indexData = null,
         mixed $transformData = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureGeometryTrianglesDataKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkAccelerationStructureGeometryTrianglesDataKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($vertexFormat)) $self->setVertexFormat($vertexFormat);
@@ -111,13 +110,13 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR implements \JsonSeri
     public function getVertexData(): mixed
     {
         $cValue = $this->cdata->vertexData;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         return $phpValue;
     }
 
     public function setVertexData(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         $this->cdata->vertexData = $cValue;
     }
 
@@ -175,13 +174,13 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR implements \JsonSeri
     public function getIndexData(): mixed
     {
         $cValue = $this->cdata->indexData;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         return $phpValue;
     }
 
     public function setIndexData(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         $this->cdata->indexData = $cValue;
     }
 
@@ -191,13 +190,13 @@ final class VkAccelerationStructureGeometryTrianglesDataKHR implements \JsonSeri
     public function getTransformData(): mixed
     {
         $cValue = $this->cdata->transformData;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         return $phpValue;
     }
 
     public function setTransformData(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         $this->cdata->transformData = $cValue;
     }
 }

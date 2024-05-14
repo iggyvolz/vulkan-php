@@ -34,7 +34,7 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR implements \JsonSerializa
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $preferredRateControlFlags = null,
@@ -46,9 +46,8 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR implements \JsonSerializa
         null|int $preferredMaxL0ReferenceCount = null,
         null|int $preferredMaxL1ReferenceCount = null,
         null|bool $preferredStdEntropyCodingModeFlag = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264QualityLevelPropertiesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkVideoEncodeH264QualityLevelPropertiesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($preferredRateControlFlags)) $self->setPreferredRateControlFlags($preferredRateControlFlags);
@@ -181,13 +180,13 @@ final class VkVideoEncodeH264QualityLevelPropertiesKHR implements \JsonSerializa
     public function getPreferredConstantQp(): mixed
     {
         $cValue = $this->cdata->preferredConstantQp;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkVideoEncodeH264QpKHR!");
         return $phpValue;
     }
 
     public function setPreferredConstantQp(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkVideoEncodeH264QpKHR!");
         $this->cdata->preferredConstantQp = $cValue;
     }
 

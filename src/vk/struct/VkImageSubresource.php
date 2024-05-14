@@ -26,13 +26,12 @@ final class VkImageSubresource implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|array $aspectMask = null,
         null|int $mipLevel = null,
         null|int $arrayLayer = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImageSubresource', false));
+    ): self {
+        $self = new self( $ffi->new('VkImageSubresource', false));
         if(!is_null($aspectMask)) $self->setAspectMask($aspectMask);
         if(!is_null($mipLevel)) $self->setMipLevel($mipLevel);
         if(!is_null($arrayLayer)) $self->setArrayLayer($arrayLayer);

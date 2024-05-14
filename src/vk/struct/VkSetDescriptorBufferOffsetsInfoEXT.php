@@ -31,7 +31,7 @@ final class VkSetDescriptorBufferOffsetsInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $stageFlags = null,
@@ -40,9 +40,8 @@ final class VkSetDescriptorBufferOffsetsInfoEXT implements \JsonSerializable
         null|int $setCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pBufferIndices = null,
         null|\iggyvolz\vulkan\util\Pointer $pOffsets = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSetDescriptorBufferOffsetsInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkSetDescriptorBufferOffsetsInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($stageFlags)) $self->setStageFlags($stageFlags);

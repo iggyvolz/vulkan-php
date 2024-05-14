@@ -25,12 +25,11 @@ final class VkDescriptorPoolSize implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkDescriptorType $type = null,
         null|int $descriptorCount = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDescriptorPoolSize', false));
+    ): self {
+        $self = new self( $ffi->new('VkDescriptorPoolSize', false));
         if(!is_null($type)) $self->setType($type);
         if(!is_null($descriptorCount)) $self->setDescriptorCount($descriptorCount);
         return $self;

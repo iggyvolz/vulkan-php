@@ -32,7 +32,7 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|array $supportedAlpha = null,
         null|VkOffset2D $minSrcPosition = null,
         null|VkOffset2D $maxSrcPosition = null,
@@ -42,9 +42,8 @@ final class VkDisplayPlaneCapabilitiesKHR implements \JsonSerializable
         null|VkOffset2D $maxDstPosition = null,
         null|VkExtent2D $minDstExtent = null,
         null|VkExtent2D $maxDstExtent = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDisplayPlaneCapabilitiesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkDisplayPlaneCapabilitiesKHR', false));
         if(!is_null($supportedAlpha)) $self->setSupportedAlpha($supportedAlpha);
         if(!is_null($minSrcPosition)) $self->setMinSrcPosition($minSrcPosition);
         if(!is_null($maxSrcPosition)) $self->setMaxSrcPosition($maxSrcPosition);

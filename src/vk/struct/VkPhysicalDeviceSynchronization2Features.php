@@ -26,13 +26,12 @@ final class VkPhysicalDeviceSynchronization2Features implements \JsonSerializabl
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $synchronization2 = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSynchronization2Features', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceSynchronization2Features', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($synchronization2)) $self->setSynchronization2($synchronization2);

@@ -26,13 +26,12 @@ final class VkPhysicalDeviceShaderFloatControls2FeaturesKHR implements \JsonSeri
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $shaderFloatControls2 = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderFloatControls2FeaturesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderFloatControls2FeaturesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderFloatControls2)) $self->setShaderFloatControls2($shaderFloatControls2);

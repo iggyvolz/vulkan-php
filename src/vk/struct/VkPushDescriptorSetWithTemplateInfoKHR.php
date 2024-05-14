@@ -29,16 +29,15 @@ final class VkPushDescriptorSetWithTemplateInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkDescriptorUpdateTemplate $descriptorUpdateTemplate = null,
         null|VkPipelineLayout $layout = null,
         null|int $set = null,
         null|\iggyvolz\vulkan\util\Pointer $pData = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPushDescriptorSetWithTemplateInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPushDescriptorSetWithTemplateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($descriptorUpdateTemplate)) $self->setDescriptorUpdateTemplate($descriptorUpdateTemplate);

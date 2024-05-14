@@ -28,15 +28,14 @@ final class VkSparseImageMemoryRequirements implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkSparseImageFormatProperties $formatProperties = null,
         null|int $imageMipTailFirstLod = null,
         null|int $imageMipTailSize = null,
         null|int $imageMipTailOffset = null,
         null|int $imageMipTailStride = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSparseImageMemoryRequirements', false));
+    ): self {
+        $self = new self( $ffi->new('VkSparseImageMemoryRequirements', false));
         if(!is_null($formatProperties)) $self->setFormatProperties($formatProperties);
         if(!is_null($imageMipTailFirstLod)) $self->setImageMipTailFirstLod($imageMipTailFirstLod);
         if(!is_null($imageMipTailSize)) $self->setImageMipTailSize($imageMipTailSize);

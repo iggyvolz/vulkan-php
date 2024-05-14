@@ -27,14 +27,13 @@ final class VkLayerProperties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|string $layerName = null,
         null|int $specVersion = null,
         null|int $implementationVersion = null,
         null|string $description = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkLayerProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkLayerProperties', false));
         if(!is_null($layerName)) $self->setLayerName($layerName);
         if(!is_null($specVersion)) $self->setSpecVersion($specVersion);
         if(!is_null($implementationVersion)) $self->setImplementationVersion($implementationVersion);

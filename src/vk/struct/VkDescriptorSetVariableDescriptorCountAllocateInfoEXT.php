@@ -22,9 +22,9 @@ final class VkDescriptorSetVariableDescriptorCountAllocateInfoEXT implements \Js
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorSetVariableDescriptorCountAllocateInfoEXT', false));
+        $self = new self( $ffi->new('VkDescriptorSetVariableDescriptorCountAllocateInfoEXT', false));
         return $self;
     }
 }

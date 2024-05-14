@@ -29,16 +29,15 @@ final class VkPipelineCacheHeaderVersionSafetyCriticalOne implements \JsonSerial
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkPipelineCacheHeaderVersionOne $headerVersionOne = null,
         null|\iggyvolz\vulkan\enum\VkPipelineCacheValidationVersion $validationVersion = null,
         null|int $implementationData = null,
         null|int $pipelineIndexCount = null,
         null|int $pipelineIndexStride = null,
         null|int $pipelineIndexOffset = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineCacheHeaderVersionSafetyCriticalOne', false));
+    ): self {
+        $self = new self( $ffi->new('VkPipelineCacheHeaderVersionSafetyCriticalOne', false));
         if(!is_null($headerVersionOne)) $self->setHeaderVersionOne($headerVersionOne);
         if(!is_null($validationVersion)) $self->setValidationVersion($validationVersion);
         if(!is_null($implementationData)) $self->setImplementationData($implementationData);

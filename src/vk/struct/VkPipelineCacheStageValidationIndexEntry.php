@@ -24,13 +24,9 @@ final class VkPipelineCacheStageValidationIndexEntry implements \JsonSerializabl
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|int $codeSize = null,
-        null|int $codeOffset = null,
-    ): self
+    public static function create(\FFI $ffi, null|int $codeSize = null, null|int $codeOffset = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineCacheStageValidationIndexEntry', false));
+        $self = new self( $ffi->new('VkPipelineCacheStageValidationIndexEntry', false));
         if(!is_null($codeSize)) $self->setCodeSize($codeSize);
         if(!is_null($codeOffset)) $self->setCodeOffset($codeOffset);
         return $self;

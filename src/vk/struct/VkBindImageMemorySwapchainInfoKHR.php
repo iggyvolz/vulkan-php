@@ -27,14 +27,13 @@ final class VkBindImageMemorySwapchainInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkSwapchainKHR $swapchain = null,
         null|int $imageIndex = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkBindImageMemorySwapchainInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkBindImageMemorySwapchainInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($swapchain)) $self->setSwapchain($swapchain);

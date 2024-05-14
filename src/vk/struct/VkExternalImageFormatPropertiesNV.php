@@ -27,14 +27,13 @@ final class VkExternalImageFormatPropertiesNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkImageFormatProperties $imageFormatProperties = null,
         null|array $externalMemoryFeatures = null,
         null|array $exportFromImportedHandleTypes = null,
         null|array $compatibleHandleTypes = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkExternalImageFormatPropertiesNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkExternalImageFormatPropertiesNV', false));
         if(!is_null($imageFormatProperties)) $self->setImageFormatProperties($imageFormatProperties);
         if(!is_null($externalMemoryFeatures)) $self->setExternalMemoryFeatures($externalMemoryFeatures);
         if(!is_null($exportFromImportedHandleTypes)) $self->setExportFromImportedHandleTypes($exportFromImportedHandleTypes);

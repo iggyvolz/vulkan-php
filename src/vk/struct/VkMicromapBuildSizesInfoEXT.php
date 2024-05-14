@@ -28,15 +28,14 @@ final class VkMicromapBuildSizesInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $micromapSize = null,
         null|int $buildScratchSize = null,
         null|bool $discardable = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkMicromapBuildSizesInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkMicromapBuildSizesInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($micromapSize)) $self->setMicromapSize($micromapSize);

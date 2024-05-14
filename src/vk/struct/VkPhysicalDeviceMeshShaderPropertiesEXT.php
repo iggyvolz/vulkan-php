@@ -53,7 +53,7 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $maxTaskWorkGroupTotalCount = null,
@@ -84,9 +84,8 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
         null|bool $prefersLocalInvocationPrimitiveOutput = null,
         null|bool $prefersCompactVertexOutput = null,
         null|bool $prefersCompactPrimitiveOutput = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMeshShaderPropertiesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceMeshShaderPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxTaskWorkGroupTotalCount)) $self->setMaxTaskWorkGroupTotalCount($maxTaskWorkGroupTotalCount);
@@ -174,13 +173,13 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
     public function getMaxTaskWorkGroupCount(): mixed
     {
         $cValue = $this->cdata->maxTaskWorkGroupCount;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         return $phpValue;
     }
 
     public function setMaxTaskWorkGroupCount(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         $this->cdata->maxTaskWorkGroupCount = $cValue;
     }
 
@@ -206,13 +205,13 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
     public function getMaxTaskWorkGroupSize(): mixed
     {
         $cValue = $this->cdata->maxTaskWorkGroupSize;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         return $phpValue;
     }
 
     public function setMaxTaskWorkGroupSize(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         $this->cdata->maxTaskWorkGroupSize = $cValue;
     }
 
@@ -286,13 +285,13 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
     public function getMaxMeshWorkGroupCount(): mixed
     {
         $cValue = $this->cdata->maxMeshWorkGroupCount;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         return $phpValue;
     }
 
     public function setMaxMeshWorkGroupCount(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         $this->cdata->maxMeshWorkGroupCount = $cValue;
     }
 
@@ -318,13 +317,13 @@ final class VkPhysicalDeviceMeshShaderPropertiesEXT implements \JsonSerializable
     public function getMaxMeshWorkGroupSize(): mixed
     {
         $cValue = $this->cdata->maxMeshWorkGroupSize;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         return $phpValue;
     }
 
     public function setMaxMeshWorkGroupSize(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         $this->cdata->maxMeshWorkGroupSize = $cValue;
     }
 

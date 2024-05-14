@@ -26,13 +26,12 @@ final class VkBindVertexBufferIndirectCommandNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $bufferAddress = null,
         null|int $size = null,
         null|int $stride = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkBindVertexBufferIndirectCommandNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkBindVertexBufferIndirectCommandNV', false));
         if(!is_null($bufferAddress)) $self->setBufferAddress($bufferAddress);
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($stride)) $self->setStride($stride);

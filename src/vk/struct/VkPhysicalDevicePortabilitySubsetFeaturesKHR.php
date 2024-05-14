@@ -40,7 +40,7 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $constantAlphaColorBlendFactors = null,
@@ -58,9 +58,8 @@ final class VkPhysicalDevicePortabilitySubsetFeaturesKHR implements \JsonSeriali
         null|bool $tessellationPointMode = null,
         null|bool $triangleFans = null,
         null|bool $vertexAttributeAccessBeyondStride = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDevicePortabilitySubsetFeaturesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDevicePortabilitySubsetFeaturesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($constantAlphaColorBlendFactors)) $self->setConstantAlphaColorBlendFactors($constantAlphaColorBlendFactors);

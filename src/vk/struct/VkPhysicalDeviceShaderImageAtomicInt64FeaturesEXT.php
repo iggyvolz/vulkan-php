@@ -27,14 +27,13 @@ final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT implements \JsonSe
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $shaderImageInt64Atomics = null,
         null|bool $sparseImageInt64Atomics = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderImageInt64Atomics)) $self->setShaderImageInt64Atomics($shaderImageInt64Atomics);

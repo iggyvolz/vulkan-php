@@ -24,13 +24,9 @@ final class VkPipelineCreationFeedback implements \JsonSerializable
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|array $flags = null,
-        null|int $duration = null,
-    ): self
+    public static function create(\FFI $ffi, null|array $flags = null, null|int $duration = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineCreationFeedback', false));
+        $self = new self( $ffi->new('VkPipelineCreationFeedback', false));
         if(!is_null($flags)) $self->setFlags($flags);
         if(!is_null($duration)) $self->setDuration($duration);
         return $self;

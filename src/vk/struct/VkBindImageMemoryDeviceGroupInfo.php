@@ -29,16 +29,15 @@ final class VkBindImageMemoryDeviceGroupInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $deviceIndexCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pDeviceIndices = null,
         null|int $splitInstanceBindRegionCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pSplitInstanceBindRegions = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkBindImageMemoryDeviceGroupInfo', false));
+        null|VkRect2D $pSplitInstanceBindRegions = null,
+    ): self {
+        $self = new self( $ffi->new('VkBindImageMemoryDeviceGroupInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($deviceIndexCount)) $self->setDeviceIndexCount($deviceIndexCount);
@@ -131,14 +130,14 @@ final class VkBindImageMemoryDeviceGroupInfo implements \JsonSerializable
     /**
      * VkRect2D* /
      */
-    public function getPSplitInstanceBindRegions(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPSplitInstanceBindRegions(): VkRect2D
     {
         $cValue = $this->cdata->pSplitInstanceBindRegions;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRect2D', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkRect2D($cValue);
         return $phpValue;
     }
 
-    public function setPSplitInstanceBindRegions(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPSplitInstanceBindRegions(VkRect2D $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pSplitInstanceBindRegions = $cValue;

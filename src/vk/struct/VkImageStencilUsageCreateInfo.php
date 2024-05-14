@@ -26,13 +26,12 @@ final class VkImageStencilUsageCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $stencilUsage = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImageStencilUsageCreateInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkImageStencilUsageCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($stencilUsage)) $self->setStencilUsage($stencilUsage);

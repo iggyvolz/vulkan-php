@@ -28,15 +28,14 @@ final class VkCopyMemoryToAccelerationStructureInfoKHR implements \JsonSerializa
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         mixed $src = null,
         null|VkAccelerationStructureKHR $dst = null,
         null|\iggyvolz\vulkan\enum\VkCopyAccelerationStructureModeKHR $mode = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkCopyMemoryToAccelerationStructureInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkCopyMemoryToAccelerationStructureInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($src)) $self->setSrc($src);
@@ -83,13 +82,13 @@ final class VkCopyMemoryToAccelerationStructureInfoKHR implements \JsonSerializa
     public function getSrc(): mixed
     {
         $cValue = $this->cdata->src;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         return $phpValue;
     }
 
     public function setSrc(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         $this->cdata->src = $cValue;
     }
 

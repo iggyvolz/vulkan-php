@@ -26,13 +26,12 @@ final class VkRefreshObjectKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkObjectType $objectType = null,
         null|int $objectHandle = null,
         null|array $flags = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRefreshObjectKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkRefreshObjectKHR', false));
         if(!is_null($objectType)) $self->setObjectType($objectType);
         if(!is_null($objectHandle)) $self->setObjectHandle($objectHandle);
         if(!is_null($flags)) $self->setFlags($flags);

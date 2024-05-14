@@ -29,16 +29,15 @@ final class VkVertexInputBindingDescription2EXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $binding = null,
         null|int $stride = null,
         null|\iggyvolz\vulkan\enum\VkVertexInputRate $inputRate = null,
         null|int $divisor = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVertexInputBindingDescription2EXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkVertexInputBindingDescription2EXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($binding)) $self->setBinding($binding);

@@ -29,16 +29,15 @@ final class VkColorBlendEquationEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkBlendFactor $srcColorBlendFactor = null,
         null|\iggyvolz\vulkan\enum\VkBlendFactor $dstColorBlendFactor = null,
         null|\iggyvolz\vulkan\enum\VkBlendOp $colorBlendOp = null,
         null|\iggyvolz\vulkan\enum\VkBlendFactor $srcAlphaBlendFactor = null,
         null|\iggyvolz\vulkan\enum\VkBlendFactor $dstAlphaBlendFactor = null,
         null|\iggyvolz\vulkan\enum\VkBlendOp $alphaBlendOp = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkColorBlendEquationEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkColorBlendEquationEXT', false));
         if(!is_null($srcColorBlendFactor)) $self->setSrcColorBlendFactor($srcColorBlendFactor);
         if(!is_null($dstColorBlendFactor)) $self->setDstColorBlendFactor($dstColorBlendFactor);
         if(!is_null($colorBlendOp)) $self->setColorBlendOp($colorBlendOp);

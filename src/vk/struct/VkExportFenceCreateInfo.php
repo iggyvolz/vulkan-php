@@ -26,13 +26,12 @@ final class VkExportFenceCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $handleTypes = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkExportFenceCreateInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkExportFenceCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($handleTypes)) $self->setHandleTypes($handleTypes);

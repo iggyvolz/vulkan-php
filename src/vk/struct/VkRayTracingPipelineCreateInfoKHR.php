@@ -37,24 +37,23 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $stageCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pStages = null,
+        null|VkPipelineShaderStageCreateInfo $pStages = null,
         null|int $groupCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pGroups = null,
+        null|VkRayTracingShaderGroupCreateInfoKHR $pGroups = null,
         null|int $maxPipelineRayRecursionDepth = null,
         null|\iggyvolz\vulkan\util\Pointer $pLibraryInfo = null,
         null|\iggyvolz\vulkan\util\Pointer $pLibraryInterface = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pDynamicState = null,
+        null|VkPipelineDynamicStateCreateInfo $pDynamicState = null,
         null|VkPipelineLayout $layout = null,
         null|VkPipeline $basePipelineHandle = null,
         null|int $basePipelineIndex = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRayTracingPipelineCreateInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkRayTracingPipelineCreateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -139,14 +138,14 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
     /**
      * VkPipelineShaderStageCreateInfo* /
      */
-    public function getPStages(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPStages(): VkPipelineShaderStageCreateInfo
     {
         $cValue = $this->cdata->pStages;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineShaderStageCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineShaderStageCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPStages(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPStages(VkPipelineShaderStageCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pStages = $cValue;
@@ -171,14 +170,14 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
     /**
      * VkRayTracingShaderGroupCreateInfoKHR* /
      */
-    public function getPGroups(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPGroups(): VkRayTracingShaderGroupCreateInfoKHR
     {
         $cValue = $this->cdata->pGroups;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRayTracingShaderGroupCreateInfoKHR', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkRayTracingShaderGroupCreateInfoKHR($cValue);
         return $phpValue;
     }
 
-    public function setPGroups(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPGroups(VkRayTracingShaderGroupCreateInfoKHR $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pGroups = $cValue;
@@ -235,14 +234,14 @@ final class VkRayTracingPipelineCreateInfoKHR implements \JsonSerializable
     /**
      * VkPipelineDynamicStateCreateInfo* /
      */
-    public function getPDynamicState(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPDynamicState(): VkPipelineDynamicStateCreateInfo
     {
         $cValue = $this->cdata->pDynamicState;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineDynamicStateCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineDynamicStateCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPDynamicState(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPDynamicState(VkPipelineDynamicStateCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pDynamicState = $cValue;

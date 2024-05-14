@@ -30,7 +30,7 @@ final class VkApplicationInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         ?string $pApplicationName = null,
@@ -38,9 +38,8 @@ final class VkApplicationInfo implements \JsonSerializable
         ?string $pEngineName = null,
         null|int $engineVersion = null,
         null|int $apiVersion = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkApplicationInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkApplicationInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pApplicationName)) $self->setPApplicationName($pApplicationName);

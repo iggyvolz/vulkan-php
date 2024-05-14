@@ -31,7 +31,7 @@ final class VkRenderPassMultiviewCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $subpassCount = null,
@@ -40,9 +40,8 @@ final class VkRenderPassMultiviewCreateInfo implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pViewOffsets = null,
         null|int $correlationMaskCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pCorrelationMasks = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRenderPassMultiviewCreateInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkRenderPassMultiviewCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($subpassCount)) $self->setSubpassCount($subpassCount);

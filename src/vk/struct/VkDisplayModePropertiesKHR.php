@@ -25,12 +25,11 @@ final class VkDisplayModePropertiesKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkDisplayModeKHR $displayMode = null,
         null|VkDisplayModeParametersKHR $parameters = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDisplayModePropertiesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkDisplayModePropertiesKHR', false));
         if(!is_null($displayMode)) $self->setDisplayMode($displayMode);
         if(!is_null($parameters)) $self->setParameters($parameters);
         return $self;

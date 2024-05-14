@@ -22,9 +22,9 @@ final class VkImageSubresource2EXT implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageSubresource2EXT', false));
+        $self = new self( $ffi->new('VkImageSubresource2EXT', false));
         return $self;
     }
 }

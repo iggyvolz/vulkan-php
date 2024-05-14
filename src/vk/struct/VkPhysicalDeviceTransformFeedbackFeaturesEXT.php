@@ -27,14 +27,13 @@ final class VkPhysicalDeviceTransformFeedbackFeaturesEXT implements \JsonSeriali
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $transformFeedback = null,
         null|bool $geometryStreams = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceTransformFeedbackFeaturesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceTransformFeedbackFeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($transformFeedback)) $self->setTransformFeedback($transformFeedback);

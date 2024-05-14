@@ -28,15 +28,14 @@ final class VkPastPresentationTimingGOOGLE implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $presentID = null,
         null|int $desiredPresentTime = null,
         null|int $actualPresentTime = null,
         null|int $earliestPresentTime = null,
         null|int $presentMargin = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPastPresentationTimingGOOGLE', false));
+    ): self {
+        $self = new self( $ffi->new('VkPastPresentationTimingGOOGLE', false));
         if(!is_null($presentID)) $self->setPresentID($presentID);
         if(!is_null($desiredPresentTime)) $self->setDesiredPresentTime($desiredPresentTime);
         if(!is_null($actualPresentTime)) $self->setActualPresentTime($actualPresentTime);

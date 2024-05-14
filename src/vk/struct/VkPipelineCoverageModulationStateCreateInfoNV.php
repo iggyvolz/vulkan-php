@@ -30,7 +30,7 @@ final class VkPipelineCoverageModulationStateCreateInfoNV implements \JsonSerial
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
@@ -38,9 +38,8 @@ final class VkPipelineCoverageModulationStateCreateInfoNV implements \JsonSerial
         null|bool $coverageModulationTableEnable = null,
         null|int $coverageModulationTableCount = null,
         null|\iggyvolz\vulkan\util\Pointer $pCoverageModulationTable = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineCoverageModulationStateCreateInfoNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkPipelineCoverageModulationStateCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);

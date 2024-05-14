@@ -22,9 +22,9 @@ final class VkPhysicalDeviceMultiviewFeaturesKHR implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMultiviewFeaturesKHR', false));
+        $self = new self( $ffi->new('VkPhysicalDeviceMultiviewFeaturesKHR', false));
         return $self;
     }
 }

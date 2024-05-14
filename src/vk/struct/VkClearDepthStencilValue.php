@@ -24,13 +24,9 @@ final class VkClearDepthStencilValue implements \JsonSerializable
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|float $depth = null,
-        null|int $stencil = null,
-    ): self
+    public static function create(\FFI $ffi, null|float $depth = null, null|int $stencil = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkClearDepthStencilValue', false));
+        $self = new self( $ffi->new('VkClearDepthStencilValue', false));
         if(!is_null($depth)) $self->setDepth($depth);
         if(!is_null($stencil)) $self->setStencil($stencil);
         return $self;

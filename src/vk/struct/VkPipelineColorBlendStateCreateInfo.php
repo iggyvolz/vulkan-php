@@ -31,18 +31,17 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|bool $logicOpEnable = null,
         null|\iggyvolz\vulkan\enum\VkLogicOp $logicOp = null,
         null|int $attachmentCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pAttachments = null,
+        null|VkPipelineColorBlendAttachmentState $pAttachments = null,
         null|array $blendConstants = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineColorBlendStateCreateInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkPipelineColorBlendStateCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -153,14 +152,14 @@ final class VkPipelineColorBlendStateCreateInfo implements \JsonSerializable
     /**
      * VkPipelineColorBlendAttachmentState* /
      */
-    public function getPAttachments(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPAttachments(): VkPipelineColorBlendAttachmentState
     {
         $cValue = $this->cdata->pAttachments;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineColorBlendAttachmentState', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineColorBlendAttachmentState($cValue);
         return $phpValue;
     }
 
-    public function setPAttachments(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPAttachments(VkPipelineColorBlendAttachmentState $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pAttachments = $cValue;

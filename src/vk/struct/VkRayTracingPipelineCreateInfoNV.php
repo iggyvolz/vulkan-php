@@ -34,21 +34,20 @@ final class VkRayTracingPipelineCreateInfoNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $stageCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pStages = null,
+        null|VkPipelineShaderStageCreateInfo $pStages = null,
         null|int $groupCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pGroups = null,
+        null|VkRayTracingShaderGroupCreateInfoNV $pGroups = null,
         null|int $maxRecursionDepth = null,
         null|VkPipelineLayout $layout = null,
         null|VkPipeline $basePipelineHandle = null,
         null|int $basePipelineIndex = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRayTracingPipelineCreateInfoNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkRayTracingPipelineCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -130,14 +129,14 @@ final class VkRayTracingPipelineCreateInfoNV implements \JsonSerializable
     /**
      * VkPipelineShaderStageCreateInfo* /
      */
-    public function getPStages(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPStages(): VkPipelineShaderStageCreateInfo
     {
         $cValue = $this->cdata->pStages;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineShaderStageCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineShaderStageCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPStages(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPStages(VkPipelineShaderStageCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pStages = $cValue;
@@ -162,14 +161,14 @@ final class VkRayTracingPipelineCreateInfoNV implements \JsonSerializable
     /**
      * VkRayTracingShaderGroupCreateInfoNV* /
      */
-    public function getPGroups(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPGroups(): VkRayTracingShaderGroupCreateInfoNV
     {
         $cValue = $this->cdata->pGroups;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRayTracingShaderGroupCreateInfoNV', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkRayTracingShaderGroupCreateInfoNV($cValue);
         return $phpValue;
     }
 
-    public function setPGroups(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPGroups(VkRayTracingShaderGroupCreateInfoNV $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pGroups = $cValue;

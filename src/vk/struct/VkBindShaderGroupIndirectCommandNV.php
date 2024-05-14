@@ -23,9 +23,9 @@ final class VkBindShaderGroupIndirectCommandNV implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan, null|int $groupIndex = null): self
+    public static function create(\FFI $ffi, null|int $groupIndex = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkBindShaderGroupIndirectCommandNV', false));
+        $self = new self( $ffi->new('VkBindShaderGroupIndirectCommandNV', false));
         if(!is_null($groupIndex)) $self->setGroupIndex($groupIndex);
         return $self;
     }

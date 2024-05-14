@@ -26,13 +26,12 @@ final class VkRenderPassSubpassFeedbackCreateInfoEXT implements \JsonSerializabl
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pSubpassFeedback = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRenderPassSubpassFeedbackCreateInfoEXT', false));
+        mixed $pSubpassFeedback = null,
+    ): self {
+        $self = new self( $ffi->new('VkRenderPassSubpassFeedbackCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pSubpassFeedback)) $self->setPSubpassFeedback($pSubpassFeedback);
@@ -72,18 +71,18 @@ final class VkRenderPassSubpassFeedbackCreateInfoEXT implements \JsonSerializabl
     }
 
     /**
-     * VkRenderPassSubpassFeedbackInfoEXT* /
+     * void* /
      */
-    public function getPSubpassFeedback(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPSubpassFeedback(): mixed
     {
         $cValue = $this->cdata->pSubpassFeedback;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRenderPassSubpassFeedbackInfoEXT', $cValue, $ffi); /** PTRANS */
+        throw new \LogicException("Dummy transformer - VkRenderPassSubpassFeedbackInfoEXT*!");
         return $phpValue;
     }
 
-    public function setPSubpassFeedback(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPSubpassFeedback(mixed $phpValue): void
     {
-        $cValue = $phpValue->cdata;
+        throw new \LogicException("Dummy transformer - VkRenderPassSubpassFeedbackInfoEXT*!");
         $this->cdata->pSubpassFeedback = $cValue;
     }
 }

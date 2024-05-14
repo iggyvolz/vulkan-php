@@ -31,18 +31,17 @@ final class VkInstanceCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pApplicationInfo = null,
+        null|VkApplicationInfo $pApplicationInfo = null,
         null|int $enabledLayerCount = null,
         null|\iggyvolz\vulkan\util\Pointer $ppEnabledLayerNames = null,
         null|int $enabledExtensionCount = null,
         null|\iggyvolz\vulkan\util\Pointer $ppEnabledExtensionNames = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkInstanceCreateInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkInstanceCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -105,14 +104,14 @@ final class VkInstanceCreateInfo implements \JsonSerializable
     /**
      * VkApplicationInfo* /
      */
-    public function getPApplicationInfo(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPApplicationInfo(): VkApplicationInfo
     {
         $cValue = $this->cdata->pApplicationInfo;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkApplicationInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkApplicationInfo($cValue);
         return $phpValue;
     }
 
-    public function setPApplicationInfo(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPApplicationInfo(VkApplicationInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pApplicationInfo = $cValue;

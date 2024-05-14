@@ -24,13 +24,9 @@ final class VkExtensionProperties implements \JsonSerializable
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|string $extensionName = null,
-        null|int $specVersion = null,
-    ): self
+    public static function create(\FFI $ffi, null|string $extensionName = null, null|int $specVersion = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkExtensionProperties', false));
+        $self = new self( $ffi->new('VkExtensionProperties', false));
         if(!is_null($extensionName)) $self->setExtensionName($extensionName);
         if(!is_null($specVersion)) $self->setSpecVersion($specVersion);
         return $self;

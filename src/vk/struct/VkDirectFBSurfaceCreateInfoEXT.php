@@ -28,15 +28,14 @@ final class VkDirectFBSurfaceCreateInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|\iggyvolz\vulkan\util\Pointer $dfb = null,
         null|\iggyvolz\vulkan\util\Pointer $surface = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDirectFBSurfaceCreateInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkDirectFBSurfaceCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);

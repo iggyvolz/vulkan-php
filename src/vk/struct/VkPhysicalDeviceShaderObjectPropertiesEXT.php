@@ -27,14 +27,13 @@ final class VkPhysicalDeviceShaderObjectPropertiesEXT implements \JsonSerializab
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|string $shaderBinaryUUID = null,
         null|int $shaderBinaryVersion = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderObjectPropertiesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderObjectPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderBinaryUUID)) $self->setShaderBinaryUUID($shaderBinaryUUID);

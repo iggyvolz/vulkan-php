@@ -30,17 +30,16 @@ final class VkPushDescriptorSetInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $stageFlags = null,
         null|VkPipelineLayout $layout = null,
         null|int $set = null,
         null|int $descriptorWriteCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pDescriptorWrites = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPushDescriptorSetInfoKHR', false));
+        null|VkWriteDescriptorSet $pDescriptorWrites = null,
+    ): self {
+        $self = new self( $ffi->new('VkPushDescriptorSetInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($stageFlags)) $self->setStageFlags($stageFlags);
@@ -150,14 +149,14 @@ final class VkPushDescriptorSetInfoKHR implements \JsonSerializable
     /**
      * VkWriteDescriptorSet* /
      */
-    public function getPDescriptorWrites(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPDescriptorWrites(): VkWriteDescriptorSet
     {
         $cValue = $this->cdata->pDescriptorWrites;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkWriteDescriptorSet', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkWriteDescriptorSet($cValue);
         return $phpValue;
     }
 
-    public function setPDescriptorWrites(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPDescriptorWrites(VkWriteDescriptorSet $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pDescriptorWrites = $cValue;

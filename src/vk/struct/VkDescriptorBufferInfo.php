@@ -26,13 +26,12 @@ final class VkDescriptorBufferInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkBuffer $buffer = null,
         null|int $offset = null,
         null|int $range = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDescriptorBufferInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkDescriptorBufferInfo', false));
         if(!is_null($buffer)) $self->setBuffer($buffer);
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($range)) $self->setRange($range);

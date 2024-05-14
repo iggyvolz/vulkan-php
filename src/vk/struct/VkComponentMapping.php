@@ -27,14 +27,13 @@ final class VkComponentMapping implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkComponentSwizzle $r = null,
         null|\iggyvolz\vulkan\enum\VkComponentSwizzle $g = null,
         null|\iggyvolz\vulkan\enum\VkComponentSwizzle $b = null,
         null|\iggyvolz\vulkan\enum\VkComponentSwizzle $a = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkComponentMapping', false));
+    ): self {
+        $self = new self( $ffi->new('VkComponentMapping', false));
         if(!is_null($r)) $self->setR($r);
         if(!is_null($g)) $self->setG($g);
         if(!is_null($b)) $self->setB($b);

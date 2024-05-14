@@ -29,16 +29,15 @@ final class VkBufferImageCopy implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $bufferOffset = null,
         null|int $bufferRowLength = null,
         null|int $bufferImageHeight = null,
         null|VkImageSubresourceLayers $imageSubresource = null,
         null|VkOffset3D $imageOffset = null,
         null|VkExtent3D $imageExtent = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkBufferImageCopy', false));
+    ): self {
+        $self = new self( $ffi->new('VkBufferImageCopy', false));
         if(!is_null($bufferOffset)) $self->setBufferOffset($bufferOffset);
         if(!is_null($bufferRowLength)) $self->setBufferRowLength($bufferRowLength);
         if(!is_null($bufferImageHeight)) $self->setBufferImageHeight($bufferImageHeight);

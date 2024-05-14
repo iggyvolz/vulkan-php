@@ -129,7 +129,7 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $maxImageDimension1D = null,
         null|int $maxImageDimension2D = null,
         null|int $maxImageDimension3D = null,
@@ -236,9 +236,8 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
         null|int $optimalBufferCopyOffsetAlignment = null,
         null|int $optimalBufferCopyRowPitchAlignment = null,
         null|int $nonCoherentAtomSize = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceLimits', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceLimits', false));
         if(!is_null($maxImageDimension1D)) $self->setMaxImageDimension1D($maxImageDimension1D);
         if(!is_null($maxImageDimension2D)) $self->setMaxImageDimension2D($maxImageDimension2D);
         if(!is_null($maxImageDimension3D)) $self->setMaxImageDimension3D($maxImageDimension3D);
@@ -1186,13 +1185,13 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
     public function getMaxComputeWorkGroupCount(): mixed
     {
         $cValue = $this->cdata->maxComputeWorkGroupCount;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         return $phpValue;
     }
 
     public function setMaxComputeWorkGroupCount(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         $this->cdata->maxComputeWorkGroupCount = $cValue;
     }
 
@@ -1218,13 +1217,13 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
     public function getMaxComputeWorkGroupSize(): mixed
     {
         $cValue = $this->cdata->maxComputeWorkGroupSize;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         return $phpValue;
     }
 
     public function setMaxComputeWorkGroupSize(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         $this->cdata->maxComputeWorkGroupSize = $cValue;
     }
 
@@ -1362,13 +1361,13 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
     public function getMaxViewportDimensions(): mixed
     {
         $cValue = $this->cdata->maxViewportDimensions;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[2]!");
         return $phpValue;
     }
 
     public function setMaxViewportDimensions(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[2]!");
         $this->cdata->maxViewportDimensions = $cValue;
     }
 
@@ -1378,13 +1377,13 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
     public function getViewportBoundsRange(): mixed
     {
         $cValue = $this->cdata->viewportBoundsRange;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - float[2]!");
         return $phpValue;
     }
 
     public function setViewportBoundsRange(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - float[2]!");
         $this->cdata->viewportBoundsRange = $cValue;
     }
 
@@ -1906,13 +1905,13 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
     public function getPointSizeRange(): mixed
     {
         $cValue = $this->cdata->pointSizeRange;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - float[2]!");
         return $phpValue;
     }
 
     public function setPointSizeRange(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - float[2]!");
         $this->cdata->pointSizeRange = $cValue;
     }
 
@@ -1922,13 +1921,13 @@ final class VkPhysicalDeviceLimits implements \JsonSerializable
     public function getLineWidthRange(): mixed
     {
         $cValue = $this->cdata->lineWidthRange;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - float[2]!");
         return $phpValue;
     }
 
     public function setLineWidthRange(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - float[2]!");
         $this->cdata->lineWidthRange = $cValue;
     }
 

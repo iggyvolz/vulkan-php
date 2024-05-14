@@ -27,14 +27,13 @@ final class VkImageBlit implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkImageSubresourceLayers $srcSubresource = null,
         mixed $srcOffsets = null,
         null|VkImageSubresourceLayers $dstSubresource = null,
         mixed $dstOffsets = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImageBlit', false));
+    ): self {
+        $self = new self( $ffi->new('VkImageBlit', false));
         if(!is_null($srcSubresource)) $self->setSrcSubresource($srcSubresource);
         if(!is_null($srcOffsets)) $self->setSrcOffsets($srcOffsets);
         if(!is_null($dstSubresource)) $self->setDstSubresource($dstSubresource);
@@ -64,13 +63,13 @@ final class VkImageBlit implements \JsonSerializable
     public function getSrcOffsets(): mixed
     {
         $cValue = $this->cdata->srcOffsets;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkOffset3D[2]!");
         return $phpValue;
     }
 
     public function setSrcOffsets(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkOffset3D[2]!");
         $this->cdata->srcOffsets = $cValue;
     }
 
@@ -96,13 +95,13 @@ final class VkImageBlit implements \JsonSerializable
     public function getDstOffsets(): mixed
     {
         $cValue = $this->cdata->dstOffsets;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkOffset3D[2]!");
         return $phpValue;
     }
 
     public function setDstOffsets(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkOffset3D[2]!");
         $this->cdata->dstOffsets = $cValue;
     }
 }

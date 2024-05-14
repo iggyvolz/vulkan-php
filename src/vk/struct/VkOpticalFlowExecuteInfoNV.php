@@ -28,15 +28,14 @@ final class VkOpticalFlowExecuteInfoNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $regionCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pRegions = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkOpticalFlowExecuteInfoNV', false));
+        null|VkRect2D $pRegions = null,
+    ): self {
+        $self = new self( $ffi->new('VkOpticalFlowExecuteInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -112,14 +111,14 @@ final class VkOpticalFlowExecuteInfoNV implements \JsonSerializable
     /**
      * VkRect2D* /
      */
-    public function getPRegions(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPRegions(): VkRect2D
     {
         $cValue = $this->cdata->pRegions;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRect2D', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkRect2D($cValue);
         return $phpValue;
     }
 
-    public function setPRegions(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPRegions(VkRect2D $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pRegions = $cValue;

@@ -41,7 +41,7 @@ final class VkAccelerationStructureTrianglesDisplacementMicromapNV implements \J
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkFormat $displacementBiasAndScaleFormat = null,
@@ -60,9 +60,8 @@ final class VkAccelerationStructureTrianglesDisplacementMicromapNV implements \J
         null|\iggyvolz\vulkan\util\Pointer $pUsageCounts = null,
         null|\iggyvolz\vulkan\util\Pointer $ppUsageCounts = null,
         null|VkMicromapEXT $micromap = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureTrianglesDisplacementMicromapNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkAccelerationStructureTrianglesDisplacementMicromapNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($displacementBiasAndScaleFormat)) $self->setDisplacementBiasAndScaleFormat($displacementBiasAndScaleFormat);
@@ -154,13 +153,13 @@ final class VkAccelerationStructureTrianglesDisplacementMicromapNV implements \J
     public function getDisplacementBiasAndScaleBuffer(): mixed
     {
         $cValue = $this->cdata->displacementBiasAndScaleBuffer;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         return $phpValue;
     }
 
     public function setDisplacementBiasAndScaleBuffer(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         $this->cdata->displacementBiasAndScaleBuffer = $cValue;
     }
 
@@ -186,13 +185,13 @@ final class VkAccelerationStructureTrianglesDisplacementMicromapNV implements \J
     public function getDisplacementVectorBuffer(): mixed
     {
         $cValue = $this->cdata->displacementVectorBuffer;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         return $phpValue;
     }
 
     public function setDisplacementVectorBuffer(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         $this->cdata->displacementVectorBuffer = $cValue;
     }
 
@@ -218,13 +217,13 @@ final class VkAccelerationStructureTrianglesDisplacementMicromapNV implements \J
     public function getDisplacedMicromapPrimitiveFlags(): mixed
     {
         $cValue = $this->cdata->displacedMicromapPrimitiveFlags;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         return $phpValue;
     }
 
     public function setDisplacedMicromapPrimitiveFlags(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         $this->cdata->displacedMicromapPrimitiveFlags = $cValue;
     }
 
@@ -266,13 +265,13 @@ final class VkAccelerationStructureTrianglesDisplacementMicromapNV implements \J
     public function getIndexBuffer(): mixed
     {
         $cValue = $this->cdata->indexBuffer;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         return $phpValue;
     }
 
     public function setIndexBuffer(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         $this->cdata->indexBuffer = $cValue;
     }
 

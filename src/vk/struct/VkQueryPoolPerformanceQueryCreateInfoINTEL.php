@@ -26,13 +26,12 @@ final class VkQueryPoolPerformanceQueryCreateInfoINTEL implements \JsonSerializa
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkQueryPoolSamplingModeINTEL $performanceCountersSampling = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkQueryPoolPerformanceQueryCreateInfoINTEL', false));
+    ): self {
+        $self = new self( $ffi->new('VkQueryPoolPerformanceQueryCreateInfoINTEL', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($performanceCountersSampling)) $self->setPerformanceCountersSampling($performanceCountersSampling);

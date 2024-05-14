@@ -37,7 +37,7 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT implements \JsonSeriali
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $shaderBufferFloat32Atomics = null,
@@ -52,9 +52,8 @@ final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT implements \JsonSeriali
         null|bool $shaderImageFloat32AtomicAdd = null,
         null|bool $sparseImageFloat32Atomics = null,
         null|bool $sparseImageFloat32AtomicAdd = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderAtomicFloatFeaturesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderAtomicFloatFeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderBufferFloat32Atomics)) $self->setShaderBufferFloat32Atomics($shaderBufferFloat32Atomics);

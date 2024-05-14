@@ -28,15 +28,14 @@ final class VkImageViewSampleWeightCreateInfoQCOM implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkOffset2D $filterCenter = null,
         null|VkExtent2D $filterSize = null,
         null|int $numPhases = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImageViewSampleWeightCreateInfoQCOM', false));
+    ): self {
+        $self = new self( $ffi->new('VkImageViewSampleWeightCreateInfoQCOM', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($filterCenter)) $self->setFilterCenter($filterCenter);

@@ -28,15 +28,14 @@ final class VkAccelerationStructureGeometryKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkGeometryTypeKHR $geometryType = null,
         mixed $geometry = null,
         null|array $flags = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureGeometryKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkAccelerationStructureGeometryKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($geometryType)) $self->setGeometryType($geometryType);
@@ -99,13 +98,13 @@ final class VkAccelerationStructureGeometryKHR implements \JsonSerializable
     public function getGeometry(): mixed
     {
         $cValue = $this->cdata->geometry;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkAccelerationStructureGeometryDataKHR!");
         return $phpValue;
     }
 
     public function setGeometry(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkAccelerationStructureGeometryDataKHR!");
         $this->cdata->geometry = $cValue;
     }
 

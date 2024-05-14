@@ -28,15 +28,14 @@ final class VkPipelineViewportSwizzleStateCreateInfoNV implements \JsonSerializa
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $viewportCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pViewportSwizzles = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineViewportSwizzleStateCreateInfoNV', false));
+        null|VkViewportSwizzleNV $pViewportSwizzles = null,
+    ): self {
+        $self = new self( $ffi->new('VkPipelineViewportSwizzleStateCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -112,14 +111,14 @@ final class VkPipelineViewportSwizzleStateCreateInfoNV implements \JsonSerializa
     /**
      * VkViewportSwizzleNV* /
      */
-    public function getPViewportSwizzles(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPViewportSwizzles(): VkViewportSwizzleNV
     {
         $cValue = $this->cdata->pViewportSwizzles;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkViewportSwizzleNV', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkViewportSwizzleNV($cValue);
         return $phpValue;
     }
 
-    public function setPViewportSwizzles(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPViewportSwizzles(VkViewportSwizzleNV $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pViewportSwizzles = $cValue;

@@ -28,15 +28,14 @@ final class VkGeometryNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkGeometryTypeKHR $geometryType = null,
         null|VkGeometryDataNV $geometry = null,
         null|array $flags = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkGeometryNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkGeometryNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($geometryType)) $self->setGeometryType($geometryType);

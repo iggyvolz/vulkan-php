@@ -29,16 +29,15 @@ final class VkRenderingInputAttachmentIndexInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $colorAttachmentCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pColorAttachmentInputIndices = null,
         null|\iggyvolz\vulkan\util\IntPointer $pDepthInputAttachmentIndex = null,
         null|\iggyvolz\vulkan\util\IntPointer $pStencilInputAttachmentIndex = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRenderingInputAttachmentIndexInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkRenderingInputAttachmentIndexInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($colorAttachmentCount)) $self->setColorAttachmentCount($colorAttachmentCount);

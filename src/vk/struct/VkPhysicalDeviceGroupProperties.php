@@ -28,15 +28,14 @@ final class VkPhysicalDeviceGroupProperties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $physicalDeviceCount = null,
         mixed $physicalDevices = null,
         null|bool $subsetAllocation = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceGroupProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceGroupProperties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($physicalDeviceCount)) $self->setPhysicalDeviceCount($physicalDeviceCount);
@@ -99,13 +98,13 @@ final class VkPhysicalDeviceGroupProperties implements \JsonSerializable
     public function getPhysicalDevices(): mixed
     {
         $cValue = $this->cdata->physicalDevices;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]!");
         return $phpValue;
     }
 
     public function setPhysicalDevices(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]!");
         $this->cdata->physicalDevices = $cValue;
     }
 

@@ -28,15 +28,14 @@ final class VkImageDrmFormatModifierExplicitCreateInfoEXT implements \JsonSerial
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $drmFormatModifier = null,
         null|int $drmFormatModifierPlaneCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pPlaneLayouts = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImageDrmFormatModifierExplicitCreateInfoEXT', false));
+        null|VkSubresourceLayout $pPlaneLayouts = null,
+    ): self {
+        $self = new self( $ffi->new('VkImageDrmFormatModifierExplicitCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($drmFormatModifier)) $self->setDrmFormatModifier($drmFormatModifier);
@@ -112,14 +111,14 @@ final class VkImageDrmFormatModifierExplicitCreateInfoEXT implements \JsonSerial
     /**
      * VkSubresourceLayout* /
      */
-    public function getPPlaneLayouts(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPPlaneLayouts(): VkSubresourceLayout
     {
         $cValue = $this->cdata->pPlaneLayouts;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSubresourceLayout', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSubresourceLayout($cValue);
         return $phpValue;
     }
 
-    public function setPPlaneLayouts(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPPlaneLayouts(VkSubresourceLayout $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pPlaneLayouts = $cValue;

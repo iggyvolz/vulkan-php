@@ -27,14 +27,13 @@ final class VkExportMemoryWin32HandleInfoNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\util\Pointer $pAttributes = null,
         null|int $dwAccess = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkExportMemoryWin32HandleInfoNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkExportMemoryWin32HandleInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pAttributes)) $self->setPAttributes($pAttributes);

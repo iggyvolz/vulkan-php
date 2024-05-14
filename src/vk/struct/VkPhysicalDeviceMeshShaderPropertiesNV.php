@@ -38,7 +38,7 @@ final class VkPhysicalDeviceMeshShaderPropertiesNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $maxDrawMeshTasksCount = null,
@@ -54,9 +54,8 @@ final class VkPhysicalDeviceMeshShaderPropertiesNV implements \JsonSerializable
         null|int $maxMeshMultiviewViewCount = null,
         null|int $meshOutputPerVertexGranularity = null,
         null|int $meshOutputPerPrimitiveGranularity = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMeshShaderPropertiesNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceMeshShaderPropertiesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxDrawMeshTasksCount)) $self->setMaxDrawMeshTasksCount($maxDrawMeshTasksCount);
@@ -145,13 +144,13 @@ final class VkPhysicalDeviceMeshShaderPropertiesNV implements \JsonSerializable
     public function getMaxTaskWorkGroupSize(): mixed
     {
         $cValue = $this->cdata->maxTaskWorkGroupSize;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         return $phpValue;
     }
 
     public function setMaxTaskWorkGroupSize(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         $this->cdata->maxTaskWorkGroupSize = $cValue;
     }
 
@@ -209,13 +208,13 @@ final class VkPhysicalDeviceMeshShaderPropertiesNV implements \JsonSerializable
     public function getMaxMeshWorkGroupSize(): mixed
     {
         $cValue = $this->cdata->maxMeshWorkGroupSize;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         return $phpValue;
     }
 
     public function setMaxMeshWorkGroupSize(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         $this->cdata->maxMeshWorkGroupSize = $cValue;
     }
 

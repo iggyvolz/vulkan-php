@@ -26,13 +26,12 @@ final class VkVideoEncodeH265FrameSizeKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $frameISize = null,
         null|int $framePSize = null,
         null|int $frameBSize = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265FrameSizeKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkVideoEncodeH265FrameSizeKHR', false));
         if(!is_null($frameISize)) $self->setFrameISize($frameISize);
         if(!is_null($framePSize)) $self->setFramePSize($framePSize);
         if(!is_null($frameBSize)) $self->setFrameBSize($frameBSize);

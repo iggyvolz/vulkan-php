@@ -26,13 +26,12 @@ final class VkStridedDeviceAddressRegionKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $deviceAddress = null,
         null|int $stride = null,
         null|int $size = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkStridedDeviceAddressRegionKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkStridedDeviceAddressRegionKHR', false));
         if(!is_null($deviceAddress)) $self->setDeviceAddress($deviceAddress);
         if(!is_null($stride)) $self->setStride($stride);
         if(!is_null($size)) $self->setSize($size);

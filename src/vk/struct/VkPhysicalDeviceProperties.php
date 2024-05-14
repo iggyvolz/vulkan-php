@@ -32,7 +32,7 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $apiVersion = null,
         null|int $driverVersion = null,
         null|int $vendorID = null,
@@ -42,9 +42,8 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
         null|string $pipelineCacheUUID = null,
         mixed $limits = null,
         mixed $sparseProperties = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceProperties', false));
         if(!is_null($apiVersion)) $self->setApiVersion($apiVersion);
         if(!is_null($driverVersion)) $self->setDriverVersion($driverVersion);
         if(!is_null($vendorID)) $self->setVendorID($vendorID);
@@ -175,13 +174,13 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
     public function getLimits(): mixed
     {
         $cValue = $this->cdata->limits;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkPhysicalDeviceLimits!");
         return $phpValue;
     }
 
     public function setLimits(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkPhysicalDeviceLimits!");
         $this->cdata->limits = $cValue;
     }
 
@@ -191,13 +190,13 @@ final class VkPhysicalDeviceProperties implements \JsonSerializable
     public function getSparseProperties(): mixed
     {
         $cValue = $this->cdata->sparseProperties;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkPhysicalDeviceSparseProperties!");
         return $phpValue;
     }
 
     public function setSparseProperties(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkPhysicalDeviceSparseProperties!");
         $this->cdata->sparseProperties = $cValue;
     }
 }

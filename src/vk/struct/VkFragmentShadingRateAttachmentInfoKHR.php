@@ -27,14 +27,13 @@ final class VkFragmentShadingRateAttachmentInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pFragmentShadingRateAttachment = null,
+        null|VkAttachmentReference2 $pFragmentShadingRateAttachment = null,
         null|VkExtent2D $shadingRateAttachmentTexelSize = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkFragmentShadingRateAttachmentInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkFragmentShadingRateAttachmentInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pFragmentShadingRateAttachment)) $self->setPFragmentShadingRateAttachment($pFragmentShadingRateAttachment);
@@ -77,14 +76,14 @@ final class VkFragmentShadingRateAttachmentInfoKHR implements \JsonSerializable
     /**
      * VkAttachmentReference2* /
      */
-    public function getPFragmentShadingRateAttachment(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPFragmentShadingRateAttachment(): VkAttachmentReference2
     {
         $cValue = $this->cdata->pFragmentShadingRateAttachment;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentReference2', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkAttachmentReference2($cValue);
         return $phpValue;
     }
 
-    public function setPFragmentShadingRateAttachment(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPFragmentShadingRateAttachment(VkAttachmentReference2 $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pFragmentShadingRateAttachment = $cValue;

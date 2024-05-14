@@ -26,13 +26,12 @@ final class VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures implements \Json
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $separateDepthStencilLayouts = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($separateDepthStencilLayouts)) $self->setSeparateDepthStencilLayouts($separateDepthStencilLayouts);

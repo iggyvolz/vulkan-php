@@ -66,13 +66,13 @@ final class VkDeviceObjectReservationCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $pipelineCacheCreateInfoCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pPipelineCacheCreateInfos = null,
+        null|VkPipelineCacheCreateInfo $pPipelineCacheCreateInfos = null,
         null|int $pipelinePoolSizeCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pPipelinePoolSizes = null,
+        null|VkPipelinePoolSize $pPipelinePoolSizes = null,
         null|int $semaphoreRequestCount = null,
         null|int $commandBufferRequestCount = null,
         null|int $fenceRequestCount = null,
@@ -110,9 +110,8 @@ final class VkDeviceObjectReservationCreateInfo implements \JsonSerializable
         null|int $maxPipelineStatisticsQueriesPerPool = null,
         null|int $maxTimestampQueriesPerPool = null,
         null|int $maxImmutableSamplersPerDescriptorSetLayout = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDeviceObjectReservationCreateInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkDeviceObjectReservationCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pipelineCacheCreateInfoCount)) $self->setPipelineCacheCreateInfoCount($pipelineCacheCreateInfoCount);
@@ -210,14 +209,14 @@ final class VkDeviceObjectReservationCreateInfo implements \JsonSerializable
     /**
      * VkPipelineCacheCreateInfo* /
      */
-    public function getPPipelineCacheCreateInfos(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPPipelineCacheCreateInfos(): VkPipelineCacheCreateInfo
     {
         $cValue = $this->cdata->pPipelineCacheCreateInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineCacheCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineCacheCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPPipelineCacheCreateInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPPipelineCacheCreateInfos(VkPipelineCacheCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pPipelineCacheCreateInfos = $cValue;
@@ -242,14 +241,14 @@ final class VkDeviceObjectReservationCreateInfo implements \JsonSerializable
     /**
      * VkPipelinePoolSize* /
      */
-    public function getPPipelinePoolSizes(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPPipelinePoolSizes(): VkPipelinePoolSize
     {
         $cValue = $this->cdata->pPipelinePoolSizes;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelinePoolSize', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelinePoolSize($cValue);
         return $phpValue;
     }
 
-    public function setPPipelinePoolSizes(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPPipelinePoolSizes(VkPipelinePoolSize $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pPipelinePoolSizes = $cValue;

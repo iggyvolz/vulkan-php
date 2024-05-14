@@ -22,9 +22,9 @@ final class VkFormatProperties3KHR implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkFormatProperties3KHR', false));
+        $self = new self( $ffi->new('VkFormatProperties3KHR', false));
         return $self;
     }
 }

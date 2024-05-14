@@ -30,7 +30,7 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkRenderPass $renderPass = null,
@@ -38,9 +38,8 @@ final class VkRenderPassBeginInfo implements \JsonSerializable
         null|VkRect2D $renderArea = null,
         null|int $clearValueCount = null,
         null|\iggyvolz\vulkan\util\Pointer $pClearValues = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRenderPassBeginInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkRenderPassBeginInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($renderPass)) $self->setRenderPass($renderPass);

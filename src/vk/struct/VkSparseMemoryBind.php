@@ -28,15 +28,14 @@ final class VkSparseMemoryBind implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $resourceOffset = null,
         null|int $size = null,
         null|VkDeviceMemory $memory = null,
         null|int $memoryOffset = null,
         null|array $flags = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSparseMemoryBind', false));
+    ): self {
+        $self = new self( $ffi->new('VkSparseMemoryBind', false));
         if(!is_null($resourceOffset)) $self->setResourceOffset($resourceOffset);
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($memory)) $self->setMemory($memory);

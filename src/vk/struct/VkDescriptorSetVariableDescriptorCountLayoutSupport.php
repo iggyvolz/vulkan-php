@@ -26,13 +26,12 @@ final class VkDescriptorSetVariableDescriptorCountLayoutSupport implements \Json
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $maxVariableDescriptorCount = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDescriptorSetVariableDescriptorCountLayoutSupport', false));
+    ): self {
+        $self = new self( $ffi->new('VkDescriptorSetVariableDescriptorCountLayoutSupport', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxVariableDescriptorCount)) $self->setMaxVariableDescriptorCount($maxVariableDescriptorCount);

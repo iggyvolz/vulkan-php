@@ -22,9 +22,9 @@ final class VkPhysicalDeviceBufferAddressFeaturesEXT implements \JsonSerializabl
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceBufferAddressFeaturesEXT', false));
+        $self = new self( $ffi->new('VkPhysicalDeviceBufferAddressFeaturesEXT', false));
         return $self;
     }
 }

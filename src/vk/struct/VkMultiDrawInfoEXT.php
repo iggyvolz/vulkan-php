@@ -24,13 +24,9 @@ final class VkMultiDrawInfoEXT implements \JsonSerializable
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|int $firstVertex = null,
-        null|int $vertexCount = null,
-    ): self
+    public static function create(\FFI $ffi, null|int $firstVertex = null, null|int $vertexCount = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkMultiDrawInfoEXT', false));
+        $self = new self( $ffi->new('VkMultiDrawInfoEXT', false));
         if(!is_null($firstVertex)) $self->setFirstVertex($firstVertex);
         if(!is_null($vertexCount)) $self->setVertexCount($vertexCount);
         return $self;

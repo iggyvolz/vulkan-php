@@ -22,9 +22,9 @@ final class VkWriteDescriptorSetInlineUniformBlockEXT implements \JsonSerializab
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkWriteDescriptorSetInlineUniformBlockEXT', false));
+        $self = new self( $ffi->new('VkWriteDescriptorSetInlineUniformBlockEXT', false));
         return $self;
     }
 }

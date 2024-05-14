@@ -27,14 +27,13 @@ final class VkAmigoProfilingSubmitInfoSEC implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $firstDrawTimestamp = null,
         null|int $swapBufferTimestamp = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAmigoProfilingSubmitInfoSEC', false));
+    ): self {
+        $self = new self( $ffi->new('VkAmigoProfilingSubmitInfoSEC', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($firstDrawTimestamp)) $self->setFirstDrawTimestamp($firstDrawTimestamp);

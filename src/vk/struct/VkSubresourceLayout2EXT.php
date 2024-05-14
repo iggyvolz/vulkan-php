@@ -22,9 +22,9 @@ final class VkSubresourceLayout2EXT implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkSubresourceLayout2EXT', false));
+        $self = new self( $ffi->new('VkSubresourceLayout2EXT', false));
         return $self;
     }
 }

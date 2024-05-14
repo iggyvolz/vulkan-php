@@ -28,15 +28,14 @@ final class VkDrawIndexedIndirectCommand implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $indexCount = null,
         null|int $instanceCount = null,
         null|int $firstIndex = null,
         null|int $vertexOffset = null,
         null|int $firstInstance = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDrawIndexedIndirectCommand', false));
+    ): self {
+        $self = new self( $ffi->new('VkDrawIndexedIndirectCommand', false));
         if(!is_null($indexCount)) $self->setIndexCount($indexCount);
         if(!is_null($instanceCount)) $self->setInstanceCount($instanceCount);
         if(!is_null($firstIndex)) $self->setFirstIndex($firstIndex);

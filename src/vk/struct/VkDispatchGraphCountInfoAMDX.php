@@ -26,13 +26,12 @@ final class VkDispatchGraphCountInfoAMDX implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $count = null,
         mixed $infos = null,
         null|int $stride = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDispatchGraphCountInfoAMDX', false));
+    ): self {
+        $self = new self( $ffi->new('VkDispatchGraphCountInfoAMDX', false));
         if(!is_null($count)) $self->setCount($count);
         if(!is_null($infos)) $self->setInfos($infos);
         if(!is_null($stride)) $self->setStride($stride);
@@ -61,13 +60,13 @@ final class VkDispatchGraphCountInfoAMDX implements \JsonSerializable
     public function getInfos(): mixed
     {
         $cValue = $this->cdata->infos;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstAMDX!");
         return $phpValue;
     }
 
     public function setInfos(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstAMDX!");
         $this->cdata->infos = $cValue;
     }
 

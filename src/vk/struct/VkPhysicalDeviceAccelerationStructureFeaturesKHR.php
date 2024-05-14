@@ -30,7 +30,7 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $accelerationStructure = null,
@@ -38,9 +38,8 @@ final class VkPhysicalDeviceAccelerationStructureFeaturesKHR implements \JsonSer
         null|bool $accelerationStructureIndirectBuild = null,
         null|bool $accelerationStructureHostCommands = null,
         null|bool $descriptorBindingAccelerationStructureUpdateAfterBind = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceAccelerationStructureFeaturesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceAccelerationStructureFeaturesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($accelerationStructure)) $self->setAccelerationStructure($accelerationStructure);

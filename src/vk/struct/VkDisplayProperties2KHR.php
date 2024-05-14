@@ -26,13 +26,12 @@ final class VkDisplayProperties2KHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkDisplayPropertiesKHR $displayProperties = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDisplayProperties2KHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkDisplayProperties2KHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($displayProperties)) $self->setDisplayProperties($displayProperties);

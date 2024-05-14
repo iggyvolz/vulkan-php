@@ -28,15 +28,14 @@ final class VkPipelineViewportWScalingStateCreateInfoNV implements \JsonSerializ
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $viewportWScalingEnable = null,
         null|int $viewportCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pViewportWScalings = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineViewportWScalingStateCreateInfoNV', false));
+        null|VkViewportWScalingNV $pViewportWScalings = null,
+    ): self {
+        $self = new self( $ffi->new('VkPipelineViewportWScalingStateCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($viewportWScalingEnable)) $self->setViewportWScalingEnable($viewportWScalingEnable);
@@ -112,14 +111,14 @@ final class VkPipelineViewportWScalingStateCreateInfoNV implements \JsonSerializ
     /**
      * VkViewportWScalingNV* /
      */
-    public function getPViewportWScalings(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPViewportWScalings(): VkViewportWScalingNV
     {
         $cValue = $this->cdata->pViewportWScalings;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkViewportWScalingNV', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkViewportWScalingNV($cValue);
         return $phpValue;
     }
 
-    public function setPViewportWScalings(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPViewportWScalings(VkViewportWScalingNV $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pViewportWScalings = $cValue;

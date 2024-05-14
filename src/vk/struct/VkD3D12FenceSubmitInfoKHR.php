@@ -29,16 +29,15 @@ final class VkD3D12FenceSubmitInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $waitSemaphoreValuesCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pWaitSemaphoreValues = null,
         null|int $signalSemaphoreValuesCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pSignalSemaphoreValues = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkD3D12FenceSubmitInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkD3D12FenceSubmitInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($waitSemaphoreValuesCount)) $self->setWaitSemaphoreValuesCount($waitSemaphoreValuesCount);

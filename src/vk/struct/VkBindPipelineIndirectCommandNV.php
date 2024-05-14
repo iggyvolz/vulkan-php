@@ -23,9 +23,9 @@ final class VkBindPipelineIndirectCommandNV implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan, null|int $pipelineAddress = null): self
+    public static function create(\FFI $ffi, null|int $pipelineAddress = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkBindPipelineIndirectCommandNV', false));
+        $self = new self( $ffi->new('VkBindPipelineIndirectCommandNV', false));
         if(!is_null($pipelineAddress)) $self->setPipelineAddress($pipelineAddress);
         return $self;
     }

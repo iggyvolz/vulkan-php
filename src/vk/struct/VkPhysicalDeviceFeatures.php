@@ -78,7 +78,7 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|bool $robustBufferAccess = null,
         null|bool $fullDrawIndexUint32 = null,
         null|bool $imageCubeArray = null,
@@ -134,9 +134,8 @@ final class VkPhysicalDeviceFeatures implements \JsonSerializable
         null|bool $sparseResidencyAliased = null,
         null|bool $variableMultisampleRate = null,
         null|bool $inheritedQueries = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFeatures', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceFeatures', false));
         if(!is_null($robustBufferAccess)) $self->setRobustBufferAccess($robustBufferAccess);
         if(!is_null($fullDrawIndexUint32)) $self->setFullDrawIndexUint32($fullDrawIndexUint32);
         if(!is_null($imageCubeArray)) $self->setImageCubeArray($imageCubeArray);

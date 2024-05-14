@@ -28,15 +28,14 @@ final class VkPipelineCacheHeaderVersionOne implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $headerSize = null,
         null|\iggyvolz\vulkan\enum\VkPipelineCacheHeaderVersion $headerVersion = null,
         null|int $vendorID = null,
         null|int $deviceID = null,
         null|string $pipelineCacheUUID = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineCacheHeaderVersionOne', false));
+    ): self {
+        $self = new self( $ffi->new('VkPipelineCacheHeaderVersionOne', false));
         if(!is_null($headerSize)) $self->setHeaderSize($headerSize);
         if(!is_null($headerVersion)) $self->setHeaderVersion($headerVersion);
         if(!is_null($vendorID)) $self->setVendorID($vendorID);

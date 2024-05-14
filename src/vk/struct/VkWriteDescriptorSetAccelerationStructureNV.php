@@ -27,14 +27,13 @@ final class VkWriteDescriptorSetAccelerationStructureNV implements \JsonSerializ
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $accelerationStructureCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pAccelerationStructures = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkWriteDescriptorSetAccelerationStructureNV', false));
+        null|VkAccelerationStructureNV $pAccelerationStructures = null,
+    ): self {
+        $self = new self( $ffi->new('VkWriteDescriptorSetAccelerationStructureNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($accelerationStructureCount)) $self->setAccelerationStructureCount($accelerationStructureCount);
@@ -93,14 +92,14 @@ final class VkWriteDescriptorSetAccelerationStructureNV implements \JsonSerializ
     /**
      * VkAccelerationStructureNV* /
      */
-    public function getPAccelerationStructures(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPAccelerationStructures(): VkAccelerationStructureNV
     {
         $cValue = $this->cdata->pAccelerationStructures;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAccelerationStructureNV', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkAccelerationStructureNV($cValue);
         return $phpValue;
     }
 
-    public function setPAccelerationStructures(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPAccelerationStructures(VkAccelerationStructureNV $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pAccelerationStructures = $cValue;

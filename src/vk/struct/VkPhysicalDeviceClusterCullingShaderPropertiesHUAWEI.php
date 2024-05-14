@@ -29,16 +29,15 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         mixed $maxWorkGroupCount = null,
         mixed $maxWorkGroupSize = null,
         null|int $maxOutputClusterCount = null,
         null|int $indirectBufferOffsetAlignment = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxWorkGroupCount)) $self->setMaxWorkGroupCount($maxWorkGroupCount);
@@ -86,13 +85,13 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
     public function getMaxWorkGroupCount(): mixed
     {
         $cValue = $this->cdata->maxWorkGroupCount;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         return $phpValue;
     }
 
     public function setMaxWorkGroupCount(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         $this->cdata->maxWorkGroupCount = $cValue;
     }
 
@@ -102,13 +101,13 @@ final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI implements \Jso
     public function getMaxWorkGroupSize(): mixed
     {
         $cValue = $this->cdata->maxWorkGroupSize;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         return $phpValue;
     }
 
     public function setMaxWorkGroupSize(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[3]!");
         $this->cdata->maxWorkGroupSize = $cValue;
     }
 

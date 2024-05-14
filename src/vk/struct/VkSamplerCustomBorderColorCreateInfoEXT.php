@@ -27,14 +27,13 @@ final class VkSamplerCustomBorderColorCreateInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         mixed $customBorderColor = null,
         null|\iggyvolz\vulkan\enum\VkFormat $format = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSamplerCustomBorderColorCreateInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkSamplerCustomBorderColorCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($customBorderColor)) $self->setCustomBorderColor($customBorderColor);
@@ -80,13 +79,13 @@ final class VkSamplerCustomBorderColorCreateInfoEXT implements \JsonSerializable
     public function getCustomBorderColor(): mixed
     {
         $cValue = $this->cdata->customBorderColor;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkClearColorValue!");
         return $phpValue;
     }
 
     public function setCustomBorderColor(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkClearColorValue!");
         $this->cdata->customBorderColor = $cValue;
     }
 

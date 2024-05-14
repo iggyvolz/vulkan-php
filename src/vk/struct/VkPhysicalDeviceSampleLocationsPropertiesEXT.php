@@ -30,7 +30,7 @@ final class VkPhysicalDeviceSampleLocationsPropertiesEXT implements \JsonSeriali
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $sampleLocationSampleCounts = null,
@@ -38,9 +38,8 @@ final class VkPhysicalDeviceSampleLocationsPropertiesEXT implements \JsonSeriali
         mixed $sampleLocationCoordinateRange = null,
         null|int $sampleLocationSubPixelBits = null,
         null|bool $variableSampleLocations = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSampleLocationsPropertiesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceSampleLocationsPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($sampleLocationSampleCounts)) $self->setSampleLocationSampleCounts($sampleLocationSampleCounts);
@@ -121,13 +120,13 @@ final class VkPhysicalDeviceSampleLocationsPropertiesEXT implements \JsonSeriali
     public function getSampleLocationCoordinateRange(): mixed
     {
         $cValue = $this->cdata->sampleLocationCoordinateRange;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - float[2]!");
         return $phpValue;
     }
 
     public function setSampleLocationCoordinateRange(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - float[2]!");
         $this->cdata->sampleLocationCoordinateRange = $cValue;
     }
 

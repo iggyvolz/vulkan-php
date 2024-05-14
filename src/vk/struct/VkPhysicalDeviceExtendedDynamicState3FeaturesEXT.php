@@ -56,7 +56,7 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $extendedDynamicState3TessellationDomainOrigin = null,
@@ -90,9 +90,8 @@ final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT implements \JsonSer
         null|bool $extendedDynamicState3CoverageReductionMode = null,
         null|bool $extendedDynamicState3RepresentativeFragmentTestEnable = null,
         null|bool $extendedDynamicState3ShadingRateImageEnable = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceExtendedDynamicState3FeaturesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceExtendedDynamicState3FeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($extendedDynamicState3TessellationDomainOrigin)) $self->setExtendedDynamicState3TessellationDomainOrigin($extendedDynamicState3TessellationDomainOrigin);

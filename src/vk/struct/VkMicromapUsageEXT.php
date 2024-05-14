@@ -26,13 +26,12 @@ final class VkMicromapUsageEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $count = null,
         null|int $subdivisionLevel = null,
         null|int $format = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkMicromapUsageEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkMicromapUsageEXT', false));
         if(!is_null($count)) $self->setCount($count);
         if(!is_null($subdivisionLevel)) $self->setSubdivisionLevel($subdivisionLevel);
         if(!is_null($format)) $self->setFormat($format);

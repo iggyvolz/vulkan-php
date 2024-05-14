@@ -26,13 +26,12 @@ final class VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT implements \JsonSeria
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $imageSlicedViewOf3D = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($imageSlicedViewOf3D)) $self->setImageSlicedViewOf3D($imageSlicedViewOf3D);

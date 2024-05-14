@@ -28,15 +28,14 @@ final class VkImageViewHandleInfoNVX implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkImageView $imageView = null,
         null|\iggyvolz\vulkan\enum\VkDescriptorType $descriptorType = null,
         null|VkSampler $sampler = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImageViewHandleInfoNVX', false));
+    ): self {
+        $self = new self( $ffi->new('VkImageViewHandleInfoNVX', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($imageView)) $self->setImageView($imageView);

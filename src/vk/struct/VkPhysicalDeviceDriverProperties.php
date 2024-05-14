@@ -29,16 +29,15 @@ final class VkPhysicalDeviceDriverProperties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkDriverId $driverID = null,
         null|string $driverName = null,
         null|string $driverInfo = null,
         null|VkConformanceVersion $conformanceVersion = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDriverProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceDriverProperties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($driverID)) $self->setDriverID($driverID);

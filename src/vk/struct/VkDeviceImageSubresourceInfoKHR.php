@@ -27,14 +27,13 @@ final class VkDeviceImageSubresourceInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pCreateInfo = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pSubresource = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDeviceImageSubresourceInfoKHR', false));
+        null|VkImageCreateInfo $pCreateInfo = null,
+        null|VkImageSubresource2KHR $pSubresource = null,
+    ): self {
+        $self = new self( $ffi->new('VkDeviceImageSubresourceInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pCreateInfo)) $self->setPCreateInfo($pCreateInfo);
@@ -77,14 +76,14 @@ final class VkDeviceImageSubresourceInfoKHR implements \JsonSerializable
     /**
      * VkImageCreateInfo* /
      */
-    public function getPCreateInfo(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPCreateInfo(): VkImageCreateInfo
     {
         $cValue = $this->cdata->pCreateInfo;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImageCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkImageCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPCreateInfo(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPCreateInfo(VkImageCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pCreateInfo = $cValue;
@@ -93,14 +92,14 @@ final class VkDeviceImageSubresourceInfoKHR implements \JsonSerializable
     /**
      * VkImageSubresource2KHR* /
      */
-    public function getPSubresource(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPSubresource(): VkImageSubresource2KHR
     {
         $cValue = $this->cdata->pSubresource;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImageSubresource2KHR', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkImageSubresource2KHR($cValue);
         return $phpValue;
     }
 
-    public function setPSubresource(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPSubresource(VkImageSubresource2KHR $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pSubresource = $cValue;

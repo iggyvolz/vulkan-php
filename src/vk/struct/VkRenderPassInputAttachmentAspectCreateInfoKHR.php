@@ -22,9 +22,9 @@ final class VkRenderPassInputAttachmentAspectCreateInfoKHR implements \JsonSeria
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkRenderPassInputAttachmentAspectCreateInfoKHR', false));
+        $self = new self( $ffi->new('VkRenderPassInputAttachmentAspectCreateInfoKHR', false));
         return $self;
     }
 }

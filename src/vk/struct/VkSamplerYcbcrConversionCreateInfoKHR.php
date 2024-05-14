@@ -22,9 +22,9 @@ final class VkSamplerYcbcrConversionCreateInfoKHR implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkSamplerYcbcrConversionCreateInfoKHR', false));
+        $self = new self( $ffi->new('VkSamplerYcbcrConversionCreateInfoKHR', false));
         return $self;
     }
 }

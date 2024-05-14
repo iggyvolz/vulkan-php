@@ -4,7 +4,7 @@ namespace iggyvolz\vulkan\generator\Transformer;
 
 use iggyvolz\vulkan\util\ObjectPointer;
 
-readonly final class PointerTransformer extends Transformer
+readonly final class ConstPointerTransformer extends Transformer
 {
 
     public function __construct(public string $type)
@@ -13,12 +13,7 @@ readonly final class PointerTransformer extends Transformer
 
     public function phpType(): string
     {
-        return ObjectPointer::class;
-    }
-
-    public function phpDocType(): string
-    {
-        return "\\" . ObjectPointer::class . "<\\iggyvolz\\vulkan\\struct\\$this->type>";
+        return "\\iggyvolz\\vulkan\\struct\\$this->type";
     }
 
     public function cTypePrefix(): string
@@ -45,6 +40,6 @@ readonly final class PointerTransformer extends Transformer
      */
     public function fromC(): string
     {
-        return '$phpValue = new \\' . ObjectPointer::class . '('. var_export($this->type, true).', $cValue, $ffi); /** PTRANS */';
+        return "\$phpValue = new \\iggyvolz\\vulkan\\struct\\$this->type(\$cValue);";
     }
 }

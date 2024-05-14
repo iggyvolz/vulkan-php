@@ -28,15 +28,14 @@ final class VkPhysicalDeviceMultiviewFeatures implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $multiview = null,
         null|bool $multiviewGeometryShader = null,
         null|bool $multiviewTessellationShader = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMultiviewFeatures', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceMultiviewFeatures', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($multiview)) $self->setMultiview($multiview);

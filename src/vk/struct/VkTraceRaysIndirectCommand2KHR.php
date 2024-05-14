@@ -37,7 +37,7 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $raygenShaderRecordAddress = null,
         null|int $raygenShaderRecordSize = null,
         null|int $missShaderBindingTableAddress = null,
@@ -52,9 +52,8 @@ final class VkTraceRaysIndirectCommand2KHR implements \JsonSerializable
         null|int $width = null,
         null|int $height = null,
         null|int $depth = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkTraceRaysIndirectCommand2KHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkTraceRaysIndirectCommand2KHR', false));
         if(!is_null($raygenShaderRecordAddress)) $self->setRaygenShaderRecordAddress($raygenShaderRecordAddress);
         if(!is_null($raygenShaderRecordSize)) $self->setRaygenShaderRecordSize($raygenShaderRecordSize);
         if(!is_null($missShaderBindingTableAddress)) $self->setMissShaderBindingTableAddress($missShaderBindingTableAddress);

@@ -30,7 +30,7 @@ final class VkPhysicalDeviceImageFormatInfo2 implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkFormat $format = null,
@@ -38,9 +38,8 @@ final class VkPhysicalDeviceImageFormatInfo2 implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkImageTiling $tiling = null,
         null|array $usage = null,
         null|array $flags = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceImageFormatInfo2', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceImageFormatInfo2', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($format)) $self->setFormat($format);

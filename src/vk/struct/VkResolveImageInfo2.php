@@ -31,7 +31,7 @@ final class VkResolveImageInfo2 implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkImage $srcImage = null,
@@ -39,10 +39,9 @@ final class VkResolveImageInfo2 implements \JsonSerializable
         null|VkImage $dstImage = null,
         null|\iggyvolz\vulkan\enum\VkImageLayout $dstImageLayout = null,
         null|int $regionCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pRegions = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkResolveImageInfo2', false));
+        null|VkImageResolve2 $pRegions = null,
+    ): self {
+        $self = new self( $ffi->new('VkResolveImageInfo2', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($srcImage)) $self->setSrcImage($srcImage);
@@ -169,14 +168,14 @@ final class VkResolveImageInfo2 implements \JsonSerializable
     /**
      * VkImageResolve2* /
      */
-    public function getPRegions(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPRegions(): VkImageResolve2
     {
         $cValue = $this->cdata->pRegions;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImageResolve2', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkImageResolve2($cValue);
         return $phpValue;
     }
 
-    public function setPRegions(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPRegions(VkImageResolve2 $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pRegions = $cValue;

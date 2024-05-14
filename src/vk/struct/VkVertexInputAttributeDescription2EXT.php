@@ -29,16 +29,15 @@ final class VkVertexInputAttributeDescription2EXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $location = null,
         null|int $binding = null,
         null|\iggyvolz\vulkan\enum\VkFormat $format = null,
         null|int $offset = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVertexInputAttributeDescription2EXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkVertexInputAttributeDescription2EXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($location)) $self->setLocation($location);

@@ -27,14 +27,13 @@ final class VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR implements \Json
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $maxVertexAttribDivisor = null,
         null|bool $supportsNonZeroFirstInstance = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxVertexAttribDivisor)) $self->setMaxVertexAttribDivisor($maxVertexAttribDivisor);

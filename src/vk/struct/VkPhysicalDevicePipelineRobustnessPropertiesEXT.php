@@ -29,16 +29,15 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT implements \JsonSeri
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT $defaultRobustnessStorageBuffers = null,
         null|\iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT $defaultRobustnessUniformBuffers = null,
         null|\iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT $defaultRobustnessVertexInputs = null,
         null|\iggyvolz\vulkan\enum\VkPipelineRobustnessImageBehaviorEXT $defaultRobustnessImages = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDevicePipelineRobustnessPropertiesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDevicePipelineRobustnessPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($defaultRobustnessStorageBuffers)) $self->setDefaultRobustnessStorageBuffers($defaultRobustnessStorageBuffers);
@@ -92,8 +91,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT implements \JsonSeri
 
     public function setDefaultRobustnessStorageBuffers(
         \iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT $phpValue,
-    ): void
-    {
+    ): void {
         $cValue = $phpValue->value;
         $this->cdata->defaultRobustnessStorageBuffers = $cValue;
     }
@@ -110,8 +108,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT implements \JsonSeri
 
     public function setDefaultRobustnessUniformBuffers(
         \iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT $phpValue,
-    ): void
-    {
+    ): void {
         $cValue = $phpValue->value;
         $this->cdata->defaultRobustnessUniformBuffers = $cValue;
     }
@@ -128,8 +125,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT implements \JsonSeri
 
     public function setDefaultRobustnessVertexInputs(
         \iggyvolz\vulkan\enum\VkPipelineRobustnessBufferBehaviorEXT $phpValue,
-    ): void
-    {
+    ): void {
         $cValue = $phpValue->value;
         $this->cdata->defaultRobustnessVertexInputs = $cValue;
     }
@@ -146,8 +142,7 @@ final class VkPhysicalDevicePipelineRobustnessPropertiesEXT implements \JsonSeri
 
     public function setDefaultRobustnessImages(
         \iggyvolz\vulkan\enum\VkPipelineRobustnessImageBehaviorEXT $phpValue,
-    ): void
-    {
+    ): void {
         $cValue = $phpValue->value;
         $this->cdata->defaultRobustnessImages = $cValue;
     }

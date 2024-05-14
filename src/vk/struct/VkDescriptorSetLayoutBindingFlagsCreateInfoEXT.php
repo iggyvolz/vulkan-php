@@ -22,9 +22,9 @@ final class VkDescriptorSetLayoutBindingFlagsCreateInfoEXT implements \JsonSeria
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkDescriptorSetLayoutBindingFlagsCreateInfoEXT', false));
+        $self = new self( $ffi->new('VkDescriptorSetLayoutBindingFlagsCreateInfoEXT', false));
         return $self;
     }
 }

@@ -23,9 +23,9 @@ final class VkRenderPassCreationFeedbackInfoEXT implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan, null|int $postMergeSubpassCount = null): self
+    public static function create(\FFI $ffi, null|int $postMergeSubpassCount = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkRenderPassCreationFeedbackInfoEXT', false));
+        $self = new self( $ffi->new('VkRenderPassCreationFeedbackInfoEXT', false));
         if(!is_null($postMergeSubpassCount)) $self->setPostMergeSubpassCount($postMergeSubpassCount);
         return $self;
     }

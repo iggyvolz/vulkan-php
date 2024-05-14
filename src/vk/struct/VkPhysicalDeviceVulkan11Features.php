@@ -37,7 +37,7 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $storageBuffer16BitAccess = null,
@@ -52,9 +52,8 @@ final class VkPhysicalDeviceVulkan11Features implements \JsonSerializable
         null|bool $protectedMemory = null,
         null|bool $samplerYcbcrConversion = null,
         null|bool $shaderDrawParameters = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkan11Features', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceVulkan11Features', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($storageBuffer16BitAccess)) $self->setStorageBuffer16BitAccess($storageBuffer16BitAccess);

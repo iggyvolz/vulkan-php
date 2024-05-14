@@ -27,14 +27,13 @@ final class VkShaderModuleIdentifierEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $identifierSize = null,
         mixed $identifier = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkShaderModuleIdentifierEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkShaderModuleIdentifierEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($identifierSize)) $self->setIdentifierSize($identifierSize);
@@ -96,13 +95,13 @@ final class VkShaderModuleIdentifierEXT implements \JsonSerializable
     public function getIdentifier(): mixed
     {
         $cValue = $this->cdata->identifier;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]!");
         return $phpValue;
     }
 
     public function setIdentifier(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]!");
         $this->cdata->identifier = $cValue;
     }
 }

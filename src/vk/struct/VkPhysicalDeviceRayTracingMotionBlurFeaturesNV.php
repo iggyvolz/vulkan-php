@@ -27,14 +27,13 @@ final class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV implements \JsonSeria
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $rayTracingMotionBlur = null,
         null|bool $rayTracingMotionBlurPipelineTraceRaysIndirect = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceRayTracingMotionBlurFeaturesNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceRayTracingMotionBlurFeaturesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($rayTracingMotionBlur)) $self->setRayTracingMotionBlur($rayTracingMotionBlur);

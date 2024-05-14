@@ -27,14 +27,13 @@ final class VkRenderPassStripeSubmitInfoARM implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $stripeSemaphoreInfoCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pStripeSemaphoreInfos = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRenderPassStripeSubmitInfoARM', false));
+        null|VkSemaphoreSubmitInfo $pStripeSemaphoreInfos = null,
+    ): self {
+        $self = new self( $ffi->new('VkRenderPassStripeSubmitInfoARM', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($stripeSemaphoreInfoCount)) $self->setStripeSemaphoreInfoCount($stripeSemaphoreInfoCount);
@@ -93,14 +92,14 @@ final class VkRenderPassStripeSubmitInfoARM implements \JsonSerializable
     /**
      * VkSemaphoreSubmitInfo* /
      */
-    public function getPStripeSemaphoreInfos(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPStripeSemaphoreInfos(): VkSemaphoreSubmitInfo
     {
         $cValue = $this->cdata->pStripeSemaphoreInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSemaphoreSubmitInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSemaphoreSubmitInfo($cValue);
         return $phpValue;
     }
 
-    public function setPStripeSemaphoreInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPStripeSemaphoreInfos(VkSemaphoreSubmitInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pStripeSemaphoreInfos = $cValue;

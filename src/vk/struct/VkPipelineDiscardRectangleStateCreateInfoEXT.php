@@ -29,16 +29,15 @@ final class VkPipelineDiscardRectangleStateCreateInfoEXT implements \JsonSeriali
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkDiscardRectangleModeEXT $discardRectangleMode = null,
         null|int $discardRectangleCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pDiscardRectangles = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineDiscardRectangleStateCreateInfoEXT', false));
+        null|VkRect2D $pDiscardRectangles = null,
+    ): self {
+        $self = new self( $ffi->new('VkPipelineDiscardRectangleStateCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -131,14 +130,14 @@ final class VkPipelineDiscardRectangleStateCreateInfoEXT implements \JsonSeriali
     /**
      * VkRect2D* /
      */
-    public function getPDiscardRectangles(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPDiscardRectangles(): VkRect2D
     {
         $cValue = $this->cdata->pDiscardRectangles;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRect2D', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkRect2D($cValue);
         return $phpValue;
     }
 
-    public function setPDiscardRectangles(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPDiscardRectangles(VkRect2D $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pDiscardRectangles = $cValue;

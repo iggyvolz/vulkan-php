@@ -34,21 +34,20 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $frameID = null,
         null|int $imageCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pImages = null,
+        null|VkImage $pImages = null,
         null|int $bufferCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pBuffers = null,
+        null|VkBuffer $pBuffers = null,
         null|int $tagName = null,
         null|int $tagSize = null,
         null|\iggyvolz\vulkan\util\Pointer $pTag = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkFrameBoundaryEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkFrameBoundaryEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -146,14 +145,14 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
     /**
      * VkImage* /
      */
-    public function getPImages(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPImages(): VkImage
     {
         $cValue = $this->cdata->pImages;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImage', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkImage($cValue);
         return $phpValue;
     }
 
-    public function setPImages(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPImages(VkImage $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pImages = $cValue;
@@ -178,14 +177,14 @@ final class VkFrameBoundaryEXT implements \JsonSerializable
     /**
      * VkBuffer* /
      */
-    public function getPBuffers(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPBuffers(): VkBuffer
     {
         $cValue = $this->cdata->pBuffers;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkBuffer', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkBuffer($cValue);
         return $phpValue;
     }
 
-    public function setPBuffers(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPBuffers(VkBuffer $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pBuffers = $cValue;

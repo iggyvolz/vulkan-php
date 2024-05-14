@@ -26,13 +26,12 @@ final class VkExtent3D implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $width = null,
         null|int $height = null,
         null|int $depth = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkExtent3D', false));
+    ): self {
+        $self = new self( $ffi->new('VkExtent3D', false));
         if(!is_null($width)) $self->setWidth($width);
         if(!is_null($height)) $self->setHeight($height);
         if(!is_null($depth)) $self->setDepth($depth);

@@ -32,7 +32,7 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
@@ -42,9 +42,8 @@ final class VkDeviceMemoryReportCallbackDataEXT implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkObjectType $objectType = null,
         null|int $objectHandle = null,
         null|int $heapIndex = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDeviceMemoryReportCallbackDataEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkDeviceMemoryReportCallbackDataEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);

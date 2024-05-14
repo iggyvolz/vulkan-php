@@ -28,15 +28,14 @@ final class VkFaultCallbackInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $faultCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pFaults = null,
+        mixed $pFaults = null,
         mixed $pfnFaultCallback = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkFaultCallbackInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkFaultCallbackInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($faultCount)) $self->setFaultCount($faultCount);
@@ -94,18 +93,18 @@ final class VkFaultCallbackInfo implements \JsonSerializable
     }
 
     /**
-     * VkFaultData* /
+     * void* /
      */
-    public function getPFaults(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPFaults(): mixed
     {
         $cValue = $this->cdata->pFaults;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkFaultData', $cValue, $ffi); /** PTRANS */
+        throw new \LogicException("Dummy transformer - VkFaultData*!");
         return $phpValue;
     }
 
-    public function setPFaults(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPFaults(mixed $phpValue): void
     {
-        $cValue = $phpValue->cdata;
+        throw new \LogicException("Dummy transformer - VkFaultData*!");
         $this->cdata->pFaults = $cValue;
     }
 
@@ -115,13 +114,13 @@ final class VkFaultCallbackInfo implements \JsonSerializable
     public function getPfnFaultCallback(): mixed
     {
         $cValue = $this->cdata->pfnFaultCallback;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - PFN_vkFaultCallbackFunction!");
         return $phpValue;
     }
 
     public function setPfnFaultCallback(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - PFN_vkFaultCallbackFunction!");
         $this->cdata->pfnFaultCallback = $cValue;
     }
 }

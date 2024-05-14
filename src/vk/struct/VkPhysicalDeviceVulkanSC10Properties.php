@@ -43,7 +43,7 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $deviceNoDynamicHostAllocations = null,
@@ -64,9 +64,8 @@ final class VkPhysicalDeviceVulkanSC10Properties implements \JsonSerializable
         null|int $maxCallbackFaultCount = null,
         null|int $maxCommandPoolCommandBuffers = null,
         null|int $maxCommandBufferSize = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkanSC10Properties', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceVulkanSC10Properties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($deviceNoDynamicHostAllocations)) $self->setDeviceNoDynamicHostAllocations($deviceNoDynamicHostAllocations);

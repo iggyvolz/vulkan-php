@@ -32,19 +32,18 @@ final class VkFramebufferCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|VkRenderPass $renderPass = null,
         null|int $attachmentCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pAttachments = null,
+        null|VkImageView $pAttachments = null,
         null|int $width = null,
         null|int $height = null,
         null|int $layers = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkFramebufferCreateInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkFramebufferCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -140,14 +139,14 @@ final class VkFramebufferCreateInfo implements \JsonSerializable
     /**
      * VkImageView* /
      */
-    public function getPAttachments(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPAttachments(): VkImageView
     {
         $cValue = $this->cdata->pAttachments;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImageView', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkImageView($cValue);
         return $phpValue;
     }
 
-    public function setPAttachments(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPAttachments(VkImageView $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pAttachments = $cValue;

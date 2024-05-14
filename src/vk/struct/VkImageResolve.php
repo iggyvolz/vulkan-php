@@ -28,15 +28,14 @@ final class VkImageResolve implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkImageSubresourceLayers $srcSubresource = null,
         null|VkOffset3D $srcOffset = null,
         null|VkImageSubresourceLayers $dstSubresource = null,
         null|VkOffset3D $dstOffset = null,
         null|VkExtent3D $extent = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImageResolve', false));
+    ): self {
+        $self = new self( $ffi->new('VkImageResolve', false));
         if(!is_null($srcSubresource)) $self->setSrcSubresource($srcSubresource);
         if(!is_null($srcOffset)) $self->setSrcOffset($srcOffset);
         if(!is_null($dstSubresource)) $self->setDstSubresource($dstSubresource);

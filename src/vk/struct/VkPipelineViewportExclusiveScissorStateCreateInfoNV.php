@@ -27,14 +27,13 @@ final class VkPipelineViewportExclusiveScissorStateCreateInfoNV implements \Json
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $exclusiveScissorCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pExclusiveScissors = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineViewportExclusiveScissorStateCreateInfoNV', false));
+        null|VkRect2D $pExclusiveScissors = null,
+    ): self {
+        $self = new self( $ffi->new('VkPipelineViewportExclusiveScissorStateCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($exclusiveScissorCount)) $self->setExclusiveScissorCount($exclusiveScissorCount);
@@ -93,14 +92,14 @@ final class VkPipelineViewportExclusiveScissorStateCreateInfoNV implements \Json
     /**
      * VkRect2D* /
      */
-    public function getPExclusiveScissors(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPExclusiveScissors(): VkRect2D
     {
         $cValue = $this->cdata->pExclusiveScissors;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRect2D', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkRect2D($cValue);
         return $phpValue;
     }
 
-    public function setPExclusiveScissors(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPExclusiveScissors(VkRect2D $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pExclusiveScissors = $cValue;

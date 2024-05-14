@@ -26,13 +26,12 @@ final class VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV implements \
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkRayTracingInvocationReorderModeNV $rayTracingInvocationReorderReorderingHint = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($rayTracingInvocationReorderReorderingHint)) $self->setRayTracingInvocationReorderReorderingHint($rayTracingInvocationReorderReorderingHint);
@@ -75,8 +74,7 @@ final class VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV implements \
      * VkRayTracingInvocationReorderModeNV/
      */
     public function getRayTracingInvocationReorderReorderingHint(
-    ): \iggyvolz\vulkan\enum\VkRayTracingInvocationReorderModeNV
-    {
+    ): \iggyvolz\vulkan\enum\VkRayTracingInvocationReorderModeNV {
         $cValue = $this->cdata->rayTracingInvocationReorderReorderingHint;
         $phpValue = \iggyvolz\vulkan\enum\VkRayTracingInvocationReorderModeNV::from($cValue);
         return $phpValue;
@@ -84,8 +82,7 @@ final class VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV implements \
 
     public function setRayTracingInvocationReorderReorderingHint(
         \iggyvolz\vulkan\enum\VkRayTracingInvocationReorderModeNV $phpValue,
-    ): void
-    {
+    ): void {
         $cValue = $phpValue->value;
         $this->cdata->rayTracingInvocationReorderReorderingHint = $cValue;
     }

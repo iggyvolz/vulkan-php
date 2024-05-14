@@ -26,13 +26,12 @@ final class VkDrmFormatModifierPropertiesEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $drmFormatModifier = null,
         null|int $drmFormatModifierPlaneCount = null,
         null|array $drmFormatModifierTilingFeatures = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDrmFormatModifierPropertiesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkDrmFormatModifierPropertiesEXT', false));
         if(!is_null($drmFormatModifier)) $self->setDrmFormatModifier($drmFormatModifier);
         if(!is_null($drmFormatModifierPlaneCount)) $self->setDrmFormatModifierPlaneCount($drmFormatModifierPlaneCount);
         if(!is_null($drmFormatModifierTilingFeatures)) $self->setDrmFormatModifierTilingFeatures($drmFormatModifierTilingFeatures);

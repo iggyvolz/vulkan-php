@@ -22,9 +22,9 @@ final class VkCommandBufferSubmitInfoKHR implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkCommandBufferSubmitInfoKHR', false));
+        $self = new self( $ffi->new('VkCommandBufferSubmitInfoKHR', false));
         return $self;
     }
 }

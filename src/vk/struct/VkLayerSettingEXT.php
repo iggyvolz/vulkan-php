@@ -28,15 +28,14 @@ final class VkLayerSettingEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         ?string $pLayerName = null,
         ?string $pSettingName = null,
         null|\iggyvolz\vulkan\enum\VkLayerSettingTypeEXT $type = null,
         null|int $valueCount = null,
         null|\iggyvolz\vulkan\util\Pointer $pValues = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkLayerSettingEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkLayerSettingEXT', false));
         if(!is_null($pLayerName)) $self->setPLayerName($pLayerName);
         if(!is_null($pSettingName)) $self->setPSettingName($pSettingName);
         if(!is_null($type)) $self->setType($type);

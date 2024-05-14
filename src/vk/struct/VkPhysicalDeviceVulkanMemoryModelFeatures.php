@@ -28,15 +28,14 @@ final class VkPhysicalDeviceVulkanMemoryModelFeatures implements \JsonSerializab
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $vulkanMemoryModel = null,
         null|bool $vulkanMemoryModelDeviceScope = null,
         null|bool $vulkanMemoryModelAvailabilityVisibilityChains = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkanMemoryModelFeatures', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceVulkanMemoryModelFeatures', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($vulkanMemoryModel)) $self->setVulkanMemoryModel($vulkanMemoryModel);

@@ -24,13 +24,9 @@ final class VkDrawMeshTasksIndirectCommandNV implements \JsonSerializable
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|int $taskCount = null,
-        null|int $firstTask = null,
-    ): self
+    public static function create(\FFI $ffi, null|int $taskCount = null, null|int $firstTask = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkDrawMeshTasksIndirectCommandNV', false));
+        $self = new self( $ffi->new('VkDrawMeshTasksIndirectCommandNV', false));
         if(!is_null($taskCount)) $self->setTaskCount($taskCount);
         if(!is_null($firstTask)) $self->setFirstTask($firstTask);
         return $self;

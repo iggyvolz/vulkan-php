@@ -26,13 +26,12 @@ final class VkDescriptorImageInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkSampler $sampler = null,
         null|VkImageView $imageView = null,
         null|\iggyvolz\vulkan\enum\VkImageLayout $imageLayout = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDescriptorImageInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkDescriptorImageInfo', false));
         if(!is_null($sampler)) $self->setSampler($sampler);
         if(!is_null($imageView)) $self->setImageView($imageView);
         if(!is_null($imageLayout)) $self->setImageLayout($imageLayout);

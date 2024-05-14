@@ -30,7 +30,7 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $supportedPresentScaling = null,
@@ -38,9 +38,8 @@ final class VkSurfacePresentScalingCapabilitiesEXT implements \JsonSerializable
         null|array $supportedPresentGravityY = null,
         null|VkExtent2D $minScaledImageExtent = null,
         null|VkExtent2D $maxScaledImageExtent = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSurfacePresentScalingCapabilitiesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkSurfacePresentScalingCapabilitiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($supportedPresentScaling)) $self->setSupportedPresentScaling($supportedPresentScaling);

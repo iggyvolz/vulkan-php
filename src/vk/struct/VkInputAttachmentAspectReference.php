@@ -26,13 +26,12 @@ final class VkInputAttachmentAspectReference implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $subpass = null,
         null|int $inputAttachmentIndex = null,
         null|array $aspectMask = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkInputAttachmentAspectReference', false));
+    ): self {
+        $self = new self( $ffi->new('VkInputAttachmentAspectReference', false));
         if(!is_null($subpass)) $self->setSubpass($subpass);
         if(!is_null($inputAttachmentIndex)) $self->setInputAttachmentIndex($inputAttachmentIndex);
         if(!is_null($aspectMask)) $self->setAspectMask($aspectMask);

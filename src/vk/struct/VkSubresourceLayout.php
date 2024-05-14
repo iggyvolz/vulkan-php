@@ -28,15 +28,14 @@ final class VkSubresourceLayout implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $offset = null,
         null|int $size = null,
         null|int $rowPitch = null,
         null|int $arrayPitch = null,
         null|int $depthPitch = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSubresourceLayout', false));
+    ): self {
+        $self = new self( $ffi->new('VkSubresourceLayout', false));
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($rowPitch)) $self->setRowPitch($rowPitch);

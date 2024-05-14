@@ -37,7 +37,7 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
@@ -48,13 +48,12 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pCode = null,
         ?string $pName = null,
         null|int $setLayoutCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pSetLayouts = null,
+        null|VkDescriptorSetLayout $pSetLayouts = null,
         null|int $pushConstantRangeCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pPushConstantRanges = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pSpecializationInfo = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkShaderCreateInfoEXT', false));
+        null|VkPushConstantRange $pPushConstantRanges = null,
+        null|VkSpecializationInfo $pSpecializationInfo = null,
+    ): self {
+        $self = new self( $ffi->new('VkShaderCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -235,14 +234,14 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
     /**
      * VkDescriptorSetLayout* /
      */
-    public function getPSetLayouts(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPSetLayouts(): VkDescriptorSetLayout
     {
         $cValue = $this->cdata->pSetLayouts;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorSetLayout', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDescriptorSetLayout($cValue);
         return $phpValue;
     }
 
-    public function setPSetLayouts(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPSetLayouts(VkDescriptorSetLayout $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pSetLayouts = $cValue;
@@ -267,14 +266,14 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
     /**
      * VkPushConstantRange* /
      */
-    public function getPPushConstantRanges(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPPushConstantRanges(): VkPushConstantRange
     {
         $cValue = $this->cdata->pPushConstantRanges;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPushConstantRange', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPushConstantRange($cValue);
         return $phpValue;
     }
 
-    public function setPPushConstantRanges(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPPushConstantRanges(VkPushConstantRange $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pPushConstantRanges = $cValue;
@@ -283,14 +282,14 @@ final class VkShaderCreateInfoEXT implements \JsonSerializable
     /**
      * VkSpecializationInfo* /
      */
-    public function getPSpecializationInfo(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPSpecializationInfo(): VkSpecializationInfo
     {
         $cValue = $this->cdata->pSpecializationInfo;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSpecializationInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSpecializationInfo($cValue);
         return $phpValue;
     }
 
-    public function setPSpecializationInfo(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPSpecializationInfo(VkSpecializationInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pSpecializationInfo = $cValue;

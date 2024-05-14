@@ -29,16 +29,15 @@ final class VkSampleLocationsInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkSampleCountFlagBits $sampleLocationsPerPixel = null,
         null|VkExtent2D $sampleLocationGridSize = null,
         null|int $sampleLocationsCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pSampleLocations = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSampleLocationsInfoEXT', false));
+        null|VkSampleLocationEXT $pSampleLocations = null,
+    ): self {
+        $self = new self( $ffi->new('VkSampleLocationsInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($sampleLocationsPerPixel)) $self->setSampleLocationsPerPixel($sampleLocationsPerPixel);
@@ -131,14 +130,14 @@ final class VkSampleLocationsInfoEXT implements \JsonSerializable
     /**
      * VkSampleLocationEXT* /
      */
-    public function getPSampleLocations(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPSampleLocations(): VkSampleLocationEXT
     {
         $cValue = $this->cdata->pSampleLocations;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSampleLocationEXT', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSampleLocationEXT($cValue);
         return $phpValue;
     }
 
-    public function setPSampleLocations(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPSampleLocations(VkSampleLocationEXT $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pSampleLocations = $cValue;

@@ -26,13 +26,12 @@ final class VkRectLayerKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkOffset2D $offset = null,
         null|VkExtent2D $extent = null,
         null|int $layer = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRectLayerKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkRectLayerKHR', false));
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($extent)) $self->setExtent($extent);
         if(!is_null($layer)) $self->setLayer($layer);

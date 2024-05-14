@@ -32,19 +32,18 @@ final class VkExecutionGraphPipelineCreateInfoAMDX implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $stageCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pStages = null,
+        null|VkPipelineShaderStageCreateInfo $pStages = null,
         null|\iggyvolz\vulkan\util\Pointer $pLibraryInfo = null,
         null|VkPipelineLayout $layout = null,
         null|VkPipeline $basePipelineHandle = null,
         null|int $basePipelineIndex = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkExecutionGraphPipelineCreateInfoAMDX', false));
+    ): self {
+        $self = new self( $ffi->new('VkExecutionGraphPipelineCreateInfoAMDX', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -124,14 +123,14 @@ final class VkExecutionGraphPipelineCreateInfoAMDX implements \JsonSerializable
     /**
      * VkPipelineShaderStageCreateInfo* /
      */
-    public function getPStages(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPStages(): VkPipelineShaderStageCreateInfo
     {
         $cValue = $this->cdata->pStages;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipelineShaderStageCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipelineShaderStageCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPStages(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPStages(VkPipelineShaderStageCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pStages = $cValue;

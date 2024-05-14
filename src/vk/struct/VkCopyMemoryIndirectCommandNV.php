@@ -26,13 +26,12 @@ final class VkCopyMemoryIndirectCommandNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $srcAddress = null,
         null|int $dstAddress = null,
         null|int $size = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkCopyMemoryIndirectCommandNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkCopyMemoryIndirectCommandNV', false));
         if(!is_null($srcAddress)) $self->setSrcAddress($srcAddress);
         if(!is_null($dstAddress)) $self->setDstAddress($dstAddress);
         if(!is_null($size)) $self->setSize($size);

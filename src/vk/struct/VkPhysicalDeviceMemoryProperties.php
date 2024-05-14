@@ -27,14 +27,13 @@ final class VkPhysicalDeviceMemoryProperties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $memoryTypeCount = null,
         mixed $memoryTypes = null,
         null|int $memoryHeapCount = null,
         mixed $memoryHeaps = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMemoryProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceMemoryProperties', false));
         if(!is_null($memoryTypeCount)) $self->setMemoryTypeCount($memoryTypeCount);
         if(!is_null($memoryTypes)) $self->setMemoryTypes($memoryTypes);
         if(!is_null($memoryHeapCount)) $self->setMemoryHeapCount($memoryHeapCount);
@@ -64,13 +63,13 @@ final class VkPhysicalDeviceMemoryProperties implements \JsonSerializable
     public function getMemoryTypes(): mixed
     {
         $cValue = $this->cdata->memoryTypes;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkMemoryType[VK_MAX_MEMORY_TYPES]!");
         return $phpValue;
     }
 
     public function setMemoryTypes(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkMemoryType[VK_MAX_MEMORY_TYPES]!");
         $this->cdata->memoryTypes = $cValue;
     }
 
@@ -96,13 +95,13 @@ final class VkPhysicalDeviceMemoryProperties implements \JsonSerializable
     public function getMemoryHeaps(): mixed
     {
         $cValue = $this->cdata->memoryHeaps;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkMemoryHeap[VK_MAX_MEMORY_HEAPS]!");
         return $phpValue;
     }
 
     public function setMemoryHeaps(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkMemoryHeap[VK_MAX_MEMORY_HEAPS]!");
         $this->cdata->memoryHeaps = $cValue;
     }
 }

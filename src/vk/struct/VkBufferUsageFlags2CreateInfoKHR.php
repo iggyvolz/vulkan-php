@@ -26,13 +26,12 @@ final class VkBufferUsageFlags2CreateInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $usage = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkBufferUsageFlags2CreateInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkBufferUsageFlags2CreateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($usage)) $self->setUsage($usage);

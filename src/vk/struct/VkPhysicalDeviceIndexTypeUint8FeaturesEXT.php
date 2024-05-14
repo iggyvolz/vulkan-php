@@ -22,9 +22,9 @@ final class VkPhysicalDeviceIndexTypeUint8FeaturesEXT implements \JsonSerializab
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceIndexTypeUint8FeaturesEXT', false));
+        $self = new self( $ffi->new('VkPhysicalDeviceIndexTypeUint8FeaturesEXT', false));
         return $self;
     }
 }

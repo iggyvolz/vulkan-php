@@ -31,7 +31,7 @@ final class VkAccelerationStructureCreateInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $createFlags = null,
@@ -40,9 +40,8 @@ final class VkAccelerationStructureCreateInfoKHR implements \JsonSerializable
         null|int $size = null,
         null|\iggyvolz\vulkan\enum\VkAccelerationStructureTypeKHR $type = null,
         null|int $deviceAddress = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureCreateInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkAccelerationStructureCreateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($createFlags)) $self->setCreateFlags($createFlags);

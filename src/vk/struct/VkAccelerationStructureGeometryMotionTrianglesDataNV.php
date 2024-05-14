@@ -26,13 +26,12 @@ final class VkAccelerationStructureGeometryMotionTrianglesDataNV implements \Jso
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         mixed $vertexData = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureGeometryMotionTrianglesDataNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkAccelerationStructureGeometryMotionTrianglesDataNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($vertexData)) $self->setVertexData($vertexData);
@@ -77,13 +76,13 @@ final class VkAccelerationStructureGeometryMotionTrianglesDataNV implements \Jso
     public function getVertexData(): mixed
     {
         $cValue = $this->cdata->vertexData;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         return $phpValue;
     }
 
     public function setVertexData(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         $this->cdata->vertexData = $cValue;
     }
 }

@@ -13,7 +13,7 @@ abstract class Pointer
         /** @internal */
         public ?CData  $cdata,
         /** @internal */
-        public Vulkan  $vulkan,
+        public VulkanNew  $vulkan,
         /** @internal - for keeping alive */
         private ?CData $entry = null,
     )

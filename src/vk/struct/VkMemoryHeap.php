@@ -24,13 +24,9 @@ final class VkMemoryHeap implements \JsonSerializable
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|int $size = null,
-        null|array $flags = null,
-    ): self
+    public static function create(\FFI $ffi, null|int $size = null, null|array $flags = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkMemoryHeap', false));
+        $self = new self( $ffi->new('VkMemoryHeap', false));
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($flags)) $self->setFlags($flags);
         return $self;

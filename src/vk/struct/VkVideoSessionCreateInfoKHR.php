@@ -34,7 +34,7 @@ final class VkVideoSessionCreateInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $queueFamilyIndex = null,
@@ -45,10 +45,9 @@ final class VkVideoSessionCreateInfoKHR implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkFormat $referencePictureFormat = null,
         null|int $maxDpbSlots = null,
         null|int $maxActiveReferencePictures = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pStdHeaderVersion = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoSessionCreateInfoKHR', false));
+        null|VkExtensionProperties $pStdHeaderVersion = null,
+    ): self {
+        $self = new self( $ffi->new('VkVideoSessionCreateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($queueFamilyIndex)) $self->setQueueFamilyIndex($queueFamilyIndex);
@@ -226,14 +225,14 @@ final class VkVideoSessionCreateInfoKHR implements \JsonSerializable
     /**
      * VkExtensionProperties* /
      */
-    public function getPStdHeaderVersion(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPStdHeaderVersion(): VkExtensionProperties
     {
         $cValue = $this->cdata->pStdHeaderVersion;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkExtensionProperties', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkExtensionProperties($cValue);
         return $phpValue;
     }
 
-    public function setPStdHeaderVersion(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPStdHeaderVersion(VkExtensionProperties $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pStdHeaderVersion = $cValue;

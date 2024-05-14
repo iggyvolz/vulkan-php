@@ -31,7 +31,7 @@ final class VkPipelineColorBlendAttachmentState implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|bool $blendEnable = null,
         null|\iggyvolz\vulkan\enum\VkBlendFactor $srcColorBlendFactor = null,
         null|\iggyvolz\vulkan\enum\VkBlendFactor $dstColorBlendFactor = null,
@@ -40,9 +40,8 @@ final class VkPipelineColorBlendAttachmentState implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkBlendFactor $dstAlphaBlendFactor = null,
         null|\iggyvolz\vulkan\enum\VkBlendOp $alphaBlendOp = null,
         null|array $colorWriteMask = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineColorBlendAttachmentState', false));
+    ): self {
+        $self = new self( $ffi->new('VkPipelineColorBlendAttachmentState', false));
         if(!is_null($blendEnable)) $self->setBlendEnable($blendEnable);
         if(!is_null($srcColorBlendFactor)) $self->setSrcColorBlendFactor($srcColorBlendFactor);
         if(!is_null($dstColorBlendFactor)) $self->setDstColorBlendFactor($dstColorBlendFactor);

@@ -28,15 +28,14 @@ final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT implem
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $rasterizationOrderColorAttachmentAccess = null,
         null|bool $rasterizationOrderDepthAttachmentAccess = null,
         null|bool $rasterizationOrderStencilAttachmentAccess = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($rasterizationOrderColorAttachmentAccess)) $self->setRasterizationOrderColorAttachmentAccess($rasterizationOrderColorAttachmentAccess);

@@ -28,15 +28,14 @@ final class VkQueryPoolPerformanceCreateInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $queueFamilyIndex = null,
         null|int $counterIndexCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pCounterIndices = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkQueryPoolPerformanceCreateInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkQueryPoolPerformanceCreateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($queueFamilyIndex)) $self->setQueueFamilyIndex($queueFamilyIndex);

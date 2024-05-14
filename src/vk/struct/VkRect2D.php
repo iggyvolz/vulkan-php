@@ -24,13 +24,9 @@ final class VkRect2D implements \JsonSerializable
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|VkOffset2D $offset = null,
-        null|VkExtent2D $extent = null,
-    ): self
+    public static function create(\FFI $ffi, null|VkOffset2D $offset = null, null|VkExtent2D $extent = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkRect2D', false));
+        $self = new self( $ffi->new('VkRect2D', false));
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($extent)) $self->setExtent($extent);
         return $self;

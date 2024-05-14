@@ -40,7 +40,7 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|string $deviceUUID = null,
@@ -58,9 +58,8 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
         null|bool $protectedNoFault = null,
         null|int $maxPerSetDescriptors = null,
         null|int $maxMemoryAllocationSize = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkan11Properties', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceVulkan11Properties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($deviceUUID)) $self->setDeviceUUID($deviceUUID);
@@ -151,13 +150,13 @@ final class VkPhysicalDeviceVulkan11Properties implements \JsonSerializable
     public function getDeviceLUID(): mixed
     {
         $cValue = $this->cdata->deviceLUID;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint8_t[VK_LUID_SIZE]!");
         return $phpValue;
     }
 
     public function setDeviceLUID(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint8_t[VK_LUID_SIZE]!");
         $this->cdata->deviceLUID = $cValue;
     }
 

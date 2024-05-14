@@ -33,20 +33,19 @@ final class VkSubpassDescription implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint = null,
         null|int $inputAttachmentCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pInputAttachments = null,
+        null|VkAttachmentReference $pInputAttachments = null,
         null|int $colorAttachmentCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pColorAttachments = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pResolveAttachments = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pDepthStencilAttachment = null,
+        null|VkAttachmentReference $pColorAttachments = null,
+        null|VkAttachmentReference $pResolveAttachments = null,
+        null|VkAttachmentReference $pDepthStencilAttachment = null,
         null|int $preserveAttachmentCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pPreserveAttachments = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSubpassDescription', false));
+    ): self {
+        $self = new self( $ffi->new('VkSubpassDescription', false));
         if(!is_null($flags)) $self->setFlags($flags);
         if(!is_null($pipelineBindPoint)) $self->setPipelineBindPoint($pipelineBindPoint);
         if(!is_null($inputAttachmentCount)) $self->setInputAttachmentCount($inputAttachmentCount);
@@ -111,14 +110,14 @@ final class VkSubpassDescription implements \JsonSerializable
     /**
      * VkAttachmentReference* /
      */
-    public function getPInputAttachments(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPInputAttachments(): VkAttachmentReference
     {
         $cValue = $this->cdata->pInputAttachments;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentReference', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkAttachmentReference($cValue);
         return $phpValue;
     }
 
-    public function setPInputAttachments(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPInputAttachments(VkAttachmentReference $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pInputAttachments = $cValue;
@@ -143,14 +142,14 @@ final class VkSubpassDescription implements \JsonSerializable
     /**
      * VkAttachmentReference* /
      */
-    public function getPColorAttachments(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPColorAttachments(): VkAttachmentReference
     {
         $cValue = $this->cdata->pColorAttachments;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentReference', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkAttachmentReference($cValue);
         return $phpValue;
     }
 
-    public function setPColorAttachments(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPColorAttachments(VkAttachmentReference $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pColorAttachments = $cValue;
@@ -159,14 +158,14 @@ final class VkSubpassDescription implements \JsonSerializable
     /**
      * VkAttachmentReference* /
      */
-    public function getPResolveAttachments(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPResolveAttachments(): VkAttachmentReference
     {
         $cValue = $this->cdata->pResolveAttachments;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentReference', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkAttachmentReference($cValue);
         return $phpValue;
     }
 
-    public function setPResolveAttachments(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPResolveAttachments(VkAttachmentReference $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pResolveAttachments = $cValue;
@@ -175,14 +174,14 @@ final class VkSubpassDescription implements \JsonSerializable
     /**
      * VkAttachmentReference* /
      */
-    public function getPDepthStencilAttachment(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPDepthStencilAttachment(): VkAttachmentReference
     {
         $cValue = $this->cdata->pDepthStencilAttachment;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentReference', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkAttachmentReference($cValue);
         return $phpValue;
     }
 
-    public function setPDepthStencilAttachment(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPDepthStencilAttachment(VkAttachmentReference $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pDepthStencilAttachment = $cValue;

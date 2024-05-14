@@ -26,13 +26,12 @@ final class VkImportMetalIOSurfaceInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         mixed $ioSurface = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImportMetalIOSurfaceInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkImportMetalIOSurfaceInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($ioSurface)) $self->setIoSurface($ioSurface);
@@ -77,13 +76,13 @@ final class VkImportMetalIOSurfaceInfoEXT implements \JsonSerializable
     public function getIoSurface(): mixed
     {
         $cValue = $this->cdata->ioSurface;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - IOSurfaceRef!");
         return $phpValue;
     }
 
     public function setIoSurface(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - IOSurfaceRef!");
         $this->cdata->ioSurface = $cValue;
     }
 }

@@ -34,7 +34,7 @@ final class VkAccelerationStructureBuildGeometryInfoKHR implements \JsonSerializ
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkAccelerationStructureTypeKHR $type = null,
@@ -43,12 +43,11 @@ final class VkAccelerationStructureBuildGeometryInfoKHR implements \JsonSerializ
         null|VkAccelerationStructureKHR $srcAccelerationStructure = null,
         null|VkAccelerationStructureKHR $dstAccelerationStructure = null,
         null|int $geometryCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pGeometries = null,
+        null|VkAccelerationStructureGeometryKHR $pGeometries = null,
         null|\iggyvolz\vulkan\util\Pointer $ppGeometries = null,
         mixed $scratchData = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureBuildGeometryInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkAccelerationStructureBuildGeometryInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($type)) $self->setType($type);
@@ -194,14 +193,14 @@ final class VkAccelerationStructureBuildGeometryInfoKHR implements \JsonSerializ
     /**
      * VkAccelerationStructureGeometryKHR* /
      */
-    public function getPGeometries(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPGeometries(): VkAccelerationStructureGeometryKHR
     {
         $cValue = $this->cdata->pGeometries;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAccelerationStructureGeometryKHR', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkAccelerationStructureGeometryKHR($cValue);
         return $phpValue;
     }
 
-    public function setPGeometries(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPGeometries(VkAccelerationStructureGeometryKHR $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pGeometries = $cValue;
@@ -229,13 +228,13 @@ final class VkAccelerationStructureBuildGeometryInfoKHR implements \JsonSerializ
     public function getScratchData(): mixed
     {
         $cValue = $this->cdata->scratchData;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressKHR!");
         return $phpValue;
     }
 
     public function setScratchData(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressKHR!");
         $this->cdata->scratchData = $cValue;
     }
 }

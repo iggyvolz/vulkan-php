@@ -22,9 +22,9 @@ final class VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT implements \JsonSe
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT', false));
+        $self = new self( $ffi->new('VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT', false));
         return $self;
     }
 }

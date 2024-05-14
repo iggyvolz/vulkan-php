@@ -27,14 +27,13 @@ final class VkSemaphoreGetWin32HandleInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkSemaphore $semaphore = null,
         null|\iggyvolz\vulkan\enum\VkExternalSemaphoreHandleTypeFlagBits $handleType = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSemaphoreGetWin32HandleInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkSemaphoreGetWin32HandleInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($semaphore)) $self->setSemaphore($semaphore);

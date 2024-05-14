@@ -34,7 +34,7 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT implements \JsonSeriali
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $headerSize = null,
         null|\iggyvolz\vulkan\enum\VkDeviceFaultVendorBinaryHeaderVersionEXT $headerVersion = null,
         null|int $vendorID = null,
@@ -46,9 +46,8 @@ final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT implements \JsonSeriali
         null|int $engineNameOffset = null,
         null|int $engineVersion = null,
         null|int $apiVersion = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDeviceFaultVendorBinaryHeaderVersionOneEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkDeviceFaultVendorBinaryHeaderVersionOneEXT', false));
         if(!is_null($headerSize)) $self->setHeaderSize($headerSize);
         if(!is_null($headerVersion)) $self->setHeaderVersion($headerVersion);
         if(!is_null($vendorID)) $self->setVendorID($vendorID);

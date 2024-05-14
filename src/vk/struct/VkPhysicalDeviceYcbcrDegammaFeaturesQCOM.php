@@ -26,13 +26,12 @@ final class VkPhysicalDeviceYcbcrDegammaFeaturesQCOM implements \JsonSerializabl
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $ycbcrDegamma = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceYcbcrDegammaFeaturesQCOM', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceYcbcrDegammaFeaturesQCOM', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($ycbcrDegamma)) $self->setYcbcrDegamma($ycbcrDegamma);

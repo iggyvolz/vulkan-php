@@ -22,9 +22,9 @@ final class VkPhysicalDeviceScalarBlockLayoutFeaturesEXT implements \JsonSeriali
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceScalarBlockLayoutFeaturesEXT', false));
+        $self = new self( $ffi->new('VkPhysicalDeviceScalarBlockLayoutFeaturesEXT', false));
         return $self;
     }
 }

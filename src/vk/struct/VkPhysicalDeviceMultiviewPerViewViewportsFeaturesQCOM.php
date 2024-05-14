@@ -26,13 +26,12 @@ final class VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM implements \Js
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $multiviewPerViewViewports = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($multiviewPerViewViewports)) $self->setMultiviewPerViewViewports($multiviewPerViewViewports);

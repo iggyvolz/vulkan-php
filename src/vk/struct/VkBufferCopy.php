@@ -26,13 +26,12 @@ final class VkBufferCopy implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $srcOffset = null,
         null|int $dstOffset = null,
         null|int $size = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkBufferCopy', false));
+    ): self {
+        $self = new self( $ffi->new('VkBufferCopy', false));
         if(!is_null($srcOffset)) $self->setSrcOffset($srcOffset);
         if(!is_null($dstOffset)) $self->setDstOffset($dstOffset);
         if(!is_null($size)) $self->setSize($size);

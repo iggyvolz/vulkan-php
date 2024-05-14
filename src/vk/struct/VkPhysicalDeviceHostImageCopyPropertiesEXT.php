@@ -31,7 +31,7 @@ final class VkPhysicalDeviceHostImageCopyPropertiesEXT implements \JsonSerializa
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $copySrcLayoutCount = null,
@@ -40,9 +40,8 @@ final class VkPhysicalDeviceHostImageCopyPropertiesEXT implements \JsonSerializa
         null|\iggyvolz\vulkan\util\Pointer $pCopyDstLayouts = null,
         null|string $optimalTilingLayoutUUID = null,
         null|bool $identicalMemoryTypeRequirements = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceHostImageCopyPropertiesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceHostImageCopyPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($copySrcLayoutCount)) $self->setCopySrcLayoutCount($copySrcLayoutCount);

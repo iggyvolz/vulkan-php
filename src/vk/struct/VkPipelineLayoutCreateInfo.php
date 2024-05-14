@@ -30,17 +30,16 @@ final class VkPipelineLayoutCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $setLayoutCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pSetLayouts = null,
+        null|VkDescriptorSetLayout $pSetLayouts = null,
         null|int $pushConstantRangeCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pPushConstantRanges = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineLayoutCreateInfo', false));
+        null|VkPushConstantRange $pPushConstantRanges = null,
+    ): self {
+        $self = new self( $ffi->new('VkPipelineLayoutCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -118,14 +117,14 @@ final class VkPipelineLayoutCreateInfo implements \JsonSerializable
     /**
      * VkDescriptorSetLayout* /
      */
-    public function getPSetLayouts(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPSetLayouts(): VkDescriptorSetLayout
     {
         $cValue = $this->cdata->pSetLayouts;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorSetLayout', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDescriptorSetLayout($cValue);
         return $phpValue;
     }
 
-    public function setPSetLayouts(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPSetLayouts(VkDescriptorSetLayout $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pSetLayouts = $cValue;
@@ -150,14 +149,14 @@ final class VkPipelineLayoutCreateInfo implements \JsonSerializable
     /**
      * VkPushConstantRange* /
      */
-    public function getPPushConstantRanges(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPPushConstantRanges(): VkPushConstantRange
     {
         $cValue = $this->cdata->pPushConstantRanges;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPushConstantRange', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPushConstantRange($cValue);
         return $phpValue;
     }
 
-    public function setPPushConstantRanges(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPPushConstantRanges(VkPushConstantRange $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pPushConstantRanges = $cValue;

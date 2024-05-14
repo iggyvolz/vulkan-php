@@ -33,7 +33,7 @@ final class VkRenderingAttachmentInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkImageView $imageView = null,
@@ -44,9 +44,8 @@ final class VkRenderingAttachmentInfo implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkAttachmentLoadOp $loadOp = null,
         null|\iggyvolz\vulkan\enum\VkAttachmentStoreOp $storeOp = null,
         mixed $clearValue = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRenderingAttachmentInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkRenderingAttachmentInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($imageView)) $self->setImageView($imageView);
@@ -210,13 +209,13 @@ final class VkRenderingAttachmentInfo implements \JsonSerializable
     public function getClearValue(): mixed
     {
         $cValue = $this->cdata->clearValue;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkClearValue!");
         return $phpValue;
     }
 
     public function setClearValue(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkClearValue!");
         $this->cdata->clearValue = $cValue;
     }
 }

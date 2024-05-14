@@ -30,7 +30,7 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkSRTDataNV $transformT0 = null,
         null|VkSRTDataNV $transformT1 = null,
         null|int $instanceCustomIndex = null,
@@ -38,9 +38,8 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
         null|int $instanceShaderBindingTableRecordOffset = null,
         mixed $flags = null,
         null|int $accelerationStructureReference = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureSRTMotionInstanceNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkAccelerationStructureSRTMotionInstanceNV', false));
         if(!is_null($transformT0)) $self->setTransformT0($transformT0);
         if(!is_null($transformT1)) $self->setTransformT1($transformT1);
         if(!is_null($instanceCustomIndex)) $self->setInstanceCustomIndex($instanceCustomIndex);
@@ -137,13 +136,13 @@ final class VkAccelerationStructureSRTMotionInstanceNV implements \JsonSerializa
     public function getFlags(): mixed
     {
         $cValue = $this->cdata->flags;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkGeometryInstanceFlagsKHR :8!");
         return $phpValue;
     }
 
     public function setFlags(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkGeometryInstanceFlagsKHR :8!");
         $this->cdata->flags = $cValue;
     }
 

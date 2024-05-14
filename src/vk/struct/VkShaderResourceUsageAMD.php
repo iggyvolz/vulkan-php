@@ -28,15 +28,14 @@ final class VkShaderResourceUsageAMD implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $numUsedVgprs = null,
         null|int $numUsedSgprs = null,
         null|int $ldsSizePerLocalWorkGroup = null,
         null|int $ldsUsageSizeInBytes = null,
         null|int $scratchMemUsageInBytes = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkShaderResourceUsageAMD', false));
+    ): self {
+        $self = new self( $ffi->new('VkShaderResourceUsageAMD', false));
         if(!is_null($numUsedVgprs)) $self->setNumUsedVgprs($numUsedVgprs);
         if(!is_null($numUsedSgprs)) $self->setNumUsedSgprs($numUsedSgprs);
         if(!is_null($ldsSizePerLocalWorkGroup)) $self->setLdsSizePerLocalWorkGroup($ldsSizePerLocalWorkGroup);

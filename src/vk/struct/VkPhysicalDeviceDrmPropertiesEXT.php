@@ -31,7 +31,7 @@ final class VkPhysicalDeviceDrmPropertiesEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $hasPrimary = null,
@@ -40,9 +40,8 @@ final class VkPhysicalDeviceDrmPropertiesEXT implements \JsonSerializable
         null|int $primaryMinor = null,
         null|int $renderMajor = null,
         null|int $renderMinor = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDrmPropertiesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceDrmPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($hasPrimary)) $self->setHasPrimary($hasPrimary);

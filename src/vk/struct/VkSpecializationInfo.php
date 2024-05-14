@@ -27,14 +27,13 @@ final class VkSpecializationInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $mapEntryCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pMapEntries = null,
+        null|VkSpecializationMapEntry $pMapEntries = null,
         null|int $dataSize = null,
         null|\iggyvolz\vulkan\util\Pointer $pData = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSpecializationInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkSpecializationInfo', false));
         if(!is_null($mapEntryCount)) $self->setMapEntryCount($mapEntryCount);
         if(!is_null($pMapEntries)) $self->setPMapEntries($pMapEntries);
         if(!is_null($dataSize)) $self->setDataSize($dataSize);
@@ -61,14 +60,14 @@ final class VkSpecializationInfo implements \JsonSerializable
     /**
      * VkSpecializationMapEntry* /
      */
-    public function getPMapEntries(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPMapEntries(): VkSpecializationMapEntry
     {
         $cValue = $this->cdata->pMapEntries;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSpecializationMapEntry', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSpecializationMapEntry($cValue);
         return $phpValue;
     }
 
-    public function setPMapEntries(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPMapEntries(VkSpecializationMapEntry $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pMapEntries = $cValue;

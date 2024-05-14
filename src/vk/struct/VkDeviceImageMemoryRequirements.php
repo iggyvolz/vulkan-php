@@ -27,14 +27,13 @@ final class VkDeviceImageMemoryRequirements implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pCreateInfo = null,
+        null|VkImageCreateInfo $pCreateInfo = null,
         null|\iggyvolz\vulkan\enum\VkImageAspectFlagBits $planeAspect = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDeviceImageMemoryRequirements', false));
+    ): self {
+        $self = new self( $ffi->new('VkDeviceImageMemoryRequirements', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pCreateInfo)) $self->setPCreateInfo($pCreateInfo);
@@ -77,14 +76,14 @@ final class VkDeviceImageMemoryRequirements implements \JsonSerializable
     /**
      * VkImageCreateInfo* /
      */
-    public function getPCreateInfo(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPCreateInfo(): VkImageCreateInfo
     {
         $cValue = $this->cdata->pCreateInfo;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImageCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkImageCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPCreateInfo(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPCreateInfo(VkImageCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pCreateInfo = $cValue;

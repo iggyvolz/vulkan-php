@@ -22,9 +22,9 @@ final class VkImageStencilUsageCreateInfoEXT implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageStencilUsageCreateInfoEXT', false));
+        $self = new self( $ffi->new('VkImageStencilUsageCreateInfoEXT', false));
         return $self;
     }
 }

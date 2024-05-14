@@ -24,13 +24,9 @@ final class VkNativeBufferUsage2ANDROID implements \JsonSerializable
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|int $consumer = null,
-        null|int $producer = null,
-    ): self
+    public static function create(\FFI $ffi, null|int $consumer = null, null|int $producer = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkNativeBufferUsage2ANDROID', false));
+        $self = new self( $ffi->new('VkNativeBufferUsage2ANDROID', false));
         if(!is_null($consumer)) $self->setConsumer($consumer);
         if(!is_null($producer)) $self->setProducer($producer);
         return $self;

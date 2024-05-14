@@ -27,14 +27,13 @@ final class VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR implements \JsonSeri
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $shaderSubgroupRotate = null,
         null|bool $shaderSubgroupRotateClustered = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderSubgroupRotate)) $self->setShaderSubgroupRotate($shaderSubgroupRotate);

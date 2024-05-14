@@ -27,14 +27,13 @@ final class VkAccelerationStructureCreateInfoNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $compactedSize = null,
         null|VkAccelerationStructureInfoNV $info = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureCreateInfoNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkAccelerationStructureCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($compactedSize)) $self->setCompactedSize($compactedSize);

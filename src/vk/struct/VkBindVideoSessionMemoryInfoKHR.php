@@ -29,16 +29,15 @@ final class VkBindVideoSessionMemoryInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $memoryBindIndex = null,
         null|VkDeviceMemory $memory = null,
         null|int $memoryOffset = null,
         null|int $memorySize = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkBindVideoSessionMemoryInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkBindVideoSessionMemoryInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($memoryBindIndex)) $self->setMemoryBindIndex($memoryBindIndex);

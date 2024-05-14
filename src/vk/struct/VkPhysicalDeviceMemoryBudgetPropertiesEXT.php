@@ -27,14 +27,13 @@ final class VkPhysicalDeviceMemoryBudgetPropertiesEXT implements \JsonSerializab
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         mixed $heapBudget = null,
         mixed $heapUsage = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMemoryBudgetPropertiesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceMemoryBudgetPropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($heapBudget)) $self->setHeapBudget($heapBudget);
@@ -80,13 +79,13 @@ final class VkPhysicalDeviceMemoryBudgetPropertiesEXT implements \JsonSerializab
     public function getHeapBudget(): mixed
     {
         $cValue = $this->cdata->heapBudget;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceSize[VK_MAX_MEMORY_HEAPS]!");
         return $phpValue;
     }
 
     public function setHeapBudget(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceSize[VK_MAX_MEMORY_HEAPS]!");
         $this->cdata->heapBudget = $cValue;
     }
 
@@ -96,13 +95,13 @@ final class VkPhysicalDeviceMemoryBudgetPropertiesEXT implements \JsonSerializab
     public function getHeapUsage(): mixed
     {
         $cValue = $this->cdata->heapUsage;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceSize[VK_MAX_MEMORY_HEAPS]!");
         return $phpValue;
     }
 
     public function setHeapUsage(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceSize[VK_MAX_MEMORY_HEAPS]!");
         $this->cdata->heapUsage = $cValue;
     }
 }

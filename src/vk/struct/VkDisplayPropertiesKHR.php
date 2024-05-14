@@ -30,7 +30,7 @@ final class VkDisplayPropertiesKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkDisplayKHR $display = null,
         ?string $displayName = null,
         null|VkExtent2D $physicalDimensions = null,
@@ -38,9 +38,8 @@ final class VkDisplayPropertiesKHR implements \JsonSerializable
         null|array $supportedTransforms = null,
         null|bool $planeReorderPossible = null,
         null|bool $persistentContent = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDisplayPropertiesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkDisplayPropertiesKHR', false));
         if(!is_null($display)) $self->setDisplay($display);
         if(!is_null($displayName)) $self->setDisplayName($displayName);
         if(!is_null($physicalDimensions)) $self->setPhysicalDimensions($physicalDimensions);

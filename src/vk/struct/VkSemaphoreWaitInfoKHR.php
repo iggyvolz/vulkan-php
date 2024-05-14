@@ -22,9 +22,9 @@ final class VkSemaphoreWaitInfoKHR implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkSemaphoreWaitInfoKHR', false));
+        $self = new self( $ffi->new('VkSemaphoreWaitInfoKHR', false));
         return $self;
     }
 }

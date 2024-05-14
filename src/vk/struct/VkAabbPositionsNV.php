@@ -22,9 +22,9 @@ final class VkAabbPositionsNV implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkAabbPositionsNV', false));
+        $self = new self( $ffi->new('VkAabbPositionsNV', false));
         return $self;
     }
 }

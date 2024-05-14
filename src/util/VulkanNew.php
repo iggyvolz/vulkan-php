@@ -4,7 +4,7 @@ namespace iggyvolz\vulkan\util;
 
 use Exception;
 use FFI;
-use FFI\CData;
+use iggyvolz\vulkan\struct\VkInstance;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
@@ -12,11 +12,9 @@ class VulkanNew implements ContainerInterface
 {
 
     /**
-     * @param FFI $ffi
-     * @param CData $instance
      * @param list<string> $extensions
      */
-    public function __construct(public readonly FFI $ffi, public readonly CData $instance, private readonly array $extensions)
+    public function __construct(/** @internal  */public readonly FFI $ffi, public readonly VkInstance $instance, private readonly array $extensions)
     {
     }
 
@@ -36,6 +34,15 @@ class VulkanNew implements ContainerInterface
 
     public function has(string $id): bool
     {
-        return array_key_exists($id, $this->extensions);
+        return in_array($id, $this->extensions);
+    }
+
+    /**
+     * @internal
+     * @param list<mixed> $params
+     */
+    public function call(string $method, array ...$params): mixed
+    {
+        return $this->ffi->vkGetInstanceProcAddr($this->instance->cdata, $method)(...$params);
     }
 }

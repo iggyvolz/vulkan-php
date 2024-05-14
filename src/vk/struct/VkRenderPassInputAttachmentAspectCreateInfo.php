@@ -27,14 +27,13 @@ final class VkRenderPassInputAttachmentAspectCreateInfo implements \JsonSerializ
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $aspectReferenceCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pAspectReferences = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRenderPassInputAttachmentAspectCreateInfo', false));
+        null|VkInputAttachmentAspectReference $pAspectReferences = null,
+    ): self {
+        $self = new self( $ffi->new('VkRenderPassInputAttachmentAspectCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($aspectReferenceCount)) $self->setAspectReferenceCount($aspectReferenceCount);
@@ -93,14 +92,14 @@ final class VkRenderPassInputAttachmentAspectCreateInfo implements \JsonSerializ
     /**
      * VkInputAttachmentAspectReference* /
      */
-    public function getPAspectReferences(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPAspectReferences(): VkInputAttachmentAspectReference
     {
         $cValue = $this->cdata->pAspectReferences;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkInputAttachmentAspectReference', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkInputAttachmentAspectReference($cValue);
         return $phpValue;
     }
 
-    public function setPAspectReferences(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPAspectReferences(VkInputAttachmentAspectReference $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pAspectReferences = $cValue;

@@ -38,7 +38,7 @@ final class VkImageCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
@@ -54,9 +54,8 @@ final class VkImageCreateInfo implements \JsonSerializable
         null|int $queueFamilyIndexCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pQueueFamilyIndices = null,
         null|\iggyvolz\vulkan\enum\VkImageLayout $initialLayout = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImageCreateInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkImageCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);

@@ -28,15 +28,14 @@ final class VkPhysicalDevice8BitStorageFeatures implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $storageBuffer8BitAccess = null,
         null|bool $uniformAndStorageBuffer8BitAccess = null,
         null|bool $storagePushConstant8 = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDevice8BitStorageFeatures', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDevice8BitStorageFeatures', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($storageBuffer8BitAccess)) $self->setStorageBuffer8BitAccess($storageBuffer8BitAccess);

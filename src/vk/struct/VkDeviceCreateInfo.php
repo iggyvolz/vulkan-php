@@ -33,20 +33,19 @@ final class VkDeviceCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $queueCreateInfoCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pQueueCreateInfos = null,
+        null|VkDeviceQueueCreateInfo $pQueueCreateInfos = null,
         null|int $enabledLayerCount = null,
         null|\iggyvolz\vulkan\util\Pointer $ppEnabledLayerNames = null,
         null|int $enabledExtensionCount = null,
         null|\iggyvolz\vulkan\util\Pointer $ppEnabledExtensionNames = null,
         null|\iggyvolz\vulkan\util\Pointer $pEnabledFeatures = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDeviceCreateInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkDeviceCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -127,14 +126,14 @@ final class VkDeviceCreateInfo implements \JsonSerializable
     /**
      * VkDeviceQueueCreateInfo* /
      */
-    public function getPQueueCreateInfos(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPQueueCreateInfos(): VkDeviceQueueCreateInfo
     {
         $cValue = $this->cdata->pQueueCreateInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDeviceQueueCreateInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDeviceQueueCreateInfo($cValue);
         return $phpValue;
     }
 
-    public function setPQueueCreateInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPQueueCreateInfos(VkDeviceQueueCreateInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pQueueCreateInfos = $cValue;

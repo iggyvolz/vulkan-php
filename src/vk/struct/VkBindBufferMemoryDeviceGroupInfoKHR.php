@@ -22,9 +22,9 @@ final class VkBindBufferMemoryDeviceGroupInfoKHR implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkBindBufferMemoryDeviceGroupInfoKHR', false));
+        $self = new self( $ffi->new('VkBindBufferMemoryDeviceGroupInfoKHR', false));
         return $self;
     }
 }

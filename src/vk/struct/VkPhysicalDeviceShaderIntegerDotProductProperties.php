@@ -55,7 +55,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties implements \JsonSe
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $integerDotProduct8BitUnsignedAccelerated = null,
@@ -88,9 +88,8 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties implements \JsonSe
         null|bool $integerDotProductAccumulatingSaturating64BitUnsignedAccelerated = null,
         null|bool $integerDotProductAccumulatingSaturating64BitSignedAccelerated = null,
         null|bool $integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderIntegerDotProductProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderIntegerDotProductProperties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($integerDotProduct8BitUnsignedAccelerated)) $self->setIntegerDotProduct8BitUnsignedAccelerated($integerDotProduct8BitUnsignedAccelerated);
@@ -490,8 +489,7 @@ final class VkPhysicalDeviceShaderIntegerDotProductProperties implements \JsonSe
 
     public function setIntegerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(
         bool $phpValue,
-    ): void
-    {
+    ): void {
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = $cValue;
     }

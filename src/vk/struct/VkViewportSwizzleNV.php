@@ -27,14 +27,13 @@ final class VkViewportSwizzleNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV $x = null,
         null|\iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV $y = null,
         null|\iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV $z = null,
         null|\iggyvolz\vulkan\enum\VkViewportCoordinateSwizzleNV $w = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkViewportSwizzleNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkViewportSwizzleNV', false));
         if(!is_null($x)) $self->setX($x);
         if(!is_null($y)) $self->setY($y);
         if(!is_null($z)) $self->setZ($z);

@@ -25,12 +25,11 @@ final class VkSurfaceFormatKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkFormat $format = null,
         null|\iggyvolz\vulkan\enum\VkColorSpaceKHR $colorSpace = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSurfaceFormatKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkSurfaceFormatKHR', false));
         if(!is_null($format)) $self->setFormat($format);
         if(!is_null($colorSpace)) $self->setColorSpace($colorSpace);
         return $self;

@@ -26,13 +26,12 @@ final class VkBindIndexBufferIndirectCommandNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $bufferAddress = null,
         null|int $size = null,
         null|\iggyvolz\vulkan\enum\VkIndexType $indexType = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkBindIndexBufferIndirectCommandNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkBindIndexBufferIndirectCommandNV', false));
         if(!is_null($bufferAddress)) $self->setBufferAddress($bufferAddress);
         if(!is_null($size)) $self->setSize($size);
         if(!is_null($indexType)) $self->setIndexType($indexType);

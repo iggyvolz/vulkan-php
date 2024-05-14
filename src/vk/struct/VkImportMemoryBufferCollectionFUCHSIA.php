@@ -27,14 +27,13 @@ final class VkImportMemoryBufferCollectionFUCHSIA implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkBufferCollectionFUCHSIA $collection = null,
         null|int $index = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImportMemoryBufferCollectionFUCHSIA', false));
+    ): self {
+        $self = new self( $ffi->new('VkImportMemoryBufferCollectionFUCHSIA', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($collection)) $self->setCollection($collection);

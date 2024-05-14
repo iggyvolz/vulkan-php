@@ -26,13 +26,12 @@ final class VkPushConstantRange implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|array $stageFlags = null,
         null|int $offset = null,
         null|int $size = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPushConstantRange', false));
+    ): self {
+        $self = new self( $ffi->new('VkPushConstantRange', false));
         if(!is_null($stageFlags)) $self->setStageFlags($stageFlags);
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($size)) $self->setSize($size);

@@ -29,16 +29,15 @@ final class VkVideoProfileInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkVideoCodecOperationFlagBitsKHR $videoCodecOperation = null,
         null|array $chromaSubsampling = null,
         null|array $lumaBitDepth = null,
         null|array $chromaBitDepth = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoProfileInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkVideoProfileInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($videoCodecOperation)) $self->setVideoCodecOperation($videoCodecOperation);

@@ -33,7 +33,7 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $maxGeometryCount = null,
@@ -44,9 +44,8 @@ final class VkPhysicalDeviceAccelerationStructurePropertiesKHR implements \JsonS
         null|int $maxDescriptorSetAccelerationStructures = null,
         null|int $maxDescriptorSetUpdateAfterBindAccelerationStructures = null,
         null|int $minAccelerationStructureScratchOffsetAlignment = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceAccelerationStructurePropertiesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceAccelerationStructurePropertiesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxGeometryCount)) $self->setMaxGeometryCount($maxGeometryCount);

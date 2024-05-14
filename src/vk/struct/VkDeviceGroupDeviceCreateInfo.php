@@ -27,14 +27,13 @@ final class VkDeviceGroupDeviceCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $physicalDeviceCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pPhysicalDevices = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDeviceGroupDeviceCreateInfo', false));
+        null|VkPhysicalDevice $pPhysicalDevices = null,
+    ): self {
+        $self = new self( $ffi->new('VkDeviceGroupDeviceCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($physicalDeviceCount)) $self->setPhysicalDeviceCount($physicalDeviceCount);
@@ -93,14 +92,14 @@ final class VkDeviceGroupDeviceCreateInfo implements \JsonSerializable
     /**
      * VkPhysicalDevice* /
      */
-    public function getPPhysicalDevices(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPPhysicalDevices(): VkPhysicalDevice
     {
         $cValue = $this->cdata->pPhysicalDevices;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPhysicalDevice', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPhysicalDevice($cValue);
         return $phpValue;
     }
 
-    public function setPPhysicalDevices(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPPhysicalDevices(VkPhysicalDevice $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pPhysicalDevices = $cValue;

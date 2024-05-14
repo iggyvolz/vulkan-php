@@ -25,14 +25,9 @@ final class VkOffset3D implements \JsonSerializable
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|int $x = null,
-        null|int $y = null,
-        null|int $z = null,
-    ): self
+    public static function create(\FFI $ffi, null|int $x = null, null|int $y = null, null|int $z = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkOffset3D', false));
+        $self = new self( $ffi->new('VkOffset3D', false));
         if(!is_null($x)) $self->setX($x);
         if(!is_null($y)) $self->setY($y);
         if(!is_null($z)) $self->setZ($z);

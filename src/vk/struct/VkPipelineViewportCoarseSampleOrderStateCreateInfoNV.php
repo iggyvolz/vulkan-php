@@ -28,15 +28,14 @@ final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV implements \Jso
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkCoarseSampleOrderTypeNV $sampleOrderType = null,
         null|int $customSampleOrderCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pCustomSampleOrders = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineViewportCoarseSampleOrderStateCreateInfoNV', false));
+        null|VkCoarseSampleOrderCustomNV $pCustomSampleOrders = null,
+    ): self {
+        $self = new self( $ffi->new('VkPipelineViewportCoarseSampleOrderStateCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($sampleOrderType)) $self->setSampleOrderType($sampleOrderType);
@@ -112,14 +111,14 @@ final class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV implements \Jso
     /**
      * VkCoarseSampleOrderCustomNV* /
      */
-    public function getPCustomSampleOrders(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPCustomSampleOrders(): VkCoarseSampleOrderCustomNV
     {
         $cValue = $this->cdata->pCustomSampleOrders;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkCoarseSampleOrderCustomNV', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkCoarseSampleOrderCustomNV($cValue);
         return $phpValue;
     }
 
-    public function setPCustomSampleOrders(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPCustomSampleOrders(VkCoarseSampleOrderCustomNV $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pCustomSampleOrders = $cValue;

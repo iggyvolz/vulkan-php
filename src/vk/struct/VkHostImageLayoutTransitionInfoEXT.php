@@ -29,16 +29,15 @@ final class VkHostImageLayoutTransitionInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkImage $image = null,
         null|\iggyvolz\vulkan\enum\VkImageLayout $oldLayout = null,
         null|\iggyvolz\vulkan\enum\VkImageLayout $newLayout = null,
         null|VkImageSubresourceRange $subresourceRange = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkHostImageLayoutTransitionInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkHostImageLayoutTransitionInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($image)) $self->setImage($image);

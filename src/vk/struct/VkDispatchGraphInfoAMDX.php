@@ -27,14 +27,13 @@ final class VkDispatchGraphInfoAMDX implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $nodeIndex = null,
         null|int $payloadCount = null,
         mixed $payloads = null,
         null|int $payloadStride = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDispatchGraphInfoAMDX', false));
+    ): self {
+        $self = new self( $ffi->new('VkDispatchGraphInfoAMDX', false));
         if(!is_null($nodeIndex)) $self->setNodeIndex($nodeIndex);
         if(!is_null($payloadCount)) $self->setPayloadCount($payloadCount);
         if(!is_null($payloads)) $self->setPayloads($payloads);
@@ -80,13 +79,13 @@ final class VkDispatchGraphInfoAMDX implements \JsonSerializable
     public function getPayloads(): mixed
     {
         $cValue = $this->cdata->payloads;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstAMDX!");
         return $phpValue;
     }
 
     public function setPayloads(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstAMDX!");
         $this->cdata->payloads = $cValue;
     }
 

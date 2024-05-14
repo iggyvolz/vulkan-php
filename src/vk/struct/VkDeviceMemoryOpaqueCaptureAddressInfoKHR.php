@@ -22,9 +22,9 @@ final class VkDeviceMemoryOpaqueCaptureAddressInfoKHR implements \JsonSerializab
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkDeviceMemoryOpaqueCaptureAddressInfoKHR', false));
+        $self = new self( $ffi->new('VkDeviceMemoryOpaqueCaptureAddressInfoKHR', false));
         return $self;
     }
 }

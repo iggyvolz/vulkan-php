@@ -33,7 +33,7 @@ final class VkWriteDescriptorSet implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkDescriptorSet $dstSet = null,
@@ -41,12 +41,11 @@ final class VkWriteDescriptorSet implements \JsonSerializable
         null|int $dstArrayElement = null,
         null|int $descriptorCount = null,
         null|\iggyvolz\vulkan\enum\VkDescriptorType $descriptorType = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pImageInfo = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pBufferInfo = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pTexelBufferView = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkWriteDescriptorSet', false));
+        null|VkDescriptorImageInfo $pImageInfo = null,
+        null|VkDescriptorBufferInfo $pBufferInfo = null,
+        null|VkBufferView $pTexelBufferView = null,
+    ): self {
+        $self = new self( $ffi->new('VkWriteDescriptorSet', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($dstSet)) $self->setDstSet($dstSet);
@@ -175,14 +174,14 @@ final class VkWriteDescriptorSet implements \JsonSerializable
     /**
      * VkDescriptorImageInfo* /
      */
-    public function getPImageInfo(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPImageInfo(): VkDescriptorImageInfo
     {
         $cValue = $this->cdata->pImageInfo;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorImageInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDescriptorImageInfo($cValue);
         return $phpValue;
     }
 
-    public function setPImageInfo(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPImageInfo(VkDescriptorImageInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pImageInfo = $cValue;
@@ -191,14 +190,14 @@ final class VkWriteDescriptorSet implements \JsonSerializable
     /**
      * VkDescriptorBufferInfo* /
      */
-    public function getPBufferInfo(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPBufferInfo(): VkDescriptorBufferInfo
     {
         $cValue = $this->cdata->pBufferInfo;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorBufferInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDescriptorBufferInfo($cValue);
         return $phpValue;
     }
 
-    public function setPBufferInfo(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPBufferInfo(VkDescriptorBufferInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pBufferInfo = $cValue;
@@ -207,14 +206,14 @@ final class VkWriteDescriptorSet implements \JsonSerializable
     /**
      * VkBufferView* /
      */
-    public function getPTexelBufferView(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPTexelBufferView(): VkBufferView
     {
         $cValue = $this->cdata->pTexelBufferView;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkBufferView', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkBufferView($cValue);
         return $phpValue;
     }
 
-    public function setPTexelBufferView(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPTexelBufferView(VkBufferView $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pTexelBufferView = $cValue;

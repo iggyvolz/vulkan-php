@@ -25,12 +25,11 @@ final class VkDisplayModeParametersKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkExtent2D $visibleRegion = null,
         null|int $refreshRate = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDisplayModeParametersKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkDisplayModeParametersKHR', false));
         if(!is_null($visibleRegion)) $self->setVisibleRegion($visibleRegion);
         if(!is_null($refreshRate)) $self->setRefreshRate($refreshRate);
         return $self;

@@ -29,16 +29,15 @@ final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT implements \JsonSer
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $subsampledLoads = null,
         null|bool $subsampledCoarseReconstructionEarlyAccess = null,
         null|int $maxSubsampledArrayLayers = null,
         null|int $maxDescriptorSetSubsampledSamplers = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFragmentDensityMap2PropertiesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceFragmentDensityMap2PropertiesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($subsampledLoads)) $self->setSubsampledLoads($subsampledLoads);

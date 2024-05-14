@@ -32,7 +32,7 @@ final class VkBufferMemoryBarrier implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $srcAccessMask = null,
@@ -42,9 +42,8 @@ final class VkBufferMemoryBarrier implements \JsonSerializable
         null|VkBuffer $buffer = null,
         null|int $offset = null,
         null|int $size = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkBufferMemoryBarrier', false));
+    ): self {
+        $self = new self( $ffi->new('VkBufferMemoryBarrier', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($srcAccessMask)) $self->setSrcAccessMask($srcAccessMask);

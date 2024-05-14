@@ -27,14 +27,13 @@ final class VkQueueFamilyProperties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|array $queueFlags = null,
         null|int $queueCount = null,
         null|int $timestampValidBits = null,
         null|VkExtent3D $minImageTransferGranularity = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkQueueFamilyProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkQueueFamilyProperties', false));
         if(!is_null($queueFlags)) $self->setQueueFlags($queueFlags);
         if(!is_null($queueCount)) $self->setQueueCount($queueCount);
         if(!is_null($timestampValidBits)) $self->setTimestampValidBits($timestampValidBits);

@@ -31,7 +31,7 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $earlyFragmentMultisampleCoverageAfterSampleCounting = null,
@@ -40,9 +40,8 @@ final class VkPhysicalDeviceMaintenance5PropertiesKHR implements \JsonSerializab
         null|bool $polygonModePointSize = null,
         null|bool $nonStrictSinglePixelWideLinesUseParallelogram = null,
         null|bool $nonStrictWideLinesUseParallelogram = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceMaintenance5PropertiesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceMaintenance5PropertiesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($earlyFragmentMultisampleCoverageAfterSampleCounting)) $self->setEarlyFragmentMultisampleCoverageAfterSampleCounting($earlyFragmentMultisampleCoverageAfterSampleCounting);

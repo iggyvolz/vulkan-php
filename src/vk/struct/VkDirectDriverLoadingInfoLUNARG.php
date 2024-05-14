@@ -27,14 +27,13 @@ final class VkDirectDriverLoadingInfoLUNARG implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         mixed $pfnGetInstanceProcAddr = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDirectDriverLoadingInfoLUNARG', false));
+    ): self {
+        $self = new self( $ffi->new('VkDirectDriverLoadingInfoLUNARG', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -96,13 +95,13 @@ final class VkDirectDriverLoadingInfoLUNARG implements \JsonSerializable
     public function getPfnGetInstanceProcAddr(): mixed
     {
         $cValue = $this->cdata->pfnGetInstanceProcAddr;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - PFN_vkGetInstanceProcAddrLUNARG!");
         return $phpValue;
     }
 
     public function setPfnGetInstanceProcAddr(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - PFN_vkGetInstanceProcAddrLUNARG!");
         $this->cdata->pfnGetInstanceProcAddr = $cValue;
     }
 }

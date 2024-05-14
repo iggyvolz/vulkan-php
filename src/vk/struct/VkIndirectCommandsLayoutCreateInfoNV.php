@@ -31,18 +31,17 @@ final class VkIndirectCommandsLayoutCreateInfoNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint = null,
         null|int $tokenCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pTokens = null,
+        null|VkIndirectCommandsLayoutTokenNV $pTokens = null,
         null|int $streamCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pStreamStrides = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkIndirectCommandsLayoutCreateInfoNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkIndirectCommandsLayoutCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -137,14 +136,14 @@ final class VkIndirectCommandsLayoutCreateInfoNV implements \JsonSerializable
     /**
      * VkIndirectCommandsLayoutTokenNV* /
      */
-    public function getPTokens(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPTokens(): VkIndirectCommandsLayoutTokenNV
     {
         $cValue = $this->cdata->pTokens;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkIndirectCommandsLayoutTokenNV', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkIndirectCommandsLayoutTokenNV($cValue);
         return $phpValue;
     }
 
-    public function setPTokens(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPTokens(VkIndirectCommandsLayoutTokenNV $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pTokens = $cValue;

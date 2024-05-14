@@ -27,14 +27,13 @@ final class VkDeviceGroupPresentCapabilitiesKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         mixed $presentMask = null,
         null|array $modes = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDeviceGroupPresentCapabilitiesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkDeviceGroupPresentCapabilitiesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($presentMask)) $self->setPresentMask($presentMask);
@@ -80,13 +79,13 @@ final class VkDeviceGroupPresentCapabilitiesKHR implements \JsonSerializable
     public function getPresentMask(): mixed
     {
         $cValue = $this->cdata->presentMask;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[VK_MAX_DEVICE_GROUP_SIZE]!");
         return $phpValue;
     }
 
     public function setPresentMask(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - uint32_t[VK_MAX_DEVICE_GROUP_SIZE]!");
         $this->cdata->presentMask = $cValue;
     }
 

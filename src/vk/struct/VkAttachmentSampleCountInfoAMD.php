@@ -28,15 +28,14 @@ final class VkAttachmentSampleCountInfoAMD implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $colorAttachmentCount = null,
         null|\iggyvolz\vulkan\util\Pointer $pColorAttachmentSamples = null,
         null|\iggyvolz\vulkan\enum\VkSampleCountFlagBits $depthStencilAttachmentSamples = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAttachmentSampleCountInfoAMD', false));
+    ): self {
+        $self = new self( $ffi->new('VkAttachmentSampleCountInfoAMD', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($colorAttachmentCount)) $self->setColorAttachmentCount($colorAttachmentCount);

@@ -30,17 +30,16 @@ final class VkPipelineShaderStageCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|\iggyvolz\vulkan\enum\VkShaderStageFlagBits $stage = null,
         null|VkShaderModule $module = null,
         ?string $pName = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pSpecializationInfo = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineShaderStageCreateInfo', false));
+        null|VkSpecializationInfo $pSpecializationInfo = null,
+    ): self {
+        $self = new self( $ffi->new('VkPipelineShaderStageCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -150,14 +149,14 @@ final class VkPipelineShaderStageCreateInfo implements \JsonSerializable
     /**
      * VkSpecializationInfo* /
      */
-    public function getPSpecializationInfo(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPSpecializationInfo(): VkSpecializationInfo
     {
         $cValue = $this->cdata->pSpecializationInfo;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSpecializationInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSpecializationInfo($cValue);
         return $phpValue;
     }
 
-    public function setPSpecializationInfo(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPSpecializationInfo(VkSpecializationInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pSpecializationInfo = $cValue;

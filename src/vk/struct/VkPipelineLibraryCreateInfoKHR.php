@@ -27,14 +27,13 @@ final class VkPipelineLibraryCreateInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $libraryCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pLibraries = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineLibraryCreateInfoKHR', false));
+        null|VkPipeline $pLibraries = null,
+    ): self {
+        $self = new self( $ffi->new('VkPipelineLibraryCreateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($libraryCount)) $self->setLibraryCount($libraryCount);
@@ -93,14 +92,14 @@ final class VkPipelineLibraryCreateInfoKHR implements \JsonSerializable
     /**
      * VkPipeline* /
      */
-    public function getPLibraries(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPLibraries(): VkPipeline
     {
         $cValue = $this->cdata->pLibraries;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipeline', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipeline($cValue);
         return $phpValue;
     }
 
-    public function setPLibraries(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPLibraries(VkPipeline $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pLibraries = $cValue;

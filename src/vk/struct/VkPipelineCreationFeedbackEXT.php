@@ -22,9 +22,9 @@ final class VkPipelineCreationFeedbackEXT implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineCreationFeedbackEXT', false));
+        $self = new self( $ffi->new('VkPipelineCreationFeedbackEXT', false));
         return $self;
     }
 }

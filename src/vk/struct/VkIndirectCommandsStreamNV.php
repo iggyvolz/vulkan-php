@@ -24,13 +24,9 @@ final class VkIndirectCommandsStreamNV implements \JsonSerializable
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|VkBuffer $buffer = null,
-        null|int $offset = null,
-    ): self
+    public static function create(\FFI $ffi, null|VkBuffer $buffer = null, null|int $offset = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkIndirectCommandsStreamNV', false));
+        $self = new self( $ffi->new('VkIndirectCommandsStreamNV', false));
         if(!is_null($buffer)) $self->setBuffer($buffer);
         if(!is_null($offset)) $self->setOffset($offset);
         return $self;

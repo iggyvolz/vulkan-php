@@ -26,13 +26,12 @@ final class VkSamplerYcbcrConversionInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkSamplerYcbcrConversion $conversion = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSamplerYcbcrConversionInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkSamplerYcbcrConversionInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($conversion)) $self->setConversion($conversion);

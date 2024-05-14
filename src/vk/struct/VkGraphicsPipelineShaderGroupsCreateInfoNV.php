@@ -29,16 +29,15 @@ final class VkGraphicsPipelineShaderGroupsCreateInfoNV implements \JsonSerializa
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $groupCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pGroups = null,
+        null|VkGraphicsShaderGroupCreateInfoNV $pGroups = null,
         null|int $pipelineCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pPipelines = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkGraphicsPipelineShaderGroupsCreateInfoNV', false));
+        null|VkPipeline $pPipelines = null,
+    ): self {
+        $self = new self( $ffi->new('VkGraphicsPipelineShaderGroupsCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($groupCount)) $self->setGroupCount($groupCount);
@@ -99,14 +98,14 @@ final class VkGraphicsPipelineShaderGroupsCreateInfoNV implements \JsonSerializa
     /**
      * VkGraphicsShaderGroupCreateInfoNV* /
      */
-    public function getPGroups(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPGroups(): VkGraphicsShaderGroupCreateInfoNV
     {
         $cValue = $this->cdata->pGroups;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkGraphicsShaderGroupCreateInfoNV', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkGraphicsShaderGroupCreateInfoNV($cValue);
         return $phpValue;
     }
 
-    public function setPGroups(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPGroups(VkGraphicsShaderGroupCreateInfoNV $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pGroups = $cValue;
@@ -131,14 +130,14 @@ final class VkGraphicsPipelineShaderGroupsCreateInfoNV implements \JsonSerializa
     /**
      * VkPipeline* /
      */
-    public function getPPipelines(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPPipelines(): VkPipeline
     {
         $cValue = $this->cdata->pPipelines;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkPipeline', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkPipeline($cValue);
         return $phpValue;
     }
 
-    public function setPPipelines(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPPipelines(VkPipeline $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pPipelines = $cValue;

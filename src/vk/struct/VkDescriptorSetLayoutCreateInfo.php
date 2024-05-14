@@ -28,15 +28,14 @@ final class VkDescriptorSetLayoutCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $bindingCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pBindings = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDescriptorSetLayoutCreateInfo', false));
+        null|VkDescriptorSetLayoutBinding $pBindings = null,
+    ): self {
+        $self = new self( $ffi->new('VkDescriptorSetLayoutCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -112,14 +111,14 @@ final class VkDescriptorSetLayoutCreateInfo implements \JsonSerializable
     /**
      * VkDescriptorSetLayoutBinding* /
      */
-    public function getPBindings(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPBindings(): VkDescriptorSetLayoutBinding
     {
         $cValue = $this->cdata->pBindings;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorSetLayoutBinding', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDescriptorSetLayoutBinding($cValue);
         return $phpValue;
     }
 
-    public function setPBindings(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPBindings(VkDescriptorSetLayoutBinding $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pBindings = $cValue;

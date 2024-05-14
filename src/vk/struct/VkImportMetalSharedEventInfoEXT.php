@@ -26,13 +26,12 @@ final class VkImportMetalSharedEventInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         mixed $mtlSharedEvent = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImportMetalSharedEventInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkImportMetalSharedEventInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($mtlSharedEvent)) $self->setMtlSharedEvent($mtlSharedEvent);
@@ -77,13 +76,13 @@ final class VkImportMetalSharedEventInfoEXT implements \JsonSerializable
     public function getMtlSharedEvent(): mixed
     {
         $cValue = $this->cdata->mtlSharedEvent;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - MTLSharedEvent_id!");
         return $phpValue;
     }
 
     public function setMtlSharedEvent(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - MTLSharedEvent_id!");
         $this->cdata->mtlSharedEvent = $cValue;
     }
 }

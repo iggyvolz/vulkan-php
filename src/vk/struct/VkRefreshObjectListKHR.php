@@ -27,14 +27,13 @@ final class VkRefreshObjectListKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $objectCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pObjects = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRefreshObjectListKHR', false));
+        null|VkRefreshObjectKHR $pObjects = null,
+    ): self {
+        $self = new self( $ffi->new('VkRefreshObjectListKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($objectCount)) $self->setObjectCount($objectCount);
@@ -93,14 +92,14 @@ final class VkRefreshObjectListKHR implements \JsonSerializable
     /**
      * VkRefreshObjectKHR* /
      */
-    public function getPObjects(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPObjects(): VkRefreshObjectKHR
     {
         $cValue = $this->cdata->pObjects;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRefreshObjectKHR', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkRefreshObjectKHR($cValue);
         return $phpValue;
     }
 
-    public function setPObjects(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPObjects(VkRefreshObjectKHR $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pObjects = $cValue;

@@ -29,16 +29,15 @@ final class VkImageConstraintsInfoFUCHSIA implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $formatConstraintsCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pFormatConstraints = null,
+        null|VkImageFormatConstraintsInfoFUCHSIA $pFormatConstraints = null,
         mixed $bufferCollectionConstraints = null,
         null|array $flags = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImageConstraintsInfoFUCHSIA', false));
+    ): self {
+        $self = new self( $ffi->new('VkImageConstraintsInfoFUCHSIA', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($formatConstraintsCount)) $self->setFormatConstraintsCount($formatConstraintsCount);
@@ -99,14 +98,14 @@ final class VkImageConstraintsInfoFUCHSIA implements \JsonSerializable
     /**
      * VkImageFormatConstraintsInfoFUCHSIA* /
      */
-    public function getPFormatConstraints(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPFormatConstraints(): VkImageFormatConstraintsInfoFUCHSIA
     {
         $cValue = $this->cdata->pFormatConstraints;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImageFormatConstraintsInfoFUCHSIA', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkImageFormatConstraintsInfoFUCHSIA($cValue);
         return $phpValue;
     }
 
-    public function setPFormatConstraints(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPFormatConstraints(VkImageFormatConstraintsInfoFUCHSIA $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pFormatConstraints = $cValue;
@@ -118,13 +117,13 @@ final class VkImageConstraintsInfoFUCHSIA implements \JsonSerializable
     public function getBufferCollectionConstraints(): mixed
     {
         $cValue = $this->cdata->bufferCollectionConstraints;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkBufferCollectionConstraintsInfoFUCHSIA!");
         return $phpValue;
     }
 
     public function setBufferCollectionConstraints(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkBufferCollectionConstraintsInfoFUCHSIA!");
         $this->cdata->bufferCollectionConstraints = $cValue;
     }
 

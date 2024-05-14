@@ -25,12 +25,11 @@ final class VkDisplayPlanePropertiesKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkDisplayKHR $currentDisplay = null,
         null|int $currentStackIndex = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDisplayPlanePropertiesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkDisplayPlanePropertiesKHR', false));
         if(!is_null($currentDisplay)) $self->setCurrentDisplay($currentDisplay);
         if(!is_null($currentStackIndex)) $self->setCurrentStackIndex($currentStackIndex);
         return $self;

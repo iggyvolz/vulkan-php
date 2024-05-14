@@ -29,16 +29,15 @@ final class VkPhysicalDeviceDepthStencilResolveProperties implements \JsonSerial
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $supportedDepthResolveModes = null,
         null|array $supportedStencilResolveModes = null,
         null|bool $independentResolveNone = null,
         null|bool $independentResolve = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDepthStencilResolveProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceDepthStencilResolveProperties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($supportedDepthResolveModes)) $self->setSupportedDepthResolveModes($supportedDepthResolveModes);

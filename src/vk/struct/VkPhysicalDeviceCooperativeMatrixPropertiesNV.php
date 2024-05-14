@@ -26,13 +26,12 @@ final class VkPhysicalDeviceCooperativeMatrixPropertiesNV implements \JsonSerial
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $cooperativeMatrixSupportedStages = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceCooperativeMatrixPropertiesNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceCooperativeMatrixPropertiesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($cooperativeMatrixSupportedStages)) $self->setCooperativeMatrixSupportedStages($cooperativeMatrixSupportedStages);

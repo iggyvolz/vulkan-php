@@ -27,14 +27,13 @@ final class VkVideoSessionMemoryRequirementsKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $memoryBindIndex = null,
         null|VkMemoryRequirements $memoryRequirements = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoSessionMemoryRequirementsKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkVideoSessionMemoryRequirementsKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($memoryBindIndex)) $self->setMemoryBindIndex($memoryBindIndex);

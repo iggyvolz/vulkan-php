@@ -28,15 +28,14 @@ final class VkRenderingFragmentShadingRateAttachmentInfoKHR implements \JsonSeri
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkImageView $imageView = null,
         null|\iggyvolz\vulkan\enum\VkImageLayout $imageLayout = null,
         null|VkExtent2D $shadingRateAttachmentTexelSize = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRenderingFragmentShadingRateAttachmentInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkRenderingFragmentShadingRateAttachmentInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($imageView)) $self->setImageView($imageView);

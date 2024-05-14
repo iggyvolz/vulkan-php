@@ -28,15 +28,14 @@ final class VkDepthBiasInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|float $depthBiasConstantFactor = null,
         null|float $depthBiasClamp = null,
         null|float $depthBiasSlopeFactor = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDepthBiasInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkDepthBiasInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($depthBiasConstantFactor)) $self->setDepthBiasConstantFactor($depthBiasConstantFactor);

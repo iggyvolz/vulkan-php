@@ -32,19 +32,18 @@ final class VkWin32KeyedMutexAcquireReleaseInfoNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $acquireCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pAcquireSyncs = null,
+        null|VkDeviceMemory $pAcquireSyncs = null,
         null|\iggyvolz\vulkan\util\IntPointer $pAcquireKeys = null,
         null|\iggyvolz\vulkan\util\IntPointer $pAcquireTimeoutMilliseconds = null,
         null|int $releaseCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pReleaseSyncs = null,
+        null|VkDeviceMemory $pReleaseSyncs = null,
         null|\iggyvolz\vulkan\util\IntPointer $pReleaseKeys = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkWin32KeyedMutexAcquireReleaseInfoNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkWin32KeyedMutexAcquireReleaseInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($acquireCount)) $self->setAcquireCount($acquireCount);
@@ -108,14 +107,14 @@ final class VkWin32KeyedMutexAcquireReleaseInfoNV implements \JsonSerializable
     /**
      * VkDeviceMemory* /
      */
-    public function getPAcquireSyncs(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPAcquireSyncs(): VkDeviceMemory
     {
         $cValue = $this->cdata->pAcquireSyncs;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDeviceMemory', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDeviceMemory($cValue);
         return $phpValue;
     }
 
-    public function setPAcquireSyncs(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPAcquireSyncs(VkDeviceMemory $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pAcquireSyncs = $cValue;
@@ -172,14 +171,14 @@ final class VkWin32KeyedMutexAcquireReleaseInfoNV implements \JsonSerializable
     /**
      * VkDeviceMemory* /
      */
-    public function getPReleaseSyncs(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPReleaseSyncs(): VkDeviceMemory
     {
         $cValue = $this->cdata->pReleaseSyncs;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDeviceMemory', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDeviceMemory($cValue);
         return $phpValue;
     }
 
-    public function setPReleaseSyncs(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPReleaseSyncs(VkDeviceMemory $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pReleaseSyncs = $cValue;

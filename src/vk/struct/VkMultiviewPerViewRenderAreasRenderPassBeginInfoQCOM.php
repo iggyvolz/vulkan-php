@@ -27,14 +27,13 @@ final class VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM implements \Jso
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $perViewRenderAreaCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pPerViewRenderAreas = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM', false));
+        null|VkRect2D $pPerViewRenderAreas = null,
+    ): self {
+        $self = new self( $ffi->new('VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($perViewRenderAreaCount)) $self->setPerViewRenderAreaCount($perViewRenderAreaCount);
@@ -93,14 +92,14 @@ final class VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM implements \Jso
     /**
      * VkRect2D* /
      */
-    public function getPPerViewRenderAreas(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPPerViewRenderAreas(): VkRect2D
     {
         $cValue = $this->cdata->pPerViewRenderAreas;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRect2D', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkRect2D($cValue);
         return $phpValue;
     }
 
-    public function setPPerViewRenderAreas(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPPerViewRenderAreas(VkRect2D $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pPerViewRenderAreas = $cValue;

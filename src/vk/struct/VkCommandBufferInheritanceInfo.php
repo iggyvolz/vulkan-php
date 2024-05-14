@@ -31,7 +31,7 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkRenderPass $renderPass = null,
@@ -40,9 +40,8 @@ final class VkCommandBufferInheritanceInfo implements \JsonSerializable
         null|bool $occlusionQueryEnable = null,
         null|array $queryFlags = null,
         null|array $pipelineStatistics = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkCommandBufferInheritanceInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkCommandBufferInheritanceInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($renderPass)) $self->setRenderPass($renderPass);

@@ -32,7 +32,7 @@ final class VkCommandBufferInheritanceRenderingInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
@@ -42,9 +42,8 @@ final class VkCommandBufferInheritanceRenderingInfo implements \JsonSerializable
         null|\iggyvolz\vulkan\enum\VkFormat $depthAttachmentFormat = null,
         null|\iggyvolz\vulkan\enum\VkFormat $stencilAttachmentFormat = null,
         null|\iggyvolz\vulkan\enum\VkSampleCountFlagBits $rasterizationSamples = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkCommandBufferInheritanceRenderingInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkCommandBufferInheritanceRenderingInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);

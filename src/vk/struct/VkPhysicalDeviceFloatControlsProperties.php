@@ -42,7 +42,7 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence $denormBehaviorIndependence = null,
@@ -62,9 +62,8 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
         null|bool $shaderRoundingModeRTZFloat16 = null,
         null|bool $shaderRoundingModeRTZFloat32 = null,
         null|bool $shaderRoundingModeRTZFloat64 = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFloatControlsProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceFloatControlsProperties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($denormBehaviorIndependence)) $self->setDenormBehaviorIndependence($denormBehaviorIndependence);
@@ -131,8 +130,7 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setDenormBehaviorIndependence(
         \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence $phpValue,
-    ): void
-    {
+    ): void {
         $cValue = $phpValue->value;
         $this->cdata->denormBehaviorIndependence = $cValue;
     }
@@ -149,8 +147,7 @@ final class VkPhysicalDeviceFloatControlsProperties implements \JsonSerializable
 
     public function setRoundingModeIndependence(
         \iggyvolz\vulkan\enum\VkShaderFloatControlsIndependence $phpValue,
-    ): void
-    {
+    ): void {
         $cValue = $phpValue->value;
         $this->cdata->roundingModeIndependence = $cValue;
     }

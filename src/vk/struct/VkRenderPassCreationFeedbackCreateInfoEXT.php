@@ -26,13 +26,12 @@ final class VkRenderPassCreationFeedbackCreateInfoEXT implements \JsonSerializab
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pRenderPassFeedback = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRenderPassCreationFeedbackCreateInfoEXT', false));
+        mixed $pRenderPassFeedback = null,
+    ): self {
+        $self = new self( $ffi->new('VkRenderPassCreationFeedbackCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pRenderPassFeedback)) $self->setPRenderPassFeedback($pRenderPassFeedback);
@@ -72,18 +71,18 @@ final class VkRenderPassCreationFeedbackCreateInfoEXT implements \JsonSerializab
     }
 
     /**
-     * VkRenderPassCreationFeedbackInfoEXT* /
+     * void* /
      */
-    public function getPRenderPassFeedback(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPRenderPassFeedback(): mixed
     {
         $cValue = $this->cdata->pRenderPassFeedback;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRenderPassCreationFeedbackInfoEXT', $cValue, $ffi); /** PTRANS */
+        throw new \LogicException("Dummy transformer - VkRenderPassCreationFeedbackInfoEXT*!");
         return $phpValue;
     }
 
-    public function setPRenderPassFeedback(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPRenderPassFeedback(mixed $phpValue): void
     {
-        $cValue = $phpValue->cdata;
+        throw new \LogicException("Dummy transformer - VkRenderPassCreationFeedbackInfoEXT*!");
         $this->cdata->pRenderPassFeedback = $cValue;
     }
 }

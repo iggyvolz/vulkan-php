@@ -30,7 +30,7 @@ final class VkDebugMarkerObjectTagInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkDebugReportObjectTypeEXT $objectType = null,
@@ -38,9 +38,8 @@ final class VkDebugMarkerObjectTagInfoEXT implements \JsonSerializable
         null|int $tagName = null,
         null|int $tagSize = null,
         null|\iggyvolz\vulkan\util\Pointer $pTag = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDebugMarkerObjectTagInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkDebugMarkerObjectTagInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($objectType)) $self->setObjectType($objectType);

@@ -29,16 +29,15 @@ final class VkSemaphoreWaitInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $semaphoreCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pSemaphores = null,
+        null|VkSemaphore $pSemaphores = null,
         null|\iggyvolz\vulkan\util\IntPointer $pValues = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSemaphoreWaitInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkSemaphoreWaitInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -115,14 +114,14 @@ final class VkSemaphoreWaitInfo implements \JsonSerializable
     /**
      * VkSemaphore* /
      */
-    public function getPSemaphores(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPSemaphores(): VkSemaphore
     {
         $cValue = $this->cdata->pSemaphores;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSemaphore', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSemaphore($cValue);
         return $phpValue;
     }
 
-    public function setPSemaphores(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPSemaphores(VkSemaphore $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pSemaphores = $cValue;

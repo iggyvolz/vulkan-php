@@ -24,13 +24,9 @@ final class VkMemoryType implements \JsonSerializable
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|array $propertyFlags = null,
-        null|int $heapIndex = null,
-    ): self
+    public static function create(\FFI $ffi, null|array $propertyFlags = null, null|int $heapIndex = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkMemoryType', false));
+        $self = new self( $ffi->new('VkMemoryType', false));
         if(!is_null($propertyFlags)) $self->setPropertyFlags($propertyFlags);
         if(!is_null($heapIndex)) $self->setHeapIndex($heapIndex);
         return $self;

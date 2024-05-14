@@ -25,12 +25,11 @@ final class VkPresentRegionKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $rectangleCount = null,
         null|\iggyvolz\vulkan\util\Pointer $pRectangles = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPresentRegionKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPresentRegionKHR', false));
         if(!is_null($rectangleCount)) $self->setRectangleCount($rectangleCount);
         if(!is_null($pRectangles)) $self->setPRectangles($pRectangles);
         return $self;

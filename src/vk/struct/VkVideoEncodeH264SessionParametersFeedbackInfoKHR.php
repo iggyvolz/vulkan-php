@@ -27,14 +27,13 @@ final class VkVideoEncodeH264SessionParametersFeedbackInfoKHR implements \JsonSe
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $hasStdSPSOverrides = null,
         null|bool $hasStdPPSOverrides = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264SessionParametersFeedbackInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkVideoEncodeH264SessionParametersFeedbackInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($hasStdSPSOverrides)) $self->setHasStdSPSOverrides($hasStdSPSOverrides);

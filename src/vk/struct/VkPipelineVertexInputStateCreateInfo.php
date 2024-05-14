@@ -30,17 +30,16 @@ final class VkPipelineVertexInputStateCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $vertexBindingDescriptionCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pVertexBindingDescriptions = null,
+        null|VkVertexInputBindingDescription $pVertexBindingDescriptions = null,
         null|int $vertexAttributeDescriptionCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pVertexAttributeDescriptions = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineVertexInputStateCreateInfo', false));
+        null|VkVertexInputAttributeDescription $pVertexAttributeDescriptions = null,
+    ): self {
+        $self = new self( $ffi->new('VkPipelineVertexInputStateCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -118,14 +117,14 @@ final class VkPipelineVertexInputStateCreateInfo implements \JsonSerializable
     /**
      * VkVertexInputBindingDescription* /
      */
-    public function getPVertexBindingDescriptions(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPVertexBindingDescriptions(): VkVertexInputBindingDescription
     {
         $cValue = $this->cdata->pVertexBindingDescriptions;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkVertexInputBindingDescription', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkVertexInputBindingDescription($cValue);
         return $phpValue;
     }
 
-    public function setPVertexBindingDescriptions(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPVertexBindingDescriptions(VkVertexInputBindingDescription $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pVertexBindingDescriptions = $cValue;
@@ -150,14 +149,14 @@ final class VkPipelineVertexInputStateCreateInfo implements \JsonSerializable
     /**
      * VkVertexInputAttributeDescription* /
      */
-    public function getPVertexAttributeDescriptions(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPVertexAttributeDescriptions(): VkVertexInputAttributeDescription
     {
         $cValue = $this->cdata->pVertexAttributeDescriptions;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkVertexInputAttributeDescription', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkVertexInputAttributeDescription($cValue);
         return $phpValue;
     }
 
-    public function setPVertexAttributeDescriptions(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPVertexAttributeDescriptions(VkVertexInputAttributeDescription $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pVertexAttributeDescriptions = $cValue;

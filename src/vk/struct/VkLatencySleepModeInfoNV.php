@@ -28,15 +28,14 @@ final class VkLatencySleepModeInfoNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $lowLatencyMode = null,
         null|bool $lowLatencyBoost = null,
         null|int $minimumIntervalUs = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkLatencySleepModeInfoNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkLatencySleepModeInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($lowLatencyMode)) $self->setLowLatencyMode($lowLatencyMode);

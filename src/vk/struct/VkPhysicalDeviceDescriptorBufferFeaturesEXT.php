@@ -29,16 +29,15 @@ final class VkPhysicalDeviceDescriptorBufferFeaturesEXT implements \JsonSerializ
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $descriptorBuffer = null,
         null|bool $descriptorBufferCaptureReplay = null,
         null|bool $descriptorBufferImageLayoutIgnored = null,
         null|bool $descriptorBufferPushDescriptors = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDescriptorBufferFeaturesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceDescriptorBufferFeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($descriptorBuffer)) $self->setDescriptorBuffer($descriptorBuffer);

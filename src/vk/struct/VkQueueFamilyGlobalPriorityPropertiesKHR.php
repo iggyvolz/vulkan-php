@@ -27,14 +27,13 @@ final class VkQueueFamilyGlobalPriorityPropertiesKHR implements \JsonSerializabl
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $priorityCount = null,
         mixed $priorities = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkQueueFamilyGlobalPriorityPropertiesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkQueueFamilyGlobalPriorityPropertiesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($priorityCount)) $self->setPriorityCount($priorityCount);
@@ -96,13 +95,13 @@ final class VkQueueFamilyGlobalPriorityPropertiesKHR implements \JsonSerializabl
     public function getPriorities(): mixed
     {
         $cValue = $this->cdata->priorities;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkQueueGlobalPriorityKHR[VK_MAX_GLOBAL_PRIORITY_SIZE_KHR]!");
         return $phpValue;
     }
 
     public function setPriorities(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkQueueGlobalPriorityKHR[VK_MAX_GLOBAL_PRIORITY_SIZE_KHR]!");
         $this->cdata->priorities = $cValue;
     }
 }

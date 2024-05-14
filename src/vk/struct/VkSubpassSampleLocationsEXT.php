@@ -25,12 +25,11 @@ final class VkSubpassSampleLocationsEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $subpassIndex = null,
         null|VkSampleLocationsInfoEXT $sampleLocationsInfo = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSubpassSampleLocationsEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkSubpassSampleLocationsEXT', false));
         if(!is_null($subpassIndex)) $self->setSubpassIndex($subpassIndex);
         if(!is_null($sampleLocationsInfo)) $self->setSampleLocationsInfo($sampleLocationsInfo);
         return $self;

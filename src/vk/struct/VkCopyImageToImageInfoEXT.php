@@ -32,7 +32,7 @@ final class VkCopyImageToImageInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
@@ -41,10 +41,9 @@ final class VkCopyImageToImageInfoEXT implements \JsonSerializable
         null|VkImage $dstImage = null,
         null|\iggyvolz\vulkan\enum\VkImageLayout $dstImageLayout = null,
         null|int $regionCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pRegions = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkCopyImageToImageInfoEXT', false));
+        null|VkImageCopy2 $pRegions = null,
+    ): self {
+        $self = new self( $ffi->new('VkCopyImageToImageInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -188,14 +187,14 @@ final class VkCopyImageToImageInfoEXT implements \JsonSerializable
     /**
      * VkImageCopy2* /
      */
-    public function getPRegions(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPRegions(): VkImageCopy2
     {
         $cValue = $this->cdata->pRegions;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkImageCopy2', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkImageCopy2($cValue);
         return $phpValue;
     }
 
-    public function setPRegions(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPRegions(VkImageCopy2 $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pRegions = $cValue;

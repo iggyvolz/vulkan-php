@@ -22,9 +22,9 @@ final class VkImageFormatListCreateInfoKHR implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkImageFormatListCreateInfoKHR', false));
+        $self = new self( $ffi->new('VkImageFormatListCreateInfoKHR', false));
         return $self;
     }
 }

@@ -26,13 +26,12 @@ final class VkPhysicalDeviceCoherentMemoryFeaturesAMD implements \JsonSerializab
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $deviceCoherentMemory = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceCoherentMemoryFeaturesAMD', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceCoherentMemoryFeaturesAMD', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($deviceCoherentMemory)) $self->setDeviceCoherentMemory($deviceCoherentMemory);

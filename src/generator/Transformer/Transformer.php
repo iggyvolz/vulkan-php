@@ -75,12 +75,11 @@ abstract readonly class Transformer
         }
 
         if(str_starts_with($type, "Vk") && str_ends_with($type, "*") && class_exists("iggyvolz\\vulkan\\struct\\" . substr($type, 0, -1))) {
-            return new PointerTransformer(substr($type, 0, -1));
+            return new NonConstTransformer($type);
         }
 
         if(str_starts_with($type, "const Vk") && str_ends_with($type, "*") && class_exists("iggyvolz\\vulkan\\struct\\" . substr($type, strlen("const "), -1))) {
-            // TODO return a const version
-            return new PointerTransformer(substr($type, strlen("const "), -1));
+            return new ConstPointerTransformer(substr($type, strlen("const "), -1));
         }
 
         if(str_starts_with($type, "Vk") && str_contains($type, "Flags") && class_exists("iggyvolz\\vulkan\\enum\\" . str_replace("Flags", "FlagBits", $type))) {
@@ -96,7 +95,7 @@ abstract readonly class Transformer
             return new OpaquePointerTransformer();
         }
 //        echo $type . PHP_EOL;
-        return new DummyTransformer();
+        return new DummyTransformer($type);
     }
 
     /**

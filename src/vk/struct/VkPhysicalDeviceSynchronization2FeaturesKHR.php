@@ -22,9 +22,9 @@ final class VkPhysicalDeviceSynchronization2FeaturesKHR implements \JsonSerializ
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSynchronization2FeaturesKHR', false));
+        $self = new self( $ffi->new('VkPhysicalDeviceSynchronization2FeaturesKHR', false));
         return $self;
     }
 }

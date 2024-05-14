@@ -36,7 +36,7 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $supportedOutputGridSizes = null,
@@ -50,9 +50,8 @@ final class VkPhysicalDeviceOpticalFlowPropertiesNV implements \JsonSerializable
         null|int $maxWidth = null,
         null|int $maxHeight = null,
         null|int $maxNumRegionsOfInterest = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceOpticalFlowPropertiesNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceOpticalFlowPropertiesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($supportedOutputGridSizes)) $self->setSupportedOutputGridSizes($supportedOutputGridSizes);

@@ -31,18 +31,17 @@ final class VkPresentInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $waitSemaphoreCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pWaitSemaphores = null,
+        null|VkSemaphore $pWaitSemaphores = null,
         null|int $swapchainCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pSwapchains = null,
+        null|VkSwapchainKHR $pSwapchains = null,
         null|\iggyvolz\vulkan\util\IntPointer $pImageIndices = null,
         null|\iggyvolz\vulkan\util\Pointer $pResults = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPresentInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPresentInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($waitSemaphoreCount)) $self->setWaitSemaphoreCount($waitSemaphoreCount);
@@ -105,14 +104,14 @@ final class VkPresentInfoKHR implements \JsonSerializable
     /**
      * VkSemaphore* /
      */
-    public function getPWaitSemaphores(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPWaitSemaphores(): VkSemaphore
     {
         $cValue = $this->cdata->pWaitSemaphores;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSemaphore', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSemaphore($cValue);
         return $phpValue;
     }
 
-    public function setPWaitSemaphores(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPWaitSemaphores(VkSemaphore $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pWaitSemaphores = $cValue;
@@ -137,14 +136,14 @@ final class VkPresentInfoKHR implements \JsonSerializable
     /**
      * VkSwapchainKHR* /
      */
-    public function getPSwapchains(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPSwapchains(): VkSwapchainKHR
     {
         $cValue = $this->cdata->pSwapchains;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSwapchainKHR', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSwapchainKHR($cValue);
         return $phpValue;
     }
 
-    public function setPSwapchains(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPSwapchains(VkSwapchainKHR $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pSwapchains = $cValue;

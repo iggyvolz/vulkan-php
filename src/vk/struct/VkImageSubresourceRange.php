@@ -28,15 +28,14 @@ final class VkImageSubresourceRange implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|array $aspectMask = null,
         null|int $baseMipLevel = null,
         null|int $levelCount = null,
         null|int $baseArrayLayer = null,
         null|int $layerCount = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImageSubresourceRange', false));
+    ): self {
+        $self = new self( $ffi->new('VkImageSubresourceRange', false));
         if(!is_null($aspectMask)) $self->setAspectMask($aspectMask);
         if(!is_null($baseMipLevel)) $self->setBaseMipLevel($baseMipLevel);
         if(!is_null($levelCount)) $self->setLevelCount($levelCount);

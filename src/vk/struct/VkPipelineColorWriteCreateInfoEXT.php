@@ -27,14 +27,13 @@ final class VkPipelineColorWriteCreateInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $attachmentCount = null,
         null|\iggyvolz\vulkan\util\Pointer $pColorWriteEnables = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineColorWriteCreateInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPipelineColorWriteCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($attachmentCount)) $self->setAttachmentCount($attachmentCount);

@@ -26,13 +26,12 @@ final class VkPhysicalDeviceShaderImageFootprintFeaturesNV implements \JsonSeria
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $imageFootprint = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderImageFootprintFeaturesNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderImageFootprintFeaturesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($imageFootprint)) $self->setImageFootprint($imageFootprint);

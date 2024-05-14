@@ -70,7 +70,7 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $minSubgroupSize = null,
@@ -118,9 +118,8 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
         null|int $uniformTexelBufferOffsetAlignmentBytes = null,
         null|bool $uniformTexelBufferOffsetSingleTexelAlignment = null,
         null|int $maxBufferSize = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVulkan13Properties', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceVulkan13Properties', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($minSubgroupSize)) $self->setMinSubgroupSize($minSubgroupSize);
@@ -695,8 +694,7 @@ final class VkPhysicalDeviceVulkan13Properties implements \JsonSerializable
 
     public function setIntegerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(
         bool $phpValue,
-    ): void
-    {
+    ): void {
         $cValue = $phpValue ? 1 : 0;
         $this->cdata->integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = $cValue;
     }

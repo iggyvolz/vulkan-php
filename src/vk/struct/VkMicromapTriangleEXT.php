@@ -26,13 +26,12 @@ final class VkMicromapTriangleEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $dataOffset = null,
         null|int $subdivisionLevel = null,
         null|int $format = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkMicromapTriangleEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkMicromapTriangleEXT', false));
         if(!is_null($dataOffset)) $self->setDataOffset($dataOffset);
         if(!is_null($subdivisionLevel)) $self->setSubdivisionLevel($subdivisionLevel);
         if(!is_null($format)) $self->setFormat($format);

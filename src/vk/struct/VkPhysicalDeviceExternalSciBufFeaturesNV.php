@@ -22,9 +22,9 @@ final class VkPhysicalDeviceExternalSciBufFeaturesNV implements \JsonSerializabl
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceExternalSciBufFeaturesNV', false));
+        $self = new self( $ffi->new('VkPhysicalDeviceExternalSciBufFeaturesNV', false));
         return $self;
     }
 }

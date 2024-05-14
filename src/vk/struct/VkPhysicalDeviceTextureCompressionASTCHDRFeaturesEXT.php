@@ -22,9 +22,9 @@ final class VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT implements \Jso
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT', false));
+        $self = new self( $ffi->new('VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT', false));
         return $self;
     }
 }

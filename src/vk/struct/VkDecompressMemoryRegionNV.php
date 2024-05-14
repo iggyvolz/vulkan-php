@@ -28,15 +28,14 @@ final class VkDecompressMemoryRegionNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $srcAddress = null,
         null|int $dstAddress = null,
         null|int $compressedSize = null,
         null|int $decompressedSize = null,
         null|array $decompressionMethod = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDecompressMemoryRegionNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkDecompressMemoryRegionNV', false));
         if(!is_null($srcAddress)) $self->setSrcAddress($srcAddress);
         if(!is_null($dstAddress)) $self->setDstAddress($dstAddress);
         if(!is_null($compressedSize)) $self->setCompressedSize($compressedSize);

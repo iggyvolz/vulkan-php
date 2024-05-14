@@ -22,9 +22,9 @@ final class VkRenderingAttachmentInfoKHR implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkRenderingAttachmentInfoKHR', false));
+        $self = new self( $ffi->new('VkRenderingAttachmentInfoKHR', false));
         return $self;
     }
 }

@@ -26,13 +26,12 @@ final class VkVideoDecodeAV1CapabilitiesKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         mixed $maxLevel = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoDecodeAV1CapabilitiesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkVideoDecodeAV1CapabilitiesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxLevel)) $self->setMaxLevel($maxLevel);
@@ -77,13 +76,13 @@ final class VkVideoDecodeAV1CapabilitiesKHR implements \JsonSerializable
     public function getMaxLevel(): mixed
     {
         $cValue = $this->cdata->maxLevel;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - StdVideoAV1Level!");
         return $phpValue;
     }
 
     public function setMaxLevel(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - StdVideoAV1Level!");
         $this->cdata->maxLevel = $cValue;
     }
 }

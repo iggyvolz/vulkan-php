@@ -27,14 +27,13 @@ final class VkMutableDescriptorTypeCreateInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $mutableDescriptorTypeListCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pMutableDescriptorTypeLists = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkMutableDescriptorTypeCreateInfoEXT', false));
+        null|VkMutableDescriptorTypeListEXT $pMutableDescriptorTypeLists = null,
+    ): self {
+        $self = new self( $ffi->new('VkMutableDescriptorTypeCreateInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($mutableDescriptorTypeListCount)) $self->setMutableDescriptorTypeListCount($mutableDescriptorTypeListCount);
@@ -93,14 +92,14 @@ final class VkMutableDescriptorTypeCreateInfoEXT implements \JsonSerializable
     /**
      * VkMutableDescriptorTypeListEXT* /
      */
-    public function getPMutableDescriptorTypeLists(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPMutableDescriptorTypeLists(): VkMutableDescriptorTypeListEXT
     {
         $cValue = $this->cdata->pMutableDescriptorTypeLists;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkMutableDescriptorTypeListEXT', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkMutableDescriptorTypeListEXT($cValue);
         return $phpValue;
     }
 
-    public function setPMutableDescriptorTypeLists(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPMutableDescriptorTypeLists(VkMutableDescriptorTypeListEXT $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pMutableDescriptorTypeLists = $cValue;

@@ -28,15 +28,14 @@ final class VkDirectDriverLoadingListLUNARG implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\enum\VkDirectDriverLoadingModeLUNARG $mode = null,
         null|int $driverCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pDrivers = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDirectDriverLoadingListLUNARG', false));
+        null|VkDirectDriverLoadingInfoLUNARG $pDrivers = null,
+    ): self {
+        $self = new self( $ffi->new('VkDirectDriverLoadingListLUNARG', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($mode)) $self->setMode($mode);
@@ -112,14 +111,14 @@ final class VkDirectDriverLoadingListLUNARG implements \JsonSerializable
     /**
      * VkDirectDriverLoadingInfoLUNARG* /
      */
-    public function getPDrivers(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPDrivers(): VkDirectDriverLoadingInfoLUNARG
     {
         $cValue = $this->cdata->pDrivers;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDirectDriverLoadingInfoLUNARG', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDirectDriverLoadingInfoLUNARG($cValue);
         return $phpValue;
     }
 
-    public function setPDrivers(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPDrivers(VkDirectDriverLoadingInfoLUNARG $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pDrivers = $cValue;

@@ -26,13 +26,12 @@ final class VkExternalMemoryProperties implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|array $externalMemoryFeatures = null,
         null|array $exportFromImportedHandleTypes = null,
         null|array $compatibleHandleTypes = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkExternalMemoryProperties', false));
+    ): self {
+        $self = new self( $ffi->new('VkExternalMemoryProperties', false));
         if(!is_null($externalMemoryFeatures)) $self->setExternalMemoryFeatures($externalMemoryFeatures);
         if(!is_null($exportFromImportedHandleTypes)) $self->setExportFromImportedHandleTypes($exportFromImportedHandleTypes);
         if(!is_null($compatibleHandleTypes)) $self->setCompatibleHandleTypes($compatibleHandleTypes);

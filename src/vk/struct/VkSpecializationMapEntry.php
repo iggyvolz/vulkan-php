@@ -26,13 +26,12 @@ final class VkSpecializationMapEntry implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $constantID = null,
         null|int $offset = null,
         null|int $size = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSpecializationMapEntry', false));
+    ): self {
+        $self = new self( $ffi->new('VkSpecializationMapEntry', false));
         if(!is_null($constantID)) $self->setConstantID($constantID);
         if(!is_null($offset)) $self->setOffset($offset);
         if(!is_null($size)) $self->setSize($size);

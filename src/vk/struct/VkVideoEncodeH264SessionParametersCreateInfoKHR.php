@@ -28,15 +28,14 @@ final class VkVideoEncodeH264SessionParametersCreateInfoKHR implements \JsonSeri
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $maxStdSPSCount = null,
         null|int $maxStdPPSCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pParametersAddInfo = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264SessionParametersCreateInfoKHR', false));
+        null|VkVideoEncodeH264SessionParametersAddInfoKHR $pParametersAddInfo = null,
+    ): self {
+        $self = new self( $ffi->new('VkVideoEncodeH264SessionParametersCreateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxStdSPSCount)) $self->setMaxStdSPSCount($maxStdSPSCount);
@@ -112,14 +111,14 @@ final class VkVideoEncodeH264SessionParametersCreateInfoKHR implements \JsonSeri
     /**
      * VkVideoEncodeH264SessionParametersAddInfoKHR* /
      */
-    public function getPParametersAddInfo(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPParametersAddInfo(): VkVideoEncodeH264SessionParametersAddInfoKHR
     {
         $cValue = $this->cdata->pParametersAddInfo;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkVideoEncodeH264SessionParametersAddInfoKHR', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkVideoEncodeH264SessionParametersAddInfoKHR($cValue);
         return $phpValue;
     }
 
-    public function setPParametersAddInfo(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPParametersAddInfo(VkVideoEncodeH264SessionParametersAddInfoKHR $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pParametersAddInfo = $cValue;

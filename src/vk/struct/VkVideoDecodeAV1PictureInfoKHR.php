@@ -31,7 +31,7 @@ final class VkVideoDecodeAV1PictureInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\util\Pointer $pStdPictureInfo = null,
@@ -40,9 +40,8 @@ final class VkVideoDecodeAV1PictureInfoKHR implements \JsonSerializable
         null|int $tileCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pTileOffsets = null,
         null|\iggyvolz\vulkan\util\IntPointer $pTileSizes = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoDecodeAV1PictureInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkVideoDecodeAV1PictureInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pStdPictureInfo)) $self->setPStdPictureInfo($pStdPictureInfo);
@@ -108,13 +107,13 @@ final class VkVideoDecodeAV1PictureInfoKHR implements \JsonSerializable
     public function getReferenceNameSlotIndices(): mixed
     {
         $cValue = $this->cdata->referenceNameSlotIndices;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]!");
         return $phpValue;
     }
 
     public function setReferenceNameSlotIndices(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]!");
         $this->cdata->referenceNameSlotIndices = $cValue;
     }
 

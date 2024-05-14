@@ -25,12 +25,11 @@ final class VkGeometryDataNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkGeometryTrianglesNV $triangles = null,
         null|VkGeometryAABBNV $aabbs = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkGeometryDataNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkGeometryDataNV', false));
         if(!is_null($triangles)) $self->setTriangles($triangles);
         if(!is_null($aabbs)) $self->setAabbs($aabbs);
         return $self;

@@ -28,15 +28,14 @@ final class VkBindBufferMemoryInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkBuffer $buffer = null,
         null|VkDeviceMemory $memory = null,
         null|int $memoryOffset = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkBindBufferMemoryInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkBindBufferMemoryInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($buffer)) $self->setBuffer($buffer);

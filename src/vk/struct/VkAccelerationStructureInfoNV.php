@@ -30,17 +30,16 @@ final class VkAccelerationStructureInfoNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         mixed $type = null,
         null|array $flags = null,
         null|int $instanceCount = null,
         null|int $geometryCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pGeometries = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureInfoNV', false));
+        null|VkGeometryNV $pGeometries = null,
+    ): self {
+        $self = new self( $ffi->new('VkAccelerationStructureInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($type)) $self->setType($type);
@@ -89,13 +88,13 @@ final class VkAccelerationStructureInfoNV implements \JsonSerializable
     public function getType(): mixed
     {
         $cValue = $this->cdata->type;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkAccelerationStructureTypeNV!");
         return $phpValue;
     }
 
     public function setType(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkAccelerationStructureTypeNV!");
         $this->cdata->type = $cValue;
     }
 
@@ -150,14 +149,14 @@ final class VkAccelerationStructureInfoNV implements \JsonSerializable
     /**
      * VkGeometryNV* /
      */
-    public function getPGeometries(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPGeometries(): VkGeometryNV
     {
         $cValue = $this->cdata->pGeometries;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkGeometryNV', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkGeometryNV($cValue);
         return $phpValue;
     }
 
-    public function setPGeometries(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPGeometries(VkGeometryNV $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pGeometries = $cValue;

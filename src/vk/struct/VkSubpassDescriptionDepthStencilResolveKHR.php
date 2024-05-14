@@ -22,9 +22,9 @@ final class VkSubpassDescriptionDepthStencilResolveKHR implements \JsonSerializa
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkSubpassDescriptionDepthStencilResolveKHR', false));
+        $self = new self( $ffi->new('VkSubpassDescriptionDepthStencilResolveKHR', false));
         return $self;
     }
 }

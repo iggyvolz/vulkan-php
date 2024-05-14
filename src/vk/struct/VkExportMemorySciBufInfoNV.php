@@ -26,13 +26,12 @@ final class VkExportMemorySciBufInfoNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         mixed $pAttributes = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkExportMemorySciBufInfoNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkExportMemorySciBufInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($pAttributes)) $self->setPAttributes($pAttributes);
@@ -77,13 +76,13 @@ final class VkExportMemorySciBufInfoNV implements \JsonSerializable
     public function getPAttributes(): mixed
     {
         $cValue = $this->cdata->pAttributes;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - NvSciBufAttrList!");
         return $phpValue;
     }
 
     public function setPAttributes(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - NvSciBufAttrList!");
         $this->cdata->pAttributes = $cValue;
     }
 }

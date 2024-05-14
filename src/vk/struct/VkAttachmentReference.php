@@ -25,12 +25,11 @@ final class VkAttachmentReference implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $attachment = null,
         null|\iggyvolz\vulkan\enum\VkImageLayout $layout = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAttachmentReference', false));
+    ): self {
+        $self = new self( $ffi->new('VkAttachmentReference', false));
         if(!is_null($attachment)) $self->setAttachment($attachment);
         if(!is_null($layout)) $self->setLayout($layout);
         return $self;

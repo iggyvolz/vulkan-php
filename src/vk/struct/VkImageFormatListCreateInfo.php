@@ -27,14 +27,13 @@ final class VkImageFormatListCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $viewFormatCount = null,
         null|\iggyvolz\vulkan\util\Pointer $pViewFormats = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImageFormatListCreateInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkImageFormatListCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($viewFormatCount)) $self->setViewFormatCount($viewFormatCount);

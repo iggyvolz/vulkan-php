@@ -27,14 +27,13 @@ final class VkVideoEncodeH264SessionCreateInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $useMaxLevelIdc = null,
         mixed $maxLevelIdc = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264SessionCreateInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkVideoEncodeH264SessionCreateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($useMaxLevelIdc)) $self->setUseMaxLevelIdc($useMaxLevelIdc);
@@ -96,13 +95,13 @@ final class VkVideoEncodeH264SessionCreateInfoKHR implements \JsonSerializable
     public function getMaxLevelIdc(): mixed
     {
         $cValue = $this->cdata->maxLevelIdc;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - StdVideoH264LevelIdc!");
         return $phpValue;
     }
 
     public function setMaxLevelIdc(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - StdVideoH264LevelIdc!");
         $this->cdata->maxLevelIdc = $cValue;
     }
 }

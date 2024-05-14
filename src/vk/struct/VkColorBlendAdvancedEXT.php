@@ -28,15 +28,14 @@ final class VkColorBlendAdvancedEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkBlendOp $advancedBlendOp = null,
         null|bool $srcPremultiplied = null,
         null|bool $dstPremultiplied = null,
         null|\iggyvolz\vulkan\enum\VkBlendOverlapEXT $blendOverlap = null,
         null|bool $clampResults = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkColorBlendAdvancedEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkColorBlendAdvancedEXT', false));
         if(!is_null($advancedBlendOp)) $self->setAdvancedBlendOp($advancedBlendOp);
         if(!is_null($srcPremultiplied)) $self->setSrcPremultiplied($srcPremultiplied);
         if(!is_null($dstPremultiplied)) $self->setDstPremultiplied($dstPremultiplied);

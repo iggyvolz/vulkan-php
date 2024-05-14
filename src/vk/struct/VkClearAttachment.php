@@ -26,13 +26,12 @@ final class VkClearAttachment implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|array $aspectMask = null,
         null|int $colorAttachment = null,
         mixed $clearValue = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkClearAttachment', false));
+    ): self {
+        $self = new self( $ffi->new('VkClearAttachment', false));
         if(!is_null($aspectMask)) $self->setAspectMask($aspectMask);
         if(!is_null($colorAttachment)) $self->setColorAttachment($colorAttachment);
         if(!is_null($clearValue)) $self->setClearValue($clearValue);
@@ -77,13 +76,13 @@ final class VkClearAttachment implements \JsonSerializable
     public function getClearValue(): mixed
     {
         $cValue = $this->cdata->clearValue;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkClearValue!");
         return $phpValue;
     }
 
     public function setClearValue(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkClearValue!");
         $this->cdata->clearValue = $cValue;
     }
 }

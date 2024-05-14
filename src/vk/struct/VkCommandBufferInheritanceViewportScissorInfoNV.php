@@ -28,15 +28,14 @@ final class VkCommandBufferInheritanceViewportScissorInfoNV implements \JsonSeri
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $viewportScissor2D = null,
         null|int $viewportDepthCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pViewportDepths = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkCommandBufferInheritanceViewportScissorInfoNV', false));
+        null|VkViewport $pViewportDepths = null,
+    ): self {
+        $self = new self( $ffi->new('VkCommandBufferInheritanceViewportScissorInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($viewportScissor2D)) $self->setViewportScissor2D($viewportScissor2D);
@@ -112,14 +111,14 @@ final class VkCommandBufferInheritanceViewportScissorInfoNV implements \JsonSeri
     /**
      * VkViewport* /
      */
-    public function getPViewportDepths(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPViewportDepths(): VkViewport
     {
         $cValue = $this->cdata->pViewportDepths;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkViewport', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkViewport($cValue);
         return $phpValue;
     }
 
-    public function setPViewportDepths(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPViewportDepths(VkViewport $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pViewportDepths = $cValue;

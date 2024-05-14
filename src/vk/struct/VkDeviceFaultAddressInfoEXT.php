@@ -26,13 +26,12 @@ final class VkDeviceFaultAddressInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkDeviceFaultAddressTypeEXT $addressType = null,
         null|int $reportedAddress = null,
         null|int $addressPrecision = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDeviceFaultAddressInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkDeviceFaultAddressInfoEXT', false));
         if(!is_null($addressType)) $self->setAddressType($addressType);
         if(!is_null($reportedAddress)) $self->setReportedAddress($reportedAddress);
         if(!is_null($addressPrecision)) $self->setAddressPrecision($addressPrecision);

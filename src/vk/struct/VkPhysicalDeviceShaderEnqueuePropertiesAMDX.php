@@ -30,7 +30,7 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $maxExecutionGraphDepth = null,
@@ -38,9 +38,8 @@ final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX implements \JsonSerializ
         null|int $maxExecutionGraphShaderPayloadSize = null,
         null|int $maxExecutionGraphShaderPayloadCount = null,
         null|int $executionGraphDispatchAddressAlignment = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderEnqueuePropertiesAMDX', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderEnqueuePropertiesAMDX', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($maxExecutionGraphDepth)) $self->setMaxExecutionGraphDepth($maxExecutionGraphDepth);

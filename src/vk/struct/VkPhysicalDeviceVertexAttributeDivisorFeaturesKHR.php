@@ -27,14 +27,13 @@ final class VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR implements \JsonSe
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $vertexAttributeInstanceRateDivisor = null,
         null|bool $vertexAttributeInstanceRateZeroDivisor = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($vertexAttributeInstanceRateDivisor)) $self->setVertexAttributeInstanceRateDivisor($vertexAttributeInstanceRateDivisor);

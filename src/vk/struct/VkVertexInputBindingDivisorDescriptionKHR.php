@@ -24,13 +24,9 @@ final class VkVertexInputBindingDivisorDescriptionKHR implements \JsonSerializab
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|int $binding = null,
-        null|int $divisor = null,
-    ): self
+    public static function create(\FFI $ffi, null|int $binding = null, null|int $divisor = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkVertexInputBindingDivisorDescriptionKHR', false));
+        $self = new self( $ffi->new('VkVertexInputBindingDivisorDescriptionKHR', false));
         if(!is_null($binding)) $self->setBinding($binding);
         if(!is_null($divisor)) $self->setDivisor($divisor);
         return $self;

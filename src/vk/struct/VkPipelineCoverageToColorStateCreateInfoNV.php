@@ -28,15 +28,14 @@ final class VkPipelineCoverageToColorStateCreateInfoNV implements \JsonSerializa
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|bool $coverageToColorEnable = null,
         null|int $coverageToColorLocation = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineCoverageToColorStateCreateInfoNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkPipelineCoverageToColorStateCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);

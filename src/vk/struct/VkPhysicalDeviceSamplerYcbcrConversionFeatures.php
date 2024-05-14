@@ -26,13 +26,12 @@ final class VkPhysicalDeviceSamplerYcbcrConversionFeatures implements \JsonSeria
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $samplerYcbcrConversion = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSamplerYcbcrConversionFeatures', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceSamplerYcbcrConversionFeatures', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($samplerYcbcrConversion)) $self->setSamplerYcbcrConversion($samplerYcbcrConversion);

@@ -28,15 +28,14 @@ final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT implements \JsonSeria
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $nestedCommandBuffer = null,
         null|bool $nestedCommandBufferRendering = null,
         null|bool $nestedCommandBufferSimultaneousUse = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceNestedCommandBufferFeaturesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceNestedCommandBufferFeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($nestedCommandBuffer)) $self->setNestedCommandBuffer($nestedCommandBuffer);

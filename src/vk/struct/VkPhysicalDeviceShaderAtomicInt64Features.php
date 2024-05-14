@@ -27,14 +27,13 @@ final class VkPhysicalDeviceShaderAtomicInt64Features implements \JsonSerializab
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $shaderBufferInt64Atomics = null,
         null|bool $shaderSharedInt64Atomics = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderAtomicInt64Features', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderAtomicInt64Features', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($shaderBufferInt64Atomics)) $self->setShaderBufferInt64Atomics($shaderBufferInt64Atomics);

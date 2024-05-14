@@ -27,14 +27,13 @@ final class VkSubpassFragmentDensityMapOffsetEndInfoQCOM implements \JsonSeriali
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $fragmentDensityOffsetCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pFragmentDensityOffsets = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSubpassFragmentDensityMapOffsetEndInfoQCOM', false));
+        null|VkOffset2D $pFragmentDensityOffsets = null,
+    ): self {
+        $self = new self( $ffi->new('VkSubpassFragmentDensityMapOffsetEndInfoQCOM', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($fragmentDensityOffsetCount)) $self->setFragmentDensityOffsetCount($fragmentDensityOffsetCount);
@@ -93,14 +92,14 @@ final class VkSubpassFragmentDensityMapOffsetEndInfoQCOM implements \JsonSeriali
     /**
      * VkOffset2D* /
      */
-    public function getPFragmentDensityOffsets(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPFragmentDensityOffsets(): VkOffset2D
     {
         $cValue = $this->cdata->pFragmentDensityOffsets;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkOffset2D', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkOffset2D($cValue);
         return $phpValue;
     }
 
-    public function setPFragmentDensityOffsets(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPFragmentDensityOffsets(VkOffset2D $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pFragmentDensityOffsets = $cValue;

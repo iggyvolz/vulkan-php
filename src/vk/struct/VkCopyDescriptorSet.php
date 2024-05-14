@@ -32,7 +32,7 @@ final class VkCopyDescriptorSet implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkDescriptorSet $srcSet = null,
@@ -42,9 +42,8 @@ final class VkCopyDescriptorSet implements \JsonSerializable
         null|int $dstBinding = null,
         null|int $dstArrayElement = null,
         null|int $descriptorCount = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkCopyDescriptorSet', false));
+    ): self {
+        $self = new self( $ffi->new('VkCopyDescriptorSet', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($srcSet)) $self->setSrcSet($srcSet);

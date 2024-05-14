@@ -22,9 +22,9 @@ final class VkPipelineTessellationDomainOriginStateCreateInfoKHR implements \Jso
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPipelineTessellationDomainOriginStateCreateInfoKHR', false));
+        $self = new self( $ffi->new('VkPipelineTessellationDomainOriginStateCreateInfoKHR', false));
         return $self;
     }
 }

@@ -27,14 +27,13 @@ final class VkRenderPassStripeBeginInfoARM implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $stripeInfoCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pStripeInfos = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRenderPassStripeBeginInfoARM', false));
+        null|VkRenderPassStripeInfoARM $pStripeInfos = null,
+    ): self {
+        $self = new self( $ffi->new('VkRenderPassStripeBeginInfoARM', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($stripeInfoCount)) $self->setStripeInfoCount($stripeInfoCount);
@@ -93,14 +92,14 @@ final class VkRenderPassStripeBeginInfoARM implements \JsonSerializable
     /**
      * VkRenderPassStripeInfoARM* /
      */
-    public function getPStripeInfos(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPStripeInfos(): VkRenderPassStripeInfoARM
     {
         $cValue = $this->cdata->pStripeInfos;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRenderPassStripeInfoARM', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkRenderPassStripeInfoARM($cValue);
         return $phpValue;
     }
 
-    public function setPStripeInfos(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPStripeInfos(VkRenderPassStripeInfoARM $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pStripeInfos = $cValue;

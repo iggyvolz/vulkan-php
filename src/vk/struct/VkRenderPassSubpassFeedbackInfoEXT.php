@@ -26,13 +26,12 @@ final class VkRenderPassSubpassFeedbackInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkSubpassMergeStatusEXT $subpassMergeStatus = null,
         null|string $description = null,
         null|int $postMergeIndex = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRenderPassSubpassFeedbackInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkRenderPassSubpassFeedbackInfoEXT', false));
         if(!is_null($subpassMergeStatus)) $self->setSubpassMergeStatus($subpassMergeStatus);
         if(!is_null($description)) $self->setDescription($description);
         if(!is_null($postMergeIndex)) $self->setPostMergeIndex($postMergeIndex);

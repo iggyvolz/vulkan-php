@@ -22,9 +22,9 @@ final class VkSubpassDescription2KHR implements \JsonSerializable
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkSubpassDescription2KHR', false));
+        $self = new self( $ffi->new('VkSubpassDescription2KHR', false));
         return $self;
     }
 }

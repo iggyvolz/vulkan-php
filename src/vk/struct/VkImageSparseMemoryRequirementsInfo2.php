@@ -26,13 +26,12 @@ final class VkImageSparseMemoryRequirementsInfo2 implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkImage $image = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkImageSparseMemoryRequirementsInfo2', false));
+    ): self {
+        $self = new self( $ffi->new('VkImageSparseMemoryRequirementsInfo2', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($image)) $self->setImage($image);

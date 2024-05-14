@@ -25,14 +25,9 @@ final class VkVideoEncodeH264QpKHR implements \JsonSerializable
     ) {
     }
 
-    public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
-        null|int $qpI = null,
-        null|int $qpP = null,
-        null|int $qpB = null,
-    ): self
+    public static function create(\FFI $ffi, null|int $qpI = null, null|int $qpP = null, null|int $qpB = null): self
     {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264QpKHR', false));
+        $self = new self( $ffi->new('VkVideoEncodeH264QpKHR', false));
         if(!is_null($qpI)) $self->setQpI($qpI);
         if(!is_null($qpP)) $self->setQpP($qpP);
         if(!is_null($qpB)) $self->setQpB($qpB);

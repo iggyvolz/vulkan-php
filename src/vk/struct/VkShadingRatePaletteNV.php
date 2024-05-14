@@ -25,12 +25,11 @@ final class VkShadingRatePaletteNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $shadingRatePaletteEntryCount = null,
         null|\iggyvolz\vulkan\util\Pointer $pShadingRatePaletteEntries = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkShadingRatePaletteNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkShadingRatePaletteNV', false));
         if(!is_null($shadingRatePaletteEntryCount)) $self->setShadingRatePaletteEntryCount($shadingRatePaletteEntryCount);
         if(!is_null($pShadingRatePaletteEntries)) $self->setPShadingRatePaletteEntries($pShadingRatePaletteEntries);
         return $self;

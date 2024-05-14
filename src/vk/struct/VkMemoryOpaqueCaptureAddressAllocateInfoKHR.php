@@ -22,9 +22,9 @@ final class VkMemoryOpaqueCaptureAddressAllocateInfoKHR implements \JsonSerializ
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkMemoryOpaqueCaptureAddressAllocateInfoKHR', false));
+        $self = new self( $ffi->new('VkMemoryOpaqueCaptureAddressAllocateInfoKHR', false));
         return $self;
     }
 }

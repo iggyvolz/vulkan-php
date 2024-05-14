@@ -27,14 +27,13 @@ final class VkCommandBufferBeginInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pInheritanceInfo = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkCommandBufferBeginInfo', false));
+        null|VkCommandBufferInheritanceInfo $pInheritanceInfo = null,
+    ): self {
+        $self = new self( $ffi->new('VkCommandBufferBeginInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -93,14 +92,14 @@ final class VkCommandBufferBeginInfo implements \JsonSerializable
     /**
      * VkCommandBufferInheritanceInfo* /
      */
-    public function getPInheritanceInfo(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPInheritanceInfo(): VkCommandBufferInheritanceInfo
     {
         $cValue = $this->cdata->pInheritanceInfo;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkCommandBufferInheritanceInfo', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkCommandBufferInheritanceInfo($cValue);
         return $phpValue;
     }
 
-    public function setPInheritanceInfo(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPInheritanceInfo(VkCommandBufferInheritanceInfo $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pInheritanceInfo = $cValue;

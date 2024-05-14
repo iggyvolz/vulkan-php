@@ -28,15 +28,14 @@ final class VkPhysicalDeviceExtendedDynamicState2FeaturesEXT implements \JsonSer
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $extendedDynamicState2 = null,
         null|bool $extendedDynamicState2LogicOp = null,
         null|bool $extendedDynamicState2PatchControlPoints = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceExtendedDynamicState2FeaturesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceExtendedDynamicState2FeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($extendedDynamicState2)) $self->setExtendedDynamicState2($extendedDynamicState2);

@@ -25,12 +25,11 @@ final class VkPerformanceValueINTEL implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkPerformanceValueTypeINTEL $type = null,
         mixed $data = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPerformanceValueINTEL', false));
+    ): self {
+        $self = new self( $ffi->new('VkPerformanceValueINTEL', false));
         if(!is_null($type)) $self->setType($type);
         if(!is_null($data)) $self->setData($data);
         return $self;
@@ -58,13 +57,13 @@ final class VkPerformanceValueINTEL implements \JsonSerializable
     public function getData(): mixed
     {
         $cValue = $this->cdata->data;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkPerformanceValueDataINTEL!");
         return $phpValue;
     }
 
     public function setData(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkPerformanceValueDataINTEL!");
         $this->cdata->data = $cValue;
     }
 }

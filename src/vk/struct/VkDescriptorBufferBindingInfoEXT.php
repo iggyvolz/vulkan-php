@@ -27,14 +27,13 @@ final class VkDescriptorBufferBindingInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $address = null,
         null|array $usage = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDescriptorBufferBindingInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkDescriptorBufferBindingInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($address)) $self->setAddress($address);

@@ -27,14 +27,13 @@ final class VkSemaphoreSignalInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkSemaphore $semaphore = null,
         null|int $value = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSemaphoreSignalInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkSemaphoreSignalInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($semaphore)) $self->setSemaphore($semaphore);

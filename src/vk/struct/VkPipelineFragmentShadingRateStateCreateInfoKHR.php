@@ -27,14 +27,13 @@ final class VkPipelineFragmentShadingRateStateCreateInfoKHR implements \JsonSeri
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkExtent2D $fragmentSize = null,
         mixed $combinerOps = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineFragmentShadingRateStateCreateInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPipelineFragmentShadingRateStateCreateInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($fragmentSize)) $self->setFragmentSize($fragmentSize);
@@ -96,13 +95,13 @@ final class VkPipelineFragmentShadingRateStateCreateInfoKHR implements \JsonSeri
     public function getCombinerOps(): mixed
     {
         $cValue = $this->cdata->combinerOps;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkFragmentShadingRateCombinerOpKHR[2]!");
         return $phpValue;
     }
 
     public function setCombinerOps(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkFragmentShadingRateCombinerOpKHR[2]!");
         $this->cdata->combinerOps = $cValue;
     }
 }

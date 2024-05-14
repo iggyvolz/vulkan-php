@@ -33,7 +33,7 @@ final class VkRenderingInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
@@ -44,9 +44,8 @@ final class VkRenderingInfo implements \JsonSerializable
         null|\iggyvolz\vulkan\util\Pointer $pColorAttachments = null,
         null|\iggyvolz\vulkan\util\Pointer $pDepthAttachment = null,
         null|\iggyvolz\vulkan\util\Pointer $pStencilAttachment = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRenderingInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkRenderingInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);

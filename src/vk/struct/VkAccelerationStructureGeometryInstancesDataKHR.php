@@ -27,14 +27,13 @@ final class VkAccelerationStructureGeometryInstancesDataKHR implements \JsonSeri
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $arrayOfPointers = null,
         mixed $data = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkAccelerationStructureGeometryInstancesDataKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkAccelerationStructureGeometryInstancesDataKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($arrayOfPointers)) $self->setArrayOfPointers($arrayOfPointers);
@@ -96,13 +95,13 @@ final class VkAccelerationStructureGeometryInstancesDataKHR implements \JsonSeri
     public function getData(): mixed
     {
         $cValue = $this->cdata->data;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         return $phpValue;
     }
 
     public function setData(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressConstKHR!");
         $this->cdata->data = $cValue;
     }
 }

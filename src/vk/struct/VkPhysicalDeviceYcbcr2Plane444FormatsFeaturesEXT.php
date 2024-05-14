@@ -26,13 +26,12 @@ final class VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT implements \JsonSer
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $ycbcr2plane444Formats = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($ycbcr2plane444Formats)) $self->setYcbcr2plane444Formats($ycbcr2plane444Formats);

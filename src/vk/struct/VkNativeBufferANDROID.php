@@ -30,7 +30,7 @@ final class VkNativeBufferANDROID implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|\iggyvolz\vulkan\util\Pointer $handle = null,
@@ -38,9 +38,8 @@ final class VkNativeBufferANDROID implements \JsonSerializable
         null|int $format = null,
         null|int $usage = null,
         null|VkNativeBufferUsage2ANDROID $usage2 = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkNativeBufferANDROID', false));
+    ): self {
+        $self = new self( $ffi->new('VkNativeBufferANDROID', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($handle)) $self->setHandle($handle);

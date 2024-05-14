@@ -33,20 +33,19 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $descriptorUpdateEntryCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pDescriptorUpdateEntries = null,
+        null|VkDescriptorUpdateTemplateEntry $pDescriptorUpdateEntries = null,
         null|\iggyvolz\vulkan\enum\VkDescriptorUpdateTemplateType $templateType = null,
         null|VkDescriptorSetLayout $descriptorSetLayout = null,
         null|\iggyvolz\vulkan\enum\VkPipelineBindPoint $pipelineBindPoint = null,
         null|VkPipelineLayout $pipelineLayout = null,
         null|int $set = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDescriptorUpdateTemplateCreateInfo', false));
+    ): self {
+        $self = new self( $ffi->new('VkDescriptorUpdateTemplateCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -127,14 +126,14 @@ final class VkDescriptorUpdateTemplateCreateInfo implements \JsonSerializable
     /**
      * VkDescriptorUpdateTemplateEntry* /
      */
-    public function getPDescriptorUpdateEntries(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPDescriptorUpdateEntries(): VkDescriptorUpdateTemplateEntry
     {
         $cValue = $this->cdata->pDescriptorUpdateEntries;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkDescriptorUpdateTemplateEntry', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkDescriptorUpdateTemplateEntry($cValue);
         return $phpValue;
     }
 
-    public function setPDescriptorUpdateEntries(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPDescriptorUpdateEntries(VkDescriptorUpdateTemplateEntry $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pDescriptorUpdateEntries = $cValue;

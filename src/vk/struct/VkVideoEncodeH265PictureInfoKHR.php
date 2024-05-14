@@ -28,15 +28,14 @@ final class VkVideoEncodeH265PictureInfoKHR implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $naluSliceSegmentEntryCount = null,
         null|\iggyvolz\vulkan\util\Pointer $pNaluSliceSegmentEntries = null,
         null|\iggyvolz\vulkan\util\Pointer $pStdPictureInfo = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265PictureInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkVideoEncodeH265PictureInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($naluSliceSegmentEntryCount)) $self->setNaluSliceSegmentEntryCount($naluSliceSegmentEntryCount);

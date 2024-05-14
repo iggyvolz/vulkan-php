@@ -42,7 +42,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR implements \JsonSer
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkExtent2D $minFragmentShadingRateAttachmentTexelSize = null,
@@ -62,9 +62,8 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR implements \JsonSer
         null|bool $fragmentShadingRateWithFragmentShaderInterlock = null,
         null|bool $fragmentShadingRateWithCustomSampleLocations = null,
         null|bool $fragmentShadingRateStrictMultiplyCombiner = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFragmentShadingRatePropertiesKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceFragmentShadingRatePropertiesKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($minFragmentShadingRateAttachmentTexelSize)) $self->setMinFragmentShadingRateAttachmentTexelSize($minFragmentShadingRateAttachmentTexelSize);
@@ -275,8 +274,7 @@ final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR implements \JsonSer
 
     public function setMaxFragmentShadingRateRasterizationSamples(
         \iggyvolz\vulkan\enum\VkSampleCountFlagBits $phpValue,
-    ): void
-    {
+    ): void {
         $cValue = $phpValue->value;
         $this->cdata->maxFragmentShadingRateRasterizationSamples = $cValue;
     }

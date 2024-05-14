@@ -30,17 +30,16 @@ final class VkPipelineViewportStateCreateInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $viewportCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pViewports = null,
+        null|VkViewport $pViewports = null,
         null|int $scissorCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pScissors = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPipelineViewportStateCreateInfo', false));
+        null|VkRect2D $pScissors = null,
+    ): self {
+        $self = new self( $ffi->new('VkPipelineViewportStateCreateInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -118,14 +117,14 @@ final class VkPipelineViewportStateCreateInfo implements \JsonSerializable
     /**
      * VkViewport* /
      */
-    public function getPViewports(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPViewports(): VkViewport
     {
         $cValue = $this->cdata->pViewports;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkViewport', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkViewport($cValue);
         return $phpValue;
     }
 
-    public function setPViewports(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPViewports(VkViewport $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pViewports = $cValue;
@@ -150,14 +149,14 @@ final class VkPipelineViewportStateCreateInfo implements \JsonSerializable
     /**
      * VkRect2D* /
      */
-    public function getPScissors(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPScissors(): VkRect2D
     {
         $cValue = $this->cdata->pScissors;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRect2D', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkRect2D($cValue);
         return $phpValue;
     }
 
-    public function setPScissors(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPScissors(VkRect2D $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pScissors = $cValue;

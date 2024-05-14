@@ -28,15 +28,14 @@ final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV implements \JsonS
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $fragmentShadingRateEnums = null,
         null|bool $supersampleFragmentShadingRates = null,
         null|bool $noInvocationFragmentShadingRates = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($fragmentShadingRateEnums)) $self->setFragmentShadingRateEnums($fragmentShadingRateEnums);

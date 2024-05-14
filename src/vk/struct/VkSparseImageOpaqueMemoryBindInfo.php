@@ -26,13 +26,12 @@ final class VkSparseImageOpaqueMemoryBindInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|VkImage $image = null,
         null|int $bindCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pBinds = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSparseImageOpaqueMemoryBindInfo', false));
+        null|VkSparseMemoryBind $pBinds = null,
+    ): self {
+        $self = new self( $ffi->new('VkSparseImageOpaqueMemoryBindInfo', false));
         if(!is_null($image)) $self->setImage($image);
         if(!is_null($bindCount)) $self->setBindCount($bindCount);
         if(!is_null($pBinds)) $self->setPBinds($pBinds);
@@ -74,14 +73,14 @@ final class VkSparseImageOpaqueMemoryBindInfo implements \JsonSerializable
     /**
      * VkSparseMemoryBind* /
      */
-    public function getPBinds(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPBinds(): VkSparseMemoryBind
     {
         $cValue = $this->cdata->pBinds;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSparseMemoryBind', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSparseMemoryBind($cValue);
         return $phpValue;
     }
 
-    public function setPBinds(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPBinds(VkSparseMemoryBind $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pBinds = $cValue;

@@ -28,15 +28,14 @@ final class VkCopyMicromapToMemoryInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkMicromapEXT $src = null,
         mixed $dst = null,
         null|\iggyvolz\vulkan\enum\VkCopyMicromapModeEXT $mode = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkCopyMicromapToMemoryInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkCopyMicromapToMemoryInfoEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($src)) $self->setSrc($src);
@@ -99,13 +98,13 @@ final class VkCopyMicromapToMemoryInfoEXT implements \JsonSerializable
     public function getDst(): mixed
     {
         $cValue = $this->cdata->dst;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressKHR!");
         return $phpValue;
     }
 
     public function setDst(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkDeviceOrHostAddressKHR!");
         $this->cdata->dst = $cValue;
     }
 

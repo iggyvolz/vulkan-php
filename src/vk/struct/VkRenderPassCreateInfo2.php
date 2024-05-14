@@ -34,21 +34,20 @@ final class VkRenderPassCreateInfo2 implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|array $flags = null,
         null|int $attachmentCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pAttachments = null,
+        null|VkAttachmentDescription2 $pAttachments = null,
         null|int $subpassCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pSubpasses = null,
+        null|VkSubpassDescription2 $pSubpasses = null,
         null|int $dependencyCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pDependencies = null,
+        null|VkSubpassDependency2 $pDependencies = null,
         null|int $correlatedViewMaskCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pCorrelatedViewMasks = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkRenderPassCreateInfo2', false));
+    ): self {
+        $self = new self( $ffi->new('VkRenderPassCreateInfo2', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($flags)) $self->setFlags($flags);
@@ -130,14 +129,14 @@ final class VkRenderPassCreateInfo2 implements \JsonSerializable
     /**
      * VkAttachmentDescription2* /
      */
-    public function getPAttachments(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPAttachments(): VkAttachmentDescription2
     {
         $cValue = $this->cdata->pAttachments;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkAttachmentDescription2', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkAttachmentDescription2($cValue);
         return $phpValue;
     }
 
-    public function setPAttachments(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPAttachments(VkAttachmentDescription2 $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pAttachments = $cValue;
@@ -162,14 +161,14 @@ final class VkRenderPassCreateInfo2 implements \JsonSerializable
     /**
      * VkSubpassDescription2* /
      */
-    public function getPSubpasses(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPSubpasses(): VkSubpassDescription2
     {
         $cValue = $this->cdata->pSubpasses;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSubpassDescription2', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSubpassDescription2($cValue);
         return $phpValue;
     }
 
-    public function setPSubpasses(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPSubpasses(VkSubpassDescription2 $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pSubpasses = $cValue;
@@ -194,14 +193,14 @@ final class VkRenderPassCreateInfo2 implements \JsonSerializable
     /**
      * VkSubpassDependency2* /
      */
-    public function getPDependencies(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPDependencies(): VkSubpassDependency2
     {
         $cValue = $this->cdata->pDependencies;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSubpassDependency2', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSubpassDependency2($cValue);
         return $phpValue;
     }
 
-    public function setPDependencies(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPDependencies(VkSubpassDependency2 $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pDependencies = $cValue;

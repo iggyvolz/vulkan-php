@@ -283,7 +283,7 @@ enum VkFormat: int
     case Astc6x6x6UnormBlockExt = 1000288027;
     case Astc6x6x6SrgbBlockExt = 1000288028;
     case Astc6x6x6SfloatBlockExt = 1000288029;
-    case R16g16S105Nv = 1000464000;
+    case R16g16Sfixed5Nv = 1000464000;
     case A1b5g5r5UnormPack16Khr = 1000470000;
     case A8UnormKhr = 1000470001;
 }

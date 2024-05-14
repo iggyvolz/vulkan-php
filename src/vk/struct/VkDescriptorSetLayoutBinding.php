@@ -28,15 +28,14 @@ final class VkDescriptorSetLayoutBinding implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $binding = null,
         null|\iggyvolz\vulkan\enum\VkDescriptorType $descriptorType = null,
         null|int $descriptorCount = null,
         null|array $stageFlags = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pImmutableSamplers = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDescriptorSetLayoutBinding', false));
+        null|VkSampler $pImmutableSamplers = null,
+    ): self {
+        $self = new self( $ffi->new('VkDescriptorSetLayoutBinding', false));
         if(!is_null($binding)) $self->setBinding($binding);
         if(!is_null($descriptorType)) $self->setDescriptorType($descriptorType);
         if(!is_null($descriptorCount)) $self->setDescriptorCount($descriptorCount);
@@ -112,14 +111,14 @@ final class VkDescriptorSetLayoutBinding implements \JsonSerializable
     /**
      * VkSampler* /
      */
-    public function getPImmutableSamplers(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPImmutableSamplers(): VkSampler
     {
         $cValue = $this->cdata->pImmutableSamplers;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkSampler', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkSampler($cValue);
         return $phpValue;
     }
 
-    public function setPImmutableSamplers(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPImmutableSamplers(VkSampler $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pImmutableSamplers = $cValue;

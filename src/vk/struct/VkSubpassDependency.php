@@ -30,7 +30,7 @@ final class VkSubpassDependency implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|int $srcSubpass = null,
         null|int $dstSubpass = null,
         null|array $srcStageMask = null,
@@ -38,9 +38,8 @@ final class VkSubpassDependency implements \JsonSerializable
         null|array $srcAccessMask = null,
         null|array $dstAccessMask = null,
         null|array $dependencyFlags = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkSubpassDependency', false));
+    ): self {
+        $self = new self( $ffi->new('VkSubpassDependency', false));
         if(!is_null($srcSubpass)) $self->setSrcSubpass($srcSubpass);
         if(!is_null($dstSubpass)) $self->setDstSubpass($dstSubpass);
         if(!is_null($srcStageMask)) $self->setSrcStageMask($srcStageMask);

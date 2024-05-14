@@ -26,13 +26,12 @@ final class VkPhysicalDeviceFeatures2 implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         mixed $features = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceFeatures2', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceFeatures2', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($features)) $self->setFeatures($features);
@@ -77,13 +76,13 @@ final class VkPhysicalDeviceFeatures2 implements \JsonSerializable
     public function getFeatures(): mixed
     {
         $cValue = $this->cdata->features;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkPhysicalDeviceFeatures!");
         return $phpValue;
     }
 
     public function setFeatures(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkPhysicalDeviceFeatures!");
         $this->cdata->features = $cValue;
     }
 }

@@ -26,13 +26,12 @@ final class VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT implements \JsonSerializa
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $formatRgba10x6WithoutYCbCrSampler = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($formatRgba10x6WithoutYCbCrSampler)) $self->setFormatRgba10x6WithoutYCbCrSampler($formatRgba10x6WithoutYCbCrSampler);

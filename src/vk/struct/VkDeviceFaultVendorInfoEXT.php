@@ -26,13 +26,12 @@ final class VkDeviceFaultVendorInfoEXT implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|string $description = null,
         null|int $vendorFaultCode = null,
         null|int $vendorFaultData = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDeviceFaultVendorInfoEXT', false));
+    ): self {
+        $self = new self( $ffi->new('VkDeviceFaultVendorInfoEXT', false));
         if(!is_null($description)) $self->setDescription($description);
         if(!is_null($vendorFaultCode)) $self->setVendorFaultCode($vendorFaultCode);
         if(!is_null($vendorFaultData)) $self->setVendorFaultData($vendorFaultData);

@@ -34,7 +34,7 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $width = null,
@@ -46,9 +46,8 @@ final class VkOpticalFlowSessionCreateInfoNV implements \JsonSerializable
         null|array $hintGridSize = null,
         null|\iggyvolz\vulkan\enum\VkOpticalFlowPerformanceLevelNV $performanceLevel = null,
         null|array $flags = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkOpticalFlowSessionCreateInfoNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkOpticalFlowSessionCreateInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($width)) $self->setWidth($width);

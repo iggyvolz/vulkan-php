@@ -30,7 +30,7 @@ final class VkBindAccelerationStructureMemoryInfoNV implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|VkAccelerationStructureNV $accelerationStructure = null,
@@ -38,9 +38,8 @@ final class VkBindAccelerationStructureMemoryInfoNV implements \JsonSerializable
         null|int $memoryOffset = null,
         null|int $deviceIndexCount = null,
         null|\iggyvolz\vulkan\util\IntPointer $pDeviceIndices = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkBindAccelerationStructureMemoryInfoNV', false));
+    ): self {
+        $self = new self( $ffi->new('VkBindAccelerationStructureMemoryInfoNV', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($accelerationStructure)) $self->setAccelerationStructure($accelerationStructure);

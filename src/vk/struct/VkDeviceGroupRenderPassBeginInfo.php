@@ -28,15 +28,14 @@ final class VkDeviceGroupRenderPassBeginInfo implements \JsonSerializable
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|int $deviceMask = null,
         null|int $deviceRenderAreaCount = null,
-        null|\iggyvolz\vulkan\util\ObjectPointer $pDeviceRenderAreas = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkDeviceGroupRenderPassBeginInfo', false));
+        null|VkRect2D $pDeviceRenderAreas = null,
+    ): self {
+        $self = new self( $ffi->new('VkDeviceGroupRenderPassBeginInfo', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($deviceMask)) $self->setDeviceMask($deviceMask);
@@ -112,14 +111,14 @@ final class VkDeviceGroupRenderPassBeginInfo implements \JsonSerializable
     /**
      * VkRect2D* /
      */
-    public function getPDeviceRenderAreas(): \iggyvolz\vulkan\util\ObjectPointer
+    public function getPDeviceRenderAreas(): VkRect2D
     {
         $cValue = $this->cdata->pDeviceRenderAreas;
-        $phpValue = new \iggyvolz\vulkan\util\ObjectPointer('VkRect2D', $cValue, $ffi); /** PTRANS */
+        $phpValue = new \iggyvolz\vulkan\struct\VkRect2D($cValue);
         return $phpValue;
     }
 
-    public function setPDeviceRenderAreas(\iggyvolz\vulkan\util\ObjectPointer $phpValue): void
+    public function setPDeviceRenderAreas(VkRect2D $phpValue): void
     {
         $cValue = $phpValue->cdata;
         $this->cdata->pDeviceRenderAreas = $cValue;

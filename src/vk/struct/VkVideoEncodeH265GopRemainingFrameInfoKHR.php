@@ -29,16 +29,15 @@ final class VkVideoEncodeH265GopRemainingFrameInfoKHR implements \JsonSerializab
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $useGopRemainingFrames = null,
         null|int $gopRemainingI = null,
         null|int $gopRemainingP = null,
         null|int $gopRemainingB = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH265GopRemainingFrameInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkVideoEncodeH265GopRemainingFrameInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($useGopRemainingFrames)) $self->setUseGopRemainingFrames($useGopRemainingFrames);

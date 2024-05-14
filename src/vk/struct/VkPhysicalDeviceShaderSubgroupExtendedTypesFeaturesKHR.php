@@ -22,9 +22,9 @@ final class VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR implements \J
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR', false));
+        $self = new self( $ffi->new('VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR', false));
         return $self;
     }
 }

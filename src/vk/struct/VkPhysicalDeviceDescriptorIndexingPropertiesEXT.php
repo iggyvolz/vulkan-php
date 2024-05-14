@@ -22,9 +22,9 @@ final class VkPhysicalDeviceDescriptorIndexingPropertiesEXT implements \JsonSeri
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceDescriptorIndexingPropertiesEXT', false));
+        $self = new self( $ffi->new('VkPhysicalDeviceDescriptorIndexingPropertiesEXT', false));
         return $self;
     }
 }

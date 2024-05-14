@@ -31,7 +31,7 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
     }
 
     public static function create(
-        \iggyvolz\vulkan\Vulkan $vulkan,
+        \FFI $ffi,
         null|\iggyvolz\vulkan\enum\VkStructureType $sType = null,
         null|\iggyvolz\vulkan\util\Pointer $pNext = null,
         null|bool $useMinQp = null,
@@ -40,9 +40,8 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
         mixed $maxQp = null,
         null|bool $useMaxFrameSize = null,
         null|VkVideoEncodeH264FrameSizeKHR $maxFrameSize = null,
-    ): self
-    {
-        $self = new self( $vulkan->ffi->new('VkVideoEncodeH264RateControlLayerInfoKHR', false));
+    ): self {
+        $self = new self( $ffi->new('VkVideoEncodeH264RateControlLayerInfoKHR', false));
         if(!is_null($sType)) $self->setSType($sType);
         if(!is_null($pNext)) $self->setPNext($pNext);
         if(!is_null($useMinQp)) $self->setUseMinQp($useMinQp);
@@ -108,13 +107,13 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
     public function getMinQp(): mixed
     {
         $cValue = $this->cdata->minQp;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkVideoEncodeH264QpKHR!");
         return $phpValue;
     }
 
     public function setMinQp(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkVideoEncodeH264QpKHR!");
         $this->cdata->minQp = $cValue;
     }
 
@@ -140,13 +139,13 @@ final class VkVideoEncodeH264RateControlLayerInfoKHR implements \JsonSerializabl
     public function getMaxQp(): mixed
     {
         $cValue = $this->cdata->maxQp;
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkVideoEncodeH264QpKHR!");
         return $phpValue;
     }
 
     public function setMaxQp(mixed $phpValue): void
     {
-        throw new \LogicException("Dummy transformer!");
+        throw new \LogicException("Dummy transformer - VkVideoEncodeH264QpKHR!");
         $this->cdata->maxQp = $cValue;
     }
 

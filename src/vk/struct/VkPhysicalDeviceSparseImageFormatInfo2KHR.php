@@ -22,9 +22,9 @@ final class VkPhysicalDeviceSparseImageFormatInfo2KHR implements \JsonSerializab
     ) {
     }
 
-    public static function create(\iggyvolz\vulkan\Vulkan $vulkan): self
+    public static function create(\FFI $ffi): self
     {
-        $self = new self( $vulkan->ffi->new('VkPhysicalDeviceSparseImageFormatInfo2KHR', false));
+        $self = new self( $ffi->new('VkPhysicalDeviceSparseImageFormatInfo2KHR', false));
         return $self;
     }
 }
