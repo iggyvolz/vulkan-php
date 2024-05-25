@@ -75,7 +75,7 @@ abstract readonly class Transformer
         }
 
         if(str_starts_with($type, "Vk") && str_ends_with($type, "*") && class_exists("iggyvolz\\vulkan\\struct\\" . substr($type, 0, -1))) {
-            return new NonConstTransformer($type);
+            return new NonConstPointerTransformer(substr($type, 0, -1));
         }
 
         if(str_starts_with($type, "const Vk") && str_ends_with($type, "*") && class_exists("iggyvolz\\vulkan\\struct\\" . substr($type, strlen("const "), -1))) {

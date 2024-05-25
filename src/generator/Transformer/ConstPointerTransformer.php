@@ -18,7 +18,7 @@ readonly final class ConstPointerTransformer extends Transformer
 
     public function cTypePrefix(): string
     {
-        return $this->type."*";
+        return "const " . $this->type."*";
     }
 
     public function cTypeSuffix(): string

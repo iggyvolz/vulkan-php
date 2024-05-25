@@ -10,11 +10,10 @@ use Psr\Container\NotFoundExceptionInterface;
 
 class VulkanNew implements ContainerInterface
 {
-
     /**
      * @param list<string> $extensions
      */
-    public function __construct(/** @internal  */public readonly FFI $ffi, public readonly VkInstance $instance, private readonly array $extensions)
+    public function __construct(/** @internal  */public readonly FFIProxy $ffi, public readonly VkInstance $instance, private readonly array $extensions)
     {
     }
 
@@ -39,10 +38,10 @@ class VulkanNew implements ContainerInterface
 
     /**
      * @internal
-     * @param list<mixed> $params
      */
-    public function call(string $method, array ...$params): mixed
+    public function call(string $method, mixed ...$params): mixed
     {
-        return $this->ffi->vkGetInstanceProcAddr($this->instance->cdata, $method)(...$params);
+//        echo "$method\n";
+        return $this->ffi->cast("PFN_PHP_$method", $this->ffi->vkGetInstanceProcAddr($this->instance->cdata, $method))(...$params);
     }
 }

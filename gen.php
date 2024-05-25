@@ -15,9 +15,9 @@ use iggyvolz\vulkan\generator\Transformer\NonConstTransformer;
 use iggyvolz\vulkan\generator\Transformer\Transformer;
 use iggyvolz\vulkan\generator\Transformer\VoidTransformer;
 use iggyvolz\vulkan\util\BitmapEnum;
-use iggyvolz\vulkan\util\ResultEvent;
 use iggyvolz\vulkan\util\VkResultAssert;
 use iggyvolz\vulkan\util\VulkanBase;
+use iggyvolz\vulkan\util\VulkanFfi;
 use iggyvolz\vulkan\util\VulkanInstanceBase;
 use iggyvolz\vulkan\util\VulkanNew;
 use iggyvolz\vulkan\Vulkan;
@@ -67,7 +67,6 @@ removeDirectory($targetDirectory);
 mkdir($targetDirectory);
 mkdir("$targetDirectory/enum");
 mkdir("$targetDirectory/struct");
-mkdir("$targetDirectory/event");
 mkdir("$targetDirectory/ext");
 $extensionClasses = [];
 $extensionFiles = [];
@@ -96,19 +95,6 @@ foreach($registry->getTypes(Enum::class) as $enum) {
 // handle flagbits types
 foreach($registry->getTypes(Bitmask::class) as $bitmask) {
     $cdefs[] = "typedef int $bitmask->name;";
-}
-// Generate events for each VkResult
-foreach(VkResult::cases() as $result) {
-    $file = new PhpFile();
-    $file->setStrictTypes();
-    $namespace = $file->addNamespace("iggyvolz\\vulkan\\event");
-    $className = $result->name . "Event";
-    if(str_starts_with($className, "Error")) {
-        $className = substr($className, strlen("Error"));
-    }
-    $eventClass = $namespace->addClass("$className")->setFinal()->setReadOnly()->setExtends(ResultEvent::class);
-    $eventClass->addMethod("__construct")->addBody("parent::__construct(\\".VkResult::class."::$result->name);");
-    file_put_contents($targetDirectory . "/event/$className.php", $printer->printFile($file));
 }
 function nullable(string $type): string
 {
@@ -149,20 +135,18 @@ foreach($registry->getTypes(Struct::class) as $struct) {
     $constructor->addComment("@internal");
     $constructor->addPromotedParameter("cdata")->addComment("@internal")->setPublic()->setType(CData::class);
     $create = $class->addMethod("create")->setPublic()->setStatic()->setReturnType("self");
-    $create->addParameter("ffi")->setType(FFI::class);
-    $create->addBody('$self = new self( $ffi->new(' . var_export($struct->name, true) . ', false));');
+    $create->addParameter("vk")->setType(VulkanFfi::class);
+    $create->addBody('$self = new self( $vk->ffi->new(' . var_export($struct->name, true) . ', false));');
     $cdef = "typedef struct {";
     foreach($struct->members as $member) {
         $memberType = \transformer($member->type);
         $getter = $class->addMethod("get" . ucfirst($member->name));
-//        $getter->addBody('$ffi = $this->vulkan->ffi;');
         $getter->addBody('$cValue = $this->cdata->' . $member->name . ';');
         $getter->addBody($memberType->fromC());
         $getter->addBody('return $phpValue;');
         $getter->setReturnType($memberType->phpType());
         $setter = $class->addMethod("set" . ucfirst($member->name))->setReturnType('void');
         $setter->addParameter("phpValue")->setType($memberType->phpType());
-//        $setter->addBody('$ffi = $this->vulkan->ffi;');
         $setter->addBody($memberType->toC());
         $setter->addBody('$this->cdata->' . $member->name . ' = $cValue;');
         $create->addParameter($member->name)->setType(nullable($memberType->phpType()))->setDefaultValue(null);
@@ -193,6 +177,8 @@ foreach ($registry->commands as $command) {
         $cls = desnake($ext);
         if(!array_key_exists($cls, $extensionClasses)) {
             $extensionClasses[$cls] = ($extensionFiles[__DIR__ . "/src/vk/ext/$cls.php"] = new PhpFile())->addNamespace("iggyvolz\\vulkan\\ext")->addClass($cls);
+            $extensionClasses[$cls]->addImplement(VulkanFfi::class);
+            $extensionClasses[$cls]->addMethod("getFfi")->setReturnType(\iggyvolz\vulkan\util\FFIProxy::class)->addBody('return $this->vulkan->ffi;');
             $extensionClassConstructor = $extensionClasses[$cls]->addMethod("__construct");
             $extensionClassConstructor->addPromotedParameter("vulkan")->setType(VulkanNew::class);
         }

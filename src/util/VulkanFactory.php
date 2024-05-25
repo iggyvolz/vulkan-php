@@ -17,31 +17,31 @@ use iggyvolz\vulkan\struct\VkInstanceCreateInfo;
 use iggyvolz\vulkan\struct\VkLayerProperties;
 use iggyvolz\vulkan\Vulkan;
 
-class VulkanFactory
+readonly class VulkanFactory implements VulkanFfi
 {
-    public readonly \FFI $ffi;
-    public readonly Version $instanceVersion;
+    public FFIProxy $ffi;
+    public Version $instanceVersion;
     /**
      * @var list<VkLayerProperties>
      */
-    public readonly array $layers;
+    public array $layers;
     /**
      * @var list<VkExtensionProperties>
      */
-    public readonly array $instanceExtensions;
+    public array $instanceExtensions;
     /**
      * @var array<string,list<VkExtensionProperties>>
      */
-    public readonly array $layerExtensions;
+    public array $layerExtensions;
 
     public final function __construct(
         ?string $libPath = null
     ){
-        $this->ffi = FFI::cdef(file_get_contents(__DIR__ . "/../vk/vulkan.h"), $libPath ?? match(PHP_OS_FAMILY) {
+        $this->ffi = new FFIProxy(FFI::cdef(file_get_contents(__DIR__ . "/../vk/vulkan.h"), $libPath ?? match(PHP_OS_FAMILY) {
             "Windows" => "vulkan-1.dll",
             "Linux" => "libvulkan.so",
             default => throw new \RuntimeException("Unsupported platform"),
-        });
+        }));
 
         $this->instanceVersion = $this->getInstanceVersion();
         $this->layers = $this->getInstanceLayerProperties();
@@ -54,27 +54,30 @@ class VulkanFactory
     }
 
     /**
+     * @TODO actually use extensions and layers
      * @param list<VkInstanceCreateFlagBits> $flags
      * @param list<class-string> $extensions
      * @param list<string> $layers
-     * @return VulkanNew
      */
-    public function create(array $flags = [], array $extensions = [], array $layers = []): VulkanNew
+    public function create(string $applicationName = null, string $engineName = null, array $flags = [], array $extensions = [], array $layers = []): VulkanNew
     {
-        $createInfo = VkInstanceCreateInfo::create($this->ffi, VkStructureType::InstanceCreateInfo);
-        $appInfo = VkApplicationInfo::create($this->ffi, VkStructureType::ApplicationInfo);
+        $createInfo = VkInstanceCreateInfo::create($this, VkStructureType::InstanceCreateInfo);
+        $createInfo->setFlags($flags);
+        $appInfo = VkApplicationInfo::create($this, VkStructureType::ApplicationInfo);
         $createInfo->setPApplicationInfo($appInfo);
-        $extensions[] = VkVersion10::class;
+        $appInfo->setPApplicationName($applicationName);
+        $appInfo->setPEngineName($engineName);
+        $extensionClasses = [VkVersion10::class];
         if(!$this->instanceVersion->lessThan(new Version(1, 1))) {
-            $extensions[] = VkVersion11::class;
+            $extensionClasses[] = VkVersion11::class;
         }
         if(!$this->instanceVersion->lessThan(new Version(1, 2))) {
-            $extensions[] = VkVersion12::class;
+            $extensionClasses[] = VkVersion12::class;
         }
         if(!$this->instanceVersion->lessThan(new Version(1, 3))) {
-            $extensions[] = VkVersion13::class;
+            $extensionClasses[] = VkVersion13::class;
         }
-        return new VulkanNew($this->ffi, $this->createInstance($createInfo), $extensions);
+        return new VulkanNew($this->ffi, $this->createInstance($createInfo), $extensionClasses);
     }
 
     private function createInstance(VkInstanceCreateInfo $createInfo): VkInstance
@@ -109,7 +112,7 @@ class VulkanFactory
             return [];
         }
         $proc = $this->ffi->cast("PFN_PHP_vkEnumerateInstanceExtensionProperties", $proc);
-        $proc($layerName, FFI::addr($count), null);
+        $result = $proc($layerName, FFI::addr($count), null);
         if($count->cdata === 0) return [];
         $memory = $this->ffi->new("VkExtensionProperties[" . $count->cdata . "]", false);
         VkResult::from($proc($layerName, FFI::addr($count), FFI::addr($memory[0])));
@@ -135,5 +138,10 @@ class VulkanFactory
             $result = VkResult::from($proc(FFI::addr($count), FFI::addr($memory[0])));
         } while($result === VkResult::Incomplete);
         return array_map(fn($i): VkLayerProperties  => new VkLayerProperties($memory[$i]), range(0, $count->cdata - 1));
+    }
+
+    public function getFfi(): FFIProxy
+    {
+        return $this->ffi;
     }
 }
