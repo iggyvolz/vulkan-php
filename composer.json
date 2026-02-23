@@ -2,8 +2,7 @@
   "name": "iggyvolz/vulkan",
   "autoload": {
     "psr-4": {
-      "iggyvolz\\vulkan\\util\\": "src/util/",
-      "iggyvolz\\vulkan\\": "src/vk/"
+      "iggyvolz\\vulkan\\": "src/"
     }
   },
   "autoload-dev": {
@@ -12,15 +11,14 @@
     }
   },
   "require": {
-    "ext-dom": "*",
-    "nette/php-generator": "^4.0",
+    "php": "^8.5",
     "iggyvolz/simple-attribute-reflection": "^1.0",
-    "php-64bit": "^8.2",
-    "ext-ffi": "*",
     "ramsey/uuid": "^4.7"
   },
   "require-dev": {
     "iggyvolz/x11": "dev-main",
-    "iggyvolz/windowsphp": "dev-main"
+    "iggyvolz/windowsphp": "dev-main",
+    "nette/php-generator": "^4.0",
+    "ext-dom": "*"
   }
 }
